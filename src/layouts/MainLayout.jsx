@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import Navbar from '@/components/ui/Navbar';
-import PromoBar from '@/components/ui/PromoBar';
-import LegalModal from '@/components/ui/LegalModal';
+import Navbar from '@/components/layout/Navbar';
+import PromoBar from '@/components/layout/PromoBar';
+import LegalModal from '@/components/common/Modal';
+import PaymentIcons from '@/components/common/PaymentIcons';
+import SocialIcons from '@/components/common/SocialIcons';
+import TrustBadges from '@/components/common/TrustBadges';
 
 const MainLayout = ({ children }) => {
     const [modalConfig, setModalConfig] = useState({ isOpen: false, title: '', content: '' });
@@ -70,10 +73,7 @@ const MainLayout = ({ children }) => {
                             <p className="text-sm text-gray-500 dark:text-gray-400 font-medium leading-relaxed">
                                 Transformamos el descanso en el Perú desde hace más de 15 años. Fabricación propia con los estándares más altos de la industria nacional.
                             </p>
-                            <div className="flex gap-4">
-                                <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors uppercase text-[10px] font-black tracking-widest">Facebook</a>
-                                <a href="#" className="text-gray-400 hover:text-gold-500 transition-colors uppercase text-[10px] font-black tracking-widest">Instagram</a>
-                            </div>
+                            <SocialIcons />
                         </div>
 
                         {/* 2. Mi Cuenta */}
@@ -127,16 +127,17 @@ const MainLayout = ({ children }) => {
                         </div>
                     </div>
 
+                    {/* Trust Badges Section */}
+                    <div className="mb-16">
+                        <TrustBadges />
+                    </div>
+
                     {/* Footer Bottom */}
                     <div className="pt-12 border-t border-gray-100 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
                         <p className="text-[9px] font-display text-gray-400 uppercase tracking-[0.2em] font-black text-center md:text-left leading-relaxed">
                             © 2026 SUEÑO DORADO • VANGUARDIA EN DESCANSO • TODOS LOS DERECHOS RESERVADOS
                         </p>
-                        <div className="flex gap-8 opacity-20 hover:opacity-100 transition-opacity duration-700">
-                            <span className="text-[9px] font-black uppercase tracking-widest">Visa</span>
-                            <span className="text-[9px] font-black uppercase tracking-widest">Mastercard</span>
-                            <span className="text-[9px] font-black uppercase tracking-widest">Amex</span>
-                        </div>
+                        <PaymentIcons />
                     </div>
                 </div>
             </footer>

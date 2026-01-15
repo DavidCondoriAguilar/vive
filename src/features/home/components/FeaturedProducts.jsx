@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { FEATURED_PRODUCTS } from '@/utils/constants';
 
 const FeaturedProducts = () => {
@@ -33,7 +33,7 @@ const FeaturedProducts = () => {
                         return (
                             <div key={product.id} className="group bg-white dark:bg-zinc-900 p-8 rounded-[2rem] border border-transparent hover:border-gray-100 dark:hover:border-white/5 transition-all duration-700 hover:shadow-2xl hover:shadow-black/5">
                                 {/* Product Image */}
-                                <div className="relative aspect-square overflow-hidden mb-10">
+                                <Link to={`/producto/${product.id}`} className="block relative aspect-square overflow-hidden mb-10">
                                     <img
                                         src={product.image}
                                         alt={product.name}
@@ -46,7 +46,7 @@ const FeaturedProducts = () => {
                                             </span>
                                         </div>
                                     )}
-                                </div>
+                                </Link>
 
                                 {/* Product Info */}
                                 <div className="space-y-4">
@@ -55,9 +55,11 @@ const FeaturedProducts = () => {
                                             <p className="text-[10px] font-display font-black text-gold-500 uppercase tracking-[0.2em] mb-2">
                                                 {product.category}
                                             </p>
-                                            <h3 className="text-xl lg:text-2xl font-display font-black text-gray-900 dark:text-white leading-tight uppercase tracking-tight">
-                                                {product.name}
-                                            </h3>
+                                            <Link to={`/producto/${product.id}`}>
+                                                <h3 className="text-xl lg:text-2xl font-display font-black text-gray-900 dark:text-white leading-tight uppercase tracking-tight hover:text-gold-500 transition-colors">
+                                                    {product.name}
+                                                </h3>
+                                            </Link>
                                         </div>
                                         <div className="text-right shrink-0">
                                             {hasDiscount && (
@@ -73,12 +75,15 @@ const FeaturedProducts = () => {
 
                                     {/* Action - Clean & Subtle */}
                                     <div className="pt-6 flex items-center justify-between border-t border-gray-50 dark:border-white/5">
-                                        <button className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-3">
+                                        <Link
+                                            to={`/producto/${product.id}`}
+                                            className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-3"
+                                        >
                                             Ver Detalle
                                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                             </svg>
-                                        </button>
+                                        </Link>
 
                                         <div className="flex gap-1">
                                             {[1, 2, 3, 4, 5].map(star => (
@@ -93,14 +98,14 @@ const FeaturedProducts = () => {
                 </div>
 
                 <div className="mt-20 flex justify-center">
-                    <a
-                        href="#catalog"
+                    <Link
+                        to="/categorias/colchones"
                         className="group flex items-center gap-4 px-12 py-5 bg-white dark:bg-zinc-900 border border-gray-100 dark:border-white/5 rounded-full hover:bg-gray-50 dark:hover:bg-zinc-800 transition-all shadow-lg shadow-black/5"
                     >
                         <span className="text-[10px] font-display font-black tracking-[0.3em] text-gray-900 dark:text-white uppercase transition-colors group-hover:text-gold-500">
                             Explorar Catálogo Completo
                         </span>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

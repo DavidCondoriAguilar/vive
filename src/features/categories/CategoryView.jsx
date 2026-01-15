@@ -66,27 +66,32 @@ const CategoryView = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 animate-fade-in-up">
                             {products.map((product) => (
                                 <div key={product.id} className="group bg-gray-50 dark:bg-zinc-900/50 p-8 rounded-[2.5rem] hover:bg-white dark:hover:bg-zinc-900 transition-all duration-700 hover:shadow-2xl hover:shadow-black/5 border border-transparent hover:border-gray-100 dark:hover:border-white/5">
-                                    <div className="aspect-square mb-10 overflow-hidden relative">
+                                    <Link to={`/producto/${product.id}`} className="block aspect-square mb-10 overflow-hidden relative">
                                         <img
                                             src={product.image}
                                             alt={product.name}
                                             className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-105"
                                         />
-                                    </div>
+                                    </Link>
                                     <div className="space-y-4">
                                         <div className="flex justify-between items-start">
                                             <div>
                                                 <p className="text-[10px] font-black text-gold-500 uppercase tracking-widest mb-2">{product.category}</p>
-                                                <h3 className="text-xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tight">{product.name}</h3>
+                                                <Link to={`/producto/${product.id}`}>
+                                                    <h3 className="text-xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tight hover:text-gold-500 transition-colors">{product.name}</h3>
+                                                </Link>
                                             </div>
                                             <p className="text-xl font-display font-black text-gray-900 dark:text-white">
                                                 S/ {product.price.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
                                             </p>
                                         </div>
                                         <div className="pt-6 border-t border-gray-100 dark:border-white/5 flex gap-4">
-                                            <button className="flex-grow py-4 bg-gray-900 dark:bg-white text-white dark:text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:scale-[1.02] transition-transform">
+                                            <Link
+                                                to={`/producto/${product.id}`}
+                                                className="flex-grow py-4 bg-gray-900 dark:bg-white text-white dark:text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:scale-[1.02] transition-transform flex items-center justify-center"
+                                            >
                                                 Ver Detalles
-                                            </button>
+                                            </Link>
                                             <a
                                                 href={`https://wa.me/51989223448?text=${encodeURIComponent(`Hola, me interesa el ${product.name} de la categoría ${categoryTitle}. Me gustaría saber más sobre este modelo.`)}`}
                                                 target="_blank"
