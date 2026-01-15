@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold-primary: #D4AF37;
+  --dream-dark: #0a0a0a;
+}
+
+body {
+  @apply bg-white text-gray-800 transition-colors duration-500;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dark body {
+  @apply bg-black text-white;
+}
+
+/* Updated Heading Typography: Friendlier & More Balanced */
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-brand {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Compatibility alias if needed */
+.font-futuristic {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* Custom Utilities for Premium Look */
+@layer utilities {
+  .animate-shimmer {
+    background-size: 200% auto;
+    animation: shimmer 4s linear infinite;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gold-500/30 rounded-full hover:bg-gold-500/50 transition-colors;
+}
+
+/* Interactive Details */
+.text-clamp-title {
+  font-size: clamp(2rem, 6vw, 6rem);
+}
+
+.text-clamp-subtitle {
+  font-size: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+/* Smooth Image Loading */
+img {
+  @apply opacity-0 transition-opacity duration-1000;
+}
+
+img[src] {
+  @apply opacity-100;
+}
