@@ -3,6 +3,7 @@ import MainLayout from '@/layouts/MainLayout';
 import HeroCarousel from '../components/HeroCarousel';
 import CategorySection from '../components/CategorySection';
 import FeaturedProducts from '../components/FeaturedProducts';
+import EnhancedProductCatalog from '../components/EnhancedProductCatalog';
 import BenefitsSection from '@/components/common/BenefitsSection';
 import DifferentialSection from '../components/DifferentialSectionEnhanced';
 import EducationSection from '../components/EducationSection';
@@ -36,7 +37,10 @@ const HomeView = () => {
             {/* 5. PRODUCTOS DESTACADOS - Curated selection (Max 6) */}
             <FeaturedProducts />
 
-            {/* 6. SECONDARY CONVERSION - After product showcase */}
+            {/* 6. CATÁLOGO COMPLETO - Enhanced product showcase */}
+            <EnhancedProductCatalog />
+
+            {/* 7. SECONDARY CONVERSION - After product showcase */}
             <ConversionCTA 
               title="¿No sabes qué elegir?"
               subtitle="Nuestros expertos te ayudarán a encontrar el colchón perfecto"
@@ -45,13 +49,13 @@ const HomeView = () => {
               className="bg-gradient-to-r from-gray-50 to-white dark:from-gray-900 dark:to-black"
             />
 
-            {/* 7. SECCIÓN DIFERENCIAL - Brand philosophy */}
+            {/* 8. SECCIÓN DIFERENCIAL - Brand philosophy */}
             <DifferentialSection />
 
-            {/* 8. INSPIRACIÓN / GUÍA - Education focus */}
+            {/* 9. INSPIRACIÓN / GUÍA - Education focus */}
             <EducationSection />
 
-            {/* 9. FINAL CONVERSION - Last chance to convert */}
+            {/* 10. FINAL CONVERSION - Last chance to convert */}
             <ConversionCTA 
               title="Transforma tu Descanso Hoy"
               subtitle="Envío gratis en Lima y garantía de 10 años"

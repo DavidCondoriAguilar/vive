@@ -30,6 +30,13 @@ export default {
                     800: '#18181B',
                     900: '#0a0a0a',
                     950: '#020203',
+                    /* Sophisticated dark palette */
+                    'dark-bg': '#0F0F0F',
+                    'dark-surface': '#1A1A1A',
+                    'dark-elevated': '#252525',
+                    'dark-border': '#2A2A2A',
+                    'dark-text': '#E5E5E5',
+                    'dark-text-secondary': '#A0A0A0',
                 },
             },
             fontFamily: {

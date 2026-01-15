@@ -1,6 +1,8 @@
 import React from 'react';
+import { getWhatsAppLink } from '@/utils/constants';
 
 const Hero = () => {
+    const waLink = getWhatsAppLink("Hola Sueño Dorado, deseo recibir asesoría para mejorar mi descanso.");
     return (
         <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-white dark:bg-black transition-colors duration-700">
             {/* Subtle Gradient Background */}
@@ -11,7 +13,7 @@ const Hero = () => {
 
                     {/* Content Area */}
                     <div className="max-w-xl animate-fade-in-up">
-                        <span className="text-gold-500 font-display text-sm lg:text-base tracking-[0.3em] uppercase mb-6 block font-bold">
+                        <span className="text-gold-500 font-display text-sm lg:text-base tracking-[0.4em] uppercase mb-6 block font-bold">
                             Descanso Real, Sueño Profundo
                         </span>
                         <h1 className="text-[2.8rem] lg:text-[5rem] font-display font-black text-gray-900 dark:text-white leading-[1] mb-8 tracking-tighter uppercase">
@@ -30,7 +32,7 @@ const Hero = () => {
                                 Ver Colchones
                             </a>
                             <a
-                                href="https://wa.me/51989223448"
+                                href={waLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-full sm:w-auto px-12 py-5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-display font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-gray-50 dark:hover:bg-white/5 transition-all flex items-center justify-center gap-3"

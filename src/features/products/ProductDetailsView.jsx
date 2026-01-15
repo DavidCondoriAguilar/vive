@@ -11,7 +11,7 @@ const ProductDetailsView = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        const found = FEATURED_PRODUCTS.find(p => p.id === parseInt(productId));
+        const found = FEATURED_PRODUCTS.find(p => p.id === productId);
         setProduct(found || FEATURED_PRODUCTS[0]);
     }, [productId]);
 
@@ -109,8 +109,8 @@ const ProductDetailsView = () => {
                                             key={size}
                                             onClick={() => setSelectedSize(size)}
                                             className={`px-6 py-4 rounded-2xl border-2 transition-all duration-300 font-display font-black text-[10px] uppercase tracking-widest ${selectedSize === size
-                                                    ? 'border-gold-500 bg-gold-500 text-white shadow-xl shadow-gold-500/20 scale-105'
-                                                    : 'border-gray-100 dark:border-white/5 text-gray-400 hover:border-gold-500/30'
+                                                ? 'border-gold-500 bg-gold-500 text-white shadow-xl shadow-gold-500/20 scale-105'
+                                                : 'border-gray-100 dark:border-white/5 text-gray-400 hover:border-gold-500/30'
                                                 }`}
                                         >
                                             {size}

@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import MainLayout from '@/layouts/MainLayout';
-import { FEATURED_PRODUCTS } from '@/utils/constants';
+import { FEATURED_PRODUCTS, getWhatsAppLink } from '@/utils/constants';
 
 const CategoryView = () => {
     const { categoryId } = useParams();
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [categoryId]);
+    }, [categoryId, location.search]);
 
     const location = useLocation();
 
@@ -23,10 +23,30 @@ const CategoryView = () => {
     const effectiveCategoryId = categoryId || (location.pathname.includes('ofertas') ? 'ofertas' : '');
     const categoryTitle = categoryNames[effectiveCategoryId] || 'Categoría';
 
+    // Get filter data from URL
+    const searchParams = new URLSearchParams(location.search);
+    const sizeFilter = searchParams.get('t');
+    const lineFilter = searchParams.get('l');
+
     // Filter logic: if 'ofertas', show all with "discount" logic or special tag
-    const products = effectiveCategoryId === 'ofertas'
+    let products = effectiveCategoryId === 'ofertas'
         ? FEATURED_PRODUCTS
         : FEATURED_PRODUCTS.filter(p => p.category && p.category.toLowerCase().includes(effectiveCategoryId.slice(0, 4)));
+
+    // Extra filters for Mega Menu
+    if (sizeFilter) {
+        products = products.filter(p => p.sizes && p.sizes.includes(sizeFilter));
+    }
+
+    // Line simulation (since line/subcategory isn't strictly in DB, we map loosely or ignore)
+    // In a real app, product would have a 'line' or 'subcategory' field.
+    if (lineFilter) {
+        // Simple search in name/features/badge
+        products = products.filter(p =>
+            p.name.toLowerCase().includes(lineFilter.toLowerCase()) ||
+            p.badge.toLowerCase().includes(lineFilter.toLowerCase())
+        );
+    }
 
     return (
         <MainLayout>
@@ -93,7 +113,7 @@ const CategoryView = () => {
                                                 Ver Detalles
                                             </Link>
                                             <a
-                                                href={`https://wa.me/51989223448?text=${encodeURIComponent(`Hola, me interesa el ${product.name} de la categoría ${categoryTitle}. Me gustaría saber más sobre este modelo.`)}`}
+                                                href={getWhatsAppLink(`Hola Sueño Dorado, me interesa el ${product.name} de la categoría ${categoryTitle}. Me gustaría saber más sobre este modelo.`)}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="w-14 h-14 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-green-500 hover:border-green-500 hover:text-white transition-all text-gray-400"

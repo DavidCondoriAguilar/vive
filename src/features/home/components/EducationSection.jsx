@@ -25,6 +25,7 @@ const EducationSection = () => {
     return (
         <section className="py-32 bg-white dark:bg-black transition-colors duration-700 relative overflow-hidden" id="education">
             {/* Background Accent */}
+            <div className="absolute inset-0 dream-noise opacity-50 dark:opacity-20" />
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gold-50/30 dark:bg-gold-900/5 -skew-x-12 transform origin-top translate-x-1/2" />
 
             <div className="container mx-auto px-6 lg:px-20 relative z-10">

@@ -150,7 +150,7 @@ const DifferentialSection = () => {
                         backgroundImage: `url("https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&q=80&w=1600")`,
                     }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-dream-bg" />
             </div>
 
             {/* Background Pattern */}

@@ -33,7 +33,7 @@ const PromoBar = () => {
     ];
 
     return (
-        <div className="bg-gradient-to-r from-gold-50 via-gold-100/50 to-gold-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-700 dark:text-gray-300 py-2 md:py-4 px-4 md:px-6 border-b border-gold-200/50 dark:border-gold-800/30 relative z-[60] overflow-hidden">
+        <div className="bg-gradient-to-r from-gold-50 via-gold-100/50 to-gold-50 dark:from-dream-surface dark:via-dream-elevated dark:to-dream-surface text-gray-700 dark:text-dark-text py-2 md:py-4 px-4 md:px-6 border-b border-gold-200/50 dark:border-dark-border relative z-[60] overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute inset-0" style={{
@@ -58,7 +58,7 @@ const PromoBar = () => {
                             <span className={`text-[9px] md:text-xs font-display font-medium uppercase tracking-[0.1em] md:tracking-[0.15em] transition-colors duration-300 ${
                                 promo.highlight 
                                     ? 'text-gold-700 dark:text-gold-300 font-bold' 
-                                    : 'text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
+                                    : 'text-gray-600 dark:text-dark-text-secondary group-hover:text-gray-900 dark:group-hover:text-dark-text'
                             }`}>
                                 {promo.text}
                             </span>

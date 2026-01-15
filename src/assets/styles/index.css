@@ -5,6 +5,15 @@
 :root {
   --gold-primary: #D4AF37;
   --dream-dark: #0a0a0a;
+  /* Dark mode sophisticated palette */
+  --dark-bg: #0F0F0F;
+  --dark-surface: #1A1A1A;
+  --dark-elevated: #252525;
+  --dark-border: #2A2A2A;
+  --dark-text: #E5E5E5;
+  --dark-text-secondary: #A0A0A0;
+  --dark-accent: #D4AF37;
+  --dark-accent-glow: rgba(212, 175, 55, 0.15);
 }
 
 body {
@@ -14,7 +23,13 @@ body {
 }
 
 .dark body {
-  @apply bg-black text-white;
+  background: var(--dark-bg);
+  color: var(--dark-text);
+  /* Add subtle gradient for depth */
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(212, 175, 55, 0.01) 0%, transparent 50%);
 }
 
 /* Updated Heading Typography: Friendlier & More Balanced */
@@ -42,6 +57,28 @@ h4,
   .animate-shimmer {
     background-size: 200% auto;
     animation: shimmer 4s linear infinite;
+  }
+
+  /* 2026 Minimalist Patterns */
+  .dream-grid {
+    background-size: 60px 60px;
+    background-image:
+      linear-gradient(to right, rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+  }
+
+  .dream-dots {
+    background-image: radial-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .dream-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
   }
 }
 

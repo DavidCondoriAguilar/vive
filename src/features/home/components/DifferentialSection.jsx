@@ -1,4 +1,5 @@
 import React from 'react';
+import { getWhatsAppLink } from '@/utils/constants';
 
 const DifferentialSection = () => {
     return (
@@ -55,12 +56,17 @@ const DifferentialSection = () => {
                             </div>
                         </div>
 
-                        <button className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.4em] text-gray-900 dark:text-white border-b-2 border-gold-500 pb-2 hover:gap-8 transition-all group">
+                        <a
+                            href={getWhatsAppLink("Hola Sueño Dorado, me gustaría conocer más sobre su proceso de fabricación y visitar su planta.")}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.4em] text-gray-900 dark:text-white border-b-2 border-gold-500 pb-2 hover:gap-8 transition-all group"
+                        >
                             Conocer Nuestra Planta
                             <svg className="w-5 h-5 text-gold-500 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
-                        </button>
+                        </a>
                     </div>
 
                 </div>

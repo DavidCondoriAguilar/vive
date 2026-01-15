@@ -1,4 +1,5 @@
 import React from 'react';
+import { getWhatsAppLink } from '@/utils/constants';
 
 const benefits = [
     {
@@ -35,28 +36,43 @@ const benefits = [
             </svg>
         ),
         title: "Atención Rápida",
-        desc: "Soporte personalizado 24/7"
+        desc: "Soporte personalizado 24/7",
+        link: getWhatsAppLink("Hola Sueño Dorado, necesito soporte personalizado para mi compra.")
     }
 ];
 
 const BenefitsSection = () => {
     return (
-        <section className="py-16 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5">
-            <div className="container mx-auto px-6 lg:px-20">
+        <section className="relative py-16 bg-gray-50 dark:bg-[#050505] border-y border-gray-100 dark:border-white/5 overflow-hidden">
+            {/* 2026 Background Elements */}
+            <div className="absolute inset-0 dream-grid opacity-30 dark:opacity-10" />
+            <div className="absolute inset-0 dream-noise" />
+
+            <div className="container mx-auto px-6 lg:px-20 relative z-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-                    {benefits.map((benefit, idx) => (
-                        <div key={idx} className="flex flex-col items-center text-center group">
-                            <div className="mb-6 p-4 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 text-gold-500 transition-all duration-300 group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-white shadow-lg shadow-gold-500/5">
-                                {benefit.icon}
-                            </div>
-                            <h3 className="text-sm font-display font-black uppercase tracking-widest mb-2 text-gray-900 dark:text-white">
-                                {benefit.title}
-                            </h3>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
-                                {benefit.desc}
-                            </p>
-                        </div>
-                    ))}
+                    {benefits.map((benefit, idx) => {
+                        const Content = benefit.link ? 'a' : 'div';
+                        return (
+                            <Content
+                                key={idx}
+                                href={benefit.link}
+                                target={benefit.link ? "_blank" : undefined}
+                                rel={benefit.link ? "noopener noreferrer" : undefined}
+                                className={`flex flex-col items-center text-center group ${benefit.link ? 'cursor-pointer' : ''}`}
+                            >
+                                <div className="mb-6 p-4 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 text-gold-500 transition-all duration-300 group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-white shadow-lg shadow-gold-500/5">
+                                    {benefit.icon}
+                                </div>
+                                <h3 className="text-sm font-display font-black uppercase tracking-widest mb-2 text-gray-900 dark:text-white">
+                                    {benefit.title}
+                                    {benefit.link && <span className="ml-2 text-green-500 group-hover:text-white">●</span>}
+                                </h3>
+                                <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+                                    {benefit.desc}
+                                </p>
+                            </Content>
+                        );
+                    })}
                 </div>
             </div>
         </section>

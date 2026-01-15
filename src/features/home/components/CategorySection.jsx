@@ -58,8 +58,12 @@ const categories = [
 
 const CategorySection = () => {
     return (
-        <section className="py-24 bg-white dark:bg-black transition-colors duration-700" id="categories">
-            <div className="container mx-auto px-6 lg:px-20">
+        <section className="relative py-24 bg-white dark:bg-black transition-colors duration-700 overflow-hidden" id="categories">
+            {/* 2026 Background Elements */}
+            <div className="absolute inset-0 dream-dots opacity-20 dark:opacity-10" />
+            <div className="absolute inset-0 dream-noise" />
+
+            <div className="container mx-auto px-6 lg:px-20 relative z-10">
                 <div className="max-w-xl mb-20">
                     <span className="text-gold-500 text-xs font-black tracking-[0.4em] uppercase mb-4 block animate-fade-in">
                         Excelencia en Fabricación
