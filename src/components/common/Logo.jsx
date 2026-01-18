@@ -79,7 +79,7 @@ const Logo = ({
     select-none
   `;
 
-  const logoSrc = logoClaro;
+  const logoSrc = effectiveTheme === 'light' ? logoClaro : logoOscuro;
 
   // Logo content
   const logoContent = (
@@ -88,8 +88,8 @@ const Logo = ({
       alt="Logo Sueño Dorado"
       className={imageClasses}
       style={{
-        filter: effectiveTheme === 'dark' ? 'brightness(0) invert(1)' : 'none',
-        WebkitFilter: effectiveTheme === 'dark' ? 'brightness(0) invert(1)' : 'none'
+        filter: 'none',
+        WebkitFilter: 'none'
       }}
       loading="eager"
       decoding="async"

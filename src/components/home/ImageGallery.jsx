@@ -6,6 +6,28 @@ const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isFullscreen) {
+        closeFullscreen();
+      }
+    };
+
+    // Prevent body scroll when modal is open
+    if (isFullscreen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isFullscreen]);
+
   if (!images.length) return null;
 
   const openFullscreen = (index) => {
@@ -15,6 +37,7 @@ const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
 
   const closeFullscreen = () => {
     setIsFullscreen(false);
+    setSelectedImage(0); // Reset to first image when closing
   };
 
   return (
@@ -75,45 +98,58 @@ const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
 
       {/* Fullscreen Modal */}
       {isFullscreen && (
-        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4">
+        <div 
+          className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={closeFullscreen}
+        >
           <button
-            onClick={closeFullscreen}
-            className="absolute top-4 right-4 z-[60] w-12 h-12 bg-white/20 backdrop-blur-sm text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              closeFullscreen();
+            }}
+            className="absolute top-4 right-4 z-[60] w-12 h-12 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all cursor-pointer group"
             aria-label="Cerrar"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
 
-          {/* Main Image */}
-          <div className="max-w-6xl max-h-full">
+          {/* Main Image Container */}
+          <div 
+            className="max-w-6xl max-h-full relative"
+            onClick={(e) => e.stopPropagation()}
+          >
             <img
-              src={images[selectedImage].url}
-              alt={images[selectedImage].alt || `Imagen ${selectedImage + 1}`}
-              className="max-w-full max-h-full object-contain"
+              src={images[selectedImage]?.url || ''}
+              alt={images[selectedImage]?.alt || `Imagen ${selectedImage + 1}`}
+              className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
+              loading="eager"
             />
 
             {/* Image Info */}
-            <div className="text-center mt-4">
-              <h3 className="text-white text-xl font-semibold">
-                {images[selectedImage].title || `Producto ${selectedImage + 1}`}
+            <div className="text-center mt-6 px-4">
+              <h3 className="text-white text-2xl font-bold mb-2">
+                {images[selectedImage]?.title || `Producto ${selectedImage + 1}`}
               </h3>
-              {images[selectedImage].description && (
-                <p className="text-gray-300 mt-2">{images[selectedImage].description}</p>
+              {images[selectedImage]?.description && (
+                <p className="text-gray-300 text-lg max-w-2xl mx-auto">{images[selectedImage].description}</p>
               )}
             </div>
           </div>
 
           {/* Thumbnail Navigation */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 max-w-4xl overflow-x-auto">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 max-w-4xl overflow-x-auto px-4 py-2 bg-black/50 backdrop-blur-md rounded-full">
             {images.map((image, index) => (
               <button
                 key={index}
-                onClick={() => setSelectedImage(index)}
-                className={`flex-shrink-0 w-16 h-16 rounded overflow-hidden border-2 transition-all ${index === selectedImage
-                  ? 'border-gold-500 scale-110'
-                  : 'border-white/30 hover:border-white/60'
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImage(index);
+                }}
+                className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${index === selectedImage
+                  ? 'border-gold-500 scale-110 shadow-lg shadow-gold-500/50'
+                  : 'border-white/30 hover:border-white/60 hover:scale-105'
                   }`}
               >
                 <img
@@ -129,19 +165,25 @@ const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
           {images.length > 1 && (
             <>
               <button
-                onClick={() => setSelectedImage((prev) => (prev - 1 + images.length) % images.length)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImage((prev) => (prev - 1 + images.length) % images.length);
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all group"
                 aria-label="Anterior"
               >
-                <FaChevronLeft className="w-5 h-5" />
+                <FaChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform duration-300" />
               </button>
 
               <button
-                onClick={() => setSelectedImage((prev) => (prev + 1) % images.length)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImage((prev) => (prev + 1) % images.length);
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all group"
                 aria-label="Siguiente"
               >
-                <FaChevronRight className="w-5 h-5" />
+                <FaChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </>
           )}

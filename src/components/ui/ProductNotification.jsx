@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { FaTimes, FaShoppingCart, FaWhatsapp } from 'react-icons/fa';
 import { useCart } from '@/contexts/CartContext';
 import { getWhatsAppLink } from '@/utils/constants';
+import { PrimaryButton, WhatsAppButton } from '@/components/ui/Buttons';
 
 const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) => {
   const { addToCart } = useCart();
@@ -56,11 +57,11 @@ const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) 
       />
 
       {/* Notification Card */}
-      <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 max-w-md w-full glass-grid animate-fade-scale">
+      <div className="relative bg-white dark:bg-gray-800 rounded-none shadow-2xl p-6 max-w-md w-full glass-grid animate-fade-scale border border-gray-200 dark:border-gray-700">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 w-8 h-8 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+          className="absolute top-3 right-3 w-8 h-8 bg-gray-100 dark:bg-gray-700 rounded-none flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
         >
           <FaTimes className="w-4 h-4" />
         </button>
@@ -68,7 +69,7 @@ const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) 
         {/* Product Content */}
         <div className="flex gap-4">
           {/* Product Image */}
-          <div className="w-20 h-20 bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden flex-shrink-0">
+          <div className="w-20 h-20 bg-gray-100 dark:bg-gray-700 rounded-none overflow-hidden flex-shrink-0">
             {product.image ? (
               <img
                 src={product.image}
@@ -100,21 +101,21 @@ const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) 
 
             {/* Action Buttons */}
             <div className="flex gap-2">
-              <button
+              <PrimaryButton
                 onClick={handleAddToCart}
-                className="flex-1 bg-gold-500 hover:bg-gold-600 text-white py-2 px-3 rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-1"
+                className="flex-1 text-sm px-3 py-2 justify-center"
+                showArrow={false}
               >
-                <FaShoppingCart className="w-3 h-3" />
-                <span>Agregar</span>
-              </button>
+                Agregar
+              </PrimaryButton>
               
-              <button
+              <WhatsAppButton
                 onClick={handleWhatsApp}
-                className="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-1"
+                className="flex-1 text-sm px-3 py-2 justify-center"
+                showArrow={false}
               >
-                <FaWhatsapp className="w-3 h-3" />
-                <span>Consultar</span>
-              </button>
+                Consultar
+              </WhatsAppButton>
             </div>
           </div>
         </div>

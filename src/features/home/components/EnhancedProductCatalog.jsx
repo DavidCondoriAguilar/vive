@@ -1,10 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ENHANCED_CATALOG, getWhatsAppLink } from '@/utils/constants';
+import { useDragCarousel } from '@/hooks/useDragCarousel';
+import { FaChevronLeft, FaChevronRight, FaEye } from 'react-icons/fa';
+import ProductSpecsModal from '@/components/product/ProductSpecsModal';
 
 const EnhancedProductCatalog = () => {
     const [activeCategory, setActiveCategory] = useState('todos');
-
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [itemsPerView, setItemsPerView] = useState(4);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isSpecsModalOpen, setIsSpecsModalOpen] = useState(false);
+    
     const products = ENHANCED_CATALOG;
 
     const categories = [
@@ -15,11 +22,60 @@ const EnhancedProductCatalog = () => {
         { id: 'professional', name: 'Profesional', count: products.filter(p => p.category === 'professional').length }
     ];
 
+    // Responsive items per view
+    useEffect(() => {
+        const updateItemsPerView = () => {
+            if (window.innerWidth < 640) setItemsPerView(1);  // mobile
+            else if (window.innerWidth < 768) setItemsPerView(2);  // tablet
+            else if (window.innerWidth < 1024) setItemsPerView(3); // desktop
+            else setItemsPerView(4); // large desktop
+        };
+
+        updateItemsPerView();
+        window.addEventListener('resize', updateItemsPerView);
+        return () => window.removeEventListener('resize', updateItemsPerView);
+    }, []);
+    
+    // Reset index when category changes or items per view changes
+    useEffect(() => {
+        setCurrentIndex(0);
+    }, [activeCategory, itemsPerView]);
+    
     const filteredProducts = activeCategory === 'todos'
         ? products
         : products.filter(product => product.category === activeCategory);
+    const canGoNext = currentIndex < filteredProducts.length - itemsPerView;
+    const canGoPrev = currentIndex > 0;
+    
+    const handleNext = () => {
+        if (canGoNext) {
+            setCurrentIndex(currentIndex + 1);
+        }
+    };
+    
+    const handlePrev = () => {
+        if (canGoPrev) {
+            setCurrentIndex(currentIndex - 1);
+        }
+    };
+    
+    const handleSlideChange = (direction) => {
+        if (direction === 'next' && canGoNext) {
+            handleNext();
+        } else if (direction === 'prev' && canGoPrev) {
+            handlePrev();
+        }
+    };
+    
+    const { carouselRef, isDragging, dragDistance, handlers } = useDragCarousel(handleSlideChange);
+    
+    // Reset index when category changes
+    useEffect(() => {
+        setCurrentIndex(0);
+    }, [activeCategory]);
 
     return (
+        <>
         <section className="relative py-32 bg-white dark:bg-black transition-colors duration-700 overflow-hidden" id="catalogo">
             {/* 2025 Aesthetic Background */}
             <div className="absolute inset-0 pointer-events-none">
@@ -77,14 +133,61 @@ const EnhancedProductCatalog = () => {
                     </div>
                 </div>
 
-                {/* Luxury Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 lg:gap-16">
-                    {filteredProducts.map((product, index) => (
-                        <div
-                            key={product.id}
-                            className="group relative flex flex-col h-full animate-fade-in-up"
-                            style={{ animationDelay: `${index * 100}ms` }}
+                {/* Carousel Container */}
+                <div className="relative" ref={carouselRef}>
+                    {/* Navigation Arrows */}
+                    {filteredProducts.length > itemsPerView && (
+                        <>
+                            <button
+                                onClick={handlePrev}
+                                disabled={!canGoPrev}
+                                className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-all ${
+                                    !canGoPrev 
+                                        ? 'opacity-50 cursor-not-allowed' 
+                                        : 'hover:bg-gray-100 hover:scale-110'
+                                    }`}
+                                aria-label="Anterior"
+                            >
+                                <FaChevronLeft className="w-5 h-5 text-gray-700" />
+                            </button>
+
+                            <button
+                                onClick={handleNext}
+                                disabled={!canGoNext}
+                                className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-all ${
+                                    !canGoNext
+                                        ? 'opacity-50 cursor-not-allowed'
+                                        : 'hover:bg-gray-100 hover:scale-110'
+                                    }`}
+                                aria-label="Siguiente"
+                            >
+                                <FaChevronRight className="w-5 h-5 text-gray-700" />
+                            </button>
+                        </>
+                    )}
+                    
+                    {/* Products Carousel */}
+                    <div 
+                        className={`overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        {...handlers}
+                    >
+                        <div 
+                            className="flex gap-12 transition-transform duration-500 ease-in-out"
+                            style={{ 
+                                transform: `translateX(calc(-${currentIndex * (100 / itemsPerView)}% + ${isDragging ? dragDistance : 0}px))`,
+                                transition: isDragging ? 'none' : 'transform 0.5s ease-in-out'
+                            }}
                         >
+                            {filteredProducts.map((product, index) => (
+                                <div 
+                                    key={product.id}
+                                    className="flex-shrink-0"
+                                    style={{ width: `calc(${100 / itemsPerView}% - ${itemsPerView === 1 ? '0px' : itemsPerView === 2 ? '24px' : '48px'})` }}
+                                >
+                                    <div
+                                        className="group relative flex flex-col h-full animate-fade-in-up"
+                                        style={{ animationDelay: `${index * 100}ms` }}
+                                    >
                             {/* Visual Container */}
                             <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden bg-gray-50 dark:bg-zinc-900 transition-all duration-700 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)] group-hover:-translate-y-2 border border-transparent hover:border-gold-500/20">
                                 {/* Advanced 2025 Badge System */}
@@ -116,7 +219,7 @@ const EnhancedProductCatalog = () => {
                                     />
                                 </Link>
 
-                                {/* Quick Info Overlay */}
+                                {/* Quick Actions Overlay */}
                                 <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                                     <div className="flex flex-wrap gap-2 mb-6">
                                         {product.features.map((feature, idx) => (
@@ -125,9 +228,25 @@ const EnhancedProductCatalog = () => {
                                             </span>
                                         ))}
                                     </div>
-                                    <Link to={`/producto/${product.id}`} className="block w-full text-center py-4 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-gold-500 hover:text-white transition-colors">
-                                        Explorar Ficha Técnica
-                                    </Link>
+                                    <div className="flex gap-3">
+                                        <button 
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                setSelectedProduct(product);
+                                                setIsSpecsModalOpen(true);
+                                            }}
+                                            className="flex items-center gap-2 px-4 py-2 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-none hover:bg-gold-500 hover:text-white transition-colors"
+                                            title="Ver detalles del producto"
+                                        >
+                                            <FaEye className="w-4 h-4" />
+                                            <span>Visualizar</span>
+                                        </button>
+                                        <Link to={`/producto/${product.id}`} className="flex items-center gap-2 px-4 py-2 bg-gold-500 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-none hover:bg-gold-600 transition-colors">
+                                            <span>Explorar Ficha</span>
+                                        </Link>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
 
@@ -162,8 +281,28 @@ const EnhancedProductCatalog = () => {
                                     </a>
                                 </div>
                             </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
+                    
+                    {/* Navigation Dots */}
+                    {filteredProducts.length > itemsPerView && (
+                        <div className="flex justify-center mt-12 space-x-2">
+                            {Array.from({ length: Math.ceil(filteredProducts.length / itemsPerView) }).map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentIndex(index * itemsPerView)}
+                                    className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                                        Math.floor(currentIndex / itemsPerView) === index
+                                            ? 'bg-gray-800 dark:bg-white w-8'
+                                            : 'bg-gray-300 dark:bg-gray-600'
+                                    }`}
+                                />
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 {/* Final CTA / Contact Group */}
@@ -205,8 +344,22 @@ const EnhancedProductCatalog = () => {
                     </div>
                 </div>
             </div>
-        </section>
-    );
-};
+        </div>
+    </section>
+
+        {/* Product Specs Modal */}
+        {selectedProduct && (
+            <ProductSpecsModal
+                product={selectedProduct}
+                specs={selectedProduct.specs || []}
+                detailedSpecs={selectedProduct.detailedSpecs || []}
+                isOpen={isSpecsModalOpen}
+                onClose={() => {
+                    setIsSpecsModalOpen(false);
+                    setSelectedProduct(null);
+                }}
+            />
+        )}
+    </>
 
 export default EnhancedProductCatalog;

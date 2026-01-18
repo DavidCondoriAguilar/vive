@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { getWhatsAppLink } from '@/utils/constants';
 import MainLayout from '@/layouts/MainLayout';
-import { FaHotel, FaStore, FaTruck, FaHandshake, FaCheckCircle, FaWhatsapp } from 'react-icons/fa';
+import { FaHotel, FaStore, FaTruck, FaHandshake, FaCheckCircle, FaWhatsapp, FaTimes } from 'react-icons/fa';
 
 const WholesaleView = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const b2bMessage = "Hola, soy [TIPO DE NEGOCIO] y estoy interesado en cotización por mayor de colchones para mi negocio.";
 
   const clients = [
@@ -188,122 +189,168 @@ const WholesaleView = () => {
           </div>
         </section>
 
-        {/* Contact Form Section */}
-        <section className="py-20 bg-white">
+        {/* Contact CTA Section */}
+        <section className="py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-6 lg:px-20">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold font-display text-gray-900 mb-4">
-                  Contacto <span className="text-gold-500">Directo</span>
-                </h2>
-                <p className="text-xl text-gray-600">
-                  Completá el formulario y te contactaremos en menos de 24 horas
-                </p>
-              </div>
-
-              <div className="bg-gray-50 rounded-2xl p-8">
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Nombre Completo *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-                        placeholder="Tu nombre"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Empresa *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-                        placeholder="Nombre de tu empresa"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email *
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-                        placeholder="email@empresa.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Teléfono *
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-                        placeholder="+51 999 888 777"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Tipo de Negocio *
-                    </label>
-                    <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent">
-                      <option value="">Seleccionar tipo</option>
-                      <option value="hotel">Hotel</option>
-                      <option value="tienda">Tienda</option>
-                      <option value="distribuidor">Distribuidor</option>
-                      <option value="constructora">Constructora</option>
-                      <option value="otro">Otro</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Mensaje
-                    </label>
-                    <textarea
-                      rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-                      placeholder="Describe tus necesidades y volumen requerido..."
-                    ></textarea>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105"
-                  >
-                    Enviar Solicitud
-                  </button>
-                </form>
-
-                <div className="mt-8 text-center">
-                  <p className="text-gray-600 mb-4">¿O prefieres contactarnos directamente?</p>
-                  <a
-                    href={getWhatsAppLink(b2bMessage)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-medium"
-                  >
-                    <FaWhatsapp className="w-5 h-5" />
-                    Escribir por WhatsApp
-                  </a>
-                </div>
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold font-display text-gray-900 dark:text-white mb-4">
+                Contacto <span className="text-gold-500">Directo</span>
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
+                Completá el formulario y te contactaremos en menos de 24 horas
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => setIsFormOpen(true)}
+                  className="px-8 py-3 bg-black dark:bg-white text-white dark:text-black text-sm font-black uppercase tracking-widest rounded-none hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
+                >
+                  Ver Formulario
+                </button>
+                <a
+                  href={getWhatsAppLink(b2bMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white text-sm font-black uppercase tracking-widest rounded-none transition-colors flex items-center justify-center gap-2"
+                >
+                  <FaWhatsapp className="w-4 h-4" />
+                  WhatsApp
+                </a>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Form Drawer Panel */}
+        {isFormOpen && (
+          <>
+            {/* Backdrop */}
+            <div 
+              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300"
+              onClick={() => setIsFormOpen(false)}
+            />
+            
+            {/* Drawer Panel - Lateral Derecha */}
+            <div className={`fixed right-0 top-0 bottom-0 z-50 bg-white dark:bg-gray-900 shadow-2xl transition-transform duration-500 ease-out w-full max-w-2xl overflow-hidden transform ${isFormOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+              
+              {/* Header */}
+              <div className="sticky top-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-6 py-5 flex items-center justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white uppercase tracking-wider">Cotización B2B</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Completa tus datos para contactarte</p>
+                </div>
+                <button
+                  onClick={() => setIsFormOpen(false)}
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-none transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
+                >
+                  <FaTimes className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Scrollable Content */}
+              <div className="overflow-y-auto h-[calc(100vh-140px)]">
+                <div className="p-6">
+                  <form className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider">
+                          Nombre Completo *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
+                          placeholder="Tu nombre"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider">
+                          Empresa *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
+                          placeholder="Nombre de tu empresa"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider">
+                          Email *
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
+                          placeholder="email@empresa.com"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider">
+                          Teléfono *
+                        </label>
+                        <input
+                          type="tel"
+                          required
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
+                          placeholder="+51 999 888 777"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider">
+                        Tipo de Negocio *
+                      </label>
+                      <select className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-none focus:ring-2 focus:ring-gold-500 focus:border-transparent">
+                        <option value="">Seleccionar tipo</option>
+                        <option value="hotel">Hotel</option>
+                        <option value="tienda">Tienda</option>
+                        <option value="distribuidor">Distribuidor</option>
+                        <option value="otro">Otro</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider">
+                        Mensaje
+                      </label>
+                      <textarea
+                        rows={5}
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
+                        placeholder="Describe tus necesidades y volumen requerido..."
+                      ></textarea>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              {/* Footer - Actions */}
+              <div className="sticky bottom-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 p-6 space-y-3">
+                <button
+                  type="submit"
+                  className="w-full px-6 py-3 bg-black dark:bg-white text-white dark:text-black text-sm font-black uppercase tracking-widest rounded-none hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
+                >
+                  Enviar Solicitud
+                </button>
+                <a
+                  href={getWhatsAppLink(b2bMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-6 py-3 bg-green-500 hover:bg-green-600 text-white text-sm font-black uppercase tracking-widest rounded-none transition-colors flex items-center justify-center gap-2"
+                >
+                  <FaWhatsapp className="w-4 h-4" />
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </>
+        )}
       </MainLayout>
     </>
   );

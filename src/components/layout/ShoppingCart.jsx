@@ -42,10 +42,16 @@ const ShoppingCart = () => {
         </span>
       </button>
 
-      {/* Cart Modal - Bottom Sheet */}
-      <div className={`fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 rounded-t-3xl shadow-2xl transform transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) z-50 max-h-[80vh] ${isCartOpen ? 'translate-y-0' : 'translate-y-full'
-        }`}>
+      {/* Backdrop */}
+      {isCartOpen && (
+        <div 
+          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300"
+          onClick={() => setIsCartOpen(false)}
+        />
+      )}
 
+      {/* Cart Drawer - Lateral Derecha */}
+      <div className={`fixed right-0 top-0 bottom-0 z-50 bg-white dark:bg-gray-900 shadow-2xl transition-transform duration-500 ease-out w-full max-w-xl overflow-hidden transform ${isCartOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         {/* Handle Bar */}
         <div className="flex justify-center py-3">
           <div className="w-12 h-1 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
@@ -169,12 +175,6 @@ const ShoppingCart = () => {
           </div>
         )}
       </div>
-
-      {/* Overlay Backdrop */}
-      <div
-        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-opacity duration-500 ${isCartOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-        onClick={() => setIsCartOpen(false)}
-      />
     </>
   );
 };
