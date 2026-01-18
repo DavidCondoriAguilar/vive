@@ -1,42 +1,36 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import { 
-    MdShield, 
-    MdSettings, 
-    MdVerified, 
-    MdLayers 
-} from 'react-icons/md';
+import { Helmet } from 'react-helmet';
 import { 
     FaTruck, 
     FaTools, 
     FaRecycle 
 } from 'react-icons/fa';
+import { MdVerifiedUser } from 'react-icons/md';
 import MainLayout from '@/layouts/MainLayout';
 import { FEATURED_PRODUCTS } from '@/utils/constants';
 import LazyImage from '@/components/common/Image';
+import ProductSpecsModal from '@/components/product/ProductSpecsModal';
+import ProductActions from '@/components/product/ProductActions';
+import { useProductSpecs } from '../../hooks/useProductSpecs.jsx';
 
 const ProductDetailsView = () => {
     const { productId } = useParams();
     const [selectedSize, setSelectedSize] = useState('2 Plazas');
+    const [showSpecsModal, setShowSpecsModal] = useState(false);
 
     const product = useMemo(() => {
         const found = FEATURED_PRODUCTS.find(p => p.id === productId);
         return found || FEATURED_PRODUCTS[0];
     }, [productId]);
 
+    const { specs, detailedSpecs } = useProductSpecs(product);
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
     if (!product) return null;
-
-    const specs = [
-        { label: 'Firmeza', value: 'Intermedia / Alta', icon: <MdShield className="w-5 h-5" /> },
-        { label: 'Resortes', value: 'Pocket Independientes', icon: <MdSettings className="w-5 h-5" /> },
-        { label: 'Garantía', value: '10 Años', icon: <MdVerified className="w-5 h-5" /> },
-        { label: 'Material', value: 'Espuma Viscoelástica', icon: <MdLayers className="w-5 h-5" /> }
-    ];
 
     const sizes = ['1.5 Plazas', '2 Plazas', 'Queen', 'King'];
 
@@ -131,32 +125,32 @@ const ProductDetailsView = () => {
                                         <span className="ml-2 text-gray-400 font-bold uppercase tracking-widest text-[9px]">(124 Reseñas)</span>
                                     </div>
                                 </div>
-                                <h1 className="text-5xl lg:text-7xl font-display font-black text-gray-900 dark:text-white uppercase leading-none tracking-tighter">
+                                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-gray-900 dark:text-white uppercase leading-tight tracking-tight">
                                     {product.name}
                                 </h1>
-                                <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed max-w-lg font-medium">
+                                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed max-w-lg font-medium">
                                     Experimenta la cima del descanso peruano. Diseñado con tecnología de resortes pocket que eliminan la transferencia de movimiento.
                                 </p>
                             </div>
 
-                            <div className="flex items-baseline gap-6">
-                                <span className="text-5xl font-display font-black text-gray-900 dark:text-white">
+                            <div className="flex items-baseline gap-4 sm:gap-6">
+                                <span className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-gray-900 dark:text-white">
                                     S/ {product.price.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
                                 </span>
-                                <span className="text-xl text-gray-400 line-through font-display">
+                                <span className="text-lg sm:text-xl text-gray-400 line-through font-display">
                                     S/ {(product.price * 1.3).toLocaleString('es-PE', { minimumFractionDigits: 2 })}
                                 </span>
                             </div>
 
                             {/* Size Selection */}
-                            <div className="space-y-6">
+                            <div className="space-y-4 sm:space-y-6">
                                 <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Selecciona tu Tamaño</h4>
-                                <div className="flex flex-wrap gap-3">
+                                <div className="flex flex-wrap gap-2 sm:gap-3">
                                     {sizes.map((size) => (
                                         <button
                                             key={size}
                                             onClick={() => setSelectedSize(size)}
-                                            className={`px-6 py-4 rounded-2xl border-2 transition-all duration-300 font-display font-black text-[10px] uppercase tracking-widest ${selectedSize === size
+                                            className={`px-4 sm:px-6 py-3 sm:py-4 rounded-2xl border-2 transition-all duration-300 font-display font-black text-[10px] uppercase tracking-widest ${selectedSize === size
                                                 ? 'border-gold-500 bg-gold-500 text-white shadow-xl shadow-gold-500/20 scale-105'
                                                 : 'border-gray-100 dark:border-white/5 text-gray-400 hover:border-gold-500/30'
                                                 }`}
@@ -168,11 +162,11 @@ const ProductDetailsView = () => {
                             </div>
 
                             {/* Key Specs Grid */}
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-2 gap-3 sm:gap-4">
                                 {specs.map((spec) => (
-                                    <div key={spec.label} className="p-6 rounded-[2rem] bg-gray-50 dark:bg-zinc-900 border border-gray-100 dark:border-white/5 group hover:bg-white dark:hover:bg-black transition-all">
-                                        <div className="flex items-center gap-4">
-                                            <span className="text-2xl group-hover:scale-110 transition-transform">{spec.icon}</span>
+                                    <div key={spec.label} className="p-4 sm:p-6 rounded-[1.5rem] sm:rounded-[2rem] bg-gray-50 dark:bg-zinc-900 border border-gray-100 dark:border-white/5 group hover:bg-white dark:hover:bg-black transition-all">
+                                        <div className="flex items-center gap-3 sm:gap-4">
+                                            <span className="text-xl sm:text-2xl group-hover:scale-110 transition-transform">{spec.icon}</span>
                                             <div>
                                                 <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">{spec.label}</p>
                                                 <p className="text-xs font-bold text-gray-900 dark:text-white uppercase">{spec.value}</p>
@@ -183,39 +177,28 @@ const ProductDetailsView = () => {
                             </div>
 
                             {/* CTA Buttons */}
-                            <div className="pt-8 flex flex-col sm:flex-row gap-4">
-                                <a
-                                    href={`https://wa.me/51989223448?text=${encodeURIComponent(`Hola, quiero comprar el ${product.name} en tamaño ${selectedSize}.`)}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex-grow py-6 bg-gold-500 hover:bg-gold-600 text-white text-xs font-black uppercase tracking-[0.25em] rounded-full flex items-center justify-center gap-4 transition-all hover:scale-[1.03] shadow-2xl shadow-gold-500/25"
-                                >
-                                    Comprar Ahora
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
-                                </a>
-                                <button className="px-10 py-6 border-2 border-gray-100 dark:border-white/10 text-gray-900 dark:text-white text-xs font-black uppercase tracking-[0.25em] rounded-full hover:bg-gray-50 dark:hover:bg-white/5 transition-all">
-                                    Ficha Técnica
-                                </button>
-                            </div>
+                            <ProductActions 
+                                product={product}
+                                selectedSize={selectedSize}
+                                onSpecsClick={() => setShowSpecsModal(true)}
+                            />
 
                             {/* Trust Footer */}
-                            <div className="pt-10 flex items-center justify-between border-t border-gray-100 dark:border-white/5">
+                            <div className="pt-8 sm:pt-10 flex items-center justify-between border-t border-gray-100 dark:border-white/5">
                                 <div className="flex flex-col items-center gap-2">
-                                    <FaTruck className="w-6 h-6 text-gold-500" />
+                                    <FaTruck className="w-5 h-5 sm:w-6 sm:h-6 text-gold-500" />
                                     <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest text-center">Envío Gratis<br />Lima Met.</span>
                                 </div>
                                 <div className="flex flex-col items-center gap-2">
-                                    <FaTools className="w-6 h-6 text-gold-500" />
+                                    <FaTools className="w-5 h-5 sm:w-6 sm:h-6 text-gold-500" />
                                     <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest text-center">Armado<br />Incluido</span>
                                 </div>
                                 <div className="flex flex-col items-center gap-2">
-                                    <FaRecycle className="w-6 h-6 text-gold-500" />
+                                    <FaRecycle className="w-5 h-5 sm:w-6 sm:h-6 text-gold-500" />
                                     <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest text-center">Cuotas<br />Sin Interés</span>
                                 </div>
                                 <div className="flex flex-col items-center gap-2">
-                                    <MdVerified className="w-6 h-6 text-gold-500" />
+                                    <MdVerifiedUser className="w-5 h-5 sm:w-6 sm:h-6 text-gold-500" />
                                     <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest text-center">Garantía<br />Fábrica</span>
                                 </div>
                             </div>
@@ -224,6 +207,15 @@ const ProductDetailsView = () => {
                     </div>
                 </div>
              </div>
+
+            {/* Product Specs Modal */}
+            <ProductSpecsModal 
+                product={product}
+                isOpen={showSpecsModal}
+                onClose={() => setShowSpecsModal(false)}
+                specs={specs}
+                detailedSpecs={detailedSpecs}
+            />
          </MainLayout>
          </>
      );

@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
 
 // UI Components
 import ShoppingCart from '@/components/layout/ShoppingCart';
@@ -18,8 +17,7 @@ const ReturnPolicyView = lazy(() => import('@/components/common/ReturnPolicy'));
 
 function App() {
   return (
-    <HelmetProvider>
-      <CartProvider>
+    <CartProvider>
         <Router>
           <Suspense fallback={<div />}>
             <Routes>
@@ -37,7 +35,6 @@ function App() {
           <Chatbot />
         </Router>
       </CartProvider>
-    </HelmetProvider>
   );
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import ProductCard from './ProductCard';
+import { useDragCarousel } from '@/hooks/useDragCarousel';
 
 const ProductCarousel = ({ 
   products, 
@@ -17,8 +18,18 @@ const ProductCarousel = ({
   const canGoNext = currentSlide < products.length - itemsPerView;
   const canGoPrev = currentSlide > 0;
 
+  const handleSlideChange = (direction) => {
+    if (direction === 'next' && canGoNext) {
+      onNextSlide();
+    } else if (direction === 'prev' && canGoPrev) {
+      onPrevSlide();
+    }
+  };
+
+  const { carouselRef, isDragging, dragDistance, handlers } = useDragCarousel(handleSlideChange);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={carouselRef}>
       {/* Navigation Arrows */}
       {products.length > itemsPerView && (
         <>
@@ -51,10 +62,16 @@ const ProductCarousel = ({
       )}
 
       {/* Products Carousel */}
-      <div className="overflow-hidden">
+      <div 
+        className={`overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+        {...handlers}
+      >
         <div 
           className="flex transition-transform duration-500 ease-in-out gap-6"
-          style={{ transform: `translateX(-${currentSlide * (100 / itemsPerView)}%)` }}
+          style={{ 
+            transform: `translateX(calc(-${currentSlide * (100 / itemsPerView)}% + ${isDragging ? dragDistance : 0}px))`,
+            transition: isDragging ? 'none' : 'transform 0.5s ease-in-out'
+          }}
         >
           {products.map((product, index) => (
             <div 

@@ -2,7 +2,7 @@ import React from 'react';
 import { 
     MdScience, 
     MdBiotech, 
-    MdVerified, 
+    MdVerifiedUser, 
     MdMemory 
 } from 'react-icons/md';
 import { 

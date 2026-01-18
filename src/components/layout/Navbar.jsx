@@ -81,16 +81,15 @@ const Navbar = () => {
             <div
                 className={`transition-all duration-500 ${isScrolled
                     ? 'bg-white/95 backdrop-blur-xl border-b border-gray-100 dark:border-gray-200 py-2 shadow-lg shadow-black/5'
-                    : 'bg-white border-b border-transparent py-4'
+                    : 'bg-white border-b border-transparent py-3'
                     }`}
             >
                 <div className="container mx-auto px-6 lg:px-20">
                     <div className="flex items-center justify-between">
                         {/* LOGO */}
                         <Logo
-                            size="large"
+                            size="medium"
                             onClick={handleLogoClick}
-                            className="transition-transform hover:scale-110"
                             variant="light"
                         />
 

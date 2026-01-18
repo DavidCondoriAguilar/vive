@@ -11,6 +11,10 @@ import { LuMail, LuArrowRight } from 'react-icons/lu';
 import { FaShieldAlt, FaTruck, FaUndo, FaHeadset } from 'react-icons/fa';
 
 import libroReclamacionesImg from '@/assets/images/banners/libro-reclamaciones_2.webp';
+import medioPago1 from '@/assets/images/method-page/medio_pago1.png';
+import medioPago2 from '@/assets/images/method-page/medio_pago2.png';
+import yape from '@/assets/images/method-page/yape.png';
+import medioPago5 from '@/assets/images/method-page/medio_pago5.png';
 
 import Logo from '@/components/common/Logo';
 
@@ -186,6 +190,19 @@ const MainLayout = ({ children }) => {
                                     <span>Contáctanos</span>
                                 </a>
                             </div>
+
+                            {/* Payment Icons - Expert Recommendation */}
+                            <div className="pt-4">
+                                <div className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] font-bold mb-3">
+                                    Pagos Seguros
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <img src={medioPago1} alt="Visa" className="h-6 w-auto" />
+                                    <img src={medioPago2} alt="Mastercard" className="h-6 w-auto" />
+                                    <img src={yape} alt="Yape" className="h-6 w-auto" />
+                                    <img src={medioPago5} alt="Otro" className="h-6 w-auto" />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -198,9 +215,6 @@ const MainLayout = ({ children }) => {
                             <Link to="/libro-de-reclamaciones" className="opacity-80 hover:opacity-100 transition-opacity">
                                 <img src={libroReclamacionesImg} alt="Libro de Reclamaciones" className="h-8 w-auto md:h-10" />
                             </Link>
-                        </div>
-                        <div className="opacity-100">
-                            <PaymentIcons />
                         </div>
                     </div>
                 </div>
