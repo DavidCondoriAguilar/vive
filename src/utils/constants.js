@@ -2,201 +2,203 @@ export const CATEGORIES = [
     {
         id: 'colchones',
         name: 'Colchones',
-        description: 'Encuentra el soporte ideal para tu espalda y un confort sin igual.',
+        description: 'Colchones de espuma y resortes para todas las medidas.',
         image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800',
-        subcategories: ['Espuma', 'Resortes', 'Premium', 'Ortopédicos']
+        subcategories: ['Espuma', 'Resortes']
     },
     {
-        id: 'camas',
-        name: 'Camas & Tarimas',
-        description: 'Bases sólidas y elegantes que complementan tu colchón perfectamente.',
+        id: 'tarimas',
+        name: 'Tarimas',
+        description: 'Bases sólidas y funcionales para tu colchón.',
         image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=800',
-        subcategories: ['Madera', 'Tapizadas', 'Funcionales']
+        subcategories: ['Madera', 'Metal']
     },
     {
         id: 'cunas',
         name: 'Cunas',
-        description: 'Seguridad y ternura para el primer descanso de los más pequeños.',
+        description: 'Seguridad y confort para los más pequeños.',
         image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=800',
         subcategories: ['Infantil', 'Resortes', 'Espuma']
     },
     {
-        id: 'accesorios',
-        name: 'Accesorios',
-        description: 'El toque final para un sueño reparador: almohadas, protectores y más.',
+        id: 'almohadas',
+        name: 'Almohadas',
+        description: 'Complemento perfecto para tu descanso.',
         image: 'https://images.unsplash.com/photo-1629949009765-40f745a55111?auto=format&fit=crop&q=80&w=800',
-        subcategories: ['Almohadas', 'Protectores', 'Sábanas']
+        subcategories: ['Espuma', 'Plumas', 'Antialérgicas']
     }
 ];
 
 export const ENHANCED_CATALOG = [
+    // COLCHONES DE ESPUMA
     {
-        id: 'sd-vive-log-1',
-        name: 'SD Vive Log',
-        category: 'premium',
-        price: 1299,
-        image: '/images/products/Recurso 1SD-VIVE LOG.png',
-        badge: 'Premium',
-        badgeColor: 'bg-gradient-to-r from-amber-500 to-yellow-600',
-        description: 'Lujo y confort para un descanso excepcional',
-        features: ['Alta densidad', 'Tecnología avanzada', 'Acolchado premium'],
-        sizes: ['1 Plz', '1.5 Plz', '2 Plz', 'Queen', 'King']
+        id: 'espuma-1pl',
+        name: 'Colchón Espuma 1 Plaza',
+        category: 'colchones',
+        type: 'espuma',
+        price: 399,
+        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=400',
+        description: 'Espuma de alta densidad para descanso óptimo',
+        sizes: ['1 Plz'],
+        badge: 'Más Vendido'
     },
     {
-        id: 'sd-vive-log-2',
-        name: 'SD Vive Log Pro',
-        category: 'premium',
-        price: 1599,
-        image: '/images/products/Recurso 2SD-VIVE LOG.png',
-        badge: 'Pro',
-        badgeColor: 'bg-gradient-to-r from-purple-500 to-indigo-600',
-        description: 'La máxima expresión en tecnología de sueño',
-        features: ['Densidad ultra alta', 'Sistema dual', 'Termorregulador'],
-        sizes: ['1.5 Plz', '2 Plz', 'Queen', 'King']
+        id: 'espuma-1.5pl',
+        name: 'Colchón Espuma 1.5 Plazas',
+        category: 'colchones',
+        type: 'espuma',
+        price: 499,
+        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400',
+        description: 'Ideal para parejas o espacio individual amplio',
+        sizes: ['1.5 Plz']
     },
     {
-        id: 'classic-ana',
-        name: 'Classic Ana',
-        category: 'classic',
-        price: 899,
-        image: '/images/products/Recurso 3CLASIC ANA.png',
-        badge: 'Clásico',
-        badgeColor: 'bg-gradient-to-r from-blue-500 to-cyan-600',
-        description: 'Elegancia atemporal y soporte confiable',
-        features: ['Espuma viscoelástica', 'Base estable', 'Transpirable'],
-        sizes: ['1 Plz', '1.5 Plz', '2 Plz']
+        id: 'espuma-2pl',
+        name: 'Colchón Espuma 2 Plazas',
+        category: 'colchones',
+        type: 'espuma',
+        price: 599,
+        image: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&q=80&w=400',
+        description: 'Amplio espacio para máximo confort',
+        sizes: ['2 Plz']
     },
     {
-        id: 'infi',
-        name: 'Infinite',
-        category: 'premium',
-        price: 1899,
-        image: '/images/products/Recurso 4INFI.png',
-        badge: 'Infinite',
-        badgeColor: 'bg-gradient-to-r from-gray-700 to-gray-900',
-        description: 'Diseño infinito para confort sin límites',
-        features: ['Multi-capas', 'Zonas diferenciadas', 'Hipoalergénico'],
-        sizes: ['1.5 Plz', '2 Plz', 'Queen', 'King', 'Super King']
+        id: 'espuma-queen',
+        name: 'Colchón Espuma Queen',
+        category: 'colchones',
+        type: 'espuma',
+        price: 699,
+        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=400',
+        description: 'Tamaño premium para descanso de lujo',
+        sizes: ['Queen']
     },
     {
-        id: 'caro',
-        name: 'Caro Luxury',
-        category: 'luxury',
-        price: 2499,
-        image: '/images/products/Recurso 5CARO.png',
-        badge: 'Luxury',
-        badgeColor: 'bg-gradient-to-r from-rose-500 to-pink-600',
-        description: 'Exclusividad y sofisticación en cada detalle',
-        features: ['Materiales importados', 'Diseño exclusivo', 'Garantía extendida'],
-        sizes: ['Queen', 'King', 'Super King']
+        id: 'espuma-king',
+        name: 'Colchón Espuma King',
+        category: 'colchones',
+        type: 'espuma',
+        price: 799,
+        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=400',
+        description: 'Máximo espacio y confort para pareja',
+        sizes: ['King']
+    },
+
+    // COLCHONES DE RESORTES
+    {
+        id: 'resorte-1pl',
+        name: 'Colchón Resortes 1 Plaza',
+        category: 'colchones',
+        type: 'resortes',
+        price: 449,
+        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=400',
+        description: 'Sistema de resortes para soporte superior',
+        sizes: ['1 Plz']
     },
     {
-        id: 'ternura',
-        name: 'Ternura',
-        category: 'classic',
+        id: 'resorte-1.5pl',
+        name: 'Colchón Resortes 1.5 Plazas',
+        category: 'colchones',
+        type: 'resortes',
+        price: 549,
+        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400',
+        description: 'Resortes ensacados para movimiento independiente',
+        sizes: ['1.5 Plz']
+    },
+    {
+        id: 'resorte-2pl',
+        name: 'Colchón Resortes 2 Plazas',
+        category: 'colchones',
+        type: 'resortes',
+        price: 649,
+        image: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&q=80&w=400',
+        description: 'Doble sistema de resortes para máxima durabilidad',
+        sizes: ['2 Plz']
+    },
+    {
+        id: 'resorte-queen',
+        name: 'Colchón Resortes Queen',
+        category: 'colchones',
+        type: 'resortes',
         price: 749,
-        image: '/images/products/Recurso 6TERNURA.png',
-        badge: 'Suave',
-        badgeColor: 'bg-gradient-to-r from-green-500 to-emerald-600',
-        description: 'Suavidad y cuidado para toda la familia',
-        features: ['Espuma suave', 'Seguridad infantil', 'Fácil limpieza'],
-        sizes: ['1 Plz', '1.5 Plz', '2 Plz']
+        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=400',
+        description: 'Sistema premium de resortes para lujo',
+        sizes: ['Queen']
     },
     {
-        id: 'absolut',
-        name: 'Absolut',
-        category: 'premium',
-        price: 1799,
-        image: '/images/products/Recurso 7ABSOLUT .png',
-        badge: 'Absolut',
-        badgeColor: 'bg-gradient-to-r from-red-500 to-orange-600',
-        description: 'Absoluto confort y rendimiento superior',
-        features: ['Densidad máxima', 'Sistema híbrido', 'Durabilidad extrema'],
-        sizes: ['1.5 Plz', '2 Plz', 'Queen', 'King']
-    },
-    {
-        id: 'gdream',
-        name: 'Golden Dream',
-        category: 'luxury',
-        price: 2199,
-        image: '/images/products/Recurso 8GDREAM.png',
-        badge: 'Gold',
-        badgeColor: 'bg-gradient-to-r from-yellow-500 to-amber-600',
-        description: 'El sueño dorado hecho realidad',
-        features: ['Oro 24k detalles', 'Tecnología sueca', 'Masaje integrado'],
-        sizes: ['Queen', 'King', 'Super King']
-    },
-    {
-        id: 'gdream-one',
-        name: 'Golden Dream One',
-        category: 'luxury',
-        price: 1999,
-        image: '/images/products/Recurso 9GDREAM ONE.png',
-        badge: 'Premium',
-        badgeColor: 'bg-gradient-to-r from-indigo-500 to-purple-600',
-        description: 'Evolución del descanso premium',
-        features: ['Sistema inteligente', 'Conectividad', 'Análisis de sueño'],
-        sizes: ['2 Plz', 'Queen', 'King']
-    },
-    {
-        id: 'pasiones',
-        name: 'Pasiones',
-        category: 'classic',
-        price: 999,
-        image: '/images/products/Recurso 10pasiones.png',
-        badge: 'Romance',
-        badgeColor: 'bg-gradient-to-r from-pink-500 to-rose-600',
-        description: 'Diseñado para compartir momentos especiales',
-        features: ['Movimiento independiente', 'Romance pack', 'Aromaterapia'],
-        sizes: ['1.5 Plz', '2 Plz', 'Queen', 'King']
-    },
-    {
-        id: 'siempre-mp',
-        name: 'Siempre Plus',
-        category: 'classic',
+        id: 'resorte-king',
+        name: 'Colchón Resortes King',
+        category: 'colchones',
+        type: 'resortes',
         price: 849,
-        image: '/images/products/Recurso 11siempre mp.png',
-        badge: 'Plus',
-        badgeColor: 'bg-gradient-to-r from-teal-500 to-cyan-600',
-        description: 'Calidad confiable mejorada',
-        features: ['Espuma mejorada', 'Base reforzada', 'Garantía 5 años'],
-        sizes: ['1 Plz', '1.5 Plz', '2 Plz']
+        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=400',
+        description: 'Máximo confort con sistema de resortes superior',
+        sizes: ['King']
+    },
+
+    // TARIMAS
+    {
+        id: 'tarima-madera-1.5pl',
+        name: 'Tarima Madera 1.5 Plazas',
+        category: 'tarimas',
+        type: 'madera',
+        price: 299,
+        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=400',
+        description: 'Base de madera maciza para colchón 1.5 plazas',
+        sizes: ['1.5 Plz']
     },
     {
-        id: 'gold-ana-1',
-        name: 'Gold Ana Classic',
-        category: 'premium',
-        price: 1399,
-        image: '/images/products/Recurso 1golde ana .png',
-        badge: 'Gold',
-        badgeColor: 'bg-gradient-to-r from-amber-500 to-yellow-600',
-        description: 'El toque dorado de la clásica Ana',
-        features: ['Acabado dorado', 'Espuma premium', 'Diseño elegante'],
-        sizes: ['1.5 Plz', '2 Plz', 'Queen']
+        id: 'tarima-metal-2pl',
+        name: 'Tarima Metal 2 Plazas',
+        category: 'tarimas',
+        type: 'metal',
+        price: 349,
+        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=400',
+        description: 'Base metálica resistente con diseño moderno',
+        sizes: ['2 Plz']
+    },
+
+    // CUNAS
+    {
+        id: 'cuna-infantil',
+        name: 'Cuna Infantil con Resortes',
+        category: 'cunas',
+        type: 'resortes',
+        price: 599,
+        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=400',
+        description: 'Seguridad y confort para bebé con sistema de resortes',
+        sizes: ['Infantil']
     },
     {
-        id: 'gold-ana-2',
-        name: 'Gold Ana Master',
-        category: 'luxury',
-        price: 1699,
-        image: '/images/products/Recurso 2golde ana  MP.png',
-        badge: 'Master',
-        badgeColor: 'bg-gradient-to-r from-purple-600 to-pink-600',
-        description: 'La versión master de la colección dorada',
-        features: ['Master pack', 'Sistema dual', 'Lujo extremo'],
-        sizes: ['Queen', 'King', 'Super King']
+        id: 'cuna-espuma',
+        name: 'Cuna con Espuma',
+        category: 'cunas',
+        type: 'espuma',
+        price: 499,
+        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=400',
+        description: 'Base de espuma suave y segura para bebé',
+        sizes: ['Infantil']
+    },
+
+    // ALMOHADAS
+    {
+        id: 'almohada-espuma',
+        name: 'Almohada Espuma',
+        category: 'almohadas',
+        type: 'espuma',
+        price: 89,
+        image: 'https://images.unsplash.com/photo-1629949009765-40f745a55111?auto=format&fit=crop&q=80&w=400',
+        description: 'Almohada de espuma viscoelástica ergonómica',
+        sizes: ['Standard']
     },
     {
-        id: 'siempre-hotelero',
-        name: 'Siempre Hotelero',
-        category: 'professional',
-        price: 1099,
-        image: '/images/products/siempre hotelero.png',
-        badge: 'Hotel',
-        badgeColor: 'bg-gradient-to-r from-gray-600 to-gray-800',
-        description: 'Calidad hotelera para tu hogar',
-        features: ['Uso intensivo', 'Fácil mantenimiento', 'Certificación hotelera'],
-        sizes: ['1.5 Plz', '2 Plz', 'Queen', 'King']
+        id: 'almohada-antialergica',
+        name: 'Almohada Antialérgica',
+        category: 'almohadas',
+        type: 'antialergica',
+        price: 99,
+        image: 'https://images.unsplash.com/photo-1629949009765-40f745a55111?auto=format&fit=crop&q=80&w=400',
+        description: 'Protección total contra ácaros y alérgenos',
+        sizes: ['Standard']
     }
 ];
 

@@ -1,0 +1,89 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useCart } from '@/contexts/CartContext';
+import ProductNotification from '@/components/ui/ProductNotification';
+
+// Component imports
+import CategoriesHeader from './CategoriesHeader';
+import ProductFilters from './ProductFilters';
+import ProductCarousel from './ProductCarousel';
+import { useCategoriesLogic } from './useCategoriesLogic';
+
+const CategoriesSection = () => {
+  const { addToCart, getTotalItems } = useCart();
+  const {
+    selectedType,
+    selectedSize,
+    favorites,
+    currentSlide,
+    itemsPerView,
+    selectedProduct,
+    isModalOpen,
+    filteredProducts,
+    visibleProducts,
+    totalSlides,
+    currentSlideIndex,
+    nextSlide,
+    prevSlide,
+    goToSlide,
+    toggleFavorite,
+    openProductModal,
+    closeProductModal,
+    handleTypeChange,
+    handleSizeChange,
+    resetCarousel
+  } = useCategoriesLogic();
+
+  return (
+    <section className="py-20 premium-section futuristic-lines">
+      <div className="container mx-auto px-6 lg:px-20">
+        
+        {/* Section Header */}
+        <CategoriesHeader />
+
+        {/* Filters */}
+        <ProductFilters
+          selectedType={selectedType}
+          selectedSize={selectedSize}
+          onTypeChange={handleTypeChange}
+          onSizeChange={handleSizeChange}
+          onFilterChange={resetCarousel}
+        />
+
+        {/* Products Carousel */}
+        <ProductCarousel
+          products={visibleProducts}
+          itemsPerView={itemsPerView}
+          currentSlide={currentSlide}
+          onNextSlide={nextSlide}
+          onPrevSlide={prevSlide}
+          selectedSize={selectedSize}
+          onAddToCart={addToCart}
+          onQuickView={openProductModal}
+          onToggleFavorite={toggleFavorite}
+          favorites={favorites}
+        />
+
+        {/* View All CTA */}
+        <div className="text-center mt-12">
+          <Link 
+            to="/catalogo"
+            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-white px-8 py-3 rounded-lg font-bold transition-all hover:scale-105"
+          >
+            Ver Catálogo Completo
+          </Link>
+        </div>
+      </div>
+      
+      {/* Product Notification */}
+      <ProductNotification 
+        product={selectedProduct}
+        isOpen={isModalOpen}
+        onClose={closeProductModal}
+        selectedSize={selectedSize === 'todos' ? null : selectedSize}
+      />
+    </section>
+  );
+};
+
+export default CategoriesSection;

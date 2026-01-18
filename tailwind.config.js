@@ -40,10 +40,16 @@ export default {
                 },
             },
             fontFamily: {
-                sans: ['Inter', 'system-ui', 'sans-serif'],
-                brand: ['Montserrat', 'sans-serif'], // Professional & Established
-                display: ['Outfit', 'sans-serif'], // Friendly & Modern Premium
-                futuristic: ['Montserrat', 'sans-serif'], // Alias for compatibility during transition
+                // Professional Typography 2026 - Luxury & Trust
+                serif: ['Source Serif Pro', 'Georgia', 'serif'], // Elegante tradicional para lujo
+                brand: ['Playfair Display', 'Source Serif Pro', 'serif'], // Premium sofisticado
+                display: ['Space Grotesk', 'Playfair Display', 'sans-serif'], // Moderno impactante
+                sans: ['Manrope', 'Inter', 'system-ui', 'sans-serif'], // Limpio y moderno - NUEVO DEFAULT
+                body: ['Inter', 'Manrope', 'system-ui', 'sans-serif'], // Altamente legible - NUEVO DEFAULT
+                heading: ['Space Grotesk', 'Playfair Display', 'sans-serif'], // Encabezados autoritarios
+                // Nuevos defaults para toda la web
+                default: ['Manrope', 'Inter', 'system-ui', 'sans-serif'], // Fuente principal global
+                text: ['Inter', 'Manrope', 'system-ui', 'sans-serif'], // Para texto general
             },
             animation: {
                 'fade-in': 'fadeIn 0.5s ease-out forwards',

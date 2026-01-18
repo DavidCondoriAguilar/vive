@@ -1,69 +1,84 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {
+    LuTruck,
+    LuShieldCheck,
+    LuAward,
+    LuHeadphones,
+    LuClock,
+    LuPhone
+} from 'react-icons/lu';
 
 const PromoBar = () => {
-    const promos = [
+    // Premium minimalistic data structure
+    const actions = [
         {
-            icon: (
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-                </svg>
-            ),
-            text: "Envíos GRATIS a Lima Metropolitana",
-            highlight: true
+            icon: <LuTruck className="w-3.5 h-3.5" />,
+            label: "ENVÍO GRATIS LIMA",
+            sub: "Metropolitana"
         },
         {
-            icon: (
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            ),
-            text: "Hasta 6 cuotas sin intereses",
-            highlight: false
+            icon: <LuShieldCheck className="w-3.5 h-3.5" />,
+            label: "PAGO SEGURO",
+            sub: "100% Protegido"
         },
         {
-            icon: (
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-            ),
-            text: "Garantía de 10 años",
-            highlight: false
+            icon: <LuAward className="w-3.5 h-3.5" />,
+            label: "10 AÑOS GARANTÍA",
+            sub: "Directo de Fábrica"
+        },
+        {
+            icon: <LuHeadphones className="w-3.5 h-3.5" />,
+            label: "ASESORÍA",
+            sub: "Personalizada"
         }
     ];
 
+    const contact = {
+        hours: "9AM - 9PM",
+        phone: "(01) 989 223 448"
+    };
+
     return (
-        <div className="bg-gradient-to-r from-gold-50 via-gold-100/50 to-gold-50 dark:from-dream-surface dark:via-dream-elevated dark:to-dream-surface text-gray-700 dark:text-dark-text py-2 md:py-4 px-4 md:px-6 border-b border-gold-200/50 dark:border-dark-border relative z-[60] overflow-hidden">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0" style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='0.4'%3E%3Cpath d='M0 0h20v20H0V0zm2 2h16v16H2V2z'/%3E%3C/g%3E%3C/svg%3E")`,
-                }}></div>
-            </div>
-            
-            <div className="container mx-auto relative z-10">
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 md:gap-8">
-                    {promos.map((promo, index) => (
-                        <div 
-                            key={index}
-                            className="flex items-center gap-2 group cursor-pointer"
-                        >
-                            <div className={`flex items-center justify-center w-6 h-6 rounded-full transition-all duration-300 ${
-                                promo.highlight 
-                                    ? 'bg-gold-500 text-white group-hover:scale-110' 
-                                    : 'text-gold-500 group-hover:text-gold-600'
-                            }`}>
-                                {promo.icon}
+        <div className="bg-white dark:bg-black border-b border-gray-100 dark:border-white/10 relative z-[60]">
+            <div className="container mx-auto px-6 lg:px-12">
+                <div className="flex flex-col md:flex-row justify-between items-center h-auto md:h-12 py-3 md:py-0 gap-4 md:gap-0">
+
+                    {/* Left: Trust Indicators */}
+                    <div className="flex flex-wrap justify-center md:justify-start gap-6 lg:gap-10">
+                        {actions.map((item, index) => (
+                            <div key={index} className="flex items-center gap-2 group cursor-default">
+                                <span className="text-gold-500 dark:text-gold-400 group-hover:scale-110 transition-transform duration-300">
+                                    {item.icon}
+                                </span>
+                                <div className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-1.5">
+                                    <span className="text-[10px] font-display font-bold tracking-widest text-gray-900 dark:text-white uppercase">
+                                        {item.label}
+                                    </span>
+                                    {item.sub && (
+                                        <span className="hidden lg:inline text-[10px] font-body text-gray-400 dark:text-gray-500 font-medium">
+                                            {item.sub}
+                                        </span>
+                                    )}
+                                </div>
                             </div>
-                            <span className={`text-[9px] md:text-xs font-display font-medium uppercase tracking-[0.1em] md:tracking-[0.15em] transition-colors duration-300 ${
-                                promo.highlight 
-                                    ? 'text-gold-700 dark:text-gold-300 font-bold' 
-                                    : 'text-gray-600 dark:text-dark-text-secondary group-hover:text-gray-900 dark:group-hover:text-dark-text'
-                            }`}>
-                                {promo.text}
-                            </span>
+                        ))}
+                    </div>
+
+                    {/* Right: Contact Info (Hidden on very small screens if crowded, or stacked) */}
+                    <div className="hidden md:flex items-center gap-6 border-l border-gray-100 dark:border-white/10 pl-6">
+                        <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                            <LuClock className="w-3.5 h-3.5" />
+                            <span className="text-[10px] font-medium tracking-wide">{contact.hours}</span>
                         </div>
-                    ))}
+                        <a
+                            href="tel:+51989223448"
+                            className="flex items-center gap-2 text-gray-900 dark:text-white hover:text-gold-500 dark:hover:text-gold-400 transition-colors"
+                        >
+                            <LuPhone className="w-3.5 h-3.5" />
+                            <span className="text-[10px] font-bold tracking-wide">{contact.phone}</span>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>

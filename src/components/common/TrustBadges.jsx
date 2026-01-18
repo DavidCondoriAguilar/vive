@@ -1,7 +1,7 @@
 import React from 'react';
 
-const TrustBadges = ({ className = "" }) => {
-  const badges = [
+const TrustBadges = ({ className = "", showSecurity = false }) => {
+  const mainBadges = [
     {
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,15 +40,44 @@ const TrustBadges = ({ className = "" }) => {
     }
   ];
 
+  const securityBadges = [
+    {
+      icon: "🔒",
+      title: "SSL 256-bit",
+      subtitle: "Encriptación bancaria",
+      color: "from-green-400 to-green-600"
+    },
+    {
+      icon: "🛡️",
+      title: "Pago Seguro",
+      subtitle: "Visa, Mastercard, Yape",
+      color: "from-blue-400 to-blue-600"
+    },
+    {
+      icon: "🏆",
+      title: "Certificado ISO",
+      subtitle: "Calidad garantizada",
+      color: "from-purple-400 to-purple-600"
+    },
+    {
+      icon: "⭐",
+      title: "4.8/5 Calificación",
+      subtitle: "+1000 reseñas",
+      color: "from-yellow-400 to-yellow-600"
+    }
+  ];
+
+  const badges = showSecurity ? securityBadges : mainBadges;
+
   return (
     <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 ${className}`}>
       {badges.map((badge, index) => (
-        <div 
+        <div
           key={index}
           className="group flex flex-col items-center text-center p-4 rounded-xl bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
         >
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform duration-300">
-            {badge.icon}
+          <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${badge.color || 'from-gold-400 to-gold-600'} flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform duration-300 text-lg`}>
+            {typeof badge.icon === 'string' ? badge.icon : badge.icon}
           </div>
           <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-1">
             {badge.title}

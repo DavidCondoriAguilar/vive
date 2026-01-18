@@ -68,7 +68,7 @@ const BlogView = () => {
                 <section className="py-16 px-6">
                     <div className="container mx-auto max-w-6xl">
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {blogPosts.map((post, index) => (
+                            {blogPosts.map((post) => (
                                 <article 
                                     key={post.id}
                                     className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 hover:shadow-2xl hover:scale-105 transition-all duration-500 cursor-pointer"

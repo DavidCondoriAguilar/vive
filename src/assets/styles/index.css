@@ -17,9 +17,57 @@
 }
 
 body {
-  @apply bg-white text-gray-800 transition-colors duration-500;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  @apply bg-white text-gray-800 transition-colors duration-500 font-default;
+  background-color: #ffffff;
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+}
+
+/* Custom Scrollbar Styles */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+}
+
+html.dark {
+  scrollbar-color: rgba(75, 85, 99, 0.5) transparent;
+}
+
+/* Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 85, 99, 0.7);
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+}
+
+.dark {
+  scrollbar-color: rgba(75, 85, 99, 0.5) transparent;
 }
 
 .dark body {
@@ -32,23 +80,37 @@ body {
     radial-gradient(circle at 40% 80%, rgba(212, 175, 55, 0.01) 0%, transparent 50%);
 }
 
-/* Updated Heading Typography: Friendlier & More Balanced */
+/* Global Typography 2026 - Professional & Modern */
+* {
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+}
+
+/* Updated Heading Typography: Premium & Elegant */
 h1,
 h2,
 h3,
 h4,
 .font-display {
-  font-family: 'Outfit', sans-serif;
-  letter-spacing: -0.02em;
+  font-family: 'Space Grotesk', 'Playfair Display', sans-serif;
+  letter-spacing: -0.01em;
 }
 
 .font-brand {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', 'Source Serif Pro', serif;
 }
 
-/* Compatibility alias if needed */
+.font-text {
+  font-family: 'Inter', 'Manrope', system-ui, sans-serif;
+}
+
+/* Default text styling */
+p, span, div, button, input, textarea, select {
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+}
+
+/* Compatibility alias */
 .font-futuristic {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Raleway', sans-serif;
   letter-spacing: 0.05em;
 }
 
@@ -79,6 +141,17 @@ h4,
     opacity: 0.03;
     pointer-events: none;
     z-index: 1;
+  }
+
+  .bg-factory-pattern {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('/images/pattern/factory-pattern.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+  .dark .bg-factory-pattern {
+    background-image: linear-gradient(rgba(10, 10, 10, 0.97), rgba(10, 10, 10, 0.97)), url('/images/pattern/factory-pattern.png');
   }
 }
 

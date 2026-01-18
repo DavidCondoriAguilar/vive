@@ -5,12 +5,11 @@ import { FEATURED_PRODUCTS, getWhatsAppLink } from '@/utils/constants';
 
 const CategoryView = () => {
     const { categoryId } = useParams();
+    const location = useLocation();
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [categoryId, location.search]);
-
-    const location = useLocation();
 
     const categoryNames = {
         colchones: 'Colchones Premium',

@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const LazyImage = ({ 
-  src, 
-  alt, 
-  className = '', 
+const LazyImage = ({
+  src,
+  alt,
+  className = '',
   placeholder = '/api/placeholder/400/300',
-  ...props 
+  webpSrc,
+  ...props
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
@@ -41,28 +42,37 @@ const LazyImage = ({
     setHasError(true);
   };
 
+  // Generate WebP source if not provided
+  const webpSource = webpSrc || src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+
   return (
-    <div 
-      ref={imgRef} 
+    <div
+      ref={imgRef}
       className={`relative overflow-hidden ${className}`}
       {...props}
     >
       {/* Placeholder */}
       {!isLoaded && !hasError && (
-        <div className="lazy-load absolute inset-0 w-full h-full" />
+        <div className="lazy-load absolute inset-0 w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 animate-pulse" />
       )}
-      
-      {/* Image */}
+
+      {/* Image with WebP support */}
       {isInView && (
-        <img
-          src={hasError ? placeholder : src}
-          alt={alt}
-          className={`w-full h-full object-cover transition-opacity duration-1000 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-          onLoad={handleLoad}
-          onError={handleError}
-        />
+        <picture>
+          {/* WebP source */}
+          <source srcSet={hasError ? placeholder : webpSource} type="image/webp" />
+          {/* Fallback */}
+          <img
+            src={hasError ? placeholder : src}
+            alt={alt}
+            loading="lazy"
+            className={`w-full h-full object-cover transition-opacity duration-1000 ${
+              isLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            onLoad={handleLoad}
+            onError={handleError}
+          />
+        </picture>
       )}
     </div>
   );

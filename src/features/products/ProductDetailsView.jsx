@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import MainLayout from '@/layouts/MainLayout';
 import { FEATURED_PRODUCTS } from '@/utils/constants';
 import LazyImage from '@/components/common/Image';
 
 const ProductDetailsView = () => {
     const { productId } = useParams();
-    const [product, setProduct] = useState(null);
     const [selectedSize, setSelectedSize] = useState('2 Plazas');
+
+    const product = useMemo(() => {
+        const found = FEATURED_PRODUCTS.find(p => p.id === productId);
+        return found || FEATURED_PRODUCTS[0];
+    }, [productId]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        const found = FEATURED_PRODUCTS.find(p => p.id === productId);
-        setProduct(found || FEATURED_PRODUCTS[0]);
-    }, [productId]);
+    }, []);
 
     if (!product) return null;
 
@@ -27,7 +30,41 @@ const ProductDetailsView = () => {
     const sizes = ['1.5 Plazas', '2 Plazas', 'Queen', 'King'];
 
     return (
-        <MainLayout>
+        <>
+            <Helmet>
+                <title>{product.name} - Colchón Premium Sueño Dorado | S/ {product.price.toLocaleString('es-PE')}</title>
+                <meta name="description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y garantía de 10 años. Envío gratis en Lima.'}`} />
+                <link rel="canonical" href={`https://suenodorado.pe/producto/${productId}`} />
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Product",
+                        "name": product.name,
+                        "description": product.description || "Colchón premium con resortes pocket independientes",
+                        "image": product.image,
+                        "brand": {
+                            "@type": "Brand",
+                            "name": "Sueño Dorado"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "price": product.price,
+                            "priceCurrency": "PEN",
+                            "availability": "https://schema.org/InStock",
+                            "seller": {
+                                "@type": "Organization",
+                                "name": "Sueño Dorado"
+                            }
+                        },
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "5",
+                            "reviewCount": "124"
+                        }
+                    })}
+                </script>
+            </Helmet>
+            <MainLayout>
             <div className="pt-32 pb-24 bg-white dark:bg-black min-h-screen transition-colors duration-700">
                 <div className="container mx-auto px-6 lg:px-20">
 
@@ -175,9 +212,10 @@ const ProductDetailsView = () => {
 
                     </div>
                 </div>
-            </div>
-        </MainLayout>
-    );
+             </div>
+         </MainLayout>
+         </>
+     );
 };
 
 export default ProductDetailsView;
