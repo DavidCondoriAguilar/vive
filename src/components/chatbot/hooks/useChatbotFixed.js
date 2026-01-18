@@ -77,7 +77,7 @@ export const useChatbotFixed = () => {
   }, [lastActivity]);
 
   /**
-   * Detect intent and business user
+   * Detect intent and business user with improved NLP
    * @param {string} message - User message
    * @returns {Object} Intent and entities
    */
@@ -87,47 +87,45 @@ export const useChatbotFixed = () => {
       return { intent: 'help', isBusiness: false };
     }
     
-    const lowerMessage = message.toLowerCase().trim();
+    // Normalize text: lowercase, remove accents, trim
+    const normalized = message
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // Remove accents
+      .trim();
     
     // Detect business user
     const businessKeywords = [
       'por mayor', 'mayorista', 'distribuidor', 'revendedor', 
       'negocio', 'empresa', 'tienda', 'venta', 'compra',
-      'stock', 'inventario', 'proveedor', 'fabrica'
+      'stock', 'inventario', 'proveedor', 'fabrica', 'fabrica',
+      'volumen', 'cantidad grande', 'lote'
     ];
     
     const isBusiness = businessKeywords.some(keyword => 
-      lowerMessage.includes(keyword)
+      normalized.includes(keyword)
     );
     
     if (isBusiness && !isBusinessUser) {
       setIsBusinessUser(true);
     }
     
-    // Simple intent detection
-    if (lowerMessage.includes('envío') || lowerMessage.includes('envios') || 
-        lowerMessage.includes('delivery') || lowerMessage.includes('entrega')) {
-      return { intent: 'shipping', isBusiness };
-    }
+    // Synonyms map for better intent detection
+    const synonyms = {
+      shipping: ['envio', 'envios', 'delivery', 'entrega', 'traslado', 'transporte', 'costo envio', 'flete'],
+      warranty: ['garantia', 'garantias', 'devolucion', 'reclamo', 'defecto', 'problema', 'arreglo'],
+      pricing: ['precio', 'precios', 'costo', 'cuanto', 'cuanta', 'valor', 'tarifa', 'caro', 'barato', 'descuento', 'oferta'],
+      catalog: ['catalogo', 'productos', 'colchones', 'colchon', 'resortes', 'espuma', 'base', 'tarima', 'cuna', 'almohada', 'item', 'modelos'],
+      contact: ['contactar', 'contacto', 'whatsapp', 'llamar', 'llamada', 'comunicarse', 'llamada telefonica', 'numero', 'telefono', 'email', 'escribir'],
+      payment: ['pago', 'pagos', 'metodo pago', 'tarjeta', 'efectivo', 'transferencia', 'yape', 'plin', 'como pago'],
+      delivery_time: ['cuando', 'tiempo', 'rapidez', 'demora', 'cuanto tarda', 'cuanto demora', 'plazo']
+    };
     
-    if (lowerMessage.includes('garantía') || lowerMessage.includes('garantias') || 
-        lowerMessage.includes('devolución') || lowerMessage.includes('reclamo')) {
-      return { intent: 'warranty', isBusiness };
-    }
-    
-    if (lowerMessage.includes('precio') || lowerMessage.includes('precios') || 
-        lowerMessage.includes('costo') || lowerMessage.includes('cuánto')) {
-      return { intent: 'pricing', isBusiness };
-    }
-    
-    if (lowerMessage.includes('catálogo') || lowerMessage.includes('catalogo') || 
-        lowerMessage.includes('productos') || lowerMessage.includes('colchones')) {
-      return { intent: 'catalog', isBusiness };
-    }
-    
-    if (lowerMessage.includes('contactar') || lowerMessage.includes('contacto') || 
-        lowerMessage.includes('whatsapp') || lowerMessage.includes('llamar')) {
-      return { intent: 'contact', isBusiness };
+    // Detect intent by checking synonyms
+    for (const [intent, keywords] of Object.entries(synonyms)) {
+      if (keywords.some(keyword => normalized.includes(keyword))) {
+        return { intent, isBusiness };
+      }
     }
     
     return { intent: 'help', isBusiness };
@@ -211,10 +209,10 @@ export const useChatbotFixed = () => {
         catalog: {
           text: '📋 CATÁLOGO SUEÑO DORADO - ELIGE TU CATEGORÍA\n\n🛏️ COLCHONES DE ESPUMA:\n• Ideales para alergias\n• Silenciosos y duraderos\n• Precios desde S/. 399\n\n🛏️ COLCHONES DE RESORTES:\n• Máxima ventilación\n• Soporte ortopédico\n• Precios desde S/. 449\n\n🛏️ BASES Y TARIMAS:\n• Complementos perfectos\n• Garantía estructural\n• Precios desde S/. 199\n\n👶 CUNAS Y ACCESORIOS:\n• Seguridad para bebés\n• Almohadas ergonómicas\n• Precios desde S/. 89\n\n🎯 ¿Qué categoría te interesa explorar?',
           options: [
-            { text: '🛏️ Colchones de Espuma', intent: 'contact', action: 'whatsapp_direct' },
-            { text: '🛏️ Colchones de Resortes', intent: 'contact', action: 'whatsapp_direct' },
-            { text: '🛏️ Bases y Tarimas', intent: 'contact', action: 'whatsapp_direct' },
-            { text: '👶 Cunas y Accesorios', intent: 'contact', action: 'whatsapp_direct' }
+            { text: '🛏️ Colchones de Espuma', intent: 'category_foam', action: 'whatsapp_category' },
+            { text: '🛏️ Colchones de Resortes', intent: 'category_springs', action: 'whatsapp_category' },
+            { text: '🛏️ Bases y Tarimas', intent: 'category_bases', action: 'whatsapp_category' },
+            { text: '👶 Cunas y Accesorios', intent: 'category_cribs', action: 'whatsapp_category' }
           ]
         },
         contact: {
@@ -249,9 +247,13 @@ export const useChatbotFixed = () => {
    * @returns {string} Contextual WhatsApp message
    */
   const generateContextualMessage = (userRequest, isBusiness) => {
-    const businessContext = isBusiness ? ' (Cliente Empresarial)' : '(Cliente Particular)';
+    const businessContext = isBusiness ? ' (Cliente Empresarial)' : '';
     
     const contextualMessages = {
+      '🛏️ Colchones de Espuma': `Hola, me gustaría conocer más sobre los Colchones de Espuma de Sueño Dorado${businessContext}. Necesito información sobre modelos, precios y disponibilidad.`,
+      '🛏️ Colchones de Resortes': `Hola, me interesa información sobre los Colchones de Resortes de Sueño Dorado${businessContext}. Quisiera saber sobre especificaciones, precios y opciones disponibles.`,
+      '🛏️ Bases y Tarimas': `Hola, estoy buscando información sobre las Bases y Tarimas de Sueño Dorado${businessContext}. Me gustaría conocer opciones, precios y compatibilidad con colchones.`,
+      '👶 Cunas y Accesorios': `Hola, me gustaría información sobre las Cunas y Accesorios de Sueño Dorado${businessContext}. Necesito saber sobre seguridad, materiales y precios.`,
       '📱 Hablar por WhatsApp': `Hola, estoy interesado en sus productos de Sueño Dorado${businessContext}. Me gustaría recibir más información.`,
       '📧 Enviar email': `Hola, quisiera recibir información sobre sus productos de Sueño Dorado${businessContext}.`,
       '🚚 Calcular envío': `Hola, necesito calcular el costo de envío para productos de Sueño Dorado${businessContext}.`,
@@ -487,6 +489,13 @@ www.suenodorado.pe`;
         // Send structured catalog to WhatsApp
         const catalogMessage = generateCatalogMessage(isBusinessUser);
         sendToWhatsApp(catalogMessage);
+        return; // Don't continue processing
+      }
+      
+      if (option.action === 'whatsapp_category') {
+        // Send specific category inquiry to WhatsApp
+        const contextualMessage = generateContextualMessage(optionText, isBusinessUser);
+        sendToWhatsApp(contextualMessage);
         return; // Don't continue processing
       }
       

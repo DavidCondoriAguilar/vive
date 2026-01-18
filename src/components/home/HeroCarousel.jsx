@@ -6,6 +6,17 @@ import { FaArrowRight, FaPlay, FaCheckCircle } from 'react-icons/fa';
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Detect mobile on resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const slides = [
     {
@@ -42,10 +53,10 @@ const HeroCarousel = () => {
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, isMobile ? 4000 : 5000); // Más rápido en mobile
 
     return () => clearInterval(interval);
-  }, [isAutoPlay, slides.length]);
+  }, [isAutoPlay, slides.length, isMobile]);
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
@@ -149,57 +160,72 @@ const HeroCarousel = () => {
         ))}
       </div>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all z-20 border border-white/20"
-        aria-label="Anterior"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
+      {/* Navigation Arrows - Hidden on Mobile */}
+      {!isMobile && (
+        <>
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all z-20 border border-white/20"
+            aria-label="Anterior"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
 
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all z-20 border border-white/20"
-        aria-label="Siguiente"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all z-20 border border-white/20"
+            aria-label="Siguiente"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </>
+      )}
 
-      {/* Dots Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+      {/* Dots Indicator - Subtle and Minimal */}
+      <div className={`absolute flex z-20 transition-all duration-300 ${
+        isMobile 
+          ? 'bottom-4 left-1/2 -translate-x-1/2 gap-1' 
+          : 'bottom-8 left-1/2 -translate-x-1/2 gap-2'
+      }`}>
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all backdrop-blur-sm border border-white/30 ${index === currentSlide
-                ? 'bg-gold-500 w-8 shadow-lg shadow-gold-500/50'
-                : 'bg-white/30 hover:bg-white/50 hover:scale-110'
-              }`}
+            onClick={() => !isMobile && goToSlide(index)}
+            className={`rounded-full transition-all duration-300 ${
+              index === currentSlide
+                ? isMobile
+                  ? 'w-2 h-2 bg-white/80 shadow-lg'
+                  : 'w-8 h-2 bg-gold-500 shadow-lg shadow-gold-500/50'
+                : isMobile
+                  ? 'w-2 h-2 bg-white/40 hover:bg-white/60'
+                  : 'w-2 h-2 bg-white/30 hover:bg-white/50'
+            }`}
             aria-label={`Slide ${index + 1}`}
           />
         ))}
       </div>
 
-      {/* Auto-play Toggle */}
-      <button
-        onClick={() => setIsAutoPlay(!isAutoPlay)}
-        className="absolute bottom-8 right-8 w-10 h-10 bg-white/10 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all z-20 border border-white/20"
-        aria-label={isAutoPlay ? 'Pausar' : 'Reproducir'}
-      >
-        {isAutoPlay ? (
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <rect x="6" y="4" width="4" height="16" />
-            <rect x="14" y="4" width="4" height="16" />
-          </svg>
-        ) : (
-          <FaPlay className="w-4 h-4 ml-0.5" />
-        )}
-      </button>
+      {/* Auto-play Toggle - Hidden on Mobile */}
+      {!isMobile && (
+        <button
+          onClick={() => setIsAutoPlay(!isAutoPlay)}
+          className="absolute bottom-8 right-8 w-10 h-10 bg-white/10 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all z-20 border border-white/20"
+          aria-label={isAutoPlay ? 'Pausar' : 'Reproducir'}
+        >
+          {isAutoPlay ? (
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <rect x="6" y="4" width="4" height="16" />
+              <rect x="14" y="4" width="4" height="16" />
+            </svg>
+          ) : (
+            <FaPlay className="w-4 h-4 ml-0.5" />
+          )}
+        </button>
+      )}
     </section>
   );
 };

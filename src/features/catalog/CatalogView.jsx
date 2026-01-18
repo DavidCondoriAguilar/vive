@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useScrollToTop } from '@/hooks/useTheme';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
+import { PrimaryButton, WhatsAppButton } from '@/components/ui/Buttons';
 
 /**
  * Full Catalog Page
@@ -194,8 +196,8 @@ const CatalogView = () => {
   return (
     <>
       <Helmet>
-        <title>Catálogo Completo - Colchones Premium Sueño Dorado | Lima</title>
-        <meta name="description" content="Explora nuestro catálogo completo de colchones premium. Viscoelásticos, pocket, spring y ortopédicos. Envío gratis en Lima. Hasta 10 años de garantía." />
+        <title>Catálogo - Sueño Dorado</title>
+        <meta name="description" content="Catálogo de colchones premium Sueño Dorado. Calidad directa de fábrica." />
         <link rel="canonical" href="https://suenodorado.pe/catalogo" />
       </Helmet>
 
@@ -204,55 +206,34 @@ const CatalogView = () => {
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-display font-black text-gray-900 dark:text-white mb-4">
-              Catálogo <span className="text-gold-500">Completo</span>
+              Catálogo <span className="text-gold-500">Premium</span>
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Descubre toda nuestra colección de colchones premium, diseñados para transformar tu descanso
             </p>
           </div>
 
-          {/* Filters and Sort */}
-          <div className="flex flex-col lg:flex-row gap-6 mb-8">
-            {/* Category Filters */}
-            <div className="flex-1">
-              <div className="flex flex-wrap gap-2">
-                {categories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => setFilter(category.id)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      filter === category.id
-                        ? 'bg-gold-500 text-white'
-                        : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                    }`}
-                  >
-                    {category.name} ({category.count})
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Sort Options */}
-            <div className="lg:w-64">
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-gold-500 focus:border-transparent"
+          {/* Filters */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setFilter(category.id)}
+                className={`px-6 py-3 text-sm font-medium transition-all duration-300 border ${
+                  filter === category.id
+                    ? 'bg-gold-500 text-white border-gold-500 shadow-lg shadow-gold-500/25'
+                    : 'bg-white text-gray-700 border-gray-300 hover:border-gold-500/50 hover:text-gold-500'
+                }`}
               >
-                <option value="featured">Destacados</option>
-                <option value="price-low">Precio: Menor a Mayor</option>
-                <option value="price-high">Precio: Mayor a Menor</option>
-                <option value="rating">Mejor Calificados</option>
-                <option value="newest">Más Nuevos</option>
-              </select>
-            </div>
+                {category.name}
+              </button>
+            ))}
           </div>
 
           {/* Results Count */}
-          <div className="mb-6">
+          <div className="text-center mb-6">
             <p className="text-gray-600 dark:text-gray-400">
               Mostrando {sortedProducts.length} producto{sortedProducts.length !== 1 ? 's' : ''}
-              {filter !== 'todos' && ` en ${categories.find(c => c.id === filter)?.name.toLowerCase()}`}
             </p>
           </div>
 
@@ -261,24 +242,18 @@ const CatalogView = () => {
             {sortedProducts.map((product) => (
               <div
                 key={product.id}
-                className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
+                className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:shadow-gold-500/10 transition-all duration-300 border border-gray-100 dark:border-gray-800"
               >
                 {/* Product Image */}
-                <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-700">
+                <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-800">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {product.badge && (
                     <div className="absolute top-3 left-3">
-                      <span className={`px-2 py-1 text-xs font-bold rounded-full ${
-                        product.badge === 'Nuevo' ? 'bg-green-500 text-white' :
-                        product.badge === 'Premium' ? 'bg-purple-500 text-white' :
-                        product.badge === 'Salud' ? 'bg-blue-500 text-white' :
-                        product.badge === 'Recomendado' ? 'bg-orange-500 text-white' :
-                        'bg-red-500 text-white'
-                      }`}>
+                      <span className="px-2 py-1 bg-gold-500 text-white text-xs font-bold rounded-full shadow-lg">
                         {product.badge}
                       </span>
                     </div>
@@ -293,26 +268,18 @@ const CatalogView = () => {
                 </div>
 
                 {/* Product Info */}
-                <div className="p-4">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2">
+                <div className="p-6">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
                     {product.name}
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
                     {product.description}
                   </p>
 
-                  {/* Rating */}
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex">{renderStars(product.rating)}</div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">
-                      ({product.reviews})
-                    </span>
-                  </div>
-
                   {/* Price */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
-                      <span className="text-xl font-bold text-gold-600">
+                      <span className="text-2xl font-bold text-gold-600">
                         S/ {product.price.toLocaleString()}
                       </span>
                       {product.originalPrice && (
@@ -321,9 +288,24 @@ const CatalogView = () => {
                         </span>
                       )}
                     </div>
-                    <button className="px-4 py-2 bg-gold-500 hover:bg-gold-600 text-white text-sm font-medium rounded-lg transition-colors">
-                      Ver detalles
-                    </button>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-3">
+                    <PrimaryButton
+                      onClick={() => window.location.href = `/producto/${product.id}`}
+                      className="flex-1 justify-center"
+                    >
+                      Ver Detalles
+                    </PrimaryButton>
+                      
+                    <WhatsAppButton
+                      onClick={() => {
+                        const message = `Hola Sueño Dorado, estoy interesado en el producto: ${product.name}`;
+                        const whatsappLink = `https://wa.me/51989223448?text=${encodeURIComponent(message)}`;
+                        window.open(whatsappLink, '_blank');
+                      }}
+                    />
                   </div>
                 </div>
               </div>

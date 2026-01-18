@@ -44,12 +44,13 @@ export default {
                 serif: ['Source Serif Pro', 'Georgia', 'serif'], // Elegante tradicional para lujo
                 brand: ['Playfair Display', 'Source Serif Pro', 'serif'], // Premium sofisticado
                 display: ['Space Grotesk', 'Playfair Display', 'sans-serif'], // Moderno impactante
-                sans: ['Manrope', 'Inter', 'system-ui', 'sans-serif'], // Limpio y moderno - NUEVO DEFAULT
+                sans: ['Inter', 'Manrope', 'system-ui', 'sans-serif'], // Limpio y moderno - NUEVO DEFAULT
                 body: ['Inter', 'Manrope', 'system-ui', 'sans-serif'], // Altamente legible - NUEVO DEFAULT
                 heading: ['Space Grotesk', 'Playfair Display', 'sans-serif'], // Encabezados autoritarios
                 // Nuevos defaults para toda la web
-                default: ['Manrope', 'Inter', 'system-ui', 'sans-serif'], // Fuente principal global
+                default: ['Inter', 'Manrope', 'system-ui', 'sans-serif'], // Fuente principal global
                 text: ['Inter', 'Manrope', 'system-ui', 'sans-serif'], // Para texto general
+                button: ['Inter', 'Manrope', 'system-ui', 'sans-serif'], // Tipografía para botones
             },
             animation: {
                 'fade-in': 'fadeIn 0.5s ease-out forwards',

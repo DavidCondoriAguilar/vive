@@ -351,3 +351,232 @@ img {
 img[src] {
   @apply opacity-100;
 }
+
+/* ==================== Premium Button Styles 2026 ==================== */
+
+/* Import button typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Base button styling */
+button {
+  font-family: 'Inter', 'Montserrat', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem; /* 16px */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Primary Button - Black with white text */
+.btn-primary,
+button.btn-primary {
+  @apply bg-black text-white uppercase tracking-widest px-8 py-3 rounded-none 
+    transition-all duration-300 hover:bg-gray-900 active:opacity-75 
+    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black 
+    disabled:opacity-50 disabled:cursor-not-allowed;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover,
+button.btn-primary:hover {
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active,
+button.btn-primary:active {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+
+/* Secondary Button - Transparent with border */
+.btn-secondary,
+button.btn-secondary {
+  @apply bg-transparent border border-gray-300 text-black uppercase tracking-widest 
+    px-8 py-3 rounded-none transition-all duration-300 hover:bg-gray-50 hover:border-gray-400 
+    active:opacity-75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 
+    disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-secondary:hover,
+button.btn-secondary:hover {
+  background-color: rgba(249, 250, 251, 0.7);
+  border-color: rgba(75, 85, 99, 0.3);
+}
+
+/* WhatsApp Button - Green */
+.btn-whatsapp,
+button.btn-whatsapp {
+  @apply bg-[#25D366] text-white uppercase tracking-widest px-8 py-3 rounded-none 
+    transition-all duration-300 hover:bg-[#20ba61] active:opacity-75 
+    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#25D366] 
+    disabled:opacity-50 disabled:cursor-not-allowed;
+  box-shadow: 0 2px 0 rgba(37, 211, 102, 0.2);
+}
+
+.btn-whatsapp:hover,
+button.btn-whatsapp:hover {
+  box-shadow: 0 4px 0 rgba(37, 211, 102, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Cart Button */
+.btn-cart,
+button.btn-cart {
+  @apply bg-black text-white uppercase tracking-widest px-8 py-3 rounded-none 
+    transition-all duration-300 hover:bg-gray-900 active:opacity-75 
+    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black 
+    disabled:opacity-50 disabled:cursor-not-allowed;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Link Button - Text only */
+.btn-link,
+button.btn-link {
+  @apply text-black uppercase tracking-widest transition-all duration-300 
+    hover:opacity-60 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black 
+    disabled:opacity-30 disabled:cursor-not-allowed bg-transparent px-0 py-0;
+  border-bottom: 1px solid transparent;
+}
+
+.btn-link:hover,
+button.btn-link:hover {
+  border-bottom-color: currentColor;
+}
+
+/* Button Group Container */
+.button-group {
+  @apply flex gap-3;
+}
+
+.button-group.vertical {
+  @apply flex-col;
+}
+
+.button-group.horizontal {
+  @apply flex-row;
+}
+
+/* Icon within button animation */
+button .icon,
+button svg {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover .icon,
+button:hover svg {
+  transform: translateX(4px);
+}
+
+/* Arrow animation in buttons */
+button .arrow,
+button .btn-arrow {
+  display: inline-block;
+  margin-left: 0.5rem;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-4px);
+}
+
+button:hover .arrow,
+button:hover .btn-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsive button sizing */
+@media (max-width: 768px) {
+  button {
+    font-size: 0.7rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-whatsapp,
+  .btn-cart {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Dark mode button adjustments */
+.dark .btn-secondary {
+  @apply border-gray-600 text-white hover:bg-gray-800 hover:border-gray-500;
+}
+
+.dark .btn-link {
+  @apply text-white hover:opacity-70;
+}
+
+/* Disabled state */
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ==================== Form Elements Styling ==================== */
+
+/* Input styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select {
+  font-family: 'Inter', 'Montserrat', sans-serif;
+  border-radius: 0 !important;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+}
+
+/* ==================== Card Styling ==================== */
+
+/* Premium card with borders */
+.premium-card {
+  @apply border border-gray-200 dark:border-gray-700 rounded-none
+    transition-all duration-300;
+}
+
+.premium-card:hover {
+  @apply border-gray-300 dark:border-gray-600;
+}
+
+/* ==================== General Elements ==================== */
+
+/* All rounded elements should be none */
+.rounded-lg,
+.rounded-xl,
+.rounded-2xl,
+.rounded-3xl {
+  border-radius: 0 !important;
+}
+
+.rounded-full {
+  border-radius: 0 !important; /* Override if needed */
+}
+
+/* Ensure consistent spacing */
+body {
+  font-family: 'Inter', 'Montserrat', 'Manrope', system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', 'Montserrat', 'Space Grotesk', sans-serif;
+}

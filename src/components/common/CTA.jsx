@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getWhatsAppLink } from '@/utils/constants';
+import { PrimaryButton, SecondaryButton } from '@/components/ui/Buttons';
 
 const ConversionCTA = ({
   title = "Transforma tu Descanso Hoy",
@@ -41,27 +42,19 @@ const ConversionCTA = ({
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-          <Link
-            to={buttonLink}
-            className="premium-button inline-flex items-center gap-3 px-8 py-4 bg-gold-500 hover:bg-gold-600 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl group"
+          <PrimaryButton
+            onClick={() => window.location.href = buttonLink}
+            className="sm:w-auto"
           >
             {buttonText}
-            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
+          </PrimaryButton>
 
-          <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-bold rounded-full border-2 border-gold-500 hover:bg-gold-50 dark:hover:bg-gold-900/20 transition-all duration-300 hover:scale-105"
+          <SecondaryButton
+            onClick={() => window.open(waLink, '_blank')}
+            className="sm:w-auto"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-            Contactar con Asesor
-          </a>
+            Contactar
+          </SecondaryButton>
         </div>
 
         {/* Trust Indicators */}

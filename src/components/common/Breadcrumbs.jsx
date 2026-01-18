@@ -59,28 +59,22 @@ const Breadcrumbs = () => {
   }
 
   return (
-    <nav className="py-4 px-6 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+    <nav className="py-4 px-6 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
       <div className="container mx-auto max-w-6xl">
-        <ol className="flex items-center space-x-2 text-sm">
+        <ol className="flex items-center space-x-2 text-xs font-medium uppercase tracking-wider">
           {breadcrumbs.map((crumb, index) => (
-            <li key={crumb.path} className="flex items-center">
+            <li key={crumb.path} className="flex items-center gap-2">
               {index > 0 && (
-                <svg
-                  className="w-4 h-4 mx-2 text-gray-400"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M9 5l7 7-7 7" />
-                </svg>
+                <span className="text-gray-300 dark:text-gray-600">/</span>
               )}
               {index === breadcrumbs.length - 1 ? (
-                <span className="text-gray-900 dark:text-white font-medium">
+                <span className="text-gray-900 dark:text-white font-bold">
                   {crumb.name}
                 </span>
               ) : (
                 <Link
                   to={crumb.path}
-                  className="text-gray-500 dark:text-gray-400 hover:text-gold-500 dark:hover:text-gold-400 transition-colors duration-200"
+                  className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 hover:underline"
                 >
                   {crumb.name}
                 </Link>

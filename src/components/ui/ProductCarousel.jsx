@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MdOutlineArrowForward, MdOutlineArrowBack } from 'react-icons/md';
+import { FaEye } from 'react-icons/fa';
 import { useDragCarousel } from '@/hooks/useDragCarousel';
+import ProductSpecsModal from '@/components/product/ProductSpecsModal';
 
 /**
  * Product Carousel Component
@@ -12,6 +14,8 @@ const ProductCarousel = ({ products = [], title = "Nuestros Productos" }) => {
   const [itemsPerView, setItemsPerView] = useState(4);
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [selectedSize, setSelectedSize] = useState('Todas las medidas');
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isSpecsModalOpen, setIsSpecsModalOpen] = useState(false);
 
   // Responsive items per view
   useEffect(() => {
@@ -67,6 +71,7 @@ const ProductCarousel = ({ products = [], title = "Nuestros Productos" }) => {
   if (!products.length) return null;
 
   return (
+    <>
     <div className="py-12">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
@@ -182,7 +187,7 @@ const ProductCarousel = ({ products = [], title = "Nuestros Productos" }) => {
                 className="flex-shrink-0"
                 style={{ width: `calc(${100 / itemsPerView}% - 24px)` }}
               >
-                <div className="group bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
+                <div className="group bg-white dark:bg-gray-800 rounded-none overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 h-full border border-gray-200 dark:border-gray-700">
                   {/* Product Image */}
                   <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-700">
                     <img
@@ -193,7 +198,7 @@ const ProductCarousel = ({ products = [], title = "Nuestros Productos" }) => {
 
                     {product.badge && (
                       <div className="absolute top-3 left-3">
-                        <span className="px-2 py-1 bg-black/70 text-white text-xs font-medium rounded">
+                        <span className="px-3 py-1 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-none">
                           {product.badge}
                         </span>
                       </div>
@@ -222,12 +227,26 @@ const ProductCarousel = ({ products = [], title = "Nuestros Productos" }) => {
                       <span className="text-lg font-semibold text-gray-900 dark:text-white">
                         S/ {product.price.toLocaleString()}
                       </span>
-                      <Link
-                        to={`/producto/${product.id}`}
-                        className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
-                      >
-                        Ver →
-                      </Link>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setSelectedProduct(product);
+                            setIsSpecsModalOpen(true);
+                          }}
+                          className="flex items-center gap-1 px-3 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-none transition-colors"
+                          title="Ver detalles del producto"
+                        >
+                          <FaEye className="w-4 h-4" />
+                        </button>
+                        <Link
+                          to={`/producto/${product.id}`}
+                          className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                        >
+                          Ver →
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -283,6 +302,21 @@ const ProductCarousel = ({ products = [], title = "Nuestros Productos" }) => {
         </Link>
       </div>
     </div>
+
+    {/* Product Specs Modal */}
+    {selectedProduct && (
+      <ProductSpecsModal
+        product={selectedProduct}
+        specs={selectedProduct.specs || []}
+        detailedSpecs={selectedProduct.detailedSpecs || []}
+        isOpen={isSpecsModalOpen}
+        onClose={() => {
+          setIsSpecsModalOpen(false);
+          setSelectedProduct(null);
+        }}
+      />
+    )}
+    </>
   );
 };
 
