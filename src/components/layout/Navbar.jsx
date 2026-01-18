@@ -36,7 +36,8 @@ const Navbar = () => {
     }, []);
 
     const handleLogoClick = () => {
-        navigate('/home');
+        navigate('/');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const navLinks = [
@@ -80,15 +81,15 @@ const Navbar = () => {
             {/* MAIN NAVBAR */}
             <div
                 className={`transition-all duration-500 ${isScrolled
-                    ? 'bg-white/95 backdrop-blur-xl border-b border-gray-100 dark:border-gray-200 py-2 shadow-lg shadow-black/5'
-                    : 'bg-white border-b border-transparent py-3'
+                    ? 'bg-white/95 backdrop-blur-xl border-b border-gray-300 dark:border-gray-600 py-2 shadow-lg shadow-black/5'
+                    : 'bg-white border-b border-gray-200 dark:border-gray-700 py-3'
                     }`}
             >
                 <div className="container mx-auto px-6 lg:px-20">
                     <div className="flex items-center justify-between">
                         {/* LOGO */}
                         <Logo
-                            size="medium"
+                            size="large"
                             onClick={handleLogoClick}
                             variant="light"
                         />
