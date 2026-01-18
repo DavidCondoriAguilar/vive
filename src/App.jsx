@@ -5,6 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 // UI Components
 import ShoppingCart from '@/components/layout/ShoppingCart';
 import CartNotification from '@/components/ui/CartNotification';
+import Chatbot from '@/components/chatbot';
 import { CartProvider } from '@/contexts/CartContext';
 
 // Lazy load feature components for better performance
@@ -33,6 +34,7 @@ function App() {
           </Suspense>
           <ShoppingCart />
           <CartNotification />
+          <Chatbot />
         </Router>
       </CartProvider>
     </HelmetProvider>
