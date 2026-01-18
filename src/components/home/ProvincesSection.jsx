@@ -32,7 +32,7 @@ const ProvincesSection = () => {
   ];
 
   return (
-    <section className="py-20 gradient-variant-2 grid-variant-2 relative overflow-hidden">
+    <section className="py-20 modern-glow-ovals relative overflow-hidden">
       {/* Modern Background Pattern */}
       <div className="absolute inset-0 opacity-5 dark:opacity-10">
         <div className="absolute inset-0" style={{
@@ -57,7 +57,7 @@ const ProvincesSection = () => {
           {deliveryFeatures.map((feature, index) => (
             <div 
               key={index}
-              className="glass-grid p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center group"
+              className="modern-glow-ovals p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center group"
             >
               <div className="text-gold-500 mb-4 group-hover:scale-110 transition-transform inline-block">
                 {feature.icon}

@@ -2,24 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { FaExpand, FaPlay, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
+  // Modal logic states
   const [selectedImage, setSelectedImage] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(3);
-
-  // Responsive items per view
-  useEffect(() => {
-    const updateItemsPerView = () => {
-      if (window.innerWidth < 640) setItemsPerView(1);
-      else if (window.innerWidth < 768) setItemsPerView(2);
-      else if (window.innerWidth < 1024) setItemsPerView(3);
-      else setItemsPerView(4);
-    };
-
-    updateItemsPerView();
-    window.addEventListener('resize', updateItemsPerView);
-    return () => window.removeEventListener('resize', updateItemsPerView);
-  }, []);
 
   if (!images.length) return null;
 
@@ -32,130 +17,60 @@ const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
     setIsFullscreen(false);
   };
 
-  const nextSlide = () => {
-    const maxSlide = Math.max(0, images.length - itemsPerView);
-    setCurrentSlide(prev => Math.min(prev + itemsPerView, maxSlide));
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(prev => Math.max(prev - itemsPerView, 0));
-  };
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index * itemsPerView);
-  };
-
-  const visibleImages = images.slice(currentSlide, currentSlide + itemsPerView);
-  const totalSlides = Math.ceil(images.length / itemsPerView);
-  const currentSlideIndex = Math.floor(currentSlide / itemsPerView);
-
   return (
-    <div className="py-12 gradient-variant-1 grid-variant-1 relative overflow-hidden">
-      {/* Modern Background Pattern */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }}></div>
-      </div>
-      
-      <div className="relative z-10">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold font-heading text-gray-900 dark:text-white mb-2">{title}</h2>
-          <p className="text-gray-600 dark:text-gray-400">Explora nuestros productos en detalle</p>
+    <div className="py-24 bg-white dark:bg-gray-900 relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gold-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-16">
+          <span className="text-gold-500 font-semibold tracking-wider uppercase text-sm">Galería Visual</span>
+          <h2 className="text-4xl md:text-5xl font-bold font-display text-gray-900 dark:text-white mt-2 mb-4">{title}</h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+            Descubre la elegancia y el detalle en cada uno de nuestros productos a través de nuestra galería.
+          </p>
         </div>
 
-      {/* Carousel Container */}
-      <div className="relative">
-        {/* Navigation Arrows */}
-        {images.length > itemsPerView && (
-          <>
-            <button
-              onClick={prevSlide}
-              disabled={currentSlide === 0}
-              className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-all ${
-                currentSlide === 0 
-                  ? 'opacity-50 cursor-not-allowed' 
-                  : 'hover:bg-gray-100 hover:scale-110'
-              }`}
-              aria-label="Anterior"
+        {/* Masonry Grid Layout */}
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className="break-inside-avoid relative group cursor-pointer rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500"
+              onClick={() => openFullscreen(index)}
             >
-              <FaChevronLeft className="w-5 h-5 text-gray-700" />
-            </button>
+              {/* Image */}
+              <img
+                src={image.url}
+                alt={image.alt || `Imagen ${index + 1}`}
+                className="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+              />
 
-            <button
-              onClick={nextSlide}
-              disabled={currentSlide >= images.length - itemsPerView}
-              className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-all ${
-                currentSlide >= images.length - itemsPerView
-                  ? 'opacity-50 cursor-not-allowed'
-                  : 'hover:bg-gray-100 hover:scale-110'
-              }`}
-              aria-label="Siguiente"
-            >
-              <FaChevronRight className="w-5 h-5 text-gray-700" />
-            </button>
-          </>
-        )}
+              {/* Overlay Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-        {/* Images Carousel */}
-        <div className="overflow-hidden">
-          <div 
-            className="flex transition-transform duration-500 ease-in-out gap-6"
-            style={{ transform: `translateX(-${currentSlide * (100 / itemsPerView)}%)` }}
-          >
-            {images.map((image, index) => (
-              <div 
-                key={index}
-                className="flex-shrink-0 w-full"
-                style={{ width: `${100 / itemsPerView}%` }}
-              >
-                <div
-                  className="relative group cursor-pointer overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-full"
-                  onClick={() => openFullscreen(index)}
-                >
-                  <img
-                    src={image.url}
-                    alt={image.alt || `Imagen ${index + 1}`}
-                    className="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <FaExpand className="w-8 h-8 text-white" />
-                    </div>
-                  </div>
-
-                  {/* Image Info */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                    <h3 className="text-white font-semibold">{image.title || `Producto ${index + 1}`}</h3>
-                    {image.description && (
-                      <p className="text-gray-200 text-sm">{image.description}</p>
-                    )}
-                  </div>
+              {/* Hover Content */}
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-500 delay-100">
+                  <FaExpand className="w-5 h-5 text-white" />
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Dots Indicator */}
-        {totalSlides > 1 && (
-          <div className="flex justify-center mt-8 gap-2">
-            {Array.from({ length: totalSlides }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentSlideIndex
-                    ? 'bg-gold-500 w-8'
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-                aria-label={`Slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        )}
+              {/* Text Bottom */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <h3 className="text-white font-bold text-lg mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 translate-y-2 group-hover:translate-y-0">
+                  {image.title || `Vista ${index + 1}`}
+                </h3>
+                {image.description && (
+                  <p className="text-gray-200 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                    {image.description}
+                  </p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Fullscreen Modal */}
@@ -163,7 +78,7 @@ const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
         <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4">
           <button
             onClick={closeFullscreen}
-            className="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
+            className="absolute top-4 right-4 z-[60] w-12 h-12 bg-white/20 backdrop-blur-sm text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all cursor-pointer"
             aria-label="Cerrar"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -178,7 +93,7 @@ const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
               alt={images[selectedImage].alt || `Imagen ${selectedImage + 1}`}
               className="max-w-full max-h-full object-contain"
             />
-            
+
             {/* Image Info */}
             <div className="text-center mt-4">
               <h3 className="text-white text-xl font-semibold">
@@ -196,11 +111,10 @@ const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
               <button
                 key={index}
                 onClick={() => setSelectedImage(index)}
-                className={`flex-shrink-0 w-16 h-16 rounded overflow-hidden border-2 transition-all ${
-                  index === selectedImage
-                    ? 'border-gold-500 scale-110'
-                    : 'border-white/30 hover:border-white/60'
-                }`}
+                className={`flex-shrink-0 w-16 h-16 rounded overflow-hidden border-2 transition-all ${index === selectedImage
+                  ? 'border-gold-500 scale-110'
+                  : 'border-white/30 hover:border-white/60'
+                  }`}
               >
                 <img
                   src={image.url}
@@ -233,7 +147,6 @@ const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
           )}
         </div>
       )}
-      </div>
     </div>
   );
 };

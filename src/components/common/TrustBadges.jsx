@@ -1,90 +1,107 @@
 import React from 'react';
+import {
+  FaTruck,
+  FaShieldAlt,
+  FaCertificate,
+  FaHeadset
+} from 'react-icons/fa';
 
-const TrustBadges = ({ className = "", showSecurity = false }) => {
-  const mainBadges = [
+const TrustBadges = ({ className = "", variant = "grid", onBadgeClick }) => {
+  const badges = [
     {
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
+      icon: <FaTruck className="w-5 h-5" />,
       title: "Envíos Rápidos",
-      subtitle: "24-48h en Lima"
+      subtitle: "24-48h en Lima",
+      fullText: "Realizamos envíos en 24-48 horas para Lima Metropolitana. Para provincias, el tiempo estimado es de 3 a 7 días hábiles dependiendo del destino. Contamos con flota propia y agencias aliadas.",
+      animation: "slideInLeft"
     },
     {
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      ),
+      icon: <FaShieldAlt className="w-5 h-5" />,
       title: "Compra 100% Segura",
-      subtitle: "SSL certificado"
+      subtitle: "SSL certificado",
+      fullText: "Tu seguridad es nuestra prioridad. Utilizamos encriptación SSL de grado bancario para proteger tus datos. Aceptamos todas las tarjetas y métodos de pago seguros.",
+      animation: "slideInUp"
     },
     {
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
+      icon: <FaCertificate className="w-5 h-5" />,
       title: "Garantía de Fábrica",
-      subtitle: "Hasta 10 años"
+      subtitle: "Hasta 10 años",
+      fullText: "Respaldamos la calidad de nuestros productos con garantías reales: 10 años en estructuras de resortes y 5 años en espumas de alta densidad. Tu inversión está asegurada.",
+      animation: "slideInRight"
     },
     {
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
+      icon: <FaHeadset className="w-5 h-5" />,
       title: "Soluciones Rápidas",
-      subtitle: "Atención inmediata"
+      subtitle: "Atención inmediata",
+      fullText: "Nuestro equipo de soporte está disponible para resolver tus dudas. Ofrecemos cambio inmediato por defectos de fábrica en los primeros 7 días.",
+      animation: "slideInBottom"
     }
   ];
 
-  const securityBadges = [
-    {
-      icon: "🔒",
-      title: "SSL 256-bit",
-      subtitle: "Encriptación bancaria",
-      color: "from-green-400 to-green-600"
-    },
-    {
-      icon: "🛡️",
-      title: "Pago Seguro",
-      subtitle: "Visa, Mastercard, Yape",
-      color: "from-blue-400 to-blue-600"
-    },
-    {
-      icon: "🏆",
-      title: "Certificado ISO",
-      subtitle: "Calidad garantizada",
-      color: "from-purple-400 to-purple-600"
-    },
-    {
-      icon: "⭐",
-      title: "4.8/5 Calificación",
-      subtitle: "+1000 reseñas",
-      color: "from-yellow-400 to-yellow-600"
-    }
-  ];
+  const getAnimationClass = (animation, index) => {
+    const animations = {
+      slideInLeft: "animate-slide-in-left",
+      slideInUp: "animate-slide-in-up",
+      slideInRight: "animate-slide-in-right",
+      slideInBottom: "animate-slide-in-bottom"
+    };
+    return animations[animation] || "animate-fade-in";
+  };
 
-  const badges = showSecurity ? securityBadges : mainBadges;
+  if (variant === 'vertical') {
+    return (
+      <div className={`space-y-2 ${className}`}>
+        {badges.map((badge, index) => (
+          <div
+            key={index}
+            className={`flex items-start gap-3 p-2 rounded-lg transition-all ${onBadgeClick ? 'cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5' : ''}`}
+            onClick={() => onBadgeClick && onBadgeClick(badge)}
+          >
+            <div className="flex-shrink-0 mt-1">
+              <div className="text-gold-500 dark:text-gold-400 group-hover:scale-110 transition-transform duration-300">
+                {badge.icon}
+              </div>
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-gray-900 dark:text-gray-200 group-hover:text-gold-500 transition-colors">
+                {badge.title}
+              </h4>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                {badge.subtitle}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
-    <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 ${className}`}>
+    <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 ${className}`}>
       {badges.map((badge, index) => (
         <div
           key={index}
-          className="group flex flex-col items-center text-center p-4 rounded-xl bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
+          className={`group relative bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 text-center hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer ${getAnimationClass(badge.animation, index)}`}
+          style={{
+            animationDelay: `${index * 100}ms`,
+            animationFillMode: 'both'
+          }}
         >
-          <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${badge.color || 'from-gold-400 to-gold-600'} flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform duration-300 text-lg`}>
-            {typeof badge.icon === 'string' ? badge.icon : badge.icon}
+          {/* Icon Container - Minimalist */}
+          <div className="relative mx-auto w-12 h-12 mb-4 rounded-xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 group-hover:text-gold-500 transition-all duration-300">
+            {badge.icon}
           </div>
-          <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-1">
+
+          {/* Text Content - Clean */}
+          <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
             {badge.title}
           </h4>
-          <p className="text-xs text-gray-500 dark:text-gray-400">
+          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
             {badge.subtitle}
           </p>
+
+          {/* Subtle Bottom Line */}
+          <div className="mt-3 h-px w-6 mx-auto bg-gray-200 dark:bg-gray-700 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
         </div>
       ))}
     </div>

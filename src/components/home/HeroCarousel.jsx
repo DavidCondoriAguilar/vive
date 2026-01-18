@@ -39,7 +39,7 @@ const HeroCarousel = () => {
 
   useEffect(() => {
     if (!isAutoPlay) return;
-    
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
@@ -73,15 +73,14 @@ const HeroCarousel = () => {
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }}></div>
       </div>
-      
+
       {/* Carousel Container */}
       <div className="relative h-full z-10">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
           >
             {/* Background Image with Modern Overlay */}
             <div className="relative h-full">
@@ -97,7 +96,7 @@ const HeroCarousel = () => {
             <div className="absolute inset-0 flex items-center">
               <div className="container mx-auto px-6 lg:px-20">
                 <div className="max-w-2xl">
-                  
+
                   {/* Badge */}
                   <div className={`inline-block ${slide.badgeColor} text-white px-6 py-3 rounded-full text-sm font-bold mb-6 backdrop-blur-sm border border-white/20 shadow-lg`}>
                     {slide.badge}
@@ -109,12 +108,12 @@ const HeroCarousel = () => {
                   </h1>
 
                   {/* Subtitle */}
-                  <h2 className="text-2xl md:text-3xl font-brand text-gold-400 mb-4 drop-shadow-md">
+                  <h2 className="text-2xl md:text-3xl font-sans tracking-wide text-gold-400 mb-4 drop-shadow-md">
                     {slide.subtitle}
                   </h2>
 
                   {/* Description */}
-                  <div className="flex flex-wrap gap-4 mb-8 text-gray-300 font-body">
+                  <div className="flex flex-wrap gap-4 mb-8 text-gray-300 font-sans">
                     {slide.description.split(' · ').map((item, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <FaCheckCircle className="w-4 h-4 text-gold-400" />
@@ -127,17 +126,17 @@ const HeroCarousel = () => {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link
                       to="/catalogo"
-                      className="inline-flex items-center gap-3 bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-lg font-heading text-lg transition-all hover:scale-105 shadow-xl backdrop-blur-sm border border-gold-400/30"
+                      className="inline-flex items-center gap-3 bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-lg font-sans font-bold text-lg transition-all hover:scale-105 shadow-xl backdrop-blur-sm border border-gold-400/30"
                     >
                       Comprar ahora
                       <FaArrowRight className="w-5 h-5" />
                     </Link>
-                    
+
                     <a
                       href={ctaLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border-2 border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-gray-900 px-8 py-4 rounded-lg font-heading text-lg transition-all hover:scale-105 shadow-lg"
+                      className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border-2 border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-gray-900 px-8 py-4 rounded-lg font-sans font-bold text-lg transition-all hover:scale-105 shadow-lg"
                     >
                       Cotizar por mayor
                       <FaArrowRight className="w-5 h-5" />
@@ -177,11 +176,10 @@ const HeroCarousel = () => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all backdrop-blur-sm border border-white/30 ${
-              index === currentSlide
+            className={`w-3 h-3 rounded-full transition-all backdrop-blur-sm border border-white/30 ${index === currentSlide
                 ? 'bg-gold-500 w-8 shadow-lg shadow-gold-500/50'
                 : 'bg-white/30 hover:bg-white/50 hover:scale-110'
-            }`}
+              }`}
             aria-label={`Slide ${index + 1}`}
           />
         ))}

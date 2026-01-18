@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { getWhatsAppLink } from '@/utils/constants';
+import { FaArrowUp } from 'react-icons/fa';
+import ConocenosSection from '@/components/common/ConocenosSection';
 
 const Hero = () => {
+    const [showScrollTop, setShowScrollTop] = useState(false);
     const waLink = getWhatsAppLink("Hola Sueño Dorado, deseo recibir asesoría para mejorar mi descanso.");
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowScrollTop(window.scrollY > 300);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
     return (
         <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-white dark:bg-black transition-colors duration-700">
             {/* Subtle Gradient Background */}
@@ -71,6 +89,20 @@ const Hero = () => {
                 </div>
             </div>
         </section>
+
+        {/* CONÓCENOS Section */}
+        <ConocenosSection />
+
+        {/* Floating Scroll to Top Button */}
+        <button
+            onClick={scrollToTop}
+            className={`fixed bottom-8 right-8 z-50 w-14 h-14 bg-gold-500 hover:bg-gold-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group ${
+                showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16 pointer-events-none'
+            }`}
+            aria-label="Volver al inicio"
+        >
+            <FaArrowUp className="w-6 h-6 transition-transform group-hover:scale-110" />
+        </button>
     );
 };
 

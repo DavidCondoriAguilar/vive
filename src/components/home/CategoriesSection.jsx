@@ -79,7 +79,7 @@ const CategoriesSection = () => {
   const currentSlideIndex = Math.floor(currentSlide / itemsPerView);
 
   return (
-    <section className="py-20 premium-section futuristic-lines">
+    <section className="py-20 professional-section">
       <div className="container mx-auto px-6 lg:px-20">
         
         {/* Section Header */}
@@ -94,7 +94,7 @@ const CategoriesSection = () => {
 
         {/* Filters */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <div className="flex items-center gap-2 glass-grid px-4 py-2 rounded-lg">
+          <div className="flex items-center gap-2 clean-minimal px-4 py-2 rounded-lg">
             <FaFilter className="text-gray-500" />
             <span className="text-sm font-medium text-gray-700">Filtros:</span>
           </div>

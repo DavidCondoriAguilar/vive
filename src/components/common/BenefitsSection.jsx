@@ -28,7 +28,7 @@ const BenefitsSection = () => {
     ];
 
   return (
-    <div className="py-16 light-gradient-1 light-grid-1 relative overflow-hidden">
+    <div className="py-16 professional-section relative overflow-hidden">
       {/* Modern Background Pattern */}
       <div className="absolute inset-0 opacity-5 dark:opacity-10">
         <div className="absolute inset-0" style={{
@@ -39,7 +39,7 @@ const BenefitsSection = () => {
       <div className="container mx-auto px-6 lg:px-20 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {benefitItems.map((benefit, index) => (
-            <div key={index} className="text-center glass-grid p-6 rounded-xl">
+            <div key={index} className="text-center professional-section p-6 rounded-xl">
               <div className="text-4xl mb-4">{benefit.icon}</div>
               <h3 className="font-medium text-gray-900 dark:text-white mb-2">
                 {benefit.title}

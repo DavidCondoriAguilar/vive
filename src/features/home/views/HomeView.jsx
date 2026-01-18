@@ -43,7 +43,7 @@ const HomeView = () => {
       description: 'Seguridad y confort para bebés'
     },
     {
-      url: 'https://images.unsplash.com/photo-1629949009765-40f745a55111?auto=format&fit=crop&q=80&w=800',
+      url: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&q=80&w=800',
       title: 'Almohadas Ergonómicas',
       description: 'Complemento perfecto para tu descanso'
     }
@@ -60,13 +60,10 @@ const HomeView = () => {
         {/* 1. HERO CAROUSEL - Visual impactante */}
         <HeroCarousel />
 
-        {/* 2. VIDEO SHOWCASE - Proceso en video */}
-        <VideoShowcase />
+        {/* 2. CATEGORÍAS - Grid limpio estilo Paraíso */}
+        <CategoriesSection />
 
-        {/* 3. SECCIÓN FABRICACIÓN - Proceso visible */}
-        <ManufacturingSection />
-
-        {/* 4. PRODUCT CAROUSEL - Destacados visuales */}
+        {/* 3. PRODUCT CAROUSEL - Destacados visuales */}
         <SectionLayout background="gray">
           <ProductCarousel
             products={ENHANCED_CATALOG.slice(0, 8)}
@@ -74,12 +71,15 @@ const HomeView = () => {
           />
         </SectionLayout>
 
-        {/* 5. CATEGORÍAS - Grid limpio estilo Paraíso */}
-        <CategoriesSection />
+        {/* 4. BRAND STORY (VideoShowcase) - Historia y Valor */}
+        <VideoShowcase />
+
+        {/* 5. SECCIÓN FABRICACIÓN - Proceso visible */}
+        <ManufacturingSection />
 
         {/* 6. IMAGE GALLERY - Galería visual */}
         <SectionLayout background="default">
-          <ImageGallery 
+          <ImageGallery
             images={galleryImages}
             title="Nuestra Galería de Productos"
           />

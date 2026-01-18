@@ -1,6 +1,17 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { 
+    MdShield, 
+    MdSettings, 
+    MdVerified, 
+    MdLayers 
+} from 'react-icons/md';
+import { 
+    FaTruck, 
+    FaTools, 
+    FaRecycle 
+} from 'react-icons/fa';
 import MainLayout from '@/layouts/MainLayout';
 import { FEATURED_PRODUCTS } from '@/utils/constants';
 import LazyImage from '@/components/common/Image';
@@ -21,10 +32,10 @@ const ProductDetailsView = () => {
     if (!product) return null;
 
     const specs = [
-        { label: 'Firmeza', value: 'Intermedia / Alta', icon: '⚖️' },
-        { label: 'Resortes', value: 'Pocket Independientes', icon: '🌀' },
-        { label: 'Garantía', value: '10 Años', icon: '🛡️' },
-        { label: 'Material', value: 'Espuma Viscoelástica', icon: '☁️' }
+        { label: 'Firmeza', value: 'Intermedia / Alta', icon: <MdShield className="w-5 h-5" /> },
+        { label: 'Resortes', value: 'Pocket Independientes', icon: <MdSettings className="w-5 h-5" /> },
+        { label: 'Garantía', value: '10 Años', icon: <MdVerified className="w-5 h-5" /> },
+        { label: 'Material', value: 'Espuma Viscoelástica', icon: <MdLayers className="w-5 h-5" /> }
     ];
 
     const sizes = ['1.5 Plazas', '2 Plazas', 'Queen', 'King'];
@@ -192,19 +203,19 @@ const ProductDetailsView = () => {
                             {/* Trust Footer */}
                             <div className="pt-10 flex items-center justify-between border-t border-gray-100 dark:border-white/5">
                                 <div className="flex flex-col items-center gap-2">
-                                    <div className="text-xl">🚚</div>
+                                    <FaTruck className="w-6 h-6 text-gold-500" />
                                     <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest text-center">Envío Gratis<br />Lima Met.</span>
                                 </div>
                                 <div className="flex flex-col items-center gap-2">
-                                    <div className="text-xl">🛠️</div>
+                                    <FaTools className="w-6 h-6 text-gold-500" />
                                     <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest text-center">Armado<br />Incluido</span>
                                 </div>
                                 <div className="flex flex-col items-center gap-2">
-                                    <div className="text-xl">🏦</div>
+                                    <FaRecycle className="w-6 h-6 text-gold-500" />
                                     <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest text-center">Cuotas<br />Sin Interés</span>
                                 </div>
                                 <div className="flex flex-col items-center gap-2">
-                                    <div className="text-xl">🔄</div>
+                                    <MdVerified className="w-6 h-6 text-gold-500" />
                                     <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest text-center">Garantía<br />Fábrica</span>
                                 </div>
                             </div>

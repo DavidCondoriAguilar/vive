@@ -40,7 +40,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <div className="py-16 bg-gray-50 dark:bg-gray-900">
+    <div className="py-16 geometric-section relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-3xl font-light text-gray-900 dark:text-white mb-4">
           Clientes Satisfechos
@@ -54,7 +54,7 @@ const TestimonialsSection = () => {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm"
+              className="futuristic-section rounded-lg p-6 shadow-sm"
             >
               <div className="flex items-center gap-3 mb-4">
                 <img

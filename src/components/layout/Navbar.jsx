@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getWhatsAppLink } from '@/utils/constants';
 import { useTheme } from '@/hooks/useTheme';
 import { useCart } from '@/contexts/CartContext';
 import { FaShoppingCart } from 'react-icons/fa';
 import PromoBar from './PromoBar';
-import logoBase from '@assets/images/logos/logo-main.jpg';
+import Logo from '@/components/common/Logo';
 import {
     MdOutlineBed,
     MdOutlineWeekend,
@@ -25,6 +25,7 @@ const Navbar = () => {
     const { theme, toggleTheme } = useTheme();
     const { getTotalItems, setIsCartOpen } = useCart();
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -33,6 +34,10 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const handleLogoClick = () => {
+        navigate('/home');
+    };
 
     const navLinks = [
         {
@@ -75,21 +80,19 @@ const Navbar = () => {
             {/* MAIN NAVBAR */}
             <div
                 className={`transition-all duration-500 ${isScrolled
-                    ? 'bg-white/95 dark:bg-dream-bg/95 backdrop-blur-xl border-b border-gray-100 dark:border-white/5 py-2 shadow-lg shadow-black/5'
-                    : 'bg-white/90 dark:bg-dream-bg/90 backdrop-blur-sm border-b border-transparent py-4'
+                    ? 'bg-white/95 backdrop-blur-xl border-b border-gray-100 dark:border-gray-200 py-2 shadow-lg shadow-black/5'
+                    : 'bg-white border-b border-transparent py-4'
                     }`}
             >
                 <div className="container mx-auto px-6 lg:px-20">
                     <div className="flex items-center justify-between">
                         {/* LOGO */}
-                        <Link to="/" className="flex items-center gap-3 group shrink-0">
-                            <div className="w-[35px] h-[35px] md:w-[45px] md:h-[45px] overflow-hidden rounded-full border border-gray-100 dark:border-white/10 transition-transform group-hover:scale-110 p-1 bg-white shadow-sm">
-                                <img src={logoBase} alt="Sueño Dorado" className="w-full h-full object-contain" />
-                            </div>
-                            <span className="text-gray-900 dark:text-white text-lg md:text-2xl font-brand font-black tracking-tight leading-none uppercase whitespace-nowrap">
-                                SUEÑO <span className="text-gold-500">DORADO</span>
-                            </span>
-                        </Link>
+                        <Logo
+                            size="large"
+                            onClick={handleLogoClick}
+                            className="transition-transform hover:scale-110"
+                            variant="light"
+                        />
 
                         {/* DESKTOP NAV */}
                         <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
@@ -148,7 +151,7 @@ const Navbar = () => {
                             </button>
 
                             {/* Cart Button */}
-                            <button 
+                            <button
                                 onClick={() => setIsCartOpen(true)}
                                 className="w-9 h-9 rounded-full border border-gray-100 dark:border-white/10 flex items-center justify-center text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-all relative"
                             >
@@ -187,12 +190,12 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Overlay */}
-            <div className={`lg:hidden fixed inset-0 z-[110] bg-white dark:bg-dream-bg transition-all duration-700 ease-in-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
+            <div className={`lg:hidden fixed inset-0 z-[110] bg-[#fcfeff] dark:bg-white transition-all duration-700 ease-in-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
                 <div className="flex flex-col h-full">
-                    <div className="flex p-6 justify-between items-center border-b border-gray-100 dark:border-white/5">
-                        <span className="font-brand font-black text-xl">SUEÑO <span className="text-gold-500">DORADO</span></span>
-                        <button onClick={() => setIsMobileMenuOpen(false)} className="w-10 h-10 rounded-full bg-gray-50 dark:bg-white/5 flex items-center justify-center">
-                            <MdOutlineClose className="w-6 h-6" />
+                    <div className="flex p-6 justify-between items-center border-b border-gray-100 dark:border-gray-200">
+                        <span className="font-brand font-black text-xl"></span>
+                        <button onClick={() => setIsMobileMenuOpen(false)} className="w-10 h-10 rounded-full bg-gray-50 dark:bg-gray-100 flex items-center justify-center">
+                            <MdOutlineClose className="w-6 h-6 text-gray-900 dark:text-gray-900" />
                         </button>
                     </div>
                     <div className="flex-grow flex flex-col justify-center gap-8 px-10">
@@ -200,7 +203,7 @@ const Navbar = () => {
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className="flex items-center gap-5 text-3xl font-brand font-bold text-gray-900 dark:text-white uppercase tracking-tighter hover:text-gold-500 transition-colors"
+                                className="flex items-center gap-5 text-3xl font-brand font-bold text-gray-900 dark:text-gray-900 uppercase tracking-tighter hover:text-gold-500 transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <span className="text-gold-500">{link.icon}</span>

@@ -114,6 +114,172 @@ p, span, div, button, input, textarea, select {
   letter-spacing: 0.05em;
 }
 
+/* Professional Minimalistic Section Styles 2026 */
+.professional-section {
+  position: relative;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(248, 250, 252, 0.99) 50%, 
+    rgba(241, 245, 249, 0.98) 100%
+  );
+  overflow: hidden;
+}
+
+.professional-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(0, 0, 0, 0.015) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.01) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.professional-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.01) 2px, transparent 2px),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.008) 1px, transparent 1px);
+  background-size: 120px 120px, 180px 180px, 80px 80px;
+  background-position: 0% 0%, 100% 100%, 50% 50%;
+  opacity: 0.1;
+  pointer-events: none;
+  animation: professionalFloat 25s ease-in-out infinite;
+}
+
+/* Dark mode professional section */
+.dark .professional-section {
+  background: linear-gradient(135deg, 
+    rgba(15, 15, 15, 0.98) 0%, 
+    rgba(26, 26, 26, 0.99) 50%, 
+    rgba(37, 37, 37, 0.98) 100%
+  );
+}
+
+.dark .professional-section::before {
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.015) 0%, transparent 40%);
+}
+
+.dark .professional-section::after {
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.015) 2px, transparent 2px),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  opacity: 0.15;
+}
+
+/* Clean Minimal Section */
+.clean-minimal {
+  position: relative;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.99) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(248, 250, 252, 0.98) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(241, 245, 249, 0.99) 0%, transparent 60%);
+  overflow: hidden;
+}
+
+.clean-minimal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 40% 30%, rgba(0, 0, 0, 0.008) 0%, transparent 50%),
+    radial-gradient(circle at 60% 70%, rgba(0, 0, 0, 0.006) 0%, transparent 50%),
+    radial-gradient(circle at 30% 60%, rgba(0, 0, 0, 0.004) 0%, transparent 50%),
+    radial-gradient(circle at 70% 40%, rgba(0, 0, 0, 0.005) 0%, transparent 50%);
+  background-size: 200px 200px, 150px 150px, 180px 180px;
+  background-position: 0% 0%, 100% 100%, 50% 50%, 30% 70%;
+  opacity: 0.08;
+  pointer-events: none;
+  animation: cleanFloat 30s ease-in-out infinite;
+}
+
+.clean-minimal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.01) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.008) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.005) 1px, transparent 1px);
+  background-size: 100px 100px, 120px 120px, 80px 80px;
+  background-position: 100% 0%, 0% 100%, 50% 50%;
+  opacity: 0.05;
+  pointer-events: none;
+  animation: cleanFloat 35s ease-in-out infinite reverse;
+}
+
+/* Dark mode clean minimal */
+.dark .clean-minimal {
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(15, 15, 15, 0.99) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(26, 26, 26, 0.98) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(37, 37, 37, 0.99) 0%, transparent 60%);
+}
+
+.dark .clean-minimal::before {
+  background: 
+    radial-gradient(circle at 40% 30%, rgba(255, 255, 255, 0.012) 0%, transparent 50%),
+    radial-gradient(circle at 60% 70%, rgba(255, 255, 255, 0.008) 0%, transparent 50%),
+    radial-gradient(circle at 30% 60%, rgba(255, 255, 255, 0.006) 0%, transparent 50%),
+    radial-gradient(circle at 70% 40%, rgba(255, 255, 255, 0.01) 0%, transparent 50%);
+}
+
+.dark .clean-minimal::after {
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+}
+
+/* Modern animations */
+@keyframes professionalFloat {
+  0%, 100% { 
+    transform: translateY(0px) scale(1); 
+    opacity: 0.1; 
+  }
+  50% { 
+    transform: translateY(-3px) scale(1.01); 
+    opacity: 0.15; 
+  }
+}
+
+@keyframes cleanFloat {
+  0%, 100% { 
+    transform: translateY(0px) scale(1); 
+    opacity: 0.05; 
+  }
+  50% { 
+    transform: translateY(-2px) scale(1.005); 
+    opacity: 0.08; 
+  }
+}
+
+/* Section content positioning */
+.professional-section > *,
+.clean-minimal > * {
+  position: relative;
+  z-index: 10;
+}
+
+/* Smooth transitions */
+.professional-section,
+.clean-minimal {
+  transition: all 0.5s ease;
+}
+
+.dark .professional-section,
+.dark .clean-minimal {
+  transition: all 0.5s ease;
+}
+
 /* Custom Utilities for Premium Look */
 @layer utilities {
   .animate-shimmer {

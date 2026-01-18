@@ -27,127 +27,116 @@ const ShoppingCart = () => {
 
   return (
     <>
-      {/* Cart Toggle Button */}
+      {/* Cart Toggle Button - Premium Floating */}
       <button
         onClick={() => setIsCartOpen(true)}
-        className="fixed bottom-6 right-6 bg-gold-500 hover:bg-gold-600 text-white p-4 rounded-full shadow-lg transition-all hover:scale-110 z-40 group"
+        className="fixed bottom-8 right-8 bg-black dark:bg-white text-white dark:text-black p-4 rounded-full shadow-2xl transition-all hover:scale-110 active:scale-95 z-40 group border border-gold-500/20"
       >
-        <FaShoppingCart className="w-6 h-6" />
-        {getTotalItems() > 0 && (
-          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold">
-            {getTotalItems()}
-          </span>
-        )}
-        <span className="absolute bottom-full mb-2 right-0 bg-gray-800 text-white text-sm px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-          Ver Carrito ({getTotalItems()} items)
+        <div className="relative">
+          <FaShoppingCart className="w-6 h-6" />
+          {getTotalItems() > 0 && (
+            <span className="absolute -top-3 -right-3 bg-red-600 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold border-2 border-white dark:border-black">
+              {getTotalItems()}
+            </span>
+          )}
+        </div>
+        <span className="absolute bottom-full mb-3 right-0 bg-black/90 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap translate-y-2 group-hover:translate-y-0 shadow-xl">
+          Ver Carrito
         </span>
       </button>
 
-      {/* Cart Sidebar */}
-      <div className={`fixed inset-y-0 right-0 w-96 bg-white dark:bg-gray-800 shadow-2xl transform transition-transform duration-300 z-50 ${
-        isCartOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}>
+      {/* Cart Sidebar - Glassmorphism & Premium */}
+      <div className={`fixed inset-y-0 right-0 w-full sm:w-[500px] bg-white/95 dark:bg-gray-900/98 backdrop-blur-xl shadow-2xl transform transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1) z-50 border-l border-gray-100 dark:border-white/5 ${isCartOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}>
+
         {/* Cart Header */}
-        <div className="bg-gold-500 text-white p-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold flex items-center gap-2">
-              <FaShoppingCart className="w-5 h-5" />
-              Mi Carrito
+        <div className="bg-white dark:bg-gray-900 px-8 py-6 border-b border-gray-100 dark:border-white/5 flex items-center justify-between sticky top-0 z-10">
+          <div>
+            <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white flex items-center gap-3">
+              Tu Carrito <span className="text-gold-500">.</span>
             </h2>
-            <button
-              onClick={() => setIsCartOpen(false)}
-              className="text-white hover:text-gray-200 transition-colors"
-            >
-              <FaTimes className="w-5 h-5" />
-            </button>
+            <p className="text-sm text-gray-500 font-medium">
+              {getTotalItems()} {getTotalItems() === 1 ? 'producto seleccionado' : 'productos seleccionados'}
+            </p>
           </div>
-          <p className="text-gold-100 mt-2">
-            {getTotalItems()} {getTotalItems() === 1 ? 'producto' : 'productos'}
-          </p>
+          <button
+            onClick={() => setIsCartOpen(false)}
+            className="w-10 h-10 rounded-full bg-gray-50 dark:bg-white/5 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-white/10 transition-colors group"
+          >
+            <FaTimes className="w-5 h-5 text-gray-400 group-hover:text-red-500 transition-colors" />
+          </button>
         </div>
 
         {/* Cart Items */}
-        <div className="flex-1 overflow-y-auto p-6" style={{ maxHeight: 'calc(100vh - 280px)' }}>
+        <div className="flex-1 overflow-y-auto p-6 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-800" style={{ height: 'calc(100vh - 240px)' }}>
           {cartItems.length === 0 ? (
-            <div className="text-center py-12">
-              <FaShoppingCart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-500 dark:text-gray-400">Tu carrito está vacío</p>
+            <div className="h-full flex flex-col items-center justify-center text-center p-8 opacity-60">
+              <div className="w-24 h-24 bg-gray-50 dark:bg-white/5 rounded-full flex items-center justify-center mb-6 text-gray-300 dark:text-gray-600">
+                <FaShoppingCart className="w-10 h-10" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Tu carrito está vacío</h3>
+              <p className="text-gray-500 mb-8 max-w-[200px]">¡Explora nuestro catálogo y encuentra el descanso perfecto!</p>
               <button
                 onClick={() => setIsCartOpen(false)}
-                className="mt-4 text-gold-500 hover:text-gold-600 font-medium"
+                className="text-gold-500 hover:text-gold-600 font-bold tracking-wide uppercase text-sm border-b-2 border-transparent hover:border-gold-500 transition-all"
               >
                 Seguir comprando
               </button>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-6">
               {cartItems.map((item, index) => {
                 const price = item.selectedSize ? item.sizes?.[item.selectedSize] || item.price : item.price;
-                
+
                 return (
-                  <div key={`${item.id}-${item.selectedSize || 'default'}-${index}`} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-                    <div className="flex gap-4">
-                      {/* Product Image */}
-                      <div className="w-20 h-20 bg-gray-200 dark:bg-gray-600 rounded-lg overflow-hidden flex-shrink-0">
-                        {item.image ? (
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-gray-400">
-                            <FaShoppingCart className="w-8 h-8" />
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Product Details */}
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900 dark:text-white">
-                          {item.name}
-                        </h3>
-                        {item.selectedSize && (
-                          <p className="text-sm text-gray-500 dark:text-gray-400">
-                            Talla: {item.selectedSize}
-                          </p>
-                        )}
-                        <p className="text-gold-500 font-bold">
-                          {formatPrice(price)}
-                        </p>
-
-                        {/* Quantity Controls */}
-                        <div className="flex items-center gap-2 mt-2">
-                          <button
-                            onClick={() => updateQuantity(item.id, item.quantity - 1, item.selectedSize)}
-                            className="w-8 h-8 bg-gray-200 dark:bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
-                          >
-                            <FaMinus className="w-3 h-3" />
-                          </button>
-                          <span className="w-12 text-center font-medium">
-                            {item.quantity}
-                          </span>
-                          <button
-                            onClick={() => updateQuantity(item.id, item.quantity + 1, item.selectedSize)}
-                            className="w-8 h-8 bg-gray-200 dark:bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
-                          >
-                            <FaPlus className="w-3 h-3" />
-                          </button>
-                          <button
-                            onClick={() => removeFromCart(item.id, item.selectedSize)}
-                            className="ml-auto text-red-500 hover:text-red-600 transition-colors"
-                          >
-                            <FaTrash className="w-4 h-4" />
-                          </button>
-                        </div>
-                      </div>
+                  <div key={`${item.id}-${item.selectedSize || 'default'}-${index}`} className="group relative flex gap-5 animate-fadeIn">
+                    {/* Item Image */}
+                    <div className="w-28 h-28 bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden flex-shrink-0 shadow-sm border border-gray-100 dark:border-white/5">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
 
-                    {/* Item Subtotal */}
-                    <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-600">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-500 dark:text-gray-400">Subtotal</span>
-                        <span className="font-bold text-gray-900 dark:text-white">
+                    {/* Item Details */}
+                    <div className="flex-1 min-w-0 flex flex-col justify-between py-1">
+                      <div>
+                        <div className="flex justify-between items-start">
+                          <h3 className="font-display font-bold text-gray-900 dark:text-white text-lg truncate pr-4">
+                            {item.name}
+                          </h3>
+                          <button
+                            onClick={() => removeFromCart(item.id, item.selectedSize)}
+                            className="text-gray-400 hover:text-red-500 transition-colors p-1"
+                          >
+                            <FaTrash className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                        {item.selectedSize && (
+                          <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mt-1">
+                            Talla: <span className="text-gray-600 dark:text-gray-300">{item.selectedSize}</span>
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="flex items-end justify-between mt-2">
+                        <div className="flex items-center gap-3 bg-gray-50 dark:bg-white/5 rounded-lg p-1">
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity - 1, item.selectedSize)}
+                            className="w-7 h-7 flex items-center justify-center hover:bg-white dark:hover:bg-white/10 rounded-md transition-colors text-gray-500"
+                          >
+                            <FaMinus className="w-2.5 h-2.5" />
+                          </button>
+                          <span className="text-sm font-bold w-4 text-center">{item.quantity}</span>
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity + 1, item.selectedSize)}
+                            className="w-7 h-7 flex items-center justify-center hover:bg-white dark:hover:bg-white/10 rounded-md transition-colors text-gray-500"
+                          >
+                            <FaPlus className="w-2.5 h-2.5" />
+                          </button>
+                        </div>
+                        <span className="font-display font-bold text-lg text-gold-500">
                           {formatPrice(price * item.quantity)}
                         </span>
                       </div>
@@ -159,15 +148,13 @@ const ShoppingCart = () => {
           )}
         </div>
 
-        {/* Cart Footer */}
+        {/* Cart Footer - Modern Checkout */}
         {cartItems.length > 0 && (
-          <div className="border-t border-gray-200 dark:border-gray-700 p-6">
-            {/* Total */}
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-lg font-bold text-gray-900 dark:text-white">
-                Total:
-              </span>
-              <span className="text-xl font-bold text-gold-500">
+          <div className="absolute bottom-0 left-0 w-full bg-white dark:bg-gray-900 p-8 border-t border-gray-100 dark:border-white/5 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] z-20">
+            {/* Total Row */}
+            <div className="flex justify-between items-end mb-6">
+              <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">Total Estimado</span>
+              <span className="text-3xl font-display font-bold text-gray-900 dark:text-white">
                 {formatPrice(getTotal())}
               </span>
             </div>
@@ -176,37 +163,24 @@ const ShoppingCart = () => {
             <div className="space-y-3">
               <button
                 onClick={processOrder}
-                className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-green-500/30 flex items-center justify-center gap-3 group"
               >
-                <FaWhatsapp className="w-5 h-5" />
-                Procesar Pedido por WhatsApp
-              </button>
-              
-              <button
-                onClick={clearCart}
-                className="w-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-2 rounded-lg font-medium transition-colors"
-              >
-                Vaciar Carrito
-              </button>
-              
-              <button
-                onClick={() => setIsCartOpen(false)}
-                className="w-full text-gold-500 hover:text-gold-600 font-medium py-2"
-              >
-                Seguir Comprando
+                <span>Completar Pedido</span>
+                <FaWhatsapp className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </button>
             </div>
+            <p className="text-center mt-4 text-xs text-gray-400">
+              Checkout seguro vía WhatsApp Business
+            </p>
           </div>
         )}
       </div>
 
-      {/* Overlay */}
-      {isCartOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40"
-          onClick={() => setIsCartOpen(false)}
-        />
-      )}
+      {/* Overlay Backdrop */}
+      <div
+        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-opacity duration-500 ${isCartOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setIsCartOpen(false)}
+      />
     </>
   );
 };
