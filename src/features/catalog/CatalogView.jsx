@@ -6,6 +6,8 @@ import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
 import { PrimaryButton, WhatsAppButton } from '@/components/ui/Buttons';
 
+import { ENHANCED_CATALOG, CATEGORIES } from '@/utils/constants';
+
 /**
  * Full Catalog Page
  * Displays all products in a comprehensive grid layout
@@ -16,154 +18,32 @@ const CatalogView = () => {
   const [filter, setFilter] = useState('todos');
   const [sortBy, setSortBy] = useState('featured');
 
-  // Mock products data with placeholder images - in real app this would come from API
-  const allProducts = [
-    {
-      id: 1,
-      name: "Colchón Royal Premium 2 Plazas",
-      description: "Colchón viscoelástico de alta gama con 25cm de confort",
-      price: 2899,
-      originalPrice: 3299,
-      image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=400",
-      category: "viscoelasticos",
-      badge: "-12%",
-      rating: 4.8,
-      reviews: 127
-    },
-    {
-      id: 2,
-      name: "Colchón Pocket Plus Queen",
-      description: "Sistema de muelles ensacados con espuma de alta densidad",
-      price: 2199,
-      image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&q=80&w=400",
-      category: "pocket",
-      badge: "Nuevo",
-      rating: 4.7,
-      reviews: 89
-    },
-    {
-      id: 3,
-      name: "Colchón Spring Comfort 1.5 Plazas",
-      description: "Colchón tradicional con sistema de resortes continuo",
-      price: 1299,
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400",
-      category: "spring",
-      rating: 4.5,
-      reviews: 156
-    },
-    {
-      id: 4,
-      name: "Colchón Luxury King Size",
-      description: "Colchón premium con materiales importados de máxima calidad",
-      price: 4599,
-      image: "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=400",
-      category: "premium",
-      badge: "Premium",
-      rating: 4.9,
-      reviews: 43
-    },
-    {
-      id: 5,
-      name: "Colchón Orthopedic 2 Plazas",
-      description: "Diseñado especialmente para problemas de espalda",
-      price: 1999,
-      image: "https://images.unsplash.com/photo-1631049035182-249067d7618e?auto=format&fit=crop&q=80&w=400",
-      category: "ortopedicos",
-      badge: "Salud",
-      rating: 4.6,
-      reviews: 78
-    },
-    {
-      id: 6,
-      name: "Colchón Memory Foam Queen",
-      description: "Espuma de memoria que se adapta perfectamente a tu cuerpo",
-      price: 2499,
-      originalPrice: 2799,
-      image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&q=80&w=400",
-      category: "viscoelasticos",
-      badge: "-11%",
-      rating: 4.7,
-      reviews: 92
-    },
-    {
-      id: 7,
-      name: "Colchón Hybrid 1.5 Plazas",
-      description: "La mejor combinación de muelles y espuma viscoelástica",
-      price: 1899,
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400",
-      category: "hybridos",
-      badge: "Recomendado",
-      rating: 4.8,
-      reviews: 134
-    },
-    {
-      id: 8,
-      name: "Colchón Basic 2 Plazas",
-      description: "Opción económica sin comprometer la calidad",
-      price: 899,
-      image: "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=400",
-      category: "basicos",
-      rating: 4.3,
-      reviews: 245
-    },
-    {
-      id: 9,
-      name: "Colchón Premium Visco 2 Plazas",
-      description: "Tecnología viscoelástica avanzada para máxima comodidad",
-      price: 3299,
-      image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=400",
-      category: "viscoelasticos",
-      badge: "Premium",
-      rating: 4.9,
-      reviews: 67
-    },
-    {
-      id: 10,
-      name: "Colchón Pocket Deluxe King",
-      description: "Sistema de muelles ensacados premium con base de lujo",
-      price: 3999,
-      image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&q=80&w=400",
-      category: "pocket",
-      badge: "Deluxe",
-      rating: 4.8,
-      reviews: 89
-    },
-    {
-      id: 11,
-      name: "Colchón Spring Plus Queen",
-      description: "Colchón tradicional renovado con tecnologías modernas",
-      price: 1599,
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400",
-      category: "spring",
-      rating: 4.6,
-      reviews: 134
-    },
-    {
-      id: 12,
-      name: "Colchón Luxury Suite King",
-      description: "La máxima expresión del confort y elegancia",
-      price: 5999,
-      image: "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=400",
-      category: "premium",
-      badge: "Suite",
-      rating: 5.0,
-      reviews: 23
-    }
-  ];
+  // Use centralized products data
+  const allProducts = ENHANCED_CATALOG;
 
   const categories = [
     { id: 'todos', name: 'Todos los productos', count: allProducts.length },
-    { id: 'viscoelasticos', name: 'Viscoelásticos', count: allProducts.filter(p => p.category === 'viscoelasticos').length },
-    { id: 'pocket', name: 'Pocket', count: allProducts.filter(p => p.category === 'pocket').length },
-    { id: 'spring', name: 'Spring', count: allProducts.filter(p => p.category === 'spring').length },
-    { id: 'hybridos', name: 'Híbridos', count: allProducts.filter(p => p.category === 'hybridos').length },
-    { id: 'ortopedicos', name: 'Ortopédicos', count: allProducts.filter(p => p.category === 'ortopedicos').length }
+    ...CATEGORIES.map(cat => ({
+      id: cat.id,
+      name: cat.name,
+      count: allProducts.filter(p => p.category === cat.id || (cat.id === 'colchones' && ['luxury', 'premium', 'classic', 'professional'].includes(p.category))).length
+    }))
   ];
 
-  // Filter and sort products
-  const filteredProducts = filter === 'todos'
-    ? allProducts
-    : allProducts.filter(product => product.category === filter);
+  // If the filter is one of the main categories, we need to handle subcategories for colchones
+  const getFilteredProducts = () => {
+    if (filter === 'todos') return allProducts;
+
+    // special handling for 'colchones' category to include its subcategories
+    if (filter === 'colchones') {
+      return allProducts.filter(p => ['luxury', 'premium', 'classic', 'professional'].includes(p.category));
+    }
+
+    return allProducts.filter(p => p.category === filter);
+  };
+
+  const filteredProducts = getFilteredProducts();
+
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     switch (sortBy) {
@@ -171,11 +51,10 @@ const CatalogView = () => {
         return a.price - b.price;
       case 'price-high':
         return b.price - a.price;
-      case 'rating':
-        return b.rating - a.rating;
-      case 'newest':
-        return b.id - a.id;
+      case 'name':
+        return a.name.localeCompare(b.name);
       default:
+        // Default sort (featured or random)
         return 0;
     }
   });
@@ -219,22 +98,35 @@ const CatalogView = () => {
               <button
                 key={category.id}
                 onClick={() => setFilter(category.id)}
-                className={`px-6 py-3 text-sm font-medium transition-all duration-300 border ${
-                  filter === category.id
-                    ? 'bg-gold-500 text-white border-gold-500 shadow-lg shadow-gold-500/25'
-                    : 'bg-white text-gray-700 border-gray-300 hover:border-gold-500/50 hover:text-gold-500'
-                }`}
+                className={`px-6 py-3 text-sm font-medium transition-all duration-300 border ${filter === category.id
+                  ? 'bg-gold-500 text-white border-gold-500 shadow-lg shadow-gold-500/25'
+                  : 'bg-white text-gray-700 border-gray-300 hover:border-gold-500/50 hover:text-gold-500'
+                  }`}
               >
                 {category.name}
               </button>
             ))}
           </div>
 
-          {/* Results Count */}
-          <div className="text-center mb-6">
-            <p className="text-gray-600 dark:text-gray-400">
-              Mostrando {sortedProducts.length} producto{sortedProducts.length !== 1 ? 's' : ''}
-            </p>
+          {/* Sorting and Results Header */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-12 border-b border-gray-100 dark:border-gray-800 pb-8">
+            <div className="text-gray-600 dark:text-gray-400 font-medium">
+              Mostrando <span className="text-gold-600 dark:text-gold-400 font-bold">{sortedProducts.length}</span> producto{sortedProducts.length !== 1 ? 's' : ''}
+            </div>
+
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-bold text-gray-500 uppercase tracking-widest">Ordenar por:</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 text-gray-900 dark:text-white text-sm rounded-xl px-4 py-2 focus:ring-2 focus:ring-gold-500/20 focus:border-gold-500 transition-all outline-none"
+              >
+                <option value="featured">Destacados</option>
+                <option value="price-low">Menor Precio</option>
+                <option value="price-high">Mayor Precio</option>
+                <option value="name">Nombre (A-Z)</option>
+              </select>
+            </div>
           </div>
 
           {/* Products Grid */}
@@ -298,12 +190,11 @@ const CatalogView = () => {
                     >
                       Ver Detalles
                     </PrimaryButton>
-                      
+
                     <WhatsAppButton
                       onClick={() => {
-                        const message = `Hola Sueño Dorado, estoy interesado en el producto: ${product.name}`;
-                        const whatsappLink = `https://wa.me/51989223448?text=${encodeURIComponent(message)}`;
-                        window.open(whatsappLink, '_blank');
+                        const message = `Hola Sueño Dorado, estoy interesado en el producto: ${product.name}. Deseo recibir información sobre precios y medidas.`;
+                        window.open(getWhatsAppLink(message), '_blank');
                       }}
                     />
                   </div>

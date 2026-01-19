@@ -1,13 +1,13 @@
 import React from 'react';
 import { FaShoppingCart, FaHeart } from 'react-icons/fa';
 
-const ProductCard = ({ 
-  product, 
-  selectedSize, 
-  onAddToCart, 
-  onQuickView, 
-  onToggleFavorite, 
-  isFavorite 
+const ProductCard = ({
+  product,
+  selectedSize,
+  onAddToCart,
+  onQuickView,
+  onToggleFavorite,
+  isFavorite
 }) => {
   console.log('ProductCard rendered:', { product, onQuickView }); // Debug log
 
@@ -18,15 +18,15 @@ const ProductCard = ({
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 group h-full">
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
       {/* Product Image */}
       <div className="relative overflow-hidden bg-gray-50">
-        <img 
-          src={product.image} 
+        <img
+          src={product.image}
           alt={product.name}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        
+
         {/* Badge */}
         {product.badge && (
           <div className="absolute top-3 left-3 bg-gold-500 text-white px-2 py-1 rounded-full text-xs font-bold">
@@ -42,28 +42,15 @@ const ProductCard = ({
           <FaHeart className={`w-4 h-4 ${isFavorite ? 'text-red-500 fill-current' : ''}`} />
         </button>
 
-        {/* Quick Actions Overlay */}
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <button
-            onClick={() => onQuickView(product)}
-            className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-700 hover:text-gold-500 transition-all transform scale-0 group-hover:scale-100 mr-2"
-            title="Vista rápida"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
-          </button>
-        </div>
       </div>
 
       {/* Product Content */}
-      <div className="p-4">
+      <div className="p-4 flex flex-col flex-1">
         {/* Product Name */}
         <h3 className="font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
           {product.name}
         </h3>
-        
+
         {/* Description */}
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">
           {product.description}
@@ -74,32 +61,37 @@ const ProductCard = ({
           Medida: {product.sizes.join(', ')}
         </div>
 
-        {/* Price and CTA */}
-        <div className="flex items-center justify-between">
+        {/* Price and CTA - Always at bottom */}
+        <div className="space-y-3 mt-auto">
           <div className="text-2xl font-bold text-gold-600">
             {formatPrice(product.price)}
           </div>
-          
-          <div className="flex gap-2">
+
+          <div className="flex gap-3">
             <button
               onClick={() => {
                 console.log('Ver detalles clicked for product:', product); // Debug log
                 onQuickView(product);
               }}
-              className="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 p-2 rounded-lg transition-colors"
-              title="Ver detalles"
+              className="flex-1 group relative overflow-hidden bg-white dark:bg-gray-800 border-2 border-gold-500/30 hover:border-gold-500 text-gray-900 dark:text-white px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold text-sm hover:shadow-lg hover:shadow-gold-500/20 hover:-translate-y-0.5"
+              title="Ver detalles del producto"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                Ver Detalle
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-gold-500/0 via-gold-500/10 to-gold-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
             </button>
-            <button 
+            <button
               onClick={() => onAddToCart(product, 1, selectedSize === 'todos' ? null : selectedSize)}
-              className="bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white p-2 rounded-lg transition-colors group-hover:bg-gold-500 group-hover:text-gray-900"
+              className="group relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-700 hover:from-gold-600 hover:to-gold-500 text-white p-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/30 hover:-translate-y-0.5 hover:scale-105"
               title="Agregar al carrito"
             >
-              <FaShoppingCart className="w-4 h-4" />
+              <FaShoppingCart className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300"></div>
             </button>
           </div>
         </div>

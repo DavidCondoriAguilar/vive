@@ -1,358 +1,306 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { getWhatsAppLink } from '@/utils/constants';
 import MainLayout from '@/layouts/MainLayout';
-import { FaHotel, FaStore, FaTruck, FaHandshake, FaCheckCircle, FaWhatsapp, FaTimes } from 'react-icons/fa';
+import WholesaleFormDrawer from '@/components/forms/WholesaleFormDrawer';
+import {
+  FaHotel,
+  FaStore,
+  FaTruck,
+  FaHandshake,
+  FaCheckCircle,
+  FaWhatsapp,
+  FaBuilding,
+  FaChartLine,
+  FaGlobeAmericas,
+  FaArrowRight
+} from 'react-icons/fa';
 
 const WholesaleView = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const b2bMessage = "Hola, soy [TIPO DE NEGOCIO] y estoy interesado en cotización por mayor de colchones para mi negocio.";
+  const [isVisible, setIsVisible] = useState(false);
 
-  const clients = [
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const b2bMessage = "Hola, estoy interesado en información sobre la Venta por Mayor/B2B de Sueño Dorado.";
+
+  const targetMarkets = [
     {
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800",
-      title: "Hoteles",
-      description: "Colchones certificados para uso hotelero con garantía extendida",
-      badge: "Certificado"
+      image: "https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=1974&auto=format&fit=crop",
+      icon: <FaHotel />,
+      title: "Hotelería de Lujo",
+      subtitle: "Certificación Internacional",
+      description: "Equipamos hoteles de 4 y 5 estrellas con estándares de confort que garantizan el descanso de sus huéspedes y larga durabilidad.",
+      tag: "Turismo"
     },
     {
-      image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=800", // Furniture store interior
-      title: "Tiendas",
-      description: "Revendedores autorizados con márgenes atractivos",
-      badge: "Rentabilidad"
+      image: "https://images.unsplash.com/photo-1582582621959-48d246628f41?q=80&w=2070&auto=format&fit=crop",
+      icon: <FaStore />,
+      title: "Tiendas y Comercio",
+      subtitle: "Márgenes Premium",
+      description: "Asóciese con nosotros para ofrecer colchones de alta rotación con el mejor respaldo de marca y soporte publicitario.",
+      tag: "Distribución"
     },
     {
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
-      title: "Distribuidores",
-      description: "Red de distribución nacional con exclusividad territorial",
-      badge: "Logística"
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
+      icon: <FaBuilding />,
+      title: "B2B Corporativo",
+      subtitle: "Soluciones a Medida",
+      description: "Licitaciones, campamentos mineros, proyectos inmobiliarios y dotación de personal con precios directo de planta.",
+      tag: "Proyectos"
     }
   ];
 
-  const advantages = [
-    { title: "Precio por Volumen", desc: "Hasta -50% vs retail", icon: <FaHandshake className="w-6 h-6" /> },
-    { title: "Flota Propia", desc: "Despacho nacional seguro", icon: <FaTruck className="w-6 h-6" /> },
-    { title: "Calidad Hotelera", desc: "Estándares certificados", icon: <FaCheckCircle className="w-6 h-6" /> },
-    { title: "Stock Garantizado", desc: "Producción a escala", icon: <FaStore className="w-6 h-6" /> }
+  const mainStats = [
+    { value: "-50%", label: "Precio de Fábrica", desc: "Ahorro directo sin intermediarios" },
+    { value: "24h", label: "Despacho Inmediato", desc: "Logística propia para Lima y Callao" },
+    { value: "100%", label: "Garantía Real", desc: "Respaldo directo de nuestra planta" },
+    { value: "+20", label: "Años de Éxito", desc: "Liderando la industria del descanso" }
+  ];
+
+  const benefits = [
+    {
+      title: "Producción por Volumen",
+      desc: "Capacidad de escala para grandes pedidos con tiempos de entrega garantizados.",
+      icon: <FaChartLine className="w-8 h-8 text-gold-500" />
+    },
+    {
+      title: "Personalización B2B",
+      desc: "Fabricamos según sus especificaciones de densidad, resortes y acabados.",
+      icon: <FaHandshake className="w-8 h-8 text-gold-500" />
+    },
+    {
+      title: "Logística Nacional",
+      desc: "Llegamos a cualquier punto del Perú con embalaje de alta resistencia.",
+      icon: <FaGlobeAmericas className="w-8 h-8 text-gold-500" />
+    },
+    {
+      title: "Calidad Certificada",
+      desc: "Nuestros procesos cumplen con normas internacionales de higiene y ergonomía.",
+      icon: <FaCheckCircle className="w-8 h-8 text-gold-500" />
+    }
   ];
 
   return (
-    <>
+    <MainLayout>
       <Helmet>
-        <title>Venta por Mayor - Colchones al por mayor | Sueño Dorado</title>
-        <meta name="description" content="Venta directa de fábrica de colchones por mayor para hoteles, tiendas y distribuidores en Perú. Precios exclusivos B2B." />
-        <link rel="canonical" href="https://suenodorado.pe/venta-por-mayor" />
+        <title>Venta por Mayor & B2B | Sueño Dorado - Fábrica de Colchones</title>
+        <meta name="description" content="Soluciones mayoristas para hoteles, tiendas y corporaciones. Colchones directo de fábrica con precios B2B y logística nacional." />
       </Helmet>
 
-      <MainLayout>
-        {/* Hero Section */}
-        <section className="relative bg-gray-900 text-white py-24 overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 z-0 opacity-20" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }}></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 to-gray-900/40 z-0"></div>
+      {/* Hero Section - Ultra Luxury */}
+      <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-black py-20">
+        {/* Cinematic Background */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1505693357370-58c01c36b20e?q=80&w=2070&auto=format&fit=crop"
+            alt="Factory Background"
+            className="w-full h-full object-cover opacity-40 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-60"></div>
+        </div>
 
-          <div className="container mx-auto px-6 lg:px-20 text-center relative z-10">
-            <span className="text-gold-500 font-bold tracking-[0.2em] uppercase text-sm mb-4 block">Soluciones Empresariales</span>
-            <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">
-              Venta por <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-yellow-200">Mayor</span>
+        <div className={`container mx-auto px-6 relative z-10 transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="inline-block px-5 py-2 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400 text-xs font-bold tracking-[0.4em] uppercase mb-8">
+              División Corporativa
+            </span>
+            <h1 className="text-4xl md:text-7xl font-black text-white mb-6 leading-tight uppercase tracking-tighter">
+              El Aliado <span className="text-gold-500">Estratégico</span> <br /> de Tu Negocio
             </h1>
-            <p className="text-xl text-gray-300 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-              Precios exclusivos de fábrica para hoteles, tiendas y distribuidores.
-              <br className="hidden md:block" />Calidad certificada, márgenes superiores y despacho a todo el Perú.
+            <p className="text-lg md:text-2xl text-gray-300 font-light max-w-2xl mx-auto mb-12 leading-relaxed">
+              Llevamos el descanso de clase mundial a hoteles, distribuidores y corporaciones directamente desde nuestra planta de producción.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <button
+                onClick={() => setIsFormOpen(true)}
+                className="w-full sm:w-auto bg-gold-500 hover:bg-gold-600 text-black font-black px-12 py-5 rounded-full transition-all shadow-[0_15px_40px_rgba(234,179,8,0.4)] uppercase tracking-wider text-sm"
+              >
+                Solicitar Cotización B2B
+              </button>
               <a
                 href={getWhatsAppLink(b2bMessage)}
                 target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 shadow-xl shadow-gold-500/20"
+                className="w-full sm:w-auto px-12 py-5 bg-white/5 backdrop-blur-md hover:bg-white/10 text-white border border-white/20 rounded-full font-bold transition-all uppercase tracking-wider text-sm flex items-center justify-center gap-3"
               >
-                <FaWhatsapp className="w-6 h-6" />
-                Cotizar Directo
+                <FaWhatsapp className="w-5 h-5 text-green-400" />
+                Hablar con Asesor
               </a>
-              <button
-                onClick={() => document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-xl font-bold text-lg transition-all"
-              >
-                Ver Formulario
-              </button>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Target Clients - Modern Image Grid */}
-        <section className="py-24 bg-white dark:bg-gray-900">
-          <div className="container mx-auto px-6 lg:px-20">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold font-display text-gray-900 dark:text-white mb-4">
-                ¿A quién nos dirigimos?
+        {/* Floating Decorative Elements */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent"></div>
+      </section>
+
+      {/* Trust Stats - Bento Minimalist */}
+      <section className="bg-gray-50 dark:bg-gray-900 py-16">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+            {mainStats.map((stat, idx) => (
+              <div key={idx} className="bg-white dark:bg-gray-800 p-8 rounded-[2rem] border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all duration-500 group">
+                <div className="text-4xl md:text-5xl font-black text-gold-500 mb-2 tracking-tighter group-hover:scale-110 transition-transform">{stat.value}</div>
+                <div className="text-gray-900 dark:text-white font-bold text-sm uppercase tracking-widest mb-2">{stat.label}</div>
+                <div className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">{stat.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Dynamic Target Grid - Premium Presentation */}
+      <section className="py-24 bg-white dark:bg-gray-900 overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6 text-center md:text-left">
+            <div className="max-w-xl">
+              <h2 className="text-3xl md:text-6xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tighter">
+                Soluciones <span className="text-gold-500 italic block md:inline font-light">Especializadas</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Diseñamos soluciones a medida para maximizar la rentabilidad de tu negocio
-              </p>
+              <p className="text-gray-500 dark:text-gray-400 text-lg">Entendemos que cada industria tiene necesidades distintas de confort y durabilidad.</p>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {clients.map((client, index) => (
-                <div key={index} className="group relative h-[400px] rounded-3xl overflow-hidden shadow-2xl cursor-pointer">
-                  {/* Background Image */}
-                  <img
-                    src={client.image}
-                    alt={client.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
-
-                  {/* Content */}
-                  <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                    <div className="mb-4">
-                      <span className="inline-block px-3 py-1 bg-gold-500/90 text-white text-xs font-bold uppercase tracking-wider rounded-full mb-3 backdrop-blur-sm">
-                        {client.badge}
-                      </span>
-                      <h3 className="text-3xl font-bold text-white mb-2">{client.title}</h3>
-                      <div className="h-1 w-12 bg-gold-500 rounded-full mb-4 transform origin-left group-hover:scale-x-150 transition-transform duration-300"></div>
-                      <p className="text-gray-300 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-100">
-                        {client.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <div className="hidden lg:block h-[1px] flex-1 bg-gray-200 dark:bg-gray-800 mx-12"></div>
           </div>
-        </section>
 
-        {/* Benefits Section - Bento Grid */}
-        <section className="py-24 bg-gray-50 dark:bg-gray-800/50">
-          <div className="container mx-auto px-6 lg:px-20">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {targetMarkets.map((market, idx) => (
+              <div key={idx} className="group relative h-[550px] rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-700 hover:-translate-y-4">
+                <img
+                  src={market.image}
+                  alt={market.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
 
-              {/* Left: Main Value Prop */}
-              <div className="lg:col-span-5 flex flex-col justify-center">
-                <h2 className="text-4xl font-bold font-display text-gray-900 dark:text-white mb-6">
-                  Beneficios de comprar <span className="text-gold-500">directo de fábrica</span>
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                  Eliminamos los intermediarios para ofrecerte una ventaja competitiva real.
-                  Accede a precios de producción y garantiza el mejor margen para tu negocio.
-                </p>
-
-                {/* Visual Stats Card */}
-                <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-3xl text-white shadow-xl relative overflow-hidden">
-                  <div className="absolute top-0 right-0 p-8 opacity-10">
-                    <FaHandshake className="w-32 h-32" />
+                {/* Content Overlay */}
+                <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                  <div className="mb-6 opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    <span className="px-4 py-1.5 rounded-full bg-gold-500/20 backdrop-blur-md border border-gold-500/30 text-gold-400 text-[10px] font-bold uppercase tracking-widest mb-4 inline-block">
+                      {market.tag}
+                    </span>
                   </div>
-                  <div className="relative z-10">
-                    <div className="text-6xl font-bold text-gold-400 mb-2">-50%</div>
-                    <div className="text-xl font-medium text-gray-200 mb-6">Ahorro máximo vs. retail</div>
+                  <div className="text-white text-4xl mb-6 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-500">
+                    {market.icon}
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-black text-white mb-2 leading-none uppercase">{market.title}</h3>
+                  <h4 className="text-gold-400 font-bold text-sm tracking-widest mb-6 uppercase italic">{market.subtitle}</h4>
+                  <p className="text-gray-300 text-sm leading-relaxed max-w-xs opacity-0 h-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-500">
+                    {market.description}
+                  </p>
+
+                  <div className="mt-8">
                     <a
-                      href={getWhatsAppLink(b2bMessage)}
+                      href={getWhatsAppLink(`${b2bMessage} Específicamente sobre ${market.title}.`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-lg font-bold transition-all w-full justify-center"
+                      className="inline-flex items-center gap-3 text-white font-bold text-xs uppercase tracking-[0.2em] group/btn"
                     >
-                      Iniciar Negociación
-                      <FaWhatsapp className="w-5 h-5" />
+                      Saber más <FaArrowRight className="group-hover/btn:translate-x-2 transition-transform" />
                     </a>
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              {/* Right: Grid of Features */}
-              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {advantages.map((adv, index) => (
-                  <div key={index} className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100 dark:border-gray-800 group">
-                    <div className="w-12 h-12 bg-gold-50 dark:bg-gold-500/10 rounded-xl flex items-center justify-center text-gold-500 mb-4 group-hover:scale-110 transition-transform">
-                      {adv.icon}
+      {/* Manufacturing Advantages - Asymmetric Grid */}
+      <section className="py-24 bg-gray-900 border-y border-gold-500/10">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="relative">
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-gold-500/10 rounded-full blur-3xl"></div>
+              <h2 className="text-3xl md:text-6xl font-black text-white mb-8 leading-[1.1] uppercase tracking-tighter">
+                Ventaja Directa <br /> de <span className="text-gold-500 italic font-light">Fábrica</span>
+              </h2>
+              <div className="space-y-10">
+                {benefits.map((benefit, idx) => (
+                  <div key={idx} className="flex gap-6 group">
+                    <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-gold-500/10 group-hover:border-gold-500/30 transition-all">
+                      {benefit.icon}
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{adv.title}</h3>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm">{adv.desc}</p>
+                    <div>
+                      <h4 className="text-xl font-bold text-white mb-2 uppercase tracking-wide">{benefit.title}</h4>
+                      <p className="text-gray-400 text-sm leading-relaxed max-w-sm">{benefit.desc}</p>
+                    </div>
                   </div>
                 ))}
+              </div>
+            </div>
 
-                {/* Secondary Features List (Compact) */}
-                <div className="col-span-1 sm:col-span-2 bg-gold-500/5 border border-gold-500/20 rounded-2xl p-6 flex flex-wrap gap-4 items-center">
-                  <span className="text-gold-600 font-bold text-sm uppercase tracking-wide">Más beneficios:</span>
-                  {["Soporte Permanente", "Materiales Premium", "Garantía B2B", "Producción Personalizada"].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-                      <FaCheckCircle className="w-4 h-4 text-gold-500" />
-                      {item}
-                    </div>
-                  ))}
-                </div>
+            <div className="relative">
+              <div className="relative aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-2 border-white/5">
+                <img
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop"
+                  alt="Process"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gold-500/10 mix-blend-overlay"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
               </div>
 
-            </div>
-          </div>
-        </section>
-
-        {/* Contact CTA Section */}
-        <section className="py-20 bg-white dark:bg-gray-900">
-          <div className="container mx-auto px-6 lg:px-20">
-            <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold font-display text-gray-900 dark:text-white mb-4">
-                Contacto <span className="text-gold-500">Directo</span>
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
-                Completá el formulario y te contactaremos en menos de 24 horas
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => setIsFormOpen(true)}
-                  className="px-8 py-3 bg-black dark:bg-white text-white dark:text-black text-sm font-black uppercase tracking-widest rounded-none hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
-                >
-                  Ver Formulario
-                </button>
-                <a
-                  href={getWhatsAppLink(b2bMessage)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white text-sm font-black uppercase tracking-widest rounded-none transition-colors flex items-center justify-center gap-2"
-                >
-                  <FaWhatsapp className="w-4 h-4" />
-                  WhatsApp
-                </a>
+              {/* Floating Badge */}
+              <div className="absolute -bottom-10 -right-6 md:-right-10 bg-white p-8 rounded-[3rem] shadow-2xl max-w-xs animate-bounce-slow">
+                <div className="text-6xl font-black text-black tracking-tighter mb-1">-50%</div>
+                <p className="text-xs font-bold text-gray-500 uppercase tracking-widest leading-tight">Vs Precios de Tienda o Mercados Convencionales</p>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Form Drawer Panel */}
-        {isFormOpen && (
-          <>
-            {/* Backdrop */}
-            <div 
-              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300"
-              onClick={() => setIsFormOpen(false)}
-            />
-            
-            {/* Drawer Panel - Lateral Derecha */}
-            <div className={`fixed right-0 top-0 bottom-0 z-50 bg-white dark:bg-gray-900 shadow-2xl transition-transform duration-500 ease-out w-full max-w-2xl overflow-hidden transform ${isFormOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-              
-              {/* Header */}
-              <div className="sticky top-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-6 py-5 flex items-center justify-between">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white uppercase tracking-wider">Cotización B2B</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Completa tus datos para contactarte</p>
-                </div>
-                <button
-                  onClick={() => setIsFormOpen(false)}
-                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-none transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
-                >
-                  <FaTimes className="w-5 h-5" />
-                </button>
-              </div>
+      {/* Partner Spotlight Section (Credibility) */}
+      <section className="py-24 bg-white dark:bg-gray-950">
+        <div className="container mx-auto px-6 text-center">
+          <h3 className="text-gray-400 dark:text-gray-500 font-bold text-xs uppercase tracking-[0.4em] mb-12">Empresas que confían en nosotros</h3>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
+            <div className="text-3xl font-black text-gray-900 dark:text-white uppercase tracking-tighter">Grand Hotel</div>
+            <div className="text-3xl font-black text-gray-900 dark:text-white uppercase tracking-tighter">Boutique St.</div>
+            <div className="text-3xl font-black text-gray-900 dark:text-white uppercase tracking-tighter">Resort Spa</div>
+            <div className="text-3xl font-black text-gray-900 dark:text-white uppercase tracking-tighter">Luxury Inn</div>
+          </div>
+        </div>
+      </section>
 
-              {/* Scrollable Content */}
-              <div className="overflow-y-auto h-[calc(100vh-140px)]">
-                <div className="p-6">
-                  <form className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider">
-                          Nombre Completo *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-                          placeholder="Tu nombre"
-                        />
-                      </div>
+      {/* Contact Final CTA - Sophisticated */}
+      <section className="py-32 bg-gold-500 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="text-4xl md:text-7xl font-black text-black mb-10 leading-[0.9] uppercase tracking-tighter">
+            ¿Listo para Transformar <br className="hidden md:block" /> Tu Descanso Corporativo?
+          </h2>
+          <p className="text-black/70 text-lg md:text-2xl font-medium max-w-2xl mx-auto mb-14 drop-shadow-sm">
+            Hablemos hoy mismo sobre cómo podemos apoyar el crecimiento y la reputación de su negocio con productos líderes.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <button
+              onClick={() => setIsFormOpen(true)}
+              className="w-full sm:w-64 bg-black text-white font-black px-10 py-5 rounded-full transition-all hover:scale-105 active:scale-95 shadow-2xl uppercase tracking-widest text-sm"
+            >
+              Iniciar Contacto
+            </button>
+            <a
+              href={getWhatsAppLink(b2bMessage)}
+              target="_blank"
+              className="w-full sm:w-64 bg-white/20 backdrop-blur-md text-black border border-black/10 font-black px-10 py-5 rounded-full transition-all hover:bg-white/30 uppercase tracking-widest text-sm"
+            >
+              WhatsApp Directo
+            </a>
+          </div>
+        </div>
+      </section>
 
-                      <div>
-                        <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider">
-                          Empresa *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-                          placeholder="Nombre de tu empresa"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider">
-                          Email *
-                        </label>
-                        <input
-                          type="email"
-                          required
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-                          placeholder="email@empresa.com"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider">
-                          Teléfono *
-                        </label>
-                        <input
-                          type="tel"
-                          required
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-                          placeholder="+51 999 888 777"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider">
-                        Tipo de Negocio *
-                      </label>
-                      <select className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-none focus:ring-2 focus:ring-gold-500 focus:border-transparent">
-                        <option value="">Seleccionar tipo</option>
-                        <option value="hotel">Hotel</option>
-                        <option value="tienda">Tienda</option>
-                        <option value="distribuidor">Distribuidor</option>
-                        <option value="otro">Otro</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider">
-                        Mensaje
-                      </label>
-                      <textarea
-                        rows={5}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-                        placeholder="Describe tus necesidades y volumen requerido..."
-                      ></textarea>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-              {/* Footer - Actions */}
-              <div className="sticky bottom-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 p-6 space-y-3">
-                <button
-                  type="submit"
-                  className="w-full px-6 py-3 bg-black dark:bg-white text-white dark:text-black text-sm font-black uppercase tracking-widest rounded-none hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
-                >
-                  Enviar Solicitud
-                </button>
-                <a
-                  href={getWhatsAppLink(b2bMessage)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full px-6 py-3 bg-green-500 hover:bg-green-600 text-white text-sm font-black uppercase tracking-widest rounded-none transition-colors flex items-center justify-center gap-2"
-                >
-                  <FaWhatsapp className="w-4 h-4" />
-                  WhatsApp
-                </a>
-              </div>
-            </div>
-          </>
-        )}
-      </MainLayout>
-    </>
+      {/* Reuse the specialized form drawer */}
+      <WholesaleFormDrawer
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+      />
+    </MainLayout>
   );
 };
 

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { FaExpand, FaPlay, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaExpand, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
-  // Modal logic states
+const ImageGallery = ({ images = [], title = "Nuestra Galería de Productos" }) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  // Handle ESC key to close modal
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape' && isFullscreen) {
@@ -14,7 +12,6 @@ const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
       }
     };
 
-    // Prevent body scroll when modal is open
     if (isFullscreen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -37,56 +34,61 @@ const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
 
   const closeFullscreen = () => {
     setIsFullscreen(false);
-    setSelectedImage(0); // Reset to first image when closing
   };
 
   return (
-    <div className="py-24 bg-white dark:bg-gray-900 relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gold-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+    <section className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden transition-colors duration-700">
+      {/* Decorative Blur Elements */}
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gold-500/[0.02] rounded-full blur-[100px] pointer-events-none"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <span className="text-gold-500 font-semibold tracking-wider uppercase text-sm">Galería Visual</span>
-          <h2 className="text-4xl md:text-5xl font-bold font-display text-gray-900 dark:text-white mt-2 mb-4">{title}</h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
-            Descubre la elegancia y el detalle en cada uno de nuestros productos a través de nuestra galería.
+      <div className="container mx-auto px-6 lg:px-20 relative z-10">
+
+        {/* Elite Header */}
+        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
+          <div className="max-w-2xl">
+            <span className="text-gold-500 font-black text-[10px] uppercase tracking-[0.4em] mb-4 block">Portafolio Visual</span>
+            <h2 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white uppercase leading-[0.9] tracking-tighter">
+              Inspiración <br /> <span className="text-gold-500 italic font-light">en cada Detalle</span>
+            </h2>
+          </div>
+          <p className="text-gray-500 dark:text-gray-400 text-lg font-medium leading-relaxed max-w-sm md:text-right">
+            Explora la estética y la ingeniería detrás de nuestros productos más exclusivos. Calidad que se puede ver.
           </p>
         </div>
 
-        {/* Masonry Grid Layout */}
+        {/* Bento-Style Masonry Grid */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
           {images.map((image, index) => (
             <div
               key={index}
-              className="break-inside-avoid relative group cursor-pointer rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500"
+              className="break-inside-avoid relative group cursor-pointer rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all duration-700"
               onClick={() => openFullscreen(index)}
             >
-              {/* Image */}
+              {/* Image with zoom effect */}
               <img
                 src={image.url}
                 alt={image.alt || `Imagen ${index + 1}`}
-                className="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                className="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out"
               />
 
-              {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              {/* Sophisticated Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-              {/* Hover Content */}
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-500 delay-100">
-                  <FaExpand className="w-5 h-5 text-white" />
+              {/* Hover Indicator */}
+              <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-white transform scale-50 group-hover:scale-100 transition-transform duration-500">
+                  <FaExpand className="w-4 h-4" />
                 </div>
               </div>
 
-              {/* Text Bottom */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-white font-bold text-lg mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 translate-y-2 group-hover:translate-y-0">
-                  {image.title || `Vista ${index + 1}`}
+              {/* Content Detail */}
+              <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="text-gold-500 text-[9px] font-black uppercase tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition-opacity delay-100">Vista Exclusiva</div>
+                <h3 className="text-white font-black text-xl uppercase tracking-tight mb-2 opacity-0 group-hover:opacity-100 transition-opacity delay-200">
+                  {image.title || `Captura 0${index + 1}`}
                 </h3>
                 {image.description && (
-                  <p className="text-gray-200 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                  <p className="text-gray-400 text-xs font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity delay-300">
                     {image.description}
                   </p>
                 )}
@@ -94,102 +96,70 @@ const ImageGallery = ({ images = [], title = "Galería de Productos" }) => {
             </div>
           ))}
         </div>
+
+        {/* Bottom Status - Minimalist */}
+        <div className="mt-16 flex items-center justify-center gap-6">
+          <div className="h-[1px] w-12 bg-gray-200 dark:bg-white/10"></div>
+          <span className="text-gray-400 dark:text-gray-600 font-bold text-[10px] uppercase tracking-[0.4em]">Fin de Galería</span>
+          <div className="h-[1px] w-12 bg-gray-200 dark:bg-white/10"></div>
+        </div>
       </div>
 
-      {/* Fullscreen Modal */}
+      {/* Modern Fullscreen Lightbox */}
       {isFullscreen && (
-        <div 
-          className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
+        <div
+          className="fixed inset-0 z-[9999] bg-black/98 backdrop-blur-xl flex items-center justify-center p-6 animate-fade-in"
           onClick={closeFullscreen}
         >
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              closeFullscreen();
-            }}
-            className="absolute top-4 right-4 z-[60] w-12 h-12 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all cursor-pointer group"
-            aria-label="Cerrar"
+            onClick={closeFullscreen}
+            className="absolute top-8 right-8 z-[60] w-14 h-14 bg-white/5 border border-white/10 text-white rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-black transition-all group"
           >
             <svg className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
 
-          {/* Main Image Container */}
-          <div 
-            className="max-w-6xl max-h-full relative"
+          <div
+            className="max-w-6xl w-full flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={images[selectedImage]?.url || ''}
-              alt={images[selectedImage]?.alt || `Imagen ${selectedImage + 1}`}
-              className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
-              loading="eager"
-            />
+            <div className="relative group/modal overflow-hidden rounded-[3rem] border border-white/10 shadow-2xl">
+              <img
+                src={images[selectedImage]?.url || ''}
+                alt={images[selectedImage]?.alt}
+                className="max-w-full max-h-[75vh] object-contain"
+              />
+            </div>
 
-            {/* Image Info */}
-            <div className="text-center mt-6 px-4">
-              <h3 className="text-white text-2xl font-bold mb-2">
-                {images[selectedImage]?.title || `Producto ${selectedImage + 1}`}
+            <div className="mt-10 text-center animate-fade-in-up">
+              <h3 className="text-white text-3xl font-black uppercase tracking-tighter mb-2">
+                {images[selectedImage]?.title}
               </h3>
-              {images[selectedImage]?.description && (
-                <p className="text-gray-300 text-lg max-w-2xl mx-auto">{images[selectedImage].description}</p>
-              )}
+              <p className="text-gray-500 font-medium text-lg max-w-2xl">{images[selectedImage]?.description}</p>
             </div>
           </div>
 
-          {/* Thumbnail Navigation */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 max-w-4xl overflow-x-auto px-4 py-2 bg-black/50 backdrop-blur-md rounded-full">
-            {images.map((image, index) => (
-              <button
-                key={index}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedImage(index);
-                }}
-                className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${index === selectedImage
-                  ? 'border-gold-500 scale-110 shadow-lg shadow-gold-500/50'
-                  : 'border-white/30 hover:border-white/60 hover:scale-105'
-                  }`}
-              >
-                <img
-                  src={image.url}
-                  alt={`Thumbnail ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </button>
-            ))}
-          </div>
-
-          {/* Navigation Arrows in Fullscreen */}
+          {/* Nav Controls */}
           {images.length > 1 && (
             <>
               <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedImage((prev) => (prev - 1 + images.length) % images.length);
-                }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all group"
-                aria-label="Anterior"
+                onClick={(e) => { e.stopPropagation(); setSelectedImage((prev) => (prev - 1 + images.length) % images.length); }}
+                className="absolute left-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-white/5 border border-white/10 text-white rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-black transition-all group"
               >
-                <FaChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform duration-300" />
+                <FaChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
               </button>
-
               <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedImage((prev) => (prev + 1) % images.length);
-                }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all group"
-                aria-label="Siguiente"
+                onClick={(e) => { e.stopPropagation(); setSelectedImage((prev) => (prev + 1) % images.length); }}
+                className="absolute right-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-white/5 border border-white/10 text-white rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-black transition-all group"
               >
-                <FaChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                <FaChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </button>
             </>
           )}
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

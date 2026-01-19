@@ -32,20 +32,20 @@ const Logo = ({
     }
   }, []);
 
-  // Size configurations - Fully Responsive
+  // Size configurations - Perfectly balanced for Navbar integration
   const sizeConfig = {
-    small: { container: 'w-10 h-10 md:w-16 md:h-16', image: 'w-full h-full' },
-    medium: { container: 'w-12 h-12 md:w-20 md:h-20', image: 'w-full h-full' },
-    large: { container: 'w-14 h-14 md:w-24 md:h-24', image: 'w-full h-full' },
-    xlarge: { container: 'w-16 h-16 md:w-28 md:h-28', image: 'w-full h-full' }
+    small: { container: 'w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 min-w-[32px] min-h-[32px]', image: 'w-full h-full' },
+    medium: { container: 'w-10 h-10 xs:w-11 xs:h-11 sm:w-12 sm:h-12 md:w-16 md:h-16 min-w-[40px] min-h-[40px]', image: 'w-full h-full' },
+    large: { container: 'w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-36 md:h-14 min-w-[48px] min-h-[48px]', image: 'w-full h-full' },
+    xlarge: { container: 'w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-48 md:h-18 min-w-[56px] min-h-[56px]', image: 'w-full h-full' }
   };
 
-  // High DPI (4K/Retina) - slightly larger base but still responsive
+  // High DPI (4K/Retina) - Enhanced clarity with same visual footprint
   const highDPIConfig = {
-    small: { container: 'w-12 h-12 md:w-20 md:h-20', image: 'w-full h-full' },
-    medium: { container: 'w-14 h-14 md:w-24 md:h-24', image: 'w-full h-full' },
-    large: { container: 'w-16 h-16 md:w-28 md:h-28', image: 'w-full h-full' },
-    xlarge: { container: 'w-20 h-20 md:w-32 md:h-32', image: 'w-full h-full' }
+    small: { container: 'w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 md:w-14 md:h-14 min-w-[36px] min-h-[36px]', image: 'w-full h-full' },
+    medium: { container: 'w-11 h-11 xs:w-12 xs:h-12 sm:w-13 sm:h-13 md:w-18 md:h-18 min-w-[44px] min-h-[44px]', image: 'w-full h-full' },
+    large: { container: 'w-14 h-14 xs:w-16 xs:h-16 sm:w-18 sm:h-18 md:w-40 md:h-16 min-w-[56px] min-h-[56px]', image: 'w-full h-full' },
+    xlarge: { container: 'w-18 h-18 xs:w-20 xs:h-20 sm:w-24 sm:h-24 md:w-56 md:h-20 min-w-[72px] min-h-[72px]', image: 'w-full h-full' }
   };
 
   const currentConfig = isHighDPI ? highDPIConfig : sizeConfig;
@@ -60,7 +60,6 @@ const Logo = ({
     items-center
     justify-center
     relative
-    z-50
     ${onClick ? 'cursor-pointer' : ''}
     ${className}
   `;

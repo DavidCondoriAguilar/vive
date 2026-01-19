@@ -1,230 +1,190 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight, FaLeaf, FaTruck, FaBuilding } from 'react-icons/fa';
 import { getWhatsAppLink } from '@/utils/constants';
-import { FaArrowRight, FaPlay, FaCheckCircle } from 'react-icons/fa';
 
 const HeroCarousel = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const containerRef = useRef(null);
 
-  // Detect mobile on resize
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const SLIDE_DURATION = 6000;
 
   const slides = [
     {
       id: 1,
-      image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=1920',
-      title: 'Fabricamos Colchones en Perú',
-      subtitle: 'Venta directa de fábrica',
-      description: 'Espuma y resortes · Mayor y menor · Lima y provincias',
-      badge: '40% OFF',
-      badgeColor: 'bg-red-500'
+      variant: 'zen',
+      image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2069',
+      title: 'Tu Salud es Nuestra Prioridad',
+      subtitle: 'Triple Protección Certificada',
+      features: ['Ozono', 'Rayos UV', 'Hermético'],
+      badge: 'BIENESTAR'
     },
     {
       id: 2,
-      image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=1920',
-      title: 'Colchones Premium',
-      subtitle: 'Calidad hotelera para tu hogar',
-      description: '10 años de garantía · Envío gratis · 100% peruano',
-      badge: 'NUEVO',
-      badgeColor: 'bg-green-500'
+      variant: 'logistics',
+      image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=2070',
+      title: 'Envíos a Todo el Perú',
+      subtitle: 'Lima, Callao y Provincias',
+      features: ['Entrega 24h', 'Flota Propia', 'Nacional'],
+      badge: 'RAPIDEZ'
     },
     {
       id: 3,
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=1920',
-      title: 'Venta por Mayor',
-      subtitle: 'Precios exclusivos B2B',
-      description: 'Hoteles · Tiendas · Distribuidores · Despacho nacional',
-      badge: 'B2B',
-      badgeColor: 'bg-blue-600'
+      variant: 'business',
+      image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=2071',
+      title: 'Venta por Mayor & Corporativo',
+      subtitle: 'Directo de nuestra Fábrica',
+      features: ['Ahorro -50%', 'Hoteles', 'Tiendas'],
+      badge: 'NEGOCIOS'
     }
   ];
 
   useEffect(() => {
-    if (!isAutoPlay) return;
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, isMobile ? 4000 : 5000); // Más rápido en mobile
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
-    return () => clearInterval(interval);
-  }, [isAutoPlay, slides.length, isMobile]);
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setProgress(0);
+  }, [slides.length]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setProgress(0);
+  }, [slides.length]);
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
+    setProgress(0);
     setIsAutoPlay(false);
   };
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-    setIsAutoPlay(false);
-  };
+  useEffect(() => {
+    let interval;
+    let startTime = Date.now();
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-    setIsAutoPlay(false);
-  };
+    if (isAutoPlay) {
+      interval = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const currentProgress = (elapsed / SLIDE_DURATION) * 100;
 
-  const ctaLink = getWhatsAppLink("Hola, estoy interesado en comprar colchones directamente de fábrica.");
+        if (currentProgress >= 100) {
+          nextSlide();
+          startTime = Date.now();
+          setProgress(0);
+        } else {
+          setProgress(currentProgress);
+        }
+      }, 50);
+    }
 
+    return () => clearInterval(interval);
+  }, [isAutoPlay, nextSlide]);
 
   return (
-    <section className="relative h-[600px] md:h-[700px] overflow-hidden premium-section futuristic-lines">
-      {/* Modern Background Pattern */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-10 z-0">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }}></div>
-      </div>
-
-      {/* Carousel Container */}
-      <div className="relative h-full z-10">
+    <section
+      className={`relative w-full h-[100dvh] overflow-hidden bg-black transition-opacity duration-1000 group/carousel ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+      ref={containerRef}
+      onMouseEnter={() => setIsAutoPlay(false)}
+      onMouseLeave={() => setIsAutoPlay(true)}
+    >
+      {/* 100% Background Slides */}
+      <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
-              }`}
+            className={`absolute inset-0 transition-all duration-1000 ease-in-out
+              ${index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-110 pointer-events-none'}
+            `}
           >
-            {/* Background Image with Modern Overlay */}
-            <div className="relative h-full">
-              <img
-                src={slide.image}
-                alt={slide.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-800/80 to-transparent backdrop-blur-[2px]"></div>
+            <img src={slide.image} alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70"></div>
+          </div>
+        ))}
+      </div>
+
+      {/* ULTRA MINIMALIST CONTENT BOX - FIXED FOR OVERFLOW */}
+      <div className="relative w-full h-full flex flex-col items-center justify-center pt-16 pb-20 px-6">
+        {slides.map((slide, index) => (
+          <div
+            key={`content-${slide.id}`}
+            className={`absolute flex flex-col items-center text-center transition-all duration-1000 max-w-5xl
+              ${index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}
+            `}
+          >
+            {/* Adjusted Typography to prevent overflow in all resolutions */}
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 leading-tight uppercase tracking-tighter drop-shadow-2xl transition-all duration-700">
+              {slide.title}
+            </h1>
+
+            <h2 className="text-base md:text-xl font-medium text-gold-400 mb-8 md:mb-10 tracking-[0.2em] uppercase py-2 border-y border-gold-500/10">
+              {slide.subtitle}
+            </h2>
+
+            {/* Premium Tags - Minimal */}
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12">
+              {slide.features.map((feature, fIdx) => (
+                <div key={fIdx} className="bg-white/5 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10">
+                  <span className="text-[8px] md:text-[10px] font-bold text-white uppercase tracking-[0.2em]">{feature}</span>
+                </div>
+              ))}
             </div>
 
-            {/* Content */}
-            <div className="absolute inset-0 flex items-center">
-              <div className="container mx-auto px-6 lg:px-20">
-                <div className="max-w-2xl">
-
-                  {/* Badge */}
-                  <div className={`inline-block ${slide.badgeColor} text-white px-6 py-3 rounded-full text-sm font-bold mb-6 backdrop-blur-sm border border-white/20 shadow-lg`}>
-                    {slide.badge}
-                  </div>
-
-                  {/* Title */}
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-display text-white mb-4 leading-tight drop-shadow-lg">
-                    {slide.title}
-                  </h1>
-
-                  {/* Subtitle */}
-                  <h2 className="text-2xl md:text-3xl font-sans tracking-wide text-gold-400 mb-4 drop-shadow-md">
-                    {slide.subtitle}
-                  </h2>
-
-                  {/* Description */}
-                  <div className="flex flex-wrap gap-4 mb-8 text-gray-300 font-sans">
-                    {slide.description.split(' · ').map((item, i) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <FaCheckCircle className="w-4 h-4 text-gold-400" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* CTA Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Link
-                      to="/catalogo"
-                      className="inline-flex items-center gap-3 bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-lg font-sans font-bold text-lg transition-all hover:scale-105 shadow-xl backdrop-blur-sm border border-gold-400/30"
-                    >
-                      Comprar ahora
-                      <FaArrowRight className="w-5 h-5" />
-                    </Link>
-
-                    <a
-                      href={ctaLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border-2 border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-gray-900 px-8 py-4 rounded-lg font-sans font-bold text-lg transition-all hover:scale-105 shadow-lg"
-                    >
-                      Cotizar por mayor
-                      <FaArrowRight className="w-5 h-5" />
-                    </a>
-                  </div>
-                </div>
-              </div>
+            {/* Direct Action Buttons - Large & Clear */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6">
+              <button
+                onClick={() => navigate('/catalogo')}
+                className="w-56 sm:w-auto bg-gold-500 hover:bg-gold-600 text-black font-black px-8 py-3.5 rounded-full transition-all shadow-2xl uppercase tracking-[0.1em] text-[10px] md:text-xs"
+              >
+                Ver Catálogo
+              </button>
+              <a
+                href={getWhatsAppLink(`Hola Sueño Dorado, estoy interesado en recibir información sobre ${slide.title}.`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-56 sm:w-auto bg-transparent hover:bg-white/10 text-white border border-white/40 font-bold px-8 py-3.5 rounded-full transition-all uppercase tracking-[0.1em] text-[10px] md:text-xs flex items-center justify-center"
+              >
+                WhatsApp
+              </a>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Navigation Arrows - Hidden on Mobile */}
-      {!isMobile && (
-        <>
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all z-20 border border-white/20"
-            aria-label="Anterior"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all z-20 border border-white/20"
-            aria-label="Siguiente"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </>
-      )}
-
-      {/* Dots Indicator - Subtle and Minimal */}
-      <div className={`absolute flex z-20 transition-all duration-300 ${
-        isMobile 
-          ? 'bottom-4 left-1/2 -translate-x-1/2 gap-1' 
-          : 'bottom-8 left-1/2 -translate-x-1/2 gap-2'
-      }`}>
+      {/* Minimalism Indicators */}
+      <div className="absolute bottom-12 left-0 w-full flex justify-center items-center gap-4">
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => !isMobile && goToSlide(index)}
-            className={`rounded-full transition-all duration-300 ${
-              index === currentSlide
-                ? isMobile
-                  ? 'w-2 h-2 bg-white/80 shadow-lg'
-                  : 'w-8 h-2 bg-gold-500 shadow-lg shadow-gold-500/50'
-                : isMobile
-                  ? 'w-2 h-2 bg-white/40 hover:bg-white/60'
-                  : 'w-2 h-2 bg-white/30 hover:bg-white/50'
-            }`}
-            aria-label={`Slide ${index + 1}`}
+            onClick={() => goToSlide(index)}
+            className={`h-[3px] transition-all duration-500 rounded-full
+              ${index === currentSlide ? 'w-16 bg-gold-500' : 'w-8 bg-white/20'}
+            `}
           />
         ))}
       </div>
 
-      {/* Auto-play Toggle - Hidden on Mobile */}
+      {/* Simplified Nav Arrows */}
       {!isMobile && (
-        <button
-          onClick={() => setIsAutoPlay(!isAutoPlay)}
-          className="absolute bottom-8 right-8 w-10 h-10 bg-white/10 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all z-20 border border-white/20"
-          aria-label={isAutoPlay ? 'Pausar' : 'Reproducir'}
-        >
-          {isAutoPlay ? (
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <rect x="6" y="4" width="4" height="16" />
-              <rect x="14" y="4" width="4" height="16" />
-            </svg>
-          ) : (
-            <FaPlay className="w-4 h-4 ml-0.5" />
-          )}
-        </button>
+        <>
+          <button onClick={prevSlide} className="absolute left-10 top-1/2 -translate-y-1/2 text-white/30 hover:text-gold-500 transition-colors">
+            <FaChevronLeft size={30} />
+          </button>
+          <button onClick={nextSlide} className="absolute right-10 top-1/2 -translate-y-1/2 text-white/30 hover:text-gold-500 transition-colors">
+            <FaChevronRight size={30} />
+          </button>
+        </>
       )}
     </section>
   );

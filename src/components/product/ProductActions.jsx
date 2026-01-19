@@ -1,13 +1,13 @@
 import React from 'react';
 import { PrimaryButton, SecondaryButton } from '@/components/ui/Buttons';
+import { getWhatsAppLink } from '@/utils/constants';
 
-const ProductActions = ({ 
-    product, 
-    selectedSize, 
-    onSpecsClick 
+const ProductActions = ({
+    product,
+    selectedSize,
+    onSpecsClick
 }) => {
-    const whatsappMessage = `Hola, quiero comprar el ${product.name} en tamaño ${selectedSize}.`;
-    const whatsappUrl = `https://wa.me/51989223448?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = getWhatsAppLink(`Hola Sueño Dorado, estoy interesado en comprar el ${product.name}${selectedSize ? ` en tamaño ${selectedSize}` : ''}.`);
 
     return (
         <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -19,7 +19,7 @@ const ProductActions = ({
             >
                 Comprar Ahora
             </PrimaryButton>
-            <SecondaryButton 
+            <SecondaryButton
                 onClick={onSpecsClick}
                 className="justify-center"
             >

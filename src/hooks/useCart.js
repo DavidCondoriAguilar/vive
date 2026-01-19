@@ -61,7 +61,6 @@ export const useCart = () => {
 
     // Mostrar notificación (opcional)
     setIsCartOpen(true);
-    setTimeout(() => setIsCartOpen(false), 3000);
   };
 
   // Eliminar producto del carrito
@@ -118,7 +117,7 @@ export const useCart = () => {
       const price = item.selectedSize ? item.sizes?.[item.selectedSize] || item.price : item.price;
       const validPrice = formatPrice(price);
       const sizeText = item.selectedSize ? ` - Talla: ${item.selectedSize}` : '';
-      
+
       message += `${index + 1}. *${item.name}*${sizeText}\n`;
       message += `   - Precio: S/. ${validPrice.toFixed(2)}\n`;
       message += `   - Cantidad: ${item.quantity}\n`;
@@ -148,7 +147,7 @@ export const useCart = () => {
     const message = generateWhatsAppMessage();
     const whatsappLink = getWhatsAppLink(message);
     window.open(whatsappLink, '_blank');
-    
+
     // Opcional: Limpiar carrito después de procesar
     // clearCart();
   };

@@ -2,209 +2,314 @@ export const CATEGORIES = [
     {
         id: 'colchones',
         name: 'Colchones',
-        description: 'Colchones de espuma y resortes para todas las medidas.',
+        description: 'Excelencia en descanso con tecnología anatómica y resortes pocket.',
         image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800',
-        subcategories: ['Espuma', 'Resortes']
+        subcategories: ['Luxury', 'Premium', 'Classic', 'Professional']
     },
     {
-        id: 'tarimas',
-        name: 'Tarimas',
-        description: 'Bases sólidas y funcionales para tu colchón.',
+        id: 'dormitorio',
+        name: 'Dormitorio',
+        description: 'Bases y cabeceras de diseño que elevan el estilo de tu habitación.',
         image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=800',
-        subcategories: ['Madera', 'Metal']
+        subcategories: ['Box Tarimas', 'Cabeceras']
     },
     {
         id: 'cunas',
-        name: 'Cunas',
-        description: 'Seguridad y confort para los más pequeños.',
+        name: 'Línea Kids',
+        description: 'Cuidado y ternura para el descanso de los más pequeños.',
         image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=800',
-        subcategories: ['Infantil', 'Resortes', 'Espuma']
+        subcategories: ['Infantil', 'Cunas']
     },
     {
-        id: 'almohadas',
-        name: 'Almohadas',
-        description: 'Complemento perfecto para tu descanso.',
-        image: 'https://images.unsplash.com/photo-1629949009765-40f745a55111?auto=format&fit=crop&q=80&w=800',
-        subcategories: ['Espuma', 'Plumas', 'Antialérgicas']
+        id: 'muebles',
+        name: 'Muebles',
+        description: 'Sofás y seccionales de alta gama para el confort total en casa.',
+        image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=800',
+        subcategories: ['Lineal', 'Seccional']
     }
 ];
 
 export const ENHANCED_CATALOG = [
-    // COLCHONES DE ESPUMA
+    // --- CLASSIC COLLECTION (BLUE GROUP) ---
     {
-        id: 'espuma-1pl',
-        name: 'Colchón Espuma 1 Plaza',
-        category: 'colchones',
-        type: 'espuma',
-        price: 399,
-        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=400',
-        description: 'Espuma de alta densidad para descanso óptimo',
-        sizes: ['1 Plz'],
+        id: 'goldencito-anatomico',
+        name: 'Goldencito Anatómico',
+        category: 'classic',
+        type: 'Anatómico',
+        price: 799,
+        image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=600',
+        description: 'Soporte anatómico confiable para el descanso diario.',
+        sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
+        features: ['Tejido Suave', 'Durabilidad', 'Anatómico'],
+        badge: 'Clásico'
+    },
+    {
+        id: 'goldencito-anatomico-mp',
+        name: 'Goldencito Anatómico MP',
+        category: 'classic',
+        type: 'Marco Poliuretano',
+        price: 899,
+        image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=600',
+        description: 'Versión reforzada con marco de poliuretano para mayor estabilidad.',
+        sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
+        features: ['Marco Reforzado', 'Estabilidad', 'MP System'],
+        badge: 'Popular'
+    },
+    {
+        id: 'classic-anatomico',
+        name: 'Classic Anatómico',
+        category: 'classic',
+        type: 'Anatómico',
+        price: 849,
+        image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=600',
+        description: 'El diseño tradicional con la garantía de Sueño Dorado.',
+        sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
+        features: ['Tradicional', 'Confortable'],
+        badge: 'Tradición'
+    },
+    {
+        id: 'infinito-mp',
+        name: 'Infinito MP',
+        category: 'classic',
+        type: 'Marco Poliuretano',
+        price: 999,
+        image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=600',
+        description: 'Resistencia infinita y confort equilibrado con sistema MP.',
+        sizes: ['1.5 PLZ', '2 PLZ'],
+        features: ['Resistencia', 'Larga Vida'],
+        badge: 'Duradero'
+    },
+    {
+        id: 'matrimonial',
+        name: 'Matrimonial',
+        category: 'classic',
+        type: 'Residencial',
+        price: 1099,
+        image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=600',
+        description: 'Ideal para parejas, ofreciendo un balance perfecto entre firmeza y suavidad.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Balanceado', 'Familiar'],
+        badge: 'Hogar'
+    },
+
+    // --- PREMIUM COLLECTION (ORANGE GROUP) ---
+    {
+        id: 'pasiones-one-pillow',
+        name: 'Pasiones One Pillow',
+        category: 'premium',
+        type: 'One Pillow',
+        price: 1299,
+        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=600',
+        description: 'Tela Tricot de tacto sedoso y una capa superior de confort única.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'MP 1.5 PLZ', 'MP 2 PLZ'],
+        features: ['Tela Tricot', 'Suavidad Premium'],
+        badge: 'Confort'
+    },
+    {
+        id: 'pasiones-pt-mp',
+        name: 'Pasiones P/T MP',
+        category: 'premium',
+        type: 'Pillow Top MP',
+        price: 1399,
+        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=600',
+        description: 'Pillow Top de alta densidad combinado con marco de poliuretano.',
+        sizes: ['1.5 PLZ', '2 PLZ'],
+        features: ['Pillow Top', 'Soporte MP'],
+        badge: 'Recomendado'
+    },
+    {
+        id: 'golden-dream-mp',
+        name: 'Golden Dream MP',
+        category: 'premium',
+        type: 'Marco Poliuretano',
+        price: 1549,
+        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=600',
+        description: 'El estándar de oro en colchones con marco de poliuretano.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Lujo Accesible', 'Estabilidad Total'],
         badge: 'Más Vendido'
     },
     {
-        id: 'espuma-1.5pl',
-        name: 'Colchón Espuma 1.5 Plazas',
-        category: 'colchones',
-        type: 'espuma',
-        price: 499,
-        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400',
-        description: 'Ideal para parejas o espacio individual amplio',
-        sizes: ['1.5 Plz']
+        id: 'siempre-mp-one-pillow',
+        name: 'Siempre MP One Pillow',
+        category: 'premium',
+        type: 'One Pillow MP',
+        price: 1449,
+        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=600',
+        description: 'Diseñado para durar "siempre", con el confort de una almohada integrada.',
+        sizes: ['1.5 PLZ', '2 PLZ'],
+        features: ['Durabilidad+', 'Confort Continuo'],
+        badge: 'Garantizado'
     },
     {
-        id: 'espuma-2pl',
-        name: 'Colchón Espuma 2 Plazas',
-        category: 'colchones',
-        type: 'espuma',
-        price: 599,
-        image: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&q=80&w=400',
-        description: 'Amplio espacio para máximo confort',
-        sizes: ['2 Plz']
+        id: 'siempre-mp-pt',
+        name: 'Siempre MP P/T',
+        category: 'premium',
+        type: 'Pillow Top MP',
+        price: 1599,
+        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=600',
+        description: 'Máximo acolchado Pillow Top para un descanso nivel superior.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Extra Comfort', 'Pillow Top'],
+        badge: 'Premium'
+    },
+
+    // --- LUXURY COLLECTION (ORANGE/BLACK GROUP) ---
+    {
+        id: 'golden-dream-black',
+        name: 'Golden Dream MP Black',
+        category: 'luxury',
+        type: 'Luxury MP',
+        price: 2699,
+        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=600',
+        description: 'Edición Black con acabados de ultra lujo y soporte avanzado.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Black Edition', 'Elite Foam', 'Anti-Acaros'],
+        badge: 'Exclusivo'
     },
     {
-        id: 'espuma-queen',
-        name: 'Colchón Espuma Queen',
-        category: 'colchones',
-        type: 'espuma',
+        id: 'absolut-marco-sellado',
+        name: 'Absolut Marco Sellado P/T',
+        category: 'luxury',
+        type: 'Marco Sellado',
+        price: 2299,
+        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=600',
+        description: 'Tecnología de marco sellado para una higiene y soporte incomparables.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Higiene Total', 'Soporte Hermético'],
+        badge: 'Innovación'
+    },
+    {
+        id: 'ternura-pocket',
+        name: 'Ternura Pocket',
+        category: 'luxury',
+        type: 'Resortes Pocket',
+        price: 2149,
+        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=600',
+        description: 'Independencia de movimiento absoluta con resortes embolsados.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Resortes Pocket', 'Cero Movimiento'],
+        badge: 'Elite'
+    },
+
+    // --- PROFESSIONAL COLLECTION (DARK GREEN GROUP) ---
+    {
+        id: 'pasiones-orto-lujo',
+        name: 'Pasiones Orto D Lujo',
+        category: 'professional',
+        type: 'Ortopédico Lujo',
+        price: 1799,
+        image: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?auto=format&fit=crop&q=80&w=600',
+        description: 'Cuidado ortopédico especializado con acabados en tela Tricot.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Ortopédico', 'Tela Tricot', 'Salud'],
+        badge: 'Salud'
+    },
+    {
+        id: 'reconciliacion-pocket',
+        name: 'Reconciliación Pocket',
+        category: 'professional',
+        type: 'Ortopédico Pocket',
+        price: 1999,
+        image: 'https://images.unsplash.com/photo-1631049035182-249067d7618e?auto=format&fit=crop&q=80&w=600',
+        description: 'La unión perfecta entre salud ortopédica y tecnología de resortes pocket.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Pocket Health', 'Columna Protegida'],
+        badge: 'Especializado'
+    },
+
+    // --- KIDS LINE (LIGHT ORANGE GROUP) ---
+    {
+        id: 'cuna-travesuras',
+        name: 'Cuna Travesuras',
+        category: 'classic',
+        type: 'Infantil',
+        price: 459,
+        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=600',
+        description: 'Tela infantil hipoalergénica para los más pequeños.',
+        sizes: ['Infantil'],
+        features: ['Hipoalergénico', 'Tela Infantil'],
+        badge: 'Kids'
+    },
+    {
+        id: 'cuna-golden-dream',
+        name: 'Cuna Golden Dream',
+        category: 'classic',
+        type: 'Infantil',
+        price: 559,
+        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=600',
+        description: 'Confort de punto premium para un crecimiento saludable.',
+        sizes: ['Infantil'],
+        features: ['Tela de Punto', 'Ergonómico'],
+        badge: 'Kids Premium'
+    },
+
+    // --- FURNITURE & ACCESSORIES (LIGHT GREEN/BLUE GROUP) ---
+    {
+        id: 'box-tarima-universal',
+        name: 'Box Tarima Universal',
+        category: 'muebles',
+        type: 'Base',
         price: 699,
-        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=400',
-        description: 'Tamaño premium para descanso de lujo',
-        sizes: ['Queen']
+        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=800',
+        description: 'La base perfecta para cualquier colchón de nuestra línea.',
+        sizes: ['1 1/2 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Universal', 'Madera Reforzada'],
+        badge: 'Base'
     },
     {
-        id: 'espuma-king',
-        name: 'Colchón Espuma King',
-        category: 'colchones',
-        type: 'espuma',
-        price: 799,
-        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=400',
-        description: 'Máximo espacio y confort para pareja',
-        sizes: ['King']
-    },
-
-    // COLCHONES DE RESORTES
-    {
-        id: 'resorte-1pl',
-        name: 'Colchón Resortes 1 Plaza',
-        category: 'colchones',
-        type: 'resortes',
-        price: 449,
-        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=400',
-        description: 'Sistema de resortes para soporte superior',
-        sizes: ['1 Plz']
-    },
-    {
-        id: 'resorte-1.5pl',
-        name: 'Colchón Resortes 1.5 Plazas',
-        category: 'colchones',
-        type: 'resortes',
-        price: 549,
-        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=400',
-        description: 'Resortes ensacados para movimiento independiente',
-        sizes: ['1.5 Plz']
-    },
-    {
-        id: 'resorte-2pl',
-        name: 'Colchón Resortes 2 Plazas',
-        category: 'colchones',
-        type: 'resortes',
-        price: 649,
-        image: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&q=80&w=400',
-        description: 'Doble sistema de resortes para máxima durabilidad',
-        sizes: ['2 Plz']
-    },
-    {
-        id: 'resorte-queen',
-        name: 'Colchón Resortes Queen',
-        category: 'colchones',
-        type: 'resortes',
-        price: 749,
-        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=400',
-        description: 'Sistema premium de resortes para lujo',
-        sizes: ['Queen']
-    },
-    {
-        id: 'resorte-king',
-        name: 'Colchón Resortes King',
-        category: 'colchones',
-        type: 'resortes',
-        price: 849,
-        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=400',
-        description: 'Máximo confort con sistema de resortes superior',
-        sizes: ['King']
-    },
-
-    // TARIMAS
-    {
-        id: 'tarima-madera-1.5pl',
-        name: 'Tarima Madera 1.5 Plazas',
-        category: 'tarimas',
-        type: 'madera',
-        price: 299,
-        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=400',
-        description: 'Base de madera maciza para colchón 1.5 plazas',
-        sizes: ['1.5 Plz']
-    },
-    {
-        id: 'tarima-metal-2pl',
-        name: 'Tarima Metal 2 Plazas',
-        category: 'tarimas',
-        type: 'metal',
-        price: 349,
-        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=400',
-        description: 'Base metálica resistente con diseño moderno',
-        sizes: ['2 Plz']
-    },
-
-    // CUNAS
-    {
-        id: 'cuna-infantil',
-        name: 'Cuna Infantil con Resortes',
-        category: 'cunas',
-        type: 'resortes',
+        id: 'cabecera-capitone',
+        name: 'Cabecera Capitoné',
+        category: 'muebles',
+        type: 'Cabecera',
         price: 599,
-        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=400',
-        description: 'Seguridad y confort para bebé con sistema de resortes',
-        sizes: ['Infantil']
+        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=800',
+        description: 'Elegancia y distinción con acabado artesanal capitoné.',
+        sizes: ['1.5 PLZ', '2 PLZ'],
+        features: ['Artesanal', 'Elegante'],
+        badge: 'Estilo'
     },
     {
-        id: 'cuna-espuma',
-        name: 'Cuna con Espuma',
-        category: 'cunas',
-        type: 'espuma',
-        price: 499,
-        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=400',
-        description: 'Base de espuma suave y segura para bebé',
-        sizes: ['Infantil']
-    },
-
-    // ALMOHADAS
-    {
-        id: 'almohada-espuma',
-        name: 'Almohada Espuma',
-        category: 'almohadas',
-        type: 'espuma',
-        price: 89,
-        image: 'https://images.unsplash.com/photo-1629949009765-40f745a55111?auto=format&fit=crop&q=80&w=400',
-        description: 'Almohada de espuma viscoelástica ergonómica',
-        sizes: ['Standard']
+        id: 'cabecera-brazo',
+        name: 'Cabecera con Brazo',
+        category: 'muebles',
+        type: 'Cabecera',
+        price: 749,
+        image: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=800',
+        description: 'Diseño envolvente con brazos laterales para un look moderno.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Moderno', 'Envolvente'],
+        badge: 'Tendencia'
     },
     {
-        id: 'almohada-antialergica',
-        name: 'Almohada Antialérgica',
-        category: 'almohadas',
-        type: 'antialergica',
-        price: 99,
-        image: 'https://images.unsplash.com/photo-1629949009765-40f745a55111?auto=format&fit=crop&q=80&w=400',
-        description: 'Protección total contra ácaros y alérgenos',
-        sizes: ['Standard']
+        id: 'juego-mueble-lineal',
+        name: 'Juego de Mueble Lineal 3,2',
+        category: 'muebles',
+        type: 'Sala',
+        price: 3899,
+        image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=800',
+        description: 'Incluye cojines decorativos. Confort y estilo para tu living.',
+        sizes: ['3 cuerpos + 2 cuerpos'],
+        features: ['Cojines Decorativos', 'Lino Premium'],
+        badge: 'Sala'
+    },
+    {
+        id: 'mueble-luxe-seccional',
+        name: 'Mueble de Luxe Seccional',
+        category: 'muebles',
+        type: 'Sala',
+        price: 5499,
+        image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=800',
+        description: 'La máxima comodidad en un seccional de lujo para toda la familia.',
+        sizes: ['Seccional Grande'],
+        features: ['Seccional', 'Espuma Soft'],
+        badge: 'Exclusivo'
     }
 ];
 
 export const FEATURED_PRODUCTS = ENHANCED_CATALOG;
 
-// Load from environment variables with fallback to defaults
+// WhatsApp Number
 export const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '51989223448';
 export const BRAND_NAME = import.meta.env.VITE_BRAND_NAME || 'Sueño Dorado';
 export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
@@ -212,8 +317,6 @@ export const PRODUCTION_URL = import.meta.env.VITE_PRODUCTION_URL || 'https://su
 
 /**
  * Generate WhatsApp link with message
- * @param {string} message - Message to send
- * @returns {string} WhatsApp link
  */
 export const getWhatsAppLink = (message = '') => {
     const encodedMessage = encodeURIComponent(
@@ -224,11 +327,9 @@ export const getWhatsAppLink = (message = '') => {
 
 /**
  * Generate email link
- * @param {string} subject - Email subject
- * @param {string} body - Email body
- * @returns {string} Email link
  */
 export const getEmailLink = (subject = '', body = '') => {
     const email = import.meta.env.VITE_BRAND_EMAIL || 'info@suenodorado.pe';
     return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 };
+

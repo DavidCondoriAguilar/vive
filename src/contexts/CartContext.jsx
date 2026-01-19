@@ -38,7 +38,7 @@ const cartReducer = (state, action) => {
   switch (action.type) {
     case CART_ACTIONS.ADD_TO_CART: {
       const { product, quantity = 1, selectedSize = null } = action.payload;
-      
+
       const existingItem = state.items.find(
         item => item.id === product.id && item.selectedSize === selectedSize
       );
@@ -86,7 +86,7 @@ const cartReducer = (state, action) => {
 
     case CART_ACTIONS.UPDATE_QUANTITY: {
       const { productId, quantity, selectedSize = null } = action.payload;
-      
+
       if (quantity <= 0) {
         return {
           ...state,
@@ -185,35 +185,26 @@ export const CartProvider = ({ children }) => {
     }
   }, [state.items]);
 
-  // Auto-close cart after 3 seconds when opened by adding items
-  useEffect(() => {
-    if (state.isOpen) {
-      const timer = setTimeout(() => {
-        dispatch({ type: CART_ACTIONS.SET_CART_OPEN, payload: false });
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [state.items]); // Only reset timer when items change
 
   // Cart actions
   const addToCart = (product, quantity = 1, selectedSize = null) => {
-    dispatch({ 
-      type: CART_ACTIONS.ADD_TO_CART, 
-      payload: { product, quantity, selectedSize } 
+    dispatch({
+      type: CART_ACTIONS.ADD_TO_CART,
+      payload: { product, quantity, selectedSize }
     });
   };
 
   const removeFromCart = (productId, selectedSize = null) => {
-    dispatch({ 
-      type: CART_ACTIONS.REMOVE_FROM_CART, 
-      payload: { productId, selectedSize } 
+    dispatch({
+      type: CART_ACTIONS.REMOVE_FROM_CART,
+      payload: { productId, selectedSize }
     });
   };
 
   const updateQuantity = (productId, quantity, selectedSize = null) => {
-    dispatch({ 
-      type: CART_ACTIONS.UPDATE_QUANTITY, 
-      payload: { productId, quantity, selectedSize } 
+    dispatch({
+      type: CART_ACTIONS.UPDATE_QUANTITY,
+      payload: { productId, quantity, selectedSize }
     });
   };
 
@@ -231,9 +222,9 @@ export const CartProvider = ({ children }) => {
 
   // Notification methods
   const showNotification = (productName, quantity, size = null) => {
-    dispatch({ 
-      type: CART_ACTIONS.SHOW_NOTIFICATION, 
-      payload: { productName, quantity, size } 
+    dispatch({
+      type: CART_ACTIONS.SHOW_NOTIFICATION,
+      payload: { productName, quantity, size }
     });
   };
 
@@ -244,7 +235,12 @@ export const CartProvider = ({ children }) => {
   // Getters
   const getTotal = () => {
     return state.items.reduce((total, item) => {
-      const price = item.selectedSize ? item.sizes?.[item.selectedSize] || item.price : item.price;
+      let price;
+      if (item.selectedSize && item.sizes && item.sizes[item.selectedSize]) {
+        price = item.sizes[item.selectedSize];
+      } else {
+        price = item.price;
+      }
       const validPrice = formatPrice(price);
       return total + (validPrice * item.quantity);
     }, 0);
@@ -261,10 +257,15 @@ export const CartProvider = ({ children }) => {
     message += '*Detalle del Pedido:*\n\n';
 
     state.items.forEach((item, index) => {
-      const price = item.selectedSize ? item.sizes?.[item.selectedSize] || item.price : item.price;
+      let price;
+      if (item.selectedSize && item.sizes && item.sizes[item.selectedSize]) {
+        price = item.sizes[item.selectedSize];
+      } else {
+        price = item.price;
+      }
       const validPrice = formatPrice(price);
       const sizeText = item.selectedSize ? ` - Talla: ${item.selectedSize}` : '';
-      
+
       message += `${index + 1}. *${item.name}*${sizeText}\n`;
       message += `   - Precio: S/. ${validPrice.toFixed(2)}\n`;
       message += `   - Cantidad: ${item.quantity}\n`;
@@ -300,7 +301,7 @@ export const CartProvider = ({ children }) => {
     cartItems: state.items,
     isCartOpen: state.isOpen,
     notification: state.notification,
-    
+
     // Actions
     addToCart,
     removeFromCart,
@@ -308,11 +309,11 @@ export const CartProvider = ({ children }) => {
     clearCart,
     toggleCart,
     setIsCartOpen,
-    
+
     // Notification methods
     showNotification,
     hideNotification,
-    
+
     // Getters
     getTotal,
     getTotalItems,

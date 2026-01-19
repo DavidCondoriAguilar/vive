@@ -176,7 +176,7 @@ const MainLayout = ({ children }) => {
                             <form className="relative w-full" onSubmit={(e) => e.preventDefault()}>
                                 <input
                                     type="email"
-                                    placeholder="Email"
+                                    placeholder="Correo electrónico"
                                     className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg py-3 pl-4 pr-10 text-sm outline-none focus:border-gold-500 transition-colors"
                                 />
                                 <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-gold-500 text-white rounded-md hover:bg-gold-600 transition-colors">
