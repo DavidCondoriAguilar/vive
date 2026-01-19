@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MdOutlineArrowForward, MdOutlineArrowBack } from 'react-icons/md';
-import { FaEye } from 'react-icons/fa';
+import { PrimaryButton } from '@/components/ui/Buttons';
 import { useDragCarousel } from '@/hooks/useDragCarousel';
-import ProductSpecsModal from '@/components/product/ProductSpecsModal';
+import { CATEGORIES } from '@/utils/constants';
 
-/**
- * Product Carousel Component
- * Displays products in a clean, scrollable carousel format with drag functionality and filters
- */
-const ProductCarousel = ({ products = [], title = "Nuestros Productos" }) => {
+const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
   const [selectedCategory, setSelectedCategory] = useState('Todos');
-  const [selectedSize, setSelectedSize] = useState('Todas las medidas');
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [isSpecsModalOpen, setIsSpecsModalOpen] = useState(false);
 
-  // Responsive items per view
   useEffect(() => {
     const updateItemsPerView = () => {
       if (window.innerWidth < 640) setItemsPerView(1);
@@ -25,298 +17,161 @@ const ProductCarousel = ({ products = [], title = "Nuestros Productos" }) => {
       else if (window.innerWidth < 1024) setItemsPerView(3);
       else setItemsPerView(4);
     };
-
     updateItemsPerView();
     window.addEventListener('resize', updateItemsPerView);
     return () => window.removeEventListener('resize', updateItemsPerView);
   }, []);
 
-  // Filter products based on selected filters
   const filteredProducts = products.filter(product => {
-    const categoryMatch = selectedCategory === 'Todos' || product.type === selectedCategory.toLowerCase();
-    const sizeMatch = selectedSize === 'Todas las medidas' || product.size === selectedSize;
-    return categoryMatch && sizeMatch;
+    return selectedCategory === 'Todos' || product.category === selectedCategory.toLowerCase();
   });
 
   const canGoNext = currentIndex < filteredProducts.length - itemsPerView;
   const canGoPrev = currentIndex > 0;
 
-  const handleNext = () => {
-    if (canGoNext) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (canGoPrev) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
   const handleSlideChange = (direction) => {
-    if (direction === 'next' && canGoNext) {
-      handleNext();
-    } else if (direction === 'prev' && canGoPrev) {
-      handlePrev();
-    }
+    if (direction === 'next' && canGoNext) setCurrentIndex(prev => prev + 1);
+    else if (direction === 'prev' && canGoPrev) setCurrentIndex(prev => prev - 1);
   };
 
   const { carouselRef, isDragging, dragDistance, handlers } = useDragCarousel(handleSlideChange);
 
-  // Reset index when filters change
-  useEffect(() => {
-    setCurrentIndex(0);
-  }, [selectedCategory, selectedSize]);
-
-  if (!products.length) return null;
+  useEffect(() => setCurrentIndex(0), [selectedCategory]);
 
   return (
-    <>
-    <div className="py-12">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 dark:text-white mb-2">
+    <div className="py-24">
+      {/* Header & Controls - High Visibility */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-12 px-4">
+        <div className="max-w-xl">
+          <h2 className="text-4xl lg:text-5xl font-display font-black text-gray-900 dark:text-white uppercase leading-tight tracking-tighter mb-4">
             {title}
           </h2>
-          <p className="text-gray-700 dark:text-gray-300">
-            Calidad directa de fábrica para tu descanso perfecto
+          <div className="flex items-center gap-4 mb-4">
+            <div className="flex-1 h-[2px] bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gold-500 transition-all duration-1000 ease-out shadow-[0_0_10px_#d4af37]"
+                style={{ width: `${((currentIndex + itemsPerView) / filteredProducts.length) * 100}%` }}
+              />
+            </div>
+            <span className="text-[10px] font-black text-gold-500 uppercase tracking-widest whitespace-nowrap">
+              {currentIndex + itemsPerView} / {filteredProducts.length}
+            </span>
+          </div>
+          <p className="text-gray-500 dark:text-gray-400 font-medium text-sm">
+            Explora nuestra colección selecta con un solo clic.
           </p>
         </div>
 
-        <Link
-          to="/catalogo"
-          className="hidden sm:flex items-center gap-2 text-gold-600 hover:text-gold-700 font-medium transition-colors"
-        >
-          Ver todo el catálogo
-          <MdOutlineArrowForward className="w-4 h-4" />
-        </Link>
-      </div>
-
-      {/* Filters */}
-      <div className="mb-8 space-y-4">
-        {/* Category Filter */}
-        <div>
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Filtros:</h3>
-          <div className="flex flex-wrap gap-2">
-            {['Todos', 'Espuma', 'Resortes'].map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  selectedCategory === category
-                    ? 'bg-gold-500 text-white'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Size Filter */}
-        <div>
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Todas las medidas</h3>
-          <div className="flex flex-wrap gap-2">
-            {['Todas las medidas', '1 Plz', '1.5 Plz', '2 Plz', 'Queen', 'King'].map((size) => (
-              <button
-                key={size}
-                onClick={() => setSelectedSize(size)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  selectedSize === size
-                    ? 'bg-gold-500 text-white'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                }`}
-              >
-                {size}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Carousel */}
-      <div className="relative" ref={carouselRef}>
-        {/* Navigation Arrows */}
-        {filteredProducts.length > itemsPerView && (
-          <>
-            <button
-              onClick={handlePrev}
-              disabled={!canGoPrev}
-              className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-all ${
-                !canGoPrev 
-                  ? 'opacity-50 cursor-not-allowed' 
-                  : 'hover:bg-gray-100 hover:scale-110'
-              }`}
-              aria-label="Anterior"
-            >
-              <MdOutlineArrowBack className="w-5 h-5 text-gray-700" />
-            </button>
-
-            <button
-              onClick={handleNext}
-              disabled={!canGoNext}
-              className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-all ${
-                !canGoNext
-                  ? 'opacity-50 cursor-not-allowed'
-                  : 'hover:bg-gray-100 hover:scale-110'
-              }`}
-              aria-label="Siguiente"
-            >
-              <MdOutlineArrowForward className="w-5 h-5 text-gray-700" />
-            </button>
-          </>
-        )}
-
-        {/* Products Carousel Container */}
-        <div 
-          className={`overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-          {...handlers}
-        >
-          <div 
-            className="flex gap-6 transition-transform duration-500 ease-in-out"
-            style={{ 
-              transform: `translateX(calc(-${currentIndex * (100 / itemsPerView)}% + ${isDragging ? dragDistance : 0}px))`,
-              transition: isDragging ? 'none' : 'transform 0.5s ease-in-out'
-            }}
-          >
-            {filteredProducts.map((product) => (
-              <div 
-                key={product.id}
-                className="flex-shrink-0"
-                style={{ width: `calc(${100 / itemsPerView}% - 24px)` }}
-              >
-                <div className="group bg-white dark:bg-gray-800 rounded-none overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 h-full border border-gray-200 dark:border-gray-700">
-                  {/* Product Image */}
-                  <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-700">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-
-                    {product.badge && (
-                      <div className="absolute top-3 left-3">
-                        <span className="px-3 py-1 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-none">
-                          {product.badge}
-                        </span>
-                      </div>
-                    )}
-
-                    {product.originalPrice && (
-                      <div className="absolute top-3 right-3">
-                        <span className="px-2 py-1 bg-red-500 text-white text-xs font-medium rounded">
-                          -{Math.round((1 - product.price / product.originalPrice) * 100)}%
-                        </span>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Product Info */}
-                  <div className="p-6">
-                    <h3 className="font-medium text-gray-900 dark:text-white mb-2 line-clamp-2">
-                      {product.name}
-                    </h3>
-
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-                      {product.description}
-                    </p>
-
-                    <div className="flex items-center justify-between">
-                      <span className="text-lg font-semibold text-gray-900 dark:text-white">
-                        S/ {product.price.toLocaleString()}
-                      </span>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            setSelectedProduct(product);
-                            setIsSpecsModalOpen(true);
-                          }}
-                          className="flex items-center gap-1 px-3 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-none transition-colors"
-                          title="Ver detalles del producto"
-                        >
-                          <FaEye className="w-4 h-4" />
-                        </button>
-                        <Link
-                          to={`/producto/${product.id}`}
-                          className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
-                        >
-                          Ver →
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Navigation Dots */}
-        {filteredProducts.length > itemsPerView && (
-          <div className="flex justify-center mt-8 space-x-2">
-            {Array.from({ length: Math.ceil(filteredProducts.length / itemsPerView) }).map((_, index) => (
+        <div className="flex items-center gap-6">
+          {/* Slide Indicators - Minimalist */}
+          <div className="hidden sm:flex gap-2">
+            {filteredProducts.slice(0, Math.max(0, filteredProducts.length - itemsPerView + 1)).map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index * itemsPerView)}
-                className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                  Math.floor(currentIndex / itemsPerView) === index
-                    ? 'bg-gray-800 dark:bg-white'
-                    : 'bg-gray-300 dark:bg-gray-600'
-                }`}
+                onClick={() => setCurrentIndex(index)}
+                className={`h-1 transition-all duration-500 rounded-full ${index === currentIndex
+                  ? 'w-8 bg-gold-500'
+                  : 'w-2 bg-gray-200 dark:bg-gray-800'
+                  }`}
               />
             ))}
           </div>
-        )}
 
-        {/* No Results Message */}
-        {filteredProducts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 dark:text-gray-400">
-              No se encontraron productos con los filtros seleccionados.
-            </p>
+          <div className="flex gap-3">
             <button
-              onClick={() => {
-                setSelectedCategory('Todos');
-                setSelectedSize('Todas las medidas');
-              }}
-              className="mt-4 text-gold-600 hover:text-gold-700 font-medium"
+              onClick={() => handleSlideChange('prev')}
+              disabled={!canGoPrev}
+              className={`w-14 h-14 rounded-2xl border border-gray-100 dark:border-white/10 flex items-center justify-center transition-all ${!canGoPrev ? 'opacity-20 cursor-not-allowed' : 'hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black hover:scale-105 active:scale-95 shadow-lg shadow-black/5'}`}
             >
-              Limpiar filtros
+              <MdOutlineArrowBack className="w-6 h-6" />
+            </button>
+            <button
+              onClick={() => handleSlideChange('next')}
+              disabled={!canGoNext}
+              className={`w-14 h-14 rounded-2xl border border-gray-100 dark:border-white/10 flex items-center justify-center transition-all ${!canGoNext ? 'opacity-20 cursor-not-allowed' : 'hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black hover:scale-105 active:scale-95 shadow-lg shadow-black/5'}`}
+            >
+              <MdOutlineArrowForward className="w-6 h-6" />
             </button>
           </div>
-        )}
+        </div>
       </div>
 
-      {/* Mobile CTA */}
-      <div className="sm:hidden mt-6 text-center">
-        <Link
-          to="/catalogo"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-gold-500 hover:bg-gold-600 text-white font-medium rounded-lg transition-colors"
+      {/* Filters */}
+      <div className="flex flex-wrap gap-3 mb-12 px-4">
+        {['Todos', 'Resorte', 'Espuma', 'Dormitorio', 'Muebles'].map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setSelectedCategory(cat)}
+            className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all border ${selectedCategory === cat
+              ? 'bg-gold-500 border-gold-500 text-white shadow-lg shadow-gold-500/20'
+              : 'bg-transparent border-gray-100 dark:border-white/5 text-gray-400 hover:border-gold-500/30'
+              }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Viewport */}
+      <div className="relative overflow-hidden cursor-grab active:cursor-grabbing" ref={carouselRef} {...handlers}>
+        <div
+          className="flex gap-8 transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]"
+          style={{ transform: `translateX(calc(-${currentIndex * (100 / itemsPerView)}% + ${isDragging ? dragDistance : 0}px))` }}
         >
-          Ver todo el catálogo
-          <MdOutlineArrowForward className="w-4 h-4" />
-        </Link>
+          {filteredProducts.map((product) => (
+            <div
+              key={product.id}
+              className="flex-shrink-0 group"
+              style={{ width: `calc(${100 / itemsPerView}% - 24px)` }}
+            >
+              <div className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-[2.5rem] border border-transparent hover:border-gray-100 dark:hover:border-white/5 transition-all duration-700 hover:bg-white dark:hover:bg-zinc-900 h-full flex flex-col">
+                <Link to={`/producto/${product.id}`} className="block aspect-[4/5] overflow-hidden rounded-[2rem] bg-white dark:bg-black p-6 mb-8 relative">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110"
+                  />
+                  {product.badge && (
+                    <div className="absolute top-6 left-6">
+                      <span className="px-3 py-1 bg-gold-500 text-white text-[8px] font-black uppercase tracking-widest rounded-full">
+                        {product.badge}
+                      </span>
+                    </div>
+                  )}
+                </Link>
+
+                <div className="space-y-3 flex-grow flex flex-col">
+                  <div>
+                    <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">{product.subcategory}</h4>
+                    <Link to={`/producto/${product.id}`}>
+                      <h3 className="text-lg font-display font-black text-gray-900 dark:text-white uppercase tracking-tight line-clamp-1 hover:text-gold-500 transition-colors">
+                        {product.name}
+                      </h3>
+                    </Link>
+                  </div>
+
+                  <div className="pt-4 mt-auto flex items-center justify-between gap-4">
+                    <span className="text-xl font-display font-black text-gray-900 dark:text-white">
+                      S/ {product.price.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
+                    </span>
+                    <Link
+                      to={`/producto/${product.id}`}
+                      className="flex-grow sm:flex-initial px-6 py-3 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white text-[10px] font-black uppercase tracking-widest hover:border-gold-500 hover:text-gold-500 transition-all duration-500 hover:shadow-xl hover:shadow-black/5 text-center flex items-center justify-center gap-2"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                      Ver Detalle
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
-
-    {/* Product Specs Modal */}
-    {selectedProduct && (
-      <ProductSpecsModal
-        product={selectedProduct}
-        specs={selectedProduct.specs || []}
-        detailedSpecs={selectedProduct.detailedSpecs || []}
-        isOpen={isSpecsModalOpen}
-        onClose={() => {
-          setIsSpecsModalOpen(false);
-          setSelectedProduct(null);
-        }}
-      />
-    )}
-    </>
   );
 };
 

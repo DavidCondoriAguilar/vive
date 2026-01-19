@@ -3,34 +3,51 @@ import { MdShield, MdSettings, MdVerifiedUser, MdLayers } from 'react-icons/md';
 
 export const useProductSpecs = (product) => {
     const specs = useMemo(() => [
-        { label: 'Firmeza', value: 'Intermedia / Alta', icon: <MdShield className="w-5 h-5" /> },
-        { label: 'Resortes', value: 'Pocket Independientes', icon: <MdSettings className="w-5 h-5" /> },
-        { label: 'Garantía', value: '10 Años', icon: <MdVerifiedUser className="w-5 h-5" /> },
-        { label: 'Material', value: 'Espuma Viscoelástica', icon: <MdLayers className="w-5 h-5" /> }
-    ], []);
+        {
+            label: 'Soporte',
+            value: product.category === 'resorte' ? 'Resortes Reforzados' : 'Espuma de Alta Densidad',
+            icon: <MdShield className="w-5 h-5" />
+        },
+        {
+            label: 'Tecnología',
+            value: product.features?.[0] || (product.category === 'resorte' ? 'Sistema Bonell' : 'Acolchado Plus'),
+            icon: <MdSettings className="w-5 h-5" />
+        },
+        {
+            label: 'Garantía',
+            value: product.warranty || 'Consultar Stock',
+            icon: <MdVerifiedUser className="w-5 h-5" />
+        },
+        {
+            label: 'Material',
+            value: product.category === 'resorte' ? 'Acero Carbono' : 'Espuma D25-D35',
+            icon: <MdLayers className="w-5 h-5" />
+        }
+    ], [product]);
 
     const detailedSpecs = useMemo(() => [
-        { category: 'Estructura', items: [
-            { name: 'Núcleo', value: 'Espuma viscoelástica de alta densidad' },
-            { name: 'Resortes', value: 'Sistema pocket independiente' },
-            { name: 'Capas', value: '3 capas de confort progresivo' }
-        ]},
-        { category: 'Dimensiones', items: [
-            { name: 'Alto', value: '25 cm' },
-            { name: 'Densidad', value: '30 kg/m³' },
-            { name: 'Peso', value: 'Varía según tamaño' }
-        ]},
-        { category: 'Características', items: [
-            { name: 'Aireación', value: 'Zonas ventiladas' },
-            { name: 'Tratamiento', value: 'Antiácaros y antibacterial' },
-            { name: 'Cubierta', value: 'Tela stretch removible' }
-        ]},
-        { category: 'Certificación', items: [
-            { name: 'Calidad', value: 'ISO 9001' },
-            { name: 'Seguridad', value: 'Certificación internacional' },
-            { name: 'Ecología', value: 'Materiales eco-friendly' }
-        ]}
-    ], []);
+        {
+            category: 'Estructura Técnica', items: [
+                { name: 'Núcleo Central', value: product.category === 'resorte' ? 'Parrilla de resortes de acero' : 'Bloque de espuma resiliente' },
+                { name: 'Tipo de Fibra', value: product.features?.join(', ') || 'Tejido Jacquard/Tricot' },
+                { name: 'Línea de Diseño', value: product.subcategory || 'Estándar' }
+            ]
+        },
+        {
+            category: 'Dimensiones y Soporte', items: [
+                { name: 'Espesor Real', value: product.thickness || '25 cm aprox.' },
+                { name: 'Base Recomendada', value: 'Box Tarima Universal' },
+                { name: 'Soporte Máximo', value: '90kg - 110kg por persona' }
+            ]
+        },
+        {
+            category: 'Atributos de Calidad', items: [
+                { name: 'Garantía Real', value: `${product.warranty} de fábrica` },
+                { name: 'Certificación', value: 'Control de Calidad Peruano' },
+                { name: 'Higiene', value: 'Tratamiento Antiacaros' }
+            ]
+        }
+    ], [product]);
 
     const generatePDFContent = useMemo(() => (productData, specsData, detailedSpecsData) => {
         return `

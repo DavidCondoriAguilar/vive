@@ -16,8 +16,8 @@ const CategoriesSection = () => {
 
   const { addToCart, getTotalItems } = useCart();
 
-  const types = ['todos', ...new Set(ENHANCED_CATALOG.map(p => p.type))];
-  const sizes = ['todos', ...new Set(ENHANCED_CATALOG.flatMap(p => p.sizes))];
+  const types = ['todos', ...new Set(ENHANCED_CATALOG.map(p => p.subcategory).filter(Boolean))];
+  const sizes = ['todos', ...new Set(ENHANCED_CATALOG.flatMap(p => p.sizes || []).filter(Boolean))];
 
   // Responsive items per view
   useEffect(() => {
@@ -35,8 +35,8 @@ const CategoriesSection = () => {
   }, []);
 
   const filteredProducts = ENHANCED_CATALOG.filter(product => {
-    const typeMatch = selectedType === 'todos' || product.type === selectedType;
-    const sizeMatch = selectedSize === 'todos' || product.sizes.includes(selectedSize);
+    const typeMatch = selectedType === 'todos' || product.subcategory === selectedType;
+    const sizeMatch = selectedSize === 'todos' || (product.sizes && product.sizes.includes(selectedSize));
     return typeMatch && sizeMatch;
   });
 
@@ -49,27 +49,26 @@ const CategoriesSection = () => {
   };
 
   const nextSlide = () => {
-    const maxSlide = Math.max(0, filteredProducts.length - itemsPerView);
-    setCurrentSlide(prev => Math.min(prev + itemsPerView, maxSlide));
+    const maxSlide = filteredProducts.length - itemsPerView;
+    setCurrentSlide(prev => Math.min(prev + 1, maxSlide));
   };
 
   const prevSlide = () => {
-    setCurrentSlide(prev => Math.max(prev - itemsPerView, 0));
+    setCurrentSlide(prev => Math.max(prev - 1, 0));
   };
 
   const goToSlide = (index) => {
-    setCurrentSlide(index * itemsPerView);
+    const maxSlide = filteredProducts.length - itemsPerView;
+    setCurrentSlide(Math.min(index, maxSlide));
   };
 
   // Modal handlers
   const openProductModal = (product) => {
-    console.log('Opening notification for product:', product); // Debug log
     setSelectedProduct(product);
     setIsModalOpen(true);
   };
 
   const closeProductModal = () => {
-    console.log('Closing notification'); // Debug log
     setIsModalOpen(false);
     setSelectedProduct(null);
   };
@@ -109,11 +108,11 @@ const CategoriesSection = () => {
                   setCurrentSlide(0); // Reset carousel when filter changes
                 }}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${selectedType === type
-                  ? 'bg-gold-500 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-gold-500 text-white shadow-lg shadow-gold-500/20 scale-105'
+                  : 'bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/10'
                   }`}
               >
-                {type === 'todos' ? 'Todos' : type.charAt(0).toUpperCase() + type.slice(1)}
+                {type === 'todos' ? 'Todos' : type}
               </button>
             ))}
           </div>
@@ -138,42 +137,60 @@ const CategoriesSection = () => {
           </div>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative">
-          {/* Navigation Arrows */}
-          {filteredProducts.length > itemsPerView && (
-            <>
+        {/* Carousel Navigation Header - High Visibility */}
+        <div className="mb-8 flex flex-col sm:flex-row items-center justify-between gap-6 bg-gray-50/50 dark:bg-white/[0.02] p-6 rounded-3xl border border-gray-100 dark:border-white/5">
+          <div className="flex flex-col gap-2 flex-grow max-w-xs w-full sm:w-auto">
+            <div className="flex justify-between items-end">
+              <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Vista Rápida</span>
+              <span className="text-xs font-bold text-gold-500">
+                {currentSlide + itemsPerView} / {filteredProducts.length}
+              </span>
+            </div>
+            <div className="h-[2px] w-full bg-gray-200 dark:bg-white/5 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gold-500 transition-all duration-700 ease-out shadow-[0_0_8px_rgba(212,175,55,0.4)]"
+                style={{ width: `${((currentSlide + itemsPerView) / filteredProducts.length) * 100}%` }}
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <span className="hidden md:block text-[9px] font-black text-gray-400 uppercase tracking-widest animate-pulse">Desliza para explorar</span>
+            <div className="flex gap-2">
               <button
                 onClick={prevSlide}
                 disabled={currentSlide === 0}
-                className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-all ${currentSlide === 0
-                  ? 'opacity-50 cursor-not-allowed'
-                  : 'hover:bg-gray-100 hover:scale-110'
+                className={`w-12 h-12 p-0 rounded-xl border border-gray-100 dark:border-white/5 flex items-center justify-center transition-all ${currentSlide === 0
+                  ? 'opacity-20 cursor-not-allowed'
+                  : 'bg-white dark:bg-zinc-900 text-gray-500 hover:border-gold-500 hover:text-gold-500 hover:scale-105 active:scale-95'
                   }`}
-                aria-label="Anterior"
               >
-                <FaChevronLeft className="w-5 h-5 text-gray-700" />
+                <FaChevronLeft className="w-4 h-4" />
               </button>
-
               <button
                 onClick={nextSlide}
                 disabled={currentSlide >= filteredProducts.length - itemsPerView}
-                className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-all ${currentSlide >= filteredProducts.length - itemsPerView
-                  ? 'opacity-50 cursor-not-allowed'
-                  : 'hover:bg-gray-100 hover:scale-110'
+                className={`w-12 h-12 p-0 rounded-xl border border-gray-100 dark:border-white/5 flex items-center justify-center transition-all ${currentSlide >= filteredProducts.length - itemsPerView
+                  ? 'opacity-20 cursor-not-allowed'
+                  : 'bg-white dark:bg-zinc-900 text-gray-500 hover:border-gold-500 hover:text-gold-500 hover:scale-105 active:scale-95'
                   }`}
-                aria-label="Siguiente"
               >
-                <FaChevronRight className="w-5 h-5 text-gray-700" />
+                <FaChevronRight className="w-4 h-4" />
               </button>
-            </>
-          )}
+            </div>
+          </div>
+        </div>
 
+        {/* Carousel Viewport */}
+        <div className="relative">
           {/* Products Carousel */}
-          <div className="overflow-hidden">
+          <div className="overflow-hidden cursor-grab active:cursor-grabbing">
             <div
-              className="flex transition-transform duration-500 ease-in-out gap-6"
-              style={{ transform: `translateX(-${currentSlide * (100 / itemsPerView)}%)` }}
+              className="flex transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]"
+              style={{
+                transform: `translateX(calc(-${currentSlide} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? '1.5rem / ' + itemsPerView : '0px'})))`,
+                gap: itemsPerView > 1 ? '1.5rem' : '0px'
+              }}
             >
               {filteredProducts.map((product, index) => (
                 <div
@@ -192,16 +209,16 @@ const CategoriesSection = () => {
                         />
                       </Link>
 
-                      {/* Badge */}
-                      {product.badge && (
-                        <div className="absolute top-3 left-3 bg-gold-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                      {/* Badge (Only if different from subcategory) */}
+                      {product.badge && product.badge !== product.subcategory && (
+                        <div className="absolute top-3 left-3 bg-gold-500 text-white px-2 py-1 rounded-full text-[8px] font-black uppercase tracking-widest">
                           {product.badge}
                         </div>
                       )}
 
                       {/* Type Badge */}
                       <div className="absolute top-3 right-3 bg-gray-900/80 text-white px-2 py-1 rounded-full text-xs font-medium">
-                        {product.type}
+                        {product.subcategory || 'Premium'}
                       </div>
 
                       {/* Favorite Button */}
@@ -228,7 +245,7 @@ const CategoriesSection = () => {
 
                       {/* Size */}
                       <div className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-                        Medida: {product.sizes.join(', ')}
+                        {product.sizes ? `Medida: ${product.sizes.join(', ')}` : 'Medida estándar'}
                       </div>
 
                       {/* Price and CTA - Always at bottom */}
@@ -238,20 +255,17 @@ const CategoriesSection = () => {
                         </div>
 
                         <div className="flex gap-3">
-                          <button
-                            onClick={() => openProductModal(product)}
-                            className="flex-1 group relative overflow-hidden bg-white dark:bg-gray-800 border-2 border-gold-500/30 hover:border-gold-500 text-gray-900 dark:text-white px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold text-sm hover:shadow-lg hover:shadow-gold-500/20 hover:-translate-y-0.5"
+                          <Link
+                            to={`/producto/${product.id}`}
+                            className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-gray-100 dark:border-white/5 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white text-[10px] font-black uppercase tracking-widest hover:bg-white dark:hover:bg-zinc-900 hover:text-gold-500 hover:border-gold-500 transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-black/5"
                             title="Ver detalles del producto"
                           >
-                            <span className="relative z-10 flex items-center justify-center gap-2">
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                              </svg>
-                              Ver Detalle
-                            </span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-gold-500/0 via-gold-500/10 to-gold-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                          </button>
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                            Ver Detalle
+                          </Link>
                           <button
                             onClick={() => addToCart(product, 1, selectedSize === 'todos' ? null : selectedSize)}
                             className="group relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-700 hover:from-gold-600 hover:to-gold-500 text-white p-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/30 hover:-translate-y-0.5 hover:scale-105"
@@ -269,22 +283,6 @@ const CategoriesSection = () => {
             </div>
           </div>
 
-          {/* Dots Indicator */}
-          {totalSlides > 1 && (
-            <div className="flex justify-center mt-8 gap-2">
-              {Array.from({ length: totalSlides }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlideIndex
-                    ? 'bg-gold-500 w-8'
-                    : 'bg-gray-300 hover:bg-gray-400'
-                    }`}
-                  aria-label={`Slide ${index + 1}`}
-                />
-              ))}
-            </div>
-          )}
         </div>
 
         {/* View All CTA */}
@@ -305,7 +303,7 @@ const CategoriesSection = () => {
         onClose={closeProductModal}
         selectedSize={selectedSize === 'todos' ? null : selectedSize}
       />
-    </section >
+    </section>
   );
 };
 

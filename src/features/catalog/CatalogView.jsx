@@ -4,214 +4,262 @@ import { Helmet } from 'react-helmet';
 import { useScrollToTop } from '@/hooks/useTheme';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
-import { PrimaryButton, WhatsAppButton } from '@/components/ui/Buttons';
-
-import { ENHANCED_CATALOG, CATEGORIES } from '@/utils/constants';
+import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink } from '@/utils/constants';
 
 /**
  * Full Catalog Page
- * Displays all products in a comprehensive grid layout
+ * Displays all products in a comprehensive grid layout with advanced filters
  */
 const CatalogView = () => {
   useScrollToTop();
 
-  const [filter, setFilter] = useState('todos');
+  const [selectedCategory, setSelectedCategory] = useState('todos');
+  const [selectedSubcategory, setSelectedSubcategory] = useState('todos');
+  const [selectedSize, setSelectedSize] = useState('todos');
   const [sortBy, setSortBy] = useState('featured');
 
-  // Use centralized products data
-  const allProducts = ENHANCED_CATALOG;
+  // 1. Get products for the current category first
+  const categoryProducts = ENHANCED_CATALOG.filter(p =>
+    selectedCategory === 'todos' || p.category === selectedCategory
+  );
+
+  // 2. Derive dynamic filters ONLY from products in the selected category
+  const subcategories = ['todos', ...new Set(categoryProducts.map(p => p.subcategory).filter(Boolean))];
+  const sizes = ['todos', ...new Set(categoryProducts.flatMap(p => p.sizes || []).filter(Boolean))];
 
   const categories = [
-    { id: 'todos', name: 'Todos los productos', count: allProducts.length },
-    ...CATEGORIES.map(cat => ({
-      id: cat.id,
-      name: cat.name,
-      count: allProducts.filter(p => p.category === cat.id || (cat.id === 'colchones' && ['luxury', 'premium', 'classic', 'professional'].includes(p.category))).length
-    }))
+    { id: 'todos', name: 'Todas las Categorías' },
+    ...CATEGORIES.map(cat => ({ id: cat.id, name: cat.name }))
   ];
 
-  // If the filter is one of the main categories, we need to handle subcategories for colchones
-  const getFilteredProducts = () => {
-    if (filter === 'todos') return allProducts;
-
-    // special handling for 'colchones' category to include its subcategories
-    if (filter === 'colchones') {
-      return allProducts.filter(p => ['luxury', 'premium', 'classic', 'professional'].includes(p.category));
-    }
-
-    return allProducts.filter(p => p.category === filter);
-  };
-
-  const filteredProducts = getFilteredProducts();
-
+  // 3. Final Filtering
+  const filteredProducts = categoryProducts.filter(product => {
+    const subcategoryMatch = selectedSubcategory === 'todos' || product.subcategory === selectedSubcategory;
+    const sizeMatch = selectedSize === 'todos' || (product.sizes && product.sizes.includes(selectedSize));
+    return subcategoryMatch && sizeMatch;
+  });
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     switch (sortBy) {
-      case 'price-low':
-        return a.price - b.price;
-      case 'price-high':
-        return b.price - a.price;
-      case 'name':
-        return a.name.localeCompare(b.name);
-      default:
-        // Default sort (featured or random)
-        return 0;
+      case 'price-low': return a.price - b.price;
+      case 'price-high': return b.price - a.price;
+      case 'name': return a.name.localeCompare(b.name);
+      default: return 0;
     }
   });
-
-  const renderStars = (rating) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <svg
-        key={i}
-        className={`w-4 h-4 ${i < Math.floor(rating) ? 'text-yellow-400' : 'text-gray-300'}`}
-        fill="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-      </svg>
-    ));
-  };
 
   return (
     <>
       <Helmet>
-        <title>Catálogo - Sueño Dorado</title>
-        <meta name="description" content="Catálogo de colchones premium Sueño Dorado. Calidad directa de fábrica." />
-        <link rel="canonical" href="https://suenodorado.pe/catalogo" />
+        <title>Catálogo Completo - Sueño Dorado | Expertos en Descanso</title>
+        <meta name="description" content="Explora nuestra colección completa de colchones de resorte y espuma, bases y muebles de dormitorio. Calidad de fábrica con garantía total." />
       </Helmet>
 
       <MainLayout>
-        <SectionLayout>
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-display font-black text-gray-900 dark:text-white mb-4">
-              Catálogo <span className="text-gold-500">Premium</span>
-            </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Descubre toda nuestra colección de colchones premium, diseñados para transformar tu descanso
-            </p>
-          </div>
-
-          {/* Filters */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setFilter(category.id)}
-                className={`px-6 py-3 text-sm font-medium transition-all duration-300 border ${filter === category.id
-                  ? 'bg-gold-500 text-white border-gold-500 shadow-lg shadow-gold-500/25'
-                  : 'bg-white text-gray-700 border-gray-300 hover:border-gold-500/50 hover:text-gold-500'
-                  }`}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
-
-          {/* Sorting and Results Header */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-12 border-b border-gray-100 dark:border-gray-800 pb-8">
-            <div className="text-gray-600 dark:text-gray-400 font-medium">
-              Mostrando <span className="text-gold-600 dark:text-gold-400 font-bold">{sortedProducts.length}</span> producto{sortedProducts.length !== 1 ? 's' : ''}
-            </div>
-
-            <div className="flex items-center gap-3">
-              <span className="text-sm font-bold text-gray-500 uppercase tracking-widest">Ordenar por:</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 text-gray-900 dark:text-white text-sm rounded-xl px-4 py-2 focus:ring-2 focus:ring-gold-500/20 focus:border-gold-500 transition-all outline-none"
-              >
-                <option value="featured">Destacados</option>
-                <option value="price-low">Menor Precio</option>
-                <option value="price-high">Mayor Precio</option>
-                <option value="name">Nombre (A-Z)</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Products Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {sortedProducts.map((product) => (
-              <div
-                key={product.id}
-                className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:shadow-gold-500/10 transition-all duration-300 border border-gray-100 dark:border-gray-800"
-              >
-                {/* Product Image */}
-                <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-800">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {product.badge && (
-                    <div className="absolute top-3 left-3">
-                      <span className="px-2 py-1 bg-gold-500 text-white text-xs font-bold rounded-full shadow-lg">
-                        {product.badge}
-                      </span>
-                    </div>
-                  )}
-                  {product.originalPrice && (
-                    <div className="absolute top-3 right-3">
-                      <span className="px-2 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
-                        -{Math.round((1 - product.price / product.originalPrice) * 100)}%
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Product Info */}
-                <div className="p-6">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-                    {product.description}
-                  </p>
-
-                  {/* Price */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl font-bold text-gold-600">
-                        S/ {product.price.toLocaleString()}
-                      </span>
-                      {product.originalPrice && (
-                        <span className="text-sm text-gray-500 line-through">
-                          S/ {product.originalPrice.toLocaleString()}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Buttons */}
-                  <div className="flex gap-3">
-                    <PrimaryButton
-                      onClick={() => window.location.href = `/producto/${product.id}`}
-                      className="flex-1 justify-center"
-                    >
-                      Ver Detalles
-                    </PrimaryButton>
-
-                    <WhatsAppButton
-                      onClick={() => {
-                        const message = `Hola Sueño Dorado, estoy interesado en el producto: ${product.name}. Deseo recibir información sobre precios y medidas.`;
-                        window.open(getWhatsAppLink(message), '_blank');
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Load More or Pagination could go here */}
-          {sortedProducts.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-600 dark:text-gray-400 text-lg">
-                No se encontraron productos en esta categoría.
+        <div className="pt-32 pb-24 bg-white dark:bg-black transition-colors duration-700">
+          <SectionLayout>
+            {/* Elite Header */}
+            <div className="max-w-4xl mb-20 px-4 md:px-0">
+              <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade-in">Catálogo Oficial 2026</span>
+              <h1 className="text-5xl md:text-7xl font-display font-black text-gray-900 dark:text-white uppercase leading-[0.9] tracking-tighter mb-8 animate-slide-up">
+                Nuestros <br /><span className="text-gold-500">Productos</span>
+              </h1>
+              <p className="text-xl text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-2xl animate-fade-in delay-200">
+                Calidad directa de fábrica para tu descanso perfecto. Explora nuestra ingeniería de confort diseñada en Perú.
               </p>
             </div>
-          )}
-        </SectionLayout>
+
+            {/* Smart Filters Panel */}
+            <div className="bg-gray-50 dark:bg-white/[0.02] rounded-[2.5rem] p-8 md:p-12 mb-16 border border-gray-100 dark:border-white/5 space-y-12">
+
+              {/* Primary Category Filter */}
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="h-[1px] flex-grow bg-gray-200 dark:bg-white/10" />
+                  <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Categoría Principal</span>
+                  <div className="h-[1px] flex-grow bg-gray-200 dark:bg-white/10" />
+                </div>
+                <div className="flex flex-wrap justify-center gap-3">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => {
+                        setSelectedCategory(cat.id);
+                        setSelectedSubcategory('todos'); // Reset sub when category changes
+                      }}
+                      className={`px-8 py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all border ${selectedCategory === cat.id
+                        ? 'bg-black dark:bg-white text-white dark:text-black border-transparent shadow-2xl shadow-black/20 scale-105'
+                        : 'bg-white dark:bg-transparent border-gray-200 dark:border-white/10 text-gray-500 hover:border-gold-500/50'
+                        }`}
+                    >
+                      {cat.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Secondary Multi-Filters */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-end">
+                {/* Subcategory / Line */}
+                <div className="space-y-4">
+                  <span className="text-[10px] font-black text-gold-500 uppercase tracking-widest block ml-2">Línea / Modelo</span>
+                  <select
+                    value={selectedSubcategory}
+                    onChange={(e) => setSelectedSubcategory(e.target.value)}
+                    className="w-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-[11px] font-black uppercase tracking-widest rounded-2xl px-6 py-4 focus:ring-4 focus:ring-gold-500/10 outline-none transition-all appearance-none cursor-pointer shadow-sm"
+                  >
+                    {subcategories.map(sub => (
+                      <option key={sub} value={sub}>{sub === 'todos' ? 'Todos los Modelos' : sub}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Sizes Filter */}
+                <div className="space-y-4">
+                  <span className="text-[10px] font-black text-gold-500 uppercase tracking-widest block ml-2">Medida Disponible</span>
+                  <select
+                    value={selectedSize}
+                    onChange={(e) => setSelectedSize(e.target.value)}
+                    className="w-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-[11px] font-black uppercase tracking-widest rounded-2xl px-6 py-4 focus:ring-4 focus:ring-gold-500/10 outline-none transition-all appearance-none cursor-pointer shadow-sm"
+                  >
+                    {sizes.map(size => (
+                      <option key={size} value={size}>{size === 'todos' ? 'Cualquier Medida' : size}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Sort Filter */}
+                <div className="space-y-4">
+                  <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block ml-2">Ordenar Por</span>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="w-full bg-gray-100 dark:bg-black border-transparent text-gray-600 dark:text-gray-400 text-[11px] font-black uppercase tracking-widest rounded-2xl px-6 py-4 outline-none transition-all appearance-none cursor-pointer"
+                  >
+                    <option value="featured">Predeterminado</option>
+                    <option value="price-low">Menor Precio</option>
+                    <option value="price-high">Mayor Precio</option>
+                    <option value="name">Alfabético</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {/* Products Stats */}
+            <div className="flex justify-between items-center mb-12 px-4">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-[10px] font-black text-gray-500 dark:text-gray-400 uppercase tracking-[0.2em]">
+                  {sortedProducts.length} Productos encontrados
+                </span>
+              </div>
+              {(selectedCategory !== 'todos' || selectedSubcategory !== 'todos' || selectedSize !== 'todos') && (
+                <button
+                  onClick={() => {
+                    setSelectedCategory('todos');
+                    setSelectedSubcategory('todos');
+                    setSelectedSize('todos');
+                  }}
+                  className="text-[9px] font-black text-red-500 uppercase tracking-widest hover:underline transition-all"
+                >
+                  Limpiar Filtros ×
+                </button>
+              )}
+            </div>
+
+            {/* Catalog Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-4 md:px-0">
+              {sortedProducts.map((product, index) => (
+                <div
+                  key={product.id}
+                  className="group bg-gray-50/50 dark:bg-zinc-900/50 p-6 rounded-[2.5rem] border border-transparent hover:border-gray-100 dark:hover:border-white/5 transition-all duration-700 hover:bg-white dark:hover:bg-zinc-900 h-full flex flex-col animate-fade-in-up"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <Link to={`/producto/${product.id}`} className="block aspect-[4/5] overflow-hidden rounded-[2rem] bg-white dark:bg-black p-6 mb-8 relative">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110"
+                    />
+                    {product.badge && (
+                      <div className="absolute top-6 left-6">
+                        <span className="px-3 py-1 bg-gold-500 text-white text-[8px] font-black uppercase tracking-widest rounded-full shadow-lg shadow-gold-500/20">
+                          {product.badge}
+                        </span>
+                      </div>
+                    )}
+                  </Link>
+
+                  <div className="space-y-4 flex-grow flex flex-col">
+                    <div>
+                      <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">{product.subcategory}</h4>
+                      <Link to={`/producto/${product.id}`}>
+                        <h3 className="text-xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tight leading-tight line-clamp-2 hover:text-gold-500 transition-colors">
+                          {product.name}
+                        </h3>
+                      </Link>
+                    </div>
+
+                    <div className="pt-6 mt-auto flex flex-col gap-4">
+                      <div className="flex justify-between items-end">
+                        <div className="space-y-1">
+                          <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest block">Desde</span>
+                          <span className="text-2xl font-display font-black text-gray-900 dark:text-white tracking-tighter">
+                            S/ {product.price?.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
+                          </span>
+                        </div>
+                        <span className="text-[9px] font-black text-gold-500 border border-gold-500/20 px-2 py-1 rounded-md uppercase tracking-widest">
+                          {product.warranty} Gar.
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3">
+                        <Link
+                          to={`/producto/${product.id}`}
+                          className="flex items-center justify-center gap-2 py-4 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white text-[9px] font-black uppercase tracking-widest hover:border-gold-500 hover:text-gold-500 transition-all duration-500"
+                        >
+                          Detalle
+                        </Link>
+                        <button
+                          onClick={() => {
+                            const message = `Hola Sueño Dorado, estoy interesado en el producto: ${product.name}. Deseo recibir información sobre precios y medidas.`;
+                            window.open(getWhatsAppLink(message), '_blank');
+                          }}
+                          className="flex items-center justify-center gap-2 py-4 rounded-xl bg-green-500 text-white text-[9px] font-black uppercase tracking-widest hover:bg-green-600 transition-all shadow-lg shadow-green-500/20"
+                        >
+                          Cotizar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Empty State */}
+            {sortedProducts.length === 0 && (
+              <div className="text-center py-32 bg-gray-50 dark:bg-white/[0.02] rounded-[3rem] border border-dashed border-gray-200 dark:border-white/10">
+                <div className="w-20 h-20 bg-gray-100 dark:bg-white/5 rounded-full flex items-center justify-center mx-auto mb-8">
+                  <svg className="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter mb-4">No encontramos coincidencias</h3>
+                <p className="text-gray-500 dark:text-gray-400 mb-12 max-w-sm mx-auto">Prueba ajustando los filtros o reiniciando la búsqueda para encontrar tu colchón ideal.</p>
+                <button
+                  onClick={() => {
+                    setSelectedCategory('todos');
+                    setSelectedSubcategory('todos');
+                    setSelectedSize('todos');
+                  }}
+                  className="bg-black dark:bg-white text-white dark:text-black px-12 py-5 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all"
+                >
+                  Reiniciar Catálogo
+                </button>
+              </div>
+            )}
+          </SectionLayout>
+        </div>
       </MainLayout>
     </>
   );

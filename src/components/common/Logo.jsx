@@ -78,7 +78,8 @@ const Logo = ({
     select-none
   `;
 
-  const logoSrc = effectiveTheme === 'light' ? logoClaro : logoOscuro;
+  // Logo selection: 'light' refers to light background (needs dark logo), 'dark' refers to dark background (needs light logo)
+  const logoSrc = effectiveTheme === 'light' ? logoOscuro : logoClaro;
 
   // Logo content
   const logoContent = (

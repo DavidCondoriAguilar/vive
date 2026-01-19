@@ -36,23 +36,43 @@ const Navbar = () => {
 
     const navLinks = [
         {
-            name: 'Colchones',
-            path: '/categorias/colchones',
-            icon: <MdOutlineBed className="w-5 h-5" />
+            name: 'Resorte',
+            path: '/colchones-resorte',
+            icon: <MdOutlineBed className="w-5 h-5" />,
+            subLinks: [
+                { name: 'Económicos (1-2 años)', path: '/colchones-resorte?l=Económica' },
+                { name: 'Intermedios (5 años)', path: '/colchones-resorte?l=Intermedio' },
+                { name: 'Premium (10 años)', path: '/colchones-resorte?l=Premium' },
+                { name: 'Golden Dream (6 años)', path: '/colchones-resorte?l=Golden Dream' },
+                { name: 'Siempre (7 años)', path: '/colchones-resorte?l=Siempre' },
+                { name: 'Absolut (10 años)', path: '/colchones-resorte?l=Absolut' },
+                { name: 'Matrimoniales (6 años)', path: '/colchones-resorte?l=Matrimonial' }
+            ]
         },
         {
-            name: 'Tarimas',
-            path: '/categorias/tarimas',
-            icon: <MdOutlineWeekend className="w-5 h-5" />
+            name: 'Espuma',
+            path: '/colchones-espuma',
+            icon: <MdOutlineWeekend className="w-5 h-5" />,
+            subLinks: [
+                { name: 'Económicas (Poliseda)', path: '/colchones-espuma?l=Poliseda' },
+                { name: 'Plus Resilense', path: '/colchones-espuma?l=Plus Resilense' },
+                { name: 'Splendido T/tricot', path: '/colchones-espuma?l=Splendido' },
+                { name: 'Topacio (con almohada)', path: '/colchones-espuma?l=Topacio' }
+            ]
         },
         {
-            name: 'Cunas',
-            path: '/categorias/cunas',
-            icon: <MdOutlineHome className="w-5 h-5" />
+            name: 'Dormitorio',
+            path: '/categorias/dormitorio',
+            icon: <MdOutlineHome className="w-5 h-5" />,
+            subLinks: [
+                { name: 'Box/Tarimas', path: '/dormitorio/box-tarimas' },
+                { name: 'Cabeceras', path: '/dormitorio/cabeceras' },
+                { name: 'Cunas', path: '/dormitorio/cunas' }
+            ]
         },
         {
-            name: 'Almohadas',
-            path: '/categorias/almohadas',
+            name: 'Muebles',
+            path: '/categorias/muebles',
             icon: <MdOutlineInventory className="w-5 h-5" />
         },
         {

@@ -80,7 +80,7 @@ const ProductDetailsView = () => {
                         <nav className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 mb-12 animate-fade-in">
                             <Link to="/" className="hover:text-gold-500 transition-colors">Inicio</Link>
                             <span>/</span>
-                            <Link to="/categorias/colchones" className="hover:text-gold-500 transition-colors">Colchones</Link>
+                            <Link to="/catalogo" className="hover:text-gold-500 transition-colors">Catálogo</Link>
                             <span>/</span>
                             <span className="text-gray-900 dark:text-white">{product.name}</span>
                         </nav>
@@ -121,7 +121,7 @@ const ProductDetailsView = () => {
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-4">
                                         <span className="px-3 py-1 bg-gold-500 text-white text-[9px] font-black uppercase tracking-[0.2em] rounded-full">
-                                            Más Vendido
+                                            {product.badge || 'Más Vendido'}
                                         </span>
                                         <div className="flex text-gold-500 text-xs">
                                             {'★★★★★'.split('').map((s, i) => <span key={i}>{s}</span>)}
@@ -131,18 +131,36 @@ const ProductDetailsView = () => {
                                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-gray-900 dark:text-white uppercase leading-tight tracking-tight">
                                         {product.name}
                                     </h1>
-                                    <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed max-w-lg font-medium">
-                                        Experimenta la cima del descanso peruano. Diseñado con tecnología de resortes pocket que eliminan la transferencia de movimiento.
+                                    <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base font-medium">
+                                        {product.description}
                                     </p>
                                 </div>
 
-                                <div className="flex items-baseline gap-4 sm:gap-6">
-                                    <span className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-gray-900 dark:text-white">
-                                        S/ {product.price.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
-                                    </span>
-                                    <span className="text-lg sm:text-xl text-gray-400 line-through font-display">
-                                        S/ {(product.price * 1.3).toLocaleString('es-PE', { minimumFractionDigits: 2 })}
-                                    </span>
+                                <div className="space-y-6">
+                                    <div className="flex items-baseline gap-4 sm:gap-6">
+                                        <span className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-gray-900 dark:text-white">
+                                            S/ {product.price.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
+                                        </span>
+                                        <span className="text-lg sm:text-xl text-gray-400 line-through font-display">
+                                            S/ {(product.price * 1.3).toLocaleString('es-PE', { minimumFractionDigits: 2 })}
+                                        </span>
+                                    </div>
+
+                                    {/* Tech Specs Summary */}
+                                    <div className="grid grid-cols-2 gap-4 border-y border-gray-100 dark:border-white/5 py-8">
+                                        {product.warranty && (
+                                            <div>
+                                                <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2 block">Garantía Real</span>
+                                                <span className="text-gray-900 dark:text-white font-bold text-sm uppercase">{product.warranty} de Fábrica</span>
+                                            </div>
+                                        )}
+                                        {product.subcategory && (
+                                            <div className="text-right">
+                                                <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2 block">Línea Sueño</span>
+                                                <span className="text-gold-500 font-bold text-sm uppercase">{product.subcategory}</span>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
 
                                 {/* Size Selection */}
@@ -185,6 +203,39 @@ const ProductDetailsView = () => {
                                     selectedSize={selectedSize}
                                     onSpecsClick={() => setShowSpecsModal(true)}
                                 />
+
+                                {/* Wholesale Info Section */}
+                                <div className="mt-12 p-8 bg-gold-500/5 dark:bg-gold-500/10 rounded-[2.5rem] border border-gold-500/20 animate-pulse-subtle">
+                                    <div className="flex items-center gap-4 mb-6">
+                                        <div className="w-12 h-12 bg-gold-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-gold-500/20">
+                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 className="text-sm font-black text-gray-900 dark:text-white uppercase tracking-widest">Atención para Mayoristas</h4>
+                                            <p className="text-[10px] text-gold-600 dark:text-gold-400 font-bold uppercase tracking-widest">Cotizaciones especiales por volumen</p>
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
+                                            <span className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase">Precios de Fábrica</span>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
+                                            <span className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase">Despachos a Provincia</span>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
+                                            <span className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase">Atención 24/7</span>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
+                                            <span className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase">Garantía Certificada</span>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 {/* Trust Footer */}
                                 <div className="pt-8 sm:pt-10 flex items-center justify-between border-t border-gray-100 dark:border-white/5">
