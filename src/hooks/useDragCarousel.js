@@ -61,15 +61,11 @@ export const useDragCarousel = (onSlideChange) => {
     setStartX(touch.clientX);
     setCurrentX(touch.clientX);
     setDragDistance(0);
-    
-    // Prevent scrolling while dragging
-    e.preventDefault();
   };
 
   const handleTouchMove = (e) => {
     if (!isDragging) return;
     
-    e.preventDefault();
     const touch = e.touches[0];
     setCurrentX(touch.clientX);
     const distance = touch.clientX - startX;
