@@ -35,7 +35,7 @@ export const useDragCarousel = (onSlideChange) => {
     document.body.style.cursor = '';
     
     // Determine if we should change slides based on drag distance
-    const threshold = 50; // Minimum drag distance to trigger slide change
+    const threshold = window.innerWidth < 640 ? 30 : 50; // Lower threshold for mobile
     
     if (Math.abs(dragDistance) > threshold) {
       if (dragDistance > 0) {
@@ -61,6 +61,9 @@ export const useDragCarousel = (onSlideChange) => {
     setStartX(touch.clientX);
     setCurrentX(touch.clientX);
     setDragDistance(0);
+    
+    // Prevent scrolling while dragging
+    e.preventDefault();
   };
 
   const handleTouchMove = (e) => {
@@ -78,7 +81,7 @@ export const useDragCarousel = (onSlideChange) => {
     
     setIsDragging(false);
     
-    const threshold = 50;
+    const threshold = window.innerWidth < 640 ? 30 : 50; // Lower threshold for mobile
     
     if (Math.abs(dragDistance) > threshold) {
       if (dragDistance > 0) {

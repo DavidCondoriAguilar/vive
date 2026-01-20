@@ -34,8 +34,6 @@ export const ROUTES = {
   HOME: '/',
   CATEGORIES: '/categorias',
   PRODUCTS: '/producto',
-  OFFERS: '/ofertas',
-  BLOG: '/blog',
   RETURN_POLICY: '/politica-devoluciones'
 };
 

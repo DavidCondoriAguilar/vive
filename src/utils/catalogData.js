@@ -36,14 +36,6 @@ export const CATEGORIES = [
             { name: 'Cabeceras', filter: 'Cabeceras', slug: 'cabeceras' },
             { name: 'Cunas', filter: 'Cunas', slug: 'cunas' }
         ]
-    },
-    {
-        id: 'muebles',
-        name: 'Muebles',
-        description: 'Elegancia y confort para tu sala.',
-        subcategories: [
-            { name: 'Juegos de Sala', filter: 'Muebles' }
-        ]
     }
 ];
 

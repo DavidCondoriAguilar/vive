@@ -72,11 +72,6 @@ const Navbar = () => {
             ]
         },
         {
-            name: 'Muebles',
-            path: '/categorias/muebles',
-            icon: <MdOutlineInventory className="w-5 h-5" />
-        },
-        {
             name: 'Venta por Mayor',
             path: '/venta-por-mayor',
             badge: 'B2B',

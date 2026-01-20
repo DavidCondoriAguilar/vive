@@ -62,10 +62,10 @@ const EducationSection = () => {
 
                             {/* CTA Button */}
                             <Link
-                                to={`/blog/${item.id}`}
+                                to="/catalogo"
                                 className="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105"
                             >
-                                {item.cta}
+                                Ver Catálogo
                             </Link>
                         </div>
 

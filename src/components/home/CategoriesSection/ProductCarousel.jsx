@@ -29,7 +29,7 @@ const ProductCarousel = ({
   const { carouselRef, isDragging, dragDistance, handlers } = useDragCarousel(handleSlideChange);
 
   return (
-    <div className="relative" ref={carouselRef}>
+    <div className="relative" ref={carouselRef} {...handlers}>
       {/* Navigation Arrows */}
       {products.length > itemsPerView && (
         <>

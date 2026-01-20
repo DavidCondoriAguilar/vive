@@ -90,16 +90,16 @@ const CategorySection = () => {
                 {/* Special Offer Card */}
                 <div className="mt-16">
                     <Link
-                        to="/ofertas"
+                        to="/catalogo"
                         className="group relative w-full p-12 bg-gradient-to-r from-gold-500/10 to-gold-500/5 dark:from-gold-500/20 dark:to-gold-500/10 rounded-[2rem] border border-gold-500/20 overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-gold-500/10 hover:border-gold-500/30"
                     >
                         <div className="flex items-center justify-between">
                             <div>
                                 <span className="text-xs font-black text-gold-500 uppercase tracking-[0.4em] mb-3 block">
-                                    Ofertas Especiales
+                                    Catálogo Completo
                                 </span>
                                 <h3 className="text-3xl lg:text-5xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter mb-2">
-                                    LANZAMIENTOS & <span className="text-gold-500">OFERTAS</span>
+                                    VER TODOS LOS <span className="text-gold-500">PRODUCTOS</span>
                                 </h3>
                                 <p className="text-gray-600 dark:text-gray-300 text-lg font-medium">
                                     Descuentos de fábrica hasta <span className="text-gold-500 font-black">-40%</span>

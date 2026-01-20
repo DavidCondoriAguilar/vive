@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight, FaLeaf, FaTruck, FaBuilding } from 'react-icons/fa';
 import { getWhatsAppLink } from '@/utils/constants';
+import { useDragCarousel } from '@/hooks/useDragCarousel';
 
 const HeroCarousel = () => {
   const navigate = useNavigate();
@@ -43,6 +44,16 @@ const HeroCarousel = () => {
       badge: 'NEGOCIOS'
     }
   ];
+
+  const handleSlideChange = (direction) => {
+    if (direction === 'next') {
+      nextSlide();
+    } else if (direction === 'prev') {
+      prevSlide();
+    }
+  };
+
+  const { carouselRef, isDragging, dragDistance, handlers } = useDragCarousel(handleSlideChange);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -95,7 +106,8 @@ const HeroCarousel = () => {
   return (
     <section
       className={`relative w-full h-[100dvh] overflow-hidden bg-black transition-opacity duration-1000 group/carousel ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-      ref={containerRef}
+      ref={carouselRef}
+      {...handlers}
       onMouseEnter={() => setIsAutoPlay(false)}
       onMouseLeave={() => setIsAutoPlay(true)}
     >
@@ -124,28 +136,28 @@ const HeroCarousel = () => {
             `}
           >
             {/* Adjusted Typography to prevent overflow in all resolutions */}
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 leading-tight uppercase tracking-tighter drop-shadow-2xl transition-all duration-700">
+            <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-6xl font-black text-white mb-3 sm:mb-4 leading-tight uppercase tracking-tighter drop-shadow-2xl transition-all duration-700 px-2">
               {slide.title}
             </h1>
 
-            <h2 className="text-base md:text-xl font-medium text-gold-400 mb-8 md:mb-10 tracking-[0.2em] uppercase py-2 border-y border-gold-500/10">
+            <h2 className="text-sm md:text-lg font-medium text-gold-400 mb-6 md:mb-8 tracking-[0.2em] uppercase py-2 border-y border-gold-500/10 px-4">
               {slide.subtitle}
             </h2>
 
             {/* Premium Tags - Minimal */}
-            <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12">
+            <div className="flex flex-wrap justify-center gap-1.5 md:gap-3 mb-6 md:mb-10 px-2">
               {slide.features.map((feature, fIdx) => (
-                <div key={fIdx} className="bg-white/5 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10">
-                  <span className="text-[8px] md:text-[10px] font-bold text-white uppercase tracking-[0.2em]">{feature}</span>
+                <div key={fIdx} className="bg-white/5 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                  <span className="text-[7px] md:text-[9px] font-bold text-white uppercase tracking-[0.2em]">{feature}</span>
                 </div>
               ))}
             </div>
 
             {/* Direct Action Buttons - Large & Clear */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6">
+            <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-6 px-2">
               <button
                 onClick={() => navigate('/catalogo')}
-                className="w-56 sm:w-auto bg-gold-500 hover:bg-gold-600 text-black font-black px-8 py-3.5 rounded-full transition-all shadow-2xl uppercase tracking-[0.1em] text-[10px] md:text-xs"
+                className="w-full sm:w-auto bg-gold-500 hover:bg-gold-600 text-black font-black px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-all shadow-2xl uppercase tracking-[0.1em] text-[9px] sm:text-[10px] md:text-xs"
               >
                 Ver Catálogo
               </button>
@@ -153,7 +165,7 @@ const HeroCarousel = () => {
                 href={getWhatsAppLink(`Hola Sueño Dorado, estoy interesado en recibir información sobre ${slide.title}.`)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-56 sm:w-auto bg-transparent hover:bg-white/10 text-white border border-white/40 font-bold px-8 py-3.5 rounded-full transition-all uppercase tracking-[0.1em] text-[10px] md:text-xs flex items-center justify-center"
+                className="w-full sm:w-auto bg-transparent hover:bg-white/10 text-white border border-white/40 font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-all uppercase tracking-[0.1em] text-[9px] sm:text-[10px] md:text-xs flex items-center justify-center"
               >
                 WhatsApp
               </a>
@@ -175,17 +187,19 @@ const HeroCarousel = () => {
         ))}
       </div>
 
-      {/* Simplified Nav Arrows */}
-      {!isMobile && (
-        <>
-          <button onClick={prevSlide} className="absolute left-10 top-1/2 -translate-y-1/2 text-white/30 hover:text-gold-500 transition-colors">
-            <FaChevronLeft size={30} />
-          </button>
-          <button onClick={nextSlide} className="absolute right-10 top-1/2 -translate-y-1/2 text-white/30 hover:text-gold-500 transition-colors">
-            <FaChevronRight size={30} />
-          </button>
-        </>
-      )}
+      {/* Simplified Nav Arrows - Enhanced for Mobile */}
+      <button 
+        onClick={prevSlide} 
+        className="absolute left-4 sm:left-10 top-1/2 -translate-y-1/2 text-white/30 hover:text-gold-500 transition-colors bg-black/20 backdrop-blur-sm rounded-full p-2 sm:p-3 z-10"
+      >
+        <FaChevronLeft size={20} className="sm:w-7 sm:h-7 w-5 h-5" />
+      </button>
+      <button 
+        onClick={nextSlide} 
+        className="absolute right-4 sm:right-10 top-1/2 -translate-y-1/2 text-white/30 hover:text-gold-500 transition-colors bg-black/20 backdrop-blur-sm rounded-full p-2 sm:p-3 z-10"
+      >
+        <FaChevronRight size={20} className="sm:w-7 sm:h-7 w-5 h-5" />
+      </button>
     </section>
   );
 };

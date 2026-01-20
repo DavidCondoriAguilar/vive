@@ -31,7 +31,7 @@ export default defineConfig({
         manualChunks: {
           // Separate vendor chunks for better caching
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': ['react-helmet-async'],
+          'ui-vendor': ['react-helmet'],
         },
       },
     },
@@ -50,6 +50,6 @@ export default defineConfig({
   },
   // Preload critical resources
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
+    include: ['react', 'react-dom', 'react-router-dom', 'react-helmet'],
   },
 })

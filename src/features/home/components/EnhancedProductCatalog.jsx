@@ -135,7 +135,7 @@ const EnhancedProductCatalog = () => {
                     </div>
 
                     {/* Carousel Container */}
-                    <div className="relative" ref={carouselRef}>
+                    <div className="relative" ref={carouselRef} {...handlers}>
                         {/* Navigation Arrows */}
                         {filteredProducts.length > itemsPerView && (
                             <>

@@ -62,43 +62,26 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
           </p>
         </div>
 
-        <div className="flex items-center gap-6">
-          {/* Slide Indicators - Minimalist */}
-          <div className="hidden sm:flex gap-2">
+        <div className="flex items-center gap-3 sm:gap-6">
+          {/* Mobile-only slide indicators */}
+          <div className="flex sm:hidden gap-2">
             {filteredProducts.slice(0, Math.max(0, filteredProducts.length - itemsPerView + 1)).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`h-1 transition-all duration-500 rounded-full ${index === currentIndex
-                  ? 'w-8 bg-gold-500'
-                  : 'w-2 bg-gray-200 dark:bg-gray-800'
+                  ? 'w-6 bg-gold-500'
+                  : 'w-1.5 bg-gray-200 dark:bg-gray-800'
                   }`}
               />
             ))}
-          </div>
-
-          <div className="flex gap-3">
-            <button
-              onClick={() => handleSlideChange('prev')}
-              disabled={!canGoPrev}
-              className={`w-14 h-14 rounded-2xl border border-gray-100 dark:border-white/10 flex items-center justify-center transition-all ${!canGoPrev ? 'opacity-20 cursor-not-allowed' : 'hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black hover:scale-105 active:scale-95 shadow-lg shadow-black/5'}`}
-            >
-              <MdOutlineArrowBack className="w-6 h-6" />
-            </button>
-            <button
-              onClick={() => handleSlideChange('next')}
-              disabled={!canGoNext}
-              className={`w-14 h-14 rounded-2xl border border-gray-100 dark:border-white/10 flex items-center justify-center transition-all ${!canGoNext ? 'opacity-20 cursor-not-allowed' : 'hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black hover:scale-105 active:scale-95 shadow-lg shadow-black/5'}`}
-            >
-              <MdOutlineArrowForward className="w-6 h-6" />
-            </button>
           </div>
         </div>
       </div>
 
       {/* Filters */}
       <div className="flex flex-wrap gap-3 mb-12 px-4">
-        {['Todos', 'Resorte', 'Espuma', 'Dormitorio', 'Muebles'].map((cat) => (
+        {['Todos', 'Resorte', 'Espuma', 'Dormitorio'].map((cat) => (
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
@@ -114,49 +97,80 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
 
       {/* Viewport */}
       <div className="relative overflow-hidden cursor-grab active:cursor-grabbing" ref={carouselRef} {...handlers}>
+        {/* Navigation Arrows - Positioned inside viewport */}
+        {filteredProducts.length > itemsPerView && (
+          <>
+            <button
+              onClick={() => handleSlideChange('prev')}
+              disabled={!canGoPrev}
+              className={`absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 dark:bg-black/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center transition-all ${
+                !canGoPrev 
+                  ? 'opacity-30 cursor-not-allowed' 
+                  : 'hover:bg-white dark:hover:bg-black hover:scale-110 active:scale-95'
+              }`}
+              aria-label="Anterior"
+            >
+              <MdOutlineArrowBack className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300" />
+            </button>
+
+            <button
+              onClick={() => handleSlideChange('next')}
+              disabled={!canGoNext}
+              className={`absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 dark:bg-black/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center transition-all ${
+                !canGoNext 
+                  ? 'opacity-30 cursor-not-allowed' 
+                  : 'hover:bg-white dark:hover:bg-black hover:scale-110 active:scale-95'
+              }`}
+              aria-label="Siguiente"
+            >
+              <MdOutlineArrowForward className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300" />
+            </button>
+          </>
+        )}
+        
         <div
-          className="flex gap-8 transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]"
+          className="flex gap-4 sm:gap-8 transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]"
           style={{ transform: `translateX(calc(-${currentIndex * (100 / itemsPerView)}% + ${isDragging ? dragDistance : 0}px))` }}
         >
           {filteredProducts.map((product) => (
             <div
               key={product.id}
               className="flex-shrink-0 group"
-              style={{ width: `calc(${100 / itemsPerView}% - 24px)` }}
+              style={{ width: `calc(${100 / itemsPerView}% - ${window.innerWidth < 640 ? '16px' : '24px'})` }}
             >
-              <div className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-[2.5rem] border border-transparent hover:border-gray-100 dark:hover:border-white/5 transition-all duration-700 hover:bg-white dark:hover:bg-zinc-900 h-full flex flex-col">
-                <Link to={`/producto/${product.id}`} className="block aspect-[4/5] overflow-hidden rounded-[2rem] bg-white dark:bg-black p-6 mb-8 relative">
+              <div className="bg-gray-50 dark:bg-zinc-900/50 p-4 sm:p-6 rounded-[2rem] sm:rounded-[2.5rem] border border-transparent hover:border-gray-100 dark:hover:border-white/5 transition-all duration-700 hover:bg-white dark:hover:bg-zinc-900 h-full flex flex-col">
+                <Link to={`/producto/${product.id}`} className="block aspect-[4/5] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] bg-white dark:bg-black p-4 sm:p-6 mb-6 sm:mb-8 relative">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110"
                   />
                   {product.badge && (
-                    <div className="absolute top-6 left-6">
-                      <span className="px-3 py-1 bg-gold-500 text-white text-[8px] font-black uppercase tracking-widest rounded-full">
+                    <div className="absolute top-4 sm:top-6 left-4 sm:left-6">
+                      <span className="px-2 sm:px-3 py-1 bg-gold-500 text-white text-[7px] sm:text-[8px] font-black uppercase tracking-widest rounded-full">
                         {product.badge}
                       </span>
                     </div>
                   )}
                 </Link>
 
-                <div className="space-y-3 flex-grow flex flex-col">
+                <div className="space-y-2 sm:space-y-3 flex-grow flex flex-col">
                   <div>
-                    <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">{product.subcategory}</h4>
+                    <h4 className="text-[9px] sm:text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">{product.subcategory}</h4>
                     <Link to={`/producto/${product.id}`}>
-                      <h3 className="text-lg font-display font-black text-gray-900 dark:text-white uppercase tracking-tight line-clamp-1 hover:text-gold-500 transition-colors">
+                      <h3 className="text-base sm:text-lg font-display font-black text-gray-900 dark:text-white uppercase tracking-tight line-clamp-1 hover:text-gold-500 transition-colors">
                         {product.name}
                       </h3>
                     </Link>
                   </div>
 
-                  <div className="pt-4 mt-auto flex items-center justify-between gap-4">
-                    <span className="text-xl font-display font-black text-gray-900 dark:text-white">
+                  <div className="pt-2 sm:pt-4 mt-auto flex items-center justify-between gap-2 sm:gap-4">
+                    <span className="text-lg sm:text-xl font-display font-black text-gray-900 dark:text-white">
                       S/ {product.price.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
                     </span>
                     <Link
                       to={`/producto/${product.id}`}
-                      className="flex-grow sm:flex-initial px-6 py-3 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white text-[10px] font-black uppercase tracking-widest hover:border-gold-500 hover:text-gold-500 transition-all duration-500 hover:shadow-xl hover:shadow-black/5 text-center flex items-center justify-center gap-2"
+                      className="flex-grow sm:flex-initial px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest hover:border-gold-500 hover:text-gold-500 transition-all duration-500 hover:shadow-xl hover:shadow-black/5 text-center flex items-center justify-center gap-1 sm:gap-2"
                     >
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
