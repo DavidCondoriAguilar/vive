@@ -60,11 +60,11 @@ const ShoppingCart = () => {
       )}
 
       {/* Cart Sidebar Drawer */}
-      <div className={`fixed right-0 top-0 bottom-0 z-[200] w-full max-w-md bg-white dark:bg-zinc-950 shadow-[-20px_0_50px_rgba(0,0,0,0.2)] transition-transform duration-700 cubic-bezier(0.4, 0, 0.2, 1) transform ${isCartOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed right-0 top-0 bottom-0 z-[200] w-full max-w-md sm:max-w-lg bg-white dark:bg-zinc-950 shadow-[-20px_0_50px_rgba(0,0,0,0.2)] transition-transform duration-700 cubic-bezier(0.4, 0, 0.2, 1) transform ${isCartOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex flex-col h-full">
 
           {/* Header - Fixed */}
-          <div className="px-8 py-8 border-b border-gray-100 dark:border-white/5 flex items-center justify-between bg-white dark:bg-zinc-950 sticky top-0 z-20">
+          <div className="px-6 sm:px-8 py-6 sm:py-8 border-b border-gray-100 dark:border-white/5 flex items-center justify-between bg-white dark:bg-zinc-950 sticky top-0 z-20">
             <div>
               <h2 className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter">Tu Pedido</h2>
               <div className="flex items-center gap-2 mt-1">
@@ -86,7 +86,7 @@ const ShoppingCart = () => {
           </div>
 
           {/* Items List - Scrollable */}
-          <div className="flex-1 overflow-y-auto px-8 py-6 custom-scrollbar">
+          <div className="flex-1 overflow-y-auto px-6 sm:px-8 py-4 sm:py-6 custom-scrollbar">
             {cartItems.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center opacity-60">
                 <div className="w-20 h-20 bg-gray-50 dark:bg-white/5 rounded-[2rem] flex items-center justify-center mb-6">
@@ -176,7 +176,7 @@ const ShoppingCart = () => {
 
           {/* Footer - Sticky */}
           {cartItems.length > 0 && (
-            <div className="p-8 bg-gray-50/50 dark:bg-white/[0.02] border-t border-gray-100 dark:border-white/5 space-y-6">
+            <div className="px-6 sm:px-8 py-6 sm:py-8 bg-gray-50/50 dark:bg-white/[0.02] border-t border-gray-100 dark:border-white/5 space-y-4 sm:space-y-6">
               <div className="flex justify-between items-end">
                 <div className="space-y-1">
                   <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">Total estimado</span>
@@ -192,16 +192,20 @@ const ShoppingCart = () => {
               <div className="space-y-3">
                 <button
                   onClick={processOrder}
-                  className="w-full bg-green-500 hover:bg-green-600 active:scale-[0.98] text-white py-5 rounded-[1.5rem] font-black text-xs uppercase tracking-[0.2em] shadow-[0_15px_30px_rgba(34,197,94,0.3)] transition-all flex items-center justify-center gap-3 group"
+                  className="w-full bg-green-500 hover:bg-green-600 active:scale-[0.98] text-white py-5 sm:py-6 rounded-[1.5rem] font-black text-sm sm:text-base uppercase tracking-[0.2em] shadow-[0_15px_30px_rgba(34,197,94,0.3)] transition-all flex items-center justify-center group min-h-[60px] sm:min-h-[70px]"
                 >
-                  <FaWhatsapp className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                  <span className="text-sm">Comprar por WhatsApp</span>
-                  <span className="text-xs opacity-75 block mt-1">Atención inmediata</span>
+                  <div className="flex items-center gap-3">
+                    <FaWhatsapp className="w-6 h-6 sm:w-7 sm:h-7 group-hover:scale-110 transition-transform" />
+                    <div className="text-center">
+                      <span className="block font-medium text-sm sm:text-base">Comprar por WhatsApp</span>
+                      <span className="text-xs sm:text-sm opacity-75 block mt-1">Atención inmediata</span>
+                    </div>
+                  </div>
                 </button>
 
                 <button
                   onClick={() => setIsCartOpen(false)}
-                  className="w-full py-3 text-[9px] font-black text-gray-400 hover:text-gray-900 dark:hover:text-white uppercase tracking-[0.3em] transition-colors"
+                  className="w-full py-3 text-[9px] sm:text-xs font-black text-gray-400 hover:text-gray-900 dark:hover:text-white uppercase tracking-[0.3em] transition-colors"
                 >
                   Seguir Comprando
                 </button>

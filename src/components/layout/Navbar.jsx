@@ -12,7 +12,8 @@ import {
     MdOutlineWeekend,
     MdOutlineHome,
     MdOutlineInventory,
-    MdOutlineLocalOffer
+    MdOutlineLocalOffer,
+    MdOutlineMail
 } from 'react-icons/md';
 
 const Navbar = () => {
@@ -80,6 +81,11 @@ const Navbar = () => {
             path: '/venta-por-mayor',
             badge: 'B2B',
             icon: <MdOutlineLocalOffer className="w-5 h-5" />
+        },
+        {
+            name: 'Contacto',
+            path: '/contacto',
+            icon: <MdOutlineMail className="w-5 h-5" />
         },
     ];
 

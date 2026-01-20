@@ -84,6 +84,10 @@ const MainLayout = ({ children }) => {
     };
 
     const handleSupportClick = (key) => {
+        if (key === 'Contacto') {
+            navigate('/contacto');
+            return;
+        }
         const info = supportInfo[key];
         if (info) setActiveModal(info);
     };
@@ -185,10 +189,10 @@ const MainLayout = ({ children }) => {
                             </form>
 
                             <div className="pt-4 border-t border-gray-100 dark:border-white/20">
-                                <a href="mailto:hola@suenodorado.pe" className="flex items-center gap-2 text-gray-900 dark:text-white hover:text-gold-500 transition-colors font-bold text-sm group">
+                                <Link to="/contacto" className="flex items-center gap-2 text-gray-900 dark:text-white hover:text-gold-500 transition-colors font-bold text-sm group">
                                     <LuMail className="w-4 h-4 text-gold-500 group-hover:scale-110 transition-transform" />
                                     <span>Contáctanos</span>
-                                </a>
+                                </Link>
                             </div>
 
                             {/* Payment Icons - Expert Recommendation */}

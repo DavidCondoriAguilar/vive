@@ -15,6 +15,8 @@ const WholesaleView = lazy(() => import('@features/wholesale/WholesaleView'));
 const ProductDetailsView = lazy(() => import('@features/products/ProductDetailsView'));
 const ReturnPolicyView = lazy(() => import('@/components/common/ReturnPolicy'));
 const OrderConfirmationPage = lazy(() => import('@/pages/OrderConfirmationPage'));
+const ContactForm = lazy(() => import('@/components/contact/ContactForm'));
+const ContactThankYou = lazy(() => import('@/components/contact/ContactThankYou'));
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
             <Route path="/producto/:productId" element={<ProductDetailsView />} />
             <Route path="/confirmacion-pedido" element={<OrderConfirmationPage />} />
             <Route path="/politica-devoluciones" element={<ReturnPolicyView />} />
+            <Route path="/contacto" element={<ContactForm />} />
+            <Route path="/contacto/gracias" element={<ContactThankYou />} />
             <Route path="*" element={<HomeView />} />
           </Routes>
         </Suspense>
