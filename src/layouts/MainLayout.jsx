@@ -138,7 +138,7 @@ const MainLayout = ({ children }) => {
                             <ul className="space-y-3">
                                 {['Colchones', 'Camas', 'Accesorios', 'Ofertas'].map((item) => (
                                     <li key={item}>
-                                        <Link to={`/catalogo?categoria=${item.toLowerCase()}`} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gold-500 dark:hover:text-gold-400 transition-colors font-medium">
+                                        <Link to={`/catalogo?categoria=${item.toLowerCase()}`} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gold-500 transition-colors font-medium">
                                             {item}
                                         </Link>
                                     </li>
@@ -160,7 +160,7 @@ const MainLayout = ({ children }) => {
                                     <li key={item}>
                                         <button
                                             onClick={() => handleSupportClick(item)}
-                                            className="text-sm text-gray-500 dark:text-gray-400 hover:text-gold-500 dark:hover:text-gold-400 transition-colors font-medium text-left"
+                                            className="text-sm text-gray-500 dark:text-gray-400 hover:text-gold-500 transition-colors font-medium text-left"
                                         >
                                             {item}
                                         </button>
@@ -177,14 +177,14 @@ const MainLayout = ({ children }) => {
                                 <input
                                     type="email"
                                     placeholder="Correo electrónico"
-                                    className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg py-3 pl-4 pr-10 text-sm outline-none focus:border-gold-500 transition-colors"
+                                    className="w-full bg-white dark:bg-black border border-gray-200 dark:border-white/20 rounded-lg py-3 pl-4 pr-10 text-sm outline-none focus:border-gold-500 transition-colors"
                                 />
                                 <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-gold-500 text-white rounded-md hover:bg-gold-600 transition-colors">
                                     <LuArrowRight className="w-3 h-3" />
                                 </button>
                             </form>
 
-                            <div className="pt-4 border-t border-gray-100 dark:border-white/5">
+                            <div className="pt-4 border-t border-gray-100 dark:border-white/20">
                                 <a href="mailto:hola@suenodorado.pe" className="flex items-center gap-2 text-gray-900 dark:text-white hover:text-gold-500 transition-colors font-bold text-sm group">
                                     <LuMail className="w-4 h-4 text-gold-500 group-hover:scale-110 transition-transform" />
                                     <span>Contáctanos</span>
@@ -207,12 +207,12 @@ const MainLayout = ({ children }) => {
                     </div>
 
                     {/* Footer Bottom */}
-                    <div className="pt-8 border-t border-gray-100 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="pt-8 border-t border-gray-100 dark:border-white/20 flex flex-col md:flex-row justify-between items-center gap-6">
                         <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
                             <p className="text-[10px] sm:text-xs text-gray-400 font-medium text-center md:text-left">
                                 © 2026 SUEÑO DORADO. Fabricado con orgullo en Perú.
                             </p>
-                            <Link to="/libro-de-reclamaciones" className="opacity-80 hover:opacity-100 transition-opacity">
+                            <Link to="/libro-de-reclamaciones" className="opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-300">
                                 <img src={libroReclamacionesImg} alt="Libro de Reclamaciones" className="h-8 w-auto md:h-10" />
                             </Link>
                         </div>

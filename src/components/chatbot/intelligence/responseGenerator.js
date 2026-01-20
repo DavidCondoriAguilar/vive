@@ -76,9 +76,9 @@ class ResponseGenerator {
         
         product_inquiry: {
           templates: [
-            '¡Excelente elección! ¿Para qué tipo de habitación o uso es el colchón?',
-            'Perfecto. ¿Qué características específicas buscas en un colchón?',
-            '¡Buena decisión! ¿Para quién es el colchón y qué tipo de descanso prefieres?'
+            '¡Excelente elección! ¿Qué tipo de colchón estás buscando?',
+            'Perfecto. ¿Para qué tipo de habitación o uso es el colchón?',
+            '¡Buena decisión! ¿Qué características específicas buscas en un colchón?'
           ],
           follow_up: [
             '¿Duermes de lado, boca arriba o te mueves mucho?',
@@ -86,6 +86,59 @@ class ResponseGenerator {
             '¿El colchón es para ti o para alguien más?'
           ]
         },
+        
+        // Specific line responses
+        golden_dream: {
+          templates: [
+            '¡Excelente elección! Golden Dream es nuestra línea premium con 6 años de garantía. ¿Qué tamaño necesitas?',
+            'Golden Dream representa lo mejor de nuestra ingeniería con acabado de lujo. ¿Te interesa conocer más?',
+            '¡Perfecto! Golden Dream tiene sistema MP y espuma premium. ¿Para qué habitación es?'
+          ],
+          follow_up: [
+            'Ver modelos Golden Dream',
+            'Comparar con otras líneas',
+            'Conocer garantía extendida'
+          ]
+        },
+        
+        siempre: {
+          templates: [
+            '¡Excelente! La línea Siempre tiene 7 años de garantía, la más duradera. ¿Qué tamaño buscas?',
+            'Siempre está diseñada para durar toda la vida. ¿Te gustaría ver sus características?',
+            '¡Perfecta elección! Siempre tiene sistema MP y pillow top permanente. ¿Para cuántas personas?'
+          ],
+          follow_up: [
+            'Ver modelos Siempre',
+            'Conocer garantía de 7 años',
+            'Comparar con Premium'
+          ]
+        },
+        
+        poliseda: {
+          templates: [
+            '¡Buena elección! Poliseda es nuestra línea económica y ligera. ¿Qué espesor necesitas?',
+            'Poliseda es perfecta para uso juvenil o temporario. ¿Te interesa conocer los espesores?',
+            '¡Excelente! Poliseda viene en 4", 5.5", 7" y 8" de espesor. ¿Cuál prefieres?'
+          ],
+          follow_up: [
+            'Ver espesores disponibles',
+            'Comparar con Plus Resilense',
+            'Conocer precios'
+          ]
+        },
+        
+        box_tarimas: {
+          templates: [
+            '¡Perfecto! Nuestras bases y tarimas complementan perfectamente tus colchones. ¿Qué tipo necesitas?',
+            'Tenemos box y tarimas para todos los tamaños de colchón. ¿Para qué tamaño es?',
+            '¡Excelente! Las bases son fundamentales para la durabilidad del colchón. ¿Qué modelo buscas?'
+          ],
+          follow_up: [
+            'Ver bases disponibles',
+            'Conocer materiales',
+            'Calcular precio con colchón'
+          ]
+        }
         
         pricing: {
           templates: [

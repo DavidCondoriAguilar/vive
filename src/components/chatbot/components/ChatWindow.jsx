@@ -8,6 +8,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FaPaperPlane, FaTimes } from 'react-icons/fa';
 import MessageBubble from './MessageBubble.jsx';
 import TypingIndicator from './TypingIndicator.jsx';
+import logoClaro from '@assets/images/logos/logo-claro.png';
+import logoOscuro from '@assets/images/logos/logo-main.jpg';
 
 /**
  * ChatWindow component props
@@ -32,8 +34,26 @@ const ChatWindow = ({
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [isMinimized, setIsMinimized] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Detect dark mode
+  useEffect(() => {
+    const checkDarkMode = () => {
+      const isDark = document.documentElement.classList.contains('dark') || 
+                    window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDarkMode(isDark);
+    };
+    
+    checkDarkMode();
+    
+    // Listen for theme changes
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
 
   // Auto-scroll to bottom on new messages
   useEffect(() => {
@@ -73,17 +93,22 @@ const ChatWindow = ({
   return (
     <div className="fixed bottom-24 right-6 w-96 h-[500px] bg-white dark:bg-gray-800 
                 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 
-                flex flex-col z-50 animate-slide-up">
+                flex flex-col z-[190] animate-slide-up
+                max-h-[70vh] overflow-hidden">
       
       {/* Header */}
       <div className="bg-gold-500 text-white px-4 py-3 rounded-t-2xl flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-            <span className="text-lg">🛏️</span>
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm">
+            <img 
+              src={isDarkMode ? logoClaro : logoOscuro} 
+              alt="Sueño Dorado" 
+              className="w-8 h-8 object-contain"
+            />
           </div>
           <div>
-            <h3 className="font-semibold">Sueño Dorado</h3>
-            <p className="text-xs opacity-90">Asistente virtual</p>
+            <h3 className="font-semibold text-white">Sueño Dorado</h3>
+            <p className="text-xs text-white/90">Asistente virtual</p>
           </div>
         </div>
         

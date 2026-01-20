@@ -41,7 +41,9 @@ export const BOT_RESPONSES = {
     text: 'Tenemos una amplia variedad de colchones de espuma y resortes. ¿Qué tipo de colchón te interesa?',
     options: [
       { text: 'Colchones de Espuma', intent: 'espuma_products' },
-      { text: 'Colchones de Resortes', intent: 'resortes_products' },
+      { text: 'Colchones de Resortes', intent: 'resorte_products' },
+      { text: 'Golden Dream (Premium)', intent: 'golden_dream_products' },
+      { text: 'Línea Siempre (7 años)', intent: 'siempre_products' },
       { text: 'Ver todos los productos', intent: CHATBOT_INTENTS.CATALOG }
     ]
   },
@@ -103,6 +105,43 @@ export const BOT_RESPONSES = {
   [CHATBOT_INTENTS.FALLBACK]: {
     text: 'No estoy seguro de entender. ¿Podrías reformular tu pregunta? O elige una opción:',
     options: CHATBOT_CONFIG.quickActions
+  },
+  
+  // Specific line responses
+  golden_dream_products: {
+    text: '¡Golden Dream es nuestra línea premium! 🌟 Incluye sistema MP, espumas de alta densidad y 6 años de garantía. Precios desde S/. 1,699.',
+    options: [
+      { text: 'Ver modelos Golden Dream', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
+      { text: 'Comparar con Premium', intent: 'premium_products' },
+      { text: 'Conocer garantía', intent: CHATBOT_INTENTS.WARRANTY }
+    ]
+  },
+  
+  siempre_products: {
+    text: '¡La línea Siempre es la más duradera! ⏰ 7 años de garantía con sistema MP y pillow top permanente. Precios desde S/. 1,449.',
+    options: [
+      { text: 'Ver modelos Siempre', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
+      { text: 'Comparar con Golden Dream', intent: 'golden_dream_products' },
+      { text: 'Ver garantía extendida', intent: CHATBOT_INTENTS.WARRANTY }
+    ]
+  },
+  
+  poliseda_products: {
+    text: 'Poliseda es nuestra línea económica y ligera 💰 Perfecta para uso juvenil o temporario. Espesores de 4" a 8". Precios desde S/. 349.',
+    options: [
+      { text: 'Ver espesores', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
+      { text: 'Comparar con Plus Resilense', intent: 'plus_resilense_products' },
+      { text: 'Conocer precios', intent: CHATBOT_INTENTS.PRICING }
+    ]
+  },
+  
+  box_products: {
+    text: 'Tenemos bases y tarimas para todos los colchones 🛏️ Fundamentales para la durabilidad y soporte adecuado.',
+    options: [
+      { text: 'Ver bases disponibles', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
+      { text: '¿Necesito base?', intent: CHATBOT_INTENTS.HELP },
+      { text: 'Contactar asesor', intent: CHATBOT_INTENTS.CONTACT }
+    ]
   }
 };
 
@@ -116,7 +155,27 @@ export const KEYWORDS_INTENTS = {
   colchón: CHATBOT_INTENTS.PRODUCT_INFO,
   colchones: CHATBOT_INTENTS.PRODUCT_INFO,
   espuma: 'espuma_products',
-  resortes: 'resortes_products',
+  resorte: 'resorte_products',
+  
+  // Specific lines
+  'golden dream': 'golden_dream_products',
+  siempre: 'siempre_products',
+  absolut: 'absolut_products',
+  premium: 'premium_products',
+  intermedio: 'intermedio_products',
+  económica: 'economica_products',
+  standard: 'standard_products',
+  poliseda: 'poliseda_products',
+  'plus resilense': 'plus_resilense_products',
+  splendido: 'splendido_products',
+  topacio: 'topacio_products',
+  
+  // Categories
+  'box': 'box_products',
+  'tarimas': 'box_products',
+  cabeceras: 'cabeceras_products',
+  cunas: 'cunas_products',
+  'juegos de sala': 'muebles_products',
   
   // Pricing patterns
   precio: CHATBOT_INTENTS.PRICING,

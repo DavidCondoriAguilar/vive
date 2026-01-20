@@ -65,11 +65,33 @@ class NLPProcessor {
     return {
       // Product type extraction
       productTypes: {
+        // Resortes - líneas específicas
+        'golden dream': /golden\s*dream/gi,
+        'siempre': /siempre/gi,
+        'absolut': /absolut/gi,
+        'premium': /premium/gi,
+        'intermedio': /intermedio/gi,
+        'economica': /económica/gi,
+        'standard': /standard/gi,
+        'matrimonial': /matrimonial/gi,
+        
+        // Espumas - líneas específicas
+        'poliseda': /poliseda/gi,
+        'plus resilense': /plus\s*resilense/gi,
+        'splendido': /splendido/gi,
+        'topacio': /topacio/gi,
+        
+        // Categorías generales
         'colchones de espuma': /colchones?.*(?:de|tipo)?\s*espuma/gi,
-        'colchones de resortes': /colchones?.*(?:de|tipo)?\s*resortes/gi,
-        'tarimas': /tarimas?|bases/gi,
-        'cunas': /cunas?|camas/gi,
-        'almohadas': /almohadas?/gi
+        'colchones de resortes': /colchones?.*(?:de|tipo)?\s*resortes?/gi,
+        
+        // Dormitorio
+        'box tarimas': /tarimas?|bases|box/gi,
+        'cabeceras': /cabeceras?|cabezales/gi,
+        'cunas': /cunas?|camas\s*infantiles/gi,
+        
+        // Muebles
+        'juegos de sala': /juegos?\s*de\s*sala|salas|sofás/gi
       },
       
       // Quantity extraction

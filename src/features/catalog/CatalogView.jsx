@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useScrollToTop } from '@/hooks/useTheme';
+import { FaEye, FaWhatsapp } from 'react-icons/fa';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
 import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink } from '@/utils/constants';
@@ -70,14 +71,14 @@ const CatalogView = () => {
             </div>
 
             {/* Smart Filters Panel */}
-            <div className="bg-gray-50 dark:bg-white/[0.02] rounded-[2.5rem] p-8 md:p-12 mb-16 border border-gray-100 dark:border-white/5 space-y-12">
+            <div className="bg-white dark:bg-black rounded-[2.5rem] p-8 md:p-12 mb-16 border border-gray-100 dark:border-white/10 space-y-12">
 
               {/* Primary Category Filter */}
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="h-[1px] flex-grow bg-gray-200 dark:bg-white/10" />
+                  <div className="h-[1px] flex-grow bg-gray-200 dark:bg-white/20" />
                   <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Categoría Principal</span>
-                  <div className="h-[1px] flex-grow bg-gray-200 dark:bg-white/10" />
+                  <div className="h-[1px] flex-grow bg-gray-200 dark:bg-white/20" />
                 </div>
                 <div className="flex flex-wrap justify-center gap-3">
                   {categories.map((cat) => (
@@ -88,8 +89,8 @@ const CatalogView = () => {
                         setSelectedSubcategory('todos'); // Reset sub when category changes
                       }}
                       className={`px-8 py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all border ${selectedCategory === cat.id
-                        ? 'bg-black dark:bg-white text-white dark:text-black border-transparent shadow-2xl shadow-black/20 scale-105'
-                        : 'bg-white dark:bg-transparent border-gray-200 dark:border-white/10 text-gray-500 hover:border-gold-500/50'
+                        ? 'bg-black dark:bg-white text-white dark:text-black border-transparent shadow-lg scale-105'
+                        : 'bg-white dark:bg-black border-gray-200 dark:border-white/20 text-gray-500 dark:text-gray-400 hover:border-gold-500/50'
                         }`}
                     >
                       {cat.name}
@@ -106,7 +107,7 @@ const CatalogView = () => {
                   <select
                     value={selectedSubcategory}
                     onChange={(e) => setSelectedSubcategory(e.target.value)}
-                    className="w-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-[11px] font-black uppercase tracking-widest rounded-2xl px-6 py-4 focus:ring-4 focus:ring-gold-500/10 outline-none transition-all appearance-none cursor-pointer shadow-sm"
+                    className="w-full bg-white dark:bg-black border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white text-[11px] font-black uppercase tracking-widest rounded-2xl px-6 py-4 focus:ring-4 focus:ring-gold-500/10 outline-none transition-all appearance-none cursor-pointer"
                   >
                     {subcategories.map(sub => (
                       <option key={sub} value={sub}>{sub === 'todos' ? 'Todos los Modelos' : sub}</option>
@@ -120,7 +121,7 @@ const CatalogView = () => {
                   <select
                     value={selectedSize}
                     onChange={(e) => setSelectedSize(e.target.value)}
-                    className="w-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-[11px] font-black uppercase tracking-widest rounded-2xl px-6 py-4 focus:ring-4 focus:ring-gold-500/10 outline-none transition-all appearance-none cursor-pointer shadow-sm"
+                    className="w-full bg-white dark:bg-black border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white text-[11px] font-black uppercase tracking-widest rounded-2xl px-6 py-4 focus:ring-4 focus:ring-gold-500/10 outline-none transition-all appearance-none cursor-pointer"
                   >
                     {sizes.map(size => (
                       <option key={size} value={size}>{size === 'todos' ? 'Cualquier Medida' : size}</option>
@@ -130,11 +131,11 @@ const CatalogView = () => {
 
                 {/* Sort Filter */}
                 <div className="space-y-4">
-                  <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block ml-2">Ordenar Por</span>
+                  <span className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest block ml-2">Ordenar Por</span>
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="w-full bg-gray-100 dark:bg-black border-transparent text-gray-600 dark:text-gray-400 text-[11px] font-black uppercase tracking-widest rounded-2xl px-6 py-4 outline-none transition-all appearance-none cursor-pointer"
+                    className="w-full bg-gray-50 dark:bg-white/5 border-transparent text-gray-600 dark:text-gray-400 text-[11px] font-black uppercase tracking-widest rounded-2xl px-6 py-4 outline-none transition-all appearance-none cursor-pointer"
                   >
                     <option value="featured">Predeterminado</option>
                     <option value="price-low">Menor Precio</option>
@@ -172,14 +173,14 @@ const CatalogView = () => {
               {sortedProducts.map((product, index) => (
                 <div
                   key={product.id}
-                  className="group bg-gray-50/50 dark:bg-zinc-900/50 p-6 rounded-[2.5rem] border border-transparent hover:border-gray-100 dark:hover:border-white/5 transition-all duration-700 hover:bg-white dark:hover:bg-zinc-900 h-full flex flex-col animate-fade-in-up"
+                  className="group bg-white dark:bg-black p-6 rounded-[2.5rem] border border-transparent h-full flex flex-col animate-fade-in-up"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   <Link to={`/producto/${product.id}`} className="block aspect-[4/5] overflow-hidden rounded-[2rem] bg-white dark:bg-black p-6 mb-8 relative">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110"
+                      className="w-full h-full object-contain"
                     />
                     {product.badge && (
                       <div className="absolute top-6 left-6">
@@ -192,7 +193,7 @@ const CatalogView = () => {
 
                   <div className="space-y-4 flex-grow flex flex-col">
                     <div>
-                      <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">{product.subcategory}</h4>
+                      <h4 className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-1">{product.subcategory}</h4>
                       <Link to={`/producto/${product.id}`}>
                         <h3 className="text-xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tight leading-tight line-clamp-2 hover:text-gold-500 transition-colors">
                           {product.name}
@@ -203,7 +204,7 @@ const CatalogView = () => {
                     <div className="pt-6 mt-auto flex flex-col gap-4">
                       <div className="flex justify-between items-end">
                         <div className="space-y-1">
-                          <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest block">Desde</span>
+                          <span className="text-[9px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest block">Desde</span>
                           <span className="text-2xl font-display font-black text-gray-900 dark:text-white tracking-tighter">
                             S/ {product.price?.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
                           </span>
@@ -216,8 +217,9 @@ const CatalogView = () => {
                       <div className="grid grid-cols-2 gap-3">
                         <Link
                           to={`/producto/${product.id}`}
-                          className="flex items-center justify-center gap-2 py-4 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white text-[9px] font-black uppercase tracking-widest hover:border-gold-500 hover:text-gold-500 transition-all duration-500"
+                          className="flex items-center justify-center gap-2 py-4 rounded-xl border border-gray-100 dark:border-white/20 bg-white dark:bg-black text-gray-900 dark:text-white text-[9px] font-black uppercase tracking-widest hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300"
                         >
+                          <FaEye className="w-3 h-3" />
                           Detalle
                         </Link>
                         <button
@@ -225,8 +227,9 @@ const CatalogView = () => {
                             const message = `Hola Sueño Dorado, estoy interesado en el producto: ${product.name}. Deseo recibir información sobre precios y medidas.`;
                             window.open(getWhatsAppLink(message), '_blank');
                           }}
-                          className="flex items-center justify-center gap-2 py-4 rounded-xl bg-green-500 text-white text-[9px] font-black uppercase tracking-widest hover:bg-green-600 transition-all shadow-lg shadow-green-500/20"
+                          className="flex items-center justify-center gap-2 py-4 rounded-xl bg-green-500 text-white text-[9px] font-black uppercase tracking-widest hover:bg-green-600 transition-all duration-300 shadow-lg shadow-green-500/20"
                         >
+                          <FaWhatsapp className="w-3 h-3" />
                           Cotizar
                         </button>
                       </div>
@@ -238,9 +241,9 @@ const CatalogView = () => {
 
             {/* Empty State */}
             {sortedProducts.length === 0 && (
-              <div className="text-center py-32 bg-gray-50 dark:bg-white/[0.02] rounded-[3rem] border border-dashed border-gray-200 dark:border-white/10">
-                <div className="w-20 h-20 bg-gray-100 dark:bg-white/5 rounded-full flex items-center justify-center mx-auto mb-8">
-                  <svg className="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="text-center py-32 bg-white dark:bg-black rounded-[3rem] border border-dashed border-gray-200 dark:border-white/20">
+                <div className="w-20 h-20 bg-gray-50 dark:bg-white/5 rounded-full flex items-center justify-center mx-auto mb-8">
+                  <svg className="w-8 h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                 </div>

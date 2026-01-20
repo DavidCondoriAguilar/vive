@@ -30,7 +30,7 @@ const ChatButton = ({ isOpen, unreadCount, onClick, className = '' }) => {
       className={`
         fixed bottom-6 right-6 w-14 h-14 bg-gold-500 hover:bg-gold-600 
         text-white rounded-full shadow-lg transition-all duration-300 
-        flex items-center justify-center z-40 group
+        flex items-center justify-center z-[180] group
         hover:scale-110 hover:shadow-xl
         focus:outline-none focus:ring-4 focus:ring-gold-500/30
         ${className}
