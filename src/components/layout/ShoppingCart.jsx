@@ -1,8 +1,10 @@
 import React from 'react';
-import { FaShoppingCart, FaTimes, FaPlus, FaMinus, FaTrash, FaWhatsapp } from 'react-icons/fa';
+import { FaShoppingCart, FaTimes, FaPlus, FaMinus, FaTrash, FaWhatsapp, FaArrowRight } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '@/contexts/CartContext';
 
 const ShoppingCart = () => {
+  const navigate = useNavigate();
   const {
     cartItems,
     isCartOpen,
@@ -192,15 +194,16 @@ const ShoppingCart = () => {
                   onClick={processOrder}
                   className="w-full bg-green-500 hover:bg-green-600 active:scale-[0.98] text-white py-5 rounded-[1.5rem] font-black text-xs uppercase tracking-[0.2em] shadow-[0_15px_30px_rgba(34,197,94,0.3)] transition-all flex items-center justify-center gap-3 group"
                 >
-                  <FaWhatsapp className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  <span>Completar Pedido WP</span>
+                  <FaWhatsapp className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                  <span className="text-sm">Comprar por WhatsApp</span>
+                  <span className="text-xs opacity-75 block mt-1">Atención inmediata</span>
                 </button>
 
                 <button
                   onClick={() => setIsCartOpen(false)}
-                  className="w-full py-4 text-[9px] font-black text-gray-400 hover:text-gray-900 dark:hover:text-white uppercase tracking-[0.3em] transition-colors"
+                  className="w-full py-3 text-[9px] font-black text-gray-400 hover:text-gray-900 dark:hover:text-white uppercase tracking-[0.3em] transition-colors"
                 >
-                  Continuar Comprando
+                  Seguir Comprando
                 </button>
               </div>
 

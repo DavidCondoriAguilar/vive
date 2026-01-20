@@ -52,7 +52,8 @@ export const BOT_RESPONSES = {
     text: 'Nuestros precios van desde S/. 399 hasta S/. 3,999 dependiendo del tamaño y tipo. ¿Te gustaría ver nuestro catálogo completo con precios?',
     options: [
       { text: 'Ver Catálogo', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
-      { text: 'Ofertas especiales', intent: 'special_offers' }
+      { text: 'Ofertas especiales', intent: 'special_offers' },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
     ]
   },
   
@@ -61,7 +62,8 @@ export const BOT_RESPONSES = {
     options: [
       { text: 'Lima Metropolitana', intent: 'lima_shipping' },
       { text: 'Provincias', intent: 'provinces_shipping' },
-      { text: 'Consultar costo', intent: CHATBOT_INTENTS.CONTACT }
+      { text: 'Consultar costo', intent: CHATBOT_INTENTS.CONTACT },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
     ]
   },
   
@@ -70,7 +72,8 @@ export const BOT_RESPONSES = {
     options: [
       { text: 'Condiciones de garantía', intent: 'warranty_terms' },
       { text: 'Reclamos', intent: 'claims' },
-      { text: 'Contactar soporte', intent: CHATBOT_INTENTS.CONTACT }
+      { text: 'Contactar soporte', intent: CHATBOT_INTENTS.CONTACT },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
     ]
   },
   
@@ -79,7 +82,8 @@ export const BOT_RESPONSES = {
     options: [
       { text: '📱 Hablar por WhatsApp', intent: 'whatsapp_contact', action: 'whatsapp' },
       { text: 'Enviar email', intent: 'email_contact' },
-      { text: 'Ver horarios', intent: 'business_hours' }
+      { text: 'Ver horarios', intent: 'business_hours' },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
     ]
   },
   
@@ -88,13 +92,21 @@ export const BOT_RESPONSES = {
     options: [
       { text: 'Ver Catálogo Completo', intent: 'full_catalog', action: 'catalog' },
       { text: 'Colchones', intent: 'mattresses' },
-      { text: 'Accesorios', intent: 'accessories' }
+      { text: 'Accesorios', intent: 'accessories' },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
     ]
   },
   
   [CHATBOT_INTENTS.HELP]: {
-    text: 'Puedo ayudarte con:\n\n📋 Información de productos\n💰 Precios y ofertas\n🚚 Envíos y entregas\n🛡️ Garantías\n📞 Contacto\n\n¿Qué necesitas saber?',
-    options: CHATBOT_CONFIG.quickActions
+    text: '🏠 ¡Bienvenido al menú principal! Puedo ayudarte con:\n\n📋 Información de productos\n💰 Precios y ofertas\n🚚 Envíos y entregas\n🛡️ Garantías\n📞 Contacto\n\n¿Qué necesitas saber?',
+    options: [
+      { text: '📋 Ver Catálogo', intent: CHATBOT_INTENTS.CATALOG },
+      { text: '💰 Precios', intent: CHATBOT_INTENTS.PRICING },
+      { text: '🚚 Envíos', intent: CHATBOT_INTENTS.SHIPPING },
+      { text: '🛡️ Garantía', intent: CHATBOT_INTENTS.WARRANTY },
+      { text: '📞 Contactar', intent: CHATBOT_INTENTS.CONTACT },
+      { text: '👤 Hablar con humano', intent: CHATBOT_INTENTS.HUMAN_AGENT }
+    ]
   },
   
   [CHATBOT_INTENTS.HUMAN_AGENT]: {
@@ -107,13 +119,53 @@ export const BOT_RESPONSES = {
     options: CHATBOT_CONFIG.quickActions
   },
   
-  // Specific line responses
+  // Additional specific responses for better navigation
+  espuma_products: {
+    text: '🛏️ Tenemos colchones de espuma de alta calidad. Líneas disponibles: Poliseda, Plus Resilense, Splendido y Topacio. Precios desde S/. 349.',
+    options: [
+      { text: 'Ver línea Poliseda', intent: 'poliseda_products' },
+      { text: 'Ver línea Plus Resilense', intent: 'plus_resilense_products' },
+      { text: 'Comparar líneas', intent: CHATBOT_INTENTS.CATALOG },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
+    ]
+  },
+  
+  resorte_products: {
+    text: '🛏️ Nuestros colchones de resortes ofrecen máximo soporte. Líneas: Económica, Standard, Intermedio, Premium, Golden Dream, Siempre, Absolut.',
+    options: [
+      { text: 'Ver línea Golden Dream', intent: 'golden_dream_products' },
+      { text: 'Ver línea Siempre', intent: 'siempre_products' },
+      { text: 'Ver todas las líneas', intent: CHATBOT_INTENTS.CATALOG },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
+    ]
+  },
+  
+  special_offers: {
+    text: '🔥 Tenemos ofertas especiales en selectedas líneas. ¿Qué tipo de producto te interesa?',
+    options: [
+      { text: 'Ofertas en Espuma', intent: 'espuma_products' },
+      { text: 'Ofertas en Resortes', intent: 'resorte_products' },
+      { text: 'Ver catálogo completo', intent: CHATBOT_INTENTS.CATALOG },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
+    ]
+  },
+  
+  warranty_terms: {
+    text: '📄 Nuestras garantías cubren defectos de fabricación. Condiciones específicas por línea. ¿Te gustaría ver los detalles?',
+    options: [
+      { text: 'Garantía Espuma (5 años)', intent: 'espuma_products' },
+      { text: 'Garantía Resortes (10 años)', intent: 'resorte_products' },
+      { text: 'Contactar soporte', intent: CHATBOT_INTENTS.CONTACT },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
+    ]
+  },
   golden_dream_products: {
     text: '¡Golden Dream es nuestra línea premium! 🌟 Incluye sistema MP, espumas de alta densidad y 6 años de garantía. Precios desde S/. 1,699.',
     options: [
       { text: 'Ver modelos Golden Dream', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
       { text: 'Comparar con Premium', intent: 'premium_products' },
-      { text: 'Conocer garantía', intent: CHATBOT_INTENTS.WARRANTY }
+      { text: 'Conocer garantía', intent: CHATBOT_INTENTS.WARRANTY },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
     ]
   },
   
@@ -122,7 +174,8 @@ export const BOT_RESPONSES = {
     options: [
       { text: 'Ver modelos Siempre', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
       { text: 'Comparar con Golden Dream', intent: 'golden_dream_products' },
-      { text: 'Ver garantía extendida', intent: CHATBOT_INTENTS.WARRANTY }
+      { text: 'Ver garantía extendida', intent: CHATBOT_INTENTS.WARRANTY },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
     ]
   },
   
@@ -131,7 +184,8 @@ export const BOT_RESPONSES = {
     options: [
       { text: 'Ver espesores', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
       { text: 'Comparar con Plus Resilense', intent: 'plus_resilense_products' },
-      { text: 'Conocer precios', intent: CHATBOT_INTENTS.PRICING }
+      { text: 'Conocer precios', intent: CHATBOT_INTENTS.PRICING },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
     ]
   },
   
@@ -140,7 +194,8 @@ export const BOT_RESPONSES = {
     options: [
       { text: 'Ver bases disponibles', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
       { text: '¿Necesito base?', intent: CHATBOT_INTENTS.HELP },
-      { text: 'Contactar asesor', intent: CHATBOT_INTENTS.CONTACT }
+      { text: 'Contactar asesor', intent: CHATBOT_INTENTS.CONTACT },
+      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
     ]
   }
 };

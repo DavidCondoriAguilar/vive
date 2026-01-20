@@ -4,7 +4,12 @@ import { Helmet } from 'react-helmet';
 import {
     FaTruck,
     FaTools,
-    FaRecycle
+    FaRecycle,
+    FaShieldAlt,
+    FaClock,
+    FaStar,
+    FaCheckCircle,
+    FaFire
 } from 'react-icons/fa';
 import { MdVerifiedUser } from 'react-icons/md';
 import MainLayout from '@/layouts/MainLayout';
@@ -144,6 +149,39 @@ const ProductDetailsView = () => {
                                         <span className="text-lg sm:text-xl text-gray-400 line-through font-display">
                                             S/ {(product.price * 1.3).toLocaleString('es-PE', { minimumFractionDigits: 2 })}
                                         </span>
+                                    </div>
+
+                                    {/* Trust Badges & Urgency */}
+                                    <div className="space-y-4 mt-6">
+                                        {/* Trust Badges */}
+                                        <div className="flex flex-wrap gap-2">
+                                            <div className="flex items-center gap-2 px-3 py-2 bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/30 rounded-lg">
+                                                <FaShieldAlt className="text-green-600 dark:text-green-400 w-4 h-4" />
+                                                <span className="text-xs font-medium text-green-700 dark:text-green-400">Garantía Real</span>
+                                            </div>
+                                            <div className="flex items-center gap-2 px-3 py-2 bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/30 rounded-lg">
+                                                <FaTruck className="text-blue-600 dark:text-blue-400 w-4 h-4" />
+                                                <span className="text-xs font-medium text-blue-700 dark:text-blue-400">Envío Gratis</span>
+                                            </div>
+                                            <div className="flex items-center gap-2 px-3 py-2 bg-gold-50 dark:bg-gold-500/10 border border-gold-200 dark:border-gold-500/30 rounded-lg">
+                                                <MdVerifiedUser className="text-gold-600 dark:text-gold-400 w-4 h-4" />
+                                                <span className="text-xs font-medium text-gold-700 dark:text-gold-400">Calidad Premium</span>
+                                            </div>
+                                        </div>
+
+                                        {/* Urgency Indicators */}
+                                        <div className="space-y-2">
+                                            {product.badge && (
+                                                <div className="flex items-center gap-2 px-3 py-2 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 rounded-lg">
+                                                    <FaFire className="text-red-600 dark:text-red-400 w-4 h-4" />
+                                                    <span className="text-xs font-bold text-red-700 dark:text-red-400 uppercase tracking-widest">{product.badge}</span>
+                                                </div>
+                                            )}
+                                            <div className="flex items-center gap-2 px-3 py-2 bg-orange-50 dark:bg-orange-500/10 border border-orange-200 dark:border-orange-500/30 rounded-lg">
+                                                <FaClock className="text-orange-600 dark:text-orange-400 w-4 h-4" />
+                                                <span className="text-xs font-bold text-orange-700 dark:text-orange-400 uppercase tracking-widest">Stock Limitado</span>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     {/* Tech Specs Summary */}
