@@ -121,7 +121,7 @@ const MainLayout = ({ children }) => {
                                     size="xlarge"
                                     onClick={handleLogoClick}
                                     className="!w-24 !h-24 md:!w-40 md:!h-40 !justify-start"
-                                    variant="light"
+                                    variant="dark"
                                 />
                             </div>
                             <p className="text-sm text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-xs">

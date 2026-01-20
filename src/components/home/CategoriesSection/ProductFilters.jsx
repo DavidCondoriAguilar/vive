@@ -8,8 +8,8 @@ const ProductFilters = ({
   onSizeChange,
   onFilterChange 
 }) => {
-  const types = ['todos', 'espuma', 'resortes'];
-  const sizes = ['todos', '1 Plz', '1.5 Plz', '2 Plz', 'Queen', 'King'];
+  const types = ['todos', 'espuma', 'resorte'];
+  const sizes = ['todos', '1 PLZ', '1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'];
 
   const handleTypeChange = (type) => {
     onTypeChange(type);

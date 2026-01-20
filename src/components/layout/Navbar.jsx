@@ -103,7 +103,7 @@ const Navbar = () => {
                             <Logo
                                 size="large"
                                 onClick={handleLogoClick}
-                                variant="light"
+                                variant="dark"
                             />
                         </div>
 
