@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { getWhatsAppLink } from '@/utils/constants';
 import Navbar from '@/components/layout/Navbar';
 import PromoBar from '@/components/layout/PromoBar';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
@@ -140,7 +141,7 @@ const MainLayout = ({ children }) => {
                         <div className="lg:col-span-2 space-y-6">
                             <h4 className="text-xs font-display font-bold tracking-widest uppercase text-gray-900 dark:text-white">Explorar</h4>
                             <ul className="space-y-3">
-                                {['Colchones', 'Camas', 'Accesorios', 'Ofertas'].map((item) => (
+                                {['Colchones', 'Camas', 'Ofertas'].map((item) => (
                                     <li key={item}>
                                         <Link to={`/catalogo?categoria=${item.toLowerCase()}`} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gold-500 transition-colors font-medium">
                                             {item}
@@ -214,11 +215,16 @@ const MainLayout = ({ children }) => {
                     <div className="pt-8 border-t border-gray-100 dark:border-white/20 flex flex-col md:flex-row justify-between items-center gap-6">
                         <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
                             <p className="text-[10px] sm:text-xs text-gray-400 font-medium text-center md:text-left">
-                                © 2026 SUEÑO DORADO. Fabricado con orgullo en Perú.
+                                © 2026 SUEÑO DORADO. Salud y placer siempre a tu lado.
                             </p>
-                            <Link to="/libro-de-reclamaciones" className="opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-300">
+                            <a
+                                href={getWhatsAppLink("Hola Sueño Dorado, deseo registrar un reclamo/consulta en su Libro de Reclamaciones virtual.")}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-300"
+                            >
                                 <img src={libroReclamacionesImg} alt="Libro de Reclamaciones" className="h-8 w-auto md:h-10" />
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -15,11 +15,12 @@ import {
     FaChevronRight,
     FaMinus,
     FaPlus,
-    FaWhatsapp
+    FaWhatsapp,
+    FaBuilding
 } from 'react-icons/fa';
 import { MdVerifiedUser, MdClose } from 'react-icons/md';
 import MainLayout from '@/layouts/MainLayout';
-import { ENHANCED_CATALOG } from '@/utils/constants';
+import { ENHANCED_CATALOG, getWhatsAppLink } from '@/utils/constants';
 import LazyImage from '@/components/common/Image';
 import ProductSpecsModal from '@/components/product/ProductSpecsModal';
 import ProductActions from '@/components/product/ProductActions';
@@ -56,9 +57,9 @@ const ProductDetailsView = () => {
     return (
         <>
             <Helmet>
-                <title>{product.name} - Colchón Premium Sueño Dorado | S/ {product.price.toLocaleString('es-PE')}</title>
+                <title>{product.name} - Colchón Premium Sueño Dorado | Precio por Consultar</title>
                 <meta name="description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y garantía de 10 años. Envío gratis en Lima.'}`} />
-                <link rel="canonical" href={`https://suenodorado.pe/detalle/producto/${productId}`} />
+                <link rel="canonical" href={`https://suenodorado.pe/producto/${productId}`} />
                 <script type="application/ld+json">
                     {JSON.stringify({
                         "@context": "https://schema.org",
@@ -72,9 +73,9 @@ const ProductDetailsView = () => {
                         },
                         "offers": {
                             "@type": "Offer",
-                            "price": product.price,
-                            "priceCurrency": "PEN",
                             "availability": "https://schema.org/InStock",
+                            "price": "0",
+                            "priceCurrency": "PEN",
                             "seller": {
                                 "@type": "Organization",
                                 "name": "Sueño Dorado"
@@ -122,7 +123,7 @@ const ProductDetailsView = () => {
                     {/* Luxury Product Grid */}
                     <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-24">
-                            
+
                             {/* LEFT: Luxury Image Gallery */}
                             <div className="space-y-4 sm:space-y-6">
                                 {/* Main Image */}
@@ -132,17 +133,17 @@ const ProductDetailsView = () => {
                                         alt={product.name}
                                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                                     />
-                                    
+
                                     {/* Luxury Overlay Elements */}
                                     <div className="absolute top-3 sm:top-6 right-3 sm:right-6">
                                         <span className="px-2 sm:px-4 py-1 sm:py-2 bg-white/90 backdrop-blur-sm rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
                                             Zoom HD Disponible
                                         </span>
                                     </div>
-                                    
+
                                     {/* Wishlist & Share */}
                                     <div className="absolute top-3 sm:top-6 left-3 sm:left-6 flex gap-2 sm:gap-3">
-                                        <button 
+                                        <button
                                             onClick={() => setIsWishlist(!isWishlist)}
                                             className="w-8 h-8 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all"
                                         >
@@ -160,11 +161,10 @@ const ProductDetailsView = () => {
                                         <button
                                             key={i}
                                             onClick={() => setActiveImageIndex(i - 1)}
-                                            className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${
-                                                activeImageIndex === i - 1 
-                                                    ? 'border-black dark:border-white shadow-lg' 
-                                                    : 'border-gray-200 dark:border-gray-800 hover:border-gray-400'
-                                            }`}
+                                            className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${activeImageIndex === i - 1
+                                                ? 'border-black dark:border-white shadow-lg'
+                                                : 'border-gray-200 dark:border-gray-800 hover:border-gray-400'
+                                                }`}
                                         >
                                             <div className="w-full h-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
                                                 <span className="text-xs text-gray-400">{i}</span>
@@ -191,26 +191,38 @@ const ProductDetailsView = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-6xl font-black text-black dark:text-white leading-tight uppercase tracking-tight">
                                         {product.name}
                                     </h1>
-                                    
+
                                     <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 font-light leading-relaxed max-w-lg">
                                         {product.description}
                                     </p>
                                 </div>
 
-                                {/* Price Display */}
-                                <div className="space-y-2">
-                                    <div className="flex items-baseline gap-2 sm:gap-4">
-                                        <span className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-black dark:text-white">
-                                            S/ {product.price.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
-                                        </span>
-                                        <span className="text-lg sm:text-xl text-gray-400 line-through font-light">
-                                            S/ {(product.price * 1.3).toLocaleString('es-PE', { minimumFractionDigits: 2 })}
-                                        </span>
+                                <div className="space-y-4 py-8 px-8 bg-gray-50/50 dark:bg-zinc-900/50 rounded-[2.5rem] border border-gray-100 dark:border-white/5 relative overflow-hidden group">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-gold-500/10 transition-colors" />
+
+                                    <span className="text-[10px] font-black text-gold-500 uppercase tracking-[0.4em] block mb-2">Presupuesto Personalizado</span>
+
+                                    <div className="flex flex-col gap-6">
+
+
+                                        <a
+                                            href={getWhatsAppLink(`Hola Sueño Dorado, estoy interesado(a) en el producto *${product.name}*.\nTalla: ${selectedSize || 'Por definir'}\n¿Podrían brindarme el precio y disponibilidad?`)}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center justify-center gap-4 bg-green-500 hover:bg-green-600 text-white font-black py-5 px-8 rounded-2xl shadow-xl shadow-green-500/20 transition-all hover:-translate-y-1 uppercase tracking-widest text-xs"
+                                        >
+                                            <FaWhatsapp className="w-5 h-5" />
+                                            Solicitar Cotización Inmediata
+                                        </a>
                                     </div>
+
+                                    <p className="text-[10px] text-gray-500 font-medium uppercase tracking-widest leading-relaxed mt-4">
+                                        Asesoría premium gratuita incluida • Respuesta en menos de 5 min
+                                    </p>
                                 </div>
 
                                 {/* Trust Indicators */}
@@ -236,11 +248,10 @@ const ProductDetailsView = () => {
                                             <button
                                                 key={size}
                                                 onClick={() => setSelectedSize(size)}
-                                                className={`px-6 py-3 rounded-full border-2 transition-all font-black text-xs uppercase tracking-widest ${
-                                                    selectedSize === size
-                                                        ? 'border-black bg-black text-white shadow-lg'
-                                                        : 'border-gray-200 dark:border-gray-800 text-gray-600 hover:border-gray-400'
-                                                }`}
+                                                className={`px-6 py-3 rounded-full border-2 transition-all font-black text-xs uppercase tracking-widest ${selectedSize === size
+                                                    ? 'border-black bg-black text-white shadow-lg'
+                                                    : 'border-gray-200 dark:border-gray-800 text-gray-600 hover:border-gray-400'
+                                                    }`}
                                             >
                                                 {size}
                                             </button>
@@ -276,7 +287,7 @@ const ProductDetailsView = () => {
                                 {/* Enhanced Technical Features Section */}
                                 <div className="border-t border-gray-100 dark:border-gray-900 pt-8">
                                     <h3 className="text-sm font-black text-black dark:text-white uppercase tracking-widest mb-6">Beneficios y características</h3>
-                                    
+
                                     {/* Product Features Grid */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                                         {/* Colchón Features */}
@@ -365,54 +376,46 @@ const ProductDetailsView = () => {
                                 {/* Enhanced B2B Actions */}
                                 <div className="border-t border-gray-100 dark:border-gray-900 pt-8">
                                     <div className="space-y-4">
-                                        {/* Add to Cart Button - PRIMARY ACTION */}
-                                        <button 
+                                        <button
                                             onClick={() => {
                                                 if (!selectedSize) {
                                                     alert('Por favor selecciona un tamaño');
                                                     return;
                                                 }
-                                                
+
                                                 addToCart(product, quantity, selectedSize);
-                                                console.log('Added to cart:', { product, selectedSize, quantity });
                                             }}
-                                            className="w-full bg-black hover:bg-gray-900 text-white font-black py-4 rounded-full transition-all shadow-xl hover:shadow-2xl uppercase tracking-widest text-sm"
+                                            className="w-full bg-black hover:bg-gray-950 text-white font-black py-5 rounded-full transition-all shadow-xl hover:shadow-2xl uppercase tracking-widest text-sm border border-white/10"
                                         >
-                                            Agregar al Carrito → Finalizar Pedido
+                                            Agregar a mi Cotización
                                         </button>
-                                        
+
                                         <div className="text-center">
-                                            <span className="text-xs text-gray-500 font-light">
-                                                {getTotalItems() > 0 
-                                                    ? `Tienes ${getTotalItems()} productos en el carrito` 
-                                                    : 'Tu carrito está vacío'}
+                                            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                                                {getTotalItems() > 0
+                                                    ? `Tienes ${getTotalItems()} productos para cotizar`
+                                                    : 'Solicita una cotización sin compromiso'}
                                             </span>
                                         </div>
-                                        
+
                                         {/* WhatsApp Direct Button */}
-                                        <a 
-                                            href={`https://wa.me/51989223448?text=${encodeURIComponent('Hola, estoy interesado en el producto: ' + product.name + '. ¿Podrían darme más información?')}`}
+                                        <a
+                                            href={getWhatsAppLink(`Hola Sueño Dorado, estoy interesado(a) en recibir información sobre ${product.name}.`)}
                                             target="_blank"
-                                            className="w-full bg-green-500 hover:bg-green-600 text-white font-black py-4 rounded-full transition-all shadow-xl hover:shadow-2xl uppercase tracking-widest text-sm flex items-center justify-center gap-3"
+                                            className="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-black py-5 rounded-full transition-all shadow-xl hover:shadow-2xl uppercase tracking-widest text-xs flex items-center justify-center gap-3"
                                         >
                                             <FaWhatsapp className="w-5 h-5" />
-                                            Hablar con Asesor por WhatsApp
+                                            Asesoría Personalizada VIP
                                         </a>
-                                        
+
                                         {/* B2B Inquiry Button */}
-                                        <a 
-                                            href={`https://wa.me/51989223448?text=${encodeURIComponent(
-                                                'Hola, soy un cliente mayorista interesado en el producto: ' + product.name + '\n' +
-                                                'Tamaño seleccionado: ' + (selectedSize || 'Por definir') + '\n' +
-                                                'Cantidad estimada: ' + quantity + ' unidades\n' +
-                                                '¿Podrían enviarme cotización especial para mayoristas?\n' +
-                                                'Gracias, Sueño Dorado.'
-                                            )}`}
+                                        <a
+                                            href={getWhatsAppLink(`Hola, soy un cliente mayorista interesado en el producto: *${product.name}*\nTalla: ${selectedSize || 'Por definir'}\nCantidad estimada: ${quantity} unidades\n¿Podrían enviarme una cotización corporativa especial?`)}
                                             target="_blank"
-                                            className="w-full border-2 border-black dark:border-white text-black dark:text-white font-black py-4 rounded-full transition-all hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black uppercase tracking-widest text-sm flex items-center justify-center gap-3"
+                                            className="w-full bg-transparent border-2 border-gray-200 dark:border-white/10 hover:border-gold-500 text-gray-900 dark:text-white font-black py-5 rounded-full transition-all hover:text-gold-500 uppercase tracking-widest text-[10px] flex items-center justify-center gap-3"
                                         >
-                                            <FaWhatsapp className="w-5 h-5" />
-                                            Cotización para Mayoristas
+                                            <FaBuilding className="w-4 h-4" />
+                                            Consulta de Venta por Mayor (B2B)
                                         </a>
                                     </div>
                                 </div>

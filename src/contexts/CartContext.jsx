@@ -234,16 +234,7 @@ export const CartProvider = ({ children }) => {
 
   // Getters
   const getTotal = () => {
-    return state.items.reduce((total, item) => {
-      let price;
-      if (item.selectedSize && item.sizes && item.sizes[item.selectedSize]) {
-        price = item.sizes[item.selectedSize];
-      } else {
-        price = item.price;
-      }
-      const validPrice = formatPrice(price);
-      return total + (validPrice * item.quantity);
-    }, 0);
+    return 0; // Prices are removed
   };
 
   const getTotalItems = () => {
@@ -257,33 +248,19 @@ export const CartProvider = ({ children }) => {
     message += '*Detalle del Pedido:*\n\n';
 
     state.items.forEach((item, index) => {
-      let price;
-      if (item.selectedSize && item.sizes && item.sizes[item.selectedSize]) {
-        price = item.sizes[item.selectedSize];
-      } else {
-        price = item.price;
-      }
-      const validPrice = formatPrice(price);
       const sizeText = item.selectedSize ? ` - Talla: ${item.selectedSize}` : '';
-
       message += `${index + 1}. *${item.name}*${sizeText}\n`;
-      message += `   - Precio: S/. ${validPrice.toFixed(2)}\n`;
-      message += `   - Cantidad: ${item.quantity}\n`;
-      message += `   - Subtotal: S/. ${(validPrice * item.quantity).toFixed(2)}\n\n`;
+      message += `   - Cantidad: ${item.quantity}\n\n`;
     });
 
-    message += `*Total del Pedido: S/. ${getTotal().toFixed(2)}*\n\n`;
-    message += '*Datos de Envío:*\n';
-    message += '   (Por favor, proporciona tus datos de envío)\n\n';
+    message += `*Solicitud: Por favor, brindarme los precios y disponibilidad de estos productos.*\n\n`;
+    message += '*Datos del Cliente:*\n';
+    message += '   (Por favor, proporciona tus datos para la cotización)\n\n';
     message += '*Información de Contacto:*\n';
     message += '   • Nombre completo\n';
     message += '   • Teléfono\n';
-    message += '   • Dirección de entrega\n';
-    message += '   • Departamento/Provincia\n';
-    message += '   • Referencia\n\n';
-    message += '*Método de Pago:*\n';
-    message += '   (Efectivo, Yape, Transferencia, etc.)\n\n';
-    message += '*Nota: Nos comunicaremos contigo a la brevedad para confirmar tu pedido y coordinar el envío.*\n\n';
+    message += '   • Dirección/Ciudad\n\n';
+    message += '*Nota: Un asesor se comunicará contigo para brindarte los precios oficiales y coordinar tu pedido.*\n\n';
     message += '---\n';
     message += '*Sueño Dorado - Fábrica de Colchones Premium*';
 

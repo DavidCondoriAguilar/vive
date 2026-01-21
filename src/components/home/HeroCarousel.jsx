@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaChevronLeft, FaChevronRight, FaLeaf, FaTruck, FaBuilding } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { getWhatsAppLink } from '@/utils/constants';
 import { useDragCarousel } from '@/hooks/useDragCarousel';
 
@@ -8,12 +8,10 @@ const HeroCarousel = () => {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
-  const containerRef = useRef(null);
 
-  const SLIDE_DURATION = 6000;
+  const SLIDE_DURATION = 3000; // 3 seconds per slide
 
   const slides = [
     {
@@ -40,30 +38,10 @@ const HeroCarousel = () => {
       image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=2071',
       title: 'Venta por Mayor & Corporativo',
       subtitle: 'Directo de nuestra Fábrica',
-      features: ['Ahorro -50%', 'Hoteles', 'Tiendas'],
+      features: ['+30 Años Trayectoria', 'Ahorro -50%', 'Hoteles'],
       badge: 'NEGOCIOS'
     }
   ];
-
-  const handleSlideChange = (direction) => {
-    if (direction === 'next') {
-      nextSlide();
-    } else if (direction === 'prev') {
-      prevSlide();
-    }
-  };
-
-  const { carouselRef, isDragging, dragDistance, handlers } = useDragCarousel(handleSlideChange);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -75,12 +53,23 @@ const HeroCarousel = () => {
     setProgress(0);
   }, [slides.length]);
 
+  const handleSlideChange = (direction) => {
+    if (direction === 'next') nextSlide();
+    else if (direction === 'prev') prevSlide();
+  };
+
+  const { carouselRef, handlers } = useDragCarousel(handleSlideChange);
+
   const goToSlide = (index) => {
     setCurrentSlide(index);
     setProgress(0);
-    setIsAutoPlay(false);
   };
 
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  // Robust Autoplay Logic
   useEffect(() => {
     let interval;
     let startTime = Date.now();
@@ -110,6 +99,8 @@ const HeroCarousel = () => {
       {...handlers}
       onMouseEnter={() => setIsAutoPlay(false)}
       onMouseLeave={() => setIsAutoPlay(true)}
+      onTouchStart={() => setIsAutoPlay(false)}
+      onTouchEnd={() => setIsAutoPlay(true)}
     >
       {/* 100% Background Slides */}
       <div className="absolute inset-0">
@@ -126,7 +117,7 @@ const HeroCarousel = () => {
         ))}
       </div>
 
-      {/* ULTRA MINIMALIST CONTENT BOX - FIXED FOR OVERFLOW */}
+      {/* ULTRA MINIMALIST CONTENT BOX */}
       <div className="relative w-full h-full flex flex-col items-center justify-center pt-16 pb-20 px-6">
         {slides.map((slide, index) => (
           <div
@@ -135,7 +126,6 @@ const HeroCarousel = () => {
               ${index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}
             `}
           >
-            {/* Adjusted Typography to prevent overflow in all resolutions */}
             <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-6xl font-black text-white mb-3 sm:mb-4 leading-tight uppercase tracking-tighter drop-shadow-2xl transition-all duration-700 px-2">
               {slide.title}
             </h1>
@@ -144,7 +134,7 @@ const HeroCarousel = () => {
               {slide.subtitle}
             </h2>
 
-            {/* Premium Tags - Minimal */}
+            {/* Premium Tags */}
             <div className="flex flex-wrap justify-center gap-1.5 md:gap-3 mb-6 md:mb-10 px-2">
               {slide.features.map((feature, fIdx) => (
                 <div key={fIdx} className="bg-white/5 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
@@ -153,7 +143,7 @@ const HeroCarousel = () => {
               ))}
             </div>
 
-            {/* Direct Action Buttons - Large & Clear */}
+            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-6 px-2">
               <button
                 onClick={() => navigate('/catalogo')}
@@ -187,19 +177,22 @@ const HeroCarousel = () => {
         ))}
       </div>
 
-      {/* Simplified Nav Arrows - Enhanced for Mobile */}
-      <button 
-        onClick={prevSlide} 
+      {/* Simplified Nav Arrows */}
+      <button
+        onClick={prevSlide}
         className="absolute left-4 sm:left-10 top-1/2 -translate-y-1/2 text-white/30 hover:text-gold-500 transition-colors bg-black/20 backdrop-blur-sm rounded-full p-2 sm:p-3 z-10"
       >
         <FaChevronLeft size={20} className="sm:w-7 sm:h-7 w-5 h-5" />
       </button>
-      <button 
-        onClick={nextSlide} 
+      <button
+        onClick={nextSlide}
         className="absolute right-4 sm:right-10 top-1/2 -translate-y-1/2 text-white/30 hover:text-gold-500 transition-colors bg-black/20 backdrop-blur-sm rounded-full p-2 sm:p-3 z-10"
       >
         <FaChevronRight size={20} className="sm:w-7 sm:h-7 w-5 h-5" />
       </button>
+
+      {/* Progress Bar (Global) */}
+      <div className="absolute bottom-0 left-0 h-1 bg-gold-500/30 transition-all duration-75 ease-linear pointer-events-none" style={{ width: `${progress}%` }}></div>
     </section>
   );
 };

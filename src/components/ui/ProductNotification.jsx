@@ -36,13 +36,12 @@ const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) 
     const message = `*Consulta de Producto - Sueño Dorado*\n\n` +
       `*Producto:*\n` +
       `• ${product.name}\n` +
-      `${selectedSize ? `• Talla: ${selectedSize}\n` : ''}` +
-      `• Precio: ${formatPrice(selectedSize ? product.sizes?.[selectedSize] || product.price : product.price)}\n\n` +
+      `${selectedSize ? `• Talla: ${selectedSize}\n` : ''}\n` +
       `*Mensaje:*\n` +
-      `Hola, estoy interesado(a) en este producto. ¿Podrían darme más información?\n\n` +
+      `Hola, estoy interesado(a) en este producto. ¿Podrían brindarme el precio y disponibilidad?\n\n` +
       `---\n` +
       `*Sueño Dorado - Fábrica de Colchones Premium*`;
-    
+
     const whatsappLink = getWhatsAppLink(message);
     window.open(whatsappLink, '_blank');
     onClose();
@@ -51,7 +50,7 @@ const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4">
       {/* Overlay */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/20 backdrop-blur-sm"
         onClick={onClose}
       />
@@ -88,31 +87,30 @@ const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) 
             <h3 className="font-bold text-gray-900 dark:text-white text-lg mb-1 truncate">
               {product.name}
             </h3>
-            
+
             {selectedSize && (
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
                 Talla: {selectedSize}
               </p>
             )}
 
-            <div className="text-xl font-bold text-gold-600 mb-3">
-              {formatPrice(selectedSize ? product.sizes?.[selectedSize] || product.price : product.price)}
+            <div className="text-sm font-black text-gold-600 mb-3 uppercase tracking-widest">
+              Precio por Consultar
             </div>
 
             {/* Action Buttons */}
             <div className="flex gap-2">
               <PrimaryButton
                 onClick={handleAddToCart}
-                className="flex-1 text-sm px-3 py-2 justify-center"
+                className="flex-1 text-[9px] px-3 py-3 justify-center rounded-xl"
                 showArrow={false}
               >
                 Agregar
               </PrimaryButton>
-              
+
               <WhatsAppButton
                 onClick={handleWhatsApp}
-                className="flex-1 text-sm px-3 py-2 justify-center"
-                showArrow={false}
+                className="flex-1 text-[9px] px-3 py-3 justify-center rounded-xl"
               >
                 Consultar
               </WhatsAppButton>

@@ -1,153 +1,122 @@
 import React from 'react';
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp, FaEye, FaChevronRight, FaShoppingCart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { getWhatsAppLink } from '@/utils/constants';
 
 /**
- * Botón Primario - Negro con texto blanco
- * Uso: Acciones principales como "Comprar", "Ver Detalles"
+ * Common styles for premium buttons
  */
-export const PrimaryButton = ({ 
-  children, 
-  icon: Icon, 
-  className = '', 
-  showArrow = true,
-  ...props 
+const baseStyles = "inline-flex items-center justify-center font-black uppercase tracking-[0.2em] transition-all duration-500 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-[10px]";
+const shadowStyles = "shadow-lg hover:shadow-xl active:shadow-md";
+
+/**
+ * Primary Button - Deep Black / Premium White
+ */
+export const PrimaryButton = ({
+  children,
+  icon: Icon,
+  className = '',
+  showArrow = false,
+  ...props
 }) => (
   <button
     {...props}
-    className={`group relative inline-flex items-center justify-center bg-black text-white uppercase 
-    tracking-widest px-8 py-3 rounded-none transition-all duration-300 hover:bg-gray-900 
-    active:opacity-75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black 
-    disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
+    className={`${baseStyles} ${shadowStyles} bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-full hover:bg-black dark:hover:bg-gray-100 border border-white/10 dark:border-black/5 ${className}`}
   >
-    {Icon && <Icon className="mr-3 group-hover:translate-x-1 transition-transform duration-300" />}
+    {Icon && <Icon className="mr-3 w-4 h-4 group-hover:scale-110 transition-transform" />}
     <span>{children}</span>
-    {showArrow && (
-      <span className="ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 
-      transition-all duration-300">
-        →
-      </span>
-    )}
+    {showArrow && <FaChevronRight className="ml-3 w-3 h-3 group-hover:translate-x-1 transition-transform" />}
   </button>
 );
 
 /**
- * Botón Secundario - Transparente con borde
- * Uso: Acciones secundarias como "Ficha Técnica", "Ver Especificaciones"
+ * Secondary Button - Elegant Glass/Bordered
  */
-export const SecondaryButton = ({ 
-  children, 
-  icon: Icon, 
-  className = '', 
-  showArrow = true,
-  ...props 
+export const SecondaryButton = ({
+  children,
+  icon: Icon,
+  className = '',
+  ...props
 }) => (
   <button
     {...props}
-    className={`group relative inline-flex items-center justify-center bg-transparent 
-    border border-gray-300 text-black uppercase tracking-widest px-8 py-3 rounded-none 
-    transition-all duration-300 hover:bg-gray-50 hover:border-gray-400 
-    active:opacity-75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 
-    disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
+    className={`${baseStyles} bg-transparent border-2 border-gray-200 dark:border-white/10 text-gray-900 dark:text-white px-8 py-4 rounded-full hover:border-gold-500 hover:text-gold-500 dark:hover:border-gold-500 dark:hover:text-gold-500 ${className}`}
   >
-    {Icon && <Icon className="mr-3 group-hover:translate-x-1 transition-transform duration-300" />}
+    {Icon && <Icon className="mr-3 w-4 h-4" />}
     <span>{children}</span>
-    {showArrow && (
-      <span className="ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 
-      transition-all duration-300">
-        →
-      </span>
-    )}
   </button>
 );
 
 /**
- * Botón WhatsApp - Verde con contacto directo
- * Uso: Contacto por WhatsApp (solo icono)
+ * WhatsApp Button - Premium Green
  */
-export const WhatsAppButton = ({ 
-  className = '', 
-  ...props 
+export const WhatsAppButton = ({
+  children,
+  className = '',
+  ...props
 }) => (
   <button
     {...props}
-    className={`group relative inline-flex items-center justify-center bg-[#25D366] 
-    text-white px-4 py-3 rounded-none transition-all duration-300 
-    hover:bg-[#20ba61] active:opacity-75 focus:outline-none focus:ring-2 focus:ring-offset-2 
-    focus:ring-[#25D366] disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
-    title="Contactar por WhatsApp"
+    className={`${baseStyles} ${shadowStyles} bg-green-500 text-white px-8 py-4 rounded-full hover:bg-green-600 shadow-green-500/20 ${className}`}
   >
-    <FaWhatsapp className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-  </button>
-);
-
-/**
- * Botón de Enlace - Estilo texto con efecto hover minimalista
- * Uso: Enlaces secundarios
- */
-export const LinkButton = ({ 
-  children, 
-  icon: Icon, 
-  className = '', 
-  ...props 
-}) => (
-  <button
-    {...props}
-    className={`inline-flex items-center justify-center text-black uppercase tracking-widest 
-    transition-all duration-300 hover:opacity-60 focus:outline-none focus:ring-2 
-    focus:ring-offset-2 focus:ring-black disabled:opacity-30 disabled:cursor-not-allowed ${className}`}
-  >
-    {Icon && <Icon className="mr-2" />}
-    <span className="border-b border-transparent hover:border-black transition-all duration-300">
-      {children}
-    </span>
-  </button>
-);
-
-/**
- * Botón de Carrito - Para agregar productos
- * Uso: Agregar al carrito
- */
-export const CartButton = ({ 
-  children = 'Agregar al carrito', 
-  className = '', 
-  showArrow = true,
-  ...props 
-}) => (
-  <button
-    {...props}
-    className={`group relative inline-flex items-center justify-center bg-black text-white 
-    uppercase tracking-widest px-8 py-3 rounded-none transition-all duration-300 
-    hover:bg-gray-900 active:opacity-75 focus:outline-none focus:ring-2 focus:ring-offset-2 
-    focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
-  >
+    <FaWhatsapp className="mr-3 w-5 h-5 group-hover:scale-110 transition-transform" />
     <span>{children}</span>
-    {showArrow && (
-      <span className="ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 
-      transition-all duration-300">
-        →
-      </span>
-    )}
   </button>
 );
 
 /**
- * Componente para agrupar botones con espaciado automático
- * Uso: Contenedor para múltiples botones
+ * Standard "Ver Detalle" Button
+ * Used across the site for consistency
  */
-export const ButtonGroup = ({ children, className = '', direction = 'row', ...props }) => (
-  <div
-    {...props}
-    className={`flex ${direction === 'row' ? 'flex-row' : 'flex-col'} gap-3 ${className}`}
+export const DetailsButton = ({ to, className = '' }) => (
+  <Link
+    to={to}
+    className={`${baseStyles} group bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white px-6 py-3.5 rounded-xl border border-gray-100 dark:border-white/5 hover:border-gold-500/50 hover:text-gold-500 transition-all duration-500 flex-1 ${className}`}
   >
-    {children}
-  </div>
+    <FaEye className="mr-2 w-3 h-3 opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
+    <span className="tracking-[0.3em]">Ver Detalle</span>
+  </Link>
+);
+
+/**
+ * Standard "Consultar Precio" Button
+ * Redirects to WhatsApp with product information
+ */
+export const PriceInquiryButton = ({ product, size = null, className = '' }) => {
+  const message = `Hola Sueño Dorado, estoy interesado(a) en el producto *${product.name}*.\n${size ? `Talla: ${size}\n` : ''}¿Podrían brindarme el precio y disponibilidad?\n\nGracias.`;
+
+  return (
+    <a
+      href={getWhatsAppLink(message)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${baseStyles} ${shadowStyles} group bg-green-500 text-white px-6 py-3.5 rounded-xl hover:bg-green-600 shadow-green-500/10 flex-1 ${className}`}
+    >
+      <FaWhatsapp className="mr-2.5 w-4 h-4 group-hover:scale-110 transition-transform" />
+      <span>Consultar Precio</span>
+    </a>
+  );
+};
+
+/**
+ * "Agregar a Cotización" Icon Button (Small)
+ */
+export const QuoteIconButton = ({ onClick, className = '' }) => (
+  <button
+    onClick={onClick}
+    className={`group relative overflow-hidden bg-gray-900 dark:bg-zinc-800 hover:bg-gold-500 text-white w-12 h-12 flex items-center justify-center rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/30 hover:-translate-y-0.5 hover:scale-105 flex-shrink-0 ${className}`}
+    title="Agregar a mi Cotización"
+  >
+    <FaShoppingCart className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:scale-110" />
+    <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+  </button>
 );
 
 export default {
   PrimaryButton,
   SecondaryButton,
   WhatsAppButton,
-  LinkButton,
-  CartButton,
-  ButtonGroup,
+  DetailsButton,
+  PriceInquiryButton,
+  QuoteIconButton
 };

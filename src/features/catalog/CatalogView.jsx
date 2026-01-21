@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useScrollToTop } from '@/hooks/useTheme';
-import { FaEye, FaWhatsapp } from 'react-icons/fa';
+import { FaSearch, FaFilter, FaThLarge, FaList, FaWhatsapp, FaArrowRight, FaChevronDown } from 'react-icons/fa';
+import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
+import { useCart } from '@/contexts/CartContext';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
 import UniversalProductFilters from '@/components/home/CategoriesSection/ProductFilters';
@@ -14,6 +16,7 @@ import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink } from '@/utils/constants
  */
 const CatalogView = () => {
   useScrollToTop();
+  const { addToCart } = useCart();
 
   const [selectedCategory, setSelectedCategory] = useState('todos');
   const [selectedSubcategory, setSelectedSubcategory] = useState('todos');
@@ -43,8 +46,6 @@ const CatalogView = () => {
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     switch (sortBy) {
-      case 'price-low': return a.price - b.price;
-      case 'price-high': return b.price - a.price;
       case 'name': return a.name.localeCompare(b.name);
       default: return 0;
     }
@@ -122,7 +123,7 @@ const CatalogView = () => {
                 <div key={product.id} className="group">
                   {/* Product Card */}
                   <div className="bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-100 dark:border-white/10 transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2">
-                    
+
                     {/* Product Image */}
                     <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-gray-900">
                       <img
@@ -130,7 +131,7 @@ const CatalogView = () => {
                         alt={product.name}
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                       />
-                      
+
                       {/* Overlay Actions */}
                       <div className="absolute top-4 right-4 flex flex-col gap-2">
                         <button className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all">
@@ -147,7 +148,7 @@ const CatalogView = () => {
                     </div>
 
                     {/* Product Info */}
-                    <div className="p-6">
+                    <div className="p-6 flex flex-col flex-1">
                       <div className="mb-4">
                         <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest">
                           {product.subcategory}
@@ -160,33 +161,12 @@ const CatalogView = () => {
                         </p>
                       </div>
 
-                      {/* Price */}
-                      <div className="flex items-baseline gap-3 mb-6">
-                        <span className="text-2xl font-black text-gray-900 dark:text-white">
-                          S/ {product.price.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
-                        </span>
-                        <span className="text-sm text-gray-400 line-through">
-                          S/ {(product.price * 1.3).toLocaleString('es-PE', { minimumFractionDigits: 2 })}
-                        </span>
-                      </div>
-
-                      {/* Actions */}
-                      <div className="space-y-3">
-                        <Link
-                          to={`/detalle/producto/${product.id}`}
-                          className="w-full bg-black dark:bg-white text-white dark:text-black font-black py-3 rounded-xl text-sm uppercase tracking-widest transition-all hover:bg-gray-800 dark:hover:bg-gray-200 flex items-center justify-center"
-                        >
-                          Ver Detalle
-                        </Link>
-                        
-                        <a
-                          href={getWhatsAppLink(product)}
-                          target="_blank"
-                          className="w-full bg-gold-500 text-black font-black py-3 rounded-xl text-sm uppercase tracking-widest transition-all hover:bg-gold-400 flex items-center justify-center gap-2"
-                        >
-                          <FaWhatsapp className="w-4 h-4" />
-                          WhatsApp
-                        </a>
+                      <div className="flex flex-col gap-3 mt-auto">
+                        <PriceInquiryButton product={product} />
+                        <div className="flex gap-2">
+                          <DetailsButton to={`/producto/${product.id}`} className="flex-1" />
+                          <QuoteIconButton onClick={() => addToCart(product, 1)} />
+                        </div>
                       </div>
                     </div>
                   </div>

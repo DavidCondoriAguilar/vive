@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import MainLayout from '@/layouts/MainLayout';
 import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink } from '@/utils/constants';
-import { PrimaryButton, WhatsAppButton } from '@/components/ui/Buttons';
+import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
+import { useCart } from '@/contexts/CartContext';
 
 const CategoryView = ({ categoryId: propCategoryId }) => {
+    const { addToCart } = useCart();
     const { categoryId: paramCategoryId, subId } = useParams();
     const location = useLocation();
     const activeCategoryId = propCategoryId || paramCategoryId;
@@ -148,45 +150,29 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                     {products.length > 0 ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 animate-fade-in-up">
                             {products.map((product) => (
-                                <div key={product.id} className="group bg-gray-50 dark:bg-zinc-900/50 p-8 rounded-[2.5rem] hover:bg-white dark:hover:bg-zinc-900 transition-all duration-700 hover:shadow-2xl hover:shadow-black/5 border border-transparent hover:border-gray-100 dark:hover:border-white/5">
-                                    <Link to={`/producto/${product.id}`} className="block aspect-square mb-10 overflow-hidden relative">
-                                        <img
-                                            src={product.image}
-                                            alt={product.name}
-                                            className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-105"
-                                        />
-                                    </Link>
-                                    <div className="space-y-4">
-                                        <div className="flex justify-between items-start">
-                                            <div>
-                                                <p className="text-[10px] font-black text-gold-500 uppercase tracking-widest mb-2">{product.subcategory || product.category}</p>
-                                                <Link to={`/producto/${product.id}`}>
-                                                    <h3 className="text-xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tight hover:text-gold-500 transition-colors">{product.name}</h3>
-                                                </Link>
-                                            </div>
-                                            <p className="text-xl font-display font-black text-gray-900 dark:text-white">
-                                                S/ {product.price.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
-                                            </p>
-                                        </div>
-                                        <div className="pt-6 border-t border-gray-100 dark:border-white/5 flex gap-4">
-                                            <Link
-                                                to={`/producto/${product.id}`}
-                                                className="flex-grow flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white text-[10px] font-black uppercase tracking-widest hover:border-gold-500 hover:text-gold-500 transition-all duration-500 hover:shadow-xl hover:shadow-black/5"
-                                            >
-                                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                                </svg>
-                                                Ver Detalle
-                                            </Link>
-                                            <WhatsAppButton
-                                                onClick={() => {
-                                                    const message = `Hola Sueño Dorado, me gustaría recibir más información sobre el colchón ${product.name} de la línea ${product.subcategory || product.category}. ¡Gracias!`;
-                                                    window.open(getWhatsAppLink(message), '_blank');
-                                                }}
-                                                className="w-14 h-14 p-0 justify-center"
-                                                showArrow={false}
+                                <div key={product.id} className="group bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-100 dark:border-white/10 transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
+                                    <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-gray-900">
+                                        <Link to={`/producto/${product.id}`} className="block h-full w-full">
+                                            <img
+                                                src={product.image}
+                                                alt={product.name}
+                                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                                             />
+                                        </Link>
+                                    </div>
+                                    <div className="p-6 flex flex-col flex-1">
+                                        <div className="mb-4">
+                                            <p className="text-[10px] font-black text-gold-500 uppercase tracking-widest mb-2">{product.subcategory || product.category}</p>
+                                            <Link to={`/producto/${product.id}`}>
+                                                <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-gold-500 transition-colors">{product.name}</h3>
+                                            </Link>
+                                        </div>
+                                        <div className="pt-6 border-t border-gray-100 dark:border-white/5 flex flex-col gap-3 mt-auto">
+                                            <PriceInquiryButton product={product} size={selectedSize === 'todos' ? null : selectedSize} />
+                                            <div className="flex gap-2">
+                                                <DetailsButton to={`/producto/${product.id}`} className="flex-1" />
+                                                <QuoteIconButton onClick={() => addToCart(product, 1, selectedSize === 'todos' ? null : selectedSize)} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

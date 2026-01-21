@@ -63,7 +63,7 @@ const ManufacturingSection = () => {
                   <FaAward className="w-8 h-8" />
                 </div>
                 <div>
-                  <div className="text-white font-black text-3xl tracking-tighter">+20 Años</div>
+                  <div className="text-white font-black text-3xl tracking-tighter">+30 Años</div>
                   <div className="text-gold-500/60 text-[10px] uppercase tracking-widest font-bold">Trayectoria Imbatible</div>
                 </div>
               </div>

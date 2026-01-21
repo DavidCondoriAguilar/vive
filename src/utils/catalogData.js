@@ -5,14 +5,11 @@ export const CATEGORIES = [
         description: 'Tecnología de resortes Pocket y Bonell de alta durabilidad.',
         slug: 'colchones-resorte',
         subcategories: [
-            { name: 'Económica', filter: 'Económica', warranty: '1-2 años' },
-            { name: 'Standard', filter: 'Standard', warranty: '4 años' },
-            { name: 'Intermedio', filter: 'Intermedio', warranty: '5 años' },
-            { name: 'Premium', filter: 'Premium', warranty: '10 años' },
-            { name: 'Golden Dream', filter: 'Golden Dream', warranty: '6 años' },
-            { name: 'Siempre', filter: 'Siempre', warranty: '7 años' },
-            { name: 'Absolut', filter: 'Absolut', warranty: '10 años' },
-            { name: 'Matrimonial', filter: 'Matrimonial', warranty: '6 años' }
+            { name: 'Colección Infantil', filter: 'Infantil' },
+            { name: 'Avance Marco de Acero', filter: 'Marco de Acero' },
+            { name: 'Avance Marco de Poliuretano', filter: 'Marco de Poliuretano' },
+            { name: 'Avance Gold', filter: 'Gold' },
+            { name: 'Avance Diamont', filter: 'Diamont' }
         ]
     },
     {
@@ -42,203 +39,235 @@ export const CATEGORIES = [
 // --- PRODUCT CATALOG SUB-ARRAYS ---
 
 const RESORTE_PRODUCTS = [
-    // ECONOMICA
+    // COLECCIÓN INFANTIL
+    {
+        id: 'cuna-travesuras',
+        name: 'Cuna Travesuras Tela Tricot',
+        category: 'resorte',
+        subcategory: 'Infantil',
+        warranty: '1 año',
+        price: 499,
+        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80',
+        description: 'Tela infantil hipoalergénica con diseños lúdicos para el descanso del bebé.',
+        sizes: ['Infantil'],
+        features: ['Hipoalergénico', 'Diseño Infantil'],
+        badge: 'Bebé'
+    },
+    {
+        id: 'cuna-golden',
+        name: 'Cuna Golden Dream Tela de Punto',
+        category: 'resorte',
+        subcategory: 'Infantil',
+        warranty: '1 año',
+        price: 599,
+        image: 'https://images.unsplash.com/photo-1519974310459-6a573188d797?q=80',
+        description: 'Tejido de punto suave y elástico para un descanso superior del recién nacido.',
+        sizes: ['Infantil'],
+        features: ['Tejido Punto', 'Lujo Bebé'],
+        badge: 'Bebé Premium'
+    },
+
+    // AVANCE MARCO DE ACERO
     {
         id: 'goldencito-ana',
         name: 'Goldencito Anatómico',
         category: 'resorte',
-        subcategory: 'Económica',
+        subcategory: 'Marco de Acero',
         warranty: '1 año',
         price: 599,
         image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80',
         description: 'Anatómico con resorte tradicional de alta resistencia para un descanso básico y firme.',
         sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
         features: ['Anatómico', 'Resorte Bonell'],
-        badge: 'Económica'
-    },
-    {
-        id: 'goldencito-mp',
-        name: 'Goldencito Anatómico MP',
-        category: 'resorte',
-        subcategory: 'Económica',
-        warranty: '2 años',
-        price: 699,
-        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80',
-        description: 'Sistema MP (Máxima Permanencia) con refuerzo perimetral para mayor vida útil.',
-        sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
-        features: ['Refuerzo MP', 'Duradero'],
-        badge: 'MP System'
+        badge: '1 Año Garantía'
     },
     {
         id: 'classic-ana',
-        name: 'Classic Anatómico',
+        name: 'Classic',
         category: 'resorte',
-        subcategory: 'Standard',
+        subcategory: 'Marco de Acero',
         warranty: '4 años',
         price: 849,
         image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80',
         description: 'Equilibrio perfecto entre firmeza y confort. El colchón ideal para uso diario familiar.',
         sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
-        features: ['Anatómico', '4 Años Garantía'],
-        badge: 'Standard'
+        features: ['Anatómico', 'Marco de Acero'],
+        badge: '4 Años Garantía'
     },
-    {
-        id: 'infinito-mp',
-        name: 'Infinito MP',
-        category: 'resorte',
-        subcategory: 'Standard',
-        warranty: '4 años',
-        price: 949,
-        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80',
-        description: 'Estructura infinita diseñada para uso rudo y duradero con sistema Máxima Permanencia.',
-        sizes: ['1.5 PLZ', '2 PLZ'],
-        features: ['Extra Firme', 'MP System'],
-        badge: 'Infinito'
-    },
-    // INTERMEDIO
     {
         id: 'pasiones-tricot',
-        name: 'Pasiones One Pillow T.Tricot',
+        name: 'Pasiones One Pillow',
         category: 'resorte',
-        subcategory: 'Intermedio',
+        subcategory: 'Marco de Acero',
         warranty: '5 años',
         price: 1199,
         image: 'https://images.unsplash.com/photo-1505693395921-87470d052614?q=80',
         description: 'Tela tricot de alta suavidad con un pillow de confort para un sueño reparador.',
         sizes: ['1.5 PLZ', '2 PLZ'],
-        features: ['Tela Tricot', 'One Pillow'],
-        badge: 'Intermedio'
-    },
-    {
-        id: 'pasiones-mp',
-        name: 'Pasiones One Pillow MP',
-        category: 'resorte',
-        subcategory: 'Intermedio',
-        warranty: '5 años',
-        price: 1299,
-        image: 'https://images.unsplash.com/photo-1505693395921-87470d052614?q=80',
-        description: 'Confort superior con sistema de Máxima Permanencia y acolchado de alta densidad.',
-        sizes: ['1.5 PLZ', '2 PLZ'],
-        features: ['MP System', 'One Pillow'],
-        badge: 'Confort Plus'
+        features: ['One Pillow', 'Marco de Acero'],
+        badge: '5 Años Garantía'
     },
     {
         id: 'pasiones-orto-lujo',
-        name: 'Pasiones P/T Orto D Lujo T.Tricot',
+        name: 'Pasiones Pillow de Lujo',
         category: 'resorte',
-        subcategory: 'Intermedio',
+        subcategory: 'Marco de Acero',
         warranty: '5 años',
         price: 1549,
         image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
         description: 'Ortopédico de alta gama para el cuidado de tu espalda con acabado Luxury Edition.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Ortopédico', 'Luxury Edition'],
-        badge: 'Orto Lujo'
+        features: ['Ortopédico', 'Marco de Acero'],
+        badge: 'Lujo Class'
+    },
+
+    // AVANCE MARCO DE POLIURETANO
+    {
+        id: 'goldencito-mp',
+        name: 'Goldencito Anatómico Mp',
+        category: 'resorte',
+        subcategory: 'Marco de Poliuretano',
+        warranty: '2 años',
+        price: 699,
+        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80',
+        description: 'Sistema MP (Máxima Permanencia) con refuerzo perimetral para mayor vida útil.',
+        sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
+        features: ['Marco Poliuretano', 'Refuerzo MP'],
+        badge: '2 Años Garantía'
+    },
+    {
+        id: 'infinito-mp',
+        name: 'Infinito Mp',
+        category: 'resorte',
+        subcategory: 'Marco de Poliuretano',
+        warranty: '4 años',
+        price: 949,
+        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80',
+        description: 'Estructura infinita diseñada para uso rudo y duradero con sistema Máxima Permanencia.',
+        sizes: ['1.5 PLZ', '2 PLZ'],
+        features: ['Marco Poliuretano', 'Extra Firme'],
+        badge: '4 Años Garantía'
+    },
+
+    // AVANCE GOLD
+    {
+        id: 'pasiones-mp',
+        name: 'Pasiones One Pillow Mp',
+        category: 'resorte',
+        subcategory: 'Gold',
+        warranty: '5 años',
+        price: 1299,
+        image: 'https://images.unsplash.com/photo-1505693395921-87470d052614?q=80',
+        description: 'Confort superior con sistema de Máxima Permanencia y acolchado de alta densidad.',
+        sizes: ['1.5 PLZ', '2 PLZ'],
+        features: ['Marco Poliuretano', 'One Pillow'],
+        badge: '5 Años Garantía'
+    },
+    {
+        id: 'pasiones-pt-mp',
+        name: 'Pasiones Pillow Mp',
+        category: 'resorte',
+        subcategory: 'Gold',
+        warranty: '5 años',
+        price: 1399,
+        image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
+        description: 'Sistema de pillow avanzado con marco de poliuretano para mayor estabilidad.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN'],
+        features: ['Marco Poliuretano', 'Pillow System'],
+        badge: 'Gold Collection'
     },
     {
         id: 'golden-dream-mp',
-        name: 'Golden Dream MP',
+        name: 'Golden Dream Mp',
         category: 'resorte',
-        subcategory: 'Golden Dream',
+        subcategory: 'Gold',
         warranty: '6 años',
         price: 1699,
         image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
         description: 'La línea dorada de nuestro catálogo. Ingeniería de precisión para el máximo confort.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Premium Foam', 'MP System'],
-        badge: 'Golden'
-    },
-    {
-        id: 'golden-dream-black',
-        name: 'Golden Dream MP Black',
-        category: 'resorte',
-        subcategory: 'Golden Dream',
-        warranty: '6 años',
-        price: 1799,
-        image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
-        description: 'Elegancia suprema y tecnología MP en acabado Black Profesional.',
-        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Black Edition', 'Extra Soporte'],
-        badge: 'Black'
+        features: ['Marco Poliuretano', 'Premium Foam'],
+        badge: '6 Años Garantía'
     },
     {
         id: 'siempre-one-pillow',
-        name: 'Siempre MP One Pillow',
+        name: 'Siempre One Pillow Mp',
         category: 'resorte',
-        subcategory: 'Siempre',
+        subcategory: 'Gold',
         warranty: '7 años',
         price: 1449,
         image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
         description: 'Diseño eterno de alta resistencia con un pillow de gran confort y firmeza.',
         sizes: ['1.5 PLZ', '2 PLZ'],
-        features: ['Garantía 7 años', 'One Pillow'],
-        badge: 'Eterno'
+        features: ['Marco Poliuretano', 'Garantía 7 años'],
+        badge: '7 Años Garantía'
     },
     {
         id: 'siempre-pt',
-        name: 'Siempre MP P/T',
+        name: 'Siempre Pillow Mp',
         category: 'resorte',
-        subcategory: 'Siempre',
+        subcategory: 'Gold',
         warranty: '7 años',
         price: 1549,
         image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
         description: 'Pillow Top permanente diseñado para durar siempre con garantía extendida.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Pillow Top', '7 Años Garantía'],
-        badge: 'Top Ventas'
+        features: ['Marco Poliuretano', 'Pillow Top'],
+        badge: '7 Años Garantía'
     },
+
+    // AVANCE DIAMONT
     {
         id: 'absolut-marco',
-        name: 'Absolut Marco Sellado P/T',
+        name: 'Absolut Pillow Mp',
         category: 'resorte',
-        subcategory: 'Absolut',
+        subcategory: 'Diamont',
         warranty: '10 años',
         price: 2199,
         image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
         description: 'Marco sellado al calor para máxima estabilidad perimetral y soporte total.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Marco Sellado', 'Pillow Top'],
-        badge: 'High Grade'
+        features: ['Marco Poliuretano', 'Máximo Soporte'],
+        badge: '10 Años Garantía'
     },
     {
         id: 'ternura-pocket',
-        name: 'Ternura Pocket',
+        name: 'Ternura Pocket Mp',
         category: 'resorte',
-        subcategory: 'Absolut',
-        warranty: '10 años',
+        subcategory: 'Diamont',
+        warranty: '6 años',
         price: 1999,
         image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
         description: 'Resortes independientes Pocket para una independencia de lechos total.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Resorte Pocket', 'Independencia'],
-        badge: 'Soft'
+        features: ['Marco Poliuretano', 'Pocket System'],
+        badge: '6 Años Garantía'
     },
     {
         id: 'matrimonial-clasico',
-        name: 'Matrimonial Clásico',
+        name: 'Matrimonial Pocket Mp',
         category: 'resorte',
-        subcategory: 'Matrimonial',
+        subcategory: 'Diamont',
         warranty: '6 años',
         price: 1349,
         image: 'https://images.unsplash.com/photo-1505693395921-87470d052614?q=80',
         description: 'El balance ideal para parejas que buscan confort clásico de alta durabilidad.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Bio-Balance', 'Confort'],
-        badge: 'Best Value'
+        features: ['Marco Poliuretano', 'Pocket System'],
+        badge: '6 Años Garantía'
     },
-    // PREMIUM
     {
         id: 'reconciliacion-pocket',
-        name: 'Reconciliación Pocket',
+        name: 'Reconciliación Pocket Visco Mp',
         category: 'resorte',
-        subcategory: 'Premium',
+        subcategory: 'Diamont',
         warranty: '10 años',
         price: 2499,
         image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
-        description: 'La joya de la corona. Lo último en tecnología Pocket para un descanso real.',
+        description: 'La joya de la corona. Lo último en tecnología Pocket y Viscoelástica para un descanso real.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Pocket System', 'Elite Confort'],
-        badge: 'Premium'
+        features: ['Marco Poliuretano', 'Viscoelástica', 'Pocket Elite'],
+        badge: '10 Años Garantía'
     }
 ];
 
@@ -447,32 +476,6 @@ const ESPUMA_PRODUCTS = [
 
 const COMPLEMENTARIOS_PRODUCTS = [
     {
-        id: 'cuna-travesuras',
-        name: 'Cuna Travesuras',
-        category: 'dormitorio',
-        subcategory: 'Cunas',
-        warranty: '1 año',
-        price: 499,
-        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80',
-        description: 'Tela infantil hipoalergénica con diseños lúdicos para el descanso del bebé.',
-        sizes: ['Infantil'],
-        features: ['Hipoalergénico', 'Diseño Infantil'],
-        badge: 'Bebé'
-    },
-    {
-        id: 'cuna-golden',
-        name: 'Cuna Golden Dream',
-        category: 'dormitorio',
-        subcategory: 'Cunas',
-        warranty: '1 año',
-        price: 599,
-        image: 'https://images.unsplash.com/photo-1519974310459-6a573188d797?q=80',
-        description: 'Tejido de punto suave y elástico para un descanso superior del recién nacido.',
-        sizes: ['Infantil'],
-        features: ['Tejido Punto', 'Lujo Bebé'],
-        badge: 'Bebé Premium'
-    },
-    {
         id: 'box-uni',
         name: 'Box Tarima Universal',
         category: 'dormitorio',
@@ -533,8 +536,8 @@ export const ENHANCED_CATALOG = [
 ];
 
 export const FEATURED_PRODUCTS = ENHANCED_CATALOG.filter(p =>
-    p.subcategory === 'Premium' ||
-    p.subcategory === 'Golden Dream' ||
-    p.subcategory === 'Absolut' ||
+    p.subcategory === 'Diamont' ||
+    p.subcategory === 'Gold' ||
+    p.subcategory === 'Marco de Poliuretano' ||
     p.subcategory === 'Topacio'
 );

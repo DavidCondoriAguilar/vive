@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '@/hooks/useTheme';
 import logoClaro from '@assets/images/logos/logo-claro.png';
-import logoAlt from '@assets/images/logos/logo-alt.png';
 import brandLogo from '@assets/images/logos/brand.png';
 import logoOscuro from '@assets/images/logos/logo-main.jpg';
 
@@ -34,18 +33,18 @@ const Logo = ({
 
   // Size configurations - Much larger sizes for maximum visibility
   const sizeConfig = {
-    small: { container: 'w-16 h-16 xs:w-18 xs:h-18 sm:w-20 sm:h-20 md:w-24 md:h-24 min-w-[64px] min-h-[64px]', image: 'w-full h-full' },
-    medium: { container: 'w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 min-w-[80px] min-h-[80px]', image: 'w-full h-full' },
-    large: { container: 'w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-56 md:h-20 min-w-[96px] min-h-[96px]', image: 'w-full h-full' },
-    xlarge: { container: 'w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-72 md:h-28 min-w-[128px] min-h-[128px]', image: 'w-full h-full' }
+    small: { container: 'w-16 h-10 md:w-20 md:h-12 min-w-[64px]', image: 'w-full h-full' },
+    medium: { container: 'w-24 h-14 md:w-32 md:h-16 min-w-[96px]', image: 'w-full h-full' },
+    large: { container: 'w-40 h-26 xs:w-46 xs:h-30 md:w-68 md:h-28 min-w-[128px]', image: 'w-full h-full' },
+    xlarge: { container: 'w-36 h-14 md:w-72 md:h-16 min-w-[144px]', image: 'w-full h-full' }
   };
 
   // High DPI (4K/Retina) - Maximum clarity with much larger visual footprint
   const highDPIConfig = {
-    small: { container: 'w-18 h-18 xs:w-20 xs:h-20 sm:w-22 sm:h-22 md:w-28 md:h-28 min-w-[72px] min-h-[72px]', image: 'w-full h-full' },
-    medium: { container: 'w-22 h-22 xs:w-26 xs:h-26 sm:w-30 sm:h-30 md:w-36 md:h-36 min-w-[88px] min-h-[88px]', image: 'w-full h-full' },
-    large: { container: 'w-28 h-28 xs:w-32 xs:h-32 sm:w-36 sm:h-36 md:w-64 md:h-24 min-w-[112px] min-h-[112px]', image: 'w-full h-full' },
-    xlarge: { container: 'w-36 h-36 xs:w-40 xs:h-40 sm:w-44 sm:h-44 md:w-80 md:h-32 min-w-[144px] min-h-[144px]', image: 'w-full h-full' }
+    small: { container: 'w-20 h-12 md:w-24 md:h-14 min-w-[80px]', image: 'w-full h-full' },
+    medium: { container: 'w-28 h-16 md:w-36 md:h-18 min-w-[112px]', image: 'w-full h-full' },
+    large: { container: 'w-48 h-20 xs:w-56 xs:h-24 md:w-72 md:h-28 min-w-[160px]', image: 'w-full h-full' },
+    xlarge: { container: 'w-40 h-16 md:w-80 md:h-20 min-w-[160px]', image: 'w-full h-full' }
   };
 
   const currentConfig = isHighDPI ? highDPIConfig : sizeConfig;

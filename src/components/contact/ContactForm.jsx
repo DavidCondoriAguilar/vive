@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaClock, FaWhatsapp, FaCheckCircle, FaPaperPlane } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaWhatsapp, FaCheckCircle, FaPaperPlane, FaArrowRight } from 'react-icons/fa';
 import MainLayout from '@/layouts/MainLayout';
 
 const ContactFormContent = () => {
@@ -42,20 +42,20 @@ const ContactFormContent = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center px-6">
+      <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex items-center justify-center px-6">
         <div className="max-w-md w-full text-center">
-          <div className="w-20 h-20 bg-green-100 dark:bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <FaCheckCircle className="w-10 h-10 text-green-600 dark:text-green-400" />
+          <div className="w-24 h-24 bg-gold-500/10 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce-slow">
+            <FaCheckCircle className="w-12 h-12 text-gold-500" />
           </div>
-          <h2 className="text-2xl font-display font-black text-gray-900 dark:text-white mb-4">
-            ¡Mensaje Enviado!
+          <h2 className="text-3xl md:text-4xl font-display font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tighter">
+            ¡Mensaje <span className="text-gold-500">Recibido</span>!
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
-            Nos pondremos en contacto contigo dentro de las próximas horas.
+          <p className="text-gray-600 dark:text-gray-400 mb-10 text-lg">
+            Nuestros asesores de descanso se pondrán en contacto contigo en breve para brindarte la mejor atención.
           </p>
           <button
             onClick={() => setIsSubmitted(false)}
-            className="bg-gold-500 hover:bg-gold-600 text-white px-8 py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-colors"
+            className="w-full bg-black dark:bg-white text-white dark:text-black px-10 py-5 rounded-full font-black text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
           >
             Enviar otro mensaje
           </button>
@@ -65,229 +65,160 @@ const ContactFormContent = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black py-20 px-6">
-      <div className="container mx-auto max-w-4xl">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-5xl font-display font-black text-gray-900 dark:text-white mb-6">
-            Contáctanos
+    <div className="relative min-h-screen bg-white dark:bg-[#0A0A0A] transition-colors duration-500 overflow-hidden pt-32 pb-24">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-gold-500/5 to-transparent pointer-events-none"></div>
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-gold-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Header Section */}
+        <div className="max-w-4xl mb-20">
+          <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade-in">Contacto Oficial</span>
+          <h1 className="text-5xl md:text-8xl font-display font-black text-gray-900 dark:text-white uppercase leading-[0.9] tracking-tighter mb-8 animate-slide-up">
+            Hablemos del <br /><span className="text-gold-500">Descanso Perfecto</span>
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            ¿Tienes preguntas sobre nuestros colchones? Estamos aquí para ayudarte a encontrar el descanso perfecto.
+          <p className="text-xl text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-2xl animate-fade-in delay-200">
+            Estamos aquí para asesorarte. Ya sea que busques el colchón de tus sueños o una solución corporativa, nuestro equipo experto está a un clic de distancia.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-xl font-display font-black text-gray-900 dark:text-white mb-6">
-                Información de Contacto
-              </h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gold-100 dark:bg-gold-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <FaWhatsapp className="w-6 h-6 text-gold-600 dark:text-gold-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 dark:text-white mb-1">WhatsApp</h4>
-                    <p className="text-gray-600 dark:text-gray-400">+51 989 223 448</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">Respuesta inmediata</p>
-                  </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* LEFT: Bento Grid Info Section */}
+          <div className="lg:col-span-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* WhatsApp Card - Feature Card */}
+            <a
+              href="https://wa.me/51989223448"
+              target="_blank"
+              className="md:col-span-2 group bg-green-500 dark:bg-green-600/10 p-8 rounded-[2.5rem] border border-green-500/20 flex flex-col justify-between h-64 hover:scale-[1.02] transition-all duration-500"
+            >
+              <div className="flex justify-between items-start">
+                <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-white">
+                  <FaWhatsapp className="w-8 h-8" />
                 </div>
+                <span className="bg-white/20 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full">Respuesta Inmediata</span>
+              </div>
+              <div>
+                <h3 className="text-2xl font-black text-white uppercase mb-1">WhatsApp</h3>
+                <p className="text-white/80 font-bold">+51 989 223 448</p>
+              </div>
+            </a>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <FaPhone className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 dark:text-white mb-1">Teléfono</h4>
-                    <p className="text-gray-600 dark:text-gray-400">+51 989 223 448</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">Lun-Sáb 9am-7pm</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <FaEnvelope className="w-6 h-6 text-green-600 dark:text-green-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 dark:text-white mb-1">Email</h4>
-                    <p className="text-gray-600 dark:text-gray-400">hola@suenodorado.pe</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">Respuesta en 24h</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <FaMapMarkerAlt className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 dark:text-white mb-1">Ubicación</h4>
-                    <p className="text-gray-600 dark:text-gray-400">Lima, Perú</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">Envíos a todo el país</p>
-                  </div>
-                </div>
+            {/* Email Card */}
+            <div className="bg-gray-50 dark:bg-white/5 p-8 rounded-[2.5rem] border border-gray-100 dark:border-white/5 flex flex-col justify-between h-64 group hover:border-gold-500/30 transition-all">
+              <div className="w-12 h-12 bg-gold-500/10 rounded-2xl flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-black transition-all">
+                <FaEnvelope className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-lg font-black text-gray-900 dark:text-white uppercase mb-1">Email</h3>
+                <p className="text-gray-500 dark:text-gray-400 text-sm font-medium break-all">hola@suenodorado.pe</p>
               </div>
             </div>
 
-            {/* Trust Badges */}
-            <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6">
-              <h4 className="font-bold text-gray-900 dark:text-white mb-4">¿Por qué elegirnos?</h4>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <FaCheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">Garantía real de hasta 10 años</span>
+            {/* Phone Card */}
+            <div className="bg-gray-50 dark:bg-white/5 p-8 rounded-[2.5rem] border border-gray-100 dark:border-white/5 flex flex-col justify-between h-64 group hover:border-blue-500/30 transition-all">
+              <div className="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                <FaPhone className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-lg font-black text-gray-900 dark:text-white uppercase mb-1">Central</h3>
+                <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">9am - 7pm</p>
+              </div>
+            </div>
+
+            {/* Location Card - Full Width in Bento */}
+            <div className="md:col-span-2 bg-black text-white p-8 rounded-[2.5rem] flex items-center justify-between group hover:shadow-2xl hover:shadow-gold-500/10 transition-all">
+              <div className="flex gap-6 items-center">
+                <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-gold-500">
+                  <FaMapMarkerAlt className="w-6 h-6" />
                 </div>
-                <div className="flex items-center gap-3">
-                  <FaCheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">Envío gratis en Lima</span>
+                <div>
+                  <h3 className="text-xl font-black uppercase mb-1">Planta Industrial</h3>
+                  <p className="text-gray-400 text-sm font-medium">Lima, Perú • Envíos Nacionales</p>
                 </div>
-                <div className="flex items-center gap-3">
-                  <FaCheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">Asesoría personalizada</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <FaCheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">Colchones premium peruanos</span>
-                </div>
+              </div>
+              <div className="hidden sm:flex w-10 h-10 border border-white/20 rounded-full items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                <FaPaperPlane className="w-4 h-4" />
               </div>
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div>
-            <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-8">
-              <h3 className="text-xl font-display font-black text-gray-900 dark:text-white mb-6">
-                Envíanos un Mensaje
+          {/* RIGHT: Modern Premium Form Section */}
+          <div className="lg:col-span-7">
+            <div className="bg-white dark:bg-[#0F0F0F] p-8 md:p-12 rounded-[3rem] border border-gray-100 dark:border-white/5 shadow-2xl relative overflow-hidden group">
+              {/* Form Background Accent */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-gold-500/10 transition-all duration-1000"></div>
+
+              <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-10 uppercase tracking-tighter">
+                Escríbenos <span className="text-gold-500">Directo</span>
               </h3>
-              
-              <form 
-                action="https://formsubmit.co/hola@suenodorado.pe" 
-                method="POST" 
+
+              <form
+                action="https://formsubmit.co/hola@suenodorado.pe"
+                method="POST"
                 onSubmit={handleSubmit}
-                className="space-y-6"
+                className="space-y-8"
               >
-                {/* Hidden fields for FormSubmit */}
-                <input type="hidden" name="_subject" value="Nuevo contacto - Sueño Dorado" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_next" value={`${window.location.origin}/contacto/gracias`} />
-                <input type="hidden" name="_captcha" value="false" />
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                      Nombre Completo *
-                    </label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">Tu Nombre</label>
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:outline-none transition-colors"
-                      placeholder="Tu nombre"
+                      placeholder="Ej: David Condori"
+                      className="w-full bg-gray-50 dark:bg-black/50 border-b-2 border-gray-100 dark:border-white/5 px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-700"
                     />
                   </div>
-                  
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                      Email *
-                    </label>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">Tu Email</label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:outline-none transition-colors"
-                      placeholder="tu@email.com"
+                      placeholder="david@ejemplo.com"
+                      className="w-full bg-gray-50 dark:bg-black/50 border-b-2 border-gray-100 dark:border-white/5 px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-700"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                      Teléfono
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:outline-none transition-colors"
-                      placeholder="+51 989 223 448"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                      Asunto
-                    </label>
-                    <select
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:outline-none transition-colors"
-                    >
-                      <option value="">Selecciona...</option>
-                      <option value="cotizacion">Cotización</option>
-                      <option value="informacion">Información de productos</option>
-                      <option value="garantia">Garantía y soporte</option>
-                      <option value="envio">Información de envío</option>
-                      <option value="otro">Otro</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                    Producto de Interés
-                  </label>
-                  <input
-                    type="text"
-                    name="product"
-                    value={formData.product}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:outline-none transition-colors"
-                    placeholder="Ej: Colchón Emperor Pocket"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                    Mensaje *
-                  </label>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">Mensaje de Consulta</label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={6}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:outline-none transition-colors resize-none"
-                    placeholder="Cuéntanos qué necesitas..."
+                    rows={5}
+                    placeholder="Cuéntanos sobre el producto que te interesa o tu proyecto corporativo..."
+                    className="w-full bg-gray-50 dark:bg-black/50 border-b-2 border-gray-100 dark:border-white/5 px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-gold-500 transition-all font-bold resize-none placeholder:text-gray-300 dark:placeholder:text-gray-700"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gold-500 hover:bg-gold-600 disabled:bg-gray-400 text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-3 group"
+                  className="group relative w-full bg-black dark:bg-white text-white dark:text-black py-6 rounded-2xl font-black text-xs uppercase tracking-[0.3em] overflow-hidden transition-all hover:scale-[0.98] active:scale-95 disabled:opacity-50"
                 >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      <span>Enviando...</span>
-                    </>
-                  ) : (
-                    <>
-                      <FaPaperPlane className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      <span>Enviar Mensaje</span>
-                    </>
-                  )}
+                  <span className="relative z-10 flex items-center justify-center gap-4">
+                    {isSubmitting ? (
+                      <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      <>
+                        Enviar Propuesta
+                        <FaArrowRight className="group-hover:translate-x-2 transition-transform" />
+                      </>
+                    )}
+                  </span>
+                  <div className="absolute inset-0 bg-gold-500 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                 </button>
+
+                <p className="text-center text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+                  Atención prioritaria para consultas B2B y mayoristas
+                </p>
               </form>
             </div>
           </div>

@@ -38,7 +38,7 @@ const ShoppingCart = () => {
         onClick={() => setIsCartOpen(!isCartOpen)}
         className={`fixed bottom-8 left-8 z-40 flex items-center gap-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-4 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 hover:scale-110 active:scale-95 border border-white/10 dark:border-black/5 hover:bg-black group ${isCartOpen ? 'opacity-0 pointer-events-none -translate-x-10' : 'opacity-100'}`}
       >
-        <div className="relative">
+        <div className="relative flex items-center justify-center">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
@@ -163,8 +163,8 @@ const ShoppingCart = () => {
                           </button>
                         </div>
 
-                        <span className="text-sm font-black text-gray-900 dark:text-white">
-                          {formatPrice((item.sizes && item.sizes[item.selectedSize]) ? item.sizes[item.selectedSize] * item.quantity : item.price * item.quantity)}
+                        <span className="text-[10px] font-black text-gold-500 uppercase tracking-widest">
+                          Precio por Consultar
                         </span>
                       </div>
                     </div>
@@ -177,14 +177,14 @@ const ShoppingCart = () => {
           {/* Footer - Sticky */}
           {cartItems.length > 0 && (
             <div className="px-6 sm:px-8 py-6 sm:py-8 bg-gray-50/50 dark:bg-white/[0.02] border-t border-gray-100 dark:border-white/5 space-y-4 sm:space-y-6">
-              <div className="flex justify-between items-end">
+              <div className="flex justify-between items-end border-b border-gray-100 dark:border-white/5 pb-6">
                 <div className="space-y-1">
-                  <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">Total estimado</span>
-                  <p className="text-[9px] text-gray-400 uppercase tracking-widest font-medium">Asesoría gratuita incluida</p>
+                  <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">Gestión de Pedido</span>
+                  <p className="text-[11px] text-gray-900 dark:text-white font-black uppercase tracking-widest">Consultar Precios vía WhatsApp</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-3xl font-display font-black text-gray-900 dark:text-white leading-none tracking-tighter">
-                    {formatPrice(getTotal())}
+                  <span className="text-sm font-black text-gold-500 uppercase tracking-widest">
+                    Asesoría Premium
                   </span>
                 </div>
               </div>
@@ -197,8 +197,8 @@ const ShoppingCart = () => {
                   <div className="flex items-center gap-3">
                     <FaWhatsapp className="w-6 h-6 sm:w-7 sm:h-7 group-hover:scale-110 transition-transform" />
                     <div className="text-center">
-                      <span className="block font-medium text-sm sm:text-base">Comprar por WhatsApp</span>
-                      <span className="text-xs sm:text-sm opacity-75 block mt-1">Atención inmediata</span>
+                      <span className="block font-black text-sm sm:text-base uppercase tracking-widest">Consultar Precios</span>
+                      <span className="text-[10px] sm:text-xs opacity-75 block mt-1 font-medium uppercase tracking-widest">Finalizar Cotización</span>
                     </div>
                   </div>
                 </button>

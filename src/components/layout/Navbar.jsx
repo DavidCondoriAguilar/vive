@@ -40,14 +40,49 @@ const Navbar = () => {
             name: 'Resorte',
             path: '/colchones-resorte',
             icon: <MdOutlineBed className="w-5 h-5" />,
-            subLinks: [
-                { name: 'Económicos (1-2 años)', path: '/colchones-resorte?l=Económica' },
-                { name: 'Intermedios (5 años)', path: '/colchones-resorte?l=Intermedio' },
-                { name: 'Premium (10 años)', path: '/colchones-resorte?l=Premium' },
-                { name: 'Golden Dream (6 años)', path: '/colchones-resorte?l=Golden Dream' },
-                { name: 'Siempre (7 años)', path: '/colchones-resorte?l=Siempre' },
-                { name: 'Absolut (10 años)', path: '/colchones-resorte?l=Absolut' },
-                { name: 'Matrimoniales (6 años)', path: '/colchones-resorte?l=Matrimonial' }
+            megaMenu: [
+                {
+                    title: 'Colección Infantil',
+                    items: [
+                        { name: 'Cuna travesuras tela tricot', path: '/producto/cuna-travesuras' },
+                        { name: 'Cuna Golden dream tela de punto', path: '/producto/cuna-golden' }
+                    ]
+                },
+                {
+                    title: 'Avance Marco de Acero',
+                    items: [
+                        { name: 'Goldencito anatómico (1 año)', path: '/producto/goldencito-ana' },
+                        { name: 'Classic (4 años)', path: '/producto/classic-ana' },
+                        { name: 'Pasiones One pillow (5años)', path: '/producto/pasiones-tricot' },
+                        { name: 'Pasiones pillow de lujo(5años)', path: '/producto/pasiones-orto-lujo' }
+                    ]
+                },
+                {
+                    title: 'Avance Marco poliuretano',
+                    items: [
+                        { name: 'Goldencito anatómico Mp (2 años)', path: '/producto/goldencito-mp' },
+                        { name: 'Infinito Mp (4 años)', path: '/producto/infinito-mp' }
+                    ]
+                },
+                {
+                    title: 'Avance Gold',
+                    items: [
+                        { name: 'Pasiones One pillow Mp (5 años)', path: '/producto/pasiones-mp' },
+                        { name: 'Pasiones Pillow Mp (5 años)', path: '/producto/pasiones-pt-mp' },
+                        { name: 'Golden dream Mp (6 años)', path: '/producto/golden-dream-mp' },
+                        { name: 'Siempre One pillow Mp (7 años)', path: '/producto/siempre-one-pillow' },
+                        { name: 'Siempre pillow Mp (7 años)', path: '/producto/siempre-pt' }
+                    ]
+                },
+                {
+                    title: 'Avance Diamont',
+                    items: [
+                        { name: 'Absolut Pillow Mp (10 años)', path: '/producto/absolut-marco' },
+                        { name: 'Ternura Pocket Mp (6 años)', path: '/producto/ternura-pocket' },
+                        { name: 'Matrimonial Pocket Mp (6 años)', path: '/producto/matrimonial-clasico' },
+                        { name: 'Reconciliación Pocket Visco Mp (10 años)', path: '/producto/reconciliacion-pocket' }
+                    ]
+                }
             ]
         },
         {
@@ -95,10 +130,10 @@ const Navbar = () => {
 
             {/* MAIN NAVBAR */}
             <div
-                className="bg-white border-b border-gray-200 py-1 md:py-2 transition-all duration-500"
+                className="bg-white border-b border-gray-200 transition-all duration-500"
             >
-                <div className="w-full px-2 xs:px-3 sm:px-4 md:px-6 lg:px-20">
-                    <div className="flex items-center justify-between min-h-12 xs:min-h-14 gap-1 xs:gap-2">
+                <div className="w-full px-2 xs:px-3 sm:px-4 md:px-6 lg:px-20 relative">
+                    <div className="flex items-center justify-between min-h-24 md:min-h-28 gap-1 xs:gap-2">
                         {/* LOGO */}
                         <div className="flex-shrink-0 flex items-center justify-center">
                             <Logo

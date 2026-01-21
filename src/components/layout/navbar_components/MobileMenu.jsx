@@ -60,7 +60,7 @@ const MobileMenu = ({ isOpen, onClose, navLinks, waLink }) => {
                     <div className="flex-1 overflow-y-auto px-6 py-4 space-y-2">
                         {navLinks.map((link) => (
                             <div key={link.name} className="border-b border-gray-50 dark:border-white/5 last:border-0 pb-2 mb-2">
-                                {link.subLinks ? (
+                                {(link.subLinks || link.megaMenu) ? (
                                     <>
                                         <button
                                             onClick={() => toggleSubMenu(link.name)}
@@ -75,19 +75,43 @@ const MobileMenu = ({ isOpen, onClose, navLinks, waLink }) => {
                                             <MdKeyboardArrowDown className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${openSubMenu === link.name ? 'rotate-180' : ''}`} />
                                         </button>
 
-                                        {/* SubLinks Accordion */}
-                                        <div className={`overflow-hidden transition-all duration-300 ${openSubMenu === link.name ? 'max-h-[500px] mb-4' : 'max-h-0'}`}>
-                                            <div className="pl-14 space-y-4">
-                                                {link.subLinks.map((sub) => (
-                                                    <Link
-                                                        key={sub.name}
-                                                        to={sub.path}
-                                                        className="block text-[10px] font-black text-gray-400 hover:text-gold-500 uppercase tracking-[0.2em] transition-colors"
-                                                        onClick={onClose}
-                                                    >
-                                                        {sub.name}
-                                                    </Link>
-                                                ))}
+                                        {/* Accordion Content */}
+                                        <div className={`overflow-hidden transition-all duration-300 ${openSubMenu === link.name ? 'max-h-[1200px] mb-4' : 'max-h-0'}`}>
+                                            <div className="pl-14 space-y-6">
+                                                {link.megaMenu ? (
+                                                    // Mega Menu Layout
+                                                    link.megaMenu.map((group) => (
+                                                        <div key={group.title} className="space-y-3">
+                                                            <h5 className="text-[10px] font-black text-gold-500 uppercase tracking-[0.3em] border-l-2 border-gold-500/30 pl-3">
+                                                                {group.title}
+                                                            </h5>
+                                                            <div className="space-y-3 pl-3">
+                                                                {group.items.map((item) => (
+                                                                    <Link
+                                                                        key={item.name}
+                                                                        to={item.path}
+                                                                        className="block text-[11px] font-bold text-gray-500 dark:text-gray-400 hover:text-gold-500 transition-colors py-1"
+                                                                        onClick={onClose}
+                                                                    >
+                                                                        {item.name}
+                                                                    </Link>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    ))
+                                                ) : (
+                                                    // Standard Sublinks Layout
+                                                    link.subLinks.map((sub) => (
+                                                        <Link
+                                                            key={sub.name}
+                                                            to={sub.path}
+                                                            className="block text-[10px] font-black text-gray-400 hover:text-gold-500 uppercase tracking-[0.2em] transition-colors"
+                                                            onClick={onClose}
+                                                        >
+                                                            {sub.name}
+                                                        </Link>
+                                                    ))
+                                                )}
                                             </div>
                                         </div>
                                     </>

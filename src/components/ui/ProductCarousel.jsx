@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { MdOutlineArrowForward, MdOutlineArrowBack } from 'react-icons/md';
-import { FaLayerGroup } from 'react-icons/fa';
-import { PrimaryButton } from '@/components/ui/Buttons';
+import { useNavigate, Link } from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight, FaLayerGroup } from 'react-icons/fa';
+import { PrimaryButton, DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
 import { useDragCarousel } from '@/hooks/useDragCarousel';
+import { useCart } from '@/contexts/CartContext';
 import { CATEGORIES } from '@/utils/constants';
 import FilterDropdown from '@/components/ui/FilterDropdown';
 
 const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
+  const { addToCart } = useCart();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
   const [selectedCategory, setSelectedCategory] = useState('Todos');
@@ -52,7 +53,7 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
       case 'Espuma':
         return 'Líneas: Poliseda • Plus Resilense • Splendido • Topacio';
       case 'Resorte':
-        return 'Líneas: Económica • Standard • Intermedio • Golden Dream • Siempre • Absolut • Premium';
+        return 'Avance: Marco de Acero • Marco de Poliuretano • Gold • Diamont • Infantil';
       case 'Dormitorio':
         return 'Incluye: Cunas • Bases • Cabeceras';
       default:
@@ -61,9 +62,9 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
   };
 
   return (
-    <div className="py-24">
+    <div className="relative">
       {/* Header & Controls - High Visibility */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-12 px-4">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-12">
         <div className="max-w-xl">
           <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Selección Premium</span>
           <h2 className="text-4xl lg:text-5xl font-display font-black text-gray-900 dark:text-white uppercase leading-tight tracking-tighter mb-6">
@@ -73,7 +74,7 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
             <div className="flex-1 h-[2px] bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden">
               <div
                 className="h-full bg-gold-500 transition-all duration-1000 ease-out shadow-[0_0_10px_#d4af37]"
-                style={{ width: `${((currentIndex + itemsPerView) / Math.max(1, filteredProducts.length)) * 100}%` }}
+                style={{ width: `${((currentIndex + itemsPerView) / Math.max(1, filteredProducts.length)) * 100}% ` }}
               />
             </div>
             <span className="text-[10px] font-black text-gold-500 uppercase tracking-widest whitespace-nowrap">
@@ -101,7 +102,7 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
 
       {/* Active Filter Description - Contexto para el usuario */}
       {selectedCategory !== 'Todos' && (
-        <div className="mb-8 px-4">
+        <div className="mb-8">
           <div className="bg-gold-50 dark:bg-gold-500/10 border border-gold-200 dark:border-gold-500/30 rounded-xl p-4">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 bg-gold-500 rounded-full animate-pulse" />
@@ -126,50 +127,48 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
             <button
               onClick={() => handleSlideChange('prev')}
               disabled={!canGoPrev}
-              className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all ${canGoPrev
-                  ? 'bg-white dark:bg-black text-gray-900 dark:text-white shadow-lg hover:scale-110'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed opacity-50'
+              className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all shadow-xl ${canGoPrev
+                ? 'bg-white/90 dark:bg-black/90 text-black dark:text-white hover:scale-110'
+                : 'bg-white/30 dark:bg-black/30 text-gray-400 cursor-not-allowed'
                 }`}
             >
-              <MdOutlineArrowBack className="w-5 h-5" />
+              <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
             <button
               onClick={() => handleSlideChange('next')}
               disabled={!canGoNext}
-              className={`absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all ${canGoNext
-                  ? 'bg-white dark:bg-black text-gray-900 dark:text-white shadow-lg hover:scale-110'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed opacity-50'
+              className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all shadow-xl ${canGoNext
+                ? 'bg-white/90 dark:bg-black/90 text-black dark:text-white hover:scale-110'
+                : 'bg-white/30 dark:bg-black/30 text-gray-400 cursor-not-allowed'
                 }`}
             >
-              <MdOutlineArrowForward className="w-5 h-5" />
+              <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </>
         )}
 
         {/* Product Track */}
         <div
-          className="flex gap-6 transition-transform duration-500 ease-out"
+          className="flex transition-transform duration-500 ease-out"
           style={{
-            transform: `translateX(-${currentIndex * 100}%)`
+            transform: `translateX(calc(-${currentIndex} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? '1.5rem / ' + itemsPerView : '0px'})))`,
+            gap: '1.5rem'
           }}
         >
           {filteredProducts.map((product, index) => (
             <div
               key={product.id}
-              className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4"
+              className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
             >
-              {/* Product Card */}
-              <div className="bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-100 dark:border-white/10 transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full">
-
-                {/* Product Image */}
+              <div className="bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-100 dark:border-white/10 transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
                 <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-gray-900">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                  />
-
-                  {/* Badge */}
+                  <Link to={`/producto/${product.id}`} className="block h-full w-full">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-110"
+                    />
+                  </Link>
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 bg-black text-white text-[10px] font-black uppercase tracking-widest rounded-full">
                       {product.badge || 'Nuevo'}
@@ -177,40 +176,27 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
                   </div>
                 </div>
 
-                {/* Product Info */}
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
                   <div className="mb-4">
                     <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest">
                       {product.subcategory}
                     </span>
-                    <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight">
-                      {product.name}
-                    </h3>
+                    <Link to={`/producto/${product.id}`}>
+                      <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-gold-500 transition-colors">
+                        {product.name}
+                      </h3>
+                    </Link>
                     <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
                       {product.description}
                     </p>
                   </div>
 
-                  {/* Price */}
-                  <div className="flex items-baseline gap-3 mb-6">
-                    <span className="text-2xl font-black text-gray-900 dark:text-white">
-                      S/ {product.price.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
-                    </span>
-                    {product.originalPrice && (
-                      <span className="text-sm text-gray-400 line-through">
-                        S/ {product.originalPrice.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Actions */}
-                  <div className="space-y-3">
-                    <Link
-                      to={`/detalle/producto/${product.id}`}
-                      className="w-full bg-black dark:bg-white text-white dark:text-black font-black py-3 rounded-xl text-sm uppercase tracking-widest transition-all hover:bg-gray-800 dark:hover:bg-gray-200 flex items-center justify-center"
-                    >
-                      Ver Detalle
-                    </Link>
+                  <div className="flex flex-col gap-3 mt-auto">
+                    <PriceInquiryButton product={product} />
+                    <div className="flex gap-2">
+                      <DetailsButton to={`/producto/${product.id}`} className="flex-1" />
+                      <QuoteIconButton onClick={() => addToCart(product, 1)} />
+                    </div>
                   </div>
                 </div>
               </div>

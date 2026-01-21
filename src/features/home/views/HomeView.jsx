@@ -8,6 +8,7 @@ import CategoriesSection from '@/components/home/CategoriesSection';
 import ProductCarousel from '@/components/ui/ProductCarousel';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import ProvincesSection from '@/components/home/ProvincesSection';
+import InfiniteMarquee from '@/components/ui/InfiniteMarquee';
 import { ENHANCED_CATALOG } from '@/utils/constants';
 
 const HomeView = () => {
@@ -24,6 +25,9 @@ const HomeView = () => {
         {/* 1. HERO CAROUSEL - Visual impactante */}
         <HeroCarousel />
 
+        {/* MARQUEE PROMOCIONAL - Minimalista e Infinito */}
+        <InfiniteMarquee />
+
         {/* 2. CATEGORÍAS - Grid limpio estilo Paraíso */}
         <CategoriesSection />
 
@@ -35,11 +39,11 @@ const HomeView = () => {
           />
         </SectionLayout>
 
-        {/* 4. TESTIMONIALS - Prueba social real */}
-        <TestimonialsSection />
-
-        {/* 5. PROVINCIAS - Cobertura nacional */}
+        {/* 4. PROVINCIAS - Cobertura nacional */}
         <ProvincesSection />
+
+        {/* 5. TESTIMONIALS - Prueba social real */}
+        <TestimonialsSection />
       </MainLayout>
     </>
   );
