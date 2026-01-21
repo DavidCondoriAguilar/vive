@@ -497,6 +497,32 @@ const COMPLEMENTARIOS_PRODUCTS = [
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: ['Moderno', 'Brazos Laterales'],
         badge: 'Luxe'
+    },
+    {
+        id: 'mueble-lineal',
+        name: 'Juego de Mueble Lineal 3.2m + Cojines',
+        category: 'dormitorio',
+        subcategory: 'Muebles',
+        warranty: '2 años',
+        price: 1299,
+        image: 'https://images.unsplash.com/photo-1616046375252-01e8e2b75c8?q=80',
+        description: 'Set lineal completo con 3.2 metros de almacenamiento y cojines decorativos incluidos.',
+        sizes: ['3.2m'],
+        features: ['Almacenamiento', 'Cojines Incluidos', 'Diseño Lineal'],
+        badge: 'Completo'
+    },
+    {
+        id: 'mueble-luxe',
+        name: 'Mueble de Luxe Seccional + Cojines',
+        category: 'dormitorio',
+        subcategory: 'Muebles',
+        warranty: '3 años',
+        price: 1899,
+        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80',
+        description: 'Mueble sectional de lujo con múltiples compartimentos y cojines decorativos premium.',
+        sizes: ['Seccional'],
+        features: ['Diseño Seccional', 'Cojines Premium', 'Lujo'],
+        badge: 'Premium'
     }
 ];
 

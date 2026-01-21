@@ -28,10 +28,14 @@ export const useCategoriesLogic = () => {
 
   // Filter products
   const filteredProducts = ENHANCED_CATALOG.filter(product => {
-    const typeMatch = selectedType === 'todos' || product.type === selectedType;
-    const sizeMatch = selectedSize === 'todos' || product.sizes.includes(selectedSize);
+    const typeMatch = selectedType === 'todos' || product.subcategory === selectedType;
+    const sizeMatch = selectedSize === 'todos' || (product.sizes && product.sizes.includes(selectedSize));
     return typeMatch && sizeMatch;
   });
+
+  // Dynamic filters based on available products
+  const types = ['todos', ...new Set(ENHANCED_CATALOG.map(p => p.subcategory).filter(Boolean))];
+  const sizes = ['todos', ...new Set(ENHANCED_CATALOG.flatMap(p => p.sizes || []).filter(Boolean))];
 
   // Carousel navigation
   const nextSlide = () => {
@@ -102,6 +106,8 @@ export const useCategoriesLogic = () => {
     visibleProducts,
     totalSlides,
     currentSlideIndex,
+    types,
+    sizes,
 
     // Actions
     setSelectedType,

@@ -5,7 +5,7 @@ import ProductNotification from '@/components/ui/ProductNotification';
 
 // Component imports
 import CategoriesHeader from './CategoriesHeader';
-import ProductFilters from './ProductFilters';
+import UniversalProductFilters from './ProductFilters';
 import ProductCarousel from './ProductCarousel';
 import { useCategoriesLogic } from './useCategoriesLogic';
 
@@ -31,7 +31,9 @@ const CategoriesSection = () => {
     closeProductModal,
     handleTypeChange,
     handleSizeChange,
-    resetCarousel
+    resetCarousel,
+    types,
+    sizes
   } = useCategoriesLogic();
 
   return (
@@ -42,12 +44,21 @@ const CategoriesSection = () => {
         <CategoriesHeader />
 
         {/* Filters */}
-        <ProductFilters
-          selectedType={selectedType}
+        <UniversalProductFilters
+          selectedCategory={null}
+          selectedSubcategory={selectedType}
           selectedSize={selectedSize}
-          onTypeChange={handleTypeChange}
+          sortBy={null}
+          categories={null}
+          subcategories={types}
+          sizes={sizes}
+          onCategoryChange={() => {}}
+          onSubcategoryChange={handleTypeChange}
           onSizeChange={handleSizeChange}
-          onFilterChange={resetCarousel}
+          onSortChange={() => {}}
+          showSort={false}
+          showCategory={false}
+          compact={true}
         />
 
         {/* Products Carousel */}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import mattressWorkshopImg from '@/assets/images/mattress-workshop-peru.png';
 import { getWhatsAppLink } from '@/utils/constants';
 import MainLayout from '@/layouts/MainLayout';
 import WholesaleFormDrawer from '@/components/forms/WholesaleFormDrawer';
@@ -37,7 +38,7 @@ const WholesaleView = () => {
       tag: "Turismo"
     },
     {
-      image: "https://images.unsplash.com/photo-1582582621959-48d246628f41?q=80&w=2070&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2064&auto=format&fit=crop",
       icon: <FaStore />,
       title: "Tiendas y Comercio",
       subtitle: "Márgenes Premium",
@@ -56,31 +57,35 @@ const WholesaleView = () => {
 
   const mainStats = [
     { value: "-50%", label: "Precio de Fábrica", desc: "Ahorro directo sin intermediarios" },
-    { value: "24h", label: "Despacho Inmediato", desc: "Logística propia para Lima y Callao" },
-    { value: "100%", label: "Garantía Real", desc: "Respaldo directo de nuestra planta" },
-    { value: "+20", label: "Años de Éxito", desc: "Liderando la industria del descanso" }
+    { value: "10A", label: "Garantía", desc: "Respaldo oficial de fábrica" },
+    { value: "24h", label: "Despacho", desc: "Logística propia para Lima" },
+    { value: "+20", label: "Años", desc: "Experiencia industrial" }
   ];
 
   const benefits = [
     {
       title: "Producción por Volumen",
       desc: "Capacidad de escala para grandes pedidos con tiempos de entrega garantizados.",
-      icon: <FaChartLine className="w-8 h-8 text-gold-500" />
+      icon: <FaChartLine className="w-8 h-8 text-gold-500" />,
+      specs: ["+500 unidades/mes", "Tiempo: 72h"]
     },
     {
       title: "Personalización B2B",
       desc: "Fabricamos según sus especificaciones de densidad, resortes y acabados.",
-      icon: <FaHandshake className="w-8 h-8 text-gold-500" />
+      icon: <FaHandshake className="w-8 h-8 text-gold-500" />,
+      specs: ["Densidad: 25-70 kg/m³", "Resortes: Bonnell/Encapsulados"]
     },
     {
       title: "Logística Nacional",
       desc: "Llegamos a cualquier punto del Perú con embalaje de alta resistencia.",
-      icon: <FaGlobeAmericas className="w-8 h-8 text-gold-500" />
+      icon: <FaGlobeAmericas className="w-8 h-8 text-gold-500" />,
+      specs: ["Coverage: 24 regiones", "Packaging: Industrial"]
     },
     {
       title: "Calidad Certificada",
       desc: "Nuestros procesos cumplen con normas internacionales de higiene y ergonomía.",
-      icon: <FaCheckCircle className="w-8 h-8 text-gold-500" />
+      icon: <FaCheckCircle className="w-8 h-8 text-gold-500" />,
+      specs: ["ISO 9001", "Certificación INACAL"]
     }
   ];
 
@@ -224,9 +229,18 @@ const WholesaleView = () => {
                     <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-gold-500/10 group-hover:border-gold-500/30 transition-all">
                       {benefit.icon}
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h4 className="text-xl font-bold text-white mb-2 uppercase tracking-wide">{benefit.title}</h4>
-                      <p className="text-gray-400 text-sm leading-relaxed max-w-sm">{benefit.desc}</p>
+                      <p className="text-gray-400 text-sm leading-relaxed mb-3">{benefit.desc}</p>
+                      {benefit.specs && (
+                        <div className="flex flex-wrap gap-2">
+                          {benefit.specs.map((spec, i) => (
+                            <span key={i} className="px-3 py-1 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-[10px] font-bold uppercase tracking-widest">
+                              {spec}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -236,7 +250,7 @@ const WholesaleView = () => {
             <div className="relative">
               <div className="relative aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-2 border-white/5">
                 <img
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop"
+                  src="/src/assets/images/mattress-workshop-peru.png"
                   alt="Process"
                   className="w-full h-full object-cover"
                 />
@@ -250,6 +264,96 @@ const WholesaleView = () => {
                 <p className="text-xs font-bold text-gray-500 uppercase tracking-widest leading-tight">Vs Precios de Tienda o Mercados Convencionales</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Product Specifications Section */}
+      <section className="py-24 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-6xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tighter">
+              Especificaciones <span className="text-gold-500 italic font-light">Técnicas</span>
+            </h2>
+            <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+              Calidad y tecnología certificada para máximo rendimiento comercial
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Mattress Features */}
+            <div className="bg-gray-50 dark:bg-gray-800 p-10 rounded-[3rem]">
+              <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tighter">Características del Colchón</h3>
+              <div className="space-y-4">
+                {[
+                  "Tela tejido de punto con diseño 3D",
+                  "Tela higroscópica que absorbe la humedad",
+                  "Acabado antihongos-antibacterias-antiácaros",
+                  "Espuma viscoelástica D70 adaptable",
+                  "Doble capa Zebra HR y HD para soporte",
+                  "Sistema One Side (una cara)",
+                  "Sensación ultra suave premium"
+                ].map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-4">
+                    <FaCheckCircle className="w-5 h-5 text-gold-500 flex-shrink-0" />
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Technical Specs */}
+            <div className="bg-gray-50 dark:bg-gray-800 p-10 rounded-[3rem]">
+              <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tighter">Especificaciones</h3>
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <h4 className="text-gold-500 font-bold text-sm uppercase tracking-widest mb-3">Materiales</h4>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="text-sm">• Espuma D70: Alta densidad</li>
+                    <li className="text-sm">• Zebra HR: 35 kg/m³</li>
+                    <li className="text-sm">• Zebra HD: 35 kg/m³</li>
+                    <li className="text-sm">• Tela 3D transpirable</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-gold-500 font-bold text-sm uppercase tracking-widest mb-3">Certificaciones</h4>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="text-sm">• ISO 9001:2015</li>
+                    <li className="text-sm">• INACAL Perú</li>
+                    <li className="text-sm">• Antimicrobial Shield</li>
+                    <li className="text-sm">• Hypoallergenic Cert</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Payment Methods Section */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-800 border-y border-gold-500/10">
+        <div className="container mx-auto px-6 text-center">
+          <h3 className="text-gray-400 dark:text-gray-500 font-bold text-xs uppercase tracking-[0.4em] mb-8">Métodos de Pago B2B</h3>
+          <div className="flex flex-wrap justify-center items-center gap-8">
+            {[
+              "BCP Visa",
+              "BBVA Visa/Mastercard", 
+              "Interbank Visa/Amex",
+              "Diners Club",
+              "CENCOSUD",
+              "Yape",
+              "Transferencia",
+              "Letras (30/60/90 días)"
+            ].map((method, idx) => (
+              <div key={idx} className="px-6 py-3 bg-white dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-700">
+                <span className="text-sm font-bold text-gray-700 dark:text-gray-300">{method}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8">
+            <span className="inline-block px-6 py-3 bg-gold-500/20 border border-gold-500/30 rounded-full">
+              <span className="text-gold-500 font-bold text-sm">Hasta 6 CUOTAS sin intereses (Tienda Online)</span>
+            </span>
           </div>
         </div>
       </section>

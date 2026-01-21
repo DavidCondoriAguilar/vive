@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CATEGORIES, ENHANCED_CATALOG } from '@/utils/constants';
-import { FaFilter, FaShoppingCart, FaHeart, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaFilter, FaShoppingCart, FaHeart, FaChevronLeft, FaChevronRight, FaTags, FaRulerCombined } from 'react-icons/fa';
 import { useCart } from '@/contexts/CartContext';
 import ProductNotification from '@/components/ui/ProductNotification';
+import FilterDropdown from '@/components/ui/FilterDropdown';
 
 const CategoriesSection = () => {
   const [selectedType, setSelectedType] = useState('todos');
@@ -18,6 +19,9 @@ const CategoriesSection = () => {
 
   const types = ['todos', ...new Set(ENHANCED_CATALOG.map(p => p.subcategory).filter(Boolean))];
   const sizes = ['todos', ...new Set(ENHANCED_CATALOG.flatMap(p => p.sizes || []).filter(Boolean))];
+
+  const typeOptions = types.map(t => ({ id: t, name: t === 'todos' ? 'Todos los modelos' : t }));
+  const sizeOptions = sizes.map(s => ({ id: s, name: s === 'todos' ? 'Todas las medidas' : s }));
 
   // Responsive items per view
   useEffect(() => {
@@ -82,59 +86,40 @@ const CategoriesSection = () => {
       <div className="container mx-auto px-6 lg:px-20">
 
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-gray-900 dark:text-white mb-4">
+        <div className="text-center mb-16">
+          <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade-in">Catálogo Oficial</span>
+          <h2 className="text-4xl md:text-6xl font-display font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tighter">
             Nuestros <span className="text-gold-500">Productos</span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Calidad directa de fábrica para tu descanso perfecto
+          <p className="text-lg text-gray-500 dark:text-gray-400 font-medium max-w-2xl mx-auto">
+            Calidad directa de fábrica para tu descanso perfecto. Ingeniería peruana de clase mundial.
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <div className="flex items-center gap-2 clean-minimal px-4 py-2 rounded-lg">
-            <FaFilter className="text-gray-500" />
-            <span className="text-sm font-medium text-gray-700">Filtros:</span>
-          </div>
-
-          {/* Type Filter */}
-          <div className="flex flex-wrap gap-2">
-            {types.map(type => (
-              <button
-                key={type}
-                onClick={() => {
-                  setSelectedType(type);
-                  setCurrentSlide(0); // Reset carousel when filter changes
-                }}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${selectedType === type
-                  ? 'bg-gold-500 text-white shadow-lg shadow-gold-500/20 scale-105'
-                  : 'bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/10'
-                  }`}
-              >
-                {type === 'todos' ? 'Todos' : type}
-              </button>
-            ))}
-          </div>
-
-          {/* Size Filter */}
-          <div className="flex flex-wrap gap-2">
-            {sizes.map(size => (
-              <button
-                key={size}
-                onClick={() => {
-                  setSelectedSize(size);
-                  setCurrentSlide(0); // Reset carousel when filter changes
-                }}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${selectedSize === size
-                  ? 'bg-gold-500 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-              >
-                {size === 'todos' ? 'Todas las medidas' : size}
-              </button>
-            ))}
-          </div>
+        {/* Filters - Dropdowns for a cleaner look */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-16 px-4">
+          <FilterDropdown
+            label="Línea / Modelo"
+            placeholder="Todos los modelos"
+            options={typeOptions}
+            value={selectedType}
+            onChange={(val) => {
+              setSelectedType(val);
+              setCurrentSlide(0);
+            }}
+            icon={FaTags}
+          />
+          <FilterDropdown
+            label="Medida"
+            placeholder="Todas las medidas"
+            options={sizeOptions}
+            value={selectedSize}
+            onChange={(val) => {
+              setSelectedSize(val);
+              setCurrentSlide(0);
+            }}
+            icon={FaRulerCombined}
+          />
         </div>
 
         {/* Carousel Navigation Header - High Visibility */}
@@ -201,7 +186,7 @@ const CategoriesSection = () => {
                   <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
                     {/* Product Image */}
                     <div className="relative overflow-hidden bg-gray-50">
-                      <Link to={`/producto/${product.id}`} className="block">
+                      <Link to={`/detalle/producto/${product.id}`} className="block">
                         <img
                           src={product.image}
                           alt={product.name}
@@ -233,7 +218,7 @@ const CategoriesSection = () => {
 
                     {/* Product Info */}
                     <div className="p-4 flex flex-col flex-1">
-                      <Link to={`/producto/${product.id}`}>
+                      <Link to={`/detalle/producto/${product.id}`}>
                         <h3 className="font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 hover:text-gold-500 transition-colors">
                           {product.name}
                         </h3>
@@ -256,7 +241,7 @@ const CategoriesSection = () => {
 
                         <div className="flex gap-3">
                           <Link
-                            to={`/producto/${product.id}`}
+                            to={`/detalle/producto/${product.id}`}
                             className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-gray-100 dark:border-white/5 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white text-[10px] font-black uppercase tracking-widest hover:bg-white dark:hover:bg-zinc-900 hover:text-gold-500 hover:border-gold-500 transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-black/5"
                             title="Ver detalles del producto"
                           >

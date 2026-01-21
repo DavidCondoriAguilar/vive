@@ -32,7 +32,7 @@ function App() {
             <Route path="/dormitorio/:subId" element={<CategoryView categoryId="dormitorio" />} />
             <Route path="/catalogo" element={<CatalogView />} />
             <Route path="/venta-por-mayor" element={<WholesaleView />} />
-            <Route path="/producto/:productId" element={<ProductDetailsView />} />
+            <Route path="/detalle/producto/:productId" element={<ProductDetailsView />} />
             <Route path="/confirmacion-pedido" element={<OrderConfirmationPage />} />
             <Route path="/politica-devoluciones" element={<ReturnPolicyView />} />
             <Route path="/contacto" element={<ContactForm />} />

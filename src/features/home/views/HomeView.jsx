@@ -30,7 +30,7 @@ const HomeView = () => {
         {/* 3. PRODUCT CAROUSEL - Destacados visuales */}
         <SectionLayout background="gray">
           <ProductCarousel
-            products={ENHANCED_CATALOG.slice(0, 8)}
+            products={ENHANCED_CATALOG}
             title="Nuestros Productos Destacados"
           />
         </SectionLayout>

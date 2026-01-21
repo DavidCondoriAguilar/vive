@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MdOutlineArrowForward, MdOutlineArrowBack } from 'react-icons/md';
+import { FaLayerGroup } from 'react-icons/fa';
 import { PrimaryButton } from '@/components/ui/Buttons';
 import { useDragCarousel } from '@/hooks/useDragCarousel';
 import { CATEGORIES } from '@/utils/constants';
+import FilterDropdown from '@/components/ui/FilterDropdown';
 
 const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -38,19 +40,40 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
 
   useEffect(() => setCurrentIndex(0), [selectedCategory]);
 
+  const filterOptions = [
+    { id: 'Todos', name: 'Todos los productos', description: 'Explora nuestra colección completa' },
+    { id: 'Resorte', name: 'Colchones de Resorte', description: 'Sistema de resortes tradicionales' },
+    { id: 'Espuma', name: 'Colchones de Espuma', description: 'Poliseda, Resilense, Splendido, Topacio' },
+    { id: 'Dormitorio', name: 'Dormitorio', description: 'Cunas, Bases, Cabeceras' }
+  ];
+
+  const getFilterDescription = () => {
+    switch (selectedCategory) {
+      case 'Espuma':
+        return 'Líneas: Poliseda • Plus Resilense • Splendido • Topacio';
+      case 'Resorte':
+        return 'Líneas: Económica • Standard • Intermedio • Golden Dream • Siempre • Absolut • Premium';
+      case 'Dormitorio':
+        return 'Incluye: Cunas • Bases • Cabeceras';
+      default:
+        return 'Calidad directa de fábrica para tu descanso perfecto';
+    }
+  };
+
   return (
     <div className="py-24">
       {/* Header & Controls - High Visibility */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-12 px-4">
         <div className="max-w-xl">
-          <h2 className="text-4xl lg:text-5xl font-display font-black text-gray-900 dark:text-white uppercase leading-tight tracking-tighter mb-4">
+          <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Selección Premium</span>
+          <h2 className="text-4xl lg:text-5xl font-display font-black text-gray-900 dark:text-white uppercase leading-tight tracking-tighter mb-6">
             {title}
           </h2>
           <div className="flex items-center gap-4 mb-4">
             <div className="flex-1 h-[2px] bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden">
               <div
                 className="h-full bg-gold-500 transition-all duration-1000 ease-out shadow-[0_0_10px_#d4af37]"
-                style={{ width: `${((currentIndex + itemsPerView) / filteredProducts.length) * 100}%` }}
+                style={{ width: `${((currentIndex + itemsPerView) / Math.max(1, filteredProducts.length)) * 100}%` }}
               />
             </div>
             <span className="text-[10px] font-black text-gold-500 uppercase tracking-widest whitespace-nowrap">
@@ -58,42 +81,42 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
             </span>
           </div>
           <p className="text-gray-500 dark:text-gray-400 font-medium text-sm">
-            Explora nuestra colección selecta con un solo clic.
+            {getFilterDescription()}
           </p>
         </div>
 
-        <div className="flex items-center gap-3 sm:gap-6">
-          {/* Mobile-only slide indicators */}
-          <div className="flex sm:hidden gap-2">
-            {filteredProducts.slice(0, Math.max(0, filteredProducts.length - itemsPerView + 1)).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-1 transition-all duration-500 rounded-full ${index === currentIndex
-                  ? 'w-6 bg-gold-500'
-                  : 'w-1.5 bg-gray-200 dark:bg-gray-800'
-                  }`}
-              />
-            ))}
-          </div>
+        {/* New Filter Dropdown for Carousel */}
+        <div className="w-full lg:w-72">
+          <FilterDropdown
+            label="Filtrar por Colección"
+            placeholder="Seleccionar Categoría"
+            options={filterOptions}
+            value={selectedCategory}
+            onChange={setSelectedCategory}
+            icon={FaLayerGroup}
+          />
         </div>
       </div>
 
-      {/* Filters */}
-      <div className="flex flex-wrap gap-3 mb-12 px-4">
-        {['Todos', 'Resorte', 'Espuma', 'Dormitorio'].map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all border ${selectedCategory === cat
-              ? 'bg-gold-500 border-gold-500 text-white shadow-lg shadow-gold-500/20'
-              : 'bg-transparent border-gray-100 dark:border-white/5 text-gray-400 hover:border-gold-500/30'
-              }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+
+      {/* Active Filter Description - Contexto para el usuario */}
+      {selectedCategory !== 'Todos' && (
+        <div className="mb-8 px-4">
+          <div className="bg-gold-50 dark:bg-gold-500/10 border border-gold-200 dark:border-gold-500/30 rounded-xl p-4">
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 bg-gold-500 rounded-full animate-pulse" />
+              <div>
+                <span className="text-[10px] font-black text-gold-600 dark:text-gold-400 uppercase tracking-widest">
+                  Filtrando por: {filterOptions.find(f => f.id === selectedCategory)?.name}
+                </span>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                  {getFilterDescription()}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Viewport */}
       <div className="relative overflow-hidden cursor-grab active:cursor-grabbing" ref={carouselRef} {...handlers}>
@@ -103,79 +126,89 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
             <button
               onClick={() => handleSlideChange('prev')}
               disabled={!canGoPrev}
-              className={`absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 dark:bg-black/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center transition-all ${
-                !canGoPrev 
-                  ? 'opacity-30 cursor-not-allowed' 
-                  : 'hover:bg-white dark:hover:bg-black hover:scale-110 active:scale-95'
-              }`}
-              aria-label="Anterior"
+              className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all ${canGoPrev
+                  ? 'bg-white dark:bg-black text-gray-900 dark:text-white shadow-lg hover:scale-110'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed opacity-50'
+                }`}
             >
-              <MdOutlineArrowBack className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300" />
+              <MdOutlineArrowBack className="w-5 h-5" />
             </button>
-
             <button
               onClick={() => handleSlideChange('next')}
               disabled={!canGoNext}
-              className={`absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 dark:bg-black/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center transition-all ${
-                !canGoNext 
-                  ? 'opacity-30 cursor-not-allowed' 
-                  : 'hover:bg-white dark:hover:bg-black hover:scale-110 active:scale-95'
-              }`}
-              aria-label="Siguiente"
+              className={`absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all ${canGoNext
+                  ? 'bg-white dark:bg-black text-gray-900 dark:text-white shadow-lg hover:scale-110'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed opacity-50'
+                }`}
             >
-              <MdOutlineArrowForward className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300" />
+              <MdOutlineArrowForward className="w-5 h-5" />
             </button>
           </>
         )}
-        
+
+        {/* Product Track */}
         <div
-          className="flex gap-4 sm:gap-8 transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]"
-          style={{ transform: `translateX(calc(-${currentIndex * (100 / itemsPerView)}% + ${isDragging ? dragDistance : 0}px))` }}
+          className="flex gap-6 transition-transform duration-500 ease-out"
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`
+          }}
         >
-          {filteredProducts.map((product) => (
+          {filteredProducts.map((product, index) => (
             <div
               key={product.id}
-              className="flex-shrink-0 group"
-              style={{ width: `calc(${100 / itemsPerView}% - ${window.innerWidth < 640 ? '16px' : '24px'})` }}
+              className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4"
             >
-              <div className="bg-gray-50 dark:bg-zinc-900/50 p-4 sm:p-6 rounded-[2rem] sm:rounded-[2.5rem] border border-transparent hover:border-gray-100 dark:hover:border-white/5 transition-all duration-700 hover:bg-white dark:hover:bg-zinc-900 h-full flex flex-col">
-                <Link to={`/producto/${product.id}`} className="block aspect-[4/5] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] bg-white dark:bg-black p-4 sm:p-6 mb-6 sm:mb-8 relative">
+              {/* Product Card */}
+              <div className="bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-100 dark:border-white/10 transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full">
+
+                {/* Product Image */}
+                <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-gray-900">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   />
-                  {product.badge && (
-                    <div className="absolute top-4 sm:top-6 left-4 sm:left-6">
-                      <span className="px-2 sm:px-3 py-1 bg-gold-500 text-white text-[7px] sm:text-[8px] font-black uppercase tracking-widest rounded-full">
-                        {product.badge}
-                      </span>
-                    </div>
-                  )}
-                </Link>
 
-                <div className="space-y-2 sm:space-y-3 flex-grow flex flex-col">
-                  <div>
-                    <h4 className="text-[9px] sm:text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">{product.subcategory}</h4>
-                    <Link to={`/producto/${product.id}`}>
-                      <h3 className="text-base sm:text-lg font-display font-black text-gray-900 dark:text-white uppercase tracking-tight line-clamp-1 hover:text-gold-500 transition-colors">
-                        {product.name}
-                      </h3>
-                    </Link>
+                  {/* Badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-black text-white text-[10px] font-black uppercase tracking-widest rounded-full">
+                      {product.badge || 'Nuevo'}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Product Info */}
+                <div className="p-6">
+                  <div className="mb-4">
+                    <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest">
+                      {product.subcategory}
+                    </span>
+                    <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                      {product.description}
+                    </p>
                   </div>
 
-                  <div className="pt-2 sm:pt-4 mt-auto flex items-center justify-between gap-2 sm:gap-4">
-                    <span className="text-lg sm:text-xl font-display font-black text-gray-900 dark:text-white">
+                  {/* Price */}
+                  <div className="flex items-baseline gap-3 mb-6">
+                    <span className="text-2xl font-black text-gray-900 dark:text-white">
                       S/ {product.price.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
                     </span>
+                    {product.originalPrice && (
+                      <span className="text-sm text-gray-400 line-through">
+                        S/ {product.originalPrice.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Actions */}
+                  <div className="space-y-3">
                     <Link
-                      to={`/producto/${product.id}`}
-                      className="flex-grow sm:flex-initial px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest hover:border-gold-500 hover:text-gold-500 transition-all duration-500 hover:shadow-xl hover:shadow-black/5 text-center flex items-center justify-center gap-1 sm:gap-2"
+                      to={`/detalle/producto/${product.id}`}
+                      className="w-full bg-black dark:bg-white text-white dark:text-black font-black py-3 rounded-xl text-sm uppercase tracking-widest transition-all hover:bg-gray-800 dark:hover:bg-gray-200 flex items-center justify-center"
                     >
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
                       Ver Detalle
                     </Link>
                   </div>
@@ -185,6 +218,29 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
           ))}
         </div>
       </div>
+
+      {/* Empty State */}
+      {filteredProducts.length === 0 && (
+        <div className="text-center py-20">
+          <div className="max-w-md mx-auto">
+            <div className="w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span className="text-3xl">🔍</span>
+            </div>
+            <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4">
+              No se encontraron productos
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-8">
+              Intenta seleccionar otra categoría para ver más productos.
+            </p>
+            <button
+              onClick={() => setSelectedCategory('Todos')}
+              className="bg-black dark:bg-white text-white dark:text-black font-black py-3 px-8 rounded-xl text-sm uppercase tracking-widest transition-all"
+            >
+              Ver Todos
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
