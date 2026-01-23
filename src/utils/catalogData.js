@@ -129,7 +129,30 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Marco de Poliuretano',
         warranty: '2 años',
         price: 699,
-        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80',
+        image: '/images/goldencito-mp.webp',
+        images: [
+            '/images/goldencito-mp.webp',
+            '/images/goldencito-mp-two.webp',
+            '/images/goldencito-mp-diagonal.webp'
+        ],
+        technicalImage: '/images/detalle-goldencito-mp.webp',
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot 16 mm',
+                'Espuma de poliuretano D16 (1")',
+                'Sistema de resortes Bonnell AC',
+                'Diseño reversible (doble cara)',
+                'Soporte firme y uniforme'
+            ],
+            componentes: [
+                'Tela Tricot 16 mm',
+                'Espuma de poliuretano D16 (1")',
+                'Lámina de Notex 100 gr',
+                'Panel de resortes Bonnell AC',
+                'Lámina de Notex 100 gr',
+                'Espuma de poliuretano D16 (1")'
+            ]
+        },
         description: 'Sistema MP (Máxima Permanencia) con refuerzo perimetral para mayor vida útil.',
         sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
         features: ['Marco Poliuretano', 'Refuerzo MP'],

@@ -34,11 +34,36 @@ const ProductDetailsView = () => {
     const [quantity, setQuantity] = useState(1);
     const [isWishlist, setIsWishlist] = useState(false);
     const [activeImageIndex, setActiveImageIndex] = useState(0);
+    const [isZoomed, setIsZoomed] = useState(false);
+    const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
+    const [showZoomWindow, setShowZoomWindow] = useState(false);
 
     const product = useMemo(() => {
         const found = ENHANCED_CATALOG.find(p => p.id === productId);
         return found || ENHANCED_CATALOG[0];
     }, [productId]);
+
+    const productImages = product.images || [product.image];
+
+    const handleMouseMove = (e) => {
+        if (!isZoomed) return;
+        
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        
+        setZoomPosition({ x, y });
+    };
+
+    const handleMouseEnter = () => {
+        setIsZoomed(true);
+        setShowZoomWindow(true);
+    };
+    
+    const handleMouseLeave = () => {
+        setIsZoomed(false);
+        setShowZoomWindow(false);
+    };
 
     const { addToCart, getTotalItems } = useCart();
     const { specs, detailedSpecs } = useProductSpecs(product);
@@ -126,52 +151,127 @@ const ProductDetailsView = () => {
 
                             {/* LEFT: Luxury Image Gallery */}
                             <div className="space-y-4 sm:space-y-6">
-                                {/* Main Image */}
-                                <div className="relative aspect-square bg-gray-50 dark:bg-gray-900 overflow-hidden group">
-                                    <LazyImage
-                                        src={product.image}
-                                        alt={product.name}
-                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                                    />
+                                {/* Main Image with Professional Zoom */}
+                                <div className="relative">
+                                    {/* Main Image Container */}
+                                    <div 
+                                        className="relative aspect-square bg-gray-50 dark:bg-gray-900 overflow-hidden group cursor-zoom-in rounded-lg"
+                                        onMouseMove={handleMouseMove}
+                                        onMouseEnter={handleMouseEnter}
+                                        onMouseLeave={handleMouseLeave}
+                                    >
+                                        <LazyImage
+                                            src={productImages[activeImageIndex]}
+                                            alt={product.name}
+                                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                        />
 
-                                    {/* Luxury Overlay Elements */}
-                                    <div className="absolute top-3 sm:top-6 right-3 sm:right-6">
-                                        <span className="px-2 sm:px-4 py-1 sm:py-2 bg-white/90 backdrop-blur-sm rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
-                                            Zoom HD Disponible
-                                        </span>
+                                        {/* Zoom Indicator Lens */}
+                                        {isZoomed && (
+                                            <div 
+                                                className="absolute w-24 h-24 border-2 border-white rounded-full pointer-events-none shadow-2xl z-10"
+                                                style={{
+                                                    left: `${zoomPosition.x}%`,
+                                                    top: `${zoomPosition.y}%`,
+                                                    transform: 'translate(-50%, -50%)',
+                                                    background: 'rgba(255, 255, 255, 0.15)',
+                                                    backdropFilter: 'blur(1px)',
+                                                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+                                                }}
+                                            />
+                                        )}
+
+                                        {/* Luxury Overlay Elements */}
+                                        <div className="absolute top-3 sm:top-6 right-3 sm:right-6 z-20">
+                                            <span className="px-2 sm:px-4 py-1 sm:py-2 bg-white/90 backdrop-blur-sm rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
+                                                {isZoomed ? 'Zoom Activo' : 'Zoom HD Disponible'}
+                                            </span>
+                                        </div>
+
+                                        {/* Wishlist & Share */}
+                                        <div className="absolute top-3 sm:top-6 left-3 sm:left-6 flex gap-2 sm:gap-3 z-20">
+                                            <button
+                                                onClick={() => setIsWishlist(!isWishlist)}
+                                                className="w-8 h-8 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all"
+                                            >
+                                                <FaHeart className={`w-4 h-4 sm:w-5 sm:h-5 ${isWishlist ? 'text-red-500 fill-current' : 'text-gray-600'}`} />
+                                            </button>
+                                            <button className="w-8 h-8 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all">
+                                                <FaShare className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
+                                            </button>
+                                        </div>
                                     </div>
 
-                                    {/* Wishlist & Share */}
-                                    <div className="absolute top-3 sm:top-6 left-3 sm:left-6 flex gap-2 sm:gap-3">
-                                        <button
-                                            onClick={() => setIsWishlist(!isWishlist)}
-                                            className="w-8 h-8 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all"
+                                    {/* Professional Zoom Window */}
+                                    {showZoomWindow && (
+                                        <div 
+                                            className="absolute bg-white rounded-lg shadow-2xl border border-gray-200 z-30 pointer-events-none"
+                                            style={{
+                                                top: '0',
+                                                right: '0',
+                                                width: window.innerWidth >= 1024 ? '100%' : '80%',
+                                                height: window.innerWidth >= 1024 ? '100%' : '60%',
+                                                transform: window.innerWidth >= 1024 ? 'translateX(105%)' : 'translateY(105%)',
+                                                background: `url(${productImages[activeImageIndex]})`,
+                                                backgroundSize: '300%',
+                                                backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
+                                                backgroundRepeat: 'no-repeat',
+                                                imageRendering: 'crisp-edges',
+                                                filter: 'contrast(1.1) brightness(1.05)'
+                                            }}
                                         >
-                                            <FaHeart className={`w-4 h-4 sm:w-5 sm:h-5 ${isWishlist ? 'text-red-500 fill-current' : 'text-gray-600'}`} />
-                                        </button>
-                                        <button className="w-8 h-8 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all">
-                                            <FaShare className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
-                                        </button>
-                                    </div>
+                                            <div className="absolute top-2 right-2 px-2 py-1 bg-black/80 text-white text-xs font-black rounded">
+                                                3X ZOOM
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Thumbnail Gallery */}
                                 <div className="grid grid-cols-4 gap-2 sm:gap-3">
-                                    {[1, 2, 3, 4].map((i) => (
+                                    {productImages.map((image, index) => (
                                         <button
-                                            key={i}
-                                            onClick={() => setActiveImageIndex(i - 1)}
-                                            className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${activeImageIndex === i - 1
+                                            key={index}
+                                            onClick={() => setActiveImageIndex(index)}
+                                            className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${activeImageIndex === index
                                                 ? 'border-black dark:border-white shadow-lg'
                                                 : 'border-gray-200 dark:border-gray-800 hover:border-gray-400'
                                                 }`}
                                         >
-                                            <div className="w-full h-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-                                                <span className="text-xs text-gray-400">{i}</span>
-                                            </div>
+                                            <LazyImage
+                                                src={image}
+                                                alt={`${product.name} - Imagen ${index + 1}`}
+                                                className="w-full h-full object-cover"
+                                            />
                                         </button>
                                     ))}
                                 </div>
+
+                                {/* Technical Details Section */}
+                                {product.technicalImage && (
+                                    <div className="space-y-4">
+                                        <h3 className="text-sm font-black text-black dark:text-white uppercase tracking-widest">Detalles Técnicos</h3>
+                                        <div className="relative bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden">
+                                            <LazyImage
+                                                src={product.technicalImage}
+                                                alt={`Detalles técnicos de ${product.name}`}
+                                                className="w-full h-auto object-contain"
+                                            />
+                                            
+                                            {/* Technical Info Overlay */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <div className="absolute bottom-4 left-4 right-4">
+                                                    <h4 className="text-white font-black text-lg mb-2">Sistema Interno</h4>
+                                                    <p className="text-white/90 text-sm">
+                                                        Descubre la tecnología MP (Máxima Permanencia) y el refuerzo perimetral que garantizan la durabilidad de tu colchón
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            
+
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
                             {/* RIGHT: Luxury Product Info */}
@@ -293,19 +393,17 @@ const ProductDetailsView = () => {
                                         {/* Colchón Features */}
                                         <div className="space-y-4">
                                             <h4 className="text-xs font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                                                <span className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-xs">C</span>
+                                                <span className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-xs font-bold">C</span>
                                                 COLCHÓN
                                             </h4>
                                             <div className="space-y-3">
                                                 {[
-                                                    "Tela tejida de punto con diseño 3D",
-                                                    "Tela higroscópica que absorbe la humedad",
-                                                    "Tela con acabado antihongos-antibacterias-antiácaros",
-                                                    "Espuma viscoelástica D70 adaptable",
-                                                    "Doble capa Zebra HR y HD para soporte",
-                                                    "Sistema One Side (una cara)",
-                                                    "Sensación ultra suave premium",
-                                                    `Garantía del colchón ${product.warranty || '10 años'}`
+                                                    "Tela Tricot 16 mm",
+                                                    "Espuma de poliuretano D16 (1\")",
+                                                    "Sistema de resortes Bonnell AC",
+                                                    "Diseño reversible (doble cara)",
+                                                    "Soporte firme y uniforme",
+                                                    `Garantía del colchón ${product.warranty || '2 años'}`
                                                 ].map((feature, idx) => (
                                                     <div key={idx} className="flex items-start gap-3">
                                                         <FaCheckCircle className="w-4 h-4 text-black dark:text-white flex-shrink-0 mt-0.5" />
@@ -318,16 +416,17 @@ const ProductDetailsView = () => {
                                         {/* Additional Components */}
                                         <div className="space-y-4">
                                             <h4 className="text-xs font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                                                <span className="w-8 h-8 bg-gray-200 text-black rounded-full flex items-center justify-center text-xs">+</span>
+                                                <span className="w-8 h-8 bg-gray-200 text-black rounded-full flex items-center justify-center text-xs font-bold">+</span>
                                                 COMPONENTES
                                             </h4>
                                             <div className="space-y-3">
                                                 {[
-                                                    "Tarima estructural reforzada",
-                                                    "Cabecera tapizada a juego",
-                                                    "Soporte lumbar integrado",
-                                                    "Base antideslizante",
-                                                    "Sistema de ventilación superior"
+                                                    "Tela Tricot 16 mm",
+                                                    "Espuma de poliuretano D16 (1\")",
+                                                    "Lámina de Notex 100 gr",
+                                                    "Panel de resortes Bonnell AC",
+                                                    "Lámina de Notex 100 gr",
+                                                    "Espuma de poliuretano D16 (1\")"
                                                 ].map((component, idx) => (
                                                     <div key={idx} className="flex items-start gap-3">
                                                         <FaCheckCircle className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />

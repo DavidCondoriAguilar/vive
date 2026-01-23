@@ -43,7 +43,7 @@ const LazyImage = ({
   };
 
   // Generate WebP source if not provided
-  const webpSource = webpSrc || src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+  const webpSource = webpSrc || (!src.startsWith('/images/') ? src.replace(/\.(jpg|jpeg|png)$/i, '.webp') : src);
 
   return (
     <div
@@ -58,21 +58,16 @@ const LazyImage = ({
 
       {/* Image with WebP support */}
       {isInView && (
-        <picture>
-          {/* WebP source */}
-          <source srcSet={hasError ? placeholder : webpSource} type="image/webp" />
-          {/* Fallback */}
-          <img
-            src={hasError ? placeholder : src}
-            alt={alt}
-            loading="lazy"
-            className={`w-full h-full object-cover transition-opacity duration-1000 ${
-              isLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            onLoad={handleLoad}
-            onError={handleError}
-          />
-        </picture>
+        <img
+          src={hasError ? placeholder : src}
+          alt={alt}
+          loading="lazy"
+          className={`w-full h-full object-cover transition-opacity duration-1000 ${
+            isLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          onLoad={handleLoad}
+          onError={handleError}
+        />
       )}
     </div>
   );
