@@ -250,14 +250,21 @@ const CategoriesSection = () => {
         </div >
 
         {/* View All CTA */}
-        < div className="text-center mt-12" >
+        <div className="text-center mt-12">
           <Link
             to="/catalogo"
-            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-white px-8 py-3 rounded-lg font-bold transition-all hover:scale-105"
+            className="group inline-flex items-center gap-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-gold-500/25 relative overflow-hidden"
           >
-            Ver Catálogo Completo
+            <span className="relative z-10 flex items-center gap-3">
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11l-3 3m0 0l-3-3m3 3V8" />
+              </svg>
+              Ver Catálogo Completo
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Link>
-        </div >
+        </div>
       </div >
 
       {/* Product Notification */}

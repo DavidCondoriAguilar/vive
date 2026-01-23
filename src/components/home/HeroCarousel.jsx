@@ -11,7 +11,7 @@ const HeroCarousel = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const SLIDE_DURATION = 3000; // 3 seconds per slide
+  const SLIDE_DURATION = 4000;
 
   const slides = [
     {

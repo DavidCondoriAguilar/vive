@@ -27,9 +27,9 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeView />} />
             <Route path="/categorias/:categoryId" element={<CategoryView />} />
-            <Route path="/colchones-resorte" element={<CategoryView categoryId="resorte" />} />
-            <Route path="/colchones-espuma" element={<CategoryView categoryId="espuma" />} />
-            <Route path="/dormitorio/:subId" element={<CategoryView categoryId="dormitorio" />} />
+            <Route path="/colchones-resorte" element={<CategoryView />} />
+            <Route path="/colchones-espuma" element={<CategoryView />} />
+            <Route path="/dormitorio/:subId" element={<CategoryView />} />
             <Route path="/catalogo" element={<CatalogView />} />
             <Route path="/venta-por-mayor" element={<WholesaleView />} />
             <Route path="/producto/:productId" element={<ProductDetailsView />} />

@@ -75,7 +75,30 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Marco de Acero',
         warranty: '1 año',
         price: 599,
-        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80',
+        image: '/images/goldencito-anatomico.webp',
+        images: [
+            '/images/goldencito-anatomico.webp',
+            '/images/goldencito-anatomico-two.webp',
+            '/images/goldencito-anatomico-diagonal.webp'
+        ],
+        technicalImage: '/images/detalle-goldencito-anatomico.webp',
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot 16 mm',
+                'Espuma de poliuretano D16 (1")',
+                'Sistema de resortes Bonnell AC',
+                'Diseño anatómico ergonómico',
+                'Soporte firme y duradero'
+            ],
+            componentes: [
+                'Tela Tricot 16 mm',
+                'Espuma de poliuretano D16 (1")',
+                'Lámina de Notex 80 gr',
+                'Panel de resortes Bonnell AC',
+                'Lámina de Notex 80 gr',
+                'Espuma de poliuretano D16 (1")'
+            ]
+        },
         description: 'Anatómico con resorte tradicional de alta resistencia para un descanso básico y firme.',
         sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
         features: ['Anatómico', 'Resorte Bonell'],
@@ -83,12 +106,35 @@ const RESORTE_PRODUCTS = [
     },
     {
         id: 'classic-ana',
-        name: 'Classic',
+        name: 'Classic Anatómico',
         category: 'resorte',
         subcategory: 'Marco de Acero',
         warranty: '4 años',
         price: 849,
-        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80',
+        image: '/images/classic-anatomico.webp',
+        images: [
+            '/images/classic-anatomico.webp',
+            '/images/classic-anatomico-two.webp',
+            '/images/classic-anatomico-diagonal.webp'
+        ],
+        technicalImage: '/images/detalle-classic-anatomico.webp',
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot 16 mm',
+                'Espuma de poliuretano D18 (1.5")',
+                'Sistema de resortes Bonnell AC',
+                'Diseño anatómico clásico',
+                'Equilibrio firmeza-confort'
+            ],
+            componentes: [
+                'Tela Tricot 16 mm',
+                'Espuma de poliuretano D18 (1.5")',
+                'Lámina de Notex 90 gr',
+                'Panel de resortes Bonnell AC',
+                'Lámina de Notex 90 gr',
+                'Espuma de poliuretano D18 (1.5")'
+            ]
+        },
         description: 'Equilibrio perfecto entre firmeza y confort. El colchón ideal para uso diario familiar.',
         sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
         features: ['Anatómico', 'Marco de Acero'],
@@ -99,13 +145,40 @@ const RESORTE_PRODUCTS = [
         name: 'Pasiones One Pillow',
         category: 'resorte',
         subcategory: 'Marco de Acero',
-        warranty: '5 años',
+        warranty: '6 años',
         price: 1199,
-        image: 'https://images.unsplash.com/photo-1505693395921-87470d052614?q=80',
+        image: '/images/pasiones-one-pillow.webp',
+        images: [
+            '/images/pasiones-one-pillow.webp',
+            '/images/pasiones-one-pillow-two.webp',
+            '/images/pasiones-one-pillow-diagonal.webp'
+        ],
+        technicalImage: '/images/detalle-pasiones-one-pillow.webp',
+        technicalSpecs: {
+            colchon: [
+                'Tela Jacquard alto gramaje 28 mm',
+                'Espuma de poliuretano D16 (1")',
+                'Prensado Rebond D66',
+                'Sistema de resortes Bonnell AC',
+                'Diseño One Pillow superior',
+                'Confort premium y duradero'
+            ],
+            componentes: [
+                'Tela Jacquard alto gramaje 28 mm',
+                'Espuma de poliuretano D16 (1")',
+                'Prensado Rebond D66',
+                'Lámina de Notex 100 gr',
+                'Panel de resortes Bonnell AC',
+                'Lámina de Notex 100 gr',
+                'Prensado Rebond D66',
+                'Espuma de poliuretano D16 (1")',
+                'Tela Jacquard alto gramaje 28 mm'
+            ]
+        },
         description: 'Tela tricot de alta suavidad con un pillow de confort para un sueño reparador.',
         sizes: ['1.5 PLZ', '2 PLZ'],
         features: ['One Pillow', 'Marco de Acero'],
-        badge: '5 Años Garantía'
+        badge: '6 Años Garantía'
     },
     {
         id: 'pasiones-orto-lujo',
@@ -124,7 +197,7 @@ const RESORTE_PRODUCTS = [
     // AVANCE MARCO DE POLIURETANO
     {
         id: 'goldencito-mp',
-        name: 'Goldencito Anatómico Mp',
+        name: 'Goldencito MP',
         category: 'resorte',
         subcategory: 'Marco de Poliuretano',
         warranty: '2 años',
@@ -165,7 +238,30 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Marco de Poliuretano',
         warranty: '4 años',
         price: 949,
-        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80',
+        image: '/images/infinito-mp.webp',
+        images: [
+            '/images/infinito-mp.webp',
+            '/images/infinito-mp-two.webp',
+            '/images/infinito-mp-diagonal.webp'
+        ],
+        technicalImage: '/images/detalle-infinito-mp.webp',
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot 18 mm',
+                'Espuma de poliuretano D20 (2")',
+                'Sistema de resortes Bonnell AC',
+                'Diseño estructural infinito',
+                'Soporte extra firme'
+            ],
+            componentes: [
+                'Tela Tricot 18 mm',
+                'Espuma de poliuretano D20 (2")',
+                'Lámina de Notex 120 gr',
+                'Panel de resortes Bonnell AC',
+                'Lámina de Notex 120 gr',
+                'Espuma de poliuretano D20 (2")'
+            ]
+        },
         description: 'Estructura infinita diseñada para uso rudo y duradero con sistema Máxima Permanencia.',
         sizes: ['1.5 PLZ', '2 PLZ'],
         features: ['Marco Poliuretano', 'Extra Firme'],
@@ -206,7 +302,31 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Gold',
         warranty: '6 años',
         price: 1699,
-        image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
+        image: '/images/golden-dream-mp.webp',
+        images: [
+            '/images/golden-dream-mp.webp',
+            '/images/golden-dream-mp-two.webp',
+            '/images/golden-dream-mp-diagonal.webp'
+        ],
+        technicalImage: '/images/detalle-golden-dream-mp.webp',
+        technicalSpecs: {
+            colchon: [
+                'Tela: Tejido de Punto Acolchada de 28mm (Mayor suavidad y frescura que el tricot común)',
+                'Nivel de Confort: Espuma de Poliuretano de alta densidad (D18)',
+                'Refuerzo Ortopédico: Plancha de Prensado Rebond D66 para máxima estabilidad lumbar',
+                'Estructura: Sistema de resortes Bonnell AC de acero de alto carbono',
+                'Diseño Reversible: Sistema Doble Cara (Double Side) para duplicar la vida útil',
+                'Garantía: 6 años de respaldo total de fábrica'
+            ],
+            componentes: [
+                'Capa de Contacto: Tela Tejido de Punto Acolchada (28mm)',
+                'Amortiguación: Espuma de Poliuretano D18',
+                'Estabilizador: Prensado Rebond D66',
+                'Protector de Panel: Lámina de Notex de 120gr (Mayor resistencia que la de 100gr)',
+                'Núcleo: Panel de resortes Bonnell AC',
+                'Base de Soporte: Sistema simétrico de Notex, Rebond y Espuma D18 para uso reversible'
+            ]
+        },
         description: 'La línea dorada de nuestro catálogo. Ingeniería de precisión para el máximo confort.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: ['Marco Poliuretano', 'Premium Foam'],

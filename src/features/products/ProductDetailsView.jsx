@@ -82,35 +82,78 @@ const ProductDetailsView = () => {
     return (
         <>
             <Helmet>
+                {/* Basic SEO */}
                 <title>{product.name} - Colchón Premium Sueño Dorado | Precio por Consultar</title>
                 <meta name="description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y garantía de 10 años. Envío gratis en Lima.'}`} />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="robots" content="index, follow, max-image-preview:large" />
                 <link rel="canonical" href={`https://suenodorado.pe/producto/${productId}`} />
+                
+                {/* Open Graph */}
+                <meta property="og:title" content={`${product.name} - Colchón Premium Sueño Dorado`} />
+                <meta property="og:description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y garantía de 10 años. Envío gratis en Lima.'}`} />
+                <meta property="og:image" content={`https://suenodorado.pe${product.image}`} />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:alt" content={`${product.name} - Colchón Premium Sueño Dorado`} />
+                <meta property="og:type" content="product" />
+                <meta property="og:url" content={`https://suenodorado.pe/producto/${productId}`} />
+                <meta property="og:site_name" content="Sueño Dorado" />
+                <meta property="og:locale" content="es_PE" />
+                
+                {/* Twitter Cards */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`${product.name} - Colchón Premium Sueño Dorado`} />
+                <meta name="twitter:description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y garantía de 10 años. Envío gratis en Lima.'}`} />
+                <meta name="twitter:image" content={`https://suenodorado.pe${product.image}`} />
+                <meta name="twitter:site" content="@suenodorado" />
+                
+                {/* Additional SEO */}
+                <meta name="keywords" content={`${product.name}, colchón, sueñodorado, peru, resortes, descanso, garantía, ${product.category}, ${product.subcategory}`} />
+                <meta name="author" content="Sueño Dorado" />
+                <meta name="language" content="Spanish" />
+                
+                {/* Enhanced Structured Data */}
                 <script type="application/ld+json">
                     {JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Product",
                         "name": product.name,
                         "description": product.description || "Colchón premium con resortes pocket independientes",
-                        "image": product.image,
+                        "image": `https://suenodorado.pe${product.image}`,
                         "brand": {
                             "@type": "Brand",
                             "name": "Sueño Dorado"
                         },
+                        "category": product.category,
                         "offers": {
-                            "@type": "Offer",
-                            "availability": "https://schema.org/InStock",
-                            "price": "0",
+                            "@type": "AggregateOffer",
                             "priceCurrency": "PEN",
+                            "price": product.price || "0",
+                            "availability": "https://schema.org/InStock",
                             "seller": {
                                 "@type": "Organization",
-                                "name": "Sueño Dorado"
+                                "name": "Sueño Dorado",
+                                "url": "https://suenodorado.pe"
                             }
                         },
                         "aggregateRating": {
                             "@type": "AggregateRating",
-                            "ratingValue": "5",
+                            "ratingValue": "4.8",
                             "reviewCount": "124"
-                        }
+                        },
+                        "additionalProperty": [
+                            {
+                                "@type": "PropertyValue",
+                                "name": "Garantía",
+                                "value": product.warranty
+                            },
+                            {
+                                "@type": "PropertyValue", 
+                                "name": "Tamaños disponibles",
+                                "value": product.sizes?.join(", ") || ""
+                            }
+                        ]
                     })}
                 </script>
             </Helmet>
@@ -155,7 +198,7 @@ const ProductDetailsView = () => {
                                 <div className="relative">
                                     {/* Main Image Container */}
                                     <div 
-                                        className="relative aspect-square bg-gray-50 dark:bg-gray-900 overflow-hidden group cursor-zoom-in rounded-lg"
+                                        className="relative aspect-[4/3] bg-white dark:bg-black overflow-hidden group cursor-zoom-in rounded-lg max-w-full max-h-[500px] md:max-h-[600px] flex items-center justify-center"
                                         onMouseMove={handleMouseMove}
                                         onMouseEnter={handleMouseEnter}
                                         onMouseLeave={handleMouseLeave}
@@ -163,7 +206,8 @@ const ProductDetailsView = () => {
                                         <LazyImage
                                             src={productImages[activeImageIndex]}
                                             alt={product.name}
-                                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                            priority={true}
+                                            className="max-w-full max-h-full object-contain transition-opacity duration-300"
                                         />
 
                                         {/* Zoom Indicator Lens */}
@@ -233,7 +277,7 @@ const ProductDetailsView = () => {
                                         <button
                                             key={index}
                                             onClick={() => setActiveImageIndex(index)}
-                                            className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${activeImageIndex === index
+                                            className={`aspect-[4/3] rounded-lg overflow-hidden border-2 transition-all ${activeImageIndex === index
                                                 ? 'border-black dark:border-white shadow-lg'
                                                 : 'border-gray-200 dark:border-gray-800 hover:border-gray-400'
                                                 }`}
@@ -241,16 +285,16 @@ const ProductDetailsView = () => {
                                             <LazyImage
                                                 src={image}
                                                 alt={`${product.name} - Imagen ${index + 1}`}
-                                                className="w-full h-full object-cover"
+                                                className="w-full h-full object-contain bg-white dark:bg-black transition-opacity duration-300"
                                             />
                                         </button>
                                     ))}
                                 </div>
 
-                                {/* Technical Details Section */}
+                                {/* Technical Details Section - Separated for better visibility */}
                                 {product.technicalImage && (
-                                    <div className="space-y-4">
-                                        <h3 className="text-sm font-black text-black dark:text-white uppercase tracking-widest">Detalles Técnicos</h3>
+                                    <div className="mt-16 sm:mt-20 space-y-6 border-t border-gray-100 dark:border-gray-800 pt-12 sm:pt-20">
+                                        <h3 className="text-sm sm:text-base font-black text-black dark:text-white uppercase tracking-widest">Detalles Técnicos</h3>
                                         <div className="relative bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden">
                                             <LazyImage
                                                 src={product.technicalImage}
@@ -397,14 +441,14 @@ const ProductDetailsView = () => {
                                                 COLCHÓN
                                             </h4>
                                             <div className="space-y-3">
-                                                {[
+                                                {(product.technicalSpecs?.colchon || [
                                                     "Tela Tricot 16 mm",
                                                     "Espuma de poliuretano D16 (1\")",
                                                     "Sistema de resortes Bonnell AC",
                                                     "Diseño reversible (doble cara)",
                                                     "Soporte firme y uniforme",
                                                     `Garantía del colchón ${product.warranty || '2 años'}`
-                                                ].map((feature, idx) => (
+                                                ]).map((feature, idx) => (
                                                     <div key={idx} className="flex items-start gap-3">
                                                         <FaCheckCircle className="w-4 h-4 text-black dark:text-white flex-shrink-0 mt-0.5" />
                                                         <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">{feature}</span>
@@ -420,14 +464,14 @@ const ProductDetailsView = () => {
                                                 COMPONENTES
                                             </h4>
                                             <div className="space-y-3">
-                                                {[
+                                                {(product.technicalSpecs?.componentes || [
                                                     "Tela Tricot 16 mm",
                                                     "Espuma de poliuretano D16 (1\")",
                                                     "Lámina de Notex 100 gr",
                                                     "Panel de resortes Bonnell AC",
                                                     "Lámina de Notex 100 gr",
                                                     "Espuma de poliuretano D16 (1\")"
-                                                ].map((component, idx) => (
+                                                ]).map((component, idx) => (
                                                     <div key={idx} className="flex items-start gap-3">
                                                         <FaCheckCircle className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
                                                         <span className="text-sm text-gray-600 dark:text-gray-400 font-medium">{component}</span>

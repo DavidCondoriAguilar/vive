@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdShield, MdSettings, MdVerifiedUser, MdLayers } from 'react-icons/md';
-import jsPDF from 'jspdf';
 import { PrimaryButton } from '@/components/ui/Buttons';
 
 const ProductSpecsModal = ({ 
@@ -12,6 +11,9 @@ const ProductSpecsModal = ({
 }) => {
     const handleDownloadPDF = async () => {
         try {
+            // Lazy load jsPDF only when needed
+            const { default: jsPDF } = await import('jspdf');
+            
             // Create PDF with jsPDF
             const doc = new jsPDF({
                 orientation: 'portrait',

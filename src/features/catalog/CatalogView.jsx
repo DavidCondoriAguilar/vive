@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useScrollToTop } from '@/hooks/useTheme';
-import { FaSearch, FaFilter, FaThLarge, FaList, FaWhatsapp, FaArrowRight, FaChevronDown } from 'react-icons/fa';
+import { FaSearch, FaFilter, FaThLarge, FaList, FaWhatsapp, FaArrowRight, FaChevronDown, FaEye } from 'react-icons/fa';
 import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
 import { useCart } from '@/contexts/CartContext';
 import MainLayout from '@/layouts/MainLayout';
@@ -125,12 +125,14 @@ const CatalogView = () => {
                   <div className="bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-100 dark:border-white/10 transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2">
 
                     {/* Product Image */}
-                    <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-gray-900">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                      />
+                    <div className="relative aspect-[4/3] bg-white dark:bg-black overflow-hidden">
+                      <Link to={`/producto/${product.id}`} className="block w-full h-full flex items-center justify-center">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="max-w-full max-h-full object-contain transition-opacity duration-300 cursor-pointer"
+                        />
+                      </Link>
 
                       {/* Overlay Actions */}
                       <div className="absolute top-4 right-4 flex flex-col gap-2">
@@ -153,9 +155,11 @@ const CatalogView = () => {
                         <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest">
                           {product.subcategory}
                         </span>
-                        <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight">
-                          {product.name}
-                        </h3>
+                        <Link to={`/producto/${product.id}`} className="block">
+                          <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-gold-500 transition-colors cursor-pointer">
+                            {product.name}
+                          </h3>
+                        </Link>
                         <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
                           {product.description}
                         </p>

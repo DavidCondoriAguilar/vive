@@ -6,7 +6,7 @@ const DesktopNav = ({ navLinks, currentPath }) => {
     return (
         <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
             {navLinks.map((link) => (
-                <div key={link.name} className={`${link.megaMenu ? '' : 'relative'} group/nav h-24 md:h-28 flex items-center`}>
+                <div key={link.name} className={`${link.megaMenu ? '' : 'relative'} group/nav-item h-24 md:h-28 flex items-center`}>
                     <Link
                         to={link.path}
                         className={`px-3 py-2 text-[13px] font-brand font-bold uppercase tracking-[0.15em] transition-all duration-300 rounded-lg flex items-center gap-1.5 ${currentPath === link.path
@@ -15,7 +15,7 @@ const DesktopNav = ({ navLinks, currentPath }) => {
                             }`}
                     >
                         <span>{link.name}</span>
-                        {(link.subLinks || link.megaMenu) && <MdKeyboardArrowDown className="w-4 h-4 transition-transform duration-300 group-hover/nav:rotate-180" />}
+                        {(link.subLinks || link.megaMenu) && <MdKeyboardArrowDown className="w-4 h-4 transition-transform duration-300 group-hover/nav-item:rotate-180" />}
 
                         {/* Badge */}
                         {link.badge && (
@@ -27,7 +27,7 @@ const DesktopNav = ({ navLinks, currentPath }) => {
 
                     {/* Dropdown Menu */}
                     {(link.subLinks || link.megaMenu) && (
-                        <div className={`absolute top-[80%] opacity-0 translate-y-4 pointer-events-none group-hover/nav:opacity-100 group-hover/nav:translate-y-0 group-hover/nav:pointer-events-auto transition-all duration-500 z-50 ${link.megaMenu ? 'left-0 right-0 w-full' : 'left-0'}`}>
+                        <div className="absolute top-full left-0 right-0 opacity-0 invisible translate-y-2 transition-all duration-300 ease-out group-hover/nav-item:opacity-100 group-hover/nav-item:visible group-hover/nav-item:translate-y-0 z-50">
                             {link.megaMenu ? (
                                 <div className="bg-white dark:bg-zinc-900 shadow-[0_30px_100px_rgba(0,0,0,0.15)] dark:shadow-[0_30px_100px_rgba(0,0,0,0.5)] rounded-[2.5rem] border border-gray-100 dark:border-white/5 p-12 flex gap-12 w-full max-w-[1100px] mx-auto">
                                     {link.megaMenu.map((group) => (

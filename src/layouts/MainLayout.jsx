@@ -24,7 +24,7 @@ const MainLayout = ({ children }) => {
     const [activeModal, setActiveModal] = useState(null);
 
     const handleLogoClick = () => {
-        navigate('/home');
+        navigate('/');
     };
 
     const supportInfo = {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import mattressWorkshopImg from '@/assets/images/mattress-workshop-peru.png';
+import mattressWorkshopImg from '@/assets/images/backgrounds/mattress-workshop-peru.png';
 import { getWhatsAppLink } from '@/utils/constants';
 import MainLayout from '@/layouts/MainLayout';
 import WholesaleFormDrawer from '@/components/forms/WholesaleFormDrawer';
