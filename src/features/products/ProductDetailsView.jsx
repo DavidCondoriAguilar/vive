@@ -10,7 +10,6 @@ import {
     FaStar,
     FaCheckCircle,
     FaFire,
-    FaHeart,
     FaShare,
     FaChevronRight,
     FaMinus,
@@ -32,7 +31,7 @@ const ProductDetailsView = () => {
     const [selectedSize, setSelectedSize] = useState('');
     const [showSpecsModal, setShowSpecsModal] = useState(false);
     const [quantity, setQuantity] = useState(1);
-    const [isWishlist, setIsWishlist] = useState(false);
+
     const [activeImageIndex, setActiveImageIndex] = useState(0);
     const [isZoomed, setIsZoomed] = useState(false);
     const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
@@ -47,11 +46,11 @@ const ProductDetailsView = () => {
 
     const handleMouseMove = (e) => {
         if (!isZoomed) return;
-        
+
         const rect = e.currentTarget.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
         const y = ((e.clientY - rect.top) / rect.height) * 100;
-        
+
         setZoomPosition({ x, y });
     };
 
@@ -59,7 +58,7 @@ const ProductDetailsView = () => {
         setIsZoomed(true);
         setShowZoomWindow(true);
     };
-    
+
     const handleMouseLeave = () => {
         setIsZoomed(false);
         setShowZoomWindow(false);
@@ -88,7 +87,7 @@ const ProductDetailsView = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="robots" content="index, follow, max-image-preview:large" />
                 <link rel="canonical" href={`https://suenodorado.pe/producto/${productId}`} />
-                
+
                 {/* Open Graph */}
                 <meta property="og:title" content={`${product.name} - Colchón Premium Sueño Dorado`} />
                 <meta property="og:description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y garantía de 10 años. Envío gratis en Lima.'}`} />
@@ -100,19 +99,19 @@ const ProductDetailsView = () => {
                 <meta property="og:url" content={`https://suenodorado.pe/producto/${productId}`} />
                 <meta property="og:site_name" content="Sueño Dorado" />
                 <meta property="og:locale" content="es_PE" />
-                
+
                 {/* Twitter Cards */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={`${product.name} - Colchón Premium Sueño Dorado`} />
                 <meta name="twitter:description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y garantía de 10 años. Envío gratis en Lima.'}`} />
                 <meta name="twitter:image" content={`https://suenodorado.pe${product.image}`} />
                 <meta name="twitter:site" content="@suenodorado" />
-                
+
                 {/* Additional SEO */}
                 <meta name="keywords" content={`${product.name}, colchón, sueñodorado, peru, resortes, descanso, garantía, ${product.category}, ${product.subcategory}`} />
                 <meta name="author" content="Sueño Dorado" />
                 <meta name="language" content="Spanish" />
-                
+
                 {/* Enhanced Structured Data */}
                 <script type="application/ld+json">
                     {JSON.stringify({
@@ -149,7 +148,7 @@ const ProductDetailsView = () => {
                                 "value": product.warranty
                             },
                             {
-                                "@type": "PropertyValue", 
+                                "@type": "PropertyValue",
                                 "name": "Tamaños disponibles",
                                 "value": product.sizes?.join(", ") || ""
                             }
@@ -197,7 +196,7 @@ const ProductDetailsView = () => {
                                 {/* Main Image with Professional Zoom */}
                                 <div className="relative">
                                     {/* Main Image Container */}
-                                    <div 
+                                    <div
                                         className="relative aspect-[4/3] bg-white dark:bg-black overflow-hidden group cursor-zoom-in rounded-lg max-w-full max-h-[500px] md:max-h-[600px] flex items-center justify-center"
                                         onMouseMove={handleMouseMove}
                                         onMouseEnter={handleMouseEnter}
@@ -212,7 +211,7 @@ const ProductDetailsView = () => {
 
                                         {/* Zoom Indicator Lens */}
                                         {isZoomed && (
-                                            <div 
+                                            <div
                                                 className="absolute w-24 h-24 border-2 border-white rounded-full pointer-events-none shadow-2xl z-10"
                                                 style={{
                                                     left: `${zoomPosition.x}%`,
@@ -232,14 +231,7 @@ const ProductDetailsView = () => {
                                             </span>
                                         </div>
 
-                                        {/* Wishlist & Share */}
                                         <div className="absolute top-3 sm:top-6 left-3 sm:left-6 flex gap-2 sm:gap-3 z-20">
-                                            <button
-                                                onClick={() => setIsWishlist(!isWishlist)}
-                                                className="w-8 h-8 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all"
-                                            >
-                                                <FaHeart className={`w-4 h-4 sm:w-5 sm:h-5 ${isWishlist ? 'text-red-500 fill-current' : 'text-gray-600'}`} />
-                                            </button>
                                             <button className="w-8 h-8 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all">
                                                 <FaShare className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
                                             </button>
@@ -248,7 +240,7 @@ const ProductDetailsView = () => {
 
                                     {/* Professional Zoom Window */}
                                     {showZoomWindow && (
-                                        <div 
+                                        <div
                                             className="absolute bg-white rounded-lg shadow-2xl border border-gray-200 z-30 pointer-events-none"
                                             style={{
                                                 top: '0',
@@ -301,7 +293,7 @@ const ProductDetailsView = () => {
                                                 alt={`Detalles técnicos de ${product.name}`}
                                                 className="w-full h-auto object-contain"
                                             />
-                                            
+
                                             {/* Technical Info Overlay */}
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                 <div className="absolute bottom-4 left-4 right-4">
@@ -311,7 +303,7 @@ const ProductDetailsView = () => {
                                                     </p>
                                                 </div>
                                             </div>
-                                            
+
 
                                         </div>
                                     </div>
@@ -574,9 +566,7 @@ const ProductDetailsView = () => {
                                             <button className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                                                 <FaShare className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                                             </button>
-                                            <button className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                                                <FaHeart className="w-4 h-4 text-gray-600 dark:text-gray-400" />
-                                            </button>
+
                                         </div>
                                     </div>
                                 </div>

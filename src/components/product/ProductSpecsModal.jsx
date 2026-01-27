@@ -92,7 +92,6 @@ const ProductSpecsModal = ({
 
             const infoData = [
                 { label: 'Codigo:', value: product.id },
-                { label: 'Precio:', value: `S/ ${product.price.toLocaleString('es-PE')}` },
                 { label: 'Fecha:', value: new Date().toLocaleDateString('es-PE') }
             ];
 
@@ -318,7 +317,7 @@ const ProductSpecsModal = ({
                         {/* Product Title */}
                         <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
                             <h2 className="text-2xl font-black text-gray-900 dark:text-white mb-2 uppercase tracking-tighter">{product.name}</h2>
-                            <p className="text-3xl font-bold text-gold-500">{typeof product.price === 'number' ? `S/ ${product.price.toLocaleString('es-PE')}` : product.price}</p>
+                            <p className="text-lg text-gold-600 dark:text-gold-400 font-medium">Consultar precio</p>
                         </div>
 
                         {/* Quick Specs Grid */}

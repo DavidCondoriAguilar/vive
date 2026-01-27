@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { CATEGORIES, ENHANCED_CATALOG } from '@/utils/constants';
-import { FaShoppingCart, FaStar, FaChevronLeft, FaChevronRight, FaWhatsapp, FaEye, FaHeart, FaTags, FaRulerCombined } from 'react-icons/fa';
+import { FaShoppingCart, FaStar, FaChevronLeft, FaChevronRight, FaWhatsapp, FaEye, FaTags, FaRulerCombined } from 'react-icons/fa';
 import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
 import { useCart } from '@/contexts/CartContext';
 import ProductNotification from '@/components/ui/ProductNotification';
 import FilterDropdown from '@/components/ui/FilterDropdown';
 import SectionLayout from '@/components/layout/SectionLayout';
+import { useDragCarousel } from '@/hooks/useDragCarousel';
 
 const CategoriesSection = () => {
   const [selectedType, setSelectedType] = useState('todos');
   const [selectedSize, setSelectedSize] = useState('todos');
-  const [favorites, setFavorites] = useState([]);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -45,13 +46,7 @@ const CategoriesSection = () => {
     return typeMatch && sizeMatch;
   });
 
-  const toggleFavorite = (productId) => {
-    setFavorites(prev =>
-      prev.includes(productId)
-        ? prev.filter(id => id !== productId)
-        : [...prev, productId]
-    );
-  };
+
 
   const nextSlide = () => {
     const maxSlide = filteredProducts.length - itemsPerView;
@@ -66,6 +61,14 @@ const CategoriesSection = () => {
     const maxSlide = filteredProducts.length - itemsPerView;
     setCurrentSlide(Math.min(index, maxSlide));
   };
+
+  const { carouselRef, isDragging, isAnimating, handlers } = useDragCarousel((direction) => {
+    if (direction === 'next') {
+      nextSlide();
+    } else {
+      prevSlide();
+    }
+  });
 
   // Modal handlers
   const openProductModal = (product) => {
@@ -83,7 +86,7 @@ const CategoriesSection = () => {
   const currentSlideIndex = Math.floor(currentSlide / itemsPerView);
 
   return (
-    <SectionLayout>
+    <SectionLayout background="gray">
       <div className="relative">
 
         {/* Section Header */}
@@ -172,11 +175,13 @@ const CategoriesSection = () => {
             <FaChevronRight className="w-4 h-4" />
           </button>
           {/* Products Carousel */}
-          <div className="overflow-hidden cursor-grab active:cursor-grabbing">
+          <div className={`overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'} active:cursor-grabbing`} ref={carouselRef} {...handlers} tabIndex={0} role="region" aria-label="Carrusel de categorías">
             <div
-              className="flex transition-transform duration-500 ease-out"
+              data-carousel-track
+              className={`flex transition-transform ${isAnimating ? 'duration-500 ease-out' : 'duration-0'} ${isDragging ? '' : 'ease-out'}`}
               style={{
                 transform: `translateX(calc(-${currentSlide} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? '1.5rem / ' + itemsPerView : '0px'})))`,
+                '--base-transform': `translateX(calc(-${currentSlide} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? '1.5rem / ' + itemsPerView : '0px'})))`,
                 gap: itemsPerView > 1 ? '1.5rem' : '0px'
               }}
             >
@@ -186,9 +191,9 @@ const CategoriesSection = () => {
                     key={product.id}
                     className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
                   >
-                    <div className="bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-100 dark:border-white/10 transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
+                    <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
                       {/* Product Image */}
-                      <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-gray-900">
+                      <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-dream-dark-surface">
                         <Link to={`/producto/${product.id}`} className="block h-full w-full">
                           <img
                             src={product.image}
@@ -199,19 +204,12 @@ const CategoriesSection = () => {
 
                         {/* Badge (Only if different from subcategory) */}
                         <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1 bg-black text-white text-[10px] font-black uppercase tracking-widest rounded-full">
+                          <span className="px-3 py-1 bg-black dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[10px] font-black uppercase tracking-widest rounded-full">
                             {product.badge || 'Nuevo'}
                           </span>
                         </div>
 
-                        {/* Favorite Button */}
-                        <button
-                          onClick={() => toggleFavorite(product.id)}
-                          className="absolute bottom-4 right-4 w-10 h-10 bg-white/90 dark:bg-black/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all z-10"
-                          aria-label="Agregar a favoritos"
-                        >
-                          <FaHeart className={`w-4 h-4 ${favorites.includes(product.id) ? 'text-red-500 fill-current' : 'text-gray-400'}`} />
-                        </button>
+
                       </div>
 
                       {/* Product Info */}

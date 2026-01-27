@@ -14,7 +14,6 @@ const CategoriesSection = () => {
   const {
     selectedType,
     selectedSize,
-    favorites,
     currentSlide,
     itemsPerView,
     selectedProduct,
@@ -26,7 +25,6 @@ const CategoriesSection = () => {
     nextSlide,
     prevSlide,
     goToSlide,
-    toggleFavorite,
     openProductModal,
     closeProductModal,
     handleTypeChange,
@@ -39,7 +37,7 @@ const CategoriesSection = () => {
   return (
     <section className="py-20 premium-section futuristic-lines">
       <div className="container mx-auto px-6 lg:px-20">
-        
+
         {/* Section Header */}
         <CategoriesHeader />
 
@@ -52,10 +50,10 @@ const CategoriesSection = () => {
           categories={null}
           subcategories={types}
           sizes={sizes}
-          onCategoryChange={() => {}}
+          onCategoryChange={() => { }}
           onSubcategoryChange={handleTypeChange}
           onSizeChange={handleSizeChange}
-          onSortChange={() => {}}
+          onSortChange={() => { }}
           showSort={false}
           showCategory={false}
           compact={true}
@@ -71,13 +69,11 @@ const CategoriesSection = () => {
           selectedSize={selectedSize}
           onAddToCart={addToCart}
           onQuickView={openProductModal}
-          onToggleFavorite={toggleFavorite}
-          favorites={favorites}
         />
 
         {/* View All CTA */}
         <div className="text-center mt-12">
-          <Link 
+          <Link
             to="/catalogo"
             className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-white px-8 py-3 rounded-lg font-bold transition-all hover:scale-105"
           >
@@ -85,9 +81,9 @@ const CategoriesSection = () => {
           </Link>
         </div>
       </div>
-      
+
       {/* Product Notification */}
-      <ProductNotification 
+      <ProductNotification
         product={selectedProduct}
         isOpen={isModalOpen}
         onClose={closeProductModal}

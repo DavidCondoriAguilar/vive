@@ -60,4 +60,99 @@ This project implements a **Premium "Gold & Black" Aesthetic** designed to posit
 *   The layout is psychologically ordered: **Hero (Hook) → Categories (Discovery) → Products (Desire) → Brand Story (Trust)**.
 *   This flow ensures users understand *what* is for sale before being asked to invest in the brand story, significantly improving conversion potential.
 
+---
+
+## 🎯 Typography System
+
+### Font Hierarchy 2026
+- **Primary Font**: **Inter** + **Manrope** (Clean, modern, highly legible)
+- **Display/Headings**: **Space Grotesk** + **Playfair Display** (Bold, premium, authoritative)
+- **Brand Elements**: **Playfair Display** (Elegant, sophisticated serif)
+- **Fallbacks**: System fonts for reliability
+
+### Typography Features
+- **Variable font weights** for perfect contrast ratios
+- **Optimized line-height** for readability across devices
+- **Letter-spacing optimization** for premium feel
+- **Responsive sizing** using `clamp()` for fluid typography
+
+---
+
+## ✨ Animations & Transitions
+
+### Core Animation Library
+- **Fade In Up**: Elegant entrance animations (`animate-fade-in-up`)
+- **Slide Animations**: Left, Right, Bottom entrances
+- **Shimmer Effects**: Premium loading states (`animate-shimmer`)
+- **Pulse Variations**: Subtle attention grabbers (`animate-pulse-slow`)
+- **Modal Animations**: Smooth, bouncy entrances (`animate-modal-up`)
+
+### Transition System
+- **Hover States**: `cubic-bezier(0.4, 0, 0.2, 1)` for natural movement
+- **Dark Mode**: Smooth `duration-500` transitions
+- **Button Interactions**: Micro-animations with transform effects
+- **Card Hovers**: Lift effects with premium shadows
+
+### Advanced Effects
+- **Glassmorphism**: Backdrop blur with transparency layers
+- **Gradient Animations**: Moving color gradients for depth
+- **Grid Patterns**: Subtle animated background patterns
+- **Loading States**: Sophisticated skeleton screens
+
+---
+
+## 🎨 Visual Design Elements
+
+### Color Palette
+- **Primary Gold**: `#D4AF37` (Premium gold accent)
+- **Dark Theme**: Sophisticated blacks with subtle gradients
+- **Light Theme**: Clean whites with warm undertones
+- **Semantic Colors**: Purpose-driven color system
+
+### Layout Patterns
+- **Bento Grid**: Asymmetric, content-focused layouts
+- **Professional Sections**: Multi-layered gradient backgrounds
+- **Clean Minimal**: Subtle patterns with depth
+- **Glass Grid**: Modern glassmorphism with pattern overlays
+
+### Component Styling
+- **Premium Cards**: Elevated with custom shadows
+- **Button System**: Consistent, animated interactions
+- **Form Elements**: Custom-styled with focus states
+- **Navigation**: Sticky with glassmorphism effects
+
+---
+
+## 🚀 Performance Features
+
+### Animation Optimization
+- **GPU Accelerated**: Transform and opacity animations
+- **Reduced Motion**: Respects user preferences
+- **Lazy Loading**: Images fade in on load
+- **Staggered Animations**: Sequential element reveals
+
+### Responsive Design
+- **Mobile-First**: Progressive enhancement approach
+- **Fluid Typography**: Scales perfectly across devices
+- **Touch-Friendly**: Optimized interaction areas
+- **Performance**: Optimized for 60fps animations
+
+---
+
+## 🎭 Interactive Details
+
+### Micro-interactions
+- **Button Hover Effects**: Transform + shadow changes
+- **Card Interactions**: Lift with gold accent highlights
+- **Loading States**: Professional shimmer effects
+- **Form Feedback**: Smooth validation animations
+
+### Advanced Features
+- **Custom Scrollbars**: Styled to match theme
+- **Smooth Scrolling**: Native scroll behavior
+- **Dark Mode**: Complete theme system
+- **Focus Management**: Accessibility-first interactions
+
+---
+
 *Minimal design, maximum quality.*

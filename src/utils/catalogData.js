@@ -47,7 +47,12 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Infantil',
         warranty: '1 año',
         price: 499,
-        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80',
+        image: '/src/assets/product-detail/cuna-travesura/cuna-travesura.webp',
+        images: [
+            '/src/assets/product-detail/cuna-travesura/cuna-travesura.webp',
+            '/src/assets/product-detail/cuna-travesura/cuna-travesura-two.webp',
+            '/src/assets/product-detail/cuna-travesura/cuna-travesura-diagonal.webp'
+        ],
         description: 'Tela infantil hipoalergénica con diseños lúdicos para el descanso del bebé.',
         sizes: ['Infantil'],
         features: ['Hipoalergénico', 'Diseño Infantil'],
@@ -75,13 +80,13 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Marco de Acero',
         warranty: '1 año',
         price: 599,
-        image: '/images/goldencito-anatomico.webp',
+        image: '/src/assets/product-detail/goldencito-anatomico/goldencito-anatomico.webp',
         images: [
-            '/images/goldencito-anatomico.webp',
-            '/images/goldencito-anatomico-two.webp',
-            '/images/goldencito-anatomico-diagonal.webp'
+            '/src/assets/product-detail/goldencito-anatomico/goldencito-anatomico.webp',
+            '/src/assets/product-detail/goldencito-anatomico/goldencito-anatomico-two.webp',
+            '/src/assets/product-detail/goldencito-anatomico/goldencito-anatomico-diagonal.webp'
         ],
-        technicalImage: '/images/detalle-goldencito-anatomico.webp',
+        technicalImage: '/src/assets/product-detail/goldencito-anatomico/detalle-goldencito-anatomico.webp',
         technicalSpecs: {
             colchon: [
                 'Tela Tricot 16 mm',
@@ -111,13 +116,13 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Marco de Acero',
         warranty: '4 años',
         price: 849,
-        image: '/images/classic-anatomico.webp',
+        image: '/src/assets/product-detail/classic-anatomico/classic-anatomico.webp',
         images: [
-            '/images/classic-anatomico.webp',
-            '/images/classic-anatomico-two.webp',
-            '/images/classic-anatomico-diagonal.webp'
+            '/src/assets/product-detail/classic-anatomico/classic-anatomico.webp',
+            '/src/assets/product-detail/classic-anatomico/classic-anatomico-two.webp',
+            '/src/assets/product-detail/classic-anatomico/classic-anatomico-diagonal.webp'
         ],
-        technicalImage: '/images/detalle-classic-anatomico.webp',
+        technicalImage: '/src/assets/product-detail/classic-anatomico/detalle-classic-anatomico.webp',
         technicalSpecs: {
             colchon: [
                 'Tela Tricot 16 mm',
@@ -147,13 +152,13 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Marco de Acero',
         warranty: '6 años',
         price: 1199,
-        image: '/images/pasiones-one-pillow.webp',
+        image: '/src/assets/product-detail/pasiones-one-pillow/pasiones-one-pillow.webp',
         images: [
-            '/images/pasiones-one-pillow.webp',
-            '/images/pasiones-one-pillow-two.webp',
-            '/images/pasiones-one-pillow-diagonal.webp'
+            '/src/assets/product-detail/pasiones-one-pillow/pasiones-one-pillow.webp',
+            '/src/assets/product-detail/pasiones-one-pillow/pasiones-one-pillow-two.webp',
+            '/src/assets/product-detail/pasiones-one-pillow/pasiones-one-pillow-diagonal.webp'
         ],
-        technicalImage: '/images/detalle-pasiones-one-pillow.webp',
+        technicalImage: '/src/assets/product-detail/pasiones-one-pillow/detalle-pasiones-one-pillow.webp',
         technicalSpecs: {
             colchon: [
                 'Tela Jacquard alto gramaje 28 mm',
@@ -187,7 +192,12 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Marco de Acero',
         warranty: '5 años',
         price: 1549,
-        image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
+        image: '/src/assets/product-detail/pasiones-pillow/pasiones-pillow-lujo-two.webp',
+        images: [
+            '/src/assets/product-detail/pasiones-pillow/pasiones-pillow-lujo-main.webp',
+            '/src/assets/product-detail/pasiones-pillow/pasiones-pillow-lujo-two.webp',
+            '/src/assets/product-detail/pasiones-pillow/pasiones-pillow-lujo-diagonal.webp'
+        ],
         description: 'Ortopédico de alta gama para el cuidado de tu espalda con acabado Luxury Edition.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: ['Ortopédico', 'Marco de Acero'],
@@ -202,13 +212,13 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Marco de Poliuretano',
         warranty: '2 años',
         price: 699,
-        image: '/images/goldencito-mp.webp',
+        image: '/src/assets/product-detail/goldencito-mp/goldencito-mp.webp',
         images: [
-            '/images/goldencito-mp.webp',
-            '/images/goldencito-mp-two.webp',
-            '/images/goldencito-mp-diagonal.webp'
+            '/src/assets/product-detail/goldencito-mp/goldencito-mp.webp',
+            '/src/assets/product-detail/goldencito-mp/goldencito-mp-two.webp',
+            '/src/assets/product-detail/goldencito-mp/goldencito-mp-diagonal.webp'
         ],
-        technicalImage: '/images/detalle-goldencito-mp.webp',
+        technicalImage: '/src/assets/product-detail/goldencito-mp/detalles-goldencito-mp.webp',
         technicalSpecs: {
             colchon: [
                 'Tela Tricot 16 mm',
@@ -238,13 +248,13 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Marco de Poliuretano',
         warranty: '4 años',
         price: 949,
-        image: '/images/infinito-mp.webp',
+        image: '/src/assets/product-detail/infinito-mp/infinito-mp.webp',
         images: [
-            '/images/infinito-mp.webp',
-            '/images/infinito-mp-two.webp',
-            '/images/infinito-mp-diagonal.webp'
+            '/src/assets/product-detail/infinito-mp/infinito-mp.webp',
+            '/src/assets/product-detail/infinito-mp/infinito-mp-two.webp',
+            '/src/assets/product-detail/infinito-mp/infinito-mp-diagonal.webp'
         ],
-        technicalImage: '/images/detalle-infinito-mp.webp',
+        technicalImage: '/src/assets/product-detail/infinito-mp/detalle-infinito-mp.webp',
         technicalSpecs: {
             colchon: [
                 'Tela Tricot 18 mm',
@@ -276,7 +286,12 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Gold',
         warranty: '5 años',
         price: 1299,
-        image: 'https://images.unsplash.com/photo-1505693395921-87470d052614?q=80',
+        image: '/src/assets/product-detail/pasiones-one-pillow-mp/pasiones-one-pillow-main.webp',
+        images: [
+            '/src/assets/product-detail/pasiones-one-pillow-mp/pasiones-one-pillow-main.webp',
+            '/src/assets/product-detail/pasiones-one-pillow-mp/pasiones-one-pillow-diagonal.webp',
+            '/src/assets/product-detail/pasiones-one-pillow-mp/pasiones-one-pillow-diagonal-two.webp'
+        ],
         description: 'Confort superior con sistema de Máxima Permanencia y acolchado de alta densidad.',
         sizes: ['1.5 PLZ', '2 PLZ'],
         features: ['Marco Poliuretano', 'One Pillow'],
@@ -289,7 +304,12 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Gold',
         warranty: '5 años',
         price: 1399,
-        image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
+        image: '/src/assets/product-detail/pasiones-pillow/pasiones-pillow-lujo-main.webp',
+        images: [
+            '/src/assets/product-detail/pasiones-pillow/pasiones-pillow-lujo-main.webp',
+            '/src/assets/product-detail/pasiones-pillow/pasiones-pillow-lujo-two.webp',
+            '/src/assets/product-detail/pasiones-pillow/pasiones-pillow-lujo-diagonal.webp'
+        ],
         description: 'Sistema de pillow avanzado con marco de poliuretano para mayor estabilidad.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN'],
         features: ['Marco Poliuretano', 'Pillow System'],
@@ -302,13 +322,13 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Gold',
         warranty: '6 años',
         price: 1699,
-        image: '/images/golden-dream-mp.webp',
+        image: '/src/assets/product-detail/golden-dream-mp/golden-dream-mp.webp',
         images: [
-            '/images/golden-dream-mp.webp',
-            '/images/golden-dream-mp-two.webp',
-            '/images/golden-dream-mp-diagonal.webp'
+            '/src/assets/product-detail/golden-dream-mp/golden-dream-mp.webp',
+            '/src/assets/product-detail/golden-dream-mp/golden-dream-mp-two.webp',
+            '/src/assets/product-detail/golden-dream-mp/golden-dream-mp-diagonal.webp'
         ],
-        technicalImage: '/images/detalle-golden-dream-mp.webp',
+        technicalImage: '/src/assets/product-detail/golden-dream-mp/detalle-golden-dream-mp.webp',
         technicalSpecs: {
             colchon: [
                 'Tela: Tejido de Punto Acolchada de 28mm (Mayor suavidad y frescura que el tricot común)',
@@ -406,7 +426,12 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Diamont',
         warranty: '10 años',
         price: 2499,
-        image: 'https://images.unsplash.com/photo-1544026354-97845f778d06?q=80',
+        image: '/src/assets/product-detail/reconciliacion/reconciliacion-main.webp',
+        images: [
+            '/src/assets/product-detail/reconciliacion/reconciliacion-main.webp',
+            '/src/assets/product-detail/reconciliacion/reconciliacion-two.webp',
+            '/src/assets/product-detail/reconciliacion/reconciliacion-diagonal.webp'
+        ],
         description: 'La joya de la corona. Lo último en tecnología Pocket y Viscoelástica para un descanso real.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: ['Marco Poliuretano', 'Viscoelástica', 'Pocket Elite'],

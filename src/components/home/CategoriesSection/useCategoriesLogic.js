@@ -5,7 +5,7 @@ export const useCategoriesLogic = () => {
   // State
   const [selectedType, setSelectedType] = useState('todos');
   const [selectedSize, setSelectedSize] = useState('todos');
-  const [favorites, setFavorites] = useState([]);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -55,14 +55,7 @@ export const useCategoriesLogic = () => {
     setCurrentSlide(0);
   };
 
-  // Favorites
-  const toggleFavorite = (productId) => {
-    setFavorites(prev => 
-      prev.includes(productId) 
-        ? prev.filter(id => id !== productId)
-        : [...prev, productId]
-    );
-  };
+
 
   // Modal handlers
   const openProductModal = (product) => {
@@ -97,7 +90,6 @@ export const useCategoriesLogic = () => {
     // State
     selectedType,
     selectedSize,
-    favorites,
     currentSlide,
     itemsPerView,
     selectedProduct,
@@ -112,7 +104,6 @@ export const useCategoriesLogic = () => {
     // Actions
     setSelectedType,
     setSelectedSize,
-    setFavorites,
     setCurrentSlide,
     setSelectedProduct,
     setIsModalOpen,
@@ -121,7 +112,6 @@ export const useCategoriesLogic = () => {
     nextSlide,
     prevSlide,
     goToSlide,
-    toggleFavorite,
     openProductModal,
     closeProductModal,
     handleTypeChange,

@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 // UI Components
 import ShoppingCart from '@/components/layout/ShoppingCart';
@@ -18,6 +18,7 @@ const OrderConfirmationPage = lazy(() => import('@/pages/OrderConfirmationPage')
 const ContactForm = lazy(() => import('@/components/contact/ContactForm'));
 const ContactThankYou = lazy(() => import('@/components/contact/ContactThankYou'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
+const SearchRoutes = lazy(() => import('@/router/SearchRoutes'));
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
       <Router>
         <Suspense fallback={<div />}>
           <Routes>
-            <Route path="/" element={<HomeView />} />
+            <Route path="/" element={<Navigate to="/inicio" replace />} />
+            <Route path="/inicio" element={<HomeView />} />
             <Route path="/categorias/:categoryId" element={<CategoryView />} />
             <Route path="/colchones-resorte" element={<CategoryView />} />
             <Route path="/colchones-espuma" element={<CategoryView />} />
@@ -37,6 +39,7 @@ function App() {
             <Route path="/politica-devoluciones" element={<ReturnPolicyView />} />
             <Route path="/contacto" element={<ContactForm />} />
             <Route path="/contacto/gracias" element={<ContactThankYou />} />
+            <Route path="/busqueda" element={<SearchRoutes />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

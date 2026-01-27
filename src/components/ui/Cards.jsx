@@ -15,9 +15,9 @@ export const PremiumCard = ({
   <div
     className={`
       ${padding ? 'p-6' : ''}
-      ${border ? 'border border-gray-200 dark:border-gray-700' : ''}
-      bg-white dark:bg-gray-900
-      rounded-none
+      ${border ? 'border border-gray-200 dark:border-dream-dark-border' : ''}
+      bg-white dark:bg-dream-dark-surface
+      rounded-2xl
       transition-all duration-300
       ${hover ? 'hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-sm' : ''}
       ${className}
@@ -34,8 +34,6 @@ export const PremiumCard = ({
 export const ProductCard = ({
   image,
   name,
-  price,
-  originalPrice,
   badge,
   onViewDetails,
   onWhatsApp,
@@ -43,9 +41,9 @@ export const ProductCard = ({
 }) => (
   <PremiumCard hover className={`flex flex-col h-full ${className}`}>
     {/* Imagen */}
-    <div className="relative mb-6 overflow-hidden bg-gray-100 dark:bg-gray-800 aspect-square">
+    <div className="relative mb-6 overflow-hidden bg-gray-100 dark:bg-dream-dark-surface aspect-square">
       {badge && (
-        <div className="absolute top-4 left-4 z-10 bg-black text-white px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-none">
+        <div className="absolute top-4 left-4 z-10 bg-black dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full">
           {badge}
         </div>
       )}
@@ -71,29 +69,24 @@ export const ProductCard = ({
       {/* Precio */}
       <div className="flex items-center gap-3 mb-6">
         <span className="text-lg font-black text-gray-900 dark:text-white">
-          S/ {typeof price === 'number' ? price.toLocaleString('es-PE') : price}
+          Consultar precio
         </span>
-        {originalPrice && (
-          <span className="text-xs text-gray-400 line-through">
-            S/ {typeof originalPrice === 'number' ? originalPrice.toLocaleString('es-PE') : originalPrice}
-          </span>
-        )}
       </div>
 
       {/* Botones */}
       <div className="mt-auto flex gap-3">
         <button
           onClick={onViewDetails}
-          className="flex-1 px-4 py-3 bg-black text-white text-xs uppercase font-bold tracking-wider rounded-none
-            transition-all duration-300 hover:bg-gray-900 active:opacity-75
-            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+          className="flex-1 px-4 py-3 bg-black dark:bg-white text-white dark:text-black text-xs uppercase font-bold tracking-wider rounded-2xl
+            transition-all duration-300 hover:bg-gray-900 dark:hover:bg-gray-200 active:scale-95
+            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black dark:focus:ring-white"
         >
           Ver Detalles
         </button>
         <button
           onClick={onWhatsApp}
-          className="px-4 py-3 bg-[#25D366] text-white rounded-none
-            transition-all duration-300 hover:bg-[#20ba61] active:opacity-75
+          className="px-4 py-3 bg-[#25D366] text-white rounded-2xl
+            transition-all duration-300 hover:bg-[#20ba61] active:scale-95
             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#25D366]"
           title="Contactar por WhatsApp"
         >

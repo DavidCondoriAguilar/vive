@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { getWhatsAppLink } from '@/utils/constants';
 import PromoBar from './PromoBar';
 import Logo from '@/components/common/Logo';
+import SearchBar from '@/components/search/SearchBar';
 import DesktopNav from './navbar_components/DesktopNav';
 import NavActions from './navbar_components/NavActions';
 import MobileMenu from './navbar_components/MobileMenu'; // Import MobileMenu
@@ -13,7 +14,8 @@ import {
     MdOutlineHome,
     MdOutlineInventory,
     MdOutlineLocalOffer,
-    MdOutlineMail
+    MdOutlineMail,
+    MdOutlineSearch
 } from 'react-icons/md';
 
 const Navbar = () => {
@@ -145,6 +147,18 @@ const Navbar = () => {
 
                         {/* DESKTOP NAV */}
                         <DesktopNav navLinks={navLinks} currentPath={location.pathname} />
+
+                        {/* SEARCH BAR - Desktop - Optimizado */}
+                        <div className="hidden xl:block flex-1 max-w-sm mx-4">
+                            <SearchBar placeholder="Buscar productos..." />
+                        </div>
+
+                        {/* Search Icon - Desktop Compact */}
+                        <div className="hidden lg:block xl:hidden">
+                            <button className="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:text-gold-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300">
+                                <MdOutlineSearch className="w-5 h-5" />
+                            </button>
+                        </div>
 
                         {/* ACTIONS */}
                         <NavActions

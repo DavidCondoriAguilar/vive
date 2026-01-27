@@ -59,8 +59,8 @@ const CatalogView = () => {
       </Helmet>
 
       <MainLayout>
-        <div className="pt-32 pb-24 bg-white dark:bg-black transition-colors duration-700">
-          <SectionLayout>
+        <div className="pt-32 pb-24 bg-white dark:bg-dream-dark-bg transition-colors duration-700">
+          <SectionLayout background="gray">
             {/* Elite Header */}
             <div className="max-w-4xl mb-20 px-4 md:px-0">
               <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade-in">Catálogo Oficial 2026</span>
@@ -73,7 +73,7 @@ const CatalogView = () => {
             </div>
 
             {/* Smart Filters Panel */}
-            <div className="bg-white dark:bg-black rounded-[2.5rem] p-6 sm:p-8 md:p-12 mb-16 border border-gray-100 dark:border-white/10">
+            <div className="bg-white dark:bg-dream-dark-surface rounded-[2.5rem] p-6 sm:p-8 md:p-12 mb-16 border border-gray-100 dark:border-dream-dark-border">
               <UniversalProductFilters
                 selectedCategory={selectedCategory}
                 selectedSubcategory={selectedSubcategory}
@@ -122,10 +122,10 @@ const CatalogView = () => {
               {sortedProducts.map((product, index) => (
                 <div key={product.id} className="group">
                   {/* Product Card */}
-                  <div className="bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-100 dark:border-white/10 transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2">
+                  <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2">
 
                     {/* Product Image */}
-                    <div className="relative aspect-[4/3] bg-white dark:bg-black overflow-hidden">
+                    <div className="relative aspect-[4/3] bg-white dark:bg-dream-dark-surface overflow-hidden">
                       <Link to={`/producto/${product.id}`} className="block w-full h-full flex items-center justify-center">
                         <img
                           src={product.image}
@@ -136,14 +136,14 @@ const CatalogView = () => {
 
                       {/* Overlay Actions */}
                       <div className="absolute top-4 right-4 flex flex-col gap-2">
-                        <button className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all">
-                          <FaEye className="w-4 h-4 text-gray-700" />
+                        <button className="w-10 h-10 bg-white/90 dark:bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all">
+                          <FaEye className="w-4 h-4 text-gray-700 dark:text-gray-300" />
                         </button>
                       </div>
 
                       {/* Badge */}
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-black text-white text-[10px] font-black uppercase tracking-widest rounded-full">
+                        <span className="px-3 py-1 bg-black dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[10px] font-black uppercase tracking-widest rounded-full">
                           {product.badge || 'Nuevo'}
                         </span>
                       </div>
@@ -182,7 +182,7 @@ const CatalogView = () => {
             {sortedProducts.length === 0 && (
               <div className="text-center py-20">
                 <div className="max-w-md mx-auto">
-                  <div className="w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-20 h-20 bg-gray-100 dark:bg-dream-dark-surface rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-3xl">🔍</span>
                   </div>
                   <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4">
@@ -197,7 +197,7 @@ const CatalogView = () => {
                       setSelectedSubcategory('todos');
                       setSelectedSize('todos');
                     }}
-                    className="bg-black dark:bg-white text-white dark:text-black font-black py-3 px-8 rounded-xl text-sm uppercase tracking-widest transition-all"
+                    className="bg-black dark:bg-white text-white dark:text-black font-black py-3 px-8 rounded-xl text-sm uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
                   >
                     Limpiar Filtros
                   </button>

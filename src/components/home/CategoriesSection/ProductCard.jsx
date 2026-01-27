@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaShoppingCart, FaHeart, FaEye, FaWhatsapp } from 'react-icons/fa';
+import { FaShoppingCart, FaEye, FaWhatsapp } from 'react-icons/fa';
 import { DetailsButton, PriceInquiryButton } from '../../ui/Buttons';
 import { Link } from 'react-router-dom';
 
@@ -7,9 +7,7 @@ const ProductCard = ({
   product,
   selectedSize,
   onAddToCart,
-  onQuickView,
-  onToggleFavorite,
-  isFavorite
+  onQuickView
 }) => {
   console.log('ProductCard rendered:', { product, onQuickView }); // Debug log
 
@@ -32,13 +30,7 @@ const ProductCard = ({
           </div>
         )}
 
-        {/* Favorite Button */}
-        <button
-          onClick={() => onToggleFavorite(product.id)}
-          className="absolute top-3 right-3 w-8 h-8 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors"
-        >
-          <FaHeart className={`w-4 h-4 ${isFavorite ? 'text-red-500 fill-current' : ''}`} />
-        </button>
+
 
       </div>
 

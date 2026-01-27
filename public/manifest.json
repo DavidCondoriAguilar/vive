@@ -75,7 +75,7 @@
       "name": "Contactar",
       "short_name": "Contacto",
       "description": "Habla con nuestros expertos por WhatsApp",
-      "url": "https://wa.me/51989223448",
+      "url": "/contacto",
       "icons": [
         {
           "src": "/logo-icon.png",

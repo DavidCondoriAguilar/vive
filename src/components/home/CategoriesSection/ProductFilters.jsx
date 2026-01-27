@@ -26,8 +26,6 @@ const UniversalProductFilters = ({
 
   const sortOptions = [
     { value: 'featured', label: 'Predeterminado' },
-    { value: 'price-low', label: 'Menor Precio' },
-    { value: 'price-high', label: 'Mayor Precio' },
     { value: 'name', label: 'Alfabético' }
   ];
 

@@ -25,6 +25,7 @@ import { HiOutlineLightningBolt } from 'react-icons/hi';
 // Import generated premium assets
 import luxuryHeroImg from '@/assets/images/generated/luxury_hotel_mattress_hero.png';
 import premiumCutawayImg from '@/assets/images/generated/premium_mattress_cutaway_view_v2.png';
+import factoryProductionImg from '@/assets/images/generated/wholesale_factory_production.png';
 
 const WholesaleView = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -284,9 +285,9 @@ const WholesaleView = () => {
             <div className="relative">
               <div className="relative aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-2 border-white/5">
                 <img
-                  src="/src/assets/images/mattress-workshop-peru.png"
-                  alt="Process"
-                  className="w-full h-full object-cover"
+                  src={factoryProductionImg}
+                  alt="Procesos Industriales de Sueño Dorado"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-[10s]"
                 />
                 <div className="absolute inset-0 bg-gold-500/10 mix-blend-overlay"></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>

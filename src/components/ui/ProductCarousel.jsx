@@ -37,9 +37,19 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
     else if (direction === 'prev' && canGoPrev) setCurrentIndex(prev => prev - 1);
   };
 
-  const { carouselRef, isDragging, dragDistance, handlers } = useDragCarousel(handleSlideChange);
+  const getGapForCurrentScreen = () => {
+    if (typeof window === 'undefined') return '1.5rem';
+    return window.innerWidth >= 1024 ? '2rem' : '1.5rem';
+  };
+
+  const getGapInPixels = () => {
+    if (typeof window === 'undefined') return 24; // 1.5rem = 24px
+    return window.innerWidth >= 1024 ? 32 : 24; // 2rem = 32px, 1.5rem = 24px
+  };
 
   useEffect(() => setCurrentIndex(0), [selectedCategory]);
+
+  const { carouselRef, isDragging, dragDistance, isAnimating, handlers } = useDragCarousel(handleSlideChange);
 
   const filterOptions = [
     { id: 'Todos', name: 'Todos los productos', description: 'Explora nuestra colección completa' },
@@ -120,7 +130,7 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
       )}
 
       {/* Viewport */}
-      <div className="relative overflow-hidden cursor-grab active:cursor-grabbing" ref={carouselRef} {...handlers}>
+      <div className={`relative overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'} active:cursor-grabbing`} ref={carouselRef} {...handlers} tabIndex={0} role="region" aria-label="Carrusel de productos">
         {/* Navigation Arrows - Positioned inside viewport */}
         {filteredProducts.length > itemsPerView && (
           <>
@@ -128,8 +138,8 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
               onClick={() => handleSlideChange('prev')}
               disabled={!canGoPrev}
               className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all shadow-xl ${canGoPrev
-                ? 'bg-white/90 dark:bg-black/90 text-black dark:text-white hover:scale-110'
-                : 'bg-white/30 dark:bg-black/30 text-gray-400 cursor-not-allowed'
+                ? 'bg-white/90 dark:bg-white/10 text-black dark:text-white hover:scale-110'
+                : 'bg-white/30 dark:bg-white/5 text-gray-400 cursor-not-allowed'
                 }`}
             >
               <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -138,8 +148,8 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
               onClick={() => handleSlideChange('next')}
               disabled={!canGoNext}
               className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all shadow-xl ${canGoNext
-                ? 'bg-white/90 dark:bg-black/90 text-black dark:text-white hover:scale-110'
-                : 'bg-white/30 dark:bg-black/30 text-gray-400 cursor-not-allowed'
+                ? 'bg-white/90 dark:bg-white/10 text-black dark:text-white hover:scale-110'
+                : 'bg-white/30 dark:bg-white/5 text-gray-400 cursor-not-allowed'
                 }`}
             >
               <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -149,10 +159,12 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
 
         {/* Product Track */}
         <div
-          className="flex transition-transform duration-500 ease-out"
+          data-carousel-track
+          className={`flex transition-transform ${isAnimating ? 'duration-500 ease-out' : 'duration-0'} ${isDragging ? '' : 'ease-out'}`}
           style={{
-            transform: `translateX(calc(-${currentIndex} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? '1.5rem / ' + itemsPerView : '0px'})))`,
-            gap: '1.5rem'
+            transform: `translateX(calc(-${currentIndex} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? getGapInPixels() / itemsPerView : 0}px)))`,
+            '--base-transform': `translateX(calc(-${currentIndex} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? getGapInPixels() / itemsPerView : 0}px)))`,
+            gap: itemsPerView > 1 ? getGapForCurrentScreen() : '0px'
           }}
         >
           {filteredProducts.map((product, index) => (
@@ -160,8 +172,8 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
               key={product.id}
               className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
             >
-              <div className="bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-100 dark:border-white/10 transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
-                <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-gray-900">
+              <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
+                <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-dream-dark-surface">
                   <Link to={`/producto/${product.id}`} className="block h-full w-full">
                     <img
                       src={product.image}
@@ -170,7 +182,7 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
                     />
                   </Link>
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-black text-white text-[10px] font-black uppercase tracking-widest rounded-full">
+                    <span className="px-3 py-1 bg-black dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[10px] font-black uppercase tracking-widest rounded-full">
                       {product.badge || 'Nuevo'}
                     </span>
                   </div>
