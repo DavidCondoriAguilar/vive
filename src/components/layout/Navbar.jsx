@@ -134,40 +134,62 @@ const Navbar = () => {
             <div
                 className="bg-white border-b border-gray-200 transition-all duration-500"
             >
-                <div className="w-full px-2 xs:px-3 sm:px-4 md:px-6 lg:px-20 relative">
-                    <div className="flex items-center justify-between min-h-24 md:min-h-28 gap-1 xs:gap-2">
-                        {/* LOGO */}
-                        <div className="flex-shrink-0 flex items-center justify-center">
+                <div className="w-full px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-24 relative">
+                    <div className="flex items-center justify-between min-h-16 xs:min-h-18 sm:min-h-20 md:min-h-24 lg:min-h-28">
+                        {/* LOGO - Responsive size: large on mobile, large on desktop with custom sizing */}
+                        <div className="flex-shrink-0">
                             <Logo
                                 size="large"
                                 onClick={handleLogoClick}
                                 variant="dark"
+                                className="lg:hidden"
+                            />
+                            <Logo
+                                size="large"
+                                onClick={handleLogoClick}
+                                variant="dark"
+                                className="hidden lg:block"
+                                style={{ maxWidth: '200px', width: 'auto' }}
                             />
                         </div>
 
-                        {/* DESKTOP NAV */}
-                        <DesktopNav navLinks={navLinks} currentPath={location.pathname} />
+                        {/* DESKTOP NAV - Center section */}
+                        <div className="hidden lg:flex flex-1 items-center justify-center px-1 lg:px-2">
+                            <DesktopNav navLinks={navLinks} currentPath={location.pathname} />
+                        </div>
 
-                        {/* SEARCH BAR - Desktop - CSS Isolation Expert */}
-                        <div className="hidden xl:block flex-1 max-w-sm mx-4">
-                          <div style={{ isolation: 'isolate' }}>
+                        {/* RIGHT SECTION - Search + Actions with absolute priority */}
+                        <div className="flex items-center gap-1 lg:gap-2 flex-shrink-0">
+                            {/* SEARCH BAR - Desktop only with minimal width */}
+                            <div className="hidden xl:block">
+                                <div className="w-44 lg:w-48">
+                                    <SearchBar placeholder="Buscar..." />
+                                </div>
+                            </div>
+
+                            {/* Search Icon - Tablet/Laptop */}
+                            <div className="hidden lg:block xl:hidden">
+                                <button className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-gold-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300">
+                                    <MdOutlineSearch className="w-4 h-4" />
+                                </button>
+                            </div>
+
+                            {/* ACTIONS - ABSOLUTE priority */}
+                            <div className="flex-shrink-0">
+                                <NavActions
+                                    toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                    isMobileMenuOpen={isMobileMenuOpen}
+                                    waLink={waLink}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* MOBILE SEARCH BAR - Separate row for mobile */}
+                    <div className="lg:hidden pb-4">
+                        <div className="w-full max-w-md mx-auto">
                             <SearchBar placeholder="Buscar productos..." />
-                          </div>
                         </div>
-
-                        {/* Search Icon - Desktop Compact */}
-                        <div className="hidden lg:block xl:hidden">
-                            <button className="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:text-gold-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300">
-                                <MdOutlineSearch className="w-5 h-5" />
-                            </button>
-                        </div>
-
-                        {/* ACTIONS */}
-                        <NavActions
-                            toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            isMobileMenuOpen={isMobileMenuOpen}
-                            waLink={waLink}
-                        />
                     </div>
                 </div>
             </div>

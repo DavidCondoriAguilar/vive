@@ -39,16 +39,6 @@ const CategoriesSection = () => {
     return () => window.removeEventListener('resize', updateItemsPerView);
   }, []);
 
-  const getGapForCurrentScreen = () => {
-    if (typeof window === 'undefined') return '1.5rem';
-    return window.innerWidth >= 1024 ? '2rem' : '1.5rem';
-  };
-
-  const getGapInPixels = () => {
-    if (typeof window === 'undefined') return 24; // 1.5rem = 24px
-    return window.innerWidth >= 1024 ? 32 : 24; // 2rem = 32px, 1.5rem = 24px
-  };
-
   const filteredProducts = ENHANCED_CATALOG.filter(product => {
     const typeMatch = selectedType === 'todos' || product.subcategory === selectedType;
     const sizeMatch = selectedSize === 'todos' || (product.sizes && product.sizes.includes(selectedSize));
@@ -56,9 +46,9 @@ const CategoriesSection = () => {
   });
 
   const nextSlide = () => {
-    const canGoNext = currentSlide + itemsPerView < filteredProducts.length;
-    if (canGoNext) {
-      setCurrentSlide(prev => prev + itemsPerView);
+    const maxSlide = filteredProducts.length - itemsPerView;
+    if (currentSlide < maxSlide) {
+      setCurrentSlide(prev => Math.min(prev + itemsPerView, maxSlide));
     }
   };
 
@@ -159,8 +149,8 @@ const CategoriesSection = () => {
 
             <button
                 onClick={nextSlide}
-                disabled={currentSlide + itemsPerView >= filteredProducts.length}
-                className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-100 dark:border-white/5 flex items-center justify-center transition-all shadow-xl ${currentSlide + itemsPerView >= filteredProducts.length
+                disabled={currentSlide >= filteredProducts.length - itemsPerView}
+                className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-100 dark:border-white/5 flex items-center justify-center transition-all shadow-xl ${currentSlide >= filteredProducts.length - itemsPerView
                     ? 'opacity-0 pointer-events-none'
                     : 'bg-white/90 dark:bg-zinc-900/90 text-gray-700 dark:text-gray-300 hover:bg-gold-500 hover:text-white hover:scale-110 active:scale-95 -translate-x-1 sm:translate-x-6'
                 }`}
@@ -177,17 +167,15 @@ const CategoriesSection = () => {
               <div
                   className="flex transition-transform duration-500 ease-in-out"
                   style={{
-                    transform: `translateX(calc(-${currentSlide} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? getGapInPixels() / itemsPerView : 0}px)))`,
-                    gap: itemsPerView > 1 ? getGapForCurrentScreen() : '0px',
-                    scrollSnapType: itemsPerView > 1 ? 'x mandatory' : 'none'
+                    transform: `translateX(-${(currentSlide * (100 / itemsPerView))}%)`,
                   }}
               >
                 {filteredProducts.map((product) => (
                     <div
                         key={product.id}
-                        className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3"
+                        className="flex-shrink-0 px-2"
                         style={{
-                          flex: itemsPerView === 3 ? '0 0 33.33%' : itemsPerView === 2 ? '0 0 50%' : '0 0 100%',
+                          width: `${100 / itemsPerView}%`,
                           scrollSnapAlign: 'start'
                         }}
                     >
@@ -198,7 +186,9 @@ const CategoriesSection = () => {
                             <img
                                 src={product.image}
                                 alt={product.name}
-                                className={`w-full h-full transition-transform duration-1000 group-hover:scale-105 object-contain`}
+                                className={`w-full h-full transition-transform duration-1000 group-hover:scale-105 ${
+                                    product.id === 'splendido' || product.id === 'topacio' ? 'object-contain' : 'object-cover'
+                                }`}
                             />
                           </Link>
                           <div className="absolute top-4 left-4">

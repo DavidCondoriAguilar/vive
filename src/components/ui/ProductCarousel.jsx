@@ -27,12 +27,15 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
     return selectedCategory === 'Todos' || product.category === selectedCategory.toLowerCase();
   });
 
-  const canGoNext = currentIndex < filteredProducts.length - itemsPerView;
+  const canGoNext = currentIndex + itemsPerView < filteredProducts.length;
   const canGoPrev = currentIndex > 0;
 
   const handleSlideChange = (direction) => {
-    if (direction === 'next' && canGoNext) setCurrentIndex(prev => prev + itemsPerView);
-    else if (direction === 'prev' && canGoPrev) setCurrentIndex(prev => Math.max(0, prev - itemsPerView));
+    if (direction === 'next' && canGoNext) {
+      setCurrentIndex(prev => prev + itemsPerView);
+    } else if (direction === 'prev' && canGoPrev) {
+      setCurrentIndex(prev => Math.max(0, prev - itemsPerView));
+    }
   };
 
   const getGapForCurrentScreen = () => {

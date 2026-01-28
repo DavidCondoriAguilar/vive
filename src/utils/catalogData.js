@@ -76,6 +76,9 @@ import goldenDreamMpTwo from '@assets/product-detail/golden-dream-mp/golden-drea
 import goldenDreamMpDiag from '@assets/product-detail/golden-dream-mp/golden-dream-mp-diagonal.webp';
 import detalleGoldenDreamMp from '@assets/product-detail/golden-dream-mp/detalle-golden-dream-mp.webp';
 import siempreOpMain from '@assets/product-detail/siempre-op/simpe-op.webp';
+import matriMain from '@assets/product-detail/matri/matri-main.webp';
+import matriTwo from '@assets/product-detail/matri/matri-two.webp';
+import matriDiag from '@assets/product-detail/matri/matri-diag.webp';
 import splendidoMain from '@assets/product-detail/splendido/splendido-main.webp';
 import splendidoTwo from '@assets/product-detail/splendido/splendido-two.webp';
 import splendidoDiag from '@assets/product-detail/splendido/splendido-diag.webp';
@@ -466,10 +469,19 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Diamont',
         warranty: '6 años',
         price: 1349,
-        image: siempreOpMain,
+        image: matriMain,
+        images: [matriMain, matriTwo, matriDiag],
         description: 'El balance ideal para parejas que buscan confort clásico de alta durabilidad.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Marco Poliuretano', 'Pocket System'],
+        features: [
+            'Tela Tricot 16 mm',
+            'Espuma de poliuretano D16 (1")',
+            'Sistema de resortes Bonnell AC',
+            'Diseño reversible (doble cara)',
+            'Soporte firme y uniforme',
+            'Lámina de Notex 100 gr',
+            'Panel de resortes Bonnell AC'
+        ],
         badge: '6 Años Garantía'
     },
     {
