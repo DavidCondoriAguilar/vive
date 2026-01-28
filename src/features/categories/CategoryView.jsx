@@ -16,14 +16,23 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
         '/colchones-espuma': 'espuma'
     };
     
+    // Map special dormitorio routes to subIds
+    const routeToSubIdMap = {
+        '/dormitorio/box-cabecera': 'box-cabecera',
+        '/dormitorio/muebles': 'muebles',
+        '/dormitorio/cunas': 'cunas'
+    };
+    
     const currentPath = location.pathname;
     const mappedCategoryId = routeToCategoryMap[currentPath];
+    const mappedSubId = routeToSubIdMap[currentPath];
     
     // Special handling for dormitorio routes
     const isDormitorioRoute = currentPath.startsWith('/dormitorio/');
     const dormitorioCategoryId = isDormitorioRoute ? 'dormitorio' : null;
     
     const activeCategoryId = propCategoryId || paramCategoryId || mappedCategoryId || dormitorioCategoryId;
+    const effectiveSubId = subId || mappedSubId;
 
     // Parse query params for initial filters
     const searchParams = new URLSearchParams(location.search);
@@ -38,21 +47,21 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
         window.scrollTo(0, 0);
         const line = new URLSearchParams(location.search).get('l');
         if (line) setActiveSub(line);
-        else if (!subId) setActiveSub('todos');
+        else if (!effectiveSubId) setActiveSub('todos');
 
         setSelectedSize('todos');
         setSelectedWarranty('todos');
         setSelectedThickness('todos');
-    }, [activeCategoryId, location.search, subId]);
+    }, [activeCategoryId, location.search, effectiveSubId]);
 
     const currentCategory = CATEGORIES.find(c => c.id === activeCategoryId);
 
     useEffect(() => {
-        if (subId) {
-            const sub = currentCategory?.subcategories?.find(s => s.slug === subId);
+        if (effectiveSubId) {
+            const sub = currentCategory?.subcategories?.find(s => s.slug === effectiveSubId);
             if (sub) setActiveSub(sub.filter);
         }
-    }, [subId, currentCategory]);
+    }, [effectiveSubId, currentCategory]);
 
     const categoryNames = {
         resorte: 'Colchones de Resorte',
@@ -83,7 +92,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
 
     // Fix available filters for dormitorio subcategories
     const getProductsForFilters = () => {
-        if (activeCategoryId === 'dormitorio' && subId) {
+        if (activeCategoryId === 'dormitorio' && effectiveSubId) {
             return ENHANCED_CATALOG.filter(p => p.subcategory === activeSub);
         }
         return ENHANCED_CATALOG.filter(p => p.category === activeCategoryId);
@@ -181,15 +190,25 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                     {products.length > 0 ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 animate-fade-in-up">
                             {products.map((product) => (
-                                <div key={product.id} className="group bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-100 dark:border-white/10 transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
-                                    <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-gray-900">
+                                <div key={product.id} className="group bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
+                                    {/* Product Image - MISMAS MEDIDAS EXACTAS QUE EL CARRUSEL */}
+                                    <div className="relative overflow-hidden bg-gray-50 dark:bg-dream-dark-surface p-6" style={{ aspectRatio: '16/9' }}>
                                         <Link to={`/producto/${product.id}`} className="block h-full w-full">
                                             <img
                                                 src={product.image}
                                                 alt={product.name}
-                                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                                                className="w-full h-full object-contain transition-transform duration-[10s] group-hover:scale-110"
                                             />
                                         </Link>
+                                        
+                                        {/* Badge - Igual que el carrusel */}
+                                        {product.badge && (
+                                            <div className="absolute top-4 left-4">
+                                                <span className="px-3 py-1 bg-black dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[10px] font-black uppercase tracking-widest rounded-full">
+                                                    {product.badge}
+                                                </span>
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="p-6 flex flex-col flex-1">
                                         <div className="mb-4">

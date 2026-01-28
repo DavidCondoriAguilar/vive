@@ -29,8 +29,8 @@ export const CATEGORIES = [
         name: 'Dormitorio',
         description: 'Todo para complementar tu descanso.',
         subcategories: [
-            { name: 'Box/Tarimas', filter: 'Box', slug: 'box-tarimas' },
-            { name: 'Cabeceras', filter: 'Cabeceras', slug: 'cabeceras' },
+            { name: 'Box + Cabecera', filter: 'Box-Cabecera', slug: 'box-cabecera' },
+            { name: 'Muebles', filter: 'Muebles-Independientes', slug: 'muebles' },
             { name: 'Cunas', filter: 'Infantil', slug: 'cunas' }
         ]
     }
@@ -79,6 +79,16 @@ import siempreOpMain from '@assets/product-detail/siempre-op/simpe-op.webp';
 import matriMain from '@assets/product-detail/matri/matri-main.webp';
 import matriTwo from '@assets/product-detail/matri/matri-two.webp';
 import matriDiag from '@assets/product-detail/matri/matri-diag.webp';
+
+// BOX + CABECERA COMBO
+import boxMain from '@assets/product-detail/box-cabecera/box-main.webp';
+import boxDiag from '@assets/product-detail/box-cabecera/box-diag.webp';
+import boxZoom from '@assets/product-detail/box-cabecera/box-zoom.webp';
+
+// SIEMPRE ONE PILLOW
+import siempreOneMain from '@assets/product-detail/siempre-one/siempre-one-main.webp';
+import siempreOneDiag from '@assets/product-detail/siempre-one/siempre-one-diag.webp';
+import siempreOneZoom from '@assets/product-detail/siempre-one/siempre-one-zoom.webp';
 import splendidoMain from '@assets/product-detail/splendido/splendido-main.webp';
 import splendidoTwo from '@assets/product-detail/splendido/splendido-two.webp';
 import splendidoDiag from '@assets/product-detail/splendido/splendido-diag.webp';
@@ -415,7 +425,8 @@ const RESORTE_PRODUCTS = [
         subcategory: 'Gold',
         warranty: '7 años',
         price: 1449,
-        image: siempreOpMain,
+        image: siempreOneDiag,
+        images: [siempreOneDiag, siempreOneMain, siempreOneZoom],
         description: 'Diseño eterno de alta resistencia con un pillow de gran confort y firmeza.',
         sizes: ['1.5 PLZ', '2 PLZ'],
         features: ['Marco Poliuretano', 'Garantía 7 años'],
@@ -732,102 +743,58 @@ const ESPUMA_PRODUCTS = [
 
 const COMPLEMENTARIOS_PRODUCTS = [
     {
-        id: 'box-uni',
-        name: 'Box Tarima Universal',
+        id: 'box-cabecera-combo',
+        name: 'Box Tarima Universal + Cabecera con Brazo',
         category: 'dormitorio',
-        subcategory: 'Box',
+        subcategory: 'Box-Cabecera',
         warranty: '3 años',
-        price: 699,
-        image: siempreOpMain,
-        description: 'Base estructural de madera reforzada para cualquier tipo de colchón. Diseño ingenioso que maximiza la ventilación y durabilidad. Descubre por qué es la elección preferida por expertos.',
+        price: 1299,
+        image: boxMain,
+        images: [boxMain, boxDiag, boxZoom],
+        description: 'Combo perfecto para tu dormitorio: Base estructural de madera reforzada con ventilación superior y cabecera envolvente de diseño moderno con brazos laterales confortables. El conjunto ideal para maximizar confort y estilo.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Madera Reforzada', 'Acabado Estético', 'Ventilación Superior'],
-        badge: 'Universal',
+        features: ['Madera Reforzada', 'Cabecera con Brazos', 'Ventilación Superior', 'Diseño Moderno'],
+        badge: 'Combo Premium',
         componentes: [
+            'Box Tarima Universal:',
             'Estructura de madera de pino tratada',
             '10 listones de soporte (2" x 3")',
             'Centro reforzado con doble listón',
-            'Esquinas metálicas de refuerzo',
             'Patas ajustables de 10 cm',
-            'Acabado sellado anti-humedad',
             'Sistema de ventilación optimizado',
-            'Uniones con tornillería galvanizada'
-        ],
-        especificaciones: {
-            'Material': 'Madera de pino tratada',
-            'Alto': '35 cm',
-            'Ancho 1.5 PLZ': '160 cm',
-            'Ancho 2 PLZ': '200 cm',
-            'Ancho QUEEN': '210 cm',
-            'Ancho KING': '220 cm',
-            'Largo': '200 cm',
-            'Listones': '10 unidades (2" x 3")',
-            'Capacidad carga': '200 kg',
-            'Peso': '45-60 kg según tamaño',
-            'Acabado': 'Barniz marine anti-humedad',
-            'Patas': '4 unidades ajustables'
-        },
-        beneficios: [
-            'Soporte superior para cualquier colchón',
-            'Ventilación natural que evita humedad',
-            'Madera tratada contra insectos y hongos',
-            'Instalación sencilla sin herramientas',
-            'Patas ajustables para pisos irregulares',
-            'Durabilidad extendida 10+ años',
-            'Compatible con somiers y colchones',
-            '3 años de garantía total'
-        ]
-    },
-    {
-        id: 'cabe-brazo',
-        name: 'Cabecera con Brazo',
-        category: 'dormitorio',
-        subcategory: 'Cabeceras',
-        warranty: '2 años',
-        price: 799,
-        image: siempreOpMain,
-        description: 'Cabecera envolvente de diseño moderno con brazos laterales confortables. Detalles exclusivos de acabado y materiales premium que la diferencian. Descubre por qué es la elección preferida.',
-        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Moderno', 'Brazos Laterales', 'Acolchado Premium'],
-        badge: 'Luxe',
-        componentes: [
+            '',
+            'Cabecera con Brazo:',
             'Tela Tricot Premium 20 mm',
             'Espuma de alta densidad D25',
             'Brazos laterales acolchados',
             'Estructura de madera maciza',
-            'Base reforzada',
             'Acabado antimanchas',
-            'Diseño ergonómico',
-            'Instalación sencilla'
+            'Diseño ergonómico'
         ],
         especificaciones: {
-            'Alto': '110 cm',
-            'Ancho 1.5 PLZ': '160 cm',
-            'Ancho 2 PLZ': '200 cm',
-            'Ancho QUEEN': '210 cm',
-            'Ancho KING': '220 cm',
-            'Profundidad': '12 cm',
-            'Material': 'Tela tricot premium',
-            'Relleno': 'Espuma de alta densidad',
-            'Estructura': 'Madera maciza',
-            'Peso': '25-35 kg según tamaño'
+            'Material Box': 'Madera de pino tratada',
+            'Alto Box': '35 cm',
+            'Material Cabecera': 'Tela Tricot Premium',
+            'Alto Cabecera': '110 cm',
+            'Garantía': '3 años',
+            'Instalación': 'Incluida'
         },
         beneficios: [
+            'Combo completo con ahorro de S/.200',
+            'Soporte superior para cualquier colchón',
+            'Ventilación natural que evita humedad',
             'Apoyo lumbar ergonómico',
             'Brazos laterales para mayor comodidad',
             'Diseño moderno y elegante',
-            'Fácil instalación',
-            'Material duradero y resistente',
-            'Compatible con cualquier colchón',
-            'Acabado antimanchas',
-            '2 años de garantía total'
+            'Instalación sencilla sin herramientas',
+            '3 años de garantía total'
         ]
     },
     {
         id: 'mueble-lineal',
         name: 'Juego de Mueble Lineal 3.2m + Cojines',
         category: 'dormitorio',
-        subcategory: 'Muebles',
+        subcategory: 'Muebles-Independientes',
         warranty: '2 años',
         price: 1299,
         image: siempreOpMain,
@@ -873,7 +840,7 @@ const COMPLEMENTARIOS_PRODUCTS = [
         id: 'mueble-luxe',
         name: 'Mueble de Luxe Seccional + Cojines',
         category: 'dormitorio',
-        subcategory: 'Muebles',
+        subcategory: 'Muebles-Independientes',
         warranty: '3 años',
         price: 1899,
         image: siempreOpMain,

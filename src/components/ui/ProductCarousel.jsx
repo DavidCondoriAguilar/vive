@@ -32,9 +32,9 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
 
   const handleSlideChange = (direction) => {
     if (direction === 'next' && canGoNext) {
-      setCurrentIndex(prev => prev + itemsPerView);
+      setCurrentIndex(prev => prev + 1); // DESLIZAMIENTO DE 1 EN 1
     } else if (direction === 'prev' && canGoPrev) {
-      setCurrentIndex(prev => Math.max(0, prev - itemsPerView));
+      setCurrentIndex(prev => Math.max(0, prev - 1)); // DESLIZAMIENTO DE 1 EN 1
     }
   };
 
@@ -134,9 +134,8 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{
-            transform: `translateX(calc(-${currentIndex} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? getGapInPixels() / itemsPerView : 0}px)))`,
-            gap: itemsPerView > 1 ? getGapForCurrentScreen() : '0px',
-            scrollSnapType: itemsPerView > 1 ? 'x mandatory' : 'none'
+            transform: `translateX(-${(currentIndex * (100 / itemsPerView))}%)`, // DESLIZAMIENTO DE 1 EN 1
+            gap: itemsPerView > 1 ? getGapForCurrentScreen() : '0px'
           }}
         >
           {filteredProducts.map((product, index) => (

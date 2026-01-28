@@ -8,6 +8,7 @@ import ProductNotification from '@/components/ui/ProductNotification';
 import FilterDropdown from '@/components/ui/FilterDropdown';
 import SectionLayout from '@/components/layout/SectionLayout';
 import { useDragCarousel } from '@/hooks/useDragCarousel';
+import ProductCard from '@/components/ui/ProductCard'; // MISMO COMPONENTE QUE PRODUCTCAROUSEL
 
 const CategoriesSection = () => {
   const [selectedType, setSelectedType] = useState('todos');
@@ -56,14 +57,14 @@ const CategoriesSection = () => {
   });
 
   const nextSlide = () => {
-    const canGoNext = currentSlide + itemsPerView < filteredProducts.length;
+    const canGoNext = currentSlide + 1 < filteredProducts.length;
     if (canGoNext) {
-      setCurrentSlide(prev => prev + itemsPerView);
+      setCurrentSlide(prev => prev + 1); // DESLIZAMIENTO DE 1 EN 1
     }
   };
 
   const prevSlide = () => {
-    setCurrentSlide(prev => Math.max(prev - itemsPerView, 0));
+    setCurrentSlide(prev => Math.max(prev - 1, 0)); // DESLIZAMIENTO DE 1 EN 1
   };
 
   const { carouselRef, handlers } = useDragCarousel((direction) => {
@@ -177,9 +178,8 @@ const CategoriesSection = () => {
               <div
                   className="flex transition-transform duration-500 ease-in-out"
                   style={{
-                    transform: `translateX(calc(-${currentSlide} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? getGapInPixels() / itemsPerView : 0}px)))`,
-                    gap: itemsPerView > 1 ? getGapForCurrentScreen() : '0px',
-                    scrollSnapType: itemsPerView > 1 ? 'x mandatory' : 'none'
+                    transform: `translateX(-${(currentSlide * (100 / itemsPerView))}%)`, // DESLIZAMIENTO DE 1 EN 1
+                    gap: itemsPerView > 1 ? getGapForCurrentScreen() : '0px'
                   }}
               >
                 {filteredProducts.map((product) => (
@@ -191,48 +191,12 @@ const CategoriesSection = () => {
                           scrollSnapAlign: 'start'
                         }}
                     >
-                      <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
-                        {/* Product Image */}
-                        <div className="relative overflow-hidden bg-gray-50 dark:bg-dream-dark-surface p-6" style={{ aspectRatio: '16/9' }}>
-                          <Link to={`/producto/${product.id}`} className="block h-full w-full">
-                            <img
-                                src={product.image}
-                                alt={product.name}
-                                className={`w-full h-full transition-transform duration-1000 group-hover:scale-105 object-contain`}
-                            />
-                          </Link>
-                          <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-black dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[10px] font-black uppercase tracking-widest rounded-full">
-                          {product.badge || 'Nuevo'}
-                        </span>
-                          </div>
-                        </div>
-
-                        {/* Product Info */}
-                        <div className="p-6 flex flex-col flex-1">
-                          <div className="mb-4">
-                        <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest">
-                          {product.subcategory || 'Premium'}
-                        </span>
-                            <Link to={`/producto/${product.id}`}>
-                              <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-gold-500 transition-colors">
-                                {product.name}
-                              </h3>
-                            </Link>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
-                              {product.description}
-                            </p>
-                          </div>
-
-                          <div className="space-y-4 mt-auto">
-                            <PriceInquiryButton product={product} size={selectedSize === 'todos' ? null : selectedSize} />
-                            <div className="flex gap-2">
-                              <DetailsButton to={`/producto/${product.id}`} className="flex-1" />
-                              <QuoteIconButton onClick={() => addToCart(product, 1, selectedSize === 'todos' ? null : selectedSize)} />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <ProductCard 
+                        product={product}
+                        selectedSize={selectedSize}
+                        onAddToCart={(product, quantity, size) => addToCart(product, quantity, size)}
+                        onQuickView={openProductModal}
+                      />
                     </div>
                 ))}
               </div>

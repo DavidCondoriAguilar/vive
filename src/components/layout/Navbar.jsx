@@ -103,8 +103,8 @@ const Navbar = () => {
             path: '/categorias/dormitorio',
             icon: <MdOutlineHome className="w-5 h-5" />,
             subLinks: [
-                { name: 'Box/Tarimas', path: '/dormitorio/box-tarimas' },
-                { name: 'Cabeceras', path: '/dormitorio/cabeceras' },
+                { name: 'Box + Cabecera', path: '/dormitorio/box-cabecera' },
+                { name: 'Muebles', path: '/dormitorio/muebles' },
                 { name: 'Cunas', path: '/dormitorio/cunas' }
             ]
         },
@@ -134,9 +134,9 @@ const Navbar = () => {
             <div
                 className="bg-white border-b border-gray-200 transition-all duration-500"
             >
-                <div className="w-full px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-24 relative">
+                <div className="w-full px-1 xs:px-3 sm:px-5 md:px-8 lg:px-12 xl:px-18 relative">
                     <div className="flex items-center justify-between min-h-16 xs:min-h-18 sm:min-h-20 md:min-h-24 lg:min-h-28">
-                        {/* LOGO - Responsive size: large on mobile, large on desktop with custom sizing */}
+                        {/* LOGO - Left section SIN TOCAR */}
                         <div className="flex-shrink-0">
                             <Logo
                                 size="large"
@@ -158,9 +158,9 @@ const Navbar = () => {
                             <DesktopNav navLinks={navLinks} currentPath={location.pathname} />
                         </div>
 
-                        {/* RIGHT SECTION - Search + Actions with absolute priority */}
-                        <div className="flex items-center gap-1 lg:gap-2 flex-shrink-0">
-                            {/* SEARCH BAR - Desktop only with minimal width */}
+                        {/* RIGHT SECTION - Search + Actions con más espacio */}
+                        <div className="flex items-center gap-2 lg:gap-3 flex-shrink-0">
+                            {/* SEARCH BAR - Desktop */}
                             <div className="hidden xl:block">
                                 <div className="w-44 lg:w-48">
                                     <SearchBar placeholder="Buscar..." />
@@ -174,7 +174,7 @@ const Navbar = () => {
                                 </button>
                             </div>
 
-                            {/* ACTIONS - ABSOLUTE priority */}
+                            {/* ACTIONS */}
                             <div className="flex-shrink-0">
                                 <NavActions
                                     toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

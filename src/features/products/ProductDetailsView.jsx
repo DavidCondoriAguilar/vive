@@ -195,9 +195,9 @@ const ProductDetailsView = () => {
                             <div className="space-y-4 sm:space-y-6">
                                 {/* Main Image with Professional Zoom */}
                                 <div className="relative">
-                                    {/* Main Image Container */}
+                                    {/* Main Image Container - ADAPTADO PARA PRODUCTOS DE DIFERENTES PROPORCIONES */}
                                     <div
-                                        className="relative aspect-[4/3] bg-white dark:bg-black overflow-hidden group cursor-zoom-in rounded-lg max-w-full max-h-[500px] md:max-h-[600px] flex items-center justify-center"
+                                        className="relative bg-gray-50 dark:bg-dream-dark-surface p-6 overflow-hidden group cursor-zoom-in rounded-lg max-w-full max-h-[500px] md:max-h-[600px] flex items-center justify-center"
                                         onMouseMove={handleMouseMove}
                                         onMouseEnter={handleMouseEnter}
                                         onMouseLeave={handleMouseLeave}
@@ -269,7 +269,7 @@ const ProductDetailsView = () => {
                                         <button
                                             key={index}
                                             onClick={() => setActiveImageIndex(index)}
-                                            className={`aspect-[4/3] rounded-lg overflow-hidden border-2 transition-all ${activeImageIndex === index
+                                            className={`rounded-lg overflow-hidden border-2 transition-all ${activeImageIndex === index
                                                 ? 'border-black dark:border-white shadow-lg'
                                                 : 'border-gray-200 dark:border-gray-800 hover:border-gray-400'
                                                 }`}
@@ -277,7 +277,7 @@ const ProductDetailsView = () => {
                                             <LazyImage
                                                 src={image}
                                                 alt={`${product.name} - Imagen ${index + 1}`}
-                                                className="w-full h-full object-contain bg-white dark:bg-black transition-opacity duration-300"
+                                                className="w-full h-full object-contain bg-gray-50 dark:bg-dream-dark-surface transition-opacity duration-300"
                                             />
                                         </button>
                                     ))}
