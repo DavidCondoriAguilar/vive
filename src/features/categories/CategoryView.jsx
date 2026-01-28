@@ -9,7 +9,21 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
     const { addToCart } = useCart();
     const { categoryId: paramCategoryId, subId } = useParams();
     const location = useLocation();
-    const activeCategoryId = propCategoryId || paramCategoryId;
+    
+    // Map special routes to categoryIds
+    const routeToCategoryMap = {
+        '/colchones-resorte': 'resorte',
+        '/colchones-espuma': 'espuma'
+    };
+    
+    const currentPath = location.pathname;
+    const mappedCategoryId = routeToCategoryMap[currentPath];
+    
+    // Special handling for dormitorio routes
+    const isDormitorioRoute = currentPath.startsWith('/dormitorio/');
+    const dormitorioCategoryId = isDormitorioRoute ? 'dormitorio' : null;
+    
+    const activeCategoryId = propCategoryId || paramCategoryId || mappedCategoryId || dormitorioCategoryId;
 
     // Parse query params for initial filters
     const searchParams = new URLSearchParams(location.search);
@@ -51,7 +65,14 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
     const categoryTitle = categoryNames[activeCategoryId] || 'Categoría';
 
     const products = ENHANCED_CATALOG.filter(p => {
-        const matchesCategory = p.category === activeCategoryId;
+        // Special handling for dormitorio subcategories
+        let matchesCategory = p.category === activeCategoryId;
+        
+        // For dormitorio routes with subId, check subcategory instead
+        if (activeCategoryId === 'dormitorio' && subId) {
+            matchesCategory = true; // Allow all categories, will filter by subcategory
+        }
+        
         const matchesSub = activeSub === 'todos' || p.subcategory === activeSub;
         const matchesSize = selectedSize === 'todos' || (p.sizes && p.sizes.includes(selectedSize));
         const matchesWarranty = selectedWarranty === 'todos' || p.warranty === selectedWarranty;
@@ -60,9 +81,19 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
         return matchesCategory && matchesSub && matchesSize && matchesWarranty && matchesThickness;
     });
 
-    const availableSizes = ['todos', ...new Set(ENHANCED_CATALOG.filter(p => p.category === activeCategoryId).flatMap(p => p.sizes || []))];
-    const availableWarranties = ['todos', ...new Set(ENHANCED_CATALOG.filter(p => p.category === activeCategoryId).map(p => p.warranty).filter(Boolean))];
-    const availableThickness = activeCategoryId === 'espuma' ? ['todos', ...new Set(ENHANCED_CATALOG.filter(p => p.category === activeCategoryId).map(p => p.thickness).filter(Boolean))] : null;
+    // Fix available filters for dormitorio subcategories
+    const getProductsForFilters = () => {
+        if (activeCategoryId === 'dormitorio' && subId) {
+            return ENHANCED_CATALOG.filter(p => p.subcategory === activeSub);
+        }
+        return ENHANCED_CATALOG.filter(p => p.category === activeCategoryId);
+    };
+    
+    const productsForFilters = getProductsForFilters();
+    
+    const availableSizes = ['todos', ...new Set(productsForFilters.flatMap(p => p.sizes || []))];
+    const availableWarranties = ['todos', ...new Set(productsForFilters.map(p => p.warranty).filter(Boolean))];
+    const availableThickness = activeCategoryId === 'espuma' ? ['todos', ...new Set(productsForFilters.map(p => p.thickness).filter(Boolean))] : null;
 
     return (
         <MainLayout>
@@ -166,6 +197,51 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                                             <Link to={`/producto/${product.id}`}>
                                                 <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-gold-500 transition-colors">{product.name}</h3>
                                             </Link>
+                                        </div>
+                                        
+                                        {/* Enhanced Product Information */}
+                                        <div className="space-y-3 mb-6">
+                                            <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3 leading-relaxed">
+                                                {product.description}
+                                            </p>
+                                            
+                                            {/* Key Features */}
+                                            <div className="space-y-2">
+                                                {product.features && product.features.slice(0, 3).map((feature, idx) => (
+                                                    <div key={idx} className="flex items-center gap-2">
+                                                        <span className="w-1.5 h-1.5 bg-gold-500 rounded-full flex-shrink-0"></span>
+                                                        <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">{feature}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            
+                                            {/* Key Specifications */}
+                                            {product.especificaciones && (
+                                                <div className="pt-3 border-t border-gray-100 dark:border-white/5">
+                                                    <div className="grid grid-cols-2 gap-2 text-xs">
+                                                        {Object.entries(product.especificaciones).slice(0, 4).map(([key, value], idx) => (
+                                                            <div key={idx} className="flex justify-between">
+                                                                <span className="text-gray-500 dark:text-gray-400 capitalize">{key}:</span>
+                                                                <span className="text-gray-900 dark:text-white font-medium">{value}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+                                            
+                                            {/* Warranty Badge */}
+                                            <div className="flex items-center gap-2">
+                                                <span className="inline-flex items-center px-2 py-1 bg-gray-100 dark:bg-gray-800 text-xs font-black text-gray-700 dark:text-gray-300 rounded-full">
+                                                    <span className="mr-1">⏱</span>
+                                                    {product.warranty || 'Garantía'}
+                                                </span>
+                                                {product.sizes && (
+                                                    <span className="inline-flex items-center px-2 py-1 bg-gray-100 dark:bg-gray-800 text-xs font-black text-gray-700 dark:text-gray-300 rounded-full">
+                                                        <span className="mr-1">📏</span>
+                                                        {product.sizes.length} tamaños
+                                                    </span>
+                                                )}
+                                            </div>
                                         </div>
                                         <div className="pt-6 border-t border-gray-100 dark:border-white/5 flex flex-col gap-3 mt-auto">
                                             <PriceInquiryButton product={product} size={selectedSize === 'todos' ? null : selectedSize} />

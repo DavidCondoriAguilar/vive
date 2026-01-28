@@ -1,0 +1,23 @@
+# GitHub Pages Configuration - Para deploy en GitHub Pages
+# NOTA: GitHub Pages requiere ajustes especiales para React Router
+
+# 1. Ajusta tu package.json:
+# "homepage": "https://tu-usuario.github.io/tu-repo",
+
+# 2. Modifica tu BrowserRouter para usar basename:
+# <BrowserRouter basename="/tu-repo">
+
+# 3. Agrega este script en package.json:
+# "predeploy": "npm run build",
+# "deploy": "gh-pages -d dist",
+
+# 4. Instala gh-pages: npm install --save-dev gh-pages
+
+# 5. Ejecuta: npm run deploy
+
+# _redirects file para GitHub Pages
+# Coloca este archivo en la carpeta public/
+# GitHub Pages usará esto para el SPA fallback
+
+# SPA Fallback para GitHub Pages
+/*    /index.html   200

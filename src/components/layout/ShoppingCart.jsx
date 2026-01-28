@@ -36,19 +36,18 @@ const ShoppingCart = () => {
       {/* Floating Cart Trigger - Left Side Positioning (Anti-clash with Chatbot) */}
       <button
         onClick={() => setIsCartOpen(!isCartOpen)}
-        className={`fixed bottom-8 left-8 z-40 flex items-center gap-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-4 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 hover:scale-110 active:scale-95 border border-white/10 dark:border-black/5 hover:bg-black group ${isCartOpen ? 'opacity-0 pointer-events-none -translate-x-10' : 'opacity-100'}`}
+        className={`fixed bottom-8 left-8 z-40 flex items-center justify-center bg-gray-900 dark:bg-white text-white dark:text-gray-900 w-14 h-14 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 hover:scale-110 active:scale-95 border border-white/10 dark:border-black/5 hover:bg-black group ${isCartOpen ? 'opacity-0 pointer-events-none -translate-x-10' : 'opacity-100'}`}
       >
         <div className="relative flex items-center justify-center">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
           {getTotalItems() > 0 && (
-            <span className="absolute -top-3 -right-3 flex h-5 w-5 items-center justify-center rounded-full bg-gold-500 text-[10px] font-black text-white ring-2 ring-white dark:ring-gray-900 shadow-lg animate-pulse-subtle">
+            <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-gold-500 text-[10px] font-black text-white ring-2 ring-white dark:ring-gray-900 shadow-lg animate-pulse-subtle">
               {getTotalItems()}
             </span>
           )}
         </div>
-        <span className="text-[10px] font-black uppercase tracking-[0.2em]">Mi Carrito</span>
       </button>
 
       {/* Backdrop with Click-to-Close */}

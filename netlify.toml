@@ -1,0 +1,104 @@
+[build]
+  # Directorio de build para producción
+  publish = "dist"
+  # Comando de build (ajusta según tu setup)
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Configuración de SPA fallback - Redirige todas las rutas a index.html
+[[redirects]]
+  # Redirigir todas las rutas que no son archivos estáticos a index.html
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  # Condiciones para no redirigir archivos estáticos
+  conditions = {Role = ["admin", "user"]}
+
+# Excepciones para archivos estáticos (CSS, JS, imágenes, etc.)
+[[redirects]]
+  from = "/static/*"
+  to = "/static/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.js"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.css"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.png"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.jpg"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.jpeg"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.webp"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.svg"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.ico"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.woff"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.woff2"
+  to = "/:splat"
+  status = 200
+
+# Headers para seguridad y performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Configuración para desarrollo local (opcional)
+[dev]
+  command = "npm run dev"
+  port = 3000
+  publish = "dist"

@@ -60,15 +60,15 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
   };
 
   return (
-    <div ref={searchContainerRef} className={`relative w-full max-w-md ${className}`}>
+    <div ref={searchContainerRef} className={`relative w-full max-w-44 ${className}`}>
       {/* Search Input Container */}
-      <div className="relative group">
+      <div className="relative group" style={{ zIndex: 50, position: 'relative' }}>
         {/* Search Icon */}
-        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-          <MdSearch className="w-5 h-5" />
+        <div className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+          <MdSearch className="w-4 h-4" />
         </div>
 
-        {/* Search Input - Diseño Restaurado con Texto Visible */}
+        {/* Search Input - Desktop Minimalista */}
         <input
           ref={searchInputRef}
           type="text"
@@ -80,11 +80,56 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
           onFocus={handleInputFocus}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
-          className="w-full pl-10 pr-10 py-2.5 bg-gray-50 dark:bg-black border border-gray-200 dark:border-white/10 rounded-xl text-sm placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold-500/20 focus:border-gold-500 transition-all duration-300 text-black dark:text-white"
-          style={{ 
-            color: '#000000',
-            WebkitTextFillColor: '#000000',
-            opacity: 1
+          className="w-full pl-10 pr-8 py-2 text-sm font-display"
+          style={{
+            // Minimalista - Estilo base con tipografía correcta
+            backgroundColor: 'transparent',
+            backgroundImage: 'none',
+            color: '#374151',
+            WebkitTextFillColor: '#374151',
+            WebkitAppearance: 'none',
+            MozAppearance: 'textfield',
+            appearance: 'none',
+            opacity: 1,
+            zIndex: 100,
+            position: 'relative',
+            caretColor: '#374151',
+            fontSize: '12px',
+            // CSS sin reset para mantener clases
+            // fontFamily: 'Inter, Manrope, system-ui, sans-serif',
+            fontWeight: '400',
+            border: 'none',
+            outline: 'none',
+            borderBottom: '1px solid #d1d5db',
+            borderRadius: '0',
+            transition: 'border-color 0.2s ease',
+            // CSS Isolation para Desktop SIN resetear todo
+            isolation: 'isolate',
+            // Override solo estilos problemáticos
+            WebkitTextFillColor: '#374151',
+            color: '#374151',
+            // Restaurar estilos necesarios
+            backgroundColor: 'transparent',
+            // Tipografía sofisticada - Space Grotesk
+            fontSize: '12px',
+            fontFamily: 'Space Grotesk, Playfair Display, sans-serif',
+            fontWeight: '500',
+            letterSpacing: '-0.01em',
+            width: '100%',
+            maxWidth: '200px', // Más reducido para no desbordar navbar
+            padding: '6px 24px 6px 32px', // Más espacio a la izquierda para la lupa
+            border: 'none',
+            borderBottom: '1px solid #d1d5db',
+            borderRadius: '0',
+            outline: 'none',
+            zIndex: 100
+          }}
+          onFocus={(e) => {
+            e.target.style.borderBottomColor = '#9ca3af';
+            handleInputFocus();
+          }}
+          onBlur={(e) => {
+            e.target.style.borderBottomColor = '#d1d5db';
           }}
           aria-label="Buscar productos"
           role="combobox"

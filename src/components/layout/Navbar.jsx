@@ -95,7 +95,7 @@ const Navbar = () => {
                 { name: 'Económicas (Poliseda)', path: '/colchones-espuma?l=Poliseda' },
                 { name: 'Plus Resilense', path: '/colchones-espuma?l=Plus Resilense' },
                 { name: 'Splendido T/tricot', path: '/colchones-espuma?l=Splendido' },
-                { name: 'Topacio (con almohada)', path: '/colchones-espuma?l=Topacio' }
+                { name: 'Topacio', path: '/colchones-espuma?l=Topacio' }
             ]
         },
         {
@@ -109,7 +109,7 @@ const Navbar = () => {
             ]
         },
         {
-            name: 'Venta por Mayor',
+            name: 'Mayorista',
             path: '/venta-por-mayor',
             badge: 'B2B',
             icon: <MdOutlineLocalOffer className="w-5 h-5" />
@@ -148,9 +148,11 @@ const Navbar = () => {
                         {/* DESKTOP NAV */}
                         <DesktopNav navLinks={navLinks} currentPath={location.pathname} />
 
-                        {/* SEARCH BAR - Desktop - Optimizado */}
+                        {/* SEARCH BAR - Desktop - CSS Isolation Expert */}
                         <div className="hidden xl:block flex-1 max-w-sm mx-4">
+                          <div style={{ isolation: 'isolate' }}>
                             <SearchBar placeholder="Buscar productos..." />
+                          </div>
                         </div>
 
                         {/* Search Icon - Desktop Compact */}

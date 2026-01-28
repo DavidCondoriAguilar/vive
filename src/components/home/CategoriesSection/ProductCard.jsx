@@ -15,13 +15,22 @@ const ProductCard = ({
 
   return (
     <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
-      {/* Product Image */}
-      <div className="relative overflow-hidden bg-gray-50">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-        />
+      {/* Product Image - Aspect Ratio 16/9 con padding */}
+      <div className="relative overflow-hidden bg-gray-50 h-48 md:h-52 lg:h-56 p-4">
+        {product.id === 'splendido' || product.id === 'topacio' ? (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+            style={{ aspectRatio: '16/9' }}
+          />
+        ) : (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        )}
 
         {/* Badge */}
         {product.badge && (

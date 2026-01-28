@@ -249,15 +249,15 @@ const ProductDetailsView = () => {
                                                 height: window.innerWidth >= 1024 ? '100%' : '60%',
                                                 transform: window.innerWidth >= 1024 ? 'translateX(105%)' : 'translateY(105%)',
                                                 background: `url(${productImages[activeImageIndex]})`,
-                                                backgroundSize: '300%',
+                                                backgroundSize: '250%', // Reducido de 300% a 250%
                                                 backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
                                                 backgroundRepeat: 'no-repeat',
-                                                imageRendering: 'crisp-edges',
-                                                filter: 'contrast(1.1) brightness(1.05)'
+                                                imageRendering: 'auto', // Cambiado de 'crisp-edges' a 'auto'
+                                                filter: 'none', // Removidos filtros que afectan calidad
                                             }}
                                         >
                                             <div className="absolute top-2 right-2 px-2 py-1 bg-black/80 text-white text-xs font-black rounded">
-                                                3X ZOOM
+                                                2.5X ZOOM HD
                                             </div>
                                         </div>
                                     )}
@@ -426,20 +426,22 @@ const ProductDetailsView = () => {
 
                                     {/* Product Features Grid */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                                        {/* Colchón Features */}
+                                        {/* Product Features */}
                                         <div className="space-y-4">
                                             <h4 className="text-xs font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                                                <span className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-xs font-bold">C</span>
-                                                COLCHÓN
+                                                <span className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-xs font-bold">
+                                                    {product.category === 'dormitorio' ? 'D' : product.category === 'espuma' ? 'E' : 'R'}
+                                                </span>
+                                                {product.category === 'dormitorio' ? 'DORMITORIO' : product.category === 'espuma' ? 'ESPUMA' : 'COLCHÓN'}
                                             </h4>
                                             <div className="space-y-3">
-                                                {(product.technicalSpecs?.colchon || [
+                                                {(product.componentes || [
                                                     "Tela Tricot 16 mm",
                                                     "Espuma de poliuretano D16 (1\")",
                                                     "Sistema de resortes Bonnell AC",
                                                     "Diseño reversible (doble cara)",
                                                     "Soporte firme y uniforme",
-                                                    `Garantía del colchón ${product.warranty || '2 años'}`
+                                                    `Garantía del producto ${product.warranty || '2 años'}`
                                                 ]).map((feature, idx) => (
                                                     <div key={idx} className="flex items-start gap-3">
                                                         <FaCheckCircle className="w-4 h-4 text-black dark:text-white flex-shrink-0 mt-0.5" />
@@ -456,7 +458,7 @@ const ProductDetailsView = () => {
                                                 COMPONENTES
                                             </h4>
                                             <div className="space-y-3">
-                                                {(product.technicalSpecs?.componentes || [
+                                                {(product.especificaciones ? Object.entries(product.especificaciones).map(([key, value]) => `${key}: ${value}`) : [
                                                     "Tela Tricot 16 mm",
                                                     "Espuma de poliuretano D16 (1\")",
                                                     "Lámina de Notex 100 gr",
