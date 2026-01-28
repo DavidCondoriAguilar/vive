@@ -14,7 +14,7 @@ const CategoriesSection = () => {
   const [selectedSize, setSelectedSize] = useState('todos');
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(4);
+  const [itemsPerView, setItemsPerView] = useState(3);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -38,6 +38,16 @@ const CategoriesSection = () => {
     window.addEventListener('resize', updateItemsPerView);
     return () => window.removeEventListener('resize', updateItemsPerView);
   }, []);
+
+  const getGapForCurrentScreen = () => {
+    if (typeof window === 'undefined') return '1.5rem';
+    return window.innerWidth >= 1024 ? '2rem' : '1.5rem';
+  };
+
+  const getGapInPixels = () => {
+    if (typeof window === 'undefined') return 24; // 1.5rem = 24px
+    return window.innerWidth >= 1024 ? 32 : 24; // 2rem = 32px, 1.5rem = 24px
+  };
 
   const filteredProducts = ENHANCED_CATALOG.filter(product => {
     const typeMatch = selectedType === 'todos' || product.subcategory === selectedType;
@@ -167,15 +177,17 @@ const CategoriesSection = () => {
               <div
                   className="flex transition-transform duration-500 ease-in-out"
                   style={{
-                    transform: `translateX(-${(currentSlide * (100 / itemsPerView))}%)`,
+                    transform: `translateX(calc(-${currentSlide} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? getGapInPixels() / itemsPerView : 0}px)))`,
+                    gap: itemsPerView > 1 ? getGapForCurrentScreen() : '0px',
+                    scrollSnapType: itemsPerView > 1 ? 'x mandatory' : 'none'
                   }}
               >
                 {filteredProducts.map((product) => (
                     <div
                         key={product.id}
-                        className="flex-shrink-0 px-2"
+                        className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3"
                         style={{
-                          width: `${100 / itemsPerView}%`,
+                          flex: itemsPerView === 3 ? '0 0 33.33%' : itemsPerView === 2 ? '0 0 50%' : '0 0 100%',
                           scrollSnapAlign: 'start'
                         }}
                     >
@@ -186,9 +198,7 @@ const CategoriesSection = () => {
                             <img
                                 src={product.image}
                                 alt={product.name}
-                                className={`w-full h-full transition-transform duration-1000 group-hover:scale-105 ${
-                                    product.id === 'splendido' || product.id === 'topacio' ? 'object-contain' : 'object-cover'
-                                }`}
+                                className={`w-full h-full transition-transform duration-1000 group-hover:scale-105 object-contain`}
                             />
                           </Link>
                           <div className="absolute top-4 left-4">

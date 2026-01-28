@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { FaChevronLeft, FaChevronRight, FaLayerGroup } from 'react-icons/fa';
-import { PrimaryButton, DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
 import { useDragCarousel } from '@/hooks/useDragCarousel';
 import { useCart } from '@/contexts/CartContext';
-import { CATEGORIES } from '@/utils/constants';
-import FilterDropdown from '@/components/ui/FilterDropdown';
+import ProductCard from './ProductCard';
+import CarouselControls from './CarouselControls';
+import CarouselHeader from './CarouselHeader';
+import CarouselFilterSection from './CarouselFilterSection';
 
 const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
   const { addToCart } = useCart();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(4);
+  const [itemsPerView, setItemsPerView] = useState(3);
   const [selectedCategory, setSelectedCategory] = useState('Todos');
 
   useEffect(() => {
     const updateItemsPerView = () => {
       if (window.innerWidth < 640) setItemsPerView(1);
       else if (window.innerWidth < 768) setItemsPerView(2);
-      else if (window.innerWidth < 1024) setItemsPerView(3);
-      else setItemsPerView(4);
+      else setItemsPerView(3);
     };
     updateItemsPerView();
     window.addEventListener('resize', updateItemsPerView);
@@ -33,8 +31,8 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
   const canGoPrev = currentIndex > 0;
 
   const handleSlideChange = (direction) => {
-    if (direction === 'next' && canGoNext) setCurrentIndex(prev => prev + 1);
-    else if (direction === 'prev' && canGoPrev) setCurrentIndex(prev => prev - 1);
+    if (direction === 'next' && canGoNext) setCurrentIndex(prev => prev + itemsPerView);
+    else if (direction === 'prev' && canGoPrev) setCurrentIndex(prev => Math.max(0, prev - itemsPerView));
   };
 
   const getGapForCurrentScreen = () => {
@@ -73,44 +71,26 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
 
   return (
     <div className="relative">
-      {/* Header & Controls - High Visibility */}
+      {/* Header & Controls */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-12">
-        <div className="max-w-xl">
-          <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Selección Premium</span>
-          <h2 className="text-4xl lg:text-5xl font-display font-black text-gray-900 dark:text-white uppercase leading-tight tracking-tighter mb-6">
-            {title}
-          </h2>
-          <div className="flex items-center gap-4 mb-4">
-            <div className="flex-1 h-[2px] bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gold-500 transition-all duration-1000 ease-out shadow-[0_0_10px_#d4af37]"
-                style={{ width: `${((currentIndex + itemsPerView) / Math.max(1, filteredProducts.length)) * 100}% ` }}
-              />
-            </div>
-            <span className="text-[10px] font-black text-gold-500 uppercase tracking-widest whitespace-nowrap">
-              {currentIndex + itemsPerView} / {filteredProducts.length}
-            </span>
-          </div>
-          <p className="text-gray-500 dark:text-gray-400 font-medium text-sm">
-            {getFilterDescription()}
-          </p>
-        </div>
+        <CarouselHeader
+          title={title}
+          currentIndex={currentIndex}
+          itemsPerView={itemsPerView}
+          totalItems={filteredProducts.length}
+          description={getFilterDescription()}
+        />
 
-        {/* New Filter Dropdown for Carousel */}
-        <div className="w-full lg:w-72">
-          <FilterDropdown
-            label="Filtrar por Colección"
-            placeholder="Seleccionar Categoría"
-            options={filterOptions}
-            value={selectedCategory}
-            onChange={setSelectedCategory}
-            icon={FaLayerGroup}
-          />
-        </div>
+        {/* Filter Dropdown */}
+        <CarouselFilterSection
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+          filterOptions={filterOptions}
+          showActiveFilter={false}
+        />
       </div>
 
-
-      {/* Active Filter Description - Contexto para el usuario */}
+      {/* Active Filter Description */}
       {selectedCategory !== 'Todos' && (
         <div className="mb-8">
           <div className="bg-gold-50 dark:bg-gold-500/10 border border-gold-200 dark:border-gold-500/30 rounded-xl p-4">
@@ -130,88 +110,45 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
       )}
 
       {/* Viewport */}
-      <div className={`relative overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'} active:cursor-grabbing`} ref={carouselRef} {...handlers} tabIndex={0} role="region" aria-label="Carrusel de productos">
-        {/* Navigation Arrows - Positioned inside viewport */}
-        {filteredProducts.length > itemsPerView && (
-          <>
-            <button
-              onClick={() => handleSlideChange('prev')}
-              disabled={!canGoPrev}
-              className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all shadow-xl ${canGoPrev
-                ? 'bg-white/90 dark:bg-white/10 text-black dark:text-white hover:scale-110'
-                : 'bg-white/30 dark:bg-white/5 text-gray-400 cursor-not-allowed'
-                }`}
-            >
-              <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
-            <button
-              onClick={() => handleSlideChange('next')}
-              disabled={!canGoNext}
-              className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all shadow-xl ${canGoNext
-                ? 'bg-white/90 dark:bg-white/10 text-black dark:text-white hover:scale-110'
-                : 'bg-white/30 dark:bg-white/5 text-gray-400 cursor-not-allowed'
-                }`}
-            >
-              <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
-          </>
-        )}
+      <div className={`relative overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'} active:cursor-grabbing`} 
+           ref={carouselRef} 
+           {...handlers} 
+           tabIndex={0} 
+           role="region" 
+           aria-label="Carrusel de productos">
+        
+        {/* Navigation Arrows */}
+        <CarouselControls
+          canGoPrev={canGoPrev}
+          canGoNext={canGoNext}
+          onPrev={() => handleSlideChange('prev')}
+          onNext={() => handleSlideChange('next')}
+          itemsPerView={itemsPerView}
+          totalItems={filteredProducts.length}
+        />
 
         {/* Product Track */}
         <div
-          data-carousel-track
-          className={`flex transition-transform ${isAnimating ? 'duration-500 ease-out' : 'duration-0'} ${isDragging ? '' : 'ease-out'}`}
+          className="flex transition-transform duration-500 ease-in-out"
           style={{
             transform: `translateX(calc(-${currentIndex} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? getGapInPixels() / itemsPerView : 0}px)))`,
-            '--base-transform': `translateX(calc(-${currentIndex} * (100% / ${itemsPerView} + ${itemsPerView > 1 ? getGapInPixels() / itemsPerView : 0}px)))`,
-            gap: itemsPerView > 1 ? getGapForCurrentScreen() : '0px'
+            gap: itemsPerView > 1 ? getGapForCurrentScreen() : '0px',
+            scrollSnapType: itemsPerView > 1 ? 'x mandatory' : 'none'
           }}
         >
           {filteredProducts.map((product, index) => (
             <div
               key={product.id}
-              className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
+              className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3"
+              style={{
+                flex: itemsPerView === 3 ? '0 0 33.33%' : itemsPerView === 2 ? '0 0 50%' : '0 0 100%',
+                scrollSnapAlign: 'start'
+              }}
             >
-              <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
-                <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-dream-dark-surface">
-                  <Link to={`/producto/${product.id}`} className="block h-full w-full">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-110"
-                    />
-                  </Link>
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-black dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[10px] font-black uppercase tracking-widest rounded-full">
-                      {product.badge || 'Nuevo'}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="mb-4">
-                    <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest">
-                      {product.subcategory}
-                    </span>
-                    <Link to={`/producto/${product.id}`}>
-                      <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-gold-500 transition-colors">
-                        {product.name}
-                      </h3>
-                    </Link>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
-                      {product.description}
-                    </p>
-                  </div>
-
-                  <div className="flex flex-col gap-3 mt-auto">
-                    <PriceInquiryButton product={product} />
-                    <div className="flex gap-2">
-                      <DetailsButton to={`/producto/${product.id}`} className="flex-1" />
-                      <QuoteIconButton onClick={() => addToCart(product, 1)} />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ProductCard 
+                product={product}
+                onAddToCart={(product, quantity, size) => addToCart(product, quantity, size)}
+              />
             </div>
           ))}
         </div>
