@@ -111,11 +111,11 @@ const ShoppingCart = () => {
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     {/* Item Image */}
-                    <div className="relative w-24 h-24 bg-gray-50 dark:bg-zinc-900 rounded-3xl overflow-hidden flex-shrink-0 border border-transparent group-hover:border-gold-500/20 transition-all">
+                    <div className="relative w-16 h-16 bg-gray-50 dark:bg-zinc-900 rounded-2xl overflow-hidden flex-shrink-0 border border-transparent group-hover:border-gold-500/20 transition-all">
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="w-full h-full object-contain p-2 transition-transform duration-700 group-hover:scale-110"
+                        className="w-full h-full object-contain p-1.5 transition-transform duration-700 group-hover:scale-110"
                       />
                     </div>
 
@@ -175,29 +175,28 @@ const ShoppingCart = () => {
 
           {/* Footer - Sticky */}
           {cartItems.length > 0 && (
-            <div className="px-6 sm:px-8 py-6 sm:py-8 bg-gray-50/50 dark:bg-white/[0.02] border-t border-gray-100 dark:border-white/5 space-y-4 sm:space-y-6">
-              <div className="flex justify-between items-end border-b border-gray-100 dark:border-white/5 pb-6">
-                <div className="space-y-1">
-                  <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">Gestión de Pedido</span>
-                  <p className="text-[11px] text-gray-900 dark:text-white font-black uppercase tracking-widest">Consultar Precios vía WhatsApp</p>
+            <div className="px-6 sm:px-8 py-5 sm:py-6 bg-gray-50/50 dark:bg-white/[0.02] border-t border-gray-100 dark:border-white/5 space-y-4">
+              <div className="flex justify-between items-center border-b border-gray-100 dark:border-white/5 pb-4">
+                <div className="space-y-0.5">
+                  <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block">Gestión de Pedido</span>
+                  <p className="text-[10px] text-gray-900 dark:text-white font-bold uppercase tracking-widest">Precios vía WhatsApp</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-sm font-black text-gold-500 uppercase tracking-widest">
+                  <span className="text-[11px] font-bold text-gold-500 uppercase tracking-widest">
                     Asesoría Premium
                   </span>
                 </div>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2">
                 <button
                   onClick={processOrder}
-                  className="w-full bg-green-500 hover:bg-green-600 active:scale-[0.98] text-white py-5 sm:py-6 rounded-[1.5rem] font-black text-sm sm:text-base uppercase tracking-[0.2em] shadow-[0_15px_30px_rgba(34,197,94,0.3)] transition-all flex items-center justify-center group min-h-[60px] sm:min-h-[70px]"
+                  className="w-full bg-green-500 hover:bg-green-600 active:scale-[0.98] text-white py-3.5 sm:py-4 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-[0.15em] shadow-lg shadow-green-500/20 transition-all flex items-center justify-center group"
                 >
-                  <div className="flex items-center gap-3">
-                    <FaWhatsapp className="w-6 h-6 sm:w-7 sm:h-7 group-hover:scale-110 transition-transform" />
+                  <div className="flex items-center gap-2.5">
+                    <FaWhatsapp className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" />
                     <div className="text-center">
-                      <span className="block font-black text-sm sm:text-base uppercase tracking-widest">Consultar Precios</span>
-                      <span className="text-[10px] sm:text-xs opacity-75 block mt-1 font-medium uppercase tracking-widest">Finalizar Cotización</span>
+                      <span className="block font-bold">Consultar Precios</span>
                     </div>
                   </div>
                 </button>

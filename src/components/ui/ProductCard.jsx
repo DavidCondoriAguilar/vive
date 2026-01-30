@@ -25,7 +25,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
             className="w-full h-full object-contain transition-transform duration-[10s] group-hover:scale-110"
           />
         </Link>
-        
+
         {/* Badge - MISMO PATRÓN QUE CATEGORIES SECTION */}
         {product.badge && (
           <div className="absolute top-4 left-4">
@@ -37,23 +37,23 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
       </div>
 
       {/* Product Info */}
-      <div className="p-6 flex flex-col flex-1">
-        <div className="mb-4">
-          <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest">
+      <div className="p-5 flex flex-col flex-1">
+        <div className="mb-3">
+          <span className="text-gold-500 text-[9px] font-bold uppercase tracking-widest">
             {product.subcategory}
           </span>
           <Link to={`/producto/${product.id}`}>
-            <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-gold-500 transition-colors">
+            <h3 className="text-base font-bold text-gray-900 dark:text-white mt-1 mb-2 leading-tight hover:text-gold-500 transition-colors">
               {product.name}
             </h3>
           </Link>
-          <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+          <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed">
             {product.description}
           </p>
         </div>
 
         {/* Size - MISMO PATRÓN QUE CATEGORIES SECTION */}
-        <div className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
+        <div className="text-[10px] font-medium text-gray-400 dark:text-gray-500 mb-4 italic">
           Medida: {product.sizes.join(', ')}
         </div>
 
@@ -74,7 +74,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
               {/* Subtle overlay effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
             </button>
-            
+
 
             {/* Botón de detalles - ELEGANCE 2026 + TEXTO HOVER */}
             <button
@@ -86,10 +86,10 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
               <span className="text-xs font-light tracking-[0.1em] uppercase transition-all duration-300 group-hover:tracking-[0.15em]">
                 Detalles
               </span>
-              
+
               {/* Subtle overlay effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+
               {/* Pro glow effect */}
               <div className="absolute inset-0 rounded-inherit bg-gradient-to-r from-transparent via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700" />
             </button>

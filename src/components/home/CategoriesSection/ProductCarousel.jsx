@@ -34,25 +34,25 @@ const ProductCarousel = ({
           <button
             onClick={onPrevSlide}
             disabled={!canGoPrev}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-all ${!canGoPrev
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-gray-100 hover:scale-110'
+            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 text-gray-400 dark:text-gray-500 hover:text-gold-500 transition-all duration-300 ${!canGoPrev
+              ? 'opacity-20 cursor-not-allowed'
+              : 'hover:scale-125'
               }`}
             aria-label="Anterior"
           >
-            <FaChevronLeft className="w-5 h-5 text-gray-700" />
+            <FaChevronLeft className="w-6 h-6 sm:w-10 sm:h-10" />
           </button>
 
           <button
             onClick={onNextSlide}
             disabled={!canGoNext}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-all ${!canGoNext
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-gray-100 hover:scale-110'
+            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 text-gray-400 dark:text-gray-500 hover:text-gold-500 transition-all duration-300 ${!canGoNext
+              ? 'opacity-20 cursor-not-allowed'
+              : 'hover:scale-125'
               }`}
             aria-label="Siguiente"
           >
-            <FaChevronRight className="w-5 h-5 text-gray-700" />
+            <FaChevronRight className="w-6 h-6 sm:w-10 sm:h-10" />
           </button>
         </>
       )}
@@ -98,8 +98,8 @@ const ProductCarousel = ({
                 console.log('Navigate to slide:', targetSlide);
               }}
               className={`w-2 h-2 rounded-full transition-all ${Math.floor(currentSlide / itemsPerView) === index
-                  ? 'bg-gold-500 w-8'
-                  : 'bg-gray-300 hover:bg-gray-400'
+                ? 'bg-gold-500 w-8'
+                : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               aria-label={`Ir a slide ${index + 1}`}
             />

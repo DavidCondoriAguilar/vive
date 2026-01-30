@@ -57,52 +57,7 @@ export const COMPLEMENTARIOS_PRODUCTS = [
             '3 años de garantía total'
         ]
     },
-    {
-        id: 'mueble-lineal',
-        name: 'Juego de Mueble Lineal 3.2m + Cojines',
-        category: 'dormitorio',
-        subcategory: 'Muebles-Independientes',
-        warranty: '2 años',
-        price: 1299,
-        image: siempreOpMain,
-        description: 'Set lineal completo con 3.2 metros de almacenamiento y cojines decorativos incluidos. Diseño inteligente que maximiza cada espacio. Descubre por qué es la solución perfecta para tu dormitorio.',
-        sizes: ['3.2m'],
-        features: ['Almacenamiento', 'Cojines Incluidos', 'Diseño Lineal'],
-        badge: 'Completo',
-        componentes: [
-            'Estructura de melamina de alta calidad',
-            '6 cajones con cierre suave',
-            '2 puertas abatibles',
-            'Espejo integrado',
-            'Cojines decorativos premium',
-            'Manijas de aluminio',
-            'Patas metálicas ajustables',
-            'Sistema anti-volcado'
-        ],
-        especificaciones: {
-            'Largo total': '320 cm',
-            'Alto': '180 cm',
-            'Profundidad': '45 cm',
-            'Material': 'Melamina de primera calidad',
-            'Acabado': 'Laca mate resistente',
-            'Cajones': '6 unidades (60x40x15 cm)',
-            'Puertas': '2 unidades (80x180 cm)',
-            'Espejo': '80x120 cm',
-            'Cojines': '4 unidades incluidas',
-            'Capacidad carga': '150 kg totales',
-            'Peso': '180 kg'
-        },
-        beneficios: [
-            'Máximo aprovechamiento de espacio',
-            'Almacenamiento organizado y accesible',
-            'Diseño moderno y funcional',
-            'Materiales de alta durabilidad',
-            'Fácil montaje incluido',
-            'Cojines lavables',
-            'Garantía de 2 años',
-            'Entrega e instalación gratuitas'
-        ]
-    },
+
     {
         id: 'mueble-luxe',
         name: 'Mueble de Luxe Seccional + Cojines',

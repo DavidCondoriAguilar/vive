@@ -25,12 +25,12 @@ import logoOscuro from '@assets/images/logos/logo-main.jpg';
  * Chat window component
  * @param {ChatWindowProps} props - Component props
  */
-const ChatWindow = ({ 
-  messages, 
-  isTyping, 
-  onClose, 
-  onSendMessage, 
-  onQuickReply 
+const ChatWindow = ({
+  messages,
+  isTyping,
+  onClose,
+  onSendMessage,
+  onQuickReply
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [isMinimized, setIsMinimized] = useState(false);
@@ -41,17 +41,17 @@ const ChatWindow = ({
   // Detect dark mode
   useEffect(() => {
     const checkDarkMode = () => {
-      const isDark = document.documentElement.classList.contains('dark') || 
-                    window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = document.documentElement.classList.contains('dark') ||
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
       setIsDarkMode(isDark);
     };
-    
+
     checkDarkMode();
-    
+
     // Listen for theme changes
     const observer = new MutationObserver(checkDarkMode);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    
+
     return () => observer.disconnect();
   }, []);
 
@@ -91,18 +91,18 @@ const ChatWindow = ({
   };
 
   return (
-    <div className="fixed bottom-24 right-6 w-96 h-[500px] bg-white dark:bg-gray-800 
+    <div className="fixed bottom-20 right-4 left-4 sm:left-auto sm:right-6 sm:w-96 h-[500px] bg-white dark:bg-gray-800 
                 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 
                 flex flex-col z-[190] animate-slide-up
-                max-h-[70vh] overflow-hidden">
-      
+                max-h-[75vh] md:max-h-[70vh] overflow-hidden">
+
       {/* Header */}
       <div className="bg-gold-500 text-white px-4 py-3 rounded-t-2xl flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm">
-            <img 
-              src={isDarkMode ? logoClaro : logoOscuro} 
-              alt="Sueño Dorado" 
+            <img
+              src={isDarkMode ? logoClaro : logoOscuro}
+              alt="Sueño Dorado"
               className="w-8 h-8 object-contain"
             />
           </div>
@@ -111,7 +111,7 @@ const ChatWindow = ({
             <p className="text-xs text-white/90">Asistente virtual</p>
           </div>
         </div>
-        
+
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsMinimized(!isMinimized)}
@@ -147,7 +147,7 @@ const ChatWindow = ({
                 onQuickReply={onQuickReply}
               />
             ))}
-            
+
             {isTyping && <TypingIndicator />}
             <div ref={messagesEndRef} />
           </div>
@@ -168,7 +168,7 @@ const ChatWindow = ({
                          placeholder-gray-500 dark:placeholder-gray-400"
                 maxLength={500}
               />
-              
+
               <button
                 type="submit"
                 disabled={!inputValue.trim()}
@@ -181,7 +181,7 @@ const ChatWindow = ({
                 <FaPaperPlane className="w-4 h-4" />
               </button>
             </form>
-            
+
             {/* Character count */}
             <div className="text-xs text-gray-500 dark:text-gray-400 text-right mt-1">
               {inputValue.length}/500

@@ -39,6 +39,9 @@ import matriMain from '@assets/product-detail/matri/matri-main.webp';
 import matriTwo from '@assets/product-detail/matri/matri-two.webp';
 import matriDiag from '@assets/product-detail/matri/matri-diag.webp';
 import siempreOpMain from '@assets/product-detail/siempre-op/simpe-op.webp';
+import siemprePillowMain from '@assets/product-detail/siempre-pillow/siempre-pillow.webp';
+import siemprePillowTwo from '@assets/product-detail/siempre-pillow/siempre-pillow-two.webp';
+import siemprePillowDiag from '@assets/product-detail/siempre-pillow/siempre-pillow-diag.webp';
 import siempreOneMain from '@assets/product-detail/siempre-one/siempre-one-main.webp';
 import siempreOneDiag from '@assets/product-detail/siempre-one/siempre-one-diag.webp';
 import siempreOneZoom from '@assets/product-detail/siempre-one/siempre-one-zoom.webp';
@@ -386,16 +389,21 @@ export const RESORTE_PRODUCTS = [
     },
     {
         id: 'siempre-pt',
-        name: 'Siempre Pillow Mp',
+        name: 'Gold Siempre Pillow Mp',
         category: 'resorte',
         subcategory: 'Gold',
-        warranty: '7 años',
+        warranty: '10 años',
         price: 1549,
-        image: siempreOpMain,
-        description: 'Pillow Top permanente diseñado para durar siempre con garantía extendida.',
+        image: siemprePillowTwo,
+        images: [
+            siemprePillowMain,
+            siemprePillowTwo,
+            siemprePillowDiag
+        ],
+        description: 'Pillow Top permanente de alta densidad diseñado para un confort eterno. Ingeniería Gold con refuerzo lumbar y sistema de Máxima Permanencia (MP) para garantizar una durabilidad superior con acabado de lujo.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Marco Poliuretano', 'Pillow Top'],
-        badge: '7 Años Garantía'
+        features: ['Pillow Top Permanente', 'Refuerzo MP', 'Tela Gold Damask'],
+        badge: 'Garantía Extendida'
     },
 
     // AVANCE DIAMONT

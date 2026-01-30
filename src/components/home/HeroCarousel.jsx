@@ -152,13 +152,13 @@ const HeroCarousel = () => {
                 {/* Victoria's Secret Subtle Inner Glow */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
-                
+
                 <span className="relative z-10 font-semibold tracking-wider">Ver Catálogo</span>
-                
+
                 {/* Ferrari-inspired Speed Line */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-400/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               </button>
-              
+
               <a
                 href={getWhatsAppLink(`Hola Sueño Dorado, estoy interesado en recibir información sobre ${slide.title}.`)}
                 target="_blank"
@@ -168,9 +168,9 @@ const HeroCarousel = () => {
                 {/* Luxury Border Animation */}
                 <div className="absolute inset-0 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                
+
                 <span className="relative z-10 font-light tracking-widest">WhatsApp</span>
-                
+
                 {/* Subtle Premium Effect */}
                 <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent" />
               </a>
@@ -195,15 +195,15 @@ const HeroCarousel = () => {
       {/* Simplified Nav Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 sm:left-10 top-1/2 -translate-y-1/2 text-white/30 hover:text-gold-500 transition-colors bg-black/20 backdrop-blur-sm rounded-full p-2 sm:p-3 z-10"
+        className="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 text-white/40 hover:text-gold-500 transition-all duration-300 z-10"
       >
-        <FaChevronLeft size={20} className="sm:w-7 sm:h-7 w-5 h-5" />
+        <FaChevronLeft className="sm:w-10 sm:h-10 w-6 h-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 sm:right-10 top-1/2 -translate-y-1/2 text-white/30 hover:text-gold-500 transition-colors bg-black/20 backdrop-blur-sm rounded-full p-2 sm:p-3 z-10"
+        className="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 text-white/40 hover:text-gold-500 transition-all duration-300 z-10"
       >
-        <FaChevronRight size={20} className="sm:w-7 sm:h-7 w-5 h-5" />
+        <FaChevronRight className="sm:w-10 sm:h-10 w-6 h-6" />
       </button>
 
       {/* Progress Bar (Global) */}

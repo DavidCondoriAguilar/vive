@@ -115,14 +115,14 @@ const WholesaleView = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
             {/* Left Column: Focused Content */}
-            <div className={`lg:col-span-5 transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
+            <div className={`lg:col-span-6 relative z-20 transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
               <div className="space-y-8">
                 <span className="inline-flex items-center gap-4 text-[10px] font-black tracking-[0.5em] uppercase text-gold-500">
                   <span className="w-12 h-[2px] bg-gold-500"></span>
                   Factory Direct
                 </span>
 
-                <h1 className="text-6xl md:text-8xl font-display font-black text-gray-900 dark:text-white leading-[0.85] tracking-tighter uppercase">
+                <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-black text-gray-900 dark:text-white leading-[0.85] tracking-tighter uppercase">
                   Ingeniería <br />
                   <span className="text-gold-500 italic font-light lowercase">del</span> <span className="text-gold-500">Confort</span>
                 </h1>
@@ -154,7 +154,7 @@ const WholesaleView = () => {
             </div>
 
             {/* Right Column: Dynamic Image Composition with Museum Frame */}
-            <div className={`lg:col-span-7 relative transition-all duration-1000 delay-300 transform ${isVisible ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-20 scale-95'}`}>
+            <div className={`lg:col-span-6 relative z-10 transition-all duration-1000 delay-300 transform ${isVisible ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-20 scale-95'}`}>
               <div className="relative group">
                 {/* Decorative Background Glow */}
                 <div className="absolute -inset-4 bg-gold-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
