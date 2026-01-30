@@ -56,45 +56,45 @@ const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) 
       />
 
       {/* Notification Card */}
-      <div className="relative bg-white dark:bg-gray-800 rounded-none shadow-2xl p-6 max-w-md w-full glass-grid animate-fade-scale border border-gray-200 dark:border-gray-700">
+      <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-5 max-w-sm w-full animate-fade-scale border border-gray-200 dark:border-gray-700">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 w-8 h-8 bg-gray-100 dark:bg-gray-700 rounded-none flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+          className="absolute top-3 right-3 w-7 h-7 bg-gray-50 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
         >
-          <FaTimes className="w-4 h-4" />
+          <FaTimes className="w-3.5 h-3.5" />
         </button>
 
         {/* Product Content */}
         <div className="flex gap-4">
           {/* Product Image */}
-          <div className="w-20 h-20 bg-gray-100 dark:bg-gray-700 rounded-none overflow-hidden flex-shrink-0">
+          <div className="w-16 h-16 bg-gray-50 dark:bg-gray-700 rounded-xl overflow-hidden flex-shrink-0">
             {product.image ? (
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain p-1"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-gray-400">
-                <span className="text-2xl">🛏️</span>
+                <span className="text-xl">🛏️</span>
               </div>
             )}
           </div>
 
           {/* Product Info */}
-          <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-gray-900 dark:text-white text-lg mb-1 truncate">
+          <div className="flex-1 min-w-0 pr-6">
+            <h3 className="font-bold text-gray-900 dark:text-white text-base mb-0.5 truncate pr-2">
               {product.name}
             </h3>
 
             {selectedSize && (
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+              <p className="text-[10px] text-gray-500 dark:text-gray-400 mb-1">
                 Talla: {selectedSize}
               </p>
             )}
 
-            <div className="text-sm font-black text-gold-600 mb-3 uppercase tracking-widest">
+            <div className="text-[10px] font-bold text-gold-600 mb-3 uppercase tracking-widest">
               Precio por Consultar
             </div>
 
@@ -102,7 +102,7 @@ const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) 
             <div className="flex gap-2">
               <PrimaryButton
                 onClick={handleAddToCart}
-                className="flex-1 text-[9px] px-3 py-3 justify-center rounded-xl"
+                className="flex-1 text-[9px] px-2 py-2 rounded-lg"
                 showArrow={false}
               >
                 Agregar
@@ -110,7 +110,7 @@ const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) 
 
               <WhatsAppButton
                 onClick={handleWhatsApp}
-                className="flex-1 text-[9px] px-3 py-3 justify-center rounded-xl"
+                className="flex-1 text-[9px] px-2 py-2 rounded-lg"
               >
                 Consultar
               </WhatsAppButton>
@@ -120,7 +120,7 @@ const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) 
 
         {/* Quick Description */}
         {product.description && (
-          <p className="text-sm text-gray-600 dark:text-gray-300 mt-3 line-clamp-2">
+          <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-3 line-clamp-2 leading-relaxed italic">
             {product.description}
           </p>
         )}

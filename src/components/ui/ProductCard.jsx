@@ -63,7 +63,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
             {/* Botón del carrito - ELEGANCE 2026 */}
             <button
               onClick={handleAddToCart}
-              className="flex-1 group relative overflow-hidden bg-black dark:bg-white text-white dark:text-black font-light text-xs tracking-[0.15em] uppercase py-4 px-6 rounded-none border-0 transition-all duration-700 hover:scale-[1.02] active:scale-[0.98]"
+              className="flex-1 group relative overflow-hidden bg-black dark:bg-white text-white dark:text-black font-bold text-[10px] tracking-[0.1em] uppercase py-3 px-4 rounded-lg border-0 transition-all duration-700 hover:scale-[1.02] active:scale-[0.98]"
             >
               <span className="relative z-10 flex items-center justify-center gap-3">
                 <svg className="w-4 h-4 transition-transform duration-700 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,7 +79,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
             {/* Botón de detalles - ELEGANCE 2026 + TEXTO HOVER */}
             <button
               onClick={() => window.location.href = `/producto/${product.id}`}
-              className="group relative w-20 h-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border border-black/30 dark:border-white/30 text-black dark:text-white transition-all duration-700 hover:border-black dark:hover:border-white hover:from-gray-100 hover:to-gray-200 dark:hover:from-gray-800 dark:hover:to-gray-700 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center px-4 overflow-hidden"
+              className="group relative w-20 h-10 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border border-black/10 dark:border-white/10 text-black dark:text-white transition-all duration-700 hover:border-black dark:hover:border-white hover:from-gray-100 hover:to-gray-200 dark:hover:from-gray-800 dark:hover:to-gray-700 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center px-3 rounded-lg overflow-hidden"
               title="Ver Detalles"
             >
               {/* Texto "Detalles" - SIEMPRE VISIBLE */}
