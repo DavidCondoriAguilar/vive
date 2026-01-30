@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { CATEGORIES, ENHANCED_CATALOG } from '@/utils/constants';
-import { FaShoppingCart, FaStar, FaChevronLeft, FaChevronRight, FaWhatsapp, FaEye, FaTags, FaRulerCombined } from 'react-icons/fa';
+import { FaShoppingCart, FaStar, FaChevronLeft, FaChevronRight, FaWhatsapp, FaTags, FaRulerCombined } from 'react-icons/fa';
 import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
 import { useCart } from '@/contexts/CartContext';
 import ProductNotification from '@/components/ui/ProductNotification';
@@ -57,14 +57,19 @@ const CategoriesSection = () => {
   });
 
   const nextSlide = () => {
-    const canGoNext = currentSlide + 1 < filteredProducts.length;
-    if (canGoNext) {
-      setCurrentSlide(prev => prev + 1); // DESLIZAMIENTO DE 1 EN 1
-    }
+    setCurrentSlide(prev => {
+      const next = prev + 1;
+      // Si llegamos al final, volvemos al inicio (carrusel infinito)
+      return next >= filteredProducts.length ? 0 : next;
+    });
   };
 
   const prevSlide = () => {
-    setCurrentSlide(prev => Math.max(prev - 1, 0)); // DESLIZAMIENTO DE 1 EN 1
+    setCurrentSlide(prev => {
+      const prevSlide = prev - 1;
+      // Si estamos en el inicio, vamos al final (carrusel infinito)
+      return prevSlide < 0 ? filteredProducts.length - 1 : prevSlide;
+    });
   };
 
   const { carouselRef, handlers } = useDragCarousel((direction) => {
@@ -149,22 +154,16 @@ const CategoriesSection = () => {
             {/* Side Navigation Arrows */}
             <button
                 onClick={prevSlide}
-                disabled={currentSlide === 0}
-                className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-100 dark:border-white/5 flex items-center justify-center transition-all shadow-xl ${currentSlide === 0
-                    ? 'opacity-0 pointer-events-none'
-                    : 'bg-white/90 dark:bg-zinc-900/90 text-gray-700 dark:text-gray-300 hover:bg-gold-500 hover:text-white hover:scale-110 active:scale-95 translate-x-1 sm:-translate-x-6'
-                }`}
+                disabled={false}
+                className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-100 dark:border-white/5 flex items-center justify-center transition-all shadow-xl bg-white/90 dark:bg-zinc-900/90 text-gray-700 dark:text-gray-300 hover:bg-gold-500 hover:text-white hover:scale-110 active:scale-95 translate-x-1 sm:-translate-x-6`}
             >
               <FaChevronLeft className="w-4 h-4" />
             </button>
 
             <button
                 onClick={nextSlide}
-                disabled={currentSlide + itemsPerView >= filteredProducts.length}
-                className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-100 dark:border-white/5 flex items-center justify-center transition-all shadow-xl ${currentSlide + itemsPerView >= filteredProducts.length
-                    ? 'opacity-0 pointer-events-none'
-                    : 'bg-white/90 dark:bg-zinc-900/90 text-gray-700 dark:text-gray-300 hover:bg-gold-500 hover:text-white hover:scale-110 active:scale-95 -translate-x-1 sm:translate-x-6'
-                }`}
+                disabled={false}
+                className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-100 dark:border-white/5 flex items-center justify-center transition-all shadow-xl bg-white/90 dark:bg-zinc-900/90 text-gray-700 dark:text-gray-300 hover:bg-gold-500 hover:text-white hover:scale-110 active:scale-95 -translate-x-1 sm:translate-x-6`}
             >
               <FaChevronRight className="w-4 h-4" />
             </button>

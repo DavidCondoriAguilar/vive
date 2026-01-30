@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaShoppingCart, FaEye, FaWhatsapp } from 'react-icons/fa';
+import { FaShoppingCart, FaWhatsapp } from 'react-icons/fa';
 import { DetailsButton, PriceInquiryButton } from '../../ui/Buttons';
 import { Link } from 'react-router-dom';
 

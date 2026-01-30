@@ -135,36 +135,49 @@ const Navbar = () => {
                 className="bg-white border-b border-gray-200 transition-all duration-500"
             >
                 <div className="w-full px-1 xs:px-3 sm:px-5 md:px-8 lg:px-12 xl:px-18 relative">
-                    <div className="flex items-center justify-between min-h-16 xs:min-h-18 sm:min-h-20 md:min-h-24 lg:min-h-28">
-                        {/* LOGO - Left section SIN TOCAR */}
+                    {/* Mobile Layout - Professional & Responsive */}
+                    <div className="lg:hidden flex items-center justify-between min-h-[72px] w-full px-4">
+                        {/* LOGO - Left Aligned for better usability */}
+                        <div className="flex-shrink-0 transition-all duration-300">
+                            <Logo
+                                size="medium"
+                                onClick={handleLogoClick}
+                                variant="dark"
+                                style={{ height: '90px', width: 'auto' }}
+                            />
+                        </div>
+
+                        {/* ACTIONS - Right side */}
+                        <div className="flex items-center">
+                            <NavActions
+                                toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                isMobileMenuOpen={isMobileMenuOpen}
+                                waLink={waLink}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Desktop Layout */}
+                    <div className="hidden lg:flex items-center justify-between min-h-20 w-full">
+                        {/* LOGO - Desktop */}
                         <div className="flex-shrink-0">
                             <Logo
-                                size="large"
+                                size="medium"
                                 onClick={handleLogoClick}
                                 variant="dark"
-                                className="lg:hidden"
-                            />
-                            <Logo
-                                size="large"
-                                onClick={handleLogoClick}
-                                variant="dark"
-                                className="hidden lg:block"
-                                style={{ maxWidth: '200px', width: 'auto' }}
+                                style={{ height: '115px', width: 'auto' }}
                             />
                         </div>
 
                         {/* DESKTOP NAV - Center section */}
-                        <div className="hidden lg:flex flex-1 items-center justify-center px-1 lg:px-2">
+                        <div className="flex-1 flex items-center justify-center px-4">
                             <DesktopNav navLinks={navLinks} currentPath={location.pathname} />
                         </div>
 
-                        {/* RIGHT SECTION - Search + Actions con más espacio */}
-                        <div className="flex items-center gap-2 lg:gap-3 flex-shrink-0">
-                            {/* SEARCH BAR - Desktop */}
-                            <div className="hidden xl:block">
-                                <div className="w-44 lg:w-48">
-                                    <SearchBar placeholder="Buscar..." />
-                                </div>
+                        {/* RIGHT SECTION - Search + Actions */}
+                        <div className="flex items-center gap-4 flex-shrink-0">
+                            <div className="hidden xl:block w-48">
+                                <SearchBar placeholder="Buscar productos..." />
                             </div>
 
                             {/* Search Icon - Tablet/Laptop */}
@@ -182,13 +195,6 @@ const Navbar = () => {
                                     waLink={waLink}
                                 />
                             </div>
-                        </div>
-                    </div>
-
-                    {/* MOBILE SEARCH BAR - Separate row for mobile */}
-                    <div className="lg:hidden pb-4">
-                        <div className="w-full max-w-md mx-auto">
-                            <SearchBar placeholder="Buscar productos..." />
                         </div>
                     </div>
                 </div>

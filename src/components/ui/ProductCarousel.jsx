@@ -27,14 +27,22 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
     return selectedCategory === 'Todos' || product.category === selectedCategory.toLowerCase();
   });
 
-  const canGoNext = currentIndex + itemsPerView < filteredProducts.length;
-  const canGoPrev = currentIndex > 0;
+  const canGoNext = true; // Siempre habilitado para carrusel infinito
+  const canGoPrev = true; // Siempre habilitado para carrusel infinito
 
   const handleSlideChange = (direction) => {
-    if (direction === 'next' && canGoNext) {
-      setCurrentIndex(prev => prev + 1); // DESLIZAMIENTO DE 1 EN 1
-    } else if (direction === 'prev' && canGoPrev) {
-      setCurrentIndex(prev => Math.max(0, prev - 1)); // DESLIZAMIENTO DE 1 EN 1
+    if (direction === 'next') {
+      setCurrentIndex(prev => {
+        const next = prev + 1;
+        // Si llegamos al final, volvemos al inicio (carrusel infinito)
+        return next >= filteredProducts.length ? 0 : next;
+      });
+    } else if (direction === 'prev') {
+      setCurrentIndex(prev => {
+        const prevSlide = prev - 1;
+        // Si estamos en el inicio, vamos al final (carrusel infinito)
+        return prevSlide < 0 ? filteredProducts.length - 1 : prevSlide;
+      });
     }
   };
 

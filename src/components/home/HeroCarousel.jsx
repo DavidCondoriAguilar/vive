@@ -147,17 +147,32 @@ const HeroCarousel = () => {
             <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-6 px-2">
               <button
                 onClick={() => navigate('/catalogo')}
-                className="w-full sm:w-auto bg-gold-500 hover:bg-gold-600 text-black font-black px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-all shadow-2xl uppercase tracking-[0.1em] text-[9px] sm:text-[10px] md:text-xs"
+                className="group relative w-full sm:w-auto overflow-hidden bg-gold-500 hover:bg-gold-600 text-black font-black px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-all duration-700 shadow-2xl uppercase tracking-[0.15em] text-[9px] sm:text-[10px] md:text-xs border border-gold-400/20"
               >
-                Ver Catálogo
+                {/* Victoria's Secret Subtle Inner Glow */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
+                
+                <span className="relative z-10 font-semibold tracking-wider">Ver Catálogo</span>
+                
+                {/* Ferrari-inspired Speed Line */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-400/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               </button>
+              
               <a
                 href={getWhatsAppLink(`Hola Sueño Dorado, estoy interesado en recibir información sobre ${slide.title}.`)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto bg-transparent hover:bg-white/10 text-white border border-white/40 font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-all uppercase tracking-[0.1em] text-[9px] sm:text-[10px] md:text-xs flex items-center justify-center"
+                className="group relative w-full sm:w-auto overflow-hidden bg-transparent hover:bg-white/10 text-white border border-white/40 font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-all duration-700 uppercase tracking-[0.15em] text-[9px] sm:text-[10px] md:text-xs flex items-center justify-center"
               >
-                WhatsApp
+                {/* Luxury Border Animation */}
+                <div className="absolute inset-0 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                
+                <span className="relative z-10 font-light tracking-widest">WhatsApp</span>
+                
+                {/* Subtle Premium Effect */}
+                <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent" />
               </a>
             </div>
           </div>

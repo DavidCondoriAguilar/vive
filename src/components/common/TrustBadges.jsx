@@ -12,28 +12,63 @@ const TrustBadges = ({ className = "", variant = "grid", onBadgeClick }) => {
       icon: <FaTruck className="w-5 h-5" />,
       title: "Envíos Rápidos",
       subtitle: "24-48h en Lima",
-      fullText: "Realizamos envíos en 24-48 horas para Lima Metropolitana. Para provincias, el tiempo estimado es de 3 a 7 días hábiles dependiendo del destino. Contamos con flota propia y agencias aliadas.",
+      fullText: (
+        <div className="space-y-4">
+          <p className="font-bold text-gold-500 text-xs uppercase tracking-widest">Compromiso De Entrega</p>
+          <p className="text-gray-600 dark:text-gray-400">Nuestra logística propia nos permite garantizar entregas en un plazo máximo de <strong>48 horas hábiles</strong> dentro de Lima Metropolitana.</p>
+          <div className="bg-gray-50 dark:bg-white/5 p-4 rounded-xl border border-gray-100 dark:border-white/10 text-[11px]">
+            <p>• Monitoreo en tiempo real vía WhatsApp.</p>
+            <p>• Personal capacitado para manipuleo técnico.</p>
+            <p>• Embalaje de alta resistencia incluido.</p>
+          </div>
+        </div>
+      ),
       animation: "slideInLeft"
     },
     {
       icon: <FaShieldAlt className="w-5 h-5" />,
       title: "Compra 100% Segura",
       subtitle: "SSL certificado",
-      fullText: "Tu seguridad es nuestra prioridad. Utilizamos encriptación SSL de grado bancario para proteger tus datos. Aceptamos todas las tarjetas y métodos de pago seguros.",
+      fullText: (
+        <div className="space-y-4">
+          <p className="font-bold text-gold-500 text-xs uppercase tracking-widest">Protección De Datos</p>
+          <p className="text-gray-600 dark:text-gray-400">Nuestra plataforma cuenta con <strong>Certificación SSL de 256 bits</strong>, garantizando que tu información financiera viaje de forma encriptada y segura.</p>
+          <div className="flex gap-4 items-center justify-center pt-2">
+            <span className="px-3 py-1 bg-green-500/10 text-green-500 text-[10px] font-bold rounded-full border border-green-500/20">PCI Compliant</span>
+            <span className="px-3 py-1 bg-blue-500/10 text-blue-500 text-[10px] font-bold rounded-full border border-blue-500/20">Secured Entry</span>
+          </div>
+        </div>
+      ),
       animation: "slideInUp"
     },
     {
       icon: <FaCertificate className="w-5 h-5" />,
       title: "Garantía de Fábrica",
       subtitle: "Hasta 10 años",
-      fullText: "Respaldamos la calidad de nuestros productos con garantías reales: 10 años en estructuras de resortes y 5 años en espumas de alta densidad. Tu inversión está asegurada.",
+      fullText: (
+        <div className="space-y-4">
+          <p className="font-bold text-gold-500 text-xs uppercase tracking-widest">Respaldo Industrial</p>
+          <p className="text-gray-600 dark:text-gray-400">Todos nuestros productos salen de planta con un certificado de garantía oficial. Cubrimos desde la estructura de resortes hasta la densidad de las espumas.</p>
+          <ul className="text-[11px] text-gray-500 space-y-1 bg-gray-50 dark:bg-white/5 p-4 rounded-xl">
+            <li>• <strong>10 Años:</strong> Colecciones Diamont & Gold.</li>
+            <li>• <strong>5 Años:</strong> Colecciones Avance & Espuma Premium.</li>
+            <li>• <strong>Garantía Real:</strong> Cambio de pieza o reparación técnica.</li>
+          </ul>
+        </div>
+      ),
       animation: "slideInRight"
     },
     {
       icon: <FaHeadset className="w-5 h-5" />,
       title: "Soluciones Rápidas",
       subtitle: "Atención inmediata",
-      fullText: "Nuestro equipo de soporte está disponible para resolver tus dudas. Ofrecemos cambio inmediato por defectos de fábrica en los primeros 7 días.",
+      fullText: (
+        <div className="space-y-4">
+          <p className="font-bold text-gold-500 text-xs uppercase tracking-widest">Soporte VIP</p>
+          <p className="text-gray-600 dark:text-gray-400">No eres un número más. Nuestro equipo de atención post-venta está listo para resolver cualquier requerimiento técnico en tiempo récord.</p>
+          <p className="text-[11px] text-gold-500 font-bold italic">Respuesta garantizada en menos de 3 horas vía canales oficiales.</p>
+        </div>
+      ),
       animation: "slideInBottom"
     }
   ];

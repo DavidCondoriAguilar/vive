@@ -23,7 +23,7 @@ import { MdVerified } from 'react-icons/md';
 import { HiOutlineLightningBolt } from 'react-icons/hi';
 
 // Import generated premium assets
-import luxuryHeroImg from '@/assets/images/generated/luxury_hotel_mattress_hero.png';
+import luxuryHeroImg from '@/assets/images/generated/luxury_hotel_mattress_hero.webp';
 import premiumCutawayImg from '@/assets/images/generated/premium_mattress_cutaway_view_v2.png';
 import factoryProductionImg from '@/assets/images/generated/wholesale_factory_production.png';
 
@@ -153,24 +153,33 @@ const WholesaleView = () => {
               </div>
             </div>
 
-            {/* Right Column: Dynamic Image Composition */}
+            {/* Right Column: Dynamic Image Composition with Museum Frame */}
             <div className={`lg:col-span-7 relative transition-all duration-1000 delay-300 transform ${isVisible ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-20 scale-95'}`}>
-              <div className="relative">
-                {/* Main Hero Image with Offset Frame */}
-                <div className="relative z-10 rounded-3xl overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] border-8 border-white dark:border-[#0A0A0A]">
+              <div className="relative group">
+                {/* Decorative Background Glow */}
+                <div className="absolute -inset-4 bg-gold-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+
+                {/* Main Hero Image Container */}
+                <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.3)]">
                   <img
                     src={luxuryHeroImg}
                     alt="Luxury Hotel Atmosphere"
-                    className="w-full h-[600px] object-cover hover:scale-105 transition-transform duration-[10s]"
+                    className="w-full h-[650px] object-cover object-top hover:scale-110 transition-transform duration-[15s] ease-out origin-top"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  {/* Refined Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none"></div>
                 </div>
 
-                {/* Floating Meta Card */}
-                <div className="absolute -bottom-12 -left-12 z-20 bg-white dark:bg-[#0A0A0A] p-10 shadow-3xl border-t-4 border-gold-500 hidden md:block group hover:-translate-y-2 transition-transform">
-                  <span className="block text-[8px] font-black uppercase tracking-[0.4em] text-gold-500 mb-2">Respaldo Industrial</span>
-                  <span className="text-3xl font-display font-black text-gray-900 dark:text-white tracking-tighter italic">30+ Años</span>
-                  <p className="text-[10px] text-gray-400 font-text uppercase tracking-widest mt-2">En el mercado nacional</p>
+                {/* Floating Meta Card - Refined UX */}
+                <div className="absolute -bottom-10 -left-10 z-20 bg-white dark:bg-[#0A0A0A] p-8 md:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.2)] border-l-4 border-gold-500 hidden md:block group-hover:-translate-y-3 transition-transform duration-500">
+                  <div className="flex flex-col gap-1">
+                    <span className="block text-[10px] font-black uppercase tracking-[0.4em] text-gold-500 mb-1">Elite Quality</span>
+                    <span className="text-4xl font-display font-black text-gray-900 dark:text-white tracking-tighter">30+ Años</span>
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="w-8 h-[1px] bg-gray-300 dark:bg-white/20"></span>
+                      <p className="text-[9px] text-gray-400 font-text uppercase tracking-[0.2em]">Trayectoria Industrial</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -33,7 +33,7 @@ const Logo = ({
 
   // Size configurations - Much larger sizes for maximum visibility
   const sizeConfig = {
-    small: { container: 'w-16 h-10 md:w-20 md:h-12 min-w-[64px]', image: 'w-full h-full' },
+    small: { container: 'w-10 h-6 md:w-16 md:h-10 min-w-[40px]', image: 'w-full h-full' },
     medium: { container: 'w-24 h-14 md:w-32 md:h-16 min-w-[96px]', image: 'w-full h-full' },
     large: { container: 'w-64 h-40 xs:w-72 xs:h-44 md:w-68 md:h-28 min-w-[200px]', image: 'w-full h-full' },
     xlarge: { container: 'w-36 h-14 md:w-72 md:h-16 min-w-[144px]', image: 'w-full h-full' }
@@ -41,7 +41,7 @@ const Logo = ({
 
   // High DPI (4K/Retina) - Maximum clarity with much larger visual footprint
   const highDPIConfig = {
-    small: { container: 'w-20 h-12 md:w-24 md:h-14 min-w-[80px]', image: 'w-full h-full' },
+    small: { container: 'w-12 h-8 md:w-18 md:h-12 min-w-[48px]', image: 'w-full h-full' },
     medium: { container: 'w-28 h-16 md:w-36 md:h-18 min-w-[112px]', image: 'w-full h-full' },
     large: { container: 'w-72 h-44 xs:w-80 xs:h-48 md:w-72 md:h-28 min-w-[240px]', image: 'w-full h-full' },
     xlarge: { container: 'w-40 h-16 md:w-80 md:h-20 min-w-[160px]', image: 'w-full h-full' }

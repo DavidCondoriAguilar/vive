@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaWhatsapp, FaEye, FaChevronRight, FaShoppingCart } from 'react-icons/fa';
+import { FaWhatsapp, FaChevronRight, FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { getWhatsAppLink } from '@/utils/constants';
 
@@ -73,7 +73,6 @@ export const DetailsButton = ({ to, className = '' }) => (
     to={to}
     className={`${baseStyles} group bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white px-6 py-3.5 rounded-xl border border-gray-100 dark:border-white/5 hover:border-gold-500/50 hover:text-gold-500 transition-all duration-500 flex-1 ${className}`}
   >
-    <FaEye className="mr-2 w-3 h-3 opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
     <span className="tracking-[0.3em]">Ver Detalle</span>
   </Link>
 );
