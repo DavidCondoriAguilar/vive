@@ -1,0 +1,134 @@
+name: 🚀 Deploy to Hostinger
+
+# Trigger del workflow
+on:
+  push:
+    branches:
+      - main  # Cambia a 'master' si usas master como rama principal
+  workflow_dispatch:  # Permite ejecutar manualmente desde GitHub
+
+# Variables de entorno globales
+env:
+  NODE_VERSION: '20'  # Versión de Node.js
+
+jobs:
+  # ════════════════════════════════════════════════════════════════
+  # JOB 1: BUILD - Construir la aplicación
+  # ════════════════════════════════════════════════════════════════
+  build:
+    name: 🏗️ Build Application
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Checkout del código
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        
+      # 2. Setup de Node.js
+      - name: 🔧 Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          
+      # 3. Instalar dependencias
+      - name: 📦 Install dependencies
+        run: npm ci
+        
+      # 4. Crear archivo .env.production con secrets
+      - name: 🔐 Create .env.production file
+        run: |
+          echo "VITE_BRAND_NAME=${{ secrets.VITE_BRAND_NAME }}" >> .env.production
+          echo "VITE_BRAND_EMAIL=${{ secrets.VITE_BRAND_EMAIL }}" >> .env.production
+          echo "VITE_WHATSAPP_NUMBER=${{ secrets.VITE_WHATSAPP_NUMBER }}" >> .env.production
+          echo "VITE_PRODUCTION_URL=${{ secrets.VITE_PRODUCTION_URL }}" >> .env.production
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env.production
+          echo "VITE_GA_MEASUREMENT_ID=${{ secrets.VITE_GA_MEASUREMENT_ID }}" >> .env.production
+          echo "VITE_FB_PIXEL_ID=${{ secrets.VITE_FB_PIXEL_ID }}" >> .env.production
+        
+      # 5. Build de producción
+      - name: 🔨 Build for production
+        run: npm run build
+        env:
+          NODE_ENV: production
+          
+      # 6. Verificar que dist se haya creado
+      - name: ✅ Verify build output
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "❌ Error: dist folder not found!"
+            exit 1
+          fi
+          echo "✅ Build successful! dist folder created."
+          ls -la dist/
+          
+      # 7. Upload del artifact (dist folder)
+      - name: 📤 Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-build
+          path: dist/
+          retention-days: 1  # Solo guardamos 1 día
+          
+  # ════════════════════════════════════════════════════════════════
+  # JOB 2: DEPLOY - Desplegar a Hostinger vía FTP
+  # ════════════════════════════════════════════════════════════════
+  deploy:
+    name: 🚢 Deploy to Hostinger
+    runs-on: ubuntu-latest
+    needs: build  # Espera a que build termine
+    
+    steps:
+      # 1. Download del artifact
+      - name: 📥 Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: production-build
+          path: dist/
+          
+      # 2. Verificar contenido descargado
+      - name: 🔍 Verify downloaded files
+        run: |
+          echo "📂 Contents of dist folder:"
+          ls -la dist/
+          
+      # 3. Deploy vía FTP a Hostinger
+      - name: 🚀 Deploy to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}  # Ej: /public_html/ o /htdocs/
+          protocol: ftps  # Usa 'ftp' si Hostinger no soporta FTPS
+          port: 21  # Puerto FTP estándar
+          dangerous-clean-slate: false  # SEGURIDAD: No borrar todo antes de subir
+          
+      # 4. Notificación de éxito
+      - name: ✅ Deployment successful
+        run: |
+          echo "════════════════════════════════════════════════"
+          echo "✅ Deployment completed successfully!"
+          echo "🌐 Site URL: ${{ secrets.VITE_PRODUCTION_URL }}"
+          echo "📅 Deployed at: $(date)"
+          echo "════════════════════════════════════════════════"
+          
+  # ════════════════════════════════════════════════════════════════
+  # JOB 3: NOTIFY - Notificación (opcional)
+  # ════════════════════════════════════════════════════════════════
+  notify:
+    name: 📢 Send Notifications
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: always()  # Ejecutar siempre, incluso si falla
+    
+    steps:
+      - name: 📢 Deployment notification
+        run: |
+          if [ "${{ needs.deploy.result }}" == "success" ]; then
+            echo "✅ Deployment successful!"
+            # Aquí puedes agregar notificaciones a Slack, Discord, Email, etc.
+          else
+            echo "❌ Deployment failed!"
+          fi

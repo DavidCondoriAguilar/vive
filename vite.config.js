@@ -8,6 +8,8 @@ const __dirname = path.dirname(__filename)
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // Base URL for production deployment (use '/' for main domain, '/subdirectory/' for subdirectories)
+  base: '/',
   plugins: [react()],
   resolve: {
     alias: {

@@ -48,6 +48,9 @@ import siempreOneZoom from '@assets/product-detail/siempre-one/siempre-one-zoom.
 import reconciliacionMain from '@assets/product-detail/reconciliacion/reconciliacion-main.webp';
 import reconciliacionTwo from '@assets/product-detail/reconciliacion/reconciliacion-two.webp';
 import reconciliacionDiag from '@assets/product-detail/reconciliacion/reconciliacion-diag.webp';
+import ternuraPocketMain from '@assets/product-detail/ternura-pocket/ternura-pocket-mp-main.webp';
+import ternuraPocketTwo from '@assets/product-detail/ternura-pocket/ternura-pocket-mp-two.webp';
+import ternuraPocketDiag from '@assets/product-detail/ternura-pocket/ternura-pocket-mp-diag.webp';
 
 // ABSOLUT
 import absolutMain from '@assets/product-detail/absolut/absolut-main.webp';
@@ -432,7 +435,12 @@ export const RESORTE_PRODUCTS = [
         subcategory: 'Diamont',
         warranty: '6 años',
         price: 1999,
-        image: siempreOpMain,
+        image: ternuraPocketMain,
+        images: [
+            ternuraPocketMain,
+            ternuraPocketTwo,
+            ternuraPocketDiag
+        ],
         description: 'Resortes independientes Pocket para una independencia de lechos total.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: ['Marco Poliuretano', 'Pocket System'],

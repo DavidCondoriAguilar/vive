@@ -255,46 +255,52 @@ const SearchResultsView = () => {
               </div>
             ) : (
               /* Results Grid */
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 gap-y-6 sm:gap-y-8 lg:gap-y-10">
                 {sortedResults.map((product) => (
-                  <div key={product.id} className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
-                    {/* Product Image */}
-                    <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-dream-dark-surface">
-                      <Link to={`/producto/${product.id}`} className="block w-full h-full">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                        />
-                      </Link>
-                      {product.badge && (
-                        <div className="absolute top-4 left-4 z-10 bg-black dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full">
-                          {product.badge}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Product Info */}
-                    <div className="p-6 flex flex-col flex-1">
-                      <div className="mb-4">
-                        <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest">
-                          {product.subcategory || 'Premium'}
-                        </span>
-                        <Link to={`/producto/${product.id}`}>
-                          <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-gold-500 transition-colors">
-                            {product.name}
-                          </h3>
+                  <div key={product.id} className="group">
+                    <div className="bg-white dark:bg-dream-dark-surface rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-[480px] sm:h-[520px] lg:h-[560px] flex flex-col">
+                      {/* Product Image */}
+                      <div className="relative aspect-[4/3] bg-white dark:bg-dream-dark-surface overflow-hidden flex-shrink-0">
+                        <Link to={`/producto/${product.id}`} className="block w-full h-full flex items-center justify-center p-3 sm:p-4">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="max-w-full max-h-full object-contain transition-opacity duration-300 cursor-pointer"
+                          />
                         </Link>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
-                          {product.description}
-                        </p>
+                        {product.badge && (
+                          <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
+                            <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[8px] sm:text-[9px] font-black uppercase tracking-widest rounded-full">
+                              {product.badge}
+                            </span>
+                          </div>
+                        )}
                       </div>
 
-                      {/* Buttons */}
-                      <div className="mt-auto flex flex-col gap-3">
-                        <PriceInquiryButton product={product} />
-                        <div className="flex gap-2">
-                          <DetailsButton to={`/producto/${product.id}`} className="flex-1" />
+                      {/* Product Info */}
+                      <div className="p-4 sm:p-5 flex flex-col flex-1">
+                        <div className="flex-1 flex flex-col">
+                          <div className="mb-2 sm:mb-3">
+                            <span className="text-gold-500 text-[8px] sm:text-[9px] font-black uppercase tracking-widest block mb-1.5 sm:mb-2">
+                              {product.subcategory || 'Premium'}
+                            </span>
+                            <Link to={`/producto/${product.id}`} className="block">
+                              <h3 className="text-sm sm:text-base font-black text-gray-900 dark:text-white mb-1.5 sm:mb-2 leading-snug hover:text-gold-500 transition-colors cursor-pointer line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem]">
+                                {product.name}
+                              </h3>
+                            </Link>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed h-8 sm:h-10">
+                              {product.description}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Buttons */}
+                        <div className="flex flex-col gap-3 sm:gap-4 mt-2 sm:mt-3 flex-shrink-0">
+                          <PriceInquiryButton product={product} />
+                          <div className="flex gap-2">
+                            <DetailsButton to={`/producto/${product.id}`} className="flex-1" />
+                          </div>
                         </div>
                       </div>
                     </div>

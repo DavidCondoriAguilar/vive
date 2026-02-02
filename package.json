@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate": "node scripts/validate-deployment.js",
+    "predeploy": "npm run validate && npm run build",
+    "images:analyze": "node scripts/analyze-images.js",
+    "images:clean": "node scripts/clean-unused-images.js",
+    "build:analyze": "node scripts/analyze-build-size.js"
   },
   "dependencies": {
     "jspdf": "^4.0.0",

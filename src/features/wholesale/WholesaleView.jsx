@@ -24,8 +24,8 @@ import { HiOutlineLightningBolt } from 'react-icons/hi';
 
 // Import generated premium assets
 import luxuryHeroImg from '@/assets/images/generated/luxury_hotel_mattress_hero.webp';
-import premiumCutawayImg from '@/assets/images/generated/premium_mattress_cutaway_view_v2.png';
-import factoryProductionImg from '@/assets/images/generated/wholesale_factory_production.png';
+import premiumCutawayImg from '@/assets/images/generated/premium_mattress_cutaway_view_v2.webp';
+import factoryProductionImg from '@/assets/images/generated/wholesale_factory_production.webp';
 
 const WholesaleView = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
