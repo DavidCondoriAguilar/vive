@@ -51,11 +51,11 @@ const CheckoutPage = () => {
     switch (step) {
       case 1:
         // Validate shipping info
-        return formData.firstName && 
-               formData.lastName && 
-               formData.email && 
-               formData.phone && 
-               formData.address;
+        return formData.firstName &&
+          formData.lastName &&
+          formData.email &&
+          formData.phone &&
+          formData.address;
       case 2:
         // Validate payment method
         return formData.paymentMethod;
@@ -94,27 +94,26 @@ const CheckoutPage = () => {
 
     // Redirect to confirmation
     navigate('/confirmacion-pedido', { state: { orderData } });
-    
+
     // Clear cart after successful order
     clearCart();
   };
 
   const StepIndicator = ({ step, title, isCompleted }) => {
-  return (
-    <div className={`flex items-center gap-3 ${isCompleted ? 'opacity-100' : 'opacity-50'}`}>
-      <div className={`w-10 h-10 rounded-full flex items-center justify-center font-black text-sm transition-all ${
-        isCompleted 
-          ? 'bg-gold-500 text-white' 
-          : currentStep > step 
-            ? 'bg-green-500 text-white' 
+    return (
+      <div className={`flex items-center gap-3 ${isCompleted ? 'opacity-100' : 'opacity-50'}`}>
+        <div className={`w-10 h-10 rounded-full flex items-center justify-center font-black text-sm transition-all ${isCompleted
+          ? 'bg-gold-500 text-white'
+          : currentStep > step
+            ? 'bg-green-500 text-white'
             : 'bg-gray-200 dark:bg-white/10 text-gray-600 dark:text-gray-400'
-      }`}>
-        {isCompleted ? <FaCheck className="w-4 h-4" /> : step}
+          }`}>
+          {isCompleted ? <FaCheck className="w-4 h-4" /> : step}
+        </div>
+        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{title}</span>
       </div>
-      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{title}</span>
-    </div>
-  );
-};
+    );
+  };
 
   if (cartItems.length === 0) {
     return (
@@ -150,19 +149,19 @@ const CheckoutPage = () => {
               Paso {currentStep} de {totalSteps}
             </span>
           </div>
-          
+
           {/* Progress Steps */}
           <div className="flex items-center justify-between max-w-2xl mx-auto">
             <StepIndicator step={1} title="Información de Envío" isCompleted={currentStep > 1} />
             <div className="flex-1 h-1 bg-gray-200 dark:bg-white/10 mx-4">
-              <div 
+              <div
                 className="h-full bg-gold-500 transition-all duration-500"
                 style={{ width: `${currentStep > 1 ? '100%' : '0%'}` }}
               />
             </div>
             <StepIndicator step={2} title="Método de Pago" isCompleted={currentStep > 2} />
             <div className="flex-1 h-1 bg-gray-200 dark:bg-white/10 mx-4">
-              <div 
+              <div
                 className="h-full bg-gold-500 transition-all duration-500"
                 style={{ width: `${currentStep > 2 ? '100%' : '0%'}` }}
               />
@@ -174,10 +173,10 @@ const CheckoutPage = () => {
 
       <div className="container mx-auto px-6 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          
+
           {/* Main Content */}
           <div className="lg:col-span-2">
-            
+
             {/* Step 1: Shipping Information */}
             {currentStep === 1 && (
               <div className="bg-white dark:bg-black rounded-2xl border border-gray-100 dark:border-white/10 p-8">
@@ -387,7 +386,7 @@ const CheckoutPage = () => {
                       <p><strong>Email:</strong> {formData.email}</p>
                       <p><strong>Teléfono:</strong> {formData.phone}</p>
                       <p><strong>Dirección:</strong> {formData.address}</p>
-                      {formData.reference && <p><strong>Referencia:</strong> {formData.reference}</p>
+                      {formData.reference && <p><strong>Referencia:</strong> {formData.reference}</p>}
                     </div>
                   </div>
 
@@ -396,10 +395,10 @@ const CheckoutPage = () => {
                     <h3 className="font-medium text-gray-900 dark:text-white mb-3">Método de Pago</h3>
                     <div className="bg-gray-50 dark:bg-white/5 rounded-lg p-4 text-sm text-gray-700 dark:text-gray-300">
                       <p>
-                        {formData.paymentMethod === 'whatsapp' ? 'WhatsApp - Te contactaremos para coordinar' : 
-                         formData.paymentMethod === 'yape' ? 'Yape - Pago instantáneo' :
-                          formData.paymentMethod === 'transfer' ? 'Transferencia Bancaria' :
-                           formData.paymentMethod === 'card' ? 'Tarjeta de Crédito/Débito' : ''}
+                        {formData.paymentMethod === 'whatsapp' ? 'WhatsApp - Te contactaremos para coordinar' :
+                          formData.paymentMethod === 'yape' ? 'Yape - Pago instantáneo' :
+                            formData.paymentMethod === 'transfer' ? 'Transferencia Bancaria' :
+                              formData.paymentMethod === 'card' ? 'Tarjeta de Crédito/Débito' : ''}
                       </p>
                     </div>
                   </div>
@@ -446,7 +445,7 @@ const CheckoutPage = () => {
           <div className="lg:col-span-1">
             <div className="bg-white dark:bg-black rounded-2xl border border-gray-100 dark:border-white/10 p-6 sticky top-24">
               <h3 className="font-bold text-gray-900 dark:text-white mb-4">Resumen del Pedido</h3>
-              
+
               <div className="space-y-3 mb-6 max-h-64 overflow-y-auto">
                 {cartItems.map((item, index) => (
                   <div key={index} className="flex items-center gap-3 text-sm">

@@ -19,17 +19,26 @@ import {
   FaFileAlt,
   FaCertificate
 } from 'react-icons/fa';
-import { MdVerified } from 'react-icons/md';
+import { MdVerified, MdClose } from 'react-icons/md';
 import { HiOutlineLightningBolt } from 'react-icons/hi';
 
 // Import generated premium assets
 import luxuryHeroImg from '@/assets/images/generated/luxury_hotel_mattress_hero.webp';
 import premiumCutawayImg from '@/assets/images/generated/premium_mattress_cutaway_view_v2.webp';
 import factoryProductionImg from '@/assets/images/generated/wholesale_factory_production.webp';
+import modalBgImg from '@/assets/images/generated/wholesale_modal_bg.png';
 
 const WholesaleView = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedMarket, setSelectedMarket] = useState(null);
+  const [waData, setWaData] = useState({
+    reasonSocial: '',
+    name: '',
+    address: '',
+    city: '',
+    dni: ''
+  });
 
   useEffect(() => {
     setIsVisible(true);
@@ -39,34 +48,54 @@ const WholesaleView = () => {
 
   const targetMarkets = [
     {
+      id: 'tiendas',
       image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2064&auto=format&fit=crop",
       icon: <FaStore />,
       title: "Tiendas y Comercio",
-      subtitle: "Márgenes Premium",
-      description: "Asóciese con nosotros para ofrecer colchones de alta rotación con el mejor respaldo de marca y soporte publicitario.",
+      subtitle: "Distribución y Márgenes Premium",
+      description: "Maximice la rentabilidad de su negocio con nuestra línea de alta rotación. Brindamos exclusividad de zona, material publicitado de alto impacto y soporte logístico prioritario para que solo se preocupe por vender.",
       tag: "Distribución"
     },
     {
+      id: 'corporativo',
       image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
       icon: <FaBuilding />,
       title: "B2B Corporativo",
-      subtitle: "Soluciones a Medida",
-      description: "Licitaciones, campamentos mineros, proyectos inmobiliarios y dotación de personal con precios directo de planta.",
+      subtitle: "Proyectos y Soluciones a Medida",
+      description: "Atendemos licitaciones estatales, proyectos inmobiliarios y equipamiento de campamentos mineros con colchones diseñados para uso intensivo. Precios directos de planta que garantizan el mejor retorno de inversión.",
       tag: "Proyectos"
     },
     {
+      id: 'hoteleria',
       image: "https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=1974&auto=format&fit=crop",
       icon: <FaHotel />,
       title: "Hotelería de Lujo",
-      subtitle: "Certificación Internacional",
-      description: "Equipamos hoteles de 4 y 5 estrellas con estándares de confort que garantizan el descanso de sus huéspedes y larga durabilidad.",
+      subtitle: "Turismo y Confort Internacional",
+      description: "Transforme la experiencia de sus huéspedes con nuestra gama hotelera de 4 y 5 estrellas. Colchones con certificación de durabilidad y tecnología de descanso que asegura reseñas positivas y la fidelidad de sus clientes.",
       tag: "Turismo"
     }
   ];
 
+  const handleWaSubmit = (e) => {
+    e.preventDefault();
+    const message = `Hola Sueño Dorado, solicito cotización mayorista para *${selectedMarket.title}*.\n\n` +
+      `🏢 *Datos de la Empresa:*\n` +
+      `- Razón Social: ${waData.reasonSocial}\n` +
+      `- RUC/DNI: ${waData.dni}\n\n` +
+      `👤 *Contacto:*\n` +
+      `- Nombre: ${waData.name}\n` +
+      `- Dirección: ${waData.address}\n` +
+      `- Ciudad/Provincia: ${waData.city}\n\n` +
+      `Quedo a la espera de su asesoría experta para concretar mi pedido.`;
+
+    window.open(getWhatsAppLink(message), '_blank');
+    setSelectedMarket(null);
+    setWaData({ reasonSocial: '', name: '', address: '', city: '', dni: '' });
+  };
+
   const mainStats = [
     { value: "-50%", label: "Precio de Fábrica", desc: "Ahorro directo sin intermediarios" },
-    { value: "10A", label: "Garantía", desc: "Respaldo oficial de fábrica" },
+    { value: "ISO", label: "Norma", desc: "Certificación de calidad industrial" },
     { value: "24h", label: "Despacho", desc: "Logística propia para Lima" },
     { value: "+30", label: "Años", desc: "Experiencia industrial" }
   ];
@@ -236,20 +265,18 @@ const WholesaleView = () => {
                     {market.icon}
                   </div>
                   <h3 className="text-3xl md:text-4xl font-display font-black text-white mb-2 leading-none uppercase">{market.title}</h3>
-                  <h4 className="text-gold-400 font-bold text-sm tracking-widest mb-6 uppercase italic font-display">{market.subtitle}</h4>
+                  <h4 className="text-gold-400 font-bold text-xs tracking-widest mb-6 uppercase italic font-display">{market.subtitle}</h4>
                   <p className="text-gray-300 text-sm leading-relaxed max-w-xs opacity-0 h-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-500 font-text">
                     {market.description}
                   </p>
 
                   <div className="mt-8">
-                    <a
-                      href={getWhatsAppLink(`${b2bMessage} Específicamente sobre ${market.title}.`)}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      onClick={() => setSelectedMarket(market)}
                       className="inline-flex items-center gap-3 text-white font-bold text-xs uppercase tracking-[0.2em] group/btn"
                     >
                       Saber más <FaArrowRight className="group-hover/btn:translate-x-2 transition-transform" />
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -350,7 +377,7 @@ const WholesaleView = () => {
                 {[
                   { title: "Núcleos Independientes", desc: "Sistema de resortes pocket encapsulados individualmente para cero transferencia de movimiento." },
                   { title: "High Resilience", desc: "Capas de espuma de alta resiliencia que mantienen la ergonomía año tras año." },
-                  { title: "Certificación Ergonómica", desc: "Cada diseño es validado por especialistas para asegurar la alienación de la columna." }
+                  { title: "Soporte Ergonómico", desc: "Cada diseño es validado por especialistas para asegurar la alienación de la columna." }
                 ].map((item, i) => (
                   <div key={i} className="group flex gap-8 pb-8 border-b border-gray-100 dark:border-white/5 last:border-0 transition-all">
                     <span className="text-2xl font-display font-black text-gold-500/30 group-hover:text-gold-500 transition-colors">0{i + 1}</span>
@@ -380,8 +407,8 @@ const WholesaleView = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]">
             <div className="md:col-span-2 row-span-1 bg-gray-50 dark:bg-white/5 p-12 flex flex-col justify-center border border-gray-100 dark:border-white/10 group">
-              <h3 className="text-3xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter mb-4">Garantía Corporativa 10A</h3>
-              <p className="text-gray-500 dark:text-gray-400 font-text max-w-md">Respaldo total en la estructura de resortes y materiales. Un compromiso de fábrica directo con su inversión.</p>
+              <h3 className="text-3xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter mb-4">Calidad Certificada</h3>
+              <p className="text-gray-500 dark:text-gray-400 font-text max-w-md">Respaldo total en la estructura y materiales. Un compromiso de fábrica directo con su inversión.</p>
               <div className="mt-8 flex items-center gap-4 group-hover:translate-x-4 transition-transform text-gold-500 font-black text-xs uppercase tracking-widest">
                 Protocolo de Calidad <FaArrowRight />
               </div>
@@ -456,7 +483,185 @@ const WholesaleView = () => {
         </div>
       </section>
 
-      {/* Reuse the specialized form drawer */}
+      {/* WhatsApp Quote Modal - Premium Pro Redesign */}
+      {selectedMarket && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8">
+          {/* Backdrop with sophisticated blur */}
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-xl animate-fade-in"
+            onClick={() => setSelectedMarket(null)}
+          ></div>
+
+          <div className="relative bg-white dark:bg-[#0F0F0F] w-full max-w-4xl rounded-[2.5rem] overflow-hidden border border-white/20 dark:border-white/5 shadow-[0_50px_100px_rgba(0,0,0,0.5)] animate-slide-up flex flex-col md:flex-row max-h-[90vh]">
+
+            {/* Left Column: Dynamic Visual Context */}
+            <div className="hidden md:flex w-[35%] relative flex-col justify-between p-10 overflow-hidden border-r border-gray-100 dark:border-white/5">
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={selectedMarket.image || modalBgImg}
+                  alt={selectedMarket.title}
+                  className="w-full h-full object-cover opacity-40 grayscale group-hover:scale-110 transition-transform duration-[10s]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/20 to-transparent"></div>
+              </div>
+
+              <div className="relative z-10">
+                <div className="w-12 h-1 bg-gold-500 mb-6"></div>
+                <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.5em] block mb-2">{selectedMarket.tag}</span>
+                <span className="text-white text-[10px] font-bold uppercase tracking-widest opacity-40 italic">Sueño Dorado Exclusive</span>
+              </div>
+
+              <div className="relative z-10">
+                <h4 className="text-2xl font-display font-black text-white uppercase leading-none tracking-tighter mb-4">
+                  {selectedMarket.title.split(' ').map((word, i) => (
+                    <span key={i} className="block">{word}</span>
+                  ))}
+                </h4>
+                <p className="text-gold-500/80 text-[10px] uppercase tracking-[0.2em] font-black leading-tight border-l border-gold-500/30 pl-4 py-1">
+                  {selectedMarket.subtitle}
+                </p>
+              </div>
+            </div>
+
+            {/* Right Column: Form Content */}
+            <div className="flex-1 p-8 md:p-14 relative flex flex-col bg-gray-50/50 dark:bg-transparent overflow-y-auto custom-scrollbar">
+
+              <button
+                onClick={() => setSelectedMarket(null)}
+                className="absolute top-8 right-8 p-3 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-all text-gray-400 hover:text-gold-500 z-50 group"
+              >
+                <MdClose className="w-6 h-6 transition-transform group-hover:rotate-90" />
+              </button>
+
+              <div className="relative z-10 mb-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-[1px] w-8 bg-gold-500/30"></div>
+                  <span className="text-gold-500 text-[11px] font-black uppercase tracking-[0.4em]">Solicitud Mayorista</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-display font-black text-gray-900 dark:text-white uppercase mb-4 leading-tight tracking-tighter">
+                  {selectedMarket.title}
+                </h3>
+                <p className="text-gray-500 dark:text-gray-400 text-sm font-medium leading-relaxed max-w-md mb-8">
+                  Ingrese la información de su representada para agendar una visita comercial o cotización por volumen.
+                </p>
+
+                {/* National Coverage Section - Specific for Wholesale Distribution */}
+                {selectedMarket.id === 'tiendas' && (
+                  <div className="mb-10 bg-gray-100 dark:bg-white/5 rounded-3xl p-8 border border-gold-500/10 relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/5 blur-3xl rounded-full"></div>
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-3 mb-6">
+                        <FaGlobeAmericas className="text-gold-500 text-xl" />
+                        <div>
+                          <h4 className="text-lg font-black text-gray-900 dark:text-white uppercase tracking-tight">Cobertura Total</h4>
+                          <p className="text-[10px] text-gold-500 font-black uppercase tracking-widest opacity-70">Sin Fronteras en el Territorio Nacional</p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-2 mb-6">
+                        {[
+                          'Amazonas', 'Áncash', 'Apurímac', 'Arequipa', 'Ayacucho', 'Cajamarca',
+                          'Callao', 'Cusco', 'Huancavelica', 'Huánuco', 'Ica', 'Junín',
+                          'La Libertad', 'Lambayeque', 'Lima', 'Loreto', 'Madre de Dios', 'Moquegua',
+                          'Pasco', 'Piura', 'Puno', 'San Martín', 'Tacna', 'Tumbes', 'Ucayali'
+                        ].map((dept) => (
+                          <div key={dept} className="flex items-center gap-2 group/item">
+                            <div className="w-1 h-1 rounded-full bg-gold-500 group-hover/item:scale-150 transition-transform"></div>
+                            <span className="text-[11px] font-bold text-gray-600 dark:text-gray-400 group-hover/item:text-gold-500 transition-colors uppercase tracking-tighter">{dept}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="p-4 bg-white/50 dark:bg-black/40 rounded-xl border border-gold-500/5">
+                        <p className="text-[11px] font-medium text-gray-500 dark:text-gray-400 leading-relaxed italic">
+                          "Entregamos colchones, tarimas, cunas y almohadas con plazos garantizados y seguro de transporte integral en cada uno de los 24 departamentos."
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <form onSubmit={handleWaSubmit} className="space-y-8 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-1">Razón Social</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Nombre de la empresa"
+                      value={waData.reasonSocial}
+                      onChange={(e) => setWaData({ ...waData, reasonSocial: e.target.value })}
+                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-1">RUC / DNI</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Identificación fiscal"
+                      value={waData.dni}
+                      onChange={(e) => setWaData({ ...waData, dni: e.target.value })}
+                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-1">Representante de Ventas / Contacto</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Nombre y Apellidos"
+                    value={waData.name}
+                    onChange={(e) => setWaData({ ...waData, name: e.target.value })}
+                    className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-1">Sede / Dirección</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Dirección física"
+                      value={waData.address}
+                      onChange={(e) => setWaData({ ...waData, address: e.target.value })}
+                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-1">Ciudad</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Ciudad / Distrito"
+                      value={waData.city}
+                      onChange={(e) => setWaData({ ...waData, city: e.target.value })}
+                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#25D366] hover:bg-[#20ba61] text-white font-black py-6 rounded-2xl shadow-xl shadow-green-500/20 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-4 uppercase tracking-[0.3em] text-xs mt-6"
+                >
+                  <FaWhatsapp className="w-5 h-5" />
+                  AGENDAR CONSULTA CORPORATIVA
+                </button>
+
+                <p className="text-center text-[9px] text-gray-400 dark:text-gray-500 uppercase tracking-widest font-bold">
+                  Respuesta inmediata de nuestro equipo comercial Pro.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+
       <WholesaleFormDrawer
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}

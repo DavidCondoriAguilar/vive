@@ -10,7 +10,7 @@
  */
 export const getProductSchema = (product) => {
   const productUrl = `${import.meta.env.VITE_PRODUCTION_URL}/producto/${product.id}`;
-  
+
   return {
     '@context': 'https://schema.org/',
     '@type': 'Product',
@@ -54,7 +54,7 @@ export const getOrganizationSchema = () => {
     'name': import.meta.env.VITE_BRAND_NAME,
     'url': import.meta.env.VITE_PRODUCTION_URL,
     'logo': `${import.meta.env.VITE_PRODUCTION_URL}/logo.svg`,
-    'description': 'Fábrica peruana de colchones premium con hasta 10 años de garantía',
+    'description': 'Fábrica peruana de colchones premium. Colchones pocket, viscoelásticos y spring. Envío gratis en Lima.',
     'sameAs': [
       'https://www.facebook.com/suenodorado',
       'https://www.instagram.com/suenodorado',
@@ -95,14 +95,14 @@ export const getLocalBusinessSchema = () => {
       {
         '@type': 'OpeningHoursSpecification',
         'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        'opens': '09:00',
-        'closes': '18:00'
+        'opens': '08:00',
+        'closes': '17:00'
       },
       {
         '@type': 'OpeningHoursSpecification',
         'dayOfWeek': 'Saturday',
-        'opens': '09:00',
-        'closes': '14:00'
+        'opens': '08:00',
+        'closes': '17:00'
       }
     ]
   };

@@ -24,7 +24,7 @@ const MainLayout = ({ children }) => {
 
     const supportInfo = {
         'Garantía': {
-            title: 'Garantía y Recomendaciones de Uso',
+            title: 'Respaldo y Garantía de Fábrica',
             content: <WarrantyContent />,
             icon: FaShieldAlt
         },

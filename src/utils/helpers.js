@@ -4,7 +4,7 @@
 export const createSEOMetaTags = (pageData) => {
   const defaultMeta = {
     title: "Sueño Dorado - Fábrica de Colchones Premium en Lima | Envío Gratis",
-    description: "Fabrica peruana de colchones premium con hasta 10 años de garantía. Colchones pocket, viscoelásticos y spring. Envío gratis en Lima.",
+    description: "Fabrica peruana de colchones premium. Colchones pocket, viscoelásticos y spring. Envío gratis en Lima.",
     canonical: "https://suenodorado.pe/"
   };
 

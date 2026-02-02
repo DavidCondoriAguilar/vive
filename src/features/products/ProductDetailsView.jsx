@@ -83,14 +83,14 @@ const ProductDetailsView = () => {
             <Helmet>
                 {/* Basic SEO */}
                 <title>{product.name} - Colchón Premium Sueño Dorado | Precio por Consultar</title>
-                <meta name="description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y garantía de 10 años. Envío gratis en Lima.'}`} />
+                <meta name="description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y envío gratis en Lima.'}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="robots" content="index, follow, max-image-preview:large" />
                 <link rel="canonical" href={`https://suenodorado.pe/producto/${productId}`} />
 
                 {/* Open Graph */}
                 <meta property="og:title" content={`${product.name} - Colchón Premium Sueño Dorado`} />
-                <meta property="og:description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y garantía de 10 años. Envío gratis en Lima.'}`} />
+                <meta property="og:description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y envío gratis en Lima.'}`} />
                 <meta property="og:image" content={`https://suenodorado.pe${product.image}`} />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
@@ -103,7 +103,7 @@ const ProductDetailsView = () => {
                 {/* Twitter Cards */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={`${product.name} - Colchón Premium Sueño Dorado`} />
-                <meta name="twitter:description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y garantía de 10 años. Envío gratis en Lima.'}`} />
+                <meta name="twitter:description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y envío gratis en Lima.'}`} />
                 <meta name="twitter:image" content={`https://suenodorado.pe${product.image}`} />
                 <meta name="twitter:site" content="@suenodorado" />
 
@@ -144,8 +144,8 @@ const ProductDetailsView = () => {
                         "additionalProperty": [
                             {
                                 "@type": "PropertyValue",
-                                "name": "Garantía",
-                                "value": product.warranty
+                                "name": "Categoría",
+                                "value": product.category
                             },
                             {
                                 "@type": "PropertyValue",
@@ -335,6 +335,22 @@ const ProductDetailsView = () => {
                                     <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 font-light leading-relaxed max-w-lg">
                                         {product.description}
                                     </p>
+
+                                    {/* Professional Specs Trigger */}
+                                    <div className="pt-2">
+                                        <button
+                                            onClick={() => setShowSpecsModal(true)}
+                                            className="group flex items-center gap-3 text-gold-500 hover:text-gold-600 transition-all duration-300"
+                                        >
+                                            <div className="w-10 h-10 rounded-full border border-gold-500/30 flex items-center justify-center group-hover:bg-gold-500 group-hover:text-white transition-all">
+                                                <FaTools className="w-4 h-4" />
+                                            </div>
+                                            <div className="flex flex-col items-start">
+                                                <span className="text-[10px] font-black uppercase tracking-[0.2em]">Especificaciones</span>
+                                                <span className="text-[12px] font-bold border-b border-gold-500/20 group-hover:border-gold-500 transition-all">Ver Análisis Técnico</span>
+                                            </div>
+                                        </button>
+                                    </div>
                                 </div>
 
                                 <div className="space-y-4 py-8 px-8 bg-gray-50/50 dark:bg-zinc-900/50 rounded-[2.5rem] border border-gray-100 dark:border-white/5 relative overflow-hidden group">
@@ -364,7 +380,7 @@ const ProductDetailsView = () => {
                                 {/* Trust Indicators */}
                                 <div className="flex flex-wrap gap-3">
                                     {[
-                                        { icon: FaShieldAlt, text: "Garantía Real" },
+                                        { icon: FaClock, text: "Entrega Veloz" },
                                         { icon: FaTruck, text: "Envío Gratis" },
                                         { icon: MdVerifiedUser, text: "Calidad Premium" },
                                         { icon: FaFire, text: "Stock Limitado" }
@@ -441,7 +457,7 @@ const ProductDetailsView = () => {
                                                     "Sistema de resortes Bonnell AC",
                                                     "Diseño reversible (doble cara)",
                                                     "Soporte firme y uniforme",
-                                                    `Garantía del producto ${product.warranty || '2 años'}`
+                                                    "Diseño Nacional"
                                                 ]).map((feature, idx) => (
                                                     <div key={idx} className="flex items-start gap-3">
                                                         <FaCheckCircle className="w-4 h-4 text-black dark:text-white flex-shrink-0 mt-0.5" />
@@ -475,39 +491,6 @@ const ProductDetailsView = () => {
                                         </div>
                                     </div>
 
-                                    {/* Quality Certifications */}
-                                    <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl mb-8">
-                                        <h4 className="text-xs font-black text-gray-500 uppercase tracking-widest mb-4">Certificaciones de Calidad</h4>
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 bg-black dark:bg-white rounded-full flex items-center justify-center">
-                                                    <span className="text-white dark:text-black text-xs font-black">✓</span>
-                                                </div>
-                                                <div>
-                                                    <p className="text-xs font-black text-gray-900 dark:text-white">Proceso de Desinfección</p>
-                                                    <p className="text-[9px] text-gray-500">Sanización certificada</p>
-                                                </div>
-                                            </div>
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 bg-black dark:bg-white rounded-full flex items-center justify-center">
-                                                    <span className="text-white dark:text-black text-xs font-black">ID</span>
-                                                </div>
-                                                <div>
-                                                    <p className="text-xs font-black text-gray-900 dark:text-white">Chip de Identificación</p>
-                                                    <p className="text-[9px] text-gray-500">Trazabilidad garantizada</p>
-                                                </div>
-                                            </div>
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 bg-black dark:bg-white rounded-full flex items-center justify-center">
-                                                    <span className="text-white dark:text-black text-xs font-black">LAB</span>
-                                                </div>
-                                                <div>
-                                                    <p className="text-xs font-black text-gray-900 dark:text-white">Laboratorios Acreditados</p>
-                                                    <p className="text-[9px] text-gray-500">Certificación internacional</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 {/* Enhanced B2B Actions */}

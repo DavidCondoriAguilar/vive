@@ -29,9 +29,11 @@ export const CATEGORIES = [
         name: 'Dormitorio',
         description: 'Todo para complementar tu descanso.',
         subcategories: [
-            { name: 'Box + Cabecera', filter: 'Box-Cabecera', slug: 'box-cabecera' },
-            { name: 'Muebles', filter: 'Muebles-Independientes', slug: 'muebles' },
-            { name: 'Cunas', filter: 'Infantil', slug: 'cunas' }
+            { name: 'Box Universal', filter: 'Box-Universal', slug: 'box-universal' },
+            { name: 'Box Premium', filter: 'Box-Premium', slug: 'box-premium' },
+            { name: 'Cama Universal con brazos', filter: 'Cama-Universal-Brazos', slug: 'cama-universal-brazos' },
+            { name: 'Cama Premium con brazos', filter: 'Cama-Premium-Brazos', slug: 'cama-premium-brazos' },
+            { name: 'Muebles', filter: 'Muebles-Independientes', slug: 'muebles' }
         ]
     }
 ];

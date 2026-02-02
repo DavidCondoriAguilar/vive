@@ -103,12 +103,11 @@ const ManufacturingSection = () => {
             </div>
           </div>
 
-          {/* Guarantee Card - Minimal Grid */}
           <div className="md:col-span-6 lg:col-span-4 bg-gray-50 dark:bg-white/5 rounded-[2.5rem] p-8 border border-gray-100 dark:border-white/5 hover:border-gold-500/30 transition-all duration-500 group">
             <div className="w-14 h-14 rounded-2xl bg-white dark:bg-black shadow-sm flex items-center justify-center text-gold-500 mb-6 group-hover:scale-110 transition-transform">
               <FaCheckCircle className="w-7 h-7" />
             </div>
-            <h5 className="text-xl font-black text-gray-900 dark:text-white uppercase mb-3">Garantía Extendida</h5>
+            <h5 className="text-xl font-black text-gray-900 dark:text-white uppercase mb-3">Garantía de Fábrica</h5>
             <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
               Respaldo total y directo de nuestra planta en cada producto que fabricamos.
             </p>

@@ -18,6 +18,8 @@ import {
     MdOutlineSearch
 } from 'react-icons/md';
 
+import resorteNavImg from '@/assets/images/generated/resorte_nav.png';
+
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -51,48 +53,41 @@ const Navbar = () => {
                     ]
                 },
                 {
-                    title: 'Avance Marco de Acero',
+                    title: 'Colección Advance',
                     items: [
-                        { name: 'Goldencito anatómico (1 año)', path: '/producto/goldencito-ana' },
-                        { name: 'Classic (4 años)', path: '/producto/classic-ana' },
-                        { name: 'Pasiones One pillow (5años)', path: '/producto/pasiones-tricot' },
-                        { name: 'Pasiones pillow de lujo(5años)', path: '/producto/pasiones-orto-lujo' }
+                        { name: 'Classic', path: '/producto/classic-ana' },
+                        { name: 'Goldencito anatomico Mp', path: '/producto/goldencito-mp' },
+                        { name: 'Infinito Mp', path: '/producto/infinito-mp' }
                     ]
                 },
                 {
-                    title: 'Avance Marco poliuretano',
+                    title: 'Colección Advance Gold',
                     items: [
-                        { name: 'Goldencito anatómico Mp (2 años)', path: '/producto/goldencito-mp' },
-                        { name: 'Infinito Mp (4 años)', path: '/producto/infinito-mp' }
+                        { name: 'Pasiones One pillow Mp', path: '/producto/pasiones-mp' },
+                        { name: 'Pasiones Pillow Mp', path: '/producto/pasiones-pt-mp' },
+                        { name: 'Golden dream Mp', path: '/producto/golden-dream-mp' },
+                        { name: 'Siempre One pillow Mp', path: '/producto/siempre-one-pillow' },
+                        { name: 'Siempre pillow Mp', path: '/producto/siempre-pt' }
                     ]
                 },
                 {
-                    title: 'Avance Gold',
+                    title: 'Colección Advance Diamont',
                     items: [
-                        { name: 'Pasiones One pillow Mp (5 años)', path: '/producto/pasiones-mp' },
-                        { name: 'Pasiones Pillow Mp (5 años)', path: '/producto/pasiones-pt-mp' },
-                        { name: 'Golden dream Mp (6 años)', path: '/producto/golden-dream-mp' },
-                        { name: 'Siempre One pillow Mp (7 años)', path: '/producto/siempre-one-pillow' },
-                        { name: 'Siempre pillow Mp (7 años)', path: '/producto/siempre-pt' }
-                    ]
-                },
-                {
-                    title: 'Avance Diamont',
-                    items: [
-                        { name: 'Absolut Pillow Mp (10 años)', path: '/producto/absolut-marco' },
-                        { name: 'Ternura Pocket Mp (6 años)', path: '/producto/ternura-pocket' },
-                        { name: 'Matrimonial Pocket Mp (6 años)', path: '/producto/matrimonial-clasico' },
-                        { name: 'Reconciliación Pocket Visco Mp (10 años)', path: '/producto/reconciliacion-pocket' }
+                        { name: 'Absolut Pillow Mp', path: '/producto/absolut-marco' },
+                        { name: 'Ternura Pocket Mp', path: '/producto/ternura-pocket' },
+                        { name: 'Matrimonial Pocket Mp', path: '/producto/matrimonial-clasico' },
+                        { name: 'Reconciliación Pocket Visco Mp', path: '/producto/reconciliacion-pocket' }
                     ]
                 }
-            ]
+            ],
+            image: resorteNavImg
         },
         {
             name: 'Espuma',
             path: '/colchones-espuma',
             icon: <MdOutlineWeekend className="w-5 h-5" />,
             subLinks: [
-                { name: 'Económicas (Poliseda)', path: '/colchones-espuma?l=Poliseda' },
+                { name: 'Ecco Espuma', path: '/colchones-espuma?l=Poliseda' },
                 { name: 'Plus Resilense', path: '/colchones-espuma?l=Plus Resilense' },
                 { name: 'Splendido T/tricot', path: '/colchones-espuma?l=Splendido' },
                 { name: 'Topacio', path: '/colchones-espuma?l=Topacio' }
@@ -103,9 +98,11 @@ const Navbar = () => {
             path: '/categorias/dormitorio',
             icon: <MdOutlineHome className="w-5 h-5" />,
             subLinks: [
-                { name: 'Box + Cabecera', path: '/dormitorio/box-cabecera' },
-                { name: 'Muebles', path: '/dormitorio/muebles' },
-                { name: 'Cunas', path: '/dormitorio/cunas' }
+                { name: 'Box Universal', path: '/dormitorio/box-universal' },
+                { name: 'Box Premium', path: '/dormitorio/box-premium' },
+                { name: 'Cama Universal con brazos', path: '/dormitorio/cama-universal-brazos' },
+                { name: 'Cama Premium con brazos', path: '/dormitorio/cama-premium-brazos' },
+                { name: 'Muebles', path: '/dormitorio/muebles' }
             ]
         },
         {
@@ -136,14 +133,13 @@ const Navbar = () => {
             >
                 <div className="w-full px-1 xs:px-3 sm:px-5 md:px-8 lg:px-12 xl:px-18 relative">
                     {/* Mobile Layout - Professional & Responsive */}
-                    <div className="lg:hidden flex items-center justify-between min-h-[72px] w-full px-4">
+                    <div className="lg:hidden flex items-center justify-between min-h-[96px] w-full px-4">
                         {/* LOGO - Left Aligned for better usability */}
                         <div className="flex-shrink-0 transition-all duration-300">
                             <Logo
                                 size="medium"
                                 onClick={handleLogoClick}
                                 variant="dark"
-                                style={{ height: '90px', width: 'auto' }}
                             />
                         </div>
 
@@ -158,14 +154,13 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Layout */}
-                    <div className="hidden lg:flex items-center justify-between min-h-20 w-full">
+                    <div className="hidden lg:flex items-center justify-between min-h-32 w-full">
                         {/* LOGO - Desktop */}
                         <div className="flex-shrink-0">
                             <Logo
                                 size="medium"
                                 onClick={handleLogoClick}
                                 variant="dark"
-                                style={{ height: '115px', width: 'auto' }}
                             />
                         </div>
 

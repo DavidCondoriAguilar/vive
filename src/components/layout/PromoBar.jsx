@@ -23,8 +23,8 @@ const PromoBar = () => {
         },
         {
             icon: <LuAward className="w-3.5 h-3.5" />,
-            label: "10 AÑOS GARANTÍA",
-            sub: "Directo de Fábrica"
+            label: "GARANTÍA DE FÁBRICA",
+            sub: "Respaldo Real"
         },
         {
             icon: <LuHeadphones className="w-3.5 h-3.5" />,
@@ -34,7 +34,7 @@ const PromoBar = () => {
     ];
 
     const contact = {
-        hours: "9AM - 9PM",
+        hours: "8AM - 5PM",
         phone: "(01) 989 223 448"
     };
 

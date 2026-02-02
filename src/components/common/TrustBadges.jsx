@@ -44,15 +44,15 @@ const TrustBadges = ({ className = "", variant = "grid", onBadgeClick }) => {
     {
       icon: <FaCertificate className="w-5 h-5" />,
       title: "Garantía de Fábrica",
-      subtitle: "Hasta 10 años",
+      subtitle: "Respaldo Industrial",
       fullText: (
         <div className="space-y-4">
           <p className="font-bold text-gold-500 text-xs uppercase tracking-widest">Respaldo Industrial</p>
-          <p className="text-gray-600 dark:text-gray-400">Todos nuestros productos salen de planta con un certificado de garantía oficial. Cubrimos desde la estructura de resortes hasta la densidad de las espumas.</p>
+          <p className="text-gray-600 dark:text-gray-400">Todos nuestros productos salen de planta con un control de calidad riguroso. Utilizamos espumas de alta densidad y resortes de acero virgen.</p>
           <ul className="text-[11px] text-gray-500 space-y-1 bg-gray-50 dark:bg-white/5 p-4 rounded-xl">
-            <li>• <strong>10 Años:</strong> Colecciones Diamont & Gold.</li>
-            <li>• <strong>5 Años:</strong> Colecciones Avance & Espuma Premium.</li>
-            <li>• <strong>Garantía Real:</strong> Cambio de pieza o reparación técnica.</li>
+            <li>• <strong>Densidad Real:</strong> Mayor soporte y vida útil.</li>
+            <li>• <strong>Acero Certificado:</strong> Estructura indeformable.</li>
+            <li>• <strong>Producto Nacional:</strong> 100% fabricación peruana.</li>
           </ul>
         </div>
       ),

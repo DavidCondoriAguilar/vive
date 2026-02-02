@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useScrollToTop } from '@/hooks/useTheme';
-import { FaSearch, FaFilter, FaThLarge, FaList, FaWhatsapp, FaArrowRight, FaChevronDown } from 'react-icons/fa';
-import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
+import { FaWhatsapp } from 'react-icons/fa';
 import { useCart } from '@/contexts/CartContext';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
@@ -59,21 +58,21 @@ const CatalogView = () => {
       </Helmet>
 
       <MainLayout>
-        <div className="pt-32 pb-24 bg-white dark:bg-dream-dark-bg transition-colors duration-700">
-          <SectionLayout background="gray">
+        <div className="pt-32 pb-24 bg-white dark:bg-zinc-950 transition-colors duration-700">
+          <SectionLayout background="white">
             {/* Elite Header */}
-            <div className="max-w-4xl mb-20 px-4 md:px-0">
+            <div className="max-w-4xl mb-20 px-4 md:px-0 text-center mx-auto">
               <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade-in">Catálogo Oficial 2026</span>
-              <h1 className="text-5xl md:text-7xl font-display font-black text-gray-900 dark:text-white uppercase leading-[0.9] tracking-tighter mb-8 animate-slide-up">
-                Nuestros <br /><span className="text-gold-500">Productos</span>
+              <h1 className="text-5xl md:text-8xl font-display font-black text-gray-900 dark:text-white uppercase leading-[0.9] tracking-tighter mb-8 animate-slide-up">
+                Nuestros <br /><span className="text-gold-500 italic font-light">Colchones</span>
               </h1>
-              <p className="text-xl text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-2xl animate-fade-in delay-200">
-                Calidad directa de fábrica para tu descanso perfecto. Explora nuestra ingeniería de confort diseñada en Perú.
+              <p className="text-xl text-gray-400 dark:text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto animate-fade-in delay-200">
+                Calidad directa de fábrica con respaldo industrial. Diseñados para transformar cada noche en una experiencia de lujo.
               </p>
             </div>
 
             {/* Smart Filters Panel */}
-            <div className="bg-white dark:bg-dream-dark-surface rounded-[2.5rem] p-6 sm:p-8 md:p-12 mb-16 border border-gray-100 dark:border-dream-dark-border">
+            <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] p-6 sm:p-8 md:p-12 mb-16 border border-gray-100 dark:border-white/5">
               <UniversalProductFilters
                 selectedCategory={selectedCategory}
                 selectedSubcategory={selectedSubcategory}
@@ -118,78 +117,65 @@ const CatalogView = () => {
             </div>
 
             {/* Catalog Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 gap-y-6 sm:gap-y-8 lg:gap-y-10 px-4 sm:px-6 md:px-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-12 gap-y-24 px-4 sm:px-6 md:px-0">
               {sortedProducts.map((product, index) => (
                 <div key={product.id} className="group">
-                  {/* Product Card */}
-                  <div className="bg-white dark:bg-dream-dark-surface rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-[480px] sm:h-[520px] lg:h-[560px] flex flex-col">
+                  <div className="group relative flex flex-col h-full animate-fade-in-up" style={{ animationDelay: `${index * 50}ms` }}>
+                    {/* Visual Container - PURE WHITE TO MATCH PRODUCT BACKGROUND */}
+                    <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-white dark:bg-zinc-900 transition-all duration-700 group-hover:shadow-[0_80px_120px_rgba(0,0,0,0.08)] group-hover:-translate-y-4 border border-gray-50 dark:border-white/5">
 
-                    {/* Product Image */}
-                    <div className="relative aspect-[4/3] bg-white dark:bg-dream-dark-surface overflow-hidden flex-shrink-0">
-                      <Link to={`/producto/${product.id}`} className="block w-full h-full flex items-center justify-center p-3 sm:p-4">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="max-w-full max-h-full object-contain transition-opacity duration-300 cursor-pointer"
-                        />
-                      </Link>
-
-                      {/* Badge */}
-                      <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-                        <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[8px] sm:text-[9px] font-black uppercase tracking-widest rounded-full">
-                          {product.badge || 'Nuevo'}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Product Info */}
-                    <div className="p-4 sm:p-5 flex flex-col flex-1">
-                      <div className="flex-1 flex flex-col">
-                        <div className="mb-2 sm:mb-3">
-                          <span className="text-gold-500 text-[8px] sm:text-[9px] font-black uppercase tracking-widest block mb-1.5 sm:mb-2">
-                            {product.subcategory}
+                      {/* Status / Category Badge */}
+                      <div className="absolute top-6 left-6 z-20">
+                        <div className="bg-white/90 dark:bg-black/80 backdrop-blur-md border border-gray-100 dark:border-white/10 px-5 py-2 rounded-full shadow-sm">
+                          <span className="text-[9px] font-black uppercase tracking-[0.4em] text-gray-900 dark:text-white flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-gold-500 animate-bounce"></span>
+                            {product.category === 'luxury' ? 'Premium Suite' : 'Expert Series'}
                           </span>
-                          <Link to={`/producto/${product.id}`} className="block">
-                            <h3 className="text-sm sm:text-base font-black text-gray-900 dark:text-white mb-1.5 sm:mb-2 leading-snug hover:text-gold-500 transition-colors cursor-pointer line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem]">
-                              {product.name}
-                            </h3>
-                          </Link>
-                          <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed h-8 sm:h-10">
-                            {product.description}
-                          </p>
                         </div>
                       </div>
 
-                      <div className="flex flex-col gap-3 sm:gap-4 mt-2 sm:mt-3 flex-shrink-0">
-                        <PriceInquiryButton product={product} />
-                        <div className="flex gap-2">
-                          {/* Botón del carrito - ELEGANCE 2026 */}
-                          <button
-                            onClick={() => addToCart(product, 1)}
-                            className="flex-1 group relative overflow-hidden bg-black dark:bg-white text-white dark:text-black font-light text-xs tracking-[0.15em] uppercase py-3 sm:py-4 px-4 sm:px-6 rounded-none border-0 transition-all duration-700 hover:scale-[1.02] active:scale-[0.98]"
+                      {/* Main Product Image Link */}
+                      <Link to={`/producto/${product.id}`} className="absolute inset-0 flex items-center justify-center p-12">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full h-auto object-contain transition-transform duration-1000 group-hover:scale-110"
+                        />
+                      </Link>
+
+                      {/* Professional Hover Overlay */}
+                      <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-white dark:from-black via-white/40 dark:via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-6 group-hover:translate-y-0">
+                        <div className="flex gap-3">
+                          <Link
+                            to={`/producto/${product.id}`}
+                            className="flex-1 py-5 bg-gray-950 dark:bg-white text-white dark:text-black text-[10px] font-black uppercase tracking-[0.25em] hover:bg-gold-500 dark:hover:bg-gold-500 hover:text-white transition-all duration-300 text-center"
                           >
-                            <span className="relative z-10 flex items-center justify-center gap-3">
-                              <svg className="w-4 h-4 transition-transform duration-700 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                              </svg>
-                              <span>Agregar al Carrito</span>
-                            </span>
-                            {/* Subtle overlay effect */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-                          </button>
-                          
-                          {/* Botón de detalles - MINIMAL LUXURY */}
-                          <button
-                            onClick={() => window.location.href = `/producto/${product.id}`}
-                            className="group relative w-10 h-10 sm:w-12 sm:h-12 bg-transparent border border-black/20 dark:border-white/20 text-black dark:text-white transition-all duration-700 hover:border-black dark:hover:border-white hover:scale-[1.05] active:scale-[0.95]"
-                            title="Ver Detalles"
+                            Ver Detalle
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Info Block - Ultra Minimal & Professional */}
+                    <div className="mt-10 px-4 text-center">
+                      <span className="text-gold-500 text-[9px] font-black uppercase tracking-[0.5em] mb-3 block">
+                        {product.subcategory || 'Diseño de Autor'}
+                      </span>
+                      <h3 className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none mb-6 group-hover:text-gold-500 transition-all duration-500 group-hover:tracking-wider">
+                        {product.name}
+                      </h3>
+
+                      <div className="flex flex-col gap-4 items-center">
+                        <div className="w-8 h-[1px] bg-gray-100 dark:bg-white/10" />
+                        <div className="flex items-center justify-center">
+                          <a
+                            href={getWhatsAppLink(`Hola Sueño Dorado, deseo información exclusiva sobre el colchón ${product.name}.`)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-green-600 dark:text-green-400 font-black text-[10px] uppercase tracking-[0.2em] hover:text-green-800 transition-colors flex items-center gap-2 group/wa"
                           >
-                            <svg className="w-4 h-4 sm:w-5 sm:h-5 mx-auto transition-transform duration-700 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                            {/* Subtle glow effect */}
-                            <div className="absolute inset-0 rounded-inherit bg-gradient-to-r from-transparent via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                          </button>
+                            Cotizar <FaWhatsapp className="w-4 h-4 group-hover/wa:scale-125 transition-transform" />
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -202,7 +188,7 @@ const CatalogView = () => {
             {sortedProducts.length === 0 && (
               <div className="text-center py-20">
                 <div className="max-w-md mx-auto">
-                  <div className="w-20 h-20 bg-gray-100 dark:bg-dream-dark-surface rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-20 h-20 bg-gray-100 dark:bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-3xl">🔍</span>
                   </div>
                   <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4">
@@ -232,3 +218,4 @@ const CatalogView = () => {
 };
 
 export default CatalogView;
+

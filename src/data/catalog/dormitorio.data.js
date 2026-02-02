@@ -13,8 +13,7 @@ export const COMPLEMENTARIOS_PRODUCTS = [
         id: 'box-cabecera-combo',
         name: 'Box Tarima Universal + Cabecera con Brazo',
         category: 'dormitorio',
-        subcategory: 'Box-Cabecera',
-        warranty: '3 años',
+        subcategory: 'Cama-Premium-Brazos',
         price: 1299,
         image: boxMain,
         images: [boxMain, boxDiag, boxZoom],
@@ -54,7 +53,7 @@ export const COMPLEMENTARIOS_PRODUCTS = [
             'Brazos laterales para mayor comodidad',
             'Diseño moderno y elegante',
             'Instalación sencilla sin herramientas',
-            '3 años de garantía total'
+            'Calidad Premium'
         ]
     },
 
@@ -63,7 +62,6 @@ export const COMPLEMENTARIOS_PRODUCTS = [
         name: 'Mueble de Luxe Seccional + Cojines',
         category: 'dormitorio',
         subcategory: 'Muebles-Independientes',
-        warranty: '3 años',
         price: 1899,
         image: luxeSeccionalMain,
         images: [luxeSeccionalMain, luxeSeccionalFront],
@@ -85,7 +83,6 @@ export const COMPLEMENTARIOS_PRODUCTS = [
             'Profundidad asiento': '60 cm',
             'Material estructura': 'Madera seleccionada',
             'Tapizado': 'Tela Iker / Velvet premium',
-            'Garantía': '3 años en estructura',
             'Carga máxima': '350 kg'
         },
         beneficios: [

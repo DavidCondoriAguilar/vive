@@ -24,7 +24,7 @@ const ProductCard = ({
             className="w-full h-full object-contain transition-transform duration-[10s] group-hover:scale-110"
           />
         </Link>
-        
+
         {/* Badge */}
         {product.badge && (
           <div className="absolute top-4 left-4">
@@ -51,11 +51,6 @@ const ProductCard = ({
           </p>
         </div>
 
-        {/* Size */}
-        <div className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
-          Medida: {product.sizes.join(', ')}
-        </div>
-
         {/* Actions row - MISMO PATRÓN ELEGANCE 2026 */}
         <div className="flex flex-col gap-4 mt-auto">
           <PriceInquiryButton product={product} size={selectedSize === 'todos' ? null : selectedSize} />
@@ -75,7 +70,7 @@ const ProductCard = ({
               {/* Subtle overlay effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
             </button>
-            
+
             {/* Botón de detalles - MINIMAL LUXURY */}
             <button
               onClick={() => window.location.href = `/producto/${product.id}`}

@@ -5,10 +5,6 @@ import cunaTravesuraDiag from '@assets/product-detail/cuna-travesura/travesura-d
 import cunaResortMain from '@assets/product-detail/cuna-resort/cuna-resort-main.webp';
 import cunaResortTwo from '@assets/product-detail/cuna-resort/cuna-resort-two.webp';
 import cunaResortDiag from '@assets/product-detail/cuna-resort/cuna-resort-diag.webp';
-import goldencitoAnatomico from '@assets/product-detail/goldencito-anatomico/goldencito-anatomico.webp';
-import goldencitoAnatomicoTwo from '@assets/product-detail/goldencito-anatomico/goldencito-anatomico-two.webp';
-import goldencitoAnatomicoDiag from '@assets/product-detail/goldencito-anatomico/goldencito-anatomico-diagonal.webp';
-import detalleGoldencitoAnatomico from '@assets/product-detail/goldencito-anatomico/detalle-goldencito-anatomico.webp';
 import classicAnatomico from '@assets/product-detail/classic-anatomico/classic-anatomico.webp';
 import classicAnatomicoTwo from '@assets/product-detail/classic-anatomico/classic-anatomico-two.webp';
 import classicAnatomicoDiag from '@assets/product-detail/classic-anatomico/classic-anatomico-diagonal.webp';
@@ -20,9 +16,9 @@ import detallePasionesOnePillow from '@assets/product-detail/pasiones-one-pillow
 import pasionesPillowLujoMain from '@assets/product-detail/pasiones-pillow/pasiones-pillow-lujo-main.webp';
 import pasionesPillowLujoTwo from '@assets/product-detail/pasiones-pillow/pasiones-pillow-lujo-two.webp';
 import pasionesPillowLujoDiag from '@assets/product-detail/pasiones-pillow/pasiones-pillow-lujo-diagonal.webp';
-import goldencitoMp from '@assets/product-detail/goldencito-mp/goldencito-mp.webp';
-import goldencitoMpTwo from '@assets/product-detail/goldencito-mp/goldencito-mp-two.webp';
-import goldencitoMpDiag from '@assets/product-detail/goldencito-mp/goldencito-mp-diagonal.webp';
+import goldencitoMp from '@assets/product-detail/goldencito-mp/goldencito-anatomic-mp-main.webp';
+import goldencitoMpTwo from '@assets/product-detail/goldencito-mp/goldencito-anatomic-mp-two.webp';
+import goldencitoMpDiag from '@assets/product-detail/goldencito-mp/goldencito-anatomic-mp-diag.webp';
 import detallesGoldencitoMp from '@assets/product-detail/goldencito-mp/detalles-goldencito-mp.webp';
 import infinitoMp from '@assets/product-detail/infinito-mp/infinito-mp.webp';
 import infinitoMpTwo from '@assets/product-detail/infinito-mp/infinito-mp-two.webp';
@@ -82,7 +78,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Cuna Golden Dream Tela de Punto',
         category: 'resorte',
         subcategory: 'Infantil',
-        warranty: '1 año',
         price: 599,
         image: cunaResortMain,
         images: [
@@ -98,47 +93,10 @@ export const RESORTE_PRODUCTS = [
 
     // AVANCE MARCO DE ACERO
     {
-        id: 'goldencito-ana',
-        name: 'Goldencito Anatómico',
-        category: 'resorte',
-        subcategory: 'Marco de Acero',
-        warranty: '1 año',
-        price: 599,
-        image: goldencitoAnatomico,
-        images: [
-            goldencitoAnatomico,
-            goldencitoAnatomicoTwo,
-            goldencitoAnatomicoDiag
-        ],
-        technicalImage: detalleGoldencitoAnatomico,
-        technicalSpecs: {
-            colchon: [
-                'Tela Tricot 16 mm',
-                'Espuma de poliuretano D16 (1")',
-                'Sistema de resortes Bonnell AC',
-                'Diseño anatómico ergonómico',
-                'Soporte firme y duradero'
-            ],
-            componentes: [
-                'Tela Tricot 16 mm',
-                'Espuma de poliuretano D16 (1")',
-                'Lámina de Notex 80 gr',
-                'Panel de resortes Bonnell AC',
-                'Lámina de Notex 80 gr',
-                'Espuma de poliuretano D16 (1")'
-            ]
-        },
-        description: 'Anatómico con tecnología de resorte exclusiva que proporciona un descanso superior al básico. Características especiales de firmeza y durabilidad que sorprenden por su calidad. Descubre por qué es la elección inteligente.',
-        sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
-        features: ['Anatómico', 'Resorte Bonell'],
-        badge: '1 Año Garantía'
-    },
-    {
         id: 'classic-ana',
         name: 'Classic Anatómico',
         category: 'resorte',
         subcategory: 'Marco de Acero',
-        warranty: '4 años',
         price: 849,
         image: classicAnatomico,
         images: [
@@ -174,7 +132,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Pasiones One Pillow',
         category: 'resorte',
         subcategory: 'Marco de Acero',
-        warranty: '6 años',
         price: 1199,
         image: pasionesOnePillow,
         images: [
@@ -214,7 +171,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Pasiones Pillow de Lujo',
         category: 'resorte',
         subcategory: 'Marco de Acero',
-        warranty: '5 años',
         price: 1549,
         image: pasionesPillowLujoTwo,
         images: [
@@ -234,7 +190,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Goldencito MP',
         category: 'resorte',
         subcategory: 'Marco de Poliuretano',
-        warranty: '2 años',
         price: 699,
         image: goldencitoMp,
         images: [
@@ -270,7 +225,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Infinito Mp',
         category: 'resorte',
         subcategory: 'Marco de Poliuretano',
-        warranty: '4 años',
         price: 949,
         image: infinitoMp,
         images: [
@@ -308,7 +262,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Pasiones One Pillow Mp',
         category: 'resorte',
         subcategory: 'Gold',
-        warranty: '5 años',
         price: 1299,
         image: pasionesOnePillowMpMain,
         images: [
@@ -326,7 +279,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Pasiones Pillow Mp',
         category: 'resorte',
         subcategory: 'Gold',
-        warranty: '5 años',
         price: 1399,
         image: pasionesPillowLujoMain,
         images: [
@@ -344,7 +296,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Golden Dream Mp',
         category: 'resorte',
         subcategory: 'Gold',
-        warranty: '6 años',
         price: 1699,
         image: goldenDreamMp,
         images: [
@@ -381,7 +332,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Siempre One Pillow Mp',
         category: 'resorte',
         subcategory: 'Gold',
-        warranty: '7 años',
         price: 1449,
         image: siempreOneMain,
         images: [siempreOneMain, siempreOneDiag, siempreOneZoom],
@@ -395,7 +345,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Gold Siempre Pillow Mp',
         category: 'resorte',
         subcategory: 'Gold',
-        warranty: '10 años',
         price: 1549,
         image: siemprePillowTwo,
         images: [
@@ -415,7 +364,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Absolut Pillow Mp',
         category: 'resorte',
         subcategory: 'Diamont',
-        warranty: '10 años',
         price: 2199,
         image: absolutMain,
         images: [
@@ -433,7 +381,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Ternura Pocket Mp',
         category: 'resorte',
         subcategory: 'Diamont',
-        warranty: '6 años',
         price: 1999,
         image: ternuraPocketMain,
         images: [
@@ -451,7 +398,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Matrimonial Pocket Mp',
         category: 'resorte',
         subcategory: 'Diamont',
-        warranty: '6 años',
         price: 1349,
         image: matriMain,
         images: [matriMain, matriTwo, matriDiag],
@@ -473,7 +419,6 @@ export const RESORTE_PRODUCTS = [
         name: 'Reconciliación Pocket Visco Mp',
         category: 'resorte',
         subcategory: 'Diamont',
-        warranty: '10 años',
         price: 2499,
         image: reconciliacionMain,
         images: [

@@ -22,7 +22,6 @@ export const ESPUMA_PRODUCTS = [
         name: 'Colchón Poliseda',
         category: 'espuma',
         subcategory: 'Poliseda',
-        warranty: 'Stock',
         price: 349, // Precio base para 4"
         image: polisedaMain,
         images: [
@@ -81,7 +80,6 @@ export const ESPUMA_PRODUCTS = [
         name: 'Plus Resilense',
         category: 'espuma',
         subcategory: 'Plus Resilense',
-        warranty: '3 años',
         price: 699, // Precio base para 7"
         image: plusResilenseMain,
         images: [
@@ -119,8 +117,7 @@ export const ESPUMA_PRODUCTS = [
             'Altura 10"': '25 cm total',
             'Peso': '15-25 kg según tamaño',
             'Base': 'Compatible con cualquier somier',
-            'Certificación': 'Ortopédico certificado',
-            'Recuperación': '95% en 3 segundos'
+            'Certificación': 'Ortopédico certificado'
         },
         beneficios: [
             'Soporte ortopédico superior',
@@ -130,7 +127,7 @@ export const ESPUMA_PRODUCTS = [
             'Ideal para problemas de espalda',
             'No transmite movimiento',
             'Material hipoalergénico',
-            '3 años de garantía total'
+            'Calidad Nacional'
         ]
     },
     // SPLENDIDO
@@ -139,7 +136,6 @@ export const ESPUMA_PRODUCTS = [
         name: 'Splendido',
         category: 'espuma',
         subcategory: 'Splendido',
-        warranty: '4 años',
         price: 799, // Precio base para 7"
         image: splendidoMain,
         images: [
@@ -188,7 +184,7 @@ export const ESPUMA_PRODUCTS = [
             'Ideal para parejas',
             'No transmite movimiento',
             'Certificación internacional',
-            '4 años de garantía extendida'
+            'Calidad Premium'
         ]
     },
     // TOPACIO
@@ -197,7 +193,6 @@ export const ESPUMA_PRODUCTS = [
         name: 'Topacio',
         category: 'espuma',
         subcategory: 'Topacio',
-        warranty: '5 años',
         price: 849, // Precio base para 7"
         image: topacioMain,
         images: [

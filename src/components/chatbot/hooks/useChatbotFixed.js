@@ -30,7 +30,7 @@ export const useChatbotFixed = () => {
   const [sessionId, setSessionId] = useState(null);
   const [lastActivity, setLastActivity] = useState(Date.now());
   const [isBusinessUser, setIsBusinessUser] = useState(false);
-  
+
   // Refs for cleanup
   const typingTimeoutRef = useRef(null);
   const sessionTimeoutRef = useRef(null);
@@ -39,7 +39,7 @@ export const useChatbotFixed = () => {
   useEffect(() => {
     const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     setSessionId(newSessionId);
-    
+
     // Add welcome message
     const welcomeMessage = createMessage(
       '¡Hola! 👋 Soy tu asistente experto de Sueño Dorado. ¿En qué puedo ayudarte hoy?',
@@ -47,7 +47,7 @@ export const useChatbotFixed = () => {
       CHATBOT_CONFIG.quickActions.slice(0, 4)
     );
     setMessages([welcomeMessage]);
-    
+
     return () => {
       // Cleanup timeouts
       if (typingTimeoutRef.current) {
@@ -86,48 +86,46 @@ export const useChatbotFixed = () => {
     if (!message || typeof message !== 'string') {
       return { intent: 'help', isBusiness: false };
     }
-    
+
     // Normalize text: lowercase, remove accents, trim
     const normalized = message
       .toLowerCase()
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '') // Remove accents
       .trim();
-    
+
     // Detect business user
     const businessKeywords = [
-      'por mayor', 'mayorista', 'distribuidor', 'revendedor', 
+      'por mayor', 'mayorista', 'distribuidor', 'revendedor',
       'negocio', 'empresa', 'tienda', 'venta', 'compra',
       'stock', 'inventario', 'proveedor', 'fabrica', 'fabrica',
       'volumen', 'cantidad grande', 'lote'
     ];
-    
-    const isBusiness = businessKeywords.some(keyword => 
+
+    const isBusiness = businessKeywords.some(keyword =>
       normalized.includes(keyword)
     );
-    
+
     if (isBusiness && !isBusinessUser) {
       setIsBusinessUser(true);
     }
-    
+
     // Synonyms map for better intent detection
     const synonyms = {
-      shipping: ['envio', 'envios', 'delivery', 'entrega', 'traslado', 'transporte', 'costo envio', 'flete'],
-      warranty: ['garantia', 'garantias', 'devolucion', 'reclamo', 'defecto', 'problema', 'arreglo'],
       pricing: ['precio', 'precios', 'costo', 'cuanto', 'cuanta', 'valor', 'tarifa', 'caro', 'barato', 'descuento', 'oferta'],
       catalog: ['catalogo', 'productos', 'colchones', 'colchon', 'resortes', 'espuma', 'base', 'tarima', 'cuna', 'almohada', 'item', 'modelos'],
       contact: ['contactar', 'contacto', 'whatsapp', 'llamar', 'llamada', 'comunicarse', 'llamada telefonica', 'numero', 'telefono', 'email', 'escribir'],
       payment: ['pago', 'pagos', 'metodo pago', 'tarjeta', 'efectivo', 'transferencia', 'yape', 'plin', 'como pago'],
       delivery_time: ['cuando', 'tiempo', 'rapidez', 'demora', 'cuanto tarda', 'cuanto demora', 'plazo']
     };
-    
+
     // Detect intent by checking synonyms
     for (const [intent, keywords] of Object.entries(synonyms)) {
       if (keywords.some(keyword => normalized.includes(keyword))) {
         return { intent, isBusiness };
       }
     }
-    
+
     return { intent: 'help', isBusiness };
   };
 
@@ -141,14 +139,6 @@ export const useChatbotFixed = () => {
     const responses = {
       // Business user responses
       business: {
-        shipping: {
-          text: '🚚 Para clientes empresariales ofrecemos envíos especializados:\n\n• Lima Metropolitana: 24-48h (Gratis)\n• Provincias: 3-5 días\n• Entrega directa de fábrica\n\n¿Qué volumen de productos necesitas?',
-          options: ['📋 Ver catálogo mayorista', '💰 Cotizar envío', '📞 Hablar con ventas']
-        },
-        warranty: {
-          text: '🛡️ Garantía empresarial:\n\n• Colchones de Espuma: 5 años\n• Colchones de Resortes: 10 años\n• Tarimas y Cunas: 3 años\n• Soporte prioritario\n\n¿Qué tipo de productos necesitas?',
-          options: ['📋 Ver especificaciones', '📞 Contactar soporte', '📋 Ver catálogo']
-        },
         pricing: {
           text: '💰 Precios mayoristas disponibles:\n\n• Descuentos por volumen\n• Precios especiales B2B\n• Términos de pago flexibles\n\n¿Qué tipo de productos te interesan?',
           options: ['📋 Ver catálogo mayorista', '📞 Hablar con ventas', '💰 Solicitar cotización']
@@ -174,30 +164,14 @@ export const useChatbotFixed = () => {
           options: [
             { text: '📋 Ver catálogo mayorista', intent: 'catalog' },
             { text: '💰 Precios mayoristas', intent: 'pricing' },
-            { text: '🚚 Envíos', intent: 'shipping' },
-            { text: '🛡️ Garantía', intent: 'warranty' }
+            { text: '💰 Precios mayoristas', intent: 'pricing' },
+            { text: '🚚 Envíos', intent: 'shipping' }
           ]
         }
       },
-      
+
       // Regular customer responses
       regular: {
-        shipping: {
-          text: '🚚 Realizamos envíos a todo Perú:\n\n• Lima Metropolitana: 24-48h (Gratis)\n• Provincias: 3-5 días\n• Entrega directa de fábrica\n\n¿A dónde te gustaría recibir tu pedido?',
-          options: [
-            { text: '📋 Ver productos', intent: 'catalog' },
-            { text: '🚚 Calcular envío', intent: 'contact', action: 'whatsapp_direct' },
-            { text: '📞 Contactar', intent: 'contact' }
-          ]
-        },
-        warranty: {
-          text: '🛡️ CONDICIONES DE GARANTÍA - SUEÑO DORADO\n\n✅ COLCHONES DE ESPUMA:\n• 5 años de garantía total\n• Cobertura contra hundimientos > 3cm\n• Reparación o reemplazo sin costo\n\n✅ COLCHONES DE RESORTES:\n• 10 años de garantía total\n• Cobertura contra roturas y deformaciones\n• Mantenimiento incluido primeros 2 años\n\n✅ TARIMAS Y BASES:\n• 3 años de garantía estructural\n• Reparación por daños de fabricación\n\n⚠️ EXCLUSIONES:\n• Daños por mal uso o humedad\n• Roturas por peso excedido\n• Desgaste normal del uso\n\n📋 ¿Necesitas información específica de algún producto?',
-          options: [
-            { text: '📋 Ver catálogo completo', intent: 'catalog_full', action: 'whatsapp_catalog' },
-            { text: '📞 Contactar soporte', intent: 'contact', action: 'whatsapp_direct' },
-            { text: '💰 Ver precios', intent: 'pricing' }
-          ]
-        },
         pricing: {
           text: '💰 PRECIOS SUEÑO DORADO - CALIDAD PREMIUM\n\n🛏️ COLCHONES DE ESPUMA:\n• 1 Plaza: S/. 399\n• 1.5 Plazas: S/. 499\n• 2 Plazas: S/. 599\n• Queen: S/. 699\n• King: S/. 799\n\n🛏️ COLCHONES DE RESORTES:\n• 1 Plaza: S/. 449\n• 1.5 Plazas: S/. 549\n• 2 Plazas: S/. 649\n• Queen: S/. 749\n• King: S/. 849\n\n🚚 ENVÍO GRATIS en compras mayores a S/. 500 (Lima)\n\n📋 ¿Quieres ver catálogo completo o cotizar algo específico?',
           options: [
@@ -228,14 +202,14 @@ export const useChatbotFixed = () => {
           options: [
             { text: '📋 Ver productos', intent: 'catalog' },
             { text: '💰 Precios', intent: 'pricing' },
+            { text: '💰 Precios', intent: 'pricing' },
             { text: '🚚 Envíos', intent: 'shipping' },
-            { text: '🛡️ Garantía', intent: 'warranty' },
             { text: '📞 Contactar', intent: 'contact' }
           ]
         }
       }
     };
-    
+
     const userType = isBusiness ? 'business' : 'regular';
     return responses[userType][intent] || responses[userType].help;
   };
@@ -248,7 +222,7 @@ export const useChatbotFixed = () => {
    */
   const generateContextualMessage = (userRequest, isBusiness) => {
     const businessContext = isBusiness ? ' (Cliente Empresarial)' : '';
-    
+
     const contextualMessages = {
       '🛏️ Colchones de Espuma': `Hola, me gustaría conocer más sobre los Colchones de Espuma de Sueño Dorado${businessContext}. Necesito información sobre modelos, precios y disponibilidad.`,
       '🛏️ Colchones de Resortes': `Hola, me interesa información sobre los Colchones de Resortes de Sueño Dorado${businessContext}. Quisiera saber sobre especificaciones, precios y opciones disponibles.`,
@@ -262,7 +236,7 @@ export const useChatbotFixed = () => {
       '📋 Ver condiciones': `Hola, quisiera conocer las condiciones de garantía de Sueño Dorado${businessContext}.`,
       '📞 Llamar ahora': `Hola, solicito información sobre productos de Sueño Dorado${businessContext}.`
     };
-    
+
     return contextualMessages[userRequest] || `Hola, estoy interesado en productos de Sueño Dorado${businessContext}.`;
   };
 
@@ -274,7 +248,7 @@ export const useChatbotFixed = () => {
    */
   const generateEmailBody = (userRequest, isBusiness) => {
     const businessContext = isBusiness ? 'Soy un cliente empresarial interesado en:' : 'Soy un cliente particular interesado en:';
-    
+
     return `${businessContext}
 
 ${userRequest}
@@ -298,9 +272,8 @@ www.suenodorado.pe`;
   const generateHoursMessage = () => {
     return `🕐 HORARIOS DE ATENCIÓN - SUEÑO DORADO
 
-📅 Lunes a Viernes: 9:00 AM - 7:00 PM
-📅 Sábados: 9:00 AM - 6:00 PM  
-📅 Domingos: 10:00 AM - 5:00 PM
+📅 Lunes a Sábado: 8:00 AM - 5:00 PM
+📅 Domingos: Cerrado (o previa cita)
 
 🏢 TIENDA FÍSICA:
 • Dirección: [Tu dirección aquí]
@@ -407,9 +380,8 @@ www.suenodorado.pe`;
 • Pago contra entrega (Lima)
 
 🛡️ GARANTÍA:
-• Colchones de Espuma: 5 años
-• Colchones de Resortes: 10 años
-• Tarimas y Bases: 3 años
+• Tarimas y Bases: Madera seleccionada
+• Colchones: Calidad de Fábrica
 
 📞 CONTÁCTANOS:
 • WhatsApp: (01) 989 223 448
@@ -451,7 +423,7 @@ www.suenodorado.pe`;
 
     // Simulate bot thinking time
     const typingDuration = getTypingDuration(userMessage);
-    
+
     typingTimeoutRef.current = setTimeout(() => {
       // Detect intent and get response
       const { intent, isBusiness } = detectIntent(userMessage);
@@ -476,10 +448,10 @@ www.suenodorado.pe`;
   const handleQuickReply = useCallback((option) => {
     // Handle undefined option
     if (!option) return;
-    
+
     // Get option text safely
     const optionText = option.text || option || '';
-    
+
     // Add user message with selected option
     addMessage(optionText, MESSAGE_SENDERS.USER);
 
@@ -491,21 +463,21 @@ www.suenodorado.pe`;
         sendToWhatsApp(catalogMessage);
         return; // Don't continue processing
       }
-      
+
       if (option.action === 'whatsapp_category') {
         // Send specific category inquiry to WhatsApp
         const contextualMessage = generateContextualMessage(optionText, isBusinessUser);
         sendToWhatsApp(contextualMessage);
         return; // Don't continue processing
       }
-      
+
       if (option.action === 'whatsapp_direct') {
         // Send contextual message to WhatsApp
         const contextualMessage = generateContextualMessage(optionText, isBusinessUser);
         sendToWhatsApp(contextualMessage);
         return; // Don't continue processing
       }
-      
+
       if (option.action === 'email_direct') {
         // Open email client with context
         const emailSubject = isBusinessUser ? 'Consulta Empresarial - Sueño Dorado' : 'Consulta - Sueño Dorado';
@@ -513,13 +485,13 @@ www.suenodorado.pe`;
         window.location.href = `mailto:hola@suenodorado.pe?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
         return; // Don't continue processing
       }
-      
+
       if (option.action === 'call') {
         // Open phone dialer
         window.location.href = 'tel:+51989223448';
         return; // Don't continue processing
       }
-      
+
       if (option.action === 'hours') {
         // Show hours message
         const hoursMessage = generateHoursMessage();
@@ -530,7 +502,7 @@ www.suenodorado.pe`;
         );
         return; // Don't continue processing
       }
-      
+
       const actionUrl = getActionUrl({ action: option.action });
       if (actionUrl) {
         if (option.action === 'whatsapp' || option.action === 'human_agent') {
@@ -544,12 +516,12 @@ www.suenodorado.pe`;
     // Get response for the intent
     if (option.intent) {
       setIsTyping(true);
-      
+
       const typingDuration = getTypingDuration(optionText) * 0.6;
-      
+
       typingTimeoutRef.current = setTimeout(() => {
         const response = getResponse(option.intent, isBusinessUser);
-        
+
         addMessage(
           formatMessageText(response.text),
           MESSAGE_SENDERS.BOT,
@@ -562,12 +534,12 @@ www.suenodorado.pe`;
       // Handle text-based quick replies
       const { intent } = detectIntent(optionText);
       setIsTyping(true);
-      
+
       const typingDuration = getTypingDuration(optionText) * 0.6;
-      
+
       typingTimeoutRef.current = setTimeout(() => {
         const response = getResponse(intent, isBusinessUser);
-        
+
         addMessage(
           formatMessageText(response.text),
           MESSAGE_SENDERS.BOT,
@@ -598,7 +570,7 @@ www.suenodorado.pe`;
    */
   const handleResetChat = useCallback(() => {
     setIsBusinessUser(false);
-    
+
     const welcomeMessage = createMessage(
       '¡Hola! 👋 Soy tu asistente experto de Sueño Dorado. ¿En qué puedo ayudarte hoy?',
       MESSAGE_SENDERS.BOT,
@@ -613,11 +585,11 @@ www.suenodorado.pe`;
    * @param {string} message - Message to send
    */
   const sendToWhatsApp = useCallback((message) => {
-    const businessContext = isBusinessUser ? 
+    const businessContext = isBusinessUser ?
       ' (Cliente Empresarial)' : '(Cliente Particular)';
-    
+
     const enhancedMessage = `${message}${businessContext}\n\n---\n*Sueño Dorado - Fábrica de Colchones Premium*`;
-    
+
     const whatsappUrl = `https://wa.me/${CHATBOT_CONFIG.whatsappNumber}?text=${encodeURIComponent(enhancedMessage)}`;
     window.open(whatsappUrl, '_blank');
   }, [isBusinessUser]);
@@ -637,7 +609,7 @@ www.suenodorado.pe`;
     isOpen,
     isTyping,
     sessionId,
-    
+
     // Actions
     handleUserMessage,
     handleQuickReply,
@@ -645,10 +617,10 @@ www.suenodorado.pe`;
     closeChat,
     handleResetChat,
     sendToWhatsApp,
-    
+
     // Getters
     getUnreadCount,
-    
+
     // Utilities
     formatTimestamp,
     hasAction,

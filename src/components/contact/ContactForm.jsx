@@ -121,7 +121,7 @@ const ContactFormContent = () => {
               </div>
               <div>
                 <h3 className="text-lg font-black text-gray-900 dark:text-white uppercase mb-1">Central</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">9am - 7pm</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">8am - 5pm</p>
               </div>
             </div>
 
@@ -235,40 +235,6 @@ const ContactFormContent = () => {
         </div>
       </div>
 
-      {/* Map Section - Premium Industrial Look */}
-      <section className="mt-32 px-6">
-        <div className="container mx-auto">
-          <div className="max-w-4xl mb-12">
-            <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Presencia Física</span>
-            <h2 className="text-3xl md:text-5xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter">
-              Nuestra <span className="text-gold-500 italic font-light">Ubicación</span>
-            </h2>
-          </div>
-
-          <div className="relative group rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.1)] dark:shadow-[0_50px_100px_rgba(212,175,55,0.05)] border-8 border-white dark:border-[#0F0F0F]">
-            {/* Map Frame Overlay for Premium Feel */}
-            <div className="absolute inset-0 border-[1px] border-black/5 dark:border-white/5 rounded-[2.5rem] pointer-events-none z-20"></div>
-
-            <div className="w-full h-[500px] grayscale-[0.8] brightness-[0.9] hover:grayscale-0 hover:brightness-100 transition-all duration-1000 ease-in-out">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!4v1769789507190!6m8!1m7!1sfUklu7ekkvZVNoQZzgQmaw!2m2!1d-11.93724052785907!2d-77.09036501068753!3f311.7154264528349!4f-5.730185356667036!5f0.7820865974627469"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-
-            {/* Floating Label for the Map */}
-            <div className="absolute bottom-10 right-10 z-30 bg-black/80 backdrop-blur-md px-8 py-4 rounded-2xl border border-white/10 hidden md:flex items-center gap-4 group-hover:bg-gold-500 group-hover:border-gold-500 transition-colors duration-500">
-              <div className="w-2 h-2 rounded-full bg-gold-500 group-hover:bg-black animate-pulse"></div>
-              <span className="text-[10px] font-black text-white group-hover:text-black uppercase tracking-[0.2em]">Sede Industrial Sueño Dorado</span>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

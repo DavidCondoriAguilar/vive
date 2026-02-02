@@ -1,76 +1,144 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 const DesktopNav = ({ navLinks, currentPath }) => {
+    const [activeMenu, setActiveMenu] = useState(null);
+    const navRef = useRef(null);
+    const location = useLocation();
+    const timeoutRef = useRef(null);
+
+    // Close menu when location changes
+    useEffect(() => {
+        setActiveMenu(null);
+    }, [location]);
+
+    const handleMouseEnter = (name) => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        setActiveMenu(name);
+    };
+
+    const handleMouseLeave = () => {
+        timeoutRef.current = setTimeout(() => {
+            setActiveMenu(null);
+        }, 150); // Small grace period
+    };
+
     return (
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {navLinks.map((link) => (
-                <div key={link.name} className={`${link.megaMenu ? '' : 'relative'} group/nav-item h-24 md:h-28 flex items-center`}>
-                    <Link
-                        to={link.path}
-                        className={`px-3 py-2 text-[13px] font-brand font-bold uppercase tracking-[0.15em] transition-all duration-300 rounded-lg flex items-center gap-1.5 ${currentPath === link.path
-                            ? 'text-gold-600 bg-gold-50 dark:bg-gold-100 dark:text-gold-700'
-                            : 'text-gray-900 dark:text-gray-700 hover:text-gold-600 hover:bg-gray-50 dark:hover:bg-gray-100'
-                            }`}
+        <nav ref={navRef} className="hidden lg:flex items-center gap-1 xl:gap-4 h-full">
+            {/* Click-away Backdrop Layer */}
+            {activeMenu && (
+                <div
+                    className="fixed inset-0 z-40 bg-black/5 backdrop-blur-[2px]"
+                    onClick={() => setActiveMenu(null)}
+                />
+            )}
+
+            {navLinks.map((link) => {
+                const isOpen = activeMenu === link.name;
+                const hasDropdown = link.subLinks || link.megaMenu;
+
+                return (
+                    <div
+                        key={link.name}
+                        className={`${link.megaMenu ? '' : 'relative'} h-full flex items-center`}
+                        onMouseEnter={() => handleMouseEnter(link.name)}
+                        onMouseLeave={handleMouseLeave}
                     >
-                        <span>{link.name}</span>
-                        {(link.subLinks || link.megaMenu) && <MdKeyboardArrowDown className="w-4 h-4 transition-transform duration-300 group-hover/nav-item:rotate-180" />}
-
-                        {/* Badge */}
-                        {link.badge && (
-                            <span className="px-1.5 py-0.5 text-[7px] font-black rounded-full shadow-sm text-white bg-gold-500">
-                                {link.badge}
-                            </span>
-                        )}
-                    </Link>
-
-                    {/* Dropdown Menu */}
-                    {(link.subLinks || link.megaMenu) && (
-                        <div className="absolute top-full left-0 right-0 opacity-0 invisible translate-y-2 transition-all duration-300 ease-out group-hover/nav-item:opacity-100 group-hover/nav-item:visible group-hover/nav-item:translate-y-0 z-50">
-                            {link.megaMenu ? (
-                                <div className="bg-white dark:bg-zinc-900 shadow-[0_30px_100px_rgba(0,0,0,0.15)] dark:shadow-[0_30px_100px_rgba(0,0,0,0.5)] rounded-[2.5rem] border border-gray-100 dark:border-white/5 p-12 flex gap-12 w-full max-w-[1100px] mx-auto">
-                                    {link.megaMenu.map((group) => (
-                                        <div key={group.title} className="flex-1 min-w-[150px]">
-                                            <h4 className="text-[11px] font-black text-gold-500 uppercase tracking-[0.3em] mb-8 border-b-2 border-gold-500/10 pb-4">
-                                                {group.title}
-                                            </h4>
-                                            <div className="flex flex-col gap-4">
-                                                {group.items.map((item) => (
-                                                    <Link
-                                                        key={item.name}
-                                                        to={item.path}
-                                                        className="text-[13px] font-bold text-gray-600 hover:text-gold-600 dark:text-gray-300 dark:hover:text-gold-400 transition-all py-1.5 block leading-relaxed hover:translate-x-1 transform duration-300"
-                                                    >
-                                                        {item.name}
-                                                    </Link>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <div className="bg-white dark:bg-zinc-900 shadow-2xl rounded-2xl border border-gray-100 dark:border-white/5 py-4 min-w-[220px] overflow-hidden">
-                                    {link.subLinks.map((sub) => (
-                                        <Link
-                                            key={sub.name}
-                                            to={sub.path}
-                                            className="block px-6 py-2.5 text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 hover:text-gold-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
-                                        >
-                                            {sub.name}
-                                        </Link>
-                                    ))}
-                                </div>
+                        <Link
+                            to={link.path}
+                            className={`px-4 py-2 text-[12px] font-display font-black uppercase tracking-[0.2em] transition-all duration-300 rounded-xl flex items-center gap-2 z-50 ${currentPath === link.path || isOpen
+                                ? 'text-gold-500 bg-gray-50 dark:bg-white/5'
+                                : 'text-gray-900 dark:text-white hover:text-gold-500 hover:bg-gray-50 dark:hover:bg-white/5'
+                                }`}
+                            onClick={() => setActiveMenu(null)}
+                        >
+                            <span>{link.name}</span>
+                            {hasDropdown && (
+                                <MdKeyboardArrowDown
+                                    className={`w-4 h-4 transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`}
+                                />
                             )}
-                        </div>
-                    )}
 
-                    {/* Hover Underline */}
-                    {!link.badge && !link.subLinks && currentPath !== link.path && (
-                        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-gold-500 transform scale-x-0 transition-transform duration-300 origin-center group-hover/nav:scale-x-100"></div>
-                    )}
-                </div>
-            ))}
+                            {/* Luxury Badge */}
+                            {link.badge && (
+                                <span className="px-2 py-0.5 text-[7px] font-black rounded-full shadow-lg text-white bg-gold-500 animate-pulse">
+                                    {link.badge}
+                                </span>
+                            )}
+                        </Link>
+
+                        {/* Dropdown/MegaMenu Container - Refined Positioning */}
+                        {hasDropdown && (
+                            <div
+                                className={`absolute top-full left-1/2 -translate-x-1/2 pt-12 transition-all duration-700 cubic-bezier(0.23, 1, 0.32, 1) z-50 ${isOpen
+                                    ? 'opacity-100 visible translate-y-0 scale-100'
+                                    : 'opacity-0 invisible translate-y-8 scale-[0.98] blur-sm pointer-events-none'
+                                    }`}
+                                style={{
+                                    // Seamless hover bridge
+                                    paddingTop: '40px',
+                                    marginTop: '-20px'
+                                }}
+                            >
+                                {link.megaMenu ? (
+                                    <div className={`shadow-[0_50px_120px_rgba(0,0,0,0.4)] dark:shadow-[0_50px_120px_rgba(0,0,0,0.6)] rounded-[4rem] border border-white/20 dark:border-white/5 p-20 flex gap-12 w-screen max-w-[1350px] overflow-hidden relative ${link.image ? 'bg-transparent' : 'bg-white dark:bg-black'}`}>
+                                        {/* Elite Visual Accents */}
+                                        <div className="absolute inset-0 bg-gradient-to-b from-gold-500/10 to-transparent pointer-events-none opacity-30"></div>
+
+                                        {link.image && (
+                                            <div className="absolute inset-0 z-0 pointer-events-none">
+                                                <img
+                                                    src={link.image}
+                                                    alt={link.name}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                                <div className="absolute inset-0 bg-black/50 dark:bg-black/80"></div>
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30"></div>
+                                            </div>
+                                        )}
+
+                                        <div className="flex-1 flex gap-16 relative z-10 justify-center">
+                                            {link.megaMenu.map((group) => (
+                                                <div key={group.title} className="flex-1 min-w-[220px] px-6">
+                                                    <h4 className="text-[12px] font-black text-gold-500 uppercase tracking-[0.5em] mb-10 border-b-2 border-gold-500/20 pb-5">
+                                                        {group.title}
+                                                    </h4>
+                                                    <div className="flex flex-col gap-4">
+                                                        {group.items.map((item) => (
+                                                            <Link
+                                                                key={item.name}
+                                                                to={item.path}
+                                                                className="text-[15px] font-bold text-white hover:text-gold-500 transition-all py-1.5 block leading-tight hover:translate-x-3 transform duration-300"
+                                                                onClick={() => setActiveMenu(null)}
+                                                            >
+                                                                {item.name}
+                                                            </Link>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="bg-white dark:bg-zinc-950 shadow-2xl rounded-3xl border border-gray-100 dark:border-white/10 py-6 min-w-[260px] overflow-hidden">
+                                        {link.subLinks.map((sub) => (
+                                            <Link
+                                                key={sub.name}
+                                                to={sub.path}
+                                                className="block px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400 hover:text-gold-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
+                                                onClick={() => setActiveMenu(null)}
+                                            >
+                                                {sub.name}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                );
+            })}
         </nav>
     );
 };
