@@ -72,7 +72,7 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
       case 'Espuma':
         return 'Líneas: Poliseda • Plus Resilense • Splendido • Topacio';
       case 'Resorte':
-        return 'Avance: Marco de Acero • Marco de Poliuretano • Gold • Diamont • Infantil';
+        return 'Avance • Marco de Poliuretano • Gold • Diamont • Infantil';
       case 'Dormitorio':
         return 'Incluye: Cunas • Bases • Cabeceras';
       default:

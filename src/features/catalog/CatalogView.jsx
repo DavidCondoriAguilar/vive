@@ -58,7 +58,7 @@ const CatalogView = () => {
       </Helmet>
 
       <MainLayout>
-        <div className="pt-32 pb-24 bg-white dark:bg-zinc-950 transition-colors duration-700">
+        <div className="pt-32 pb-24 bg-white dark:bg-black transition-colors duration-700">
           <SectionLayout background="white">
             {/* Elite Header */}
             <div className="max-w-4xl mb-20 px-4 md:px-0 text-center mx-auto">
@@ -72,7 +72,7 @@ const CatalogView = () => {
             </div>
 
             {/* Smart Filters Panel */}
-            <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] p-6 sm:p-8 md:p-12 mb-16 border border-gray-100 dark:border-white/5">
+            <div className="bg-white dark:bg-zinc-950 rounded-[2.5rem] p-6 sm:p-8 md:p-12 mb-16 border border-gray-100 dark:border-white/5">
               <UniversalProductFilters
                 selectedCategory={selectedCategory}
                 selectedSubcategory={selectedSubcategory}

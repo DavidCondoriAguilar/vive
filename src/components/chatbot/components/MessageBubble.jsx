@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { FaUser, FaRobot } from 'react-icons/fa';
+import { sanitizeHTML } from '@/utils/security';
 
 /**
  * MessageBubble component props
@@ -24,16 +25,16 @@ const MessageBubble = ({ message, onQuickReply }) => {
 
   const bubbleClasses = `
     max-w-[70%] px-4 py-3 rounded-2xl shadow-sm
-    ${isUser 
-      ? 'bg-gold-500 text-white ml-auto' 
+    ${isUser
+      ? 'bg-gold-500 text-white ml-auto'
       : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white mr-auto'
     }
   `;
 
   const iconClasses = `
     w-6 h-6 flex-shrink-0
-    ${isUser 
-      ? 'text-gold-500' 
+    ${isUser
+      ? 'text-gold-500'
       : 'text-gray-400'
     }
   `;
@@ -48,9 +49,9 @@ const MessageBubble = ({ message, onQuickReply }) => {
       {/* Message Bubble */}
       <div className={bubbleClasses}>
         {/* Message Text */}
-        <div 
+        <div
           className="text-sm leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: message.text }}
+          dangerouslySetInnerHTML={{ __html: sanitizeHTML(message.text) }}
         />
 
         {/* Quick Reply Options */}

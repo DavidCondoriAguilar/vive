@@ -9,7 +9,7 @@ import ProductCarousel from '@/components/ui/ProductCarousel';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import ProvincesSection from '@/components/home/ProvincesSection';
 import InfiniteMarquee from '@/components/ui/InfiniteMarquee';
-import { ENHANCED_CATALOG } from '@/utils/constants';
+import { ENHANCED_CATALOG, FEATURED_PRODUCTS } from '@/utils/constants';
 
 const HomeView = () => {
   useScrollToTop();
@@ -34,7 +34,7 @@ const HomeView = () => {
         {/* 3. PRODUCT CAROUSEL - Destacados visuales */}
         <SectionLayout background="gray">
           <ProductCarousel
-            products={ENHANCED_CATALOG}
+            products={FEATURED_PRODUCTS}
             title="Nuestros Productos Destacados"
           />
         </SectionLayout>

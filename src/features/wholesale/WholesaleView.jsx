@@ -41,6 +41,7 @@ const WholesaleView = () => {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setIsVisible(true);
   }, []);
 
@@ -88,7 +89,7 @@ const WholesaleView = () => {
       `- Ciudad/Provincia: ${waData.city}\n\n` +
       `Quedo a la espera de su asesoría experta para concretar mi pedido.`;
 
-    window.open(getWhatsAppLink(message), '_blank');
+    window.open(getWhatsAppLink(message), '_blank', 'noopener,noreferrer');
     setSelectedMarket(null);
     setWaData({ reasonSocial: '', name: '', address: '', city: '', dni: '' });
   };
@@ -174,6 +175,7 @@ const WholesaleView = () => {
                   <a
                     href={getWhatsAppLink(b2bMessage)}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-4 px-10 py-6 border border-gray-200 dark:border-white/10 hover:border-gold-500 transition-colors text-xs font-black uppercase tracking-[0.2em] text-gray-900 dark:text-white"
                   >
                     Directo Planta
@@ -474,6 +476,7 @@ const WholesaleView = () => {
             <a
               href={getWhatsAppLink(b2bMessage)}
               target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-72 bg-transparent hover:bg-white text-white hover:text-black border-2 border-white/20 hover:border-white font-black px-12 py-5 rounded-full transition-all uppercase tracking-widest text-sm flex items-center justify-center gap-3"
             >
               <FaWhatsapp className="w-5 h-5" />

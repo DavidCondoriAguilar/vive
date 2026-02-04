@@ -1,24 +1,12 @@
-import { useState, useEffect } from 'react';
-import { getThemeFromStorage, applyTheme } from '@/utils/helpers';
+import { useContext, useEffect } from 'react';
+import { useThemeContext } from '@/contexts/ThemeContext';
 
 /**
  * Hook personalizado para manejar el tema de la aplicación
  * @returns {Object} - { theme: string, toggleTheme: function }
  */
 export const useTheme = () => {
-  const [theme, setTheme] = useState(() => getThemeFromStorage());
-
-  useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-  };
-
-  return { theme, toggleTheme };
+  return useThemeContext();
 };
 
 /**

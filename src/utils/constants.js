@@ -28,6 +28,6 @@ export const getWhatsAppLink = (message = '') => {
  * Generate email link
  */
 export const getEmailLink = (subject = '', body = '') => {
-    const email = import.meta.env.VITE_BRAND_EMAIL || 'info@suenodorado.pe';
+    const email = import.meta.env.VITE_BRAND_EMAIL || 'ventasisd@grupoisd.com';
     return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 };

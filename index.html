@@ -10,7 +10,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Security Headers -->
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy"
+    content="upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.facebook.com https://images.unsplash.com https://suenodorado.pe; connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net https://formsubmit.co;" />
   <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
 
   <!-- SEO Meta Tags -->
@@ -135,12 +136,12 @@
   <!-- CSS is handled by Vite automatically -->
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_MEASUREMENT_ID%"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'GA_MEASUREMENT_ID');
+    gtag('config', '%VITE_GA_MEASUREMENT_ID%');
   </script>
 
   <!-- Facebook Pixel Code -->
@@ -156,7 +157,7 @@
       s.parentNode.insertBefore(t, s)
     }(window, document, 'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('init', '%VITE_FB_PIXEL_ID%');
     fbq('track', 'PageView');
   </script>
 </head>
@@ -167,7 +168,7 @@
 
   <!-- Facebook Pixel Noscript -->
   <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
+      src="https://www.facebook.com/tr?id=%VITE_FB_PIXEL_ID%&ev=PageView&noscript=1" /></noscript>
 </body>
 
 </html>

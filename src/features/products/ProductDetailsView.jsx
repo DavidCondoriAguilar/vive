@@ -12,6 +12,7 @@ import {
     FaFire,
     FaShare,
     FaChevronRight,
+    FaChevronLeft,
     FaMinus,
     FaPlus,
     FaWhatsapp,
@@ -77,6 +78,21 @@ const ProductDetailsView = () => {
     if (!product) return null;
 
     const sizes = product.sizes || ['1.5 Plazas', '2 Plazas', 'Queen', 'King'];
+
+    // Generate descriptive alt text for accessibility
+    const getAltText = (imageName, productName) => {
+        if (imageName.includes('main') || imageName.includes('-main')) {
+            return `${productName} - Vista principal del colchón, mostrando su diseño y acabado premium`;
+        } else if (imageName.includes('diag') || imageName.includes('diagonal')) {
+            return `${productName} - Vista diagonal del colchón, mostrando su grosor y estructura`;
+        } else if (imageName.includes('two') || imageName.includes('-two')) {
+            return `${productName} - Vista secundaria del colchón, mostrando detalles adicionales`;
+        } else if (imageName.includes('detalle') || imageName.includes('technical')) {
+            return `${productName} - Especificaciones técnicas y estructura interna del colchón`;
+        } else {
+            return `${productName} - Imagen del colchón premium Sueño Dorado`;
+        }
+    };
 
     return (
         <>
@@ -156,19 +172,24 @@ const ProductDetailsView = () => {
                     })}
                 </script>
             </Helmet>
+
+
+
             <MainLayout>
                 {/* Luxury Hero Section */}
                 <div className="min-h-screen bg-white dark:bg-black">
                     {/* Minimalist Navigation Breadcrumb */}
                     <div className="border-b border-gray-100 dark:border-gray-900">
                         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
-                            <nav className="flex items-center gap-1 sm:gap-2 text-xs font-light tracking-widest text-gray-500 overflow-x-auto">
-                                <Link to="/" className="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Inicio</Link>
-                                <FaChevronRight className="w-2 h-2 flex-shrink-0" />
-                                <Link to="/catalogo" className="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Catálogo</Link>
-                                <FaChevronRight className="w-2 h-2 flex-shrink-0" />
-                                <span className="text-black dark:text-white font-medium truncate">{product.name}</span>
-                            </nav>
+                            <div className="flex items-center justify-between">
+                                <nav className="flex items-center gap-1 sm:gap-2 text-xs font-light tracking-widest text-gray-500 overflow-x-auto">
+                                    <Link to="/" className="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Inicio</Link>
+                                    <FaChevronRight className="w-2 h-2 flex-shrink-0" />
+                                    <Link to="/catalogo" className="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Catálogo</Link>
+                                    <FaChevronRight className="w-2 h-2 flex-shrink-0" />
+                                    <span className="text-black dark:text-white font-medium truncate">{product.name}</span>
+                                </nav>
+                            </div>
                         </div>
                     </div>
 
@@ -189,6 +210,16 @@ const ProductDetailsView = () => {
 
                     {/* Luxury Product Grid */}
                     <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+                        {/* Botón Volver - Ahora en posición estática que desaparece al bajar */}
+                        <div className="mb-8 flex justify-start">
+                            <button
+                                onClick={() => window.history.back()}
+                                className="group flex items-center gap-3 px-5 py-2.5 bg-white dark:bg-zinc-900/50 hover:bg-black dark:hover:bg-white text-gray-700 dark:text-gray-300 hover:text-white dark:hover:text-black rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-xl hover:-translate-y-0.5"
+                            >
+                                <FaChevronLeft className="w-3 h-3 transition-transform group-hover:-translate-x-1" />
+                                <span>Volver al Catálogo</span>
+                            </button>
+                        </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-24">
 
                             {/* LEFT: Luxury Image Gallery */}
@@ -204,7 +235,7 @@ const ProductDetailsView = () => {
                                     >
                                         <LazyImage
                                             src={productImages[activeImageIndex]}
-                                            alt={product.name}
+                                            alt={getAltText(productImages[activeImageIndex], product.name)}
                                             priority={true}
                                             className="max-w-full max-h-full object-contain transition-opacity duration-300"
                                         />
@@ -276,7 +307,7 @@ const ProductDetailsView = () => {
                                         >
                                             <LazyImage
                                                 src={image}
-                                                alt={`${product.name} - Imagen ${index + 1}`}
+                                                alt={getAltText(image, product.name)}
                                                 className="w-full h-full object-contain bg-gray-50 dark:bg-dream-dark-surface transition-opacity duration-300"
                                             />
                                         </button>
@@ -290,7 +321,7 @@ const ProductDetailsView = () => {
                                         <div className="relative bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden">
                                             <LazyImage
                                                 src={product.technicalImage}
-                                                alt={`Detalles técnicos de ${product.name}`}
+                                                alt={getAltText(product.technicalImage, product.name)}
                                                 className="w-full h-auto object-contain"
                                             />
 
@@ -436,61 +467,59 @@ const ProductDetailsView = () => {
 
                                 {/* CTA Buttons - REMOVED (duplicated below) */}
 
-                                {/* Enhanced Technical Features Section */}
+                                {/* Enhanced Technical Features Section - UNIFICADO */}
                                 <div className="border-t border-gray-100 dark:border-gray-900 pt-8">
                                     <h3 className="text-sm font-black text-black dark:text-white uppercase tracking-widest mb-6">Beneficios y características</h3>
 
-                                    {/* Product Features Grid */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                                        {/* Product Features */}
+                                    {/* Unified Technical Specs - Juntos y optimizados */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        {/* COLCHÓN */}
                                         <div className="space-y-4">
                                             <h4 className="text-xs font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
                                                 <span className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-xs font-bold">
-                                                    {product.category === 'dormitorio' ? 'D' : product.category === 'espuma' ? 'E' : 'R'}
+                                                    R
                                                 </span>
-                                                {product.category === 'dormitorio' ? 'DORMITORIO' : product.category === 'espuma' ? 'ESPUMA' : 'COLCHÓN'}
+                                                COLCHÓN
                                             </h4>
-                                            <div className="space-y-3">
-                                                {(product.componentes || [
-                                                    "Tela Tricot 16 mm",
-                                                    "Espuma de poliuretano D16 (1\")",
-                                                    "Sistema de resortes Bonnell AC",
-                                                    "Diseño reversible (doble cara)",
-                                                    "Soporte firme y uniforme",
-                                                    "Diseño Nacional"
-                                                ]).map((feature, idx) => (
-                                                    <div key={idx} className="flex items-start gap-3">
-                                                        <FaCheckCircle className="w-4 h-4 text-black dark:text-white flex-shrink-0 mt-0.5" />
-                                                        <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">{feature}</span>
+                                            <div className="space-y-2">
+                                                {(product.technicalSpecs?.colchon || product.features || [
+                                                    "Tela Premium de alta calidad",
+                                                    "Acolchado ergonómico",
+                                                    "Diseño anatómico",
+                                                    "Equilibrio firmeza-confort",
+                                                    "Tratamiento antiácaros"
+                                                ]).map((spec, idx) => (
+                                                    <div key={idx} className="flex items-start gap-2">
+                                                        <span className="text-black text-lg mt-0.5 leading-none">•</span>
+                                                        <span className="text-sm text-gray-700 dark:text-gray-300">{spec}</span>
                                                     </div>
                                                 ))}
                                             </div>
                                         </div>
 
-                                        {/* Additional Components */}
+                                        {/* COMPONENTES */}
                                         <div className="space-y-4">
                                             <h4 className="text-xs font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
                                                 <span className="w-8 h-8 bg-gray-200 text-black rounded-full flex items-center justify-center text-xs font-bold">+</span>
                                                 COMPONENTES
                                             </h4>
-                                            <div className="space-y-3">
-                                                {(product.especificaciones ? Object.entries(product.especificaciones).map(([key, value]) => `${key}: ${value}`) : [
-                                                    "Tela Tricot 16 mm",
-                                                    "Espuma de poliuretano D16 (1\")",
-                                                    "Lámina de Notex 100 gr",
-                                                    "Panel de resortes Bonnell AC",
-                                                    "Lámina de Notex 100 gr",
-                                                    "Espuma de poliuretano D16 (1\")"
+                                            <div className="space-y-2">
+                                                {(product.technicalSpecs?.componentes || product.componentes || [
+                                                    "Tela Premium acolchada",
+                                                    "Espuma de poliuretano",
+                                                    "Lámina de Notex",
+                                                    "Núcleo de alta resiliencia",
+                                                    "Lámina de Notex",
+                                                    "Espuma protectora"
                                                 ]).map((component, idx) => (
-                                                    <div key={idx} className="flex items-start gap-3">
-                                                        <FaCheckCircle className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
-                                                        <span className="text-sm text-gray-600 dark:text-gray-400 font-medium">{component}</span>
+                                                    <div key={idx} className="flex items-start gap-2">
+                                                        <span className="text-black text-lg mt-0.5 leading-none">•</span>
+                                                        <span className="text-sm text-gray-700 dark:text-gray-300">{component}</span>
                                                     </div>
                                                 ))}
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
 
                                 {/* Enhanced B2B Actions */}
@@ -522,6 +551,7 @@ const ProductDetailsView = () => {
                                         <a
                                             href={getWhatsAppLink(`Hola Sueño Dorado, estoy interesado(a) en recibir información sobre ${product.name}.`)}
                                             target="_blank"
+                                            rel="noopener noreferrer"
                                             className="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-black py-5 rounded-full transition-all shadow-xl hover:shadow-2xl uppercase tracking-widest text-xs flex items-center justify-center gap-3"
                                         >
                                             <FaWhatsapp className="w-5 h-5" />
@@ -532,6 +562,7 @@ const ProductDetailsView = () => {
                                         <a
                                             href={getWhatsAppLink(`Hola, soy un cliente mayorista interesado en el producto: *${product.name}*\nTalla: ${selectedSize || 'Por definir'}\nCantidad estimada: ${quantity} unidades\n¿Podrían enviarme una cotización corporativa especial?`)}
                                             target="_blank"
+                                            rel="noopener noreferrer"
                                             className="w-full bg-transparent border-2 border-gray-200 dark:border-white/10 hover:border-gold-500 text-gray-900 dark:text-white font-black py-5 rounded-full transition-all hover:text-gold-500 uppercase tracking-widest text-[10px] flex items-center justify-center gap-3"
                                         >
                                             <FaBuilding className="w-4 h-4" />

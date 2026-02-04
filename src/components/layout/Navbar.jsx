@@ -20,6 +20,8 @@ import {
 
 import resorteNavImg from '@/assets/images/generated/resorte_nav.png';
 
+import { ROUTES, getProductPath } from '@/router/routes';
+
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,48 +37,48 @@ const Navbar = () => {
     }, []);
 
     const handleLogoClick = () => {
-        navigate('/');
+        navigate(ROUTES.HOME);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const navLinks = [
         {
             name: 'Resorte',
-            path: '/colchones-resorte',
+            path: ROUTES.RESORTE,
             icon: <MdOutlineBed className="w-5 h-5" />,
             megaMenu: [
                 {
                     title: 'Colección Infantil',
                     items: [
-                        { name: 'Cuna travesuras tela tricot', path: '/producto/cuna-travesuras' },
-                        { name: 'Cuna Golden dream tela de punto', path: '/producto/cuna-golden' }
+                        { name: 'Cuna travesuras tela tricot', path: getProductPath('cuna-travesuras') },
+                        { name: 'Cuna Golden dream tela de punto', path: getProductPath('cuna-golden') }
                     ]
                 },
                 {
                     title: 'Colección Advance',
                     items: [
-                        { name: 'Classic', path: '/producto/classic-ana' },
-                        { name: 'Goldencito anatomico Mp', path: '/producto/goldencito-mp' },
-                        { name: 'Infinito Mp', path: '/producto/infinito-mp' }
+                        { name: 'Classic', path: getProductPath('classic-ana') },
+                        { name: 'Goldencito anatomico Mp', path: getProductPath('goldencito-mp') },
+                        { name: 'Infinito Mp', path: getProductPath('infinito-mp') }
                     ]
                 },
                 {
                     title: 'Colección Advance Gold',
                     items: [
-                        { name: 'Pasiones One pillow Mp', path: '/producto/pasiones-mp' },
-                        { name: 'Pasiones Pillow Mp', path: '/producto/pasiones-pt-mp' },
-                        { name: 'Golden dream Mp', path: '/producto/golden-dream-mp' },
-                        { name: 'Siempre One pillow Mp', path: '/producto/siempre-one-pillow' },
-                        { name: 'Siempre pillow Mp', path: '/producto/siempre-pt' }
+                        { name: 'Pasiones One pillow Mp', path: getProductPath('pasiones-mp') },
+                        { name: 'Pasiones Pillow Mp', path: getProductPath('pasiones-pt-mp') },
+                        { name: 'Golden dream Mp', path: getProductPath('golden-dream-mp') },
+                        { name: 'Siempre One pillow Mp', path: getProductPath('siempre-one-pillow') },
+                        { name: 'Siempre pillow Mp', path: getProductPath('siempre-pt') }
                     ]
                 },
                 {
                     title: 'Colección Advance Diamont',
                     items: [
-                        { name: 'Absolut Pillow Mp', path: '/producto/absolut-marco' },
-                        { name: 'Ternura Pocket Mp', path: '/producto/ternura-pocket' },
-                        { name: 'Matrimonial Pocket Mp', path: '/producto/matrimonial-clasico' },
-                        { name: 'Reconciliación Pocket Visco Mp', path: '/producto/reconciliacion-pocket' }
+                        { name: 'Absolut Pillow Mp', path: getProductPath('absolut-marco') },
+                        { name: 'Ternura Pocket Mp', path: getProductPath('ternura-pocket') },
+                        { name: 'Matrimonial Pocket Mp', path: getProductPath('matrimonial-clasico') },
+                        { name: 'Reconciliación Pocket Visco Mp', path: getProductPath('reconciliacion-pocket') }
                     ]
                 }
             ],
@@ -84,36 +86,36 @@ const Navbar = () => {
         },
         {
             name: 'Espuma',
-            path: '/colchones-espuma',
+            path: ROUTES.ESPUMA,
             icon: <MdOutlineWeekend className="w-5 h-5" />,
             subLinks: [
-                { name: 'Ecco Espuma', path: '/colchones-espuma?l=Poliseda' },
-                { name: 'Plus Resilense', path: '/colchones-espuma?l=Plus Resilense' },
-                { name: 'Splendido T/tricot', path: '/colchones-espuma?l=Splendido' },
-                { name: 'Topacio', path: '/colchones-espuma?l=Topacio' }
+                { name: 'Ecco Espuma', path: `${ROUTES.ESPUMA}?l=Poliseda` },
+                { name: 'Plus Resilense', path: `${ROUTES.ESPUMA}?l=Plus Resilense` },
+                { name: 'Splendido T/tricot', path: `${ROUTES.ESPUMA}?l=Splendido` },
+                { name: 'Topacio', path: `${ROUTES.ESPUMA}?l=Topacio` }
             ]
         },
         {
             name: 'Dormitorio',
-            path: '/categorias/dormitorio',
+            path: '/categorias/dormitorio', // Manual override for specific category
             icon: <MdOutlineHome className="w-5 h-5" />,
             subLinks: [
-                { name: 'Box Universal', path: '/dormitorio/box-universal' },
-                { name: 'Box Premium', path: '/dormitorio/box-premium' },
-                { name: 'Cama Universal con brazos', path: '/dormitorio/cama-universal-brazos' },
-                { name: 'Cama Premium con brazos', path: '/dormitorio/cama-premium-brazos' },
-                { name: 'Muebles', path: '/dormitorio/muebles' }
+                { name: 'Box Universal', path: ROUTES.DORMITORIO_SUB.replace(':subId', 'box-universal') },
+                { name: 'Box Premium', path: ROUTES.DORMITORIO_SUB.replace(':subId', 'box-premium') },
+                { name: 'Cama Universal con brazos', path: ROUTES.DORMITORIO_SUB.replace(':subId', 'cama-universal-brazos') },
+                { name: 'Cama Premium con brazos', path: ROUTES.DORMITORIO_SUB.replace(':subId', 'cama-premium-brazos') },
+                { name: 'Muebles', path: ROUTES.DORMITORIO_SUB.replace(':subId', 'muebles') }
             ]
         },
         {
             name: 'Mayorista',
-            path: '/venta-por-mayor',
+            path: ROUTES.WHOLESALE,
             badge: 'B2B',
             icon: <MdOutlineLocalOffer className="w-5 h-5" />
         },
         {
             name: 'Contacto',
-            path: '/contacto',
+            path: ROUTES.CONTACT,
             icon: <MdOutlineMail className="w-5 h-5" />
         },
     ];
@@ -121,7 +123,7 @@ const Navbar = () => {
     const waLink = getWhatsAppLink("Hola Sueño Dorado, me gustaría recibir asesoría para mi próximo colchón.");
 
     return (
-        <header className="fixed top-0 left-0 w-full z-[100] transition-all duration-500">
+        <header className="fixed top-0 left-0 w-full z-[50] transition-all duration-500">
             {/* PROMO BAR INTEGRATION */}
             <div className={`transition-all duration-500 overflow-hidden z-50 ${isScrolled ? 'max-h-0' : 'max-h-[300px]'}`}>
                 <PromoBar />
@@ -129,7 +131,7 @@ const Navbar = () => {
 
             {/* MAIN NAVBAR */}
             <div
-                className="bg-white border-b border-gray-200 transition-all duration-500"
+                className="bg-white dark:bg-black border-b border-gray-200 dark:border-white/5 transition-all duration-500"
             >
                 <div className="w-full px-1 xs:px-3 sm:px-5 md:px-8 lg:px-12 xl:px-18 relative">
                     {/* Mobile Layout - Professional & Responsive */}
@@ -139,7 +141,7 @@ const Navbar = () => {
                             <Logo
                                 size="medium"
                                 onClick={handleLogoClick}
-                                variant="dark"
+                                variant="auto"
                             />
                         </div>
 
@@ -154,13 +156,13 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Layout */}
-                    <div className="hidden lg:flex items-center justify-between min-h-32 w-full">
+                    <div className="hidden lg:flex items-center justify-between min-h-24 w-full">
                         {/* LOGO - Desktop */}
                         <div className="flex-shrink-0">
                             <Logo
                                 size="medium"
                                 onClick={handleLogoClick}
-                                variant="dark"
+                                variant="auto"
                             />
                         </div>
 

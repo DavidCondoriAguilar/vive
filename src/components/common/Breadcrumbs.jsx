@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ROUTES } from '@/router/routes';
 
 const Breadcrumbs = () => {
   const location = useLocation();
@@ -9,7 +10,7 @@ const Breadcrumbs = () => {
     const pathnames = location.pathname.split('/').filter(x => x);
 
     const breadcrumbs = [
-      { name: 'Inicio', path: '/' }
+      { name: 'Inicio', path: ROUTES.HOME }
     ];
 
     // Handle different routes
@@ -54,12 +55,12 @@ const Breadcrumbs = () => {
   const breadcrumbs = generateBreadcrumbs();
 
   // Don't show breadcrumbs on home page
-  if (location.pathname === '/') {
+  if (location.pathname === ROUTES.HOME || location.pathname === ROUTES.INICIO) {
     return null;
   }
 
   return (
-    <nav className="py-4 px-6 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+    <nav className="py-4 px-6 bg-white dark:bg-black border-b border-gray-200 dark:border-white/5">
       <div className="container mx-auto max-w-6xl">
         <ol className="flex items-center space-x-2 text-xs font-medium uppercase tracking-wider">
           {breadcrumbs.map((crumb, index) => (

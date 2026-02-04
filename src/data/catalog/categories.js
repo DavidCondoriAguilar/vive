@@ -6,7 +6,7 @@ export const CATEGORIES = [
         slug: 'colchones-resorte',
         subcategories: [
             { name: 'Colección Infantil', filter: 'Infantil' },
-            { name: 'Avance Marco de Acero', filter: 'Marco de Acero' },
+            { name: 'Avance', filter: 'Avance' },
             { name: 'Avance Marco de Poliuretano', filter: 'Marco de Poliuretano' },
             { name: 'Avance Gold', filter: 'Gold' },
             { name: 'Avance Diamont', filter: 'Diamont' }

@@ -30,7 +30,7 @@ const MobileMenu = ({ isOpen, onClose, navLinks, waLink }) => {
 
             {/* Sidebar */}
             <div
-                className={`fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white dark:bg-zinc-950 shadow-2xl transform transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1) ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                className={`fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white dark:bg-black shadow-2xl transform transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1) ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
             >
                 <div className="flex flex-col h-full">
                     {/* Header */}

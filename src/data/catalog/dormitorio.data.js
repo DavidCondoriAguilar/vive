@@ -74,7 +74,7 @@ export const COMPLEMENTARIOS_PRODUCTS = [
             'Relleno de espuma de alta densidad D25',
             'Tapicería en tela premium antimanchas',
             '4 Cojines decorativos de fibra siliconada',
-            'Patas de acero inoxidable con acabado espejo',
+            'Patas de material resistente con acabado espejo',
             'Sistema de resortes Nosag para mayor rebote'
         ],
         especificaciones: {

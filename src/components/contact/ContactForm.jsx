@@ -23,6 +23,13 @@ const ContactFormContent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Security: Honeypot check for bots
+    if (e.target._honey && e.target._honey.value) {
+      console.log("Bot detected!");
+      return;
+    }
+
     setIsSubmitting(true);
 
     // Simulate form submission
@@ -89,6 +96,7 @@ const ContactFormContent = () => {
             <a
               href="https://wa.me/51989223448"
               target="_blank"
+              rel="noopener noreferrer"
               className="md:col-span-2 group bg-green-500 dark:bg-green-600/10 p-8 rounded-[2.5rem] border border-green-500/20 flex flex-col justify-between h-64 hover:scale-[1.02] transition-all duration-500"
             >
               <div className="flex justify-between items-start">
@@ -110,7 +118,7 @@ const ContactFormContent = () => {
               </div>
               <div>
                 <h3 className="text-lg font-black text-gray-900 dark:text-white uppercase mb-1">Email</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm font-medium break-all">hola@suenodorado.pe</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm font-medium break-all">ventasisd@grupoisd.com</p>
               </div>
             </div>
 
@@ -163,11 +171,18 @@ const ContactFormContent = () => {
               </h3>
 
               <form
-                action="https://formsubmit.co/hola@suenodorado.pe"
+                action="https://formsubmit.co/ventasisd@grupoisd.com"
                 method="POST"
                 onSubmit={handleSubmit}
                 className="space-y-8"
               >
+                {/* Honeypot field - anti-spam */}
+                <input type="text" name="_honey" style={{ display: 'none' }} />
+
+                {/* FormSubmit Configuration */}
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">Tu Nombre</label>

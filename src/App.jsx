@@ -20,34 +20,43 @@ const ContactThankYou = lazy(() => import('@/components/contact/ContactThankYou'
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 const SearchRoutes = lazy(() => import('@/router/SearchRoutes'));
 
+import ScrollToTop from '@/components/common/ScrollToTop';
+
+import { ThemeProvider } from '@/contexts/ThemeContext';
+
+import { ROUTES } from '@/router/routes';
+
 function App() {
   return (
-    <CartProvider>
-      <Router>
-        <Suspense fallback={<div />}>
-          <Routes>
-            <Route path="/" element={<Navigate to="/inicio" replace />} />
-            <Route path="/inicio" element={<HomeView />} />
-            <Route path="/categorias/:categoryId" element={<CategoryView />} />
-            <Route path="/colchones-resorte" element={<CategoryView />} />
-            <Route path="/colchones-espuma" element={<CategoryView />} />
-            <Route path="/dormitorio/:subId" element={<CategoryView />} />
-            <Route path="/catalogo" element={<CatalogView />} />
-            <Route path="/venta-por-mayor" element={<WholesaleView />} />
-            <Route path="/producto/:productId" element={<ProductDetailsView />} />
-            <Route path="/confirmacion-pedido" element={<OrderConfirmationPage />} />
-            <Route path="/politica-devoluciones" element={<ReturnPolicyView />} />
-            <Route path="/contacto" element={<ContactForm />} />
-            <Route path="/contacto/gracias" element={<ContactThankYou />} />
-            <Route path="/busqueda" element={<SearchRoutes />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
-        <ShoppingCart />
-        <CartNotification />
-        <Chatbot />
-      </Router>
-    </CartProvider>
+    <ThemeProvider>
+      <CartProvider>
+        <Router>
+          <ScrollToTop />
+          <Suspense fallback={<div />}>
+            <Routes>
+              <Route path={ROUTES.HOME} element={<Navigate to={ROUTES.INICIO} replace />} />
+              <Route path={ROUTES.INICIO} element={<HomeView />} />
+              <Route path={ROUTES.CATEGORY} element={<CategoryView />} />
+              <Route path={ROUTES.RESORTE} element={<CategoryView />} />
+              <Route path={ROUTES.ESPUMA} element={<CategoryView />} />
+              <Route path={ROUTES.DORMITORIO_SUB} element={<CategoryView />} />
+              <Route path={ROUTES.CATALOG} element={<CatalogView />} />
+              <Route path={ROUTES.WHOLESALE} element={<WholesaleView />} />
+              <Route path={ROUTES.PRODUCT_DETAIL} element={<ProductDetailsView />} />
+              <Route path={ROUTES.ORDER_CONFIRMATION} element={<OrderConfirmationPage />} />
+              <Route path={ROUTES.RETURN_POLICY} element={<ReturnPolicyView />} />
+              <Route path={ROUTES.CONTACT} element={<ContactForm />} />
+              <Route path={ROUTES.CONTACT_THANKS} element={<ContactThankYou />} />
+              <Route path={ROUTES.SEARCH} element={<SearchRoutes />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
+          <ShoppingCart />
+          <CartNotification />
+          <Chatbot />
+        </Router>
+      </CartProvider>
+    </ThemeProvider>
   );
 }
 

@@ -48,7 +48,7 @@ const TrustBadges = ({ className = "", variant = "grid", onBadgeClick }) => {
       fullText: (
         <div className="space-y-4">
           <p className="font-bold text-gold-500 text-xs uppercase tracking-widest">Respaldo Industrial</p>
-          <p className="text-gray-600 dark:text-gray-400">Todos nuestros productos salen de planta con un control de calidad riguroso. Utilizamos espumas de alta densidad y resortes de acero virgen.</p>
+          <p className="text-gray-600 dark:text-gray-400">Todos nuestros productos salen de planta con un control de calidad riguroso. Utilizamos espumas de alta densidad y resortes de material virgen.</p>
           <ul className="text-[11px] text-gray-500 space-y-1 bg-gray-50 dark:bg-white/5 p-4 rounded-xl">
             <li>• <strong>Densidad Real:</strong> Mayor soporte y vida útil.</li>
             <li>• <strong>Acero Certificado:</strong> Estructura indeformable.</li>

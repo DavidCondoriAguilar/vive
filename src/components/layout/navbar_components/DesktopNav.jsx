@@ -82,7 +82,7 @@ const DesktopNav = ({ navLinks, currentPath }) => {
                                 }}
                             >
                                 {link.megaMenu ? (
-                                    <div className={`shadow-[0_50px_120px_rgba(0,0,0,0.4)] dark:shadow-[0_50px_120px_rgba(0,0,0,0.6)] rounded-[4rem] border border-white/20 dark:border-white/5 p-20 flex gap-12 w-screen max-w-[1350px] overflow-hidden relative ${link.image ? 'bg-transparent' : 'bg-white dark:bg-black'}`}>
+                                    <div className={`shadow-[0_50px_120px_rgba(0,0,0,0.4)] dark:shadow-[0_50px_120px_rgba(0,0,0,0.6)] rounded-[4rem] border border-white/20 dark:border-white/5 p-16 flex gap-8 w-screen max-w-[900px] overflow-hidden relative ${link.image ? 'bg-transparent' : 'bg-white dark:bg-black'}`}>
                                         {/* Elite Visual Accents */}
                                         <div className="absolute inset-0 bg-gradient-to-b from-gold-500/10 to-transparent pointer-events-none opacity-30"></div>
 
@@ -98,18 +98,18 @@ const DesktopNav = ({ navLinks, currentPath }) => {
                                             </div>
                                         )}
 
-                                        <div className="flex-1 flex gap-16 relative z-10 justify-center">
+                                        <div className="flex-1 flex gap-8 relative z-10 justify-center items-start">
                                             {link.megaMenu.map((group) => (
-                                                <div key={group.title} className="flex-1 min-w-[220px] px-6">
-                                                    <h4 className="text-[12px] font-black text-gold-500 uppercase tracking-[0.5em] mb-10 border-b-2 border-gold-500/20 pb-5">
+                                                <div key={group.title} className="flex-1 min-w-[180px] px-4">
+                                                    <h4 className="text-[11px] font-black text-gold-500 uppercase tracking-[0.5em] mb-6 border-b-2 border-gold-500/20 pb-3 text-center">
                                                         {group.title}
                                                     </h4>
-                                                    <div className="flex flex-col gap-4">
+                                                    <div className="flex flex-col gap-3 items-center">
                                                         {group.items.map((item) => (
                                                             <Link
                                                                 key={item.name}
                                                                 to={item.path}
-                                                                className="text-[15px] font-bold text-white hover:text-gold-500 transition-all py-1.5 block leading-tight hover:translate-x-3 transform duration-300"
+                                                                className="text-[14px] font-bold text-white hover:text-gold-500 transition-all py-1.5 block leading-tight hover:translate-x-2 transform duration-300 text-center"
                                                                 onClick={() => setActiveMenu(null)}
                                                             >
                                                                 {item.name}

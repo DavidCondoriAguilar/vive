@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { useSearch } from '@/hooks/useSearch';
 import { MdSearch, MdClose, MdArrowForward } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { sanitizeHTML } from '@/utils/security';
 
 const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
   const {
@@ -77,12 +78,10 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
             setSearchTerm(e.target.value);
             setIsOpen(e.target.value.length > 0);
           }}
-          onFocus={handleInputFocus}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           className="w-full pl-10 pr-8 py-2 text-sm font-display"
           style={{
-            // Minimalista - Estilo base con tipografía correcta
             backgroundColor: 'transparent',
             backgroundImage: 'none',
             color: '#374151',
@@ -94,22 +93,6 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
             zIndex: 100,
             position: 'relative',
             caretColor: '#374151',
-            fontSize: '12px',
-            // CSS sin reset para mantener clases
-            // fontFamily: 'Inter, Manrope, system-ui, sans-serif',
-            fontWeight: '400',
-            border: 'none',
-            outline: 'none',
-            borderBottom: '1px solid #d1d5db',
-            borderRadius: '0',
-            transition: 'border-color 0.2s ease',
-            // CSS Isolation para Desktop SIN resetear todo
-            isolation: 'isolate',
-            // Override solo estilos problemáticos
-            WebkitTextFillColor: '#374151',
-            color: '#374151',
-            // Restaurar estilos necesarios
-            backgroundColor: 'transparent',
             // Tipografía sofisticada - Space Grotesk
             fontSize: '12px',
             fontFamily: 'Space Grotesk, Playfair Display, sans-serif',
@@ -122,7 +105,8 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
             borderBottom: '1px solid #d1d5db',
             borderRadius: '0',
             outline: 'none',
-            zIndex: 100
+            transition: 'border-color 0.2s ease',
+            isolation: 'isolate'
           }}
           onFocus={(e) => {
             e.target.style.borderBottomColor = '#9ca3af';
@@ -174,11 +158,10 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
                       id={`search-result-${index}`}
                       role="option"
                       aria-selected={index === selectedIndex}
-                      className={`group cursor-pointer transition-colors duration-200 ${
-                        index === selectedIndex
-                          ? 'bg-gold-50 dark:bg-gold-500/10'
-                          : 'hover:bg-gray-50 dark:hover:bg-white/5'
-                      }`}
+                      className={`group cursor-pointer transition-colors duration-200 ${index === selectedIndex
+                        ? 'bg-gold-50 dark:bg-gold-500/10'
+                        : 'hover:bg-gray-50 dark:hover:bg-white/5'
+                        }`}
                       onClick={() => handleProductClick(product)}
                     >
                       <div className="px-4 py-4 flex items-center gap-4">
@@ -194,13 +177,13 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
 
                         {/* Product Info */}
                         <div className="flex-1 min-w-0">
-                          <div 
+                          <div
                             className="text-sm font-semibold text-gray-900 dark:text-white truncate"
-                            dangerouslySetInnerHTML={{ __html: product.highlightedName }}
+                            dangerouslySetInnerHTML={{ __html: sanitizeHTML(product.highlightedName) }}
                           />
-                          <div 
+                          <div
                             className="text-sm text-gray-600 dark:text-gray-400 truncate mt-1"
-                            dangerouslySetInnerHTML={{ __html: product.highlightedCategory }}
+                            dangerouslySetInnerHTML={{ __html: sanitizeHTML(product.highlightedCategory) }}
                           />
                           <div className="text-sm text-gold-600 dark:text-gold-400 font-medium mt-2">
                             Consultar precio

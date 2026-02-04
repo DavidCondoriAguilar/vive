@@ -1,7 +1,7 @@
 // Importaciones de imágenes para Espuma
 import polisedaMain from '@assets/product-detail/poliseda/poliseda-main.webp';
-import polisedaTwo from '@assets/product-detail/poliseda/poliseda-two.webp';
-import polisedaDiag from '@assets/product-detail/poliseda/poliseda-diag.webp';
+import polisedaTwo from '@assets/product-detail/poliseda/poliseda-main-two.webp';
+import polisedaDiag from '@assets/product-detail/poliseda/poliseda-main-diag.webp';
 import splendidoMain from '@assets/product-detail/splendido/splendido-main.webp';
 import splendidoTwo from '@assets/product-detail/splendido/splendido-two.webp';
 import splendidoDiag from '@assets/product-detail/splendido/splendido-diag.webp';
@@ -16,118 +16,61 @@ import plusResilenseDiag from '@assets/product-detail/plus-resilense/plus-resile
 
 
 export const ESPUMA_PRODUCTS = [
-    // POLISEDA
+    // TOPACIO
     {
-        id: 'poliseda',
-        name: 'Colchón Poliseda',
+        id: 'topacio',
+        name: 'Topacio',
         category: 'espuma',
-        subcategory: 'Poliseda',
-        price: 349, // Precio base para 4"
-        image: polisedaMain,
+        subcategory: 'Topacio',
+        price: 849, // Precio base para 7"
+        image: topacioMain,
         images: [
-            polisedaMain,
-            polisedaTwo,
-            polisedaDiag
+            topacioMain,
+            topacioTwo,
+            topacioDiag
         ],
-        description: 'Colchón Poliseda ideal para juvenil y visitas. Disponible en 4 grosores: 4 pulgadas, 5.5 pulgadas, 7 pulgadas y 8 pulgadas. Entrega inmediata en Lima. Calidad y durabilidad garantizadas.',
-        sizes: ['4"', '5.5"', '7"', '8"'],
-        features: ['Económica', 'Ligera', 'Duradera'],
-        badge: 'Poliseda Económica',
-        sizePrices: {
-            '4"': 349,
-            '5.5"': 399,
-            '7"': 499,
-            '8"': 549
-        },
-        componentes: [
-            'Tela Poliseda de alta durabilidad',
-            'Espuma de poliuretano D18 (densidad media)',
-            'Núcleo de espuma resilente',
-            'Capa de confort de 2 cm',
-            'Tratamiento antiácaros y antibacterial',
-            'Bordes reforzados',
-            'Tecnología de ventilación',
-            'Acabado resistente al desgaste'
-        ],
-        especificaciones: {
-            'Material': 'Espuma de poliuretano',
-            'Densidad': 'D18 (18 kg/m³)',
-            'Núcleo': 'Espuma resilente de alta recuperación',
-            'Capa confort': '2 cm espuma suave',
-            'Tela': 'Poliseda transpirable',
-            'Altura 4"': '10 cm total',
-            'Altura 5.5"': '14 cm total',
-            'Altura 7"': '18 cm total',
-            'Altura 8"': '20 cm total',
-            'Peso': '8-15 kg según tamaño',
-            'Base': 'Adecuado para somier y base',
-            'Certificación': 'Hipoalergénico'
-        },
-        beneficios: [
-            'Relación calidad-precio inmejorable',
-            'Ideal para habitaciones de invitados',
-            'Fácil transporte y manejo',
-            'Material hipoalergénico seguro',
-            'Larga vida útil',
-            'No necesita mantenimiento especial',
-            'Entrega inmediata disponible',
-            'Perfecto para uso juvenil'
-        ]
-    },
-    // PLUS RESILENSE
-    {
-        id: 'plus-resilense',
-        name: 'Plus Resilense',
-        category: 'espuma',
-        subcategory: 'Plus Resilense',
-        price: 699, // Precio base para 7"
-        image: plusResilenseMain,
-        images: [
-            plusResilenseMain,
-            plusResilenseTwo,
-            plusResilenseDiag
-        ],
-        description: 'Plus Resilense con espuma de alta densidad y tecnología avanzada. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas y 10 pulgadas. Soporte ortopédico garantizado con 3 años de garantía. El mejor respaldo para tu espalda.',
+        description: 'Topacio con acabado premium y materiales de máxima calidad. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas y 10 pulgadas. Alta densidad y durabilidad extrema con 5 años de garantía. El colchón de calidad superior que necesitas.',
         sizes: ['7"', '8"', '10"'],
-        features: ['Alta Densidad', 'Tecnología Resilense', 'Soporte Ortopédico'],
-        badge: 'Resilense Plus',
+        features: ['Alta Densidad', 'Confort Superior', 'Durabilidad Garantizada'],
+        badge: 'Topacio Premium',
         sizePrices: {
-            '7"': 699,
-            '8"': 749,
-            '10"': 849
+            '7"': 849,
+            '8"': 949,
+            '10"': 1049
         },
         componentes: [
-            'Tela Resilense premium transpirable',
-            'Espuma de poliuretano D25 (alta densidad)',
-            'Núcleo Resilense de recuperación rápida',
-            'Capa de confort ortopédico de 3 cm',
-            'Tratamiento antiácaros y antimoho',
-            'Perímetro reforzado con espuma extra',
-            'Canales de ventilación interna',
-            'Acabado anti-desgaste UV'
+            'Tela Topacio exclusiva de lujo',
+            'Espuma de poliuretano D30 (máxima densidad)',
+            'Núcleo Topacio de última generación',
+            'Capa de confort premium de 5 cm',
+            'Tratamiento antiácaros triple acción',
+            'Perímetro ultra reforzado',
+            'Sistema de ventilación avanzada',
+            'Acabado antimanchas y anti-humedad'
         ],
         especificaciones: {
-            'Material': 'Espuma de poliuretano de alta densidad',
-            'Densidad': 'D25 (25 kg/m³)',
-            'Núcleo': 'Tecnología Resilense patentada',
-            'Capa confort': '3 cm espuma ortopédica',
-            'Tela': 'Resilense transpirable premium',
+            'Material': 'Espuma de poliuretano de máxima densidad',
+            'Densidad': 'D30 (30 kg/m³)',
+            'Núcleo': 'Tecnología Topacio exclusiva',
+            'Capa confort': '5 cm espuma premium',
+            'Tela': 'Topacio exclusiva de lujo',
             'Altura 7"': '18 cm total',
             'Altura 8"': '20 cm total',
             'Altura 10"': '25 cm total',
-            'Peso': '15-25 kg según tamaño',
-            'Base': 'Compatible con cualquier somier',
-            'Certificación': 'Ortopédico certificado'
+            'Peso': '20-30 kg según tamaño',
+            'Base': 'Cualquier somier o base',
+            'Certificación': 'Certificado Premium Internacional',
+            'Durabilidad': '10+ años garantizados'
         },
         beneficios: [
-            'Soporte ortopédico superior',
-            'Recuperación rápida del material',
-            'Excelente ventilación interna',
-            'Durabilidad extendida 8+ años',
-            'Ideal para problemas de espalda',
-            'No transmite movimiento',
-            'Material hipoalergénico',
-            'Calidad Nacional'
+            'Máxima durabilidad del mercado',
+            'Confort superior garantizado',
+            'Material premium de primera calidad',
+            'Ventilación superior en todo el colchón',
+            'Ideal para uso intensivo diario',
+            'Resistencia a deformaciones',
+            '5 años de garantía total extendida',
+            'Inversión inteligente a largo plazo'
         ]
     },
     // SPLENDIDO
@@ -187,61 +130,135 @@ export const ESPUMA_PRODUCTS = [
             'Calidad Premium'
         ]
     },
-    // TOPACIO
+    // PLUS RESILENSE
     {
-        id: 'topacio',
-        name: 'Topacio',
+        id: 'plus-resilense',
+        name: 'Plus Resilense',
         category: 'espuma',
-        subcategory: 'Topacio',
-        price: 849, // Precio base para 7"
-        image: topacioMain,
+        subcategory: 'Plus Resilense',
+        price: 699, // Precio base para 7"
+        image: plusResilenseMain,
         images: [
-            topacioMain,
-            topacioTwo,
-            topacioDiag
+            plusResilenseMain,
+            plusResilenseTwo,
+            plusResilenseDiag
         ],
-        description: 'Topacio con acabado premium y materiales de máxima calidad. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas y 10 pulgadas. Alta densidad y durabilidad extrema con 5 años de garantía. El colchón de calidad superior que necesitas.',
+        description: 'Plus Resilense con espuma de densidad 14 y tela Tricot acolchada. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas y 10 pulgadas. Soporte ortopédico garantizado con 3 años de garantía. El mejor respaldo para tu espalda.',
         sizes: ['7"', '8"', '10"'],
-        features: ['Alta Densidad', 'Confort Superior', 'Durabilidad Garantizada'],
-        badge: 'Topacio Premium',
+        features: ['Densidad D14', 'Tela Tricot Acolchada', 'Soporte Ortopédico'],
+        badge: 'Resilense Plus',
         sizePrices: {
-            '7"': 849,
-            '8"': 949,
-            '10"': 1049
+            '7"': 699,
+            '8"': 749,
+            '10"': 849
+        },
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot acolchada de alta calidad',
+                'Espuma de poliuretano D14',
+                'Diseño anatómico mejorado',
+                'Equilibrio firmeza-confort',
+                'Tratamiento antiácaros y antibacterial'
+            ],
+            componentes: [
+                'Tela Tricot acolchada 16 mm',
+                'Espuma de poliuretano D14',
+                'Lámina de Notex 90 gr',
+                'Núcleo de espuma resilente',
+                'Lámina de Notex 90 gr',
+                'Espuma de poliuretano D14'
+            ]
         },
         componentes: [
-            'Tela Topacio exclusiva de lujo',
-            'Espuma de poliuretano D30 (máxima densidad)',
-            'Núcleo Topacio de última generación',
-            'Capa de confort premium de 5 cm',
-            'Tratamiento antiácaros triple acción',
-            'Perímetro ultra reforzado',
-            'Sistema de ventilación avanzada',
-            'Acabado antimanchas y anti-humedad'
+            'Tela Tricot acolchada premium transpirable',
+            'Espuma de poliuretano D14',
+            'Núcleo Resilense de recuperación rápida',
+            'Capa de confort ortopédico de 3 cm',
+            'Tratamiento antiácaros y antimoho',
+            'Perímetro reforzado con espuma extra',
+            'Canales de ventilación interna',
+            'Acabado anti-desgaste UV'
         ],
         especificaciones: {
-            'Material': 'Espuma de poliuretano de máxima densidad',
-            'Densidad': 'D30 (30 kg/m³)',
-            'Núcleo': 'Tecnología Topacio exclusiva',
-            'Capa confort': '5 cm espuma premium',
-            'Tela': 'Topacio exclusiva de lujo',
+            'Material': 'Espuma de poliuretano densidad 14',
+            'Densidad': 'D14 (14 kg/m³)',
+            'Núcleo': 'Tecnología Resilense avanzada',
+            'Capa confort': '3 cm espuma ortopédica',
+            'Tela': 'Tricot acolchada premium',
             'Altura 7"': '18 cm total',
             'Altura 8"': '20 cm total',
             'Altura 10"': '25 cm total',
-            'Peso': '20-30 kg según tamaño',
-            'Base': 'Cualquier somier o base',
-            'Certificación': 'Certificado Premium Internacional',
-            'Durabilidad': '10+ años garantizados'
+            'Peso': '12-22 kg según tamaño',
+            'Base': 'Compatible con cualquier somier',
+            'Certificación': 'Ortopédico certificado'
         },
         beneficios: [
-            'Máxima durabilidad del mercado',
-            'Confort superior garantizado',
-            'Material premium de primera calidad',
-            'Ventilación superior en todo el colchón',
-            'Ideal para uso intensivo diario',
-            'Resistencia a deformaciones',
-            '5 años de garantía total extendida',
-            'Inversión inteligente a largo plazo'
+            'Soporte ortopédico superior',
+            'Recuperación rápida del material',
+            'Excelente ventilación interna',
+            'Durabilidad extendida con cuidado adecuado',
+            'Ideal para problemas de espalda',
+            'No transmite movimiento',
+            'Material hipoalergénico',
+            'Calidad Nacional'
+        ]
+    },
+    // POLISEDA
+    {
+        id: 'poliseda',
+        name: 'Colchón Poliseda',
+        category: 'espuma',
+        subcategory: 'Poliseda',
+        price: 349, // Precio base para 4"
+        image: polisedaMain,
+        images: [
+            polisedaMain,
+            polisedaTwo,
+            polisedaDiag
+        ],
+        description: 'Colchón Poliseda ideal para juvenil y visitas. Disponible en 4 grosores: 4 pulgadas, 5.5 pulgadas, 7 pulgadas and 8 pulgadas. Entrega inmediata en Lima. Calidad y durabilidad garantizadas.',
+        sizes: ['4"', '5.5"', '7"', '8"'],
+        features: ['Económica', 'Ligera', 'Duradera'],
+        badge: 'Poliseda Económica',
+        sizePrices: {
+            '4"': 349,
+            '5.5"': 399,
+            '7"': 499,
+            '8"': 549
+        },
+        componentes: [
+            'Tela Poliseda de alta durabilidad',
+            'Espuma de poliuretano D18 (densidad media)',
+            'Núcleo de espuma resilente',
+            'Capa de confort de 2 cm',
+            'Tratamiento antiácaros y antibacterial',
+            'Bordes reforzados',
+            'Tecnología de ventilación',
+            'Acabado resistente al desgaste'
+        ],
+        especificaciones: {
+            'Material': 'Espuma de poliuretano',
+            'Densidad': 'D18 (18 kg/m³)',
+            'Núcleo': 'Espuma resilente de alta recuperación',
+            'Capa confort': '2 cm espuma suave',
+            'Tela': 'Poliseda transpirable',
+            'Altura 4"': '10 cm total',
+            'Altura 5.5"': '14 cm total',
+            'Altura 7"': '18 cm total',
+            'Altura 8"': '20 cm total',
+            'Peso': '8-15 kg según tamaño',
+            'Base': 'Adecuado para somier y base',
+            'Certificación': 'Hipoalergénico'
+        },
+        beneficios: [
+            'Relación calidad-precio inmejorable',
+            'Ideal para habitaciones de invitados',
+            'Fácil transporte y manejo',
+            'Material hipoalergénico seguro',
+            'Larga vida útil',
+            'No necesita mantenimiento especial',
+            'Entrega inmediata disponible',
+            'Perfecto para uso juvenil'
         ]
     }
 ];

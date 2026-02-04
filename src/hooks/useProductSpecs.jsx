@@ -28,7 +28,7 @@ export const useProductSpecs = (product) => {
     const detailedSpecs = useMemo(() => [
         {
             category: 'Estructura Técnica', items: [
-                { name: 'Núcleo Central', value: product.category === 'resorte' ? 'Parrilla de resortes de acero' : 'Bloque de espuma resiliente' },
+                { name: 'Núcleo Central', value: product.category === 'resorte' ? 'Parrilla de resortes' : 'Bloque de espuma resiliente' },
                 { name: 'Tipo de Fibra', value: product.features?.join(', ') || 'Tejido Jacquard/Tricot' },
                 { name: 'Línea de Diseño', value: product.subcategory || 'Estándar' }
             ]
