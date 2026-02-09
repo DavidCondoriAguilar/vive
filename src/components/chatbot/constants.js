@@ -7,8 +7,8 @@ import { CHATBOT_INTENTS } from './types.js';
 
 export const CHATBOT_CONFIG = {
   // Bot identity
-  name: 'Sueño Dorado Assistant',
-  avatar: '🛏️',
+  name: 'Susi de Sueño Dorado',
+  avatar: '✨',
 
   // UI Configuration
   maxMessages: 50,
@@ -20,10 +20,19 @@ export const CHATBOT_CONFIG = {
   whatsappNumber: '51989223448',
   websiteUrl: 'https://suenodorado.pe',
 
+  // Suggested keywords for quick interaction
+  suggestedKeywords: [
+    { text: 'Resortes ➰', value: 'resortes' },
+    { text: 'Espuma 🧽', value: 'espuma' },
+    { text: 'Precios 💰', value: 'precios' },
+    { text: 'Envíos 🚚', value: 'envíos' },
+    { text: 'Garantía 🛡️', value: 'garantía' },
+    { text: 'Ofertas 🔥', value: 'ofertas' }
+  ],
+
   // Quick actions
   quickActions: [
     { text: '📋 Ver Catálogo', intent: CHATBOT_INTENTS.CATALOG },
-    { text: '💰 Precios', intent: CHATBOT_INTENTS.PRICING },
     { text: '🚚 Envíos', intent: CHATBOT_INTENTS.SHIPPING },
     { text: '📞 Contactar', intent: CHATBOT_INTENTS.CONTACT },
     { text: '👤 Hablar con humano', intent: CHATBOT_INTENTS.HUMAN_AGENT }
@@ -48,11 +57,11 @@ export const BOT_RESPONSES = {
   },
 
   [CHATBOT_INTENTS.PRICING]: {
-    text: 'Nuestros precios van desde S/. 399 hasta S/. 3,999 dependiendo del tamaño y tipo. ¿Te gustaría ver nuestro catálogo completo con precios?',
+    text: 'Para brindarte una cotización exacta y personalizada según la medida (Plaza y media, Queen, King, etc.) y modelo, te sugiero hablar directamente con un asesor. ¿Te gustaría conectar ahora por WhatsApp?',
     options: [
-      { text: 'Ver Catálogo', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
-      { text: 'Ofertas especiales', intent: 'special_offers' },
-      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
+      { text: '📱 Consultar vía WhatsApp', intent: 'whatsapp_contact', action: 'whatsapp' },
+      { text: '📋 Ver Catálogo', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
+      { text: '🏠 Volver al inicio', intent: CHATBOT_INTENTS.HELP }
     ]
   },
 
@@ -87,11 +96,9 @@ export const BOT_RESPONSES = {
   },
 
   [CHATBOT_INTENTS.HELP]: {
-    text: '🏠 ¡Bienvenido al menú principal! Puedo ayudarte con:\n\n📋 Información de productos\n💰 Precios y ofertas\n🚚 Envíos y entregas\n🛡️ Garantías\n📞 Contacto\n\n¿Qué necesitas saber?',
+    text: '🏠 ¡Bienvenido al menú principal! Puedo ayudarte con:\n\n📋 Información técnica de productos\n🚚 Envíos y entregas\n🛡️ Garantías de fábrica\n📞 Contacto directo\n\n¿Qué necesitas saber?',
     options: [
       { text: '📋 Ver Catálogo', intent: CHATBOT_INTENTS.CATALOG },
-      { text: '💰 Precios', intent: CHATBOT_INTENTS.PRICING },
-      { text: '🚚 Envíos', intent: CHATBOT_INTENTS.SHIPPING },
       { text: '🚚 Envíos', intent: CHATBOT_INTENTS.SHIPPING },
       { text: '📞 Contactar', intent: CHATBOT_INTENTS.CONTACT },
       { text: '👤 Hablar con humano', intent: CHATBOT_INTENTS.HUMAN_AGENT }
@@ -104,28 +111,32 @@ export const BOT_RESPONSES = {
   },
 
   [CHATBOT_INTENTS.FALLBACK]: {
-    text: 'No estoy seguro de entender. ¿Podrías reformular tu pregunta? O elige una opción:',
-    options: CHATBOT_CONFIG.quickActions
+    text: 'Aún estoy aprendiendo y no estoy seguro de entenderte al 100%. 😅\n\n¿Te gustaría que te pase directamente con un asesor humano por WhatsApp para resolverlo ahora mismo?',
+    options: [
+      { text: '📱 Sí, hablar con experto', intent: CHATBOT_INTENTS.HUMAN_AGENT, action: 'fallback_whatsapp' },
+      { text: '📋 Ver Catálogo', intent: CHATBOT_INTENTS.CATALOG },
+      { text: '🏠 Volver al inicio', intent: CHATBOT_INTENTS.HELP }
+    ]
   },
 
   // Additional specific responses for better navigation
   espuma_products: {
-    text: '🛏️ Tenemos colchones de espuma de alta calidad. Líneas disponibles: Poliseda, Plus Resilense, Splendido y Topacio. Precios desde S/. 349.',
+    text: '🛏️ Somos especialistas en colchones de espuma. Ofrecemos densidades desde D12 hasta D30 y espumas de alta resiliencia (HR). Líneas: Poliseda, Plus Resilense, Splendido y Topacio. ¿Sobre cuál deseas asesoría técnica?',
     options: [
-      { text: 'Ver línea Poliseda', intent: 'poliseda_products' },
-      { text: 'Ver línea Plus Resilense', intent: 'plus_resilense_products' },
-      { text: 'Comparar líneas', intent: CHATBOT_INTENTS.CATALOG },
-      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
+      { text: 'Consultar por WhatsApp', intent: CHATBOT_INTENTS.CONTACT, action: 'whatsapp' },
+      { text: 'Ver línea Splendido', intent: 'splendido_products' },
+      { text: 'Ver línea Topacio', intent: 'topacio_products' },
+      { text: '🏠 Volver al inicio', intent: CHATBOT_INTENTS.HELP }
     ]
   },
 
   resorte_products: {
-    text: '🛏️ Nuestros colchones de resortes ofrecen máximo soporte. Líneas: Económica, Standard, Intermedio, Premium, Golden Dream, Siempre, Absolut.',
+    text: '🛏️ Fabricamos colchones con sistemas de resortes reforzados y Pocket-Spring (independientes). Líneas: Intermedio, Premium, Golden Dream, Siempre y nuestro exclusivo Absolut. ¿Te gustaría comparar el soporte de estas líneas?',
     options: [
-      { text: 'Ver línea Golden Dream', intent: 'golden_dream_products' },
-      { text: 'Ver línea Siempre', intent: 'siempre_products' },
-      { text: 'Ver todas las líneas', intent: CHATBOT_INTENTS.CATALOG },
-      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
+      { text: 'Asesoría por WhatsApp', intent: CHATBOT_INTENTS.CONTACT, action: 'whatsapp' },
+      { text: 'Línea Pocket Premium', intent: 'premium_products' },
+      { text: 'Catálogo de resortes', intent: CHATBOT_INTENTS.CATALOG },
+      { text: '🏠 Volver al inicio', intent: CHATBOT_INTENTS.HELP }
     ]
   },
 
@@ -140,7 +151,7 @@ export const BOT_RESPONSES = {
   },
 
   golden_dream_products: {
-    text: '¡Golden Dream es nuestra línea premium! 🌟 Incluye sistema MP, espumas de alta densidad y 6 años de garantía. Precios desde S/. 1,699.',
+    text: '¡Golden Dream es nuestra línea premium! 🌟 Incluye sistema MP, espumas de alta densidad y 6 años de garantía. Ofrece un soporte y confort inigualable.',
     options: [
       { text: 'Ver modelos Golden Dream', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
       { text: 'Comparar con Premium', intent: 'premium_products' },
@@ -150,7 +161,7 @@ export const BOT_RESPONSES = {
   },
 
   siempre_products: {
-    text: '¡La línea Siempre es la más duradera! ⏰ 7 años de garantía con sistema MP y pillow top permanente. Precios desde S/. 1,449.',
+    text: '¡La línea Siempre es la más duradera! ⏰ 7 años de garantía con sistema MP y pillow top permanente. Diseñada para un descanso superior por años.',
     options: [
       { text: 'Ver modelos Siempre', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
       { text: 'Comparar con Golden Dream', intent: 'golden_dream_products' },
@@ -160,11 +171,11 @@ export const BOT_RESPONSES = {
   },
 
   poliseda_products: {
-    text: 'Poliseda es nuestra línea económica y ligera 💰 Perfecta para uso juvenil o temporario. Espesores de 4" a 8". Precios desde S/. 349.',
+    text: 'Poliseda es nuestra línea económica y ligera 💰 Perfecta para uso juvenil o temporario. Espesores de 4" a 8". Consulta disponibilidad de entrega inmediata.',
     options: [
       { text: 'Ver espesores', intent: CHATBOT_INTENTS.CATALOG, action: 'catalog' },
       { text: 'Comparar con Plus Resilense', intent: 'plus_resilense_products' },
-      { text: 'Conocer precios', intent: CHATBOT_INTENTS.PRICING },
+      { text: 'Consultar precios vía WhatsApp', intent: CHATBOT_INTENTS.CONTACT, action: 'whatsapp' },
       { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
     ]
   },
@@ -185,12 +196,19 @@ export const KEYWORDS_INTENTS = {
   hola: CHATBOT_INTENTS.GREETING,
   buenos: CHATBOT_INTENTS.GREETING,
   hey: CHATBOT_INTENTS.GREETING,
+  hi: CHATBOT_INTENTS.GREETING,
+  alo: CHATBOT_INTENTS.GREETING,
 
   // Product patterns
-  colchón: CHATBOT_INTENTS.PRODUCT_INFO,
+  'colchón': CHATBOT_INTENTS.PRODUCT_INFO,
+  colchon: CHATBOT_INTENTS.PRODUCT_INFO,
   colchones: CHATBOT_INTENTS.PRODUCT_INFO,
+  colchome: CHATBOT_INTENTS.PRODUCT_INFO,
+  cama: CHATBOT_INTENTS.PRODUCT_INFO,
+  camas: CHATBOT_INTENTS.PRODUCT_INFO,
   espuma: 'espuma_products',
   resorte: 'resorte_products',
+  resortes: 'resorte_products',
 
   // Specific lines
   'golden dream': 'golden_dream_products',
@@ -199,7 +217,10 @@ export const KEYWORDS_INTENTS = {
   premium: 'premium_products',
   intermedio: 'intermedio_products',
   económica: 'economica_products',
+  economica: 'economica_products',
+  barato: 'economica_products',
   standard: 'standard_products',
+  estandar: 'standard_products',
   poliseda: 'poliseda_products',
   'plus resilense': 'plus_resilense_products',
   splendido: 'splendido_products',
@@ -207,28 +228,40 @@ export const KEYWORDS_INTENTS = {
 
   // Categories
   'box': 'box_products',
+  tarima: 'box_products',
   'tarimas': 'box_products',
   cabeceras: 'cabeceras_products',
   cunas: 'cunas_products',
+  cunita: 'cunas_products',
   'juegos de sala': 'muebles_products',
+  muebles: 'muebles_products',
 
   // Pricing patterns
-  precio: CHATBOT_INTENTS.PRICING,
-  precios: CHATBOT_INTENTS.PRICING,
-  costo: CHATBOT_INTENTS.PRICING,
-  cuánto: CHATBOT_INTENTS.PRICING,
+  precio: CHATBOT_INTENTS.CONTACT,
+  precios: CHATBOT_INTENTS.CONTACT,
+  presio: CHATBOT_INTENTS.CONTACT,
+  costo: CHATBOT_INTENTS.CONTACT,
+  cuánto: CHATBOT_INTENTS.CONTACT,
+  cuanto: CHATBOT_INTENTS.CONTACT,
+  valor: CHATBOT_INTENTS.CONTACT,
 
   // Shipping patterns
   envío: CHATBOT_INTENTS.SHIPPING,
+  envio: CHATBOT_INTENTS.SHIPPING,
   envíos: CHATBOT_INTENTS.SHIPPING,
   delivery: CHATBOT_INTENTS.SHIPPING,
   entrega: CHATBOT_INTENTS.SHIPPING,
+  donde: CHATBOT_INTENTS.CONTACT,
+  ubicacion: CHATBOT_INTENTS.CONTACT,
+  tienda: CHATBOT_INTENTS.CONTACT,
 
   // Contact patterns
   contacto: CHATBOT_INTENTS.CONTACT,
   llamar: CHATBOT_INTENTS.CONTACT,
   teléfono: CHATBOT_INTENTS.CONTACT,
+  telefono: CHATBOT_INTENTS.CONTACT,
   whatsapp: CHATBOT_INTENTS.CONTACT,
+  wsp: CHATBOT_INTENTS.CONTACT,
 
   // Catalog patterns
   catálogo: CHATBOT_INTENTS.CATALOG,
@@ -243,5 +276,6 @@ export const KEYWORDS_INTENTS = {
   // Human agent patterns
   humano: CHATBOT_INTENTS.HUMAN_AGENT,
   persona: CHATBOT_INTENTS.HUMAN_AGENT,
-  agente: CHATBOT_INTENTS.HUMAN_AGENT
+  agente: CHATBOT_INTENTS.HUMAN_AGENT,
+  vendedor: CHATBOT_INTENTS.HUMAN_AGENT
 };

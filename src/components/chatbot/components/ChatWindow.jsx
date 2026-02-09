@@ -8,8 +8,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FaPaperPlane, FaTimes } from 'react-icons/fa';
 import MessageBubble from './MessageBubble.jsx';
 import TypingIndicator from './TypingIndicator.jsx';
-import logoClaro from '@assets/images/logos/logo-claro.png';
-import logoOscuro from '@assets/images/logos/logo-main.jpg';
+import { CHATBOT_CONFIG } from '../constants.js';
 
 /**
  * ChatWindow component props
@@ -94,20 +93,13 @@ const ChatWindow = ({
     <div className="fixed bottom-20 right-4 left-4 sm:left-auto sm:right-6 sm:w-96 h-[500px] bg-white dark:bg-gray-800 
                 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 
                 flex flex-col z-[190] animate-slide-up
-                max-h-[75vh] md:max-h-[70vh] overflow-hidden">
+                max-h-[75vh] md:max-h-[70vh] overflow-hidden chatbot-window-premium">
 
       {/* Header */}
-      <div className="bg-gold-500 text-white px-4 py-3 rounded-t-2xl flex items-center justify-between">
+      <div className="bg-gold-500 text-white px-4 py-3 rounded-t-2xl flex items-center justify-between chatbot-header-premium">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm">
-            <img
-              src={isDarkMode ? logoClaro : logoOscuro}
-              alt="Sueño Dorado"
-              className="w-8 h-8 object-contain"
-            />
-          </div>
           <div>
-            <h3 className="font-semibold text-white">Sueño Dorado</h3>
+            <h3 className="font-semibold text-white">{CHATBOT_CONFIG.name}</h3>
             <p className="text-xs text-white/90">Asistente virtual</p>
           </div>
         </div>
@@ -154,6 +146,25 @@ const ChatWindow = ({
 
           {/* Input Area */}
           <div className="border-t border-gray-200 dark:border-gray-700 px-4 py-3">
+            {/* Suggested Keywords Chips */}
+            <div className="flex gap-2 mb-3 overflow-x-auto pb-1 scrollbar-hide scroll-smooth overflow-y-hidden">
+              {CHATBOT_CONFIG.suggestedKeywords.map((keyword, index) => (
+                <button
+                  key={index}
+                  onClick={() => onSendMessage(keyword.value)}
+                  className="whitespace-nowrap px-4 py-1.5 bg-gray-50 dark:bg-gray-700/50 
+                           hover:bg-gold-500 hover:text-white dark:hover:bg-gold-500
+                           text-xs font-semibold text-gray-600 dark:text-gray-300
+                           border border-gray-200 dark:border-gray-600 
+                           rounded-full transition-all duration-300 transform active:scale-95
+                           shadow-sm hover:shadow-md hover:-translate-y-0.5
+                           flex-shrink-0"
+                >
+                  {keyword.text}
+                </button>
+              ))}
+            </div>
+
             <form onSubmit={handleSubmit} className="flex gap-2">
               <input
                 ref={inputRef}
@@ -183,8 +194,13 @@ const ChatWindow = ({
             </form>
 
             {/* Character count */}
-            <div className="text-xs text-gray-500 dark:text-gray-400 text-right mt-1">
-              {inputValue.length}/500
+            <div className="flex justify-between items-center mt-1">
+              <p className="text-[10px] text-gray-400 dark:text-gray-500 italic">
+                Sugerencias rápidas ↑
+              </p>
+              <div className="text-xs text-gray-500 dark:text-gray-400">
+                {inputValue.length}/500
+              </div>
             </div>
           </div>
         </>

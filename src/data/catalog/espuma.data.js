@@ -29,10 +29,10 @@ export const ESPUMA_PRODUCTS = [
             topacioTwo,
             topacioDiag
         ],
-        description: 'Topacio con acabado premium y materiales de máxima calidad. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas y 10 pulgadas. Alta densidad y durabilidad extrema con 5 años de garantía. El colchón de calidad superior que necesitas.',
+        description: 'Topacio con acabado premium y materiales de máxima calidad. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas and 10 pulgadas. Alta densidad y durabilidad extrema con garantía de fábrica. El colchón de calidad superior que necesitas.',
         sizes: ['7"', '8"', '10"'],
         features: ['Alta Densidad', 'Confort Superior', 'Durabilidad Garantizada'],
-        badge: 'Topacio Premium',
+        badge: 'Máximo Confort',
         sizePrices: {
             '7"': 849,
             '8"': 949,
@@ -46,7 +46,7 @@ export const ESPUMA_PRODUCTS = [
             'Tratamiento antiácaros triple acción',
             'Perímetro ultra reforzado',
             'Sistema de ventilación avanzada',
-            'Acabado antimanchas y anti-humedad'
+            'Acabado antimanchas and anti-humedad'
         ],
         especificaciones: {
             'Material': 'Espuma de poliuretano de máxima densidad',
@@ -60,7 +60,7 @@ export const ESPUMA_PRODUCTS = [
             'Peso': '20-30 kg según tamaño',
             'Base': 'Cualquier somier o base',
             'Certificación': 'Certificado Premium Internacional',
-            'Durabilidad': '10+ años garantizados'
+            'Durabilidad': 'Garantía extendida'
         },
         beneficios: [
             'Máxima durabilidad del mercado',
@@ -69,7 +69,7 @@ export const ESPUMA_PRODUCTS = [
             'Ventilación superior en todo el colchón',
             'Ideal para uso intensivo diario',
             'Resistencia a deformaciones',
-            '5 años de garantía total extendida',
+            'Garantía total extendida',
             'Inversión inteligente a largo plazo'
         ]
     },
@@ -86,7 +86,7 @@ export const ESPUMA_PRODUCTS = [
             splendidoTwo,
             splendidoDiag
         ],
-        description: 'Splendido con tela tricot premium de alta calidad. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas y 10 pulgadas. Tela transpirable y soporte anatómico con 4 años de garantía. Descanso superior y duradero.',
+        description: 'Splendido con tela tricot premium de alta calidad. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas and 10 pulgadas. Tela transpirable y soporte anatómico con garantía de fábrica. Descanso superior y duradero.',
         sizes: ['7"', '8"', '10"'],
         features: ['Tela Tricot Premium', 'Anatómico', 'Fresco y Transpirable'],
         badge: 'Splendido Premium',
@@ -97,7 +97,7 @@ export const ESPUMA_PRODUCTS = [
         },
         componentes: [
             'Tela tricot premium de 28 mm',
-            'Espuma viscoelástica de memoria',
+            'Espuma microporosa de alta durabilidad',
             'Núcleo de espuma HR de alta resiliencia',
             'Capa anatómica de 4 cm',
             'Tratamiento antiácaros y antibacterial',
@@ -106,10 +106,10 @@ export const ESPUMA_PRODUCTS = [
             'Acabado antialérgico certificado'
         ],
         especificaciones: {
-            'Material': 'Espuma viscoelástica + HR',
-            'Densidad': 'D28 (28 kg/m³)',
+            'Material': 'Espuma microporosa de alta durabilidad',
+            'Densidad': 'D16.5 (16.5 kg/m³)',
             'Núcleo': 'Espuma HR de alta resiliencia',
-            'Capa visco': '4 cm memoria de forma',
+            'Capa Ergonómica': '4 cm soporte anatómico',
             'Tela': 'Tricot premium 28mm',
             'Altura 7"': '18 cm total',
             'Altura 8"': '20 cm total',
@@ -123,7 +123,7 @@ export const ESPUMA_PRODUCTS = [
             'Adaptación perfecta al cuerpo',
             'Alivio de puntos de presión',
             'Tela tricot ultra transpirable',
-            'Memoria de forma superior',
+            'Soporte anatómico superior',
             'Ideal para parejas',
             'No transmite movimiento',
             'Certificación internacional',
@@ -143,10 +143,10 @@ export const ESPUMA_PRODUCTS = [
             plusResilenseTwo,
             plusResilenseDiag
         ],
-        description: 'Plus Resilense con espuma de densidad 14 y tela Tricot acolchada. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas y 10 pulgadas. Soporte ortopédico garantizado con 3 años de garantía. El mejor respaldo para tu espalda.',
+        description: 'Plus Resilense with espuma de densidad 14 y tela Tricot acolchada. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas and 10 pulgadas. Soporte ortopédico garantizado con garantía de fábrica. El mejor respaldo para tu espalda.',
         sizes: ['7"', '8"', '10"'],
         features: ['Densidad D14', 'Tela Tricot Acolchada', 'Soporte Ortopédico'],
-        badge: 'Resilense Plus',
+        badge: 'Salud Ortopédica',
         sizePrices: {
             '7"': 699,
             '8"': 749,
@@ -218,7 +218,7 @@ export const ESPUMA_PRODUCTS = [
         ],
         description: 'Colchón Poliseda ideal para juvenil y visitas. Disponible en 4 grosores: 4 pulgadas, 5.5 pulgadas, 7 pulgadas and 8 pulgadas. Entrega inmediata en Lima. Calidad y durabilidad garantizadas.',
         sizes: ['4"', '5.5"', '7"', '8"'],
-        features: ['Económica', 'Ligera', 'Duradera'],
+        features: ['Económica', 'Tela Tricot', 'Cierre Reforzado'],
         badge: 'Poliseda Económica',
         sizePrices: {
             '4"': 349,
@@ -227,21 +227,21 @@ export const ESPUMA_PRODUCTS = [
             '8"': 549
         },
         componentes: [
-            'Tela Poliseda de alta durabilidad',
-            'Espuma de poliuretano D18 (densidad media)',
+            'Tela tricot de alta durabilidad',
+            'Espuma de poliuretano D12 (densidad standar)',
+            'Cierre reforzado de alta calidad',
             'Núcleo de espuma resilente',
-            'Capa de confort de 2 cm',
             'Tratamiento antiácaros y antibacterial',
             'Bordes reforzados',
             'Tecnología de ventilación',
             'Acabado resistente al desgaste'
         ],
         especificaciones: {
-            'Material': 'Espuma de poliuretano',
-            'Densidad': 'D18 (18 kg/m³)',
-            'Núcleo': 'Espuma resilente de alta recuperación',
-            'Capa confort': '2 cm espuma suave',
-            'Tela': 'Poliseda transpirable',
+            'Material': 'Espuma de poliuretano D12',
+            'Densidad': 'D12 (densidad standar)',
+            'Núcleo': 'Espuma de poliuretano',
+            'Cierre': 'Reforzado',
+            'Tela': 'Tricot de alta durabilidad',
             'Altura 4"': '10 cm total',
             'Altura 5.5"': '14 cm total',
             'Altura 7"': '18 cm total',
@@ -253,7 +253,7 @@ export const ESPUMA_PRODUCTS = [
         beneficios: [
             'Relación calidad-precio inmejorable',
             'Ideal para habitaciones de invitados',
-            'Fácil transporte y manejo',
+            'Fácil transporte and manejo',
             'Material hipoalergénico seguro',
             'Larga vida útil',
             'No necesita mantenimiento especial',

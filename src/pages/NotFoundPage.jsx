@@ -18,7 +18,7 @@ const NotFoundPage = () => {
           </h1>
           <div className="relative -mt-24 md:-mt-32">
             <span className="text-4xl md:text-6xl font-black text-gold-500 leading-none">
-              PÉRDIDO
+              PERDIDO
             </span>
           </div>
         </div>
@@ -42,7 +42,7 @@ const NotFoundPage = () => {
             <FaHome className="w-4 h-4" />
             Página Principal
           </Link>
-          
+
           <Link
             to="/catalogo"
             className="inline-flex items-center gap-3 border-2 border-gray-200 dark:border-white/20 text-gray-900 dark:text-white px-8 py-4 rounded-full font-black text-sm uppercase tracking-widest transition-all hover:border-gold-500 hover:text-gold-500 dark:hover:border-gold-500 dark:hover:text-gold-500"

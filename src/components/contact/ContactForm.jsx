@@ -32,19 +32,36 @@ const ContactFormContent = () => {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitted(true);
-      setIsSubmitting(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
-        product: ''
+    try {
+      // Real form submission using fetch to FormSubmit.co
+      const response = await fetch("https://formsubmit.co/ajax/ventas@suenodorado.pe", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
-    }, 2000);
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+          product: ''
+        });
+      } else {
+        alert("Hubo un error al enviar el mensaje. Por favor, intenta de nuevo o contáctanos por WhatsApp.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Error de conexión. Por favor, verifica tu internet e intenta de nuevo.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -84,7 +101,7 @@ const ContactFormContent = () => {
           <h1 className="text-5xl md:text-8xl font-display font-black text-gray-900 dark:text-white uppercase leading-[0.9] tracking-tighter mb-8 animate-slide-up">
             Hablemos del <br /><span className="text-gold-500">Descanso Perfecto</span>
           </h1>
-          <p className="text-xl text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-2xl animate-fade-in delay-200">
+          <p className="text-xl text-gray-600 dark:text-gray-400 font-medium leading-relaxed max-w-2xl animate-fade-in delay-200">
             Estamos aquí para asesorarte. Ya sea que busques el colchón de tus sueños o una solución corporativa, nuestro equipo experto está a un clic de distancia.
           </p>
         </div>
@@ -118,7 +135,7 @@ const ContactFormContent = () => {
               </div>
               <div>
                 <h3 className="text-lg font-black text-gray-900 dark:text-white uppercase mb-1">Email</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm font-medium break-all">ventasisd@grupoisd.com</p>
+                <p className="text-gray-600 dark:text-gray-400 text-sm font-medium break-all">ventasisd@grupoisd.com</p>
               </div>
             </div>
 
@@ -129,7 +146,7 @@ const ContactFormContent = () => {
               </div>
               <div>
                 <h3 className="text-lg font-black text-gray-900 dark:text-white uppercase mb-1">Central</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">8am - 5pm</p>
+                <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">8am - 5pm</p>
               </div>
             </div>
 
@@ -171,7 +188,7 @@ const ContactFormContent = () => {
               </h3>
 
               <form
-                action="https://formsubmit.co/ventasisd@grupoisd.com"
+                action="https://formsubmit.co/ventas@suenodorado.pe"
                 method="POST"
                 onSubmit={handleSubmit}
                 className="space-y-8"

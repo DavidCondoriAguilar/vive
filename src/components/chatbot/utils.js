@@ -7,11 +7,28 @@ import { MESSAGE_SENDERS } from './types.js';
 import { BOT_RESPONSES, KEYWORDS_INTENTS, CHATBOT_CONFIG } from './constants.js';
 
 /**
+ * Normalizes text for better matching:
+ * - Lowercase
+ * - Removes accents/diacritics
+ * - Removes punctuation
+ * - Trims whitespace
+ */
+export const normalizeText = (text) => {
+  if (!text) return '';
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Remove accents
+    .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\?¿!¡]/g, '') // Remove punctuation
+    .trim();
+};
+
+/**
  * Generate unique message ID (UUID v4 compatible)
  * @returns {string} Unique identifier
  */
 export const generateMessageId = () => {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
     const r = Math.random() * 16 | 0;
     const v = c === 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
@@ -44,17 +61,30 @@ export const createMessage = (text, sender, options = [], action = null) => {
  * @returns {string} Detected intent
  */
 export const detectIntent = (message) => {
-  const lowerMessage = message.toLowerCase();
-  
-  // Check for exact keyword matches first
+  const normalizedMessage = normalizeText(message);
+  const words = normalizedMessage.split(/\s+/);
+
+  // 1. Check for multi-word exact matches (priority)
   for (const [keyword, intent] of Object.entries(KEYWORDS_INTENTS)) {
-    if (lowerMessage.includes(keyword)) {
+    if (keyword.includes(' ') && normalizedMessage.includes(normalizeText(keyword))) {
       return intent;
     }
   }
-  
-  // Fallback to help intent
-  return 'help';
+
+  // 2. Check for individual word matches
+  for (const [keyword, intent] of Object.entries(KEYWORDS_INTENTS)) {
+    const normalizedKeyword = normalizeText(keyword);
+    // If it's a single word, check if it exists in the message words
+    if (!keyword.includes(' ') && words.includes(normalizedKeyword)) {
+      return intent;
+    }
+    // Fallback search in the whole string
+    if (normalizedMessage.includes(normalizedKeyword)) {
+      return intent;
+    }
+  }
+
+  return 'fallback';
 };
 
 /**
@@ -62,15 +92,16 @@ export const detectIntent = (message) => {
  * @param {string} intent - Detected intent
  * @returns {Object} Bot response object
  */
-export const getBotResponse = (intent) => {
+export const getBotResponse = (intent, originalMessage = '') => {
   const response = BOT_RESPONSES[intent] || BOT_RESPONSES.fallback;
-  
+
   return {
     text: response.text,
     options: response.options || [],
     action: response.action || null,
     metadata: {
       intent,
+      originalMessage,
       timestamp: new Date()
     }
   };
@@ -84,9 +115,9 @@ export const getBotResponse = (intent) => {
 export const formatMessageText = (text) => {
   // Handle both string and object inputs
   const messageText = typeof text === 'string' ? text : (text?.text || '');
-  
+
   if (!messageText) return '';
-  
+
   return messageText
     .replace(/\n/g, '<br />')
     .replace(/📋/g, '📋')
@@ -116,14 +147,16 @@ export const hasAction = (message) => {
  */
 export const getActionUrl = (message) => {
   const { action } = message;
-  
+
   switch (action) {
     case 'whatsapp':
       return `https://wa.me/${CHATBOT_CONFIG.whatsappNumber}?text=Hola, necesito ayuda con mi pedido.`;
     case 'catalog':
       return '/catalogo';
     case 'human_agent':
-      return `https://wa.me/${CHATBOT_CONFIG.whatsappNumber}?text=Hola, necesito hablar con un agente humano.`;
+    case 'fallback_whatsapp':
+      const userMsg = message.metadata?.originalMessage || 'Hola, necesito ayuda personalizada.';
+      return `https://wa.me/${CHATBOT_CONFIG.whatsappNumber}?text=${encodeURIComponent('Hola Sueño Dorado, ' + userMsg)}`;
     default:
       return null;
   }
@@ -147,7 +180,7 @@ export const getTypingDuration = (text) => {
   const baseDelay = CHATBOT_CONFIG.typingDelay;
   const charDelay = 50; // 50ms per character
   const maxDelay = 3000; // Max 3 seconds
-  
+
   const duration = baseDelay + (text.length * charDelay);
   return Math.min(duration, maxDelay);
 };
@@ -160,7 +193,7 @@ export const getTypingDuration = (text) => {
 export const formatTimestamp = (timestamp) => {
   const now = new Date();
   const diff = now - timestamp;
-  
+
   // If message is from today, show time only
   if (diff < 24 * 60 * 60 * 1000) {
     return timestamp.toLocaleTimeString('es-PE', {
@@ -168,14 +201,14 @@ export const formatTimestamp = (timestamp) => {
       minute: '2-digit'
     });
   }
-  
+
   // If message is from this week, show day name
   if (diff < 7 * 24 * 60 * 60 * 1000) {
     return timestamp.toLocaleDateString('es-PE', {
       weekday: 'short'
     });
   }
-  
+
   // Otherwise show full date
   return timestamp.toLocaleDateString('es-PE', {
     day: '2-digit',

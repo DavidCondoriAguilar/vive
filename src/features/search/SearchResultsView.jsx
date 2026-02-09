@@ -19,7 +19,7 @@ const SearchResultsView = () => {
   const [sortBy, setSortBy] = useState('relevant');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedSize, setSelectedSize] = useState('all');
-  
+
   const { addToCart, getTotalItems } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
   const { theme } = useTheme();
@@ -28,7 +28,7 @@ const SearchResultsView = () => {
   useEffect(() => {
     const performSearch = () => {
       setIsLoading(true);
-      
+
       if (!query.trim()) {
         setSearchResults([]);
         setIsLoading(false);
@@ -136,11 +136,12 @@ const SearchResultsView = () => {
             {/* Search Header */}
             <div className="text-center mb-16">
               <div className="flex justify-center mb-6">
-                <Link 
+                <Link
                   to="/"
-                  className="inline-flex items-center gap-2 text-gray-500 hover:text-gold-500 transition-colors duration-200"
+                  className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gold-500 transition-colors duration-200"
+                  aria-label="Volver al inicio"
                 >
-                  <MdArrowBack className="w-5 h-5" />
+                  <MdArrowBack className="w-5 h-5" aria-hidden="true" />
                   <span className="text-sm">Volver</span>
                 </Link>
               </div>
@@ -154,7 +155,7 @@ const SearchResultsView = () => {
                 </p>
               </div>
               {!isLoading && (
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   {sortedResults.length} producto{sortedResults.length !== 1 ? 's' : ''} encontrado{sortedResults.length !== 1 ? 's' : ''}
                 </p>
               )}
@@ -263,9 +264,12 @@ const SearchResultsView = () => {
                       <div className="relative aspect-[4/3] bg-white dark:bg-dream-dark-surface overflow-hidden flex-shrink-0">
                         <Link to={`/producto/${product.id}`} className="block w-full h-full flex items-center justify-center p-3 sm:p-4">
                           <img
-                            src={product.image}
+                            src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=400&q=75&auto=format`}
                             alt={product.name}
                             className="max-w-full max-h-full object-contain transition-opacity duration-300 cursor-pointer"
+                            width="400"
+                            height="300"
+                            loading="lazy"
                           />
                         </Link>
                         {product.badge && (

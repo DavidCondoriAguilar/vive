@@ -112,11 +112,15 @@ export const useChatbotFixed = () => {
 
     // Synonyms map for better intent detection
     const synonyms = {
-      pricing: ['precio', 'precios', 'costo', 'cuanto', 'cuanta', 'valor', 'tarifa', 'caro', 'barato', 'descuento', 'oferta'],
-      catalog: ['catalogo', 'productos', 'colchones', 'colchon', 'resortes', 'espuma', 'base', 'tarima', 'cuna', 'almohada', 'item', 'modelos'],
-      contact: ['contactar', 'contacto', 'whatsapp', 'llamar', 'llamada', 'comunicarse', 'llamada telefonica', 'numero', 'telefono', 'email', 'escribir'],
-      payment: ['pago', 'pagos', 'metodo pago', 'tarjeta', 'efectivo', 'transferencia', 'yape', 'plin', 'como pago'],
-      delivery_time: ['cuando', 'tiempo', 'rapidez', 'demora', 'cuanto tarda', 'cuanto demora', 'plazo']
+      pricing: ['precio', 'precios', 'costo', 'cuanto', 'cuanta', 'valor', 'tarifa', 'caro', 'barato'],
+      offers: ['oferta', 'ofertas', 'promocion', 'promociones', 'descuento', 'descuentos', 'liquidacion'],
+      foam: ['espuma', 'foam', 'esponja', 'poliseda', 'resilense'],
+      springs: ['resorte', 'resortes', 'sprint', 'spring', 'esorte', 'esortes'],
+      catalog: ['catalogo', 'productos', 'colchones', 'colchon', 'item', 'modelos', 'ver todo'],
+      contact: ['contactar', 'contacto', 'whatsapp', 'llamar', 'llamada', 'comunicarse', 'numero', 'telefono', 'email', 'escribir'],
+      payment: ['pago', 'pagos', 'metodo pago', 'tarjeta', 'efectivo', 'transferencia', 'yape', 'plin'],
+      shipping: ['envio', 'envios', 'delivery', 'entrega', 'donde', 'ubicacion', 'tiempo', 'demora'],
+      warranty: ['garantia', 'garantias', 'asegurar', 'seguro', 'respaldo', 'calidad']
     };
 
     // Detect intent by checking synonyms
@@ -159,13 +163,36 @@ export const useChatbotFixed = () => {
             { text: '📞 Llamar ahora', intent: 'contact', action: 'call' }
           ]
         },
+        shipping: {
+          text: '🚚 LOGÍSTICA MAYORISTA - SUEÑO DORADO\n\nContamos con una cadena de suministro optimizada para negocios:\n\n📍 **FLETES:** Convenios con agencias de carga pesada a todo el país.\n📍 **VOLUMEN:** Despachos programados para grandes pedidos.\n📍 **PICK-UP:** Recojo directo de fábrica sin esperas.\n\n¿Deseas coordinar la logística de un pedido específico?',
+          options: [
+            { text: '📱 Coordinar Logística', intent: 'contact', action: 'whatsapp_direct' },
+            { text: '💰 Ver precios por volumen', intent: 'pricing' },
+            { text: '🏠 Menú Empresarial', intent: 'help' }
+          ]
+        },
+        pricing: {
+          text: '💰 COTIZACIONES B2B - SUEÑO DORADO\n\nOfrecemos la mejor rentabilidad del mercado para distribuidores:\n\n• Escalas de descuento según volumen (Lotes 10, 50, 100+).\n• Precios puestos en agencia o en fábrica.\n• Catálogo técnico con precios de lista y descuentos.\n\n¿Te gustaría recibir nuestra lista de precios actualizada?',
+          options: [
+            { text: '📱 Solicitar lista de precios', intent: 'contact', action: 'whatsapp_direct' },
+            { text: '📋 Ver productos B2B', intent: 'catalog' },
+            { text: '🏠 Menú Empresarial', intent: 'help' }
+          ]
+        },
+        warranty: {
+          text: '🛡️ RESPALDO INDUSTRIAL SUEÑO DORADO\n\nGarantizamos que tus clientes reciban calidad certificada:\n\n• Garantía directa de fábrica (7 años Línea Siempre).\n• Soporte técnico para cambios por falla de fabricación.\n• Capacitación técnica sobre materiales (densidad/resortes).\n\n¿Necesitas información técnica para tu fuerza de ventas?',
+          options: [
+            { text: '📱 Solicitar taller técnico', intent: 'contact', action: 'whatsapp_direct' },
+            { text: '🏠 Menú Empresarial', intent: 'help' }
+          ]
+        },
         help: {
-          text: '💼 Soy tu asistente empresarial. Puedo ayudarte con:\n\n📋 Catálogo mayorista\n💰 Precios B2B\n🚚 Envíos especiales\n🛡️ Garantía extendida\n\n¿Qué necesitas?',
+          text: '💼 Soy tu asistente empresarial. Puedo ayudarte con:\n\n📋 Catálogo mayorista para socios\n💰 Cotizaciones por volumen\n🚚 Envíos logísticos especiales\n🛡️ Garantía industrial\n\n¿Qué necesitas?',
           options: [
             { text: '📋 Ver catálogo mayorista', intent: 'catalog' },
-            { text: '💰 Precios mayoristas', intent: 'pricing' },
-            { text: '💰 Precios mayoristas', intent: 'pricing' },
-            { text: '🚚 Envíos', intent: 'shipping' }
+            { text: '💰 Consultar precios B2B', intent: 'pricing' },
+            { text: '🚚 Logística de envíos', intent: 'shipping' },
+            { text: '🛡️ Garantía y Calidad', intent: 'warranty' }
           ]
         }
       },
@@ -173,38 +200,76 @@ export const useChatbotFixed = () => {
       // Regular customer responses
       regular: {
         pricing: {
-          text: '💰 PRECIOS SUEÑO DORADO - CALIDAD PREMIUM\n\n🛏️ COLCHONES DE ESPUMA:\n• 1 Plaza: S/. 399\n• 1.5 Plazas: S/. 499\n• 2 Plazas: S/. 599\n• Queen: S/. 699\n• King: S/. 799\n\n🛏️ COLCHONES DE RESORTES:\n• 1 Plaza: S/. 449\n• 1.5 Plazas: S/. 549\n• 2 Plazas: S/. 649\n• Queen: S/. 749\n• King: S/. 849\n\n🚚 ENVÍO GRATIS en compras mayores a S/. 500 (Lima)\n\n📋 ¿Quieres ver catálogo completo o cotizar algo específico?',
+          text: '💰 COTIZACIONES SUEÑO DORADO\n\nNuestros precios se ajustan según la medida y el modelo que elijas. Para darte un valor exacto y las ofertas del día, te sugiero hablar con un asesor técnico.\n\n¿Te gustaría recibir una cotización personalizada por WhatsApp?',
           options: [
-            { text: '📋 Ver catálogo completo', intent: 'catalog_full', action: 'whatsapp_catalog' },
-            { text: '💰 Solicitar cotización', intent: 'contact', action: 'whatsapp_direct' },
-            { text: '🚚 Calcular envío', intent: 'contact', action: 'whatsapp_direct' }
+            { text: '📱 Solicitar cotización exacta', intent: 'contact', action: 'whatsapp_direct' },
+            { text: '📋 Ver modelos en catálogo', intent: 'catalog_full', action: 'catalog' },
+            { text: '🏠 Volver al inicio', intent: 'help' }
+          ]
+        },
+        foam: {
+          text: '🛏️ EXPERTOS EN COLCHONES DE ESPUMA - SUEÑO DORADO\n\nNuestros colchones de espuma están fabricados con densidades certificadas para asegurar que no se deformen:\n\n✨ **TECNOLOGÍA:**\n• Densidades desde D14 hasta D30 (Alta densidad).\n• Espuma Plus Resilense: confort anatómico inmediato.\n• Tela Tricot y Poliseda de alta frescura.\n\n¿Buscas algo económico para uso ocasional o un colchón de alta gama para uso diario?',
+          options: [
+            { text: '📱 Consultar para uso diario', intent: 'contact', action: 'whatsapp_direct' },
+            { text: '📱 Consultar línea económica', intent: 'contact', action: 'whatsapp_direct' },
+            { text: '🏠 Ver todo el catálogo', intent: 'catalog' }
+          ]
+        },
+        springs: {
+          text: '🛏️ INGENIERÍA EN RESORTES - SUEÑO DORADO\n\nFabricamos colchones que combinan soporte ortopédico con una durabilidad extrema:\n\n✨ **SISTEMAS DISPONIBLES:**\n• **Pocket-Spring:** Resortes independientes (no transmiten movimiento).\n• **Marco de Acero:** Refuerzo perimetral para mayor estabilidad.\n• **Pillow Top Permanente:** Capa extra de confort superior.\n\n¿Te gustaría que un asesor te recomiende el modelo ideal según tu peso y posición al dormir?',
+          options: [
+            { text: '📱 Sí, hablar con experto', intent: 'contact', action: 'whatsapp_direct' },
+            { text: '📋 Ver modelos de resortes', intent: 'catalog_full', action: 'catalog' },
+            { text: '🏠 Volver al inicio', intent: 'help' }
           ]
         },
         catalog: {
-          text: '📋 CATÁLOGO SUEÑO DORADO - ELIGE TU CATEGORÍA\n\n🛏️ COLCHONES DE ESPUMA:\n• Ideales para alergias\n• Silenciosos y duraderos\n• Precios desde S/. 399\n\n🛏️ COLCHONES DE RESORTES:\n• Máxima ventilación\n• Soporte ortopédico\n• Precios desde S/. 449\n\n🛏️ BASES Y TARIMAS:\n• Complementos perfectos\n• Garantía estructural\n• Precios desde S/. 199\n\n👶 CUNAS Y ACCESORIOS:\n• Seguridad para bebés\n• Almohadas ergonómicas\n• Precios desde S/. 89\n\n🎯 ¿Qué categoría te interesa explorar?',
+          text: '📋 CATÁLOGO SUEÑO DORADO - EXPERTOS EN DESCANSO\n\nComo fabricantes, tenemos la solución perfecta para tu descanso:\n\n🛏️ **COLCHONES DE ESPUMA:** Anatómicos y silenciosos.\n🛏️ **COLCHONES DE RESORTES:** Máximo soporte y ventilación.\n🛏️ **BASES Y TARIMAS:** Madera selecta reforzada.\n\n🎯 ¿Qué categoría te gustaría que te detallemos ahora?',
           options: [
-            { text: '🛏️ Colchones de Espuma', intent: 'category_foam', action: 'whatsapp_category' },
-            { text: '🛏️ Colchones de Resortes', intent: 'category_springs', action: 'whatsapp_category' },
-            { text: '🛏️ Bases y Tarimas', intent: 'category_bases', action: 'whatsapp_category' },
-            { text: '👶 Cunas y Accesorios', intent: 'category_cribs', action: 'whatsapp_category' }
+            { text: '🛏️ Detallar Espuma', intent: 'foam' },
+            { text: '🛏️ Detallar Resortes', intent: 'springs' },
+            { text: '🛏️ Ver Bases/Tarimas', intent: 'category_bases', action: 'whatsapp_category' },
+            { text: '📱 Hablar con un asesor', intent: 'contact', action: 'whatsapp_direct' }
           ]
         },
         contact: {
-          text: '📞 Puedes contactarnos de varias formas:\n\n📱 WhatsApp: (01) 989 223 448\n📧 Email: hola@suenodorado.pe\n🌐 Web: www.suenodorado.pe\n\n¿Prefieres hablar ahora por WhatsApp?',
+          text: '📞 ATENCIÓN PERSONALIZADA SUEÑO DORADO\n\nNuestros asesores expertos están listos para ayudarte a elegir el colchón de tus sueños:\n\n📱 **WhatsApp:** atención inmediata.\n📧 **Email:** ventas@suenodorado.pe\n\n¿Deseas conectar ahora mismo con un asesor para recibir una oferta personalizada?',
           options: [
-            { text: '📱 Hablar por WhatsApp', intent: 'contact', action: 'whatsapp_direct' },
-            { text: '📧 Enviar email', intent: 'contact', action: 'email_direct' },
-            { text: '📋 Ver horarios', intent: 'contact', action: 'hours' }
+            { text: '📱 Conectar por WhatsApp', intent: 'contact', action: 'whatsapp_direct' },
+            { text: '📋 Ver horarios', intent: 'contact', action: 'hours' },
+            { text: '🏠 Menú Principal', intent: 'help' }
           ]
         },
         help: {
-          text: 'Puedo ayudarte con:\n\n📋 Información de productos\n💰 Precios y ofertas\n🚚 Envíos y entregas\n🛡️ Garantías\n📞 Contacto\n\n¿Qué necesitas saber?',
+          text: '¡Hola! Soy Susi, tu experta en descanso. ¿En qué puedo asesorarte hoy?\n\n📋 Información técnica de productos\n🚚 Envíos gratis a todo Lima\n🛡️ Garantías directas de fábrica\n📞 Contacto con ventas\n\n¿Qué información necesitas?',
           options: [
             { text: '📋 Ver productos', intent: 'catalog' },
-            { text: '💰 Precios', intent: 'pricing' },
-            { text: '💰 Precios', intent: 'pricing' },
-            { text: '🚚 Envíos', intent: 'shipping' },
-            { text: '📞 Contactar', intent: 'contact' }
+            { text: '🚚 Envíos y Entregas', intent: 'shipping' },
+            { text: '📞 Hablar con Ventas', intent: 'contact' }
+          ]
+        },
+        shipping: {
+          text: '🚚 LOGÍSTICA DE ENTREGAS SUEÑO DORADO\n\nQueremos que estrenes tu colchón lo antes posible:\n\n📍 **LIMA METROPOLITANA:** Entregas en 24-48 horas. ¡Envío GRATIS!\n📍 **PROVINCIAS:** Envíos a todo el país vía agencias rápidas (Shalom, Marvisur, etc.).\n📍 **FÁBRICA:** También puedes recoger tu pedido directamente en nuestro almacén.\n\n¿Deseas que te ayudemos a cotizar el envío a tu ciudad?',
+          options: [
+            { text: '📱 Consultar para Lima', intent: 'contact', action: 'whatsapp_direct' },
+            { text: '📱 Consultar para Provincia', intent: 'contact', action: 'whatsapp_direct' },
+            { text: '🏠 Menú Principal', intent: 'help' }
+          ]
+        },
+        offers: {
+          text: '🔥 PROMOCIONES EXCLUSIVAS SUEÑO DORADO\n\n¡Es el mejor momento para renovar tu descanso! Tenemos ofertas especiales por esta semana:\n\n✨ **TOP OFERTAS:**\n• Descuentos en Línea Siempre (7 años de garantía).\n• Combos de Colchón + Base/Tarima con precios de fábrica.\n• Almohadas de regalo por compras seleccionadas.\n\n¿Te gustaría recibir el PDF con las promociones vigentes?',
+          options: [
+            { text: '📱 Sí, enviar ofertas', intent: 'contact', action: 'whatsapp_direct' },
+            { text: '📋 Ver catálogo regular', intent: 'catalog' },
+            { text: '🏠 Menú Principal', intent: 'help' }
+          ]
+        },
+        warranty: {
+          text: '🛡️ COMPROMISO Y GARANTÍA SUEÑO DORADO\n\nTu tranquilidad es nuestra prioridad. Al comprar directamente de fábrica, cuentas con:\n\n✅ **GARANTÍA REAL:**\n• Línea Premium: Hasta 6 años de garantía absoluta.\n• Línea Siempre: 7 años de respaldo oficial.\n• Certificación de densidades reales (no se deforma).\n\n¿Tienes alguna duda técnica sobre la durabilidad de algún modelo en específico?',
+          options: [
+            { text: '📱 Hablar con un técnico', intent: 'contact', action: 'whatsapp_direct' },
+            { text: '📋 Ver modelos duraderos', intent: 'catalog' },
+            { text: '🏠 Menú Principal', intent: 'help' }
           ]
         }
       }
@@ -301,95 +366,13 @@ www.suenodorado.pe`;
    */
   const generateCatalogMessage = (isBusiness) => {
     if (isBusiness) {
-      return `📋 CATÁLOGO EMPRESARIAL - SUEÑO DORADO 💼
-
-🛏️ COLCHONES DE ESPUMA:
-• Colchón Espuma 1 Plaza: S/. 399 c/u (10+ unidades: S/. 349)
-• Colchón Espuma 1.5 Plazas: S/. 499 c/u (10+ unidades: S/. 449)
-• Colchón Espuma 2 Plazas: S/. 599 c/u (10+ unidades: S/. 549)
-• Colchón Espuma Queen: S/. 699 c/u (10+ unidades: S/. 629)
-• Colchón Espuma King: S/. 799 c/u (10+ unidades: S/. 719)
-
-🛏️ COLCHONES DE RESORTES:
-• Colchón Resortes 1 Plaza: S/. 449 c/u (10+ unidades: S/. 399)
-• Colchón Resortes 1.5 Plazas: S/. 549 c/u (10+ unidades: S/. 489)
-• Colchón Resortes 2 Plazas: S/. 649 c/u (10+ unidades: S/. 579)
-• Colchón Resortes Queen: S/. 749 c/u (10+ unidades: S/. 669)
-• Colchón Resortes King: S/. 849 c/u (10+ unidades: S/. 759)
-
-🛏️ TARIMAS Y BASES:
-• Tarima Simple: S/. 199 c/u (10+ unidades: S/. 169)
-• Tarima Doble: S/. 299 c/u (10+ unidades: S/. 259)
-• Base con Cajones: S/. 399 c/u (10+ unidades: S/. 349)
-
-🛏️ CUNAS Y ALMOHADAS:
-• Cuna Infantil: S/. 599 c/u (5+ unidades: S/. 549)
-• Almohada Premium: S/. 89 c/u (20+ unidades: S/. 69)
-
-🚚 ENVÍOS:
-• Lima Metropolitana: GRATIS en compras mayores a S/. 2,000
-• Provincias: Coordinar según volumen
-
-💰 FORMAS DE PAGO:
-• Transferencia bancaria
-• Yape/Plin
-• Pago contra entrega (Lima)
-• Crédito (aprobación sujeta)
-
-📞 CONTÁCTANOS PARA COTIZAR:
-• WhatsApp: (01) 989 223 448
-• Email: ventas@suenodorado.pe
-• Web: www.suenodorado.pe
-
----
-*Precios sujetos a cambio sin previo aviso. Válidos hasta fin de mes.*`;
+      return `📋 SOLICITUD DE CATÁLOGO EMPRESARIAL - SUEÑO DORADO 💼
+      
+Me interesa recibir el catálogo técnico para socios comerciales junto con los beneficios de compra por volumen, stock disponible y tiempos de entrega para provincia.`;
     } else {
-      return `📋 CATÁLOGO SUEÑO DORADO - PREMIUM 🛏️
-
-🛏️ COLCHONES DE ESPUMA:
-• Colchón Espuma 1 Plaza: S/. 399
-• Colchón Espuma 1.5 Plazas: S/. 499  
-• Colchón Espuma 2 Plazas: S/. 599
-• Colchón Espuma Queen: S/. 699
-• Colchón Espuma King: S/. 799
-
-🛏️ COLCHONES DE RESORTES:
-• Colchón Resortes 1 Plaza: S/. 449
-• Colchón Resortes 1.5 Plazas: S/. 549
-• Colchón Resortes 2 Plazas: S/. 649
-• Colchón Resortes Queen: S/. 749
-• Colchón Resortes King: S/. 849
-
-🛏️ TARIMAS Y BASES:
-• Tarima Simple: S/. 199
-• Tarima Doble: S/. 299
-• Base con Cajones: S/. 399
-
-🛏️ CUNAS Y ALMOHADAS:
-• Cuna Infantil: S/. 599
-• Almohada Premium: S/. 89
-
-🚚 ENVÍOS:
-• Lima Metropolitana: GRATIS en compras mayores a S/. 500
-• Provincias: S/. 50 - S/. 100 según zona
-
-💰 FORMAS DE PAGO:
-• Transferencia bancaria
-• Yape/Plin
-• Tarjeta de crédito/débito
-• Pago contra entrega (Lima)
-
-🛡️ GARANTÍA:
-• Tarimas y Bases: Madera seleccionada
-• Colchones: Calidad de Fábrica
-
-📞 CONTÁCTANOS:
-• WhatsApp: (01) 989 223 448
-• Email: hola@suenodorado.pe
-• Web: www.suenodorado.pe
-
----
-*Visítanos en nuestra tienda o solicita entrega a domicilio.*`;
+      return `📋 SOLICITUD DE CATÁLOGO PREMIUM - SUEÑO DORADO 🛏️
+      
+Hola, me gustaría recibir el catálogo completo de sus líneas de Espuma, Resortes y Bases para elegir mi modelo ideal. Quedo atento a su asesoría técnica.`;
     }
   };
 

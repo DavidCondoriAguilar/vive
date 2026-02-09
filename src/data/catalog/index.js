@@ -8,23 +8,23 @@ export { ESPUMA_PRODUCTS } from './espuma.data';
 export { COMPLEMENTARIOS_PRODUCTS } from './dormitorio.data';
 
 // 1. PRODUCTOS DE ALTA PRIORIDAD (Se mostrarán primero en la sección "Nuestros Productos")
+// Marketing Strategy: 1. Hero Brand (Golden Dream), 2. High Margin Upsell (Box/Cama Premium), 3. Tech Anchor (Pocket Visco), 4. Foam Luxury
 const TOP_MAIN_IDS = [
-    'reconciliacion-pocket', // Top Resorte Diamont
-    'topacio',               // Top Espuma
-    'absolut-marco',         // Premium Resorte Diamont
-    'splendido',            // Premium Espuma
-    'siempre-pt',           // Gold Resorte
-    'plus-resilense'        // Espuma Ortopédica
+    'golden-dream-mp',        // The "Hero" of the brand
+    'box-tarima-universal',   // NEW: Best seller accessibility (Cama Universal)
+    'cama-tapizada-premium-brazo', // High margin upsell
+    'reconciliacion-pocket',   // The Tech Anchor
+    'topacio',                 // The King of Foam (D30)
+    'box-tarima-premium-tapizado', // High-visibility premium furniture
+    'siempre-pt'             // The "Best Seller" (Reliability)
 ];
 
-// 2. PRODUCTOS DESTACADOS (Se mostrarán en la sección "Nuestros Productos Destacados" para no repetir)
-// Elegimos otros modelos de alta gama que no son los mismos que los TOP_MAIN para dar variedad
+// 2. PRODUCTOS DESTACADOS (Variedad y Alternativas de Valor)
 const FEATURED_PRIORITY_IDS = [
-    'golden-dream-mp',      // Gold Resorte (Muy vendido)
-    'matrimonial-clasico',   // Diamont Resorte (Calidad/Precio)
-    'ternura-pocket',       // Diamont Resorte
-    'pasiones-pt-mp',       // Gold Resorte
-    'infinito-mp'           // Marco Poliuretano (Uso rudo)
+    'ternura-pocket',         // Great alternative to Reconciliación
+    'mueble-luxe',            // NEW: Showing that we sell sofas/seccionales too
+    'matrimonial-clasico',     // The classical matrimonial choice
+    'plus-resilense'          // The "Health/Orthopedic" choice
 ];
 
 const ALL_PRODUCTS = [

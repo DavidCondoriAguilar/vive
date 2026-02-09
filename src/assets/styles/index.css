@@ -348,15 +348,31 @@ select {
   .custom-scrollbar::-webkit-scrollbar {
     width: 4px;
   }
+
   .custom-scrollbar::-webkit-scrollbar-track {
     background: transparent;
   }
+
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: rgba(212, 175, 55, 0.2);
     border-radius: 20px;
   }
+
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(212, 175, 55, 0.5);
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 }
 
@@ -596,6 +612,23 @@ select:focus {
 /* Ensure consistent spacing */
 body {
   font-family: 'Inter', 'Montserrat', 'Manrope', system-ui, sans-serif;
+}
+
+/* ==================== Chatbot Specific Fixes ==================== */
+/* Bypassing global border-radius: 0 !important for the chatbot window */
+.chatbot-window-premium {
+  border-radius: 1rem !important;
+  /* Matches rounded-2xl */
+  overflow: hidden !important;
+}
+
+.chatbot-header-premium {
+  border-top-left-radius: 1rem !important;
+  border-top-right-radius: 1rem !important;
+}
+
+.chatbot-button-premium {
+  border-radius: 9999px !important;
 }
 
 h1,

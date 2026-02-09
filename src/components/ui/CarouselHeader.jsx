@@ -1,11 +1,11 @@
 import React from 'react';
 
-const CarouselHeader = ({ 
-  title, 
-  currentIndex, 
-  itemsPerView, 
-  totalItems, 
-  description 
+const CarouselHeader = ({
+  title,
+  currentIndex,
+  itemsPerView,
+  totalItems,
+  description
 }) => {
   return (
     <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-12">
@@ -25,7 +25,7 @@ const CarouselHeader = ({
             {currentIndex + itemsPerView} / {totalItems}
           </span>
         </div>
-        <p className="text-gray-500 dark:text-gray-400 font-medium text-sm">
+        <p className="text-gray-600 dark:text-gray-300 font-medium text-sm">
           {description}
         </p>
       </div>

@@ -41,7 +41,7 @@ const Footer = ({ onLogoClick }) => {
                             className="!w-32 !h-auto !justify-start"
                             variant="auto"
                         />
-                        <p className="text-sm text-gray-500 dark:text-gray-400 font-medium leading-relaxed">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
                             Redefiniendo el descanso en Perú desde nuestra planta industrial en Puente Piedra. Ingeniería de precisión y materiales de clase mundial.
                         </p>
                         <div className="space-y-4">
@@ -146,8 +146,12 @@ const Footer = ({ onLogoClick }) => {
                                     placeholder="Tu email principal"
                                     className="w-full bg-white dark:bg-black border border-gray-200 dark:border-white/10 rounded-xl py-3 pl-4 pr-12 text-xs outline-none focus:border-gold-500 transition-all font-bold"
                                 />
-                                <button type="submit" className="absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-gold-500 text-black rounded-lg flex items-center justify-center hover:bg-gold-600 transition-colors">
-                                    <LuArrowRight className="w-4 h-4" />
+                                <button
+                                    type="submit"
+                                    className="absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-gold-500 text-black rounded-lg flex items-center justify-center hover:bg-gold-600 transition-colors"
+                                    aria-label="Suscribirse al newsletter"
+                                >
+                                    <LuArrowRight className="w-4 h-4" aria-hidden="true" />
                                 </button>
                             </form>
                         </div>
@@ -162,10 +166,10 @@ const Footer = ({ onLogoClick }) => {
                 <div className="pt-12 border-t border-gray-100 dark:border-white/5">
                     <div className="flex flex-col lg:flex-row justify-between items-center gap-8 text-center lg:text-left">
                         <div className="space-y-1">
-                            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">
+                            <p className="text-[10px] font-black uppercase tracking-widest text-gray-600 dark:text-gray-400">
                                 © {currentYear} SUEÑO DORADO. Salud y placer siempre a tu lado.
                             </p>
-                            <p className="text-[10px] font-bold text-gray-400/60 uppercase tracking-tighter">
+                            <p className="text-[10px] font-bold text-gray-500 dark:text-gray-500 uppercase tracking-tighter">
                                 Planta Industrial: Mz. F Lt. 22, Chillón - La Ensenada, Puente Piedra, Lima.
                             </p>
                         </div>
@@ -173,10 +177,10 @@ const Footer = ({ onLogoClick }) => {
                         <div className="flex flex-col items-center lg:items-end gap-3 grayscale opacity-60">
                             <span className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-400">Pagos Seguros</span>
                             <div className="flex items-center gap-4">
-                                <img src={medioPago1} alt="Visa" className="h-4 w-auto" />
-                                <img src={medioPago2} alt="Mastercard" className="h-4 w-auto" />
-                                <img src={yape} alt="Yape" className="h-6 w-auto" />
-                                <img src={medioPago5} alt="Medio Pago" className="h-4 w-auto" />
+                                <img src={medioPago1} alt="Visa" className="h-4 w-auto" width="32" height="16" />
+                                <img src={medioPago2} alt="Mastercard" className="h-4 w-auto" width="32" height="16" />
+                                <img src={yape} alt="Yape" className="h-6 w-auto" width="40" height="24" />
+                                <img src={medioPago5} alt="Medio Pago" className="h-4 w-auto" width="32" height="16" />
                             </div>
                         </div>
 
@@ -186,7 +190,7 @@ const Footer = ({ onLogoClick }) => {
                             rel="noopener noreferrer"
                             className="hover:scale-105 transition-transform"
                         >
-                            <img src={libroReclamacionesImg} alt="Libro de Reclamaciones" className="h-10 w-auto" />
+                            <img src={libroReclamacionesImg} alt="Libro de Reclamaciones" className="h-10 w-auto" width="120" height="40" />
                         </a>
                     </div>
                 </div>

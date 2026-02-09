@@ -110,7 +110,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                     {/* Header Section */}
                     <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8 animate-fade-in">
                         <div className="max-w-2xl text-left">
-                            <nav className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 mb-6">
+                            <nav className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-600 dark:text-gray-400 mb-6" aria-label="Breadcrumb">
                                 <Link to="/" className="hover:text-gold-500 transition-colors">Inicio</Link>
                                 <span>/</span>
                                 <Link to="/catalogo" className="hover:text-gold-500 transition-colors">Catálogo</Link>
@@ -182,9 +182,12 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                                     <div className="relative overflow-hidden bg-gray-50 dark:bg-dream-dark-surface p-6" style={{ aspectRatio: '16/9' }}>
                                         <Link to={`/producto/${product.id}`} className="block h-full w-full">
                                             <img
-                                                src={product.image}
+                                                src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=400&q=75&auto=format`}
                                                 alt={product.name}
                                                 className="w-full h-full object-contain transition-transform duration-[10s] group-hover:scale-110"
+                                                width="400"
+                                                height="225"
+                                                loading="lazy"
                                             />
                                         </Link>
 
@@ -227,7 +230,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                                                     <div className="grid grid-cols-2 gap-2 text-xs">
                                                         {Object.entries(product.especificaciones).slice(0, 4).map(([key, value], idx) => (
                                                             <div key={idx} className="flex justify-between">
-                                                                <span className="text-gray-500 dark:text-gray-400 capitalize">{key}:</span>
+                                                                <span className="text-gray-600 dark:text-gray-400 capitalize">{key}:</span>
                                                                 <span className="text-gray-900 dark:text-white font-medium">{value}</span>
                                                             </div>
                                                         ))}

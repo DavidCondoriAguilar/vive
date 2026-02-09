@@ -21,19 +21,11 @@ const DesktopNav = ({ navLinks, currentPath }) => {
     const handleMouseLeave = () => {
         timeoutRef.current = setTimeout(() => {
             setActiveMenu(null);
-        }, 150); // Small grace period
+        }, 300); // Increased grace period
     };
 
     return (
-        <nav ref={navRef} className="hidden lg:flex items-center gap-1 xl:gap-4 h-full">
-            {/* Click-away Backdrop Layer */}
-            {activeMenu && (
-                <div
-                    className="fixed inset-0 z-40 bg-black/5 backdrop-blur-[2px]"
-                    onClick={() => setActiveMenu(null)}
-                />
-            )}
-
+        <nav ref={navRef} className="hidden lg:flex items-center gap-1 xl:gap-4 h-full relative">
             {navLinks.map((link) => {
                 const isOpen = activeMenu === link.name;
                 const hasDropdown = link.subLinks || link.megaMenu;

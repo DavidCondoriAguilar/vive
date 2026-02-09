@@ -16,13 +16,20 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
 
   return (
     <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
-      {/* Product Image */}
-      <div className="relative overflow-hidden bg-gray-50 dark:bg-dream-dark-surface p-6" style={{ aspectRatio: '16/9' }}>
-        <Link to={`/producto/${product.id}`} className="block h-full w-full">
+      {/* Product Image - FORCE WHITE TO MATCH IMAGE BACKGROUND */}
+      <div className="relative overflow-hidden bg-white p-6" style={{ aspectRatio: '16/9' }}>
+        <Link
+          to={`/producto/${product.id}`}
+          className="block h-full w-full"
+          aria-label={`Ver detalles de ${product.name}`}
+        >
           <img
-            src={product.image}
+            src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=600&q=75&auto=format`}
             alt={product.name}
             className="w-full h-full object-contain transition-transform duration-[10s] group-hover:scale-110"
+            width="600"
+            height="337"
+            loading="lazy"
           />
         </Link>
 
@@ -36,8 +43,8 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
         )}
       </div>
 
-      {/* Product Info */}
-      <div className="p-5 flex flex-col flex-1">
+      {/* Product Info - CURRENT COLORS FROM TOP MOVED HERE */}
+      <div className="p-5 flex flex-col flex-1 bg-gray-50/80 dark:bg-dream-dark-surface/60">
         <div className="mb-3">
           <span className="text-gold-500 text-[9px] font-bold uppercase tracking-widest">
             {product.subcategory}
@@ -47,7 +54,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
               {product.name}
             </h3>
           </Link>
-          <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed">
+          <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 leading-relaxed">
             {product.description}
           </p>
         </div>
@@ -64,6 +71,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
             <button
               onClick={handleAddToCart}
               className="flex-1 group relative overflow-hidden bg-black dark:bg-white text-white dark:text-black font-bold text-[10px] tracking-[0.1em] uppercase py-3 px-4 rounded-lg border-0 transition-all duration-700 hover:scale-[1.02] active:scale-[0.98]"
+              aria-label={`Agregar ${product.name} al carrito`}
             >
               <span className="relative z-10 flex items-center justify-center gap-3">
                 <svg className="w-4 h-4 transition-transform duration-700 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -80,7 +88,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
             <button
               onClick={() => window.location.href = `/producto/${product.id}`}
               className="group relative w-20 h-10 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border border-black/10 dark:border-white/10 text-black dark:text-white transition-all duration-700 hover:border-black dark:hover:border-white hover:from-gray-100 hover:to-gray-200 dark:hover:from-gray-800 dark:hover:to-gray-700 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center px-3 rounded-lg overflow-hidden"
-              title="Ver Detalles"
+              aria-label={`Ver detalles de ${product.name}`}
             >
               {/* Texto "Detalles" - SIEMPRE VISIBLE */}
               <span className="text-xs font-light tracking-[0.1em] uppercase transition-all duration-300 group-hover:tracking-[0.15em]">

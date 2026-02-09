@@ -22,6 +22,9 @@ const HomeView = () => {
         <link rel="canonical" href="https://suenodorado.pe/" />
       </Helmet>
       <MainLayout>
+        {/* H1 Semántico para SEO y Accesibilidad (Visualmente oculto) */}
+        <h1 className="sr-only">Sueño Dorado - Fábrica Premium de Colchones de Espuma y Resortes en Perú</h1>
+
         {/* 1. HERO CAROUSEL - Visual impactante */}
         <HeroCarousel />
 

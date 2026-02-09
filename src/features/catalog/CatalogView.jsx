@@ -66,7 +66,7 @@ const CatalogView = () => {
               <h1 className="text-5xl md:text-8xl font-display font-black text-gray-900 dark:text-white uppercase leading-[0.9] tracking-tighter mb-8 animate-slide-up">
                 Nuestros <br /><span className="text-gold-500 italic font-light">Colchones</span>
               </h1>
-              <p className="text-xl text-gray-400 dark:text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto animate-fade-in delay-200">
+              <p className="text-xl text-gray-600 dark:text-gray-400 font-medium leading-relaxed max-w-2xl mx-auto animate-fade-in delay-200">
                 Calidad directa de fábrica con respaldo industrial. Diseñados para transformar cada noche en una experiencia de lujo.
               </p>
             </div>
@@ -121,15 +121,15 @@ const CatalogView = () => {
               {sortedProducts.map((product, index) => (
                 <div key={product.id} className="group">
                   <div className="group relative flex flex-col h-full animate-fade-in-up" style={{ animationDelay: `${index * 50}ms` }}>
-                    {/* Visual Container - PURE WHITE TO MATCH PRODUCT BACKGROUND */}
-                    <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-white dark:bg-zinc-900 transition-all duration-700 group-hover:shadow-[0_80px_120px_rgba(0,0,0,0.08)] group-hover:-translate-y-4 border border-gray-50 dark:border-white/5">
+                    {/* Visual Container - FORCE PURE WHITE FOR BLENDING */}
+                    <div className="relative aspect-[4/5] rounded-t-[2rem] overflow-hidden bg-white transition-all duration-700 group-hover:shadow-[0_40px_60px_rgba(0,0,0,0.05)] border border-gray-50 dark:border-white/5">
 
-                      {/* Status / Category Badge */}
+                      {/* Status / Category Badge - Marketing Optimized */}
                       <div className="absolute top-6 left-6 z-20">
                         <div className="bg-white/90 dark:bg-black/80 backdrop-blur-md border border-gray-100 dark:border-white/10 px-5 py-2 rounded-full shadow-sm">
                           <span className="text-[9px] font-black uppercase tracking-[0.4em] text-gray-900 dark:text-white flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-gold-500 animate-bounce"></span>
-                            {product.category === 'luxury' ? 'Premium Suite' : 'Expert Series'}
+                            {product.badge || (product.subcategory === 'Diamont' ? 'Premium Suite' : 'Expert Series')}
                           </span>
                         </div>
                       </div>
@@ -137,18 +137,21 @@ const CatalogView = () => {
                       {/* Main Product Image Link */}
                       <Link to={`/producto/${product.id}`} className="absolute inset-0 flex items-center justify-center p-12">
                         <img
-                          src={product.image}
+                          src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=400&q=75&auto=format`}
                           alt={product.name}
                           className="w-full h-auto object-contain transition-transform duration-1000 group-hover:scale-110"
+                          width="400"
+                          height="500"
+                          loading="lazy"
                         />
                       </Link>
 
                       {/* Professional Hover Overlay */}
-                      <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-white dark:from-black via-white/40 dark:via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-6 group-hover:translate-y-0">
+                      <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-white/80 via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-6 group-hover:translate-y-0">
                         <div className="flex gap-3">
                           <Link
                             to={`/producto/${product.id}`}
-                            className="flex-1 py-5 bg-gray-950 dark:bg-white text-white dark:text-black text-[10px] font-black uppercase tracking-[0.25em] hover:bg-gold-500 dark:hover:bg-gold-500 hover:text-white transition-all duration-300 text-center"
+                            className="flex-1 py-5 bg-gray-950 text-white text-[10px] font-black uppercase tracking-[0.25em] hover:bg-gold-500 transition-all duration-300 text-center"
                           >
                             Ver Detalle
                           </Link>
@@ -156,8 +159,8 @@ const CatalogView = () => {
                       </div>
                     </div>
 
-                    {/* Info Block - Ultra Minimal & Professional */}
-                    <div className="mt-10 px-4 text-center">
+                    {/* Info Block - BACKGROUND MOVED HERE */}
+                    <div className="px-4 py-10 text-center bg-gray-50/50 dark:bg-zinc-900/40 rounded-b-[2rem] border-x border-b border-gray-50 dark:border-white/5 transition-all duration-700 group-hover:shadow-[0_40px_60px_rgba(0,0,0,0.05)] group-hover:-translate-y-1">
                       <span className="text-gold-500 text-[9px] font-black uppercase tracking-[0.5em] mb-3 block">
                         {product.subcategory || 'Diseño de Autor'}
                       </span>
@@ -188,7 +191,7 @@ const CatalogView = () => {
             {sortedProducts.length === 0 && (
               <div className="text-center py-20">
                 <div className="max-w-md mx-auto">
-                  <div className="w-20 h-20 bg-gray-100 dark:bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-20 h-20 bg-gray-100 dark:bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-6" aria-hidden="true">
                     <span className="text-3xl">🔍</span>
                   </div>
                   <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4">

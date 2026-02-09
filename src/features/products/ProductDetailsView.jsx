@@ -182,7 +182,7 @@ const ProductDetailsView = () => {
                     <div className="border-b border-gray-100 dark:border-gray-900">
                         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
                             <div className="flex items-center justify-between">
-                                <nav className="flex items-center gap-1 sm:gap-2 text-xs font-light tracking-widest text-gray-500 overflow-x-auto">
+                                <nav className="flex items-center gap-1 sm:gap-2 text-xs font-light tracking-widest text-gray-600 overflow-x-auto" aria-label="Breadcrumb">
                                     <Link to="/" className="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Inicio</Link>
                                     <FaChevronRight className="w-2 h-2 flex-shrink-0" />
                                     <Link to="/catalogo" className="hover:text-black dark:hover:text-white transition-colors whitespace-nowrap">Catálogo</Link>
@@ -263,8 +263,11 @@ const ProductDetailsView = () => {
                                         </div>
 
                                         <div className="absolute top-3 sm:top-6 left-3 sm:left-6 flex gap-2 sm:gap-3 z-20">
-                                            <button className="w-8 h-8 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all">
-                                                <FaShare className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
+                                            <button
+                                                className="w-8 h-8 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all"
+                                                aria-label="Compartir este producto"
+                                            >
+                                                <FaShare className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" aria-hidden="true" />
                                             </button>
                                         </div>
                                     </div>
@@ -300,6 +303,7 @@ const ProductDetailsView = () => {
                                         <button
                                             key={index}
                                             onClick={() => setActiveImageIndex(index)}
+                                            aria-label={`Ver imagen ${index + 1} de ${product.name}`}
                                             className={`rounded-lg overflow-hidden border-2 transition-all ${activeImageIndex === index
                                                 ? 'border-black dark:border-white shadow-lg'
                                                 : 'border-gray-200 dark:border-gray-800 hover:border-gray-400'
@@ -323,6 +327,8 @@ const ProductDetailsView = () => {
                                                 src={product.technicalImage}
                                                 alt={getAltText(product.technicalImage, product.name)}
                                                 className="w-full h-auto object-contain"
+                                                width="800"
+                                                height="450"
                                             />
 
                                             {/* Technical Info Overlay */}
@@ -354,7 +360,7 @@ const ProductDetailsView = () => {
                                                 <div className="flex text-black">
                                                     {'★★★★★'.split('').map((s, i) => <span key={i} className="text-sm">{s}</span>)}
                                                 </div>
-                                                <span className="text-xs text-gray-500 font-light">(124 Reseñas)</span>
+                                                <span className="text-xs text-gray-600 dark:text-gray-400 font-light">(124 Reseñas)</span>
                                             </div>
                                         </div>
                                     </div>
@@ -479,7 +485,7 @@ const ProductDetailsView = () => {
                                                 <span className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-xs font-bold">
                                                     R
                                                 </span>
-                                                COLCHÓN
+                                                {product.category === 'dormitorio' ? 'BASE' : 'COLCHÓN'}
                                             </h4>
                                             <div className="space-y-2">
                                                 {(product.technicalSpecs?.colchon || product.features || [

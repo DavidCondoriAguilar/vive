@@ -140,7 +140,7 @@ const Navbar = () => {
                         <div className="flex-shrink-0 transition-all duration-300">
                             <Logo
                                 size="medium"
-                                onClick={handleLogoClick}
+                                to={ROUTES.HOME}
                                 variant="auto"
                             />
                         </div>
@@ -161,7 +161,7 @@ const Navbar = () => {
                         <div className="flex-shrink-0">
                             <Logo
                                 size="medium"
-                                onClick={handleLogoClick}
+                                to={ROUTES.HOME}
                                 variant="auto"
                             />
                         </div>
@@ -179,7 +179,10 @@ const Navbar = () => {
 
                             {/* Search Icon - Tablet/Laptop */}
                             <div className="hidden lg:block xl:hidden">
-                                <button className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-gold-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300">
+                                <button
+                                    className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-gold-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300"
+                                    aria-label="Buscar productos"
+                                >
                                     <MdOutlineSearch className="w-4 h-4" />
                                 </button>
                             </div>

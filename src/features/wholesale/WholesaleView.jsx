@@ -50,7 +50,7 @@ const WholesaleView = () => {
   const targetMarkets = [
     {
       id: 'tiendas',
-      image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2064&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200&auto=format&fit=crop",
       icon: <FaStore />,
       title: "Tiendas y Comercio",
       subtitle: "Distribución y Márgenes Premium",
@@ -59,7 +59,7 @@ const WholesaleView = () => {
     },
     {
       id: 'corporativo',
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
       icon: <FaBuilding />,
       title: "B2B Corporativo",
       subtitle: "Proyectos y Soluciones a Medida",
@@ -68,7 +68,7 @@ const WholesaleView = () => {
     },
     {
       id: 'hoteleria',
-      image: "https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=1974&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=1200&auto=format&fit=crop",
       icon: <FaHotel />,
       title: "Hotelería de Lujo",
       subtitle: "Turismo y Confort Internacional",
@@ -157,7 +157,7 @@ const WholesaleView = () => {
                   <span className="text-gold-500 italic font-light lowercase">del</span> <span className="text-gold-500">Confort</span>
                 </h1>
 
-                <p className="text-lg text-gray-500 dark:text-gray-400 font-text leading-relaxed max-w-md">
+                <p className="text-lg text-gray-600 dark:text-gray-400 font-text leading-relaxed max-w-md">
                   Impulsamos el éxito de tiendas y socios comerciales con piezas de alta rotación, escala industrial y soluciones para el sector hotelero.
                 </p>
 
@@ -194,8 +194,10 @@ const WholesaleView = () => {
                 <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.3)]">
                   <img
                     src={luxuryHeroImg}
-                    alt="Luxury Hotel Atmosphere"
+                    alt="Atmósfera de Hotel de Lujo - Colchones Sueño Dorado"
                     className="w-full h-[650px] object-cover object-top hover:scale-110 transition-transform duration-[15s] ease-out origin-top"
+                    width="800"
+                    height="650"
                   />
                   {/* Refined Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none"></div>
@@ -253,6 +255,9 @@ const WholesaleView = () => {
                   src={market.image}
                   alt={market.title}
                   className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
+                  width="400"
+                  height="550"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
 
@@ -326,6 +331,9 @@ const WholesaleView = () => {
                   src={factoryProductionImg}
                   alt="Procesos Industriales de Sueño Dorado"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-[10s]"
+                  width="600"
+                  height="600"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gold-500/10 mix-blend-overlay"></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
@@ -350,8 +358,11 @@ const WholesaleView = () => {
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-8 border-white dark:border-[#0A0A0A]">
                 <img
                   src={premiumCutawayImg}
-                  alt="Internal Engineering"
+                  alt="Vista interna (corte lateral) de un colchón premium de Sueño Dorado"
                   className="w-full aspect-[4/5] object-cover"
+                  width="500"
+                  height="625"
+                  loading="lazy"
                 />
               </div>
               {/* Overlapping Floating Labels */}
@@ -532,6 +543,7 @@ const WholesaleView = () => {
               <button
                 onClick={() => setSelectedMarket(null)}
                 className="absolute top-8 right-8 p-3 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-all text-gray-400 hover:text-gold-500 z-50 group"
+                aria-label="Cerrar modal de cotización"
               >
                 <MdClose className="w-6 h-6 transition-transform group-hover:rotate-90" />
               </button>

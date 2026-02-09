@@ -30,7 +30,7 @@ export const useChatbot = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [sessionId, setSessionId] = useState(null);
   const [lastActivity, setLastActivity] = useState(Date.now());
-  
+
   // Refs for cleanup
   const typingTimeoutRef = useRef(null);
   const sessionTimeoutRef = useRef(null);
@@ -39,7 +39,7 @@ export const useChatbot = () => {
   useEffect(() => {
     const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     setSessionId(newSessionId);
-    
+
     // Add welcome message
     const welcomeMessage = createMessage(
       CHATBOT_CONFIG.welcomeMessage || '¡Hola! 👋 ¿En qué puedo ayudarte?',
@@ -47,7 +47,7 @@ export const useChatbot = () => {
       CHATBOT_CONFIG.quickActions.slice(0, 4)
     );
     setMessages([welcomeMessage]);
-    
+
     return () => {
       // Cleanup timeouts
       if (typingTimeoutRef.current) {
@@ -106,11 +106,11 @@ export const useChatbot = () => {
 
     // Simulate bot thinking time
     const typingDuration = getTypingDuration(userMessage);
-    
+
     typingTimeoutRef.current = setTimeout(() => {
       // Detect intent and get response
       const intent = detectIntent(userMessage);
-      const response = getBotResponse(intent);
+      const response = getBotResponse(intent, userMessage);
 
       // Add bot response
       addMessage(
@@ -149,9 +149,9 @@ export const useChatbot = () => {
     // Get bot response for the intent
     if (option.intent) {
       setIsTyping(true);
-      
+
       const typingDuration = getTypingDuration(option.text);
-      
+
       typingTimeoutRef.current = setTimeout(() => {
         const response = getBotResponse(option.intent);
         addMessage(
@@ -216,7 +216,7 @@ export const useChatbot = () => {
     isOpen,
     isTyping,
     sessionId,
-    
+
     // Actions
     handleUserMessage,
     handleQuickReply,
@@ -224,10 +224,10 @@ export const useChatbot = () => {
     closeChat,
     handleResetChat,
     sendToWhatsApp,
-    
+
     // Getters
     getUnreadCount,
-    
+
     // Utilities
     formatTimestamp,
     hasAction,
