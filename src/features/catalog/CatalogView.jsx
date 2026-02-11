@@ -7,7 +7,7 @@ import { useCart } from '@/contexts/CartContext';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
 import UniversalProductFilters from '@/components/home/CategoriesSection/ProductFilters';
-import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink } from '@/utils/constants';
+import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink, getPrettySubcategoryName } from '@/utils/constants';
 
 /**
  * Full Catalog Page
@@ -72,7 +72,7 @@ const CatalogView = () => {
             </div>
 
             {/* Smart Filters Panel */}
-            <div className="bg-white dark:bg-zinc-950 rounded-[2.5rem] p-6 sm:p-8 md:p-12 mb-16 border border-gray-100 dark:border-white/5">
+            <div className="bg-white dark:bg-zinc-950 rounded-[2.5rem] p-6 sm:p-8 md:p-12 mb-16 border border-gray-100 dark:border-white/5 shadow-sm">
               <UniversalProductFilters
                 selectedCategory={selectedCategory}
                 selectedSubcategory={selectedSubcategory}
@@ -122,7 +122,7 @@ const CatalogView = () => {
                 <div key={product.id} className="group">
                   <div className="group relative flex flex-col h-full animate-fade-in-up" style={{ animationDelay: `${index * 50}ms` }}>
                     {/* Visual Container - FORCE PURE WHITE FOR BLENDING */}
-                    <div className="relative aspect-[4/5] rounded-t-[2rem] overflow-hidden bg-white transition-all duration-700 group-hover:shadow-[0_40px_60px_rgba(0,0,0,0.05)] border border-gray-50 dark:border-white/5">
+                    <div className="relative aspect-[4/5] rounded-t-[2rem] overflow-hidden bg-white transition-all duration-700 group-hover:shadow-[0_40px_60px_rgba(0,0,0,0.05)] border border-gray-100 dark:border-white/5">
 
                       {/* Status / Category Badge - Marketing Optimized */}
                       <div className="absolute top-6 left-6 z-20">
@@ -160,9 +160,9 @@ const CatalogView = () => {
                     </div>
 
                     {/* Info Block - BACKGROUND MOVED HERE */}
-                    <div className="px-4 py-10 text-center bg-gray-50/50 dark:bg-zinc-900/40 rounded-b-[2rem] border-x border-b border-gray-50 dark:border-white/5 transition-all duration-700 group-hover:shadow-[0_40px_60px_rgba(0,0,0,0.05)] group-hover:-translate-y-1">
+                    <div className="px-4 py-10 text-center bg-gray-50/50 dark:bg-zinc-900/40 rounded-b-[2rem] border-x border-b border-gray-100 dark:border-white/5 transition-all duration-700 group-hover:shadow-[0_40px_60px_rgba(0,0,0,0.05)] group-hover:-translate-y-1">
                       <span className="text-gold-500 text-[9px] font-black uppercase tracking-[0.5em] mb-3 block">
-                        {product.subcategory || 'Diseño de Autor'}
+                        {getPrettySubcategoryName(product.subcategory) || 'Diseño de Autor'}
                       </span>
                       <h3 className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none mb-6 group-hover:text-gold-500 transition-all duration-500 group-hover:tracking-wider">
                         {product.name}

@@ -40,8 +40,8 @@ const DesktopNav = ({ navLinks, currentPath }) => {
                         <Link
                             to={link.path}
                             className={`px-4 py-2 text-[12px] font-display font-black uppercase tracking-[0.2em] transition-all duration-300 rounded-xl flex items-center gap-2 z-50 ${currentPath === link.path || isOpen
-                                ? 'text-gold-500 bg-gray-50 dark:bg-white/5'
-                                : 'text-gray-900 dark:text-white hover:text-gold-500 hover:bg-gray-50 dark:hover:bg-white/5'
+                                ? 'text-gold-500 bg-white border border-gray-100 dark:bg-white/5 dark:border-white/10 shadow-sm'
+                                : 'text-gray-900 dark:text-white hover:text-gold-500 hover:bg-white hover:border hover:border-gray-100 dark:hover:bg-white/5 dark:hover:border-white/10'
                                 }`}
                             onClick={() => setActiveMenu(null)}
                         >

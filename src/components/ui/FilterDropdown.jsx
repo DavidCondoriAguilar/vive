@@ -42,8 +42,8 @@ const FilterDropdown = ({
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
                 className={`w-full flex items-center justify-between px-5 py-3.5 bg-white dark:bg-black border rounded-2xl transition-all duration-300 group ${isOpen
-                        ? 'border-gold-500 ring-2 ring-gold-500/10 shadow-lg'
-                        : 'border-gray-100 dark:border-white/10 hover:border-gold-500/50'
+                    ? 'border-gold-500 ring-2 ring-gold-500/10 shadow-lg'
+                    : 'border-gray-100 dark:border-white/10 hover:border-gold-500/50'
                     }`}
             >
                 <div className="flex items-center gap-3 overflow-hidden">
@@ -58,12 +58,20 @@ const FilterDropdown = ({
             {/* Options Menu */}
             <div
                 className={`absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-900 border border-gray-100 dark:border-white/10 rounded-2xl shadow-2xl z-[100] transition-all duration-500 origin-top overflow-hidden ${isOpen
-                        ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
-                        : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                    ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
+                    : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
                     }`}
             >
                 <div className="max-h-60 overflow-y-auto py-2 scrollbar-thin scrollbar-thumb-gold-500 scrollbar-track-transparent">
                     {options.map((option, idx) => {
+                        if (option.isGroup) {
+                            return (
+                                <div key={`group-${idx}`} className="px-5 py-2 text-[10px] font-black text-gold-500 uppercase tracking-[0.2em] bg-gray-50 dark:bg-white/5 mt-2 first:mt-0">
+                                    {option.name}
+                                </div>
+                            );
+                        }
+
                         const optValue = option.value || option.id;
                         const optLabel = option.label || option.name;
                         const isSelected = optValue === value;
@@ -77,11 +85,11 @@ const FilterDropdown = ({
                                     setIsOpen(false);
                                 }}
                                 className={`w-full text-left px-5 py-3 text-sm font-medium transition-all flex items-center justify-between group/opt ${isSelected
-                                        ? 'bg-gold-500 text-white'
-                                        : 'text-gray-600 dark:text-gray-400 hover:bg-gold-50 dark:hover:bg-gold-500/10 hover:text-gold-500'
+                                    ? 'bg-gold-500 text-white'
+                                    : 'text-gray-600 dark:text-gray-400 hover:bg-gold-50 dark:hover:bg-gold-500/10 hover:text-gold-500'
                                     }`}
                             >
-                                <span>{optLabel}</span>
+                                <span className={option.isSubOption ? 'pl-4' : ''}>{optLabel}</span>
                                 {isSelected && (
                                     <div className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_white]" />
                                 )}

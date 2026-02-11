@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaFilter, FaSortAmountDown, FaTags, FaRulerCombined, FaLayerGroup } from 'react-icons/fa';
 import FilterDropdown from '@/components/ui/FilterDropdown';
+import { CATEGORIES as ALL_CATEGORIES, getPrettySubcategoryName } from '@/utils/constants';
 
 const UniversalProductFilters = ({
   selectedCategory,
@@ -29,11 +30,49 @@ const UniversalProductFilters = ({
     { value: 'name', label: 'Alfabético' }
   ];
 
-  // Map subcategories and sizes for FilterDropdown format
-  const subcategoryOptions = subcategories.map(s => ({
-    id: s,
-    name: s === 'todos' ? 'Todos los modelos' : s
-  }));
+  // Map subcategories with Professional Grouping
+  const subcategoryOptions = [];
+  subcategoryOptions.push({ id: 'todos', name: 'Todos los modelos' });
+
+  if (selectedCategory !== 'todos') {
+    // Just show subcategories of the selected category
+    const catData = ALL_CATEGORIES.find(c => c.id === selectedCategory);
+    catData?.subcategories?.forEach(sub => {
+      // Only add if it actually exists in the current product set
+      if (subcategories.includes(sub.filter)) {
+        subcategoryOptions.push({ id: sub.filter, name: sub.name });
+      }
+    });
+
+    // Add any subcategories that might be missing from the definition but exist in products
+    subcategories.forEach(s => {
+      if (s !== 'todos' && !subcategoryOptions.find(opt => opt.id === s)) {
+        subcategoryOptions.push({ id: s, name: getPrettySubcategoryName(s) });
+      }
+    });
+  } else {
+    // Show grouped subcategories for "Todas las Categorías"
+    ALL_CATEGORIES.forEach(cat => {
+      const validSubs = cat.subcategories?.filter(sub => subcategories.includes(sub.filter)) || [];
+      if (validSubs.length > 0) {
+        subcategoryOptions.push({ isGroup: true, name: cat.name });
+        validSubs.forEach(sub => {
+          subcategoryOptions.push({ id: sub.filter, name: sub.name, isSubOption: true });
+        });
+      }
+    });
+
+    // Catch-all group for items not in the official category mapping
+    const mappedFilters = ALL_CATEGORIES.flatMap(c => c.subcategories?.map(s => s.filter) || []);
+    const extraSubs = subcategories.filter(s => s !== 'todos' && !mappedFilters.includes(s));
+
+    if (extraSubs.length > 0) {
+      subcategoryOptions.push({ isGroup: true, name: 'Otros Modelos' });
+      extraSubs.forEach(s => {
+        subcategoryOptions.push({ id: s, name: getPrettySubcategoryName(s), isSubOption: true });
+      });
+    }
+  }
 
   const sizeOptions = sizes.map(s => ({
     id: s,
@@ -127,7 +166,7 @@ const UniversalProductFilters = ({
           )}
           {selectedSubcategory !== 'todos' && (
             <div className="flex items-center gap-2 px-4 py-1.5 bg-gold-500 text-black rounded-full text-[10px] font-black uppercase tracking-widest transition-all hover:scale-105">
-              {selectedSubcategory}
+              {getPrettySubcategoryName(selectedSubcategory)}
               <button onClick={() => onSubcategoryChange('todos')} className="hover:text-red-600 transition-colors">×</button>
             </div>
           )}

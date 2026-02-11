@@ -228,7 +228,7 @@ const ProductDetailsView = () => {
                                 <div className="relative">
                                     {/* Main Image Container - ADAPTADO PARA PRODUCTOS DE DIFERENTES PROPORCIONES */}
                                     <div
-                                        className="relative bg-gray-50 dark:bg-dream-dark-surface p-6 overflow-hidden group cursor-zoom-in rounded-lg max-w-full max-h-[500px] md:max-h-[600px] flex items-center justify-center"
+                                        className="relative bg-white dark:bg-dream-dark-surface p-6 overflow-hidden group cursor-zoom-in rounded-lg max-w-full max-h-[500px] md:max-h-[600px] flex items-center justify-center"
                                         onMouseMove={handleMouseMove}
                                         onMouseEnter={handleMouseEnter}
                                         onMouseLeave={handleMouseLeave}
@@ -312,7 +312,7 @@ const ProductDetailsView = () => {
                                             <LazyImage
                                                 src={image}
                                                 alt={getAltText(image, product.name)}
-                                                className="w-full h-full object-contain bg-gray-50 dark:bg-dream-dark-surface transition-opacity duration-300"
+                                                className="w-full h-full object-contain bg-white dark:bg-dream-dark-surface transition-opacity duration-300"
                                             />
                                         </button>
                                     ))}
@@ -322,7 +322,7 @@ const ProductDetailsView = () => {
                                 {product.technicalImage && (
                                     <div className="mt-16 sm:mt-20 space-y-6 border-t border-gray-100 dark:border-gray-800 pt-12 sm:pt-20">
                                         <h3 className="text-sm sm:text-base font-black text-black dark:text-white uppercase tracking-widest">Detalles Técnicos</h3>
-                                        <div className="relative bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden">
+                                        <div className="relative bg-white dark:bg-gray-900 rounded-lg overflow-hidden">
                                             <LazyImage
                                                 src={product.technicalImage}
                                                 alt={getAltText(product.technicalImage, product.name)}

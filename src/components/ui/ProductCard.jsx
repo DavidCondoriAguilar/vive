@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
 import { useCart } from '@/contexts/CartContext';
+import { getPrettySubcategoryName } from '@/utils/constants';
 
 const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
   const { addToCart } = useCart();
@@ -47,7 +48,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
       <div className="p-5 flex flex-col flex-1 bg-gray-50/80 dark:bg-dream-dark-surface/60">
         <div className="mb-3">
           <span className="text-gold-500 text-[9px] font-bold uppercase tracking-widest">
-            {product.subcategory}
+            {getPrettySubcategoryName(product.subcategory)}
           </span>
           <Link to={`/producto/${product.id}`}>
             <h3 className="text-base font-bold text-gray-900 dark:text-white mt-1 mb-2 leading-tight hover:text-gold-500 transition-colors">

@@ -31,3 +31,14 @@ export const getEmailLink = (subject = '', body = '') => {
     const email = import.meta.env.VITE_BRAND_EMAIL || 'ventasisd@grupoisd.com';
     return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 };
+/**
+ * Get human-readable subcategory name from filter ID
+ */
+export const getPrettySubcategoryName = (filterValue) => {
+    if (!filterValue || filterValue === 'todos') return 'Todos los modelos';
+    for (const cat of CATEGORIES) {
+        const sub = cat.subcategories?.find(s => s.filter === filterValue);
+        if (sub) return sub.name;
+    }
+    return filterValue.replace(/-/g, ' '); // Fallback: transform "Box-Universal" to "Box Universal"
+};

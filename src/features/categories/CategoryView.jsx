@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import MainLayout from '@/layouts/MainLayout';
-import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink } from '@/utils/constants';
+import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink, getPrettySubcategoryName } from '@/utils/constants';
 import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
 import { useCart } from '@/contexts/CartContext';
 
@@ -129,7 +129,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                     </div>
 
                     {/* Advanced Filter Panel */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 p-8 bg-gray-50 dark:bg-white/2 rounded-[2rem] border border-gray-100 dark:border-white/5 animate-fade-in-up">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 p-8 bg-white dark:bg-white/2 rounded-[2rem] border border-gray-100 dark:border-white/5 shadow-sm animate-fade-in-up">
                         {/* SubCategory / Line */}
                         <div className="space-y-3">
                             <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Línea / Modelo</label>
@@ -179,7 +179,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                             {products.map((product) => (
                                 <div key={product.id} className="group bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
                                     {/* Product Image - MISMAS MEDIDAS EXACTAS QUE EL CARRUSEL */}
-                                    <div className="relative overflow-hidden bg-gray-50 dark:bg-dream-dark-surface p-6" style={{ aspectRatio: '16/9' }}>
+                                    <div className="relative overflow-hidden bg-white dark:bg-dream-dark-surface p-6" style={{ aspectRatio: '16/9' }}>
                                         <Link to={`/producto/${product.id}`} className="block h-full w-full">
                                             <img
                                                 src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=400&q=75&auto=format`}
@@ -200,9 +200,9 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                                             </div>
                                         )}
                                     </div>
-                                    <div className="p-6 flex flex-col flex-1">
+                                    <div className="p-6 flex flex-col flex-1 bg-gray-50/50 dark:bg-zinc-900/50">
                                         <div className="mb-4">
-                                            <p className="text-[10px] font-black text-gold-500 uppercase tracking-widest mb-2">{product.subcategory || product.category}</p>
+                                            <p className="text-[10px] font-black text-gold-500 uppercase tracking-widest mb-2">{getPrettySubcategoryName(product.subcategory) || product.category}</p>
                                             <Link to={`/producto/${product.id}`}>
                                                 <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-gold-500 transition-colors">{product.name}</h3>
                                             </Link>
