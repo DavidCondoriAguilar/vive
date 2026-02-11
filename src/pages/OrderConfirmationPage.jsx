@@ -99,7 +99,7 @@ const OrderConfirmationPage = () => {
                   <div>
                     <h3 className="font-medium text-gray-900 dark:text-white">Procesamiento de Pedido</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Tu pedido será preparado en nuestra fábrica con los más altos estándares de calidad.
+                      Tu pedido será preparado en nuestra fabrica con los más altos estándares de calidad.
                     </p>
                   </div>
                 </div>

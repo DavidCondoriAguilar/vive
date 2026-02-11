@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import MainLayout from '@/layouts/MainLayout';
 import { Link } from 'react-router-dom';
 
@@ -75,15 +75,15 @@ const ReturnPolicy = () => {
                                         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Garantía de 10 Años</h2>
                                     </div>
                                     <div className="prose dark:prose-invert max-w-none">
-                                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                                    Nuestra plataforma cumple con altos estándares de seguridad digital para proteger tu información personal y de pago. 30 días de prueba gratuita.
-                                </p>
+                                        <p className="text-gray-600 dark:text-gray-300 mb-4">
+                                            Nuestra plataforma cumple con altos estándares de seguridad digital para proteger tu información personal y de pago. 30 días de prueba gratuita.
+                                        </p>
                                         <div className="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">¿Qué cubre?</h4>
                                                 <ul className="list-disc list-inside space-y-1 text-sm text-gray-600 dark:text-gray-300">
                                                     <li>Defectos en materiales y mano de obra</li>
-                                                     <li>Hundimiento excesivo (&gt;3cm)</li>
+                                                    <li>Hundimiento excesivo (&gt;3cm)</li>
                                                     <li>Desgaste prematuro</li>
                                                     <li>Fallas en componentes internos</li>
                                                 </ul>

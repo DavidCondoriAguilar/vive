@@ -98,7 +98,7 @@ const ManufacturingSection = () => {
               <h4 className="text-2xl font-black text-black uppercase tracking-widest mb-6">Ahorro Directo</h4>
               <div className="h-[1px] w-20 bg-black/20 mx-auto mb-6"></div>
               <p className="text-black/70 font-bold leading-relaxed max-w-xs">
-                Sin intermediarios ni comisiones de terceros. Calidad premium al precio real de fábrica.
+                Sin intermediarios ni comisiones de terceros. Calidad premium al precio real de fabrica.
               </p>
             </div>
           </div>

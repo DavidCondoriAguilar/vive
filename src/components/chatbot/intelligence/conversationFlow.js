@@ -1,6 +1,6 @@
 /**
  * Conversation Flow Manager
- * Manages conversation state and transitions
+ * Manages conversation state y transitions
  * Following expert chatbot conversation design
  */
 

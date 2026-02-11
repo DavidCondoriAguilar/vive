@@ -7,7 +7,7 @@ const CategoriesHeader = () => {
         Nuestros <span className="text-vive-500">Productos</span>
       </h2>
       <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-        Calidad directa de fábrica para tu descanso perfecto
+        Calidad directa de fabrica para tu descanso perfecto
       </p>
     </div>
   );

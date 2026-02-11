@@ -20,7 +20,7 @@ import {
 
 /**
  * Fixed chatbot hook with working intelligence
- * @returns {Object} Chatbot state and methods
+ * @returns {Object} Chatbot state y methods
  */
 export const useChatbotFixed = () => {
   // State management
@@ -77,9 +77,9 @@ export const useChatbotFixed = () => {
   }, [lastActivity]);
 
   /**
-   * Detect intent and business user with improved NLP
+   * Detect intent y business user with improved NLP
    * @param {string} message - User message
-   * @returns {Object} Intent and entities
+   * @returns {Object} Intent y entities
    */
   const detectIntent = (message) => {
     // Handle undefined/null messages
@@ -134,7 +134,7 @@ export const useChatbotFixed = () => {
   };
 
   /**
-   * Get response based on intent and context
+   * Get response based on intent y context
    * @param {string} intent - Detected intent
    * @param {boolean} isBusiness - Whether user is business
    * @returns {Object} Response object
@@ -164,7 +164,7 @@ export const useChatbotFixed = () => {
           ]
         },
         shipping: {
-          text: '🚚 LOGÍSTICA MAYORISTA - SUEÑO DORADO\n\nContamos con una cadena de suministro optimizada para negocios:\n\n📍 **FLETES:** Convenios con agencias de carga pesada a todo el país.\n📍 **VOLUMEN:** Despachos programados para grandes pedidos.\n📍 **PICK-UP:** Recojo directo de fábrica sin esperas.\n\n¿Deseas coordinar la logística de un pedido específico?',
+          text: '🚚 LOGÍSTICA MAYORISTA - SUEÑO DORADO\n\nContamos con una cadena de suministro optimizada para negocios:\n\n📍 **FLETES:** Convenios con agencias de carga pesada a todo el país.\n📍 **VOLUMEN:** Despachos programados para grandes pedidos.\n📍 **PICK-UP:** Recojo directo de fabrica sin esperas.\n\n¿Deseas coordinar la logística de un pedido específico?',
           options: [
             { text: '📱 Coordinar Logística', intent: 'contact', action: 'whatsapp_direct' },
             { text: '💰 Ver precios por volumen', intent: 'pricing' },
@@ -172,7 +172,7 @@ export const useChatbotFixed = () => {
           ]
         },
         pricing: {
-          text: '💰 COTIZACIONES B2B - SUEÑO DORADO\n\nOfrecemos la mejor rentabilidad del mercado para distribuidores:\n\n• Escalas de descuento según volumen (Lotes 10, 50, 100+).\n• Precios puestos en agencia o en fábrica.\n• Catálogo técnico con precios de lista y descuentos.\n\n¿Te gustaría recibir nuestra lista de precios actualizada?',
+          text: '💰 COTIZACIONES B2B - SUEÑO DORADO\n\nOfrecemos la mejor rentabilidad del mercado para distribuidores:\n\n• Escalas de descuento según volumen (Lotes 10, 50, 100+).\n• Precios puestos en agencia o en fabrica.\n• Catálogo técnico con precios de lista y descuentos.\n\n¿Te gustaría recibir nuestra lista de precios actualizada?',
           options: [
             { text: '📱 Solicitar lista de precios', intent: 'contact', action: 'whatsapp_direct' },
             { text: '📋 Ver productos B2B', intent: 'catalog' },
@@ -180,7 +180,7 @@ export const useChatbotFixed = () => {
           ]
         },
         warranty: {
-          text: '🛡️ RESPALDO INDUSTRIAL SUEÑO DORADO\n\nGarantizamos que tus clientes reciban calidad certificada:\n\n• Garantía directa de fábrica (7 años Línea Siempre).\n• Soporte técnico para cambios por falla de fabricación.\n• Capacitación técnica sobre materiales (densidad/resortes).\n\n¿Necesitas información técnica para tu fuerza de ventas?',
+          text: '🛡️ RESPALDO INDUSTRIAL SUEÑO DORADO\n\nGarantizamos que tus clientes reciban calidad certificada:\n\n• Garantía directa de fabrica (7 años Línea Siempre).\n• Soporte técnico para cambios por falla de fabricación.\n• Capacitación técnica sobre materiales (densidad/resortes).\n\n¿Necesitas información técnica para tu fuerza de ventas?',
           options: [
             { text: '📱 Solicitar taller técnico', intent: 'contact', action: 'whatsapp_direct' },
             { text: '🏠 Menú Empresarial', intent: 'help' }
@@ -241,7 +241,7 @@ export const useChatbotFixed = () => {
           ]
         },
         help: {
-          text: '¡Hola! Soy Susi, tu experta en descanso. ¿En qué puedo asesorarte hoy?\n\n📋 Información técnica de productos\n🚚 Envíos gratis a todo Lima\n🛡️ Garantías directas de fábrica\n📞 Contacto con ventas\n\n¿Qué información necesitas?',
+          text: '¡Hola! Soy Susi, tu experta en descanso. ¿En qué puedo asesorarte hoy?\n\n📋 Información técnica de productos\n🚚 Envíos gratis a todo Lima\n🛡️ Garantías directas de fabrica\n📞 Contacto con ventas\n\n¿Qué información necesitas?',
           options: [
             { text: '📋 Ver productos', intent: 'catalog' },
             { text: '🚚 Envíos y Entregas', intent: 'shipping' },
@@ -257,7 +257,7 @@ export const useChatbotFixed = () => {
           ]
         },
         offers: {
-          text: '🔥 PROMOCIONES EXCLUSIVAS SUEÑO DORADO\n\n¡Es el mejor momento para renovar tu descanso! Tenemos ofertas especiales por esta semana:\n\n✨ **TOP OFERTAS:**\n• Descuentos en Línea Siempre (7 años de garantía).\n• Combos de Colchón + Base/Tarima con precios de fábrica.\n• Almohadas de regalo por compras seleccionadas.\n\n¿Te gustaría recibir el PDF con las promociones vigentes?',
+          text: '🔥 PROMOCIONES EXCLUSIVAS SUEÑO DORADO\n\n¡Es el mejor momento para renovar tu descanso! Tenemos ofertas especiales por esta semana:\n\n✨ **TOP OFERTAS:**\n• Descuentos en Línea Siempre (7 años de garantía).\n• Combos de Colchón + Base/Tarima con precios de fabrica.\n• Almohadas de regalo por compras seleccionadas.\n\n¿Te gustaría recibir el PDF con las promociones vigentes?',
           options: [
             { text: '📱 Sí, enviar ofertas', intent: 'contact', action: 'whatsapp_direct' },
             { text: '📋 Ver catálogo regular', intent: 'catalog' },
@@ -265,7 +265,7 @@ export const useChatbotFixed = () => {
           ]
         },
         warranty: {
-          text: '🛡️ COMPROMISO Y GARANTÍA SUEÑO DORADO\n\nTu tranquilidad es nuestra prioridad. Al comprar directamente de fábrica, cuentas con:\n\n✅ **GARANTÍA REAL:**\n• Línea Premium: Hasta 6 años de garantía absoluta.\n• Línea Siempre: 7 años de respaldo oficial.\n• Certificación de densidades reales (no se deforma).\n\n¿Tienes alguna duda técnica sobre la durabilidad de algún modelo en específico?',
+          text: '🛡️ COMPROMISO Y GARANTÍA SUEÑO DORADO\n\nTu tranquilidad es nuestra prioridad. Al comprar directamente de fabrica, cuentas con:\n\n✅ **GARANTÍA REAL:**\n• Línea Premium: Hasta 6 años de garantía absoluta.\n• Línea Siempre: 7 años de respaldo oficial.\n• Certificación de densidades reales (no se deforma).\n\n¿Tienes alguna duda técnica sobre la durabilidad de algún modelo en específico?',
           options: [
             { text: '📱 Hablar con un técnico', intent: 'contact', action: 'whatsapp_direct' },
             { text: '📋 Ver modelos duraderos', intent: 'catalog' },
@@ -408,7 +408,7 @@ Hola, me gustaría recibir el catálogo completo de sus líneas de Espuma, Resor
     const typingDuration = getTypingDuration(userMessage);
 
     typingTimeoutRef.current = setTimeout(() => {
-      // Detect intent and get response
+      // Detect intent y get response
       const { intent, isBusiness } = detectIntent(userMessage);
       const response = getResponse(intent, isBusiness);
 

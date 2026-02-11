@@ -14,14 +14,14 @@ export const useProductDetails = () => {
                 setLoading(true);
                 // Simulate API call
                 await new Promise(resolve => setTimeout(resolve, 100));
-                
+
                 const foundProduct = ENHANCED_CATALOG.find(p => p.id === productId);
-                
+
                 if (!foundProduct) {
                     setError('Producto no encontrado');
                     return;
                 }
-                
+
                 setProduct(foundProduct);
             } catch (err) {
                 setError('Error al cargar el producto');
@@ -59,14 +59,15 @@ export const useProductImages = (product) => {
 export const useProductSEO = (product) => {
     if (!product) return {};
 
+    const brand = 'Vive';
     return {
-        title: `${product.name} - Colchón Premium Sueño Dorado | Precio por Consultar`,
-        description: `Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y envío gratis en Lima.'}`,
-        canonical: `https://suenodorado.pe/producto/${product.id}`,
+        title: `${product.name} - Tecnología de Descanso ${brand} | Alta Permanencia`,
+        description: `Descubre el ${product.name} de ${brand}. Tecnología MP y confort anatómico de clase mundial con envío gratis. Experimenta el descanso inteligente.`,
+        canonical: `https://vive.pe/producto/${product.id}`,
         openGraph: {
-            title: `${product.name} - Colchón Premium Sueño Dorado`,
-            description: `Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y envío gratis en Lima.'}`,
-            image: `https://suenodorado.pe${product.image}`,
+            title: `${product.name} - Innovación ${brand}`,
+            description: `El ${product.name} redefine el descanso con tecnología de vanguardia. Experimenta la máxima permanencia emocional y física.`,
+            image: `https://vive.pe${product.image}`,
             type: 'product'
         }
     };

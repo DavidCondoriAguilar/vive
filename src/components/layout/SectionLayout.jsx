@@ -2,7 +2,7 @@ import React from 'react';
 
 /**
  * Section Layout Component
- * Provides consistent spacing and structure for home page sections
+ * Provides consistent spacing y structure for home page sections
  */
 const SectionLayout = ({
   children,

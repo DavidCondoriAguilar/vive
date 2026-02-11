@@ -133,20 +133,20 @@ const Navbar = () => {
             <div
                 className="bg-white dark:bg-black border-b border-gray-200 dark:border-white/5 transition-all duration-500"
             >
-                <div className="w-full px-1 xs:px-3 sm:px-5 md:px-8 lg:px-12 xl:px-18 relative">
+                <div className="w-full px-4 md:px-12 lg:px-20 relative">
                     {/* Mobile Layout - Professional & Responsive */}
-                    <div className="lg:hidden flex items-center justify-between min-h-[96px] w-full px-4">
-                        {/* LOGO - Left Aligned for better usability */}
-                        <div className="flex-shrink-0 transition-all duration-300">
+                    <div className="lg:hidden flex items-center min-h-[96px] w-full px-2 gap-2">
+                        {/* LOGO - Fixed width for stability */}
+                        <div className="flex-shrink-0 w-24">
                             <Logo
-                                size="medium"
+                                size="small"
                                 to={ROUTES.HOME}
                                 variant="auto"
                             />
                         </div>
 
-                        {/* ACTIONS - Right side */}
-                        <div className="flex items-center">
+                        {/* ACTIONS - Pushed to the right but with margin */}
+                        <div className="flex-1 flex justify-end pr-8">
                             <NavActions
                                 toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                                 isMobileMenuOpen={isMobileMenuOpen}

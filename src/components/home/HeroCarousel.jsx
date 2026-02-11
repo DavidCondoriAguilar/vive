@@ -71,7 +71,7 @@ const HeroCarousel = () => {
     setIsLoaded(true);
   }, []);
 
-  // Simplified and Robust Autoplay Logic
+  // Simplified y Robust Autoplay Logic
   useEffect(() => {
     if (!isAutoPlay || !isLoaded) {
       setProgress(0);
@@ -83,7 +83,7 @@ const HeroCarousel = () => {
       nextSlide();
     }, SLIDE_DURATION);
 
-    // Reset progress and start it for the current slide
+    // Reset progress y start it for the current slide
     // Using a micro-timeout to ensure the transition kicks in
     setProgress(0);
     const progressTimer = setTimeout(() => {
@@ -98,154 +98,163 @@ const HeroCarousel = () => {
 
   return (
     <section
-      className={`relative w-full h-[100dvh] overflow-hidden bg-black transition-opacity duration-700 group/carousel ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+      className={`relative w-full h-[90dvh] lg:h-[85dvh] overflow-hidden bg-[#050505] transition-opacity duration-1000 group/carousel ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
       ref={carouselRef}
       {...handlers}
-      onTouchStart={() => setIsAutoPlay(false)}
-      onTouchEnd={() => setIsAutoPlay(true)}
     >
-      {/* 100% Background Slides */}
-      <div className="absolute inset-0">
+      {/* 1. Background Layers (Sophisticated Image Treatment) */}
+      <div className="absolute inset-0 z-0">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-all duration-1000 ease-in-out
+            className={`absolute inset-0 transition-all duration-[1.5s] cubic-bezier(0.4, 0, 0.2, 1)
               ${index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-110 pointer-events-none'}
             `}
           >
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover grayscale-[0.2] brightness-[0.6]"
               loading={index === 0 ? "eager" : "lazy"}
-              fetchpriority={index === 0 ? "high" : "auto"}
-              width="1920"
-              height="1080"
+              fetchPriority={index === 0 ? "high" : "auto"}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70"></div>
+            {/* Elite Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
           </div>
         ))}
       </div>
 
-      {/* ULTRA MINIMALIST CONTENT BOX */}
-      <div className="relative w-full h-full flex flex-col items-center justify-center pt-16 pb-20 px-6">
-        {slides.map((slide, index) => (
-          <div
-            key={`content-${slide.id}`}
-            className={`absolute flex flex-col items-center text-center transition-all duration-1000 max-w-5xl
-              ${index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}
-            `}
-          >
-            <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-6xl font-black text-white mb-3 sm:mb-4 leading-tight uppercase tracking-tighter drop-shadow-2xl transition-all duration-700 px-2">
-              {slide.title}
-            </h2>
+      {/* 2. Technical Architectural Grid (The "Vive" Aesthetic) */}
+      <div className="absolute inset-0 z-10 pointer-events-none opacity-20">
+        <div className="h-full w-full" style={{ backgroundImage: 'linear-gradient(to right, #ffffff11 1px, transparent 1px), linear-gradient(to bottom, #ffffff11 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
+      </div>
 
-            <h2 className="text-sm md:text-lg font-medium text-vive-400 mb-6 md:mb-8 tracking-[0.2em] uppercase py-2 border-y border-vive-500/10 px-4">
-              {slide.subtitle}
-            </h2>
+      {/* 3. Main Content: Editorial Split Layout */}
+      <div className="relative z-20 container mx-auto h-full px-6 lg:px-20 flex items-center">
+        <div className="w-full lg:w-[65%] mt-12">
+          {slides.map((slide, index) => (
+            <div
+              key={`content-${slide.id}`}
+              className={`absolute top-1/2 -translate-y-1/2 transition-all duration-1000 ease-out
+                ${index === currentSlide ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20 pointer-events-none'}
+              `}
+            >
+              {/* Industrial Tag */}
+              <div className="inline-flex items-center gap-4 px-5 py-2 bg-vive-600/10 border border-vive-600/30 rounded-full mb-8 overflow-hidden relative group/tag">
+                <div className="absolute inset-0 bg-vive-600/10 -translate-x-full group-hover/tag:translate-x-0 transition-transform duration-500"></div>
+                <span className="w-1.5 h-1.5 bg-vive-600 rounded-full animate-pulse relative z-10"></span>
+                <span className="text-[10px] font-black text-vive-500 uppercase tracking-[0.4em] relative z-10">{slide.badge} // SYSTEM_ACTIVE</span>
+              </div>
 
-            {/* Premium Tags */}
-            <div className="flex flex-wrap justify-center gap-1.5 md:gap-3 mb-6 md:mb-10 px-2">
-              {slide.features.map((feature, fIdx) => (
-                <div key={fIdx} className="bg-white/5 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
-                  <span className="text-[7px] md:text-[9px] font-bold text-white uppercase tracking-[0.2em]">{feature}</span>
+              {/* Massive Editorial Heading */}
+              <h2 className="text-4xl md:text-5xl lg:text-[100px] font-display font-black text-white leading-[0.85] tracking-tighter uppercase mb-6 drop-shadow-2xl">
+                {slide.title.split(' ').map((word, i) => (
+                  <React.Fragment key={i}>
+                    {i === 1 ? <br /> : ''}
+                    <span className={i > 1 ? 'text-transparent bg-clip-text bg-gradient-to-r from-vive-500 to-white italic font-light lowercase' : ''}>
+                      {word}{' '}
+                    </span>
+                  </React.Fragment>
+                ))}
+              </h2>
+
+              {/* Technical Subtext Side by Side with Features */}
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-8 mb-12">
+                <div className="bg-white/5 backdrop-blur-xl border border-white/10 px-6 py-4 rounded-sm">
+                  <h3 className="text-vive-500 text-[10px] font-black uppercase tracking-[0.3em] mb-1">Estrategia_Core</h3>
+                  <p className="text-white font-text text-sm uppercase tracking-widest">{slide.subtitle}</p>
                 </div>
+                <div className="flex flex-wrap gap-4">
+                  {slide.features.map((feature, fIdx) => (
+                    <div key={fIdx} className="flex items-center gap-3">
+                      <div className="w-1 h-1 bg-vive-500 rounded-full"></div>
+                      <span className="text-[9px] font-mono text-gray-400 uppercase tracking-widest">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action Node: Dual Protocol Buttons */}
+              <div className="flex flex-col sm:flex-row items-center gap-6">
+                <button
+                  onClick={() => navigate('/catalogo')}
+                  className="group relative w-full sm:w-80 px-12 py-7 bg-vive-600 text-white overflow-hidden transition-all duration-500 hover:shadow-[0_30px_60px_rgba(41,156,71,0.2)] active:scale-95"
+                >
+                  <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                  <div className="relative z-10 flex items-center justify-center gap-4">
+                    <span className="font-black tracking-[0.4em] uppercase text-[10px]">Iniciar Exploración</span>
+                    <FaChevronRight className="w-3 h-3 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </button>
+
+                <a
+                  href={getWhatsAppLink(`Hola Vive, solicito información especializada sobre ${slide.title}.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative w-full sm:w-80 px-12 py-7 border border-white/20 text-white overflow-hidden transition-all duration-500 hover:border-vive-500/50"
+                >
+                  <div className="absolute inset-0 bg-vive-500/5 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                  <div className="relative z-10 flex items-center justify-center gap-4">
+                    <span className="font-bold tracking-[0.4em] uppercase text-[10px] group-hover:text-vive-500 transition-colors">Solicitar Asistencia</span>
+                    <div className="w-1.5 h-1.5 bg-vive-500 rounded-full animate-ping"></div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* 4. Secondary Node: The "Status Terminal" (Right Side) */}
+        <div className="hidden lg:flex flex-col items-end gap-12 absolute right-20 top-1/2 -translate-y-1/2">
+          <div className="space-y-4 text-right">
+            <span className="text-[10px] font-black text-vive-500 uppercase tracking-[0.5em] block">Navigation // Interface</span>
+            <div className="flex flex-col gap-4 items-end">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className="group flex items-center gap-4 outline-none"
+                >
+                  <span className={`text-[10px] font-mono font-bold transition-all duration-500 ${index === currentSlide ? 'text-white' : 'text-gray-600 group-hover:text-vive-500'}`}>0{index + 1}</span>
+                  <div className={`h-px transition-all duration-500 ${index === currentSlide ? 'w-16 bg-vive-500' : 'w-8 bg-gray-800 group-hover:w-12 group-hover:bg-vive-500'}`}></div>
+                </button>
               ))}
             </div>
-
-            {/* Action Buttons - Modern 2026 Elite Design */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8 px-2">
-              {/* Primary: Catálogo */}
-              <button
-                onClick={() => navigate('/catalogo')}
-                className="group relative w-full sm:w-64 overflow-hidden bg-vive-500 text-black px-10 py-4 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(212,175,55,0.25)] border border-vive-500 active:scale-95"
-              >
-                {/* Subtle Inner Glow Layer */}
-                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-500" />
-
-                {/* Moving Light Beam */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-
-                <div className="relative z-10 flex items-center justify-center gap-3">
-                  <span className="font-bold tracking-[0.3em] uppercase text-[10px] md:text-xs">
-                    Ver Catálogo
-                  </span>
-                  <svg
-                    className="w-4 h-4 translate-x-0 group-hover:translate-x-1.5 transition-transform duration-500"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-                  >
-                    <path d="M5 12h14m-7-7l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-
-                {/* Corner Minimalist Accents (Refined) */}
-                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-black/20" />
-                <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-black/20" />
-              </button>
-
-              {/* Secondary: WhatsApp */}
-              <a
-                href={getWhatsAppLink(`Hola Vive, estoy interesado en recibir información sobre ${slide.title}.`)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative w-full sm:w-64 overflow-hidden border border-white/30 text-white px-10 py-4 transition-all duration-500 hover:border-vive-500"
-              >
-                {/* Background Shimmer */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-vive-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-
-                <div className="relative z-10 flex items-center justify-center gap-3">
-                  <span className="font-medium tracking-[0.3em] uppercase text-[10px] md:text-xs group-hover:text-vive-500 transition-colors duration-500">
-                    Asesoría WA
-                  </span>
-                  <div className="w-1.5 h-1.5 bg-vive-500 rounded-full animate-pulse group-hover:scale-150 transition-transform duration-500" />
-                </div>
-
-                {/* Minimalist Hover Lines */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-vive-500 group-hover:w-full transition-all duration-500" />
-              </a>
-            </div>
           </div>
-        ))}
+
+          <div className="p-8 border border-white/5 bg-black/40 backdrop-blur-3xl rounded-sm max-w-[280px] space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest">Efficiency Status</span>
+              <span className="text-[9px] font-mono text-vive-500 font-bold tracking-widest">NOMINAL [98.2%]</span>
+            </div>
+            <div className="h-1 bg-white/5 w-full">
+              <div
+                className="h-full bg-vive-500 transition-all duration-[7s] linear"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+            <p className="text-[9px] font-mono text-gray-500 leading-relaxed uppercase tracking-widest">
+              Cada sistema de descanso Vive es verificado bajo protocolos de precisión industrial 4.0.
+            </p>
+          </div>
+        </div>
       </div>
 
-      {/* Minimalism Indicators */}
-      <div className="absolute bottom-12 left-0 w-full flex justify-center items-center gap-4">
+      {/* 5. Mobile Layout UI Nodes */}
+      <div className="lg:hidden absolute bottom-10 left-0 w-full flex justify-center items-center gap-3">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            aria-label={`Ir al slide ${index + 1}`}
-            className={`h-[3px] transition-all duration-500 rounded-full
-              ${index === currentSlide ? 'w-16 bg-vive-500' : 'w-8 bg-white/20'}
-            `}
+            className={`h-[2px] rounded-full transition-all duration-500 ${index === currentSlide ? 'w-12 bg-vive-500 shadow-[0_0_10px_rgba(41,156,71,0.5)]' : 'w-6 bg-white/20'}`}
           />
         ))}
       </div>
 
-      {/* Simplified Nav Arrows */}
-      <button
-        onClick={prevSlide}
-        aria-label="Anterior slide"
-        className="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 text-white/40 hover:text-vive-500 transition-all duration-300 z-10"
-      >
-        <FaChevronLeft className="sm:w-10 sm:h-10 w-6 h-6" aria-hidden="true" />
-      </button>
-      <button
-        onClick={nextSlide}
-        aria-label="Siguiente slide"
-        className="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 text-white/40 hover:text-vive-500 transition-all duration-300 z-10"
-      >
-        <FaChevronRight className="sm:w-10 sm:h-10 w-6 h-6" aria-hidden="true" />
-      </button>
-
-      {/* Progress Bar (Global) */}
-      <div
-        className="absolute bottom-0 left-0 h-1 bg-vive-500/30 pointer-events-none"
-        style={{
-          width: `${progress}%`,
-          transition: progress === 100 ? `width ${SLIDE_DURATION}ms linear` : 'none'
-        }}
-      ></div>
+      <div className="absolute bottom-6 left-6 z-30 lg:hidden">
+        <span className="text-[8px] font-mono text-vive-500/50 uppercase tracking-[0.3em]">VIVE_OS_V.2.6 // AUTORIZED_ACCESS</span>
+      </div>
     </section>
   );
 };

@@ -1,4 +1,4 @@
-// Importaciones de imágenes para Dormitorio y Complementos
+﻿// Importaciones de imágenes para Dormitorio y Complementos
 import boxMain from '@assets/product-detail/box-cabecera/box-main.webp';
 import boxDiag from '@assets/product-detail/box-cabecera/box-diag.webp';
 import boxZoom from '@assets/product-detail/box-cabecera/box-zoom.webp';
@@ -130,7 +130,7 @@ export const COMPLEMENTARIOS_PRODUCTS = [
             'Estructura ligera pero muy resistente para una larga vida útil',
             'Diseño compacto que se adapta a dormitorios de diversos tamaños',
             'Montaje sencillo que no requiere herramientas complejas',
-            'Respaldo técnico y garantía directa de fábrica'
+            'Respaldo técnico y garantía directa de fabrica'
         ]
     },
     {

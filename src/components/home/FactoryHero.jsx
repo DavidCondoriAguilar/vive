@@ -4,7 +4,7 @@ import { getWhatsAppLink } from '@/utils/constants';
 import { FaArrowRight, FaIndustry } from 'react-icons/fa';
 
 const FactoryHero = () => {
-  const ctaLink = getWhatsAppLink("Hola, estoy interesado en comprar colchones directamente de fábrica.");
+  const ctaLink = getWhatsAppLink("Hola, estoy interesado en comprar colchones directamente de fabrica.");
 
   return (
     <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
@@ -29,7 +29,7 @@ const FactoryHero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-300 font-medium mb-8">
-            Venta directa de fábrica
+            Venta directa de fabrica
           </p>
 
           {/* Submessage */}

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import { FaChevronLeft } from 'react-icons/fa';
-import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { useParams, Link } from 'react-router-dom';
 import MainLayout from '@/layouts/MainLayout';
 import { useCart } from '@/contexts/CartContext';
-import { getStructuredData, getAltText } from './utils/accessibility';
+import { getStructuredData } from './utils/accessibility';
 import { useProductDetails, useProductImages, useProductSEO } from './hooks/useProductDetails';
 import ProductImageGallery from './components/ProductImageGallery';
 import ProductInfo from './components/ProductInfo';
-import ProductTechnicalSpecs from './components/ProductTechnicalSpecs';
 import ProductActions from './components/ProductActions';
+import ProductEngineeringExhibit from './components/ProductEngineeringExhibit';
+import ProductEngineeringDetails from './components/ProductEngineeringDetails';
 import ProductSpecsModal from '@/components/product/ProductSpecsModal';
 
 const ProductDetailsView = () => {
@@ -19,140 +19,100 @@ const ProductDetailsView = () => {
     const seoData = useProductSEO(product);
     const structuredData = getStructuredData(product);
     const { addToCart } = useCart();
+    const [showSpecsModal, setShowSpecsModal] = useState(false);
 
-    // Responsive back button
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-    
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 768);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+        window.scrollTo(0, 0);
+    }, [productId]);
+
+    if (loading) return (
+        <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
+            <div className="w-10 h-10 border-4 border-vive-600 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+    );
+
+    if (error || !product) return (
+        <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black space-y-4">
+            <h2 className="text-xl font-black uppercase tracking-widest text-gray-400">Página no disponible</h2>
+            <Link to="/catalogo" className="px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold uppercase tracking-widest text-[10px]">
+                Volver al Catálogo
+            </Link>
+        </div>
+    );
 
     const handleAddToCart = (productData) => {
-        addToCart(productData);
-        // Show success notification
+        addToCart(productData, productData.quantity, productData.selectedSize);
     };
-
-    const handleBack = () => {
-        sessionStorage.setItem('scrollPosition', window.scrollY);
-        window.history.back();
-        
-        setTimeout(() => {
-            const savedPosition = sessionStorage.getItem('scrollPosition');
-            if (savedPosition) {
-                window.scrollTo(0, parseInt(savedPosition));
-                sessionStorage.removeItem('scrollPosition');
-            }
-        }, 100);
-    };
-
-    if (loading) return <div>Cargando...</div>;
-    if (error) return <div>{error}</div>;
-    if (!product) return <div>Producto no encontrado</div>;
 
     return (
         <>
             <Helmet>
-                {/* Basic SEO */}
                 <title>{seoData.title}</title>
                 <meta name="description" content={seoData.description} />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large" />
                 <link rel="canonical" href={seoData.canonical} />
-
-                {/* Open Graph */}
-                <meta property="og:title" content={seoData.openGraph.title} />
-                <meta property="og:description" content={seoData.openGraph.description} />
-                <meta property="og:image" content={seoData.openGraph.image} />
-                <meta property="og:image:width" content="1200" />
-                <meta property="og:image:height" content="630" />
-                <meta property="og:image:alt" content={`${product.name} - Colchón Premium Sueño Dorado`} />
-                <meta property="og:type" content={seoData.openGraph.type} />
-                <meta property="og:url" content={seoData.canonical} />
-                <meta property="og:site_name" content="Sueño Dorado" />
-                <meta property="og:locale" content="es_PE" />
-
                 {/* Structured Data */}
                 <script type="application/ld+json">
                     {JSON.stringify(structuredData)}
                 </script>
             </Helmet>
-            
-            {/* Responsive Back Button */}
-            <button 
-                style={{ 
-                    position: 'fixed',
-                    bottom: isMobile ? '20px' : 'auto',
-                    top: isMobile ? 'auto' : '160px',
-                    right: '20px', 
-                    zIndex: 60, 
-                    backgroundColor: '#f8f9fa', 
-                    color: '#495057', 
-                    padding: isMobile ? '12px 16px' : '10px 18px', 
-                    borderRadius: '25px', 
-                    fontSize: isMobile ? '14px' : '13px', 
-                    fontWeight: '600', 
-                    cursor: 'pointer', 
-                    border: '1px solid #dee2e6',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    fontFamily: 'system-ui, -apple-system, sans-serif'
-                }} 
-                onClick={handleBack}
-            >
-                ← Volver
-            </button>
-            
+
             <MainLayout>
-                <div className="min-h-screen bg-white dark:bg-black">
-                    {/* Breadcrumb */}
-                    <div className="border-b border-gray-100 dark:border-gray-900">
-                        <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
-                            <nav className="flex items-center gap-2 text-sm font-light tracking-widest text-gray-500">
-                                <a href="/" className="hover:text-black dark:hover:text-white transition-colors">Inicio</a>
-                                <span className="text-vive-500">›</span>
-                                <a href="/catalogo" className="hover:text-black dark:hover:text-white transition-colors">Catálogo</a>
-                                <span className="text-vive-500">›</span>
-                                <span className="text-black dark:text-white font-medium">{product.name}</span>
-                            </nav>
-                        </div>
+                <div className="min-h-screen bg-white dark:bg-[#050505] selection:bg-vive-600/30 pt-4 lg:pt-8">
+
+                    {/* The Breadcrumb is provided by MainLayout, so we keep this space clear y tight */}
+                    <div className="container mx-auto px-6 lg:px-20 py-4">
+                        {/* Space placeholder if needed, otherwise transparent */}
                     </div>
 
-                    {/* Product Content - Layout mejorado */}
-                    <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-                        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20">
-                            {/* Left Column - Images */}
-                            <div className="space-y-6">
+                    {/* Integrated Presentation Grid - Tighter gaps */}
+                    <div className="container mx-auto px-6 lg:px-20 pb-12">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+
+                            {/* Left Column: Visuals & Engineering Exhibit */}
+                            <div className="lg:col-span-6 flex flex-col items-stretch">
                                 <ProductImageGallery
                                     productImages={productImages}
                                     activeImageIndex={activeImageIndex}
                                     setActiveImageIndex={setActiveImageIndex}
                                     productName={product.name}
                                 />
+                                <ProductEngineeringExhibit product={product} />
                             </div>
 
-                            {/* Right Column - Info */}
-                            <div className="space-y-8">
+                            {/* Right Column: Narrative, Actions & Details */}
+                            <div className="lg:col-span-6 flex flex-col">
                                 <ProductInfo product={product} />
-                                <ProductActions 
-                                    product={product} 
-                                    onAddToCart={handleAddToCart}
-                                />
+                                <div className="mt-6">
+                                    <ProductActions
+                                        product={product}
+                                        onAddToCart={handleAddToCart}
+                                        onShowSpecs={() => setShowSpecsModal(true)}
+                                    />
+                                </div>
+                                <ProductEngineeringDetails product={product} />
                             </div>
                         </div>
+                    </div>
 
-                        {/* Technical Specifications - Separación clara */}
-                        <div className="mt-16 pt-16 border-t border-gray-200 dark:border-gray-800">
-                            <ProductTechnicalSpecs product={product} />
+                    {/* Trust Segment - Redesigned to be ultra-integrated */}
+                    <div className="bg-gray-50/30 dark:bg-zinc-950/30 py-8 border-t border-gray-100 dark:border-white/5">
+                        <div className="container mx-auto px-6 lg:px-20 flex flex-col sm:flex-row items-center justify-between gap-6 opacity-60">
+                            <div className="text-center sm:text-left">
+                                <p className="text-[8px] font-black uppercase tracking-[0.4em] text-gray-400">Excelencia en cada fibra</p>
+                                <h3 className="text-sm font-black uppercase tracking-widest text-gray-900 dark:text-white">Fabricación Nacional</h3>
+                            </div>
+                            <p className="max-w-md text-center sm:text-right text-[10px] text-gray-500 font-medium leading-relaxed">
+                                Respaldamos cada producto con un control de calidad riguroso en nuestra planta propia, garantizando un descanso de clase mundial.
+                            </p>
                         </div>
                     </div>
                 </div>
 
+                {/* Legacy Tech Modal - Keeping for deep specs access */}
                 <ProductSpecsModal
                     product={product}
-                    isOpen={false}
-                    onClose={() => {}}
+                    isOpen={showSpecsModal}
+                    onClose={() => setShowSpecsModal(false)}
                 />
             </MainLayout>
         </>

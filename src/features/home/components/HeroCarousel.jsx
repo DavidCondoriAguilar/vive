@@ -1,116 +1,127 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDragCarousel } from '@/hooks/useDragCarousel';
+
+// Sub-components
+import HeroBackground from './HeroBackground';
+import HeroContent from './HeroContent';
+import HeroControls from './HeroControls';
+import EngineeringGrid from '@/components/ui/EngineeringGrid';
 
 const HeroCarousel = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  const SLIDE_DURATION = 7000;
 
   const slides = [
     {
       id: 1,
-      title: "Sueño Dorado",
-      subtitle: "Fabricación Premium",
-      description: "Colchones hechos desde cero en Lima, Perú",
-      image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=2000"
+      variant: 'zen',
+      image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop',
+      title: 'Tu Salud con Vive',
+      subtitle: 'Protección Certificada',
+      features: ['Antialérgico', 'Antiácaros', 'Esterilizado'],
+      badge: 'BIENESTAR'
     },
     {
       id: 2,
-      title: "Calidad Industrial",
-      subtitle: "Tecnología Alemana",
-      description: "Máquinas y procesos de fabricación europea",
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=2000"
+      variant: 'logistics',
+      image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1200&auto=format&fit=crop',
+      title: 'Envíos Nacionales',
+      subtitle: 'Cobertura a todo el Perú',
+      features: ['Entrega 24h', 'Flota Propia', 'Nacional'],
+      badge: 'RAPIDEZ'
     },
     {
       id: 3,
-      title: "Entrega Inmediata",
-      subtitle: "Todo en Stock",
-      description: "Producción continua para entrega inmediata",
-      image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=2000"
+      variant: 'business',
+      image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200&auto=format&fit=crop',
+      title: 'Soluciones B2B',
+      subtitle: 'Precio directo de Fábrica',
+      features: ['+30 Años', 'Ahorro -50%', 'Hoteles'],
+      badge: 'NEGOCIOS'
     }
   ];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
-    return () => clearInterval(timer);
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setProgress(0);
   }, [slides.length]);
 
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setProgress(0);
+  }, [slides.length]);
+
+  const handleSlideChange = (direction) => {
+    if (direction === 'next') nextSlide();
+    else if (direction === 'prev') prevSlide();
+  };
+
+  const { carouselRef, handlers } = useDragCarousel(handleSlideChange);
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+    setProgress(0);
+  };
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isAutoPlay || !isLoaded) {
+      setProgress(0);
+      return;
+    }
+
+    const slideTimer = setInterval(() => {
+      nextSlide();
+    }, SLIDE_DURATION);
+
+    setProgress(0);
+    const progressTimer = setTimeout(() => {
+      setProgress(100);
+    }, 50);
+
+    return () => {
+      clearInterval(slideTimer);
+      clearTimeout(progressTimer);
+    };
+  }, [currentSlide, isAutoPlay, isLoaded, nextSlide]);
+
   return (
-    <section className="relative w-full h-screen bg-white dark:bg-gray-900 overflow-hidden">
-      {/* Background Images */}
-      <div className="absolute inset-0">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              currentSlide === index ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <img
-              src={slide.image}
-              alt={slide.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/20"></div>
-          </div>
-        ))}
+    <section
+      className={`relative w-full h-[100dvh] overflow-hidden bg-[#050505] transition-opacity duration-1000 group/carousel ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+      ref={carouselRef}
+      {...handlers}
+    >
+      <HeroBackground slides={slides} currentSlide={currentSlide} />
+
+      <EngineeringGrid color="#ffffff" opacity="0.1" size="60px" />
+
+      <div className="relative z-20 container mx-auto h-full px-6 lg:px-20 flex items-center">
+        <HeroContent slides={slides} currentSlide={currentSlide} navigate={navigate} />
+        <HeroControls slides={slides} currentSlide={currentSlide} goToSlide={goToSlide} progress={progress} />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 h-full flex items-center">
-        <div className="container mx-auto px-6 lg:px-20">
-          <div className="max-w-2xl">
-            {slides.map((slide, index) => (
-              <div
-                key={slide.id}
-                className={`transition-all duration-700 ${
-                  currentSlide === index
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-8 absolute'
-                }`}
-              >
-                {/* Title */}
-                <h1 className="text-5xl md:text-7xl font-light text-white mb-4 leading-tight">
-                  {slide.title}
-                </h1>
-
-                {/* Subtitle */}
-                <h2 className="text-2xl md:text-4xl font-light text-white/80 mb-6">
-                  {slide.subtitle}
-                </h2>
-
-                {/* Description */}
-                <p className="text-lg text-white/70 mb-12 max-w-lg leading-relaxed">
-                  {slide.description}
-                </p>
-
-                {/* CTA */}
-                <Link
-                  to="/catalogo"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition-colors"
-                >
-                  <span>Ver Colección</span>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Minimal Navigation */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-2">
+      {/* Mobile Layout UI Nodes */}
+      <div className="lg:hidden absolute bottom-10 left-0 w-full flex justify-center items-center gap-3 z-30">
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              currentSlide === index ? 'bg-white' : 'bg-white/40'
-            }`}
+            onClick={() => goToSlide(index)}
+            className={`h-[2px] rounded-full transition-all duration-500 ${index === currentSlide ? 'w-12 bg-vive-500 shadow-[0_0_10px_rgba(41,156,71,0.5)]' : 'w-6 bg-white/20'}`}
           />
         ))}
+      </div>
+
+      <div className="absolute bottom-6 left-6 z-30 lg:hidden text-white/50">
+        <span className="text-[8px] font-mono uppercase tracking-[0.3em]">Fábrica Vive // Perú 2026</span>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { useScrollToTop } from '@/hooks/useTheme';
 import { FaWhatsapp } from 'react-icons/fa';
 import { useCart } from '@/contexts/CartContext';
@@ -58,7 +58,7 @@ const CatalogView = () => {
       </Helmet>
 
       <MainLayout>
-        <div className="pt-32 pb-24 bg-white dark:bg-black transition-colors duration-700">
+        <div className="pb-24 bg-white dark:bg-black transition-colors duration-700">
           <SectionLayout background="white">
             {/* Elite Header */}
             <div className="max-w-4xl mb-20 px-4 md:px-0 text-center mx-auto">
@@ -67,7 +67,7 @@ const CatalogView = () => {
                 Sistemas de <br /><span className="text-vive-500 italic font-light">Descanso</span>
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-400 font-medium leading-relaxed max-w-2xl mx-auto animate-fade-in delay-200">
-                Calidad directa de fábrica con respaldo industrial. Diseñados para transformar cada noche en una experiencia de lujo.
+                Calidad directa de fabrica con respaldo industrial. Diseñados para transformar cada noche en una experiencia de lujo.
               </p>
             </div>
 
@@ -94,14 +94,26 @@ const CatalogView = () => {
               />
             </div>
 
-            {/* Products Stats */}
-            <div className="flex justify-between items-center mb-12 px-4">
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[10px] font-black text-gray-500 dark:text-gray-400 uppercase tracking-[0.2em]">
-                  {sortedProducts.length} Productos encontrados
-                </span>
+            {/* Products Stats - Advanced Monitoring */}
+            <div className="flex flex-col sm:flex-row justify-between items-center mb-12 px-2 gap-4">
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3].map(i => (
+                    <div key={i} className="w-8 h-8 rounded-full border-2 border-white dark:border-black bg-gray-100 dark:bg-zinc-800 flex items-center justify-center overflow-hidden">
+                      <div className="w-full h-full bg-gradient-to-br from-vive-500/20 to-transparent" />
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-black text-gray-900 dark:text-white uppercase tracking-widest">
+                    Modelos Disponibles: {sortedProducts.length}
+                  </span>
+                  <p className="text-[8px] font-bold text-gray-400 uppercase tracking-[0.2em]">
+                    Mostrando resultados de alta ingeniería
+                  </p>
+                </div>
               </div>
+
               {(selectedCategory !== 'todos' || selectedSubcategory !== 'todos' || selectedSize !== 'todos') && (
                 <button
                   onClick={() => {
@@ -109,9 +121,9 @@ const CatalogView = () => {
                     setSelectedSubcategory('todos');
                     setSelectedSize('todos');
                   }}
-                  className="text-[9px] font-black text-red-500 uppercase tracking-widest hover:underline transition-all"
+                  className="px-5 py-2 bg-red-500/5 text-red-500 border border-red-500/20 rounded-full text-[9px] font-black uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all transform hover:scale-105 active:scale-95"
                 >
-                  Limpiar Filtros ×
+                  Restablecer Búsqueda ×
                 </button>
               )}
             </div>

@@ -122,7 +122,7 @@ export const FOOTER_CONTENT = {
             <div className="space-y-4">
                 {[
                     { q: '¿Qué método de pago aceptan?', a: 'Yape, Plin, Transferencias BCP/BBVA y todas las tarjetas de crédito (Link de pago seguro).' },
-                    { q: '¿Ustedes son fabricantes?', a: 'Sí, somos fábrica propia. No hay intermediarios, por eso nuestros precios son 50% menores que en malls.' },
+                    { q: '¿Ustedes son fabricantes?', a: 'Sí, somos fabrica propia. No hay intermediarios, por eso nuestros precios son 50% menores que en malls.' },
                     { q: '¿El colchón viene en caja?', a: 'Depende del modelo. Algunos vienen enrollados al vacío y otros en su estructura rígida tradicional.' }
                 ].map((item, i) => (
                     <div key={i} className="bg-gray-50 dark:bg-white/5 p-4 rounded-xl">
@@ -189,7 +189,7 @@ export const FOOTER_CONTENT = {
         icon: <LuLock className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-4 text-gray-600 dark:text-gray-400">
-                <p>Tus datos registrados están protegidos en nuestra base de datos automatizada. Se utilizan únicamente para gestión de pedidos, logística y ofertas exclusivas de la fábrica.</p>
+                <p>Tus datos registrados están protegidos en nuestra base de datos automatizada. Se utilizan únicamente para gestión de pedidos, logística y ofertas exclusivas de la fabrica.</p>
                 <p className="text-xs">Usted puede ejercer sus derechos de consulta o eliminación escribiendo a ventasisd@grupoisd.com.</p>
             </div>
         )

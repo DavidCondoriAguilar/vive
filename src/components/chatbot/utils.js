@@ -108,12 +108,12 @@ export const getBotResponse = (intent, originalMessage = '') => {
 };
 
 /**
- * Format message text with line breaks and emojis
+ * Format message text with line breaks y emojis
  * @param {string|Object} text - Raw text or response object
  * @returns {string} Formatted text
  */
 export const formatMessageText = (text) => {
-  // Handle both string and object inputs
+  // Handle both string y object inputs
   const messageText = typeof text === 'string' ? text : (text?.text || '');
 
   if (!messageText) return '';

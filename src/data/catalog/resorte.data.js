@@ -1,4 +1,4 @@
-// Importaciones de imágenes para Resorte
+ï»¿// Importaciones de imgenes para Resorte
 import cunaTravesuraMain from '@assets/product-detail/cuna-travesura/travesura-main.webp';
 import cunaTravesuraTwo from '@assets/product-detail/cuna-travesura/travesura-two.webp';
 import cunaTravesuraDiag from '@assets/product-detail/cuna-travesura/travesura-diag.webp';
@@ -58,10 +58,10 @@ import absolutDiag from '@assets/product-detail/absolut/absolut-diag.webp';
 import detalleAbsolut from '@assets/product-detail/absolut/detalle-absolut.webp';
 
 export const RESORTE_PRODUCTS = [
-    // 1. RECONCILIACIí“N POCKET VISCO MP (DIAMONT - TOP 1)
+    // 1. RECONCILIACIN POCKET VISCO MP (DIAMONT - TOP 1)
     {
         id: 'reconciliacion-pocket',
-        name: 'Reconciliación Pocket Visco Mp',
+        name: 'ReconciliaciÃ³n Pocket Visco Mp',
         category: 'resorte',
         subcategory: 'Diamont',
         price: 2499,
@@ -71,10 +71,28 @@ export const RESORTE_PRODUCTS = [
             reconciliacionTwo,
             reconciliacionDiag
         ],
-        description: 'La joya de la corona. Lo último en tecnología Pocket y Viscoelástica para un descanso real.',
+        description: 'La joya de la corona. Lo Ãºltimo en tecnologÃ­a Pocket y ViscoelÃ¡stica para un descanso real.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Marco Poliuretano', 'Viscoelástica', 'Pocket Elite'],
-        badge: 'Lujo Supremo'
+        features: ['Marco Poliuretano', 'ViscoelÃ¡stica', 'Pocket Elite'],
+        badge: 'Lujo Supremo',
+        technicalSpecs: {
+            colchon: [
+                'Tela Tejido de Punto Suave',
+                'Capa de ViscoelÃ¡stica D50',
+                'Marco de poliuretano reforzado',
+                'Resortes Pocket independientes',
+                'Independencia de lechos total',
+                'Soporte ErgonÃ³mico Premium'
+            ],
+            componentes: [
+                'Tela Tejido de Punto 28 mm',
+                'ViscoelÃ¡stica 4 cm',
+                'Espuma de soporte D28',
+                'Panel Pocket de 330 resortes/mÂ²',
+                'Marco perimetral D30',
+                'LÃ¡mina de fieltro aislante'
+            ]
+        }
     },
     // 2. ABSOLUT PILLOW MP (DIAMONT - TOP 2)
     {
@@ -96,23 +114,23 @@ export const RESORTE_PRODUCTS = [
                 'Pillow densidad 23',
                 'Marco de poliuretano',
                 'Sistema de resortes Bonnell Alto contenido de carbono',
-                'Diseño reversible (doble cara)',
+                'DiseÃ±o reversible (doble cara)',
                 'Soporte firme y uniforme'
             ],
             componentes: [
                 'Tela Tricot 16 mm',
                 'Pillow densidad 23',
                 'Marco densidad 18',
-                'Lámina de Notex',
+                'LÃ¡mina de Notex',
                 'Panel de resortes Bonnell Alto contenido de carbono',
-                'Lámina de Notex',
+                'LÃ¡mina de Notex',
                 'Marco de poliuretano'
             ]
         },
-        description: 'Marco sellado al calor para máxima estabilidad perimetral y soporte total.',
+        description: 'Marco sellado al calor para mÃ¡xima estabilidad perimetral y soporte total.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Marco Poliuretano', 'Máximo Soporte'],
-        badge: 'Garantía de Fábrica'
+        features: ['Marco Poliuretano', 'MÃ¡ximo Soporte'],
+        badge: 'GarantÃ­a de FÃ¡brica'
     },
     // 3. TERNURA POCKET MP (DIAMONT - TOP 3)
     {
@@ -134,23 +152,23 @@ export const RESORTE_PRODUCTS = [
                 'Pillow densidad 23',
                 'Marco de poliuretano',
                 'Sistema de resortes Pocket',
-                'Diseño reversible (doble cara)',
+                'DiseÃ±o reversible (doble cara)',
                 'Soporte firme y uniforme'
             ],
             componentes: [
                 'Tela Tricot 16 mm',
                 'Pillow densidad 23',
                 'Marco densidad 18',
-                'Lámina de Notex',
+                'LÃ¡mina de Notex',
                 'Panel de resortes Pocket',
-                'Lámina de Notex',
+                'LÃ¡mina de Notex',
                 'Marco de poliuretano'
             ]
         },
         description: 'Resortes independientes Pocket para una independencia de lechos total.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: ['Marco Poliuretano', 'Pocket System'],
-        badge: 'Garantía de Fábrica'
+        badge: 'GarantÃ­a de FÃ¡brica'
     },
     // 4. GOLDEN SIEMPRE PILLOW MP (GOLD)
     {
@@ -172,20 +190,20 @@ export const RESORTE_PRODUCTS = [
                 'Pillow densidad 23',
                 'Marco de poliuretano',
                 'Sistema de resortes Bonnell Alto contenido de carbono',
-                'Diseño reversible (doble cara)',
+                'DiseÃ±o reversible (doble cara)',
                 'Soporte firme y uniforme'
             ],
             componentes: [
                 'Tela Tricot 16 mm',
                 'Pillow densidad 23',
                 'Marco densidad 18',
-                'Lámina de Notex',
+                'LÃ¡mina de Notex',
                 'Panel de resortes Bonnell Alto contenido de carbono',
-                'Lámina de Notex',
+                'LÃ¡mina de Notex',
                 'Marco de poliuretano'
             ]
         },
-        description: 'Pillow Top permanente de alta densidad diseñado para un confort eterno. Ingeniería Gold con refuerzo lumbar y sistema de Máxima Permanencia (MP) para garantizar una durabilidad superior con acabado de lujo.',
+        description: 'Pillow Top permanente de alta densidad diseÃ±ado para un confort eterno. IngenierÃ­a Gold con refuerzo lumbar y sistema de MÃ¡xima Permanencia (MP) para garantizar una durabilidad superior con acabado de lujo.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: ['Pillow Top Permanente', 'Refuerzo MP', 'Tela Gold Damask'],
         badge: 'Best Seller'
@@ -206,26 +224,26 @@ export const RESORTE_PRODUCTS = [
         technicalImage: detalleGoldenDreamMp,
         technicalSpecs: {
             colchon: [
-                'Tela: Tejido de Punto Acolchada de 28mm (Mayor suavidad y frescura que el tricot común)',
+                'Tela: Tejido de Punto Acolchada de 28mm (Mayor suavidad y frescura que el tricot comÃºn)',
                 'Nivel de Confort: Marco de poliuretano',
-                'Refuerzo Ortopédico: Plancha de Prensado Rebond D66 para máxima estabilidad lumbar',
+                'Refuerzo OrtopÃ©dico: Plancha de Prensado Rebond D66 para mÃ¡xima estabilidad lumbar',
                 'Estructura: Sistema de resortes Bonnell Alto contenido de carbono de material resistente de alto carbono',
-                'Diseño Reversible: Sistema Doble Cara (Double Side) para duplicar la vida útil',
-                'Garantía: Respaldo total de fábrica'
+                'DiseÃ±o Reversible: Sistema Doble Cara (Double Side) para duplicar la vida Ãºtil',
+                'GarantÃ­a: Respaldo total de fabrica'
             ],
             componentes: [
                 'Capa de Contacto: Tela Tejido de Punto Acolchada (28mm)',
-                'Amortiguación: Marco de poliuretano',
+                'AmortiguaciÃ³n: Marco de poliuretano',
                 'Estabilizador: Prensado Rebond D66',
-                'Protector de Panel: Lámina de Notex',
-                'Núcleo: Panel de resortes Bonnell Alto contenido de carbono',
-                'Base de Soporte: Sistema simétrico de Notex, Rebond y Marco de poliuretano para uso reversible'
+                'Protector de Panel: LÃ¡mina de Notex',
+                'NÃºcleo: Panel de resortes Bonnell Alto contenido de carbono',
+                'Base de Soporte: Sistema simÃ©trico de Notex, Rebond y Marco de poliuretano para uso reversible'
             ]
         },
-        description: 'La línea dorada de nuestro catálogo. Ingeniería de precisión para el máximo confort.',
+        description: 'La lÃ­nea dorada de nuestro catÃ¡logo. IngenierÃ­a de precisiÃ³n para el mÃ¡ximo confort.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: ['Marco Poliuretano', 'Premium Foam'],
-        badge: 'Héroe de la Marca'
+        badge: 'HÃ©roe de la Marca'
     },
     // 6. PASIONES PILLOW MP (GOLD)
     {
@@ -246,15 +264,15 @@ export const RESORTE_PRODUCTS = [
                 'Tela Tricot 16 mm',
                 'Marco de poliuretano',
                 'Sistema de resortes Bonnell Alto contenido de carbono',
-                'Diseño reversible (doble cara)',
+                'DiseÃ±o reversible (doble cara)',
                 'Soporte firme y uniforme'
             ],
             componentes: [
                 'Tela Tricot 16 mm',
                 'Marco de poliuretano',
-                'Lámina de Notex',
+                'LÃ¡mina de Notex',
                 'Panel de resortes Bonnell Alto contenido de carbono',
-                'Lámina de Notex',
+                'LÃ¡mina de Notex',
                 'Marco de poliuretano'
             ]
         },
@@ -277,10 +295,10 @@ export const RESORTE_PRODUCTS = [
             pasionesOnePillowMpDiagTwo
         ],
         technicalImage: detallePasiones,
-        description: 'Confort superior con sistema de Máxima Permanencia y acolchado de alta densidad.',
+        description: 'Confort superior con sistema de MÃ¡xima Permanencia y acolchado de alta densidad.',
         sizes: ['1.5 PLZ', '2 PLZ'],
         features: ['Marco Poliuretano', 'One Pillow'],
-        badge: 'Garantía de Fábrica'
+        badge: 'GarantÃ­a de FÃ¡brica'
     },
     // 8. SIEMPRE ONE PILLOW MP (GOLD)
     {
@@ -298,23 +316,23 @@ export const RESORTE_PRODUCTS = [
                 'Pillow densidad 23',
                 'Marco de poliuretano',
                 'Sistema de resortes Bonnell Alto contenido de carbono',
-                'Diseño reversible (doble cara)',
+                'DiseÃ±o reversible (doble cara)',
                 'Soporte firme y uniforme'
             ],
             componentes: [
                 'Tela Tricot 16 mm',
                 'Pillow densidad 23',
                 'Marco densidad 18',
-                'Lámina de Notex',
+                'LÃ¡mina de Notex',
                 'Panel de resortes Bonnell Alto contenido de carbono',
-                'Lámina de Notex',
+                'LÃ¡mina de Notex',
                 'Marco de poliuretano'
             ]
         },
-        description: 'Diseño eterno de alta resistencia con un pillow de gran confort y firmeza.',
+        description: 'DiseÃ±o eterno de alta resistencia con un pillow de gran confort y firmeza.',
         sizes: ['1.5 PLZ', '2 PLZ'],
-        features: ['Marco Poliuretano', 'Garantía de fábrica'],
-        badge: 'Garantía de fábrica'
+        features: ['Marco Poliuretano', 'GarantÃ­a de fabrica'],
+        badge: 'GarantÃ­a de fabrica'
     },
     // 9. MATRIMONIAL POCKET MP (DIAMONT)
     {
@@ -325,18 +343,32 @@ export const RESORTE_PRODUCTS = [
         price: 1349,
         image: matriMain,
         images: [matriMain, matriTwo, matriDiag],
-        description: 'El balance ideal para parejas que buscan confort clásico de alta durabilidad.',
+        description: 'El balance ideal para parejas que buscan confort clÃ¡sico de alta durabilidad.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: [
-            'Tela Tricot 16 mm',
-            'Espuma de poliuretano D16 (1")',
-            'Sistema de resortes Bonnell Alto contenido de carbono',
-            'Diseño reversible (doble cara)',
-            'Soporte firme y uniforme',
-            'Lámina de Notex 100 gr',
-            'Panel de resortes Bonnell Alto contenido de carbono'
+            'Marco Poliuretano',
+            'Soporte Firme',
+            'Doble Cara'
         ],
-        badge: 'Garantía de Fábrica'
+        badge: 'GarantÃ­a de FÃ¡brica',
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot 16 mm transpirable',
+                'Espuma de poliuretano D16 (1")',
+                'Sistema de resortes Bonnell',
+                'DiseÃ±o reversible (Doble Cara)',
+                'Soporte firme y uniforme',
+                'Aislante tÃ©rmico de Notex'
+            ],
+            componentes: [
+                'Tela Tricot acolchada',
+                'Espuma de poliuretano D16',
+                'LÃ¡mina de Notex 100 gr',
+                'Panel de resortes Bonnell Alto Carbono',
+                'Marco perimetral reforzado',
+                'LÃ¡mina de fibra aislante'
+            ]
+        }
     },
     // 10. INFINITO MP (MARCO DE POLIURETANO)
     {
@@ -358,23 +390,23 @@ export const RESORTE_PRODUCTS = [
                 'Espuma de poliuretano D16 (2")',
                 'Marco de poliuretano',
                 'Sistema de resortes Bonnell Alto contenido de carbono',
-                'Diseño estructural infinito',
+                'Diseo estructural infinito',
                 'Soporte extra firme'
             ],
             componentes: [
                 'Tela Tricot 18 mm',
                 'Espuma de poliuretano D16 (2")',
                 'Marco de poliuretano',
-                'Lámina de Notex',
+                'Lmina de Notex',
                 'Panel de resortes Bonnell Alto contenido de carbono',
-                'Lámina de Notex',
+                'Lmina de Notex',
                 'Espuma de poliuretano D16 (2")'
             ]
         },
-        description: 'Estructura infinita diseñada para uso rudo y duradero con sistema Máxima Permanencia.',
+        description: 'Estructura infinita diseada para uso rudo y duradero con sistema MÃ¡xima Permanencia.',
         sizes: ['1.5 PLZ', '2 PLZ'],
         features: ['Marco Poliuretano', 'Extra Firme'],
-        badge: 'Garantía de Fábrica'
+        badge: 'GarantÃ­a de Fbrica'
     },
     // 11. GOLDENCITO MP (MARCO DE POLIURETANO)
     {
@@ -396,27 +428,27 @@ export const RESORTE_PRODUCTS = [
                 'Espuma de poliuretano D16 (1")',
                 'Marco de poliuretano',
                 'Sistema de resortes Bonnell Alto contenido de carbono',
-                'Diseño reversible (doble cara)',
+                'Diseo reversible (doble cara)',
                 'Soporte firme y uniforme'
             ],
             componentes: [
                 'Tela Tricot 16 mm',
                 'Espuma de poliuretano D16 (1")',
                 'Marco de poliuretano',
-                'Lámina de Notex',
+                'Lmina de Notex',
                 'Panel de resortes Bonnell Alto contenido de carbono',
                 'Espuma de poliuretano D16 (1")'
             ]
         },
-        description: 'Sistema MP (Máxima Permanencia) con refuerzo perimetral para mayor vida útil.',
+        description: 'Sistema MP (MÃ¡xima Permanencia) con refuerzo perimetral para mayor vida til.',
         sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
         features: ['Marco Poliuretano', 'Refuerzo MP'],
-        badge: 'Garantía de Fábrica'
+        badge: 'GarantÃ­a de Fbrica'
     },
-    // 12. CLASSIC ANATÓMICO (AVANCE)
+    // 12. CLASSIC ANATMICO (AVANCE)
     {
         id: 'classic-ana',
-        name: 'Classic Anatómico',
+        name: 'Classic Anatmico',
         category: 'resorte',
         subcategory: 'Avance',
         price: 849,
@@ -432,22 +464,22 @@ export const RESORTE_PRODUCTS = [
                 'Tela Tricot 16 mm',
                 'Espuma de poliuretano D16 (1.5")',
                 'Sistema de resortes Bonnell Alto contenido de carbono',
-                'Diseño anatómico clásico',
+                'Diseo anatÃ³mico clÃ¡sico',
                 'Equilibrio firmeza-confort'
             ],
             componentes: [
                 'Tela Tricot 16 mm',
                 'Espuma de poliuretano D16 (1.5")',
-                'Lámina de Notex',
+                'Lmina de Notex',
                 'Panel de resortes Bonnell Alto contenido de carbono',
-                'Lámina de Notex',
+                'Lmina de Notex',
                 'Espuma de poliuretano D16 (1.5")'
             ]
         },
-        description: 'Equilibrio perfecto entre firmeza y confort gracias a tecnología patentada. El colchón preferido por familias peruanas por razones que te sorprenderán. Conoce los detalles que lo hacen único.',
+        description: 'Equilibrio perfecto entre firmeza y confort gracias a tecnologÃ­a patentada. El colchn preferido por familias peruanas por razones que te sorprenderÃ¡n. Conoce los detalles que lo hacen nico.',
         sizes: ['1 PLZ', '1.5 PLZ', '2 PLZ'],
-        features: ['Anatómico'],
-        badge: 'Garantía de Fábrica'
+        features: ['Anatmico'],
+        badge: 'GarantÃ­a de Fbrica'
     },
     // 13. CUNA GOLDEN DREAM (INFANTIL)
     {
@@ -462,10 +494,10 @@ export const RESORTE_PRODUCTS = [
             cunaResortTwo,
             cunaResortDiag
         ],
-        description: 'Tejido de punto premium con tecnología avanzada que garantiza el descanso óptimo del recién nacido. Detalles exclusivos de seguridad y materiales de primera calidad que sorprenden a los expertos. Conoce lo que la hace especial.',
+        description: 'Tejido de punto premium con tecnologÃ­a avanzada que garantiza el descanso ptimo del recin nacido. Detalles exclusivos de seguridad y materiales de primera calidad que sorprenden a los expertos. Conoce lo que la hace especial.',
         sizes: ['Infantil'],
-        features: ['Tejido Punto', 'Lujo Bebé'],
-        badge: 'Bebé Premium'
+        features: ['Tejido Punto', 'Lujo BebÃ©Ã©Ã©'],
+        badge: 'BebÃ©Ã©Ã© Premium'
     },
     // 14. CUNA TRAVESURAS (INFANTIL)
     {
@@ -473,7 +505,7 @@ export const RESORTE_PRODUCTS = [
         name: 'Cuna Travesuras Tela Tricot',
         category: 'resorte',
         subcategory: 'Infantil',
-        warranty: 'Garantía de Fábrica',
+        warranty: 'GarantÃ­a de Fbrica',
         price: 499,
         image: cunaTravesuraMain,
         images: [
@@ -481,23 +513,23 @@ export const RESORTE_PRODUCTS = [
             cunaTravesuraTwo,
             cunaTravesuraDiag
         ],
-        description: 'Diseño exclusivo con tejido tricot hipoalergénico que protege la piel sensible de tu bebé. Características especiales de seguridad y comodidad que la diferencian de otras cunas. Descubre por qué los padres la eligen.',
+        description: 'Diseo exclusivo con tejido tricot hipoalergÃ©nico que protege la piel sensible de tu beb. Caractersticas especiales de seguridad y comodidad que la diferencian de otras cunas. Descubre por qu los padres la eligen.',
         sizes: ['Infantil'],
-        features: ['Hipoalergénico', 'Diseño Infantil'],
+        features: ['Hipoalergnico', 'Diseo Infantil'],
         technicalSpecs: {
             colchon: [
-                'Hipoalergénico',
-                'Diseño Infantil'
+                'Hipoalergnico',
+                'Diseo Infantil'
             ],
             componentes: [
                 'Tela Tricot acolchada',
                 'Espuma de poliuretano',
-                'Lámina de Notex',
-                'Núcleo de alta resiliencia',
-                'Lámina de Notex',
+                'Lmina de Notex',
+                'Ncleo de alta resiliencia',
+                'Lmina de Notex',
                 'Espuma protectora'
             ]
         },
-        badge: 'Bebé'
+        badge: 'BebÃ©Ã©Ã©'
     }
 ];

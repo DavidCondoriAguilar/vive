@@ -1,6 +1,6 @@
 /**
  * Custom hook for chatbot functionality
- * Manages chat state and logic following React best practices
+ * Manages chat state y logic following React best practices
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
@@ -21,7 +21,7 @@ import {
 
 /**
  * Custom hook for chatbot functionality
- * @returns {Object} Chatbot state and methods
+ * @returns {Object} Chatbot state y methods
  */
 export const useChatbot = () => {
   // State management
@@ -108,7 +108,7 @@ export const useChatbot = () => {
     const typingDuration = getTypingDuration(userMessage);
 
     typingTimeoutRef.current = setTimeout(() => {
-      // Detect intent and get response
+      // Detect intent y get response
       const intent = detectIntent(userMessage);
       const response = getBotResponse(intent, userMessage);
 

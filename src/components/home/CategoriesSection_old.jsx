@@ -82,7 +82,7 @@ const CategoriesSection = () => {
               Nuestros <span className="text-vive-500">Productos</span>
             </h2>
             <p className="text-lg text-gray-500 dark:text-gray-400 font-medium max-w-2xl mx-auto">
-              Calidad directa de fábrica para tu descanso perfecto. Ingeniería peruana de clase mundial.
+              Calidad directa de fabrica para tu descanso perfecto. Ingeniería peruana de clase mundial.
             </p>
           </div>
 

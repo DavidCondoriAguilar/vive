@@ -1,5 +1,5 @@
 /**
- * Chatbot constants and configurations
+ * Chatbot constants y configurations
  * Centralized configuration for easy maintenance
  */
 
@@ -66,7 +66,7 @@ export const BOT_RESPONSES = {
   },
 
   [CHATBOT_INTENTS.SHIPPING]: {
-    text: '🚚 Realizamos envíos a todo Perú:\n\n• Lima Metropolitana: 24-48h (Gratis)\n• Provincias: 3-5 días\n• Entrega directa de fábrica\n\n¿A dónde te gustaría recibir tu pedido?',
+    text: '🚚 Realizamos envíos a todo Perú:\n\n• Lima Metropolitana: 24-48h (Gratis)\n• Provincias: 3-5 días\n• Entrega directa de fabrica\n\n¿A dónde te gustaría recibir tu pedido?',
     options: [
       { text: 'Lima Metropolitana', intent: 'lima_shipping' },
       { text: 'Provincias', intent: 'provinces_shipping' },
@@ -96,7 +96,7 @@ export const BOT_RESPONSES = {
   },
 
   [CHATBOT_INTENTS.HELP]: {
-    text: '🏠 ¡Bienvenido al menú principal! Puedo ayudarte con:\n\n📋 Información técnica de productos\n🚚 Envíos y entregas\n🛡️ Garantías de fábrica\n📞 Contacto directo\n\n¿Qué necesitas saber?',
+    text: '🏠 ¡Bienvenido al menú principal! Puedo ayudarte con:\n\n📋 Información técnica de productos\n🚚 Envíos y entregas\n🛡️ Garantías de fabrica\n📞 Contacto directo\n\n¿Qué necesitas saber?',
     options: [
       { text: '📋 Ver Catálogo', intent: CHATBOT_INTENTS.CATALOG },
       { text: '🚚 Envíos', intent: CHATBOT_INTENTS.SHIPPING },

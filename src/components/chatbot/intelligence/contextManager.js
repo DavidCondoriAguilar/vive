@@ -1,6 +1,6 @@
 /**
  * Context Manager for Chatbot
- * Manages conversation context and memory
+ * Manages conversation context y memory
  * Following expert chatbot design patterns
  */
 

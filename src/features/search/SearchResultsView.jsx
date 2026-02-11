@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { MdSearch, MdFilterList, MdArrowBack } from 'react-icons/md';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
@@ -131,7 +131,7 @@ const SearchResultsView = () => {
       </Helmet>
 
       <MainLayout>
-        <div className="pt-32 pb-24 bg-white dark:bg-dream-dark-bg transition-colors duration-700">
+        <div className="pb-24 bg-white dark:bg-dream-dark-bg transition-colors duration-700">
           <SectionLayout background="gray">
             {/* Search Header */}
             <div className="text-center mb-16">

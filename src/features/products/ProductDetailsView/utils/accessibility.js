@@ -1,6 +1,6 @@
 export const getAltText = (imageName, productName) => {
     if (!imageName || !productName) return 'Imagen de producto';
-    
+
     if (imageName.includes('main') || imageName.includes('-main')) {
         return `${productName} - Vista principal del colchón, mostrando su diseño y acabado premium`;
     } else if (imageName.includes('diag') || imageName.includes('diagonal')) {
@@ -10,7 +10,7 @@ export const getAltText = (imageName, productName) => {
     } else if (imageName.includes('detalle') || imageName.includes('technical')) {
         return `${productName} - Especificaciones técnicas y estructura interna del colchón`;
     } else {
-        return `${productName} - Imagen del colchón premium Sueño Dorado`;
+        return `${productName} - Innovación en descanso por Vive`;
     }
 };
 
@@ -22,10 +22,10 @@ export const getStructuredData = (product) => {
         "@type": "Product",
         "name": product.name,
         "description": product.description || "Colchón premium con resortes pocket independientes",
-        "image": `https://suenodorado.pe${product.image}`,
+        "image": `https://vive.pe${product.image}`,
         "brand": {
             "@type": "Brand",
-            "name": "Sueño Dorado"
+            "name": "Vive"
         },
         "category": product.category,
         "offers": {
@@ -35,8 +35,8 @@ export const getStructuredData = (product) => {
             "availability": "https://schema.org/InStock",
             "seller": {
                 "@type": "Organization",
-                "name": "Sueño Dorado",
-                "url": "https://suenodorado.pe"
+                "name": "Vive",
+                "url": "https://vive.pe"
             }
         },
         "aggregateRating": {

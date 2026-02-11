@@ -13,7 +13,7 @@ const ReturnsContent = () => (
 
         <div className="bg-amber-50 dark:bg-amber-900/10 p-4 rounded-xl border border-amber-100 dark:border-amber-900/20">
             <p className="text-[11px] text-amber-800 dark:text-amber-400 font-medium leading-relaxed">
-                <strong>Nota de Higiene:</strong> Por razones de salud pública, no se aceptan devoluciones de almohadas, sábanas o protectores una vez retirado su empaque de fábrica.
+                <strong>Nota de Higiene:</strong> Por razones de salud pública, no se aceptan devoluciones de almohadas, sábanas o protectores una vez retirado su empaque de fabrica.
             </p>
         </div>
     </div>

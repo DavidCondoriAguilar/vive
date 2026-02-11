@@ -1,4 +1,4 @@
-// Importaciones de imágenes para Espuma
+﻿// Importaciones de imágenes para Espuma
 import polisedaMain from '@assets/product-detail/poliseda/poliseda-main.webp';
 import polisedaTwo from '@assets/product-detail/poliseda/poliseda-main-two.webp';
 import polisedaDiag from '@assets/product-detail/poliseda/poliseda-main-diag.webp';
@@ -29,7 +29,7 @@ export const ESPUMA_PRODUCTS = [
             topacioTwo,
             topacioDiag
         ],
-        description: 'Topacio con acabado premium y materiales de máxima calidad. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas and 10 pulgadas. Alta densidad y durabilidad extrema con garantía de fábrica. El colchón de calidad superior que necesitas.',
+        description: 'Topacio con acabado premium y materiales de máxima calidad. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas y 10 pulgadas. Alta densidad y durabilidad extrema con garantía de fabrica. El colchón de calidad superior que necesitas.',
         sizes: ['7"', '8"', '10"'],
         features: ['Alta Densidad', 'Confort Superior', 'Durabilidad Garantizada'],
         badge: 'Máximo Confort',
@@ -46,7 +46,7 @@ export const ESPUMA_PRODUCTS = [
             'Tratamiento antiácaros triple acción',
             'Perímetro ultra reforzado',
             'Sistema de ventilación avanzada',
-            'Acabado antimanchas and anti-humedad'
+            'Acabado antimanchas y anti-humedad'
         ],
         especificaciones: {
             'Material': 'Espuma de poliuretano de máxima densidad',
@@ -86,7 +86,7 @@ export const ESPUMA_PRODUCTS = [
             splendidoTwo,
             splendidoDiag
         ],
-        description: 'Splendido con tela tricot premium de alta calidad. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas and 10 pulgadas. Tela transpirable y soporte anatómico con garantía de fábrica. Descanso superior y duradero.',
+        description: 'Splendido con tela tricot premium de alta calidad. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas y 10 pulgadas. Tela transpirable y soporte anatómico con garantía de fabrica. Descanso superior y duradero.',
         sizes: ['7"', '8"', '10"'],
         features: ['Tela Tricot Premium', 'Anatómico', 'Fresco y Transpirable'],
         badge: 'Splendido Premium',
@@ -143,7 +143,7 @@ export const ESPUMA_PRODUCTS = [
             plusResilenseTwo,
             plusResilenseDiag
         ],
-        description: 'Plus Resilense with espuma de densidad 14 y tela Tricot acolchada. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas and 10 pulgadas. Soporte ortopédico garantizado con garantía de fábrica. El mejor respaldo para tu espalda.',
+        description: 'Plus Resilense with espuma de densidad 14 y tela Tricot acolchada. Disponible en 3 grosores: 7 pulgadas, 8 pulgadas y 10 pulgadas. Soporte ortopédico garantizado con garantía de fabrica. El mejor respaldo para tu espalda.',
         sizes: ['7"', '8"', '10"'],
         features: ['Densidad D14', 'Tela Tricot Acolchada', 'Soporte Ortopédico'],
         badge: 'Salud Ortopédica',
@@ -216,7 +216,7 @@ export const ESPUMA_PRODUCTS = [
             polisedaTwo,
             polisedaDiag
         ],
-        description: 'Colchón Poliseda ideal para juvenil y visitas. Disponible en 4 grosores: 4 pulgadas, 5.5 pulgadas, 7 pulgadas and 8 pulgadas. Entrega inmediata en Lima. Calidad y durabilidad garantizadas.',
+        description: 'Colchón Poliseda ideal para juvenil y visitas. Disponible en 4 grosores: 4 pulgadas, 5.5 pulgadas, 7 pulgadas y 8 pulgadas. Entrega inmediata en Lima. Calidad y durabilidad garantizadas.',
         sizes: ['4"', '5.5"', '7"', '8"'],
         features: ['Económica', 'Tela Tricot', 'Cierre Reforzado'],
         badge: 'Poliseda Económica',
@@ -253,7 +253,7 @@ export const ESPUMA_PRODUCTS = [
         beneficios: [
             'Relación calidad-precio inmejorable',
             'Ideal para habitaciones de invitados',
-            'Fácil transporte and manejo',
+            'Fácil transporte y manejo',
             'Material hipoalergénico seguro',
             'Larga vida útil',
             'No necesita mantenimiento especial',

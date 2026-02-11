@@ -31,7 +31,7 @@ const VALIDATION_RULES = {
  * @param {Object} initialValues - Form initial values
  * @param {Function} onSubmit - Submit callback
  * @param {Object} validationSchema - Validation rules by field
- * @returns {Object} Form state and methods
+ * @returns {Object} Form state y methods
  */
 export const useFormValidation = (initialValues = {}, onSubmit = () => {}, validationSchema = {}) => {
   const [values, setValues] = useState(initialValues);
@@ -46,7 +46,7 @@ export const useFormValidation = (initialValues = {}, onSubmit = () => {}, valid
     const rules = validationSchema[fieldName];
     if (!rules) return null;
 
-    // Check if field is required and empty
+    // Check if field is required y empty
     if (rules.required && !fieldValue?.toString().trim()) {
       return VALIDATION_RULES.required.message;
     }

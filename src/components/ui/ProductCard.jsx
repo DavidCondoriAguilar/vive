@@ -16,9 +16,9 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-vive-500/10 hover:-translate-y-2 h-full flex flex-col">
-      {/* Product Image - FORCE WHITE TO MATCH IMAGE BACKGROUND */}
-      <div className="relative overflow-hidden bg-white p-6" style={{ aspectRatio: '16/9' }}>
+    <div className="group bg-white dark:bg-[#0A0A0A] rounded-3xl overflow-hidden transition-all duration-700 hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:-translate-y-3 h-full flex flex-col relative border border-gray-50 dark:border-white/5">
+      {/* Product Image - Gallery Treatment */}
+      <div className="relative overflow-hidden bg-white aspect-[4/3] flex items-center justify-center p-8">
         <Link
           to={`/producto/${product.id}`}
           className="block h-full w-full"
@@ -27,82 +27,64 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
           <img
             src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=600&q=75&auto=format`}
             alt={product.name}
-            className="w-full h-full object-contain transition-transform duration-[10s] group-hover:scale-110"
+            className="w-full h-full object-contain transition-transform duration-[2s] group-hover:scale-105"
             width="600"
-            height="337"
+            height="450"
             loading="lazy"
           />
         </Link>
 
-        {/* Badge - MISMO PATRÓN QUE CATEGORIES SECTION */}
+        {/* Floating Badge - Minimalist */}
         {product.badge && (
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-black dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[10px] font-black uppercase tracking-widest rounded-full">
+          <div className="absolute top-6 left-6">
+            <span className="px-4 py-1.5 bg-vive-600 dark:bg-vive-500 text-white dark:text-black text-[9px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg shadow-vive-500/20">
               {product.badge}
             </span>
           </div>
         )}
       </div>
 
-      {/* Product Info - CURRENT COLORS FROM TOP MOVED HERE */}
-      <div className="p-5 flex flex-col flex-1 bg-gray-50/80 dark:bg-dream-dark-surface/60">
-        <div className="mb-3">
-          <span className="text-vive-500 text-[9px] font-bold uppercase tracking-widest">
+      {/* Product Info - Editorial Flow */}
+      <div className="p-8 flex flex-col flex-1">
+        <div className="mb-6">
+          <span className="text-vive-600 dark:text-vive-500 text-[10px] font-black uppercase tracking-[0.3em] mb-2 block">
             {getPrettySubcategoryName(product.subcategory)}
           </span>
           <Link to={`/producto/${product.id}`}>
-            <h3 className="text-base font-bold text-gray-900 dark:text-white mt-1 mb-2 leading-tight hover:text-vive-500 transition-colors">
+            <h3 className="text-xl font-display font-black text-gray-900 dark:text-white mb-2 leading-tight hover:text-vive-500 transition-colors uppercase tracking-tight">
               {product.name}
             </h3>
           </Link>
-          <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 leading-relaxed">
+          <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed font-medium">
             {product.description}
           </p>
         </div>
 
-        {/* Size - MISMO PATRÓN QUE CATEGORIES SECTION */}
-        <div className="text-[10px] font-medium text-gray-400 dark:text-gray-500 mb-4 italic">
-          Medida: {product.sizes.join(', ')}
+        {/* Luxury Detail: Sizes as specialized dots or text */}
+        <div className="flex items-center gap-2 mb-8 items-center">
+          <div className="w-1 h-1 bg-vive-500 rounded-full"></div>
+          <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest italic">
+            Disponibilidad: {product.sizes.length} Medidas
+          </span>
         </div>
 
-        <div className="flex flex-col gap-4 mt-auto">
-          <PriceInquiryButton product={product} />
-          <div className="flex gap-2">
-            {/* Botón del carrito - ELEGANCE 2026 */}
-            <button
-              onClick={handleAddToCart}
-              className="flex-1 group relative overflow-hidden bg-black dark:bg-white text-white dark:text-black font-bold text-[10px] tracking-[0.1em] uppercase py-3 px-4 rounded-lg border-0 transition-all duration-700 hover:scale-[1.02] active:scale-[0.98]"
-              aria-label={`Agregar ${product.name} al carrito`}
-            >
-              <span className="relative z-10 flex items-center justify-center gap-3">
-                <svg className="w-4 h-4 transition-transform duration-700 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                <span>Agregar al Carrito</span>
-              </span>
-              {/* Subtle overlay effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-            </button>
+        <div className="flex flex-col gap-3 mt-auto">
+          <button
+            onClick={handleAddToCart}
+            className="group/btn relative w-full bg-gray-900 dark:bg-white text-white dark:text-black font-black text-[10px] tracking-[0.3em] uppercase py-5 px-6 rounded-2xl transition-all duration-500 hover:bg-vive-600 dark:hover:bg-vive-500 hover:text-white dark:hover:text-black overflow-hidden flex items-center justify-center gap-3"
+          >
+            <span className="relative z-10">Agregar al Carrito</span>
+            <svg className="w-4 h-4 transition-transform duration-500 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
 
-
-            {/* Botón de detalles - ELEGANCE 2026 + TEXTO HOVER */}
-            <button
-              onClick={() => window.location.href = `/producto/${product.id}`}
-              className="group relative w-20 h-10 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border border-black/10 dark:border-white/10 text-black dark:text-white transition-all duration-700 hover:border-black dark:hover:border-white hover:from-gray-100 hover:to-gray-200 dark:hover:from-gray-800 dark:hover:to-gray-700 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center px-3 rounded-lg overflow-hidden"
-              aria-label={`Ver detalles de ${product.name}`}
-            >
-              {/* Texto "Detalles" - SIEMPRE VISIBLE */}
-              <span className="text-xs font-light tracking-[0.1em] uppercase transition-all duration-300 group-hover:tracking-[0.15em]">
-                Detalles
-              </span>
-
-              {/* Subtle overlay effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Pro glow effect */}
-              <div className="absolute inset-0 rounded-inherit bg-gradient-to-r from-transparent via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700" />
-            </button>
-          </div>
+          <Link
+            to={`/producto/${product.id}`}
+            className="text-[9px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.4em] text-center py-2 hover:text-vive-600 dark:hover:text-vive-500 transition-colors"
+          >
+            Conocer más detalles
+          </Link>
         </div>
       </div>
     </div>

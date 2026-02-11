@@ -42,7 +42,7 @@ export const useProductSpecs = (product) => {
         },
         {
             category: 'Atributos de Calidad', items: [
-                { name: 'Garantía Real', value: `${product.warranty} de fábrica` },
+                { name: 'Garantía Real', value: `${product.warranty} de fabrica` },
                 { name: 'Certificación', value: 'Control de Calidad Peruano' },
                 { name: 'Higiene', value: 'Tratamiento Antiacaros' }
             ]

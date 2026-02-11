@@ -13,7 +13,7 @@ const TestimonialsSection = () => {
     },
     {
       name: "Carlos Rodríguez",
-      location: "Arequipa, Perú", 
+      location: "Arequipa, Perú",
       rating: 5,
       comment: "Como vendedor, los colchones de Vive me dan las mejores comisiones y mis clientes siempre quedan satisfechos.",
       product: "Absolut Pocket"
@@ -38,71 +38,66 @@ const TestimonialsSection = () => {
     return Array.from({ length: 5 }, (_, i) => (
       <FaStar
         key={i}
-        className={`w-4 h-4 ${
-          i < rating ? 'text-vive-500' : 'text-gray-300 dark:text-gray-600'
-        }`}
+        className={`w-4 h-4 ${i < rating ? 'text-vive-500' : 'text-gray-300 dark:text-gray-600'
+          }`}
       />
     ));
   };
 
   return (
-    <section className="py-32 bg-gray-50 dark:bg-black relative overflow-hidden transition-colors duration-700">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-vive-500/[0.02] via-transparent to-blue-500/[0.02] pointer-events-none"></div>
-      <div className="absolute top-20 left-20 w-64 h-64 bg-vive-500/[0.03] rounded-full blur-[100px]"></div>
-      <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/[0.02] rounded-full blur-[120px]"></div>
+    <section className="py-24 bg-gray-50 dark:bg-[#050505] relative overflow-hidden transition-colors duration-1000">
+      {/* Editorial Background Accents */}
+      <div className="absolute inset-0 bg-gradient-to-br from-vive-600/[0.015] via-transparent to-vive-400/[0.015] pointer-events-none"></div>
 
-      <div className="container mx-auto px-6 lg:px-20 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-6 mb-8">
-            <span className="text-vive-500 font-black text-[10px] uppercase tracking-[0.4em]">Testimonios</span>
-            <div className="h-[1px] w-20 bg-gradient-to-r from-vive-200 to-transparent"></div>
-            <span className="text-gray-400 dark:text-gray-500 font-black text-[9px] uppercase tracking-widest">Clientes Reales</span>
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        {/* Refined Minimalist Header */}
+        <div className="text-center mb-16 relative">
+          <div className="inline-flex items-center gap-4 mb-6">
+            <span className="text-vive-600 dark:text-vive-500 font-black text-[9px] uppercase tracking-[0.4em]">Testimonials // V.02</span>
+            <div className="h-px w-10 bg-vive-600/20"></div>
           </div>
-          
-          <h2 className="text-5xl md:text-8xl font-black text-gray-900 dark:text-white mb-8 leading-[0.85] tracking-tighter uppercase">
-            Voces que <span className="text-vive-500 italic font-light">Confían</span> <br />
-            <span className="text-gray-400 dark:text-gray-500">en Nuestra</span> <br />
-            <span className="text-vive-500">Calidad</span>
+
+          <h2 className="text-4xl md:text-6xl font-display font-black text-gray-900 dark:text-white mb-6 leading-none tracking-tighter uppercase">
+            Voces que <span className="text-transparent bg-clip-text bg-gradient-to-r from-vive-600 to-vive-400 italic font-light lowercase">garantizan</span> <br className="md:hidden" /> Excelencia
           </h2>
-          
-          <p className="text-xl text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-4xl mx-auto">
-            Descubre por qué miles de peruanos confían su descanso a Vive. Historias reales de clientes que transformaron su calidad de vida.
+
+          <p className="text-base text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-2xl mx-auto font-text">
+            Ingeniería que transforma vidas. <span className="text-gray-900 dark:text-white font-bold">Historias reales</span> de bienestar certificado por nuestros usuarios.
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        {/* Compact Elite Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="group relative">
-              {/* Quote Icon */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-vive-500 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <FaQuoteLeft className="w-4 h-4 text-white" />
-              </div>
+              {/* Verified Card: Compact Layout */}
+              <div className="relative bg-white dark:bg-[#0A0A0A] border border-gray-100 dark:border-white/5 rounded-xl p-6 md:p-8 transition-all duration-500 hover:border-vive-500/30 hover:shadow-xl shadow-gray-200/30 dark:shadow-none h-full flex flex-col justify-between group/card overflow-hidden">
 
-              {/* Testimonial Card */}
-              <div className="relative bg-white dark:bg-black border border-gray-100 dark:border-white/20 rounded-3xl p-8 hover:border-vive-500/50 transition-all duration-300 h-full">
-                {/* Stars */}
-                <div className="flex gap-1 mb-4">
-                  {renderStars(testimonial.rating)}
+                <div className="relative z-10">
+                  {/* Status Node */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex gap-1 items-center">
+                      {renderStars(testimonial.rating)}
+                    </div>
+                    <span className="text-[8px] font-mono text-gray-400 uppercase tracking-widest border border-gray-100 dark:border-white/5 px-2 py-0.5 rounded-sm">REF_{testimonial.name.split(' ')[0].toUpperCase()}</span>
+                  </div>
+
+                  {/* Compact Quote */}
+                  <blockquote className="text-sm md:text-base font-medium text-gray-800 dark:text-gray-200 leading-relaxed mb-8 italic">
+                    "{testimonial.comment}"
+                  </blockquote>
                 </div>
 
-                {/* Comment */}
-                <blockquote className="text-gray-700 dark:text-gray-300 font-medium leading-relaxed mb-6 line-clamp-4">
-                  "{testimonial.comment}"
-                </blockquote>
-
-                {/* Author Info */}
-                <div className="border-t border-gray-100 dark:border-white/10 pt-6">
-                  <div className="font-bold text-gray-900 dark:text-white text-sm uppercase tracking-wider mb-1">
+                {/* Metadata Column */}
+                <div className="relative z-10 pt-6 border-t border-gray-50 dark:border-white/5">
+                  <h4 className="font-display font-black text-gray-900 dark:text-white text-xs uppercase tracking-widest mb-1">
                     {testimonial.name}
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                  </h4>
+                  <p className="text-[9px] text-gray-400 font-mono uppercase tracking-widest mb-3">
                     {testimonial.location}
-                  </div>
-                  <div className="text-xs text-vive-500 font-medium">
-                    {testimonial.product}
+                  </p>
+                  <div className="inline-block px-2 py-1 bg-vive-600/5 border border-vive-600/10 rounded-sm">
+                    <span className="text-[8px] font-black text-vive-600 dark:text-vive-500 uppercase tracking-widest">{testimonial.product}</span>
                   </div>
                 </div>
               </div>
@@ -110,14 +105,14 @@ const TestimonialsSection = () => {
           ))}
         </div>
 
-        {/* CTA Section */}
+        {/* Minimalist CTA */}
         <div className="text-center">
           <Link
             to="/venta-por-mayor"
-            className="inline-flex items-center gap-4 bg-black dark:bg-white text-white dark:text-black px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest transition-all hover:bg-vive-500 hover:text-white dark:hover:bg-vive-500 dark:hover:text-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:shadow-vive-500/20 hover:-translate-y-1 hover:scale-105"
+            className="group relative inline-flex items-center gap-4 bg-gray-900 dark:bg-white text-white dark:text-black px-10 py-5 rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg"
           >
-            Únete a Vendedores Exitosos
-            <FaArrowRight className="w-4 h-4" />
+            <span className="relative z-10 font-black text-[10px] uppercase tracking-[0.3em]">Únete al Éxito // B2B</span>
+            <FaArrowRight className="relative z-10 w-3 h-3 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>

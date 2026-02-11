@@ -16,17 +16,18 @@ const Breadcrumbs = () => {
     // Handle different routes
     if (pathnames.length > 0) {
       pathnames.forEach((pathname, index) => {
-        const path = `/${pathnames.slice(0, index + 1).join('/')}`;
+        let path = `/${pathnames.slice(0, index + 1).join('/')}`;
 
         let name = pathname.charAt(0).toUpperCase() + pathname.slice(1);
 
-        // Custom names for specific routes
+        // Custom names and paths for specific routes to avoid 404s
         switch (pathname) {
           case 'categorias':
-            name = 'Categorías';
+            name = 'Explorar';
             break;
           case 'producto':
-            name = 'Producto';
+            name = 'Catálogo';
+            path = ROUTES.CATALOG; // Redirect phantom '/producto' to actual catalog
             break;
           case 'blog':
             name = 'Blog';
@@ -34,13 +35,16 @@ const Breadcrumbs = () => {
           case 'ofertas':
             name = 'Ofertas';
             break;
+          case 'venta-por-mayor':
+            name = 'Tienda Mayorista';
+            break;
           case 'politica-devoluciones':
             name = 'Política de Devoluciones';
             break;
           default:
-            // Try to decode if it's a product/category ID
-            if (pathname.length > 10) {
-              name = 'Detalle';
+            // Dynamic naming for product IDs or category IDs
+            if (pathname.length > 10 || pathname.includes('-')) {
+              name = 'Vista de Producto';
             }
             break;
         }

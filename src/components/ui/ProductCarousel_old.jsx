@@ -66,7 +66,7 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
       case 'Dormitorio':
         return 'Incluye: Cunas • Bases • Cabeceras';
       default:
-        return 'Calidad directa de fábrica para tu descanso perfecto';
+        return 'Calidad directa de fabrica para tu descanso perfecto';
     }
   };
 

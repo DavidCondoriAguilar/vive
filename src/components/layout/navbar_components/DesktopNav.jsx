@@ -21,11 +21,11 @@ const DesktopNav = ({ navLinks, currentPath }) => {
     const handleMouseLeave = () => {
         timeoutRef.current = setTimeout(() => {
             setActiveMenu(null);
-        }, 300); // Increased grace period
+        }, 150); // Faster grace period for a snappier feel
     };
 
     return (
-        <nav ref={navRef} className="hidden lg:flex items-center gap-1 xl:gap-4 h-full relative">
+        <nav ref={navRef} className="hidden lg:flex items-center gap-1 xl:gap-2 h-full relative">
             {navLinks.map((link) => {
                 const isOpen = activeMenu === link.name;
                 const hasDropdown = link.subLinks || link.megaMenu;
@@ -39,86 +39,82 @@ const DesktopNav = ({ navLinks, currentPath }) => {
                     >
                         <Link
                             to={link.path}
-                            className={`px-4 py-2 text-[12px] font-display font-black uppercase tracking-[0.2em] transition-all duration-300 rounded-xl flex items-center gap-2 z-50 ${currentPath === link.path || isOpen
-                                ? 'text-vive-500 bg-white border border-gray-100 dark:bg-white/5 dark:border-white/10 shadow-sm'
-                                : 'text-gray-900 dark:text-white hover:text-vive-500 hover:bg-white hover:border hover:border-gray-100 dark:hover:bg-white/5 dark:hover:border-white/10'
+                            className={`px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-500 rounded-full flex items-center gap-2 z-50 ${currentPath === link.path || isOpen
+                                ? 'text-black dark:text-white bg-gray-50 dark:bg-white/5'
+                                : 'text-gray-400 hover:text-black dark:hover:text-white'
                                 }`}
                             onClick={() => setActiveMenu(null)}
                         >
                             <span>{link.name}</span>
                             {hasDropdown && (
                                 <MdKeyboardArrowDown
-                                    className={`w-4 h-4 transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`}
+                                    className={`w-3 h-3 transition-transform duration-700 ${isOpen ? 'rotate-180' : ''}`}
                                 />
                             )}
 
-                            {/* Luxury Badge */}
                             {link.badge && (
-                                <span className="px-2 py-0.5 text-[7px] font-black rounded-full shadow-lg text-white bg-vive-500 animate-pulse">
+                                <span className="px-2 py-0.5 text-[7px] font-black rounded-full text-white bg-vive-600">
                                     {link.badge}
                                 </span>
                             )}
                         </Link>
 
-                        {/* Dropdown/MegaMenu Container - Refined Positioning */}
+                        {/* Dropdown/MegaMenu */}
                         {hasDropdown && (
                             <div
-                                className={`absolute top-full left-1/2 -translate-x-1/2 pt-12 transition-all duration-700 cubic-bezier(0.23, 1, 0.32, 1) z-50 ${isOpen
+                                className={`absolute top-full left-1/2 -translate-x-1/2 pt-8 transition-all duration-1000 cubic-bezier(0.19, 1, 0.22, 1) z-50 ${isOpen
                                     ? 'opacity-100 visible translate-y-0 scale-100'
-                                    : 'opacity-0 invisible translate-y-8 scale-[0.98] blur-sm pointer-events-none'
+                                    : 'opacity-0 invisible translate-y-4 scale-[0.99] pointer-events-none'
                                     }`}
-                                style={{
-                                    // Seamless hover bridge
-                                    paddingTop: '40px',
-                                    marginTop: '-20px'
-                                }}
                             >
                                 {link.megaMenu ? (
-                                    <div className={`shadow-[0_50px_120px_rgba(0,0,0,0.4)] dark:shadow-[0_50px_120px_rgba(0,0,0,0.6)] rounded-[4rem] border border-white/20 dark:border-white/5 p-16 flex gap-8 w-screen max-w-[900px] overflow-hidden relative ${link.image ? 'bg-transparent' : 'bg-white dark:bg-black'}`}>
-                                        {/* Elite Visual Accents */}
-                                        <div className="absolute inset-0 bg-gradient-to-b from-vive-500/10 to-transparent pointer-events-none opacity-30"></div>
-
-                                        {link.image && (
-                                            <div className="absolute inset-0 z-0 pointer-events-none">
-                                                <img
-                                                    src={link.image}
-                                                    alt={link.name}
-                                                    className="w-full h-full object-cover"
+                                    <div className="relative bg-white dark:bg-[#080808] shadow-[0_40px_100px_rgba(0,0,0,0.2)] dark:shadow-[0_40px_100px_rgba(0,0,0,0.5)] rounded-[4rem] border border-gray-100 dark:border-white/5 p-16 flex gap-12 w-screen max-w-[1000px] overflow-hidden">
+                                        {/* Modern Slanted Background for Resorte - Perfect 50/50 split */}
+                                        {link.name === 'Resorte' && (
+                                            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                                                <div
+                                                    className="absolute top-0 -left-[20%] w-[70%] h-full bg-gradient-to-br from-vive-500 to-green-600 -skew-x-[15deg] origin-top opacity-100"
+                                                    style={{
+                                                        boxShadow: '40px 0 80px rgba(0,0,0,0.2)',
+                                                        borderRight: '1px solid rgba(255,255,255,0.1)'
+                                                    }}
                                                 />
-                                                <div className="absolute inset-0 bg-black/50 dark:bg-black/80"></div>
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30"></div>
                                             </div>
                                         )}
 
-                                        <div className="flex-1 flex gap-8 relative z-10 justify-center items-start">
-                                            {link.megaMenu.map((group) => (
-                                                <div key={group.title} className="flex-1 min-w-[180px] px-4">
-                                                    <h4 className="text-[11px] font-black text-vive-500 uppercase tracking-[0.5em] mb-6 border-b-2 border-vive-500/20 pb-3 text-center">
-                                                        {group.title}
-                                                    </h4>
-                                                    <div className="flex flex-col gap-3 items-center">
-                                                        {group.items.map((item) => (
-                                                            <Link
-                                                                key={item.name}
-                                                                to={item.path}
-                                                                className="text-[14px] font-bold text-white hover:text-vive-500 transition-all py-1.5 block leading-tight hover:translate-x-2 transform duration-300 text-center"
-                                                                onClick={() => setActiveMenu(null)}
-                                                            >
-                                                                {item.name}
-                                                            </Link>
-                                                        ))}
+                                        <div className="relative z-10 flex-1 flex gap-12 justify-center items-start">
+                                            {link.megaMenu.map((group, idx) => {
+                                                // Prime two columns are on the green background
+                                                const isOnGreen = link.name === 'Resorte' && idx < 2;
+                                                return (
+                                                    <div key={group.title} className="flex-1 space-y-8">
+                                                        <h4 className={`text-[9px] font-black uppercase tracking-[0.4em] ${isOnGreen ? 'text-white' : 'text-vive-600'}`}>
+                                                            {group.title}
+                                                        </h4>
+                                                        <div className="flex flex-col gap-4">
+                                                            {group.items.map((item) => (
+                                                                <Link
+                                                                    key={item.name}
+                                                                    to={item.path}
+                                                                    className={`text-[12px] font-bold transition-all block leading-tight hover:translate-x-1 duration-500 ${isOnGreen ? 'text-white/90 hover:text-white' : 'text-gray-900 dark:text-white hover:text-vive-600'}`}
+                                                                    onClick={() => setActiveMenu(null)}
+                                                                >
+                                                                    {item.name}
+                                                                </Link>
+                                                            ))}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            ))}
+                                                );
+                                            })}
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className="bg-white dark:bg-zinc-950 shadow-2xl rounded-3xl border border-gray-100 dark:border-white/10 py-6 min-w-[260px] overflow-hidden">
+                                    <div className="bg-white dark:bg-[#080808] shadow-2xl rounded-[2rem] border border-gray-100 dark:border-white/5 py-8 min-w-[280px]">
                                         {link.subLinks.map((sub) => (
                                             <Link
                                                 key={sub.name}
                                                 to={sub.path}
-                                                className="block px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400 hover:text-vive-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
+                                                className="block px-10 py-4 text-[9px] font-black uppercase tracking-[0.3em] text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
                                                 onClick={() => setActiveMenu(null)}
                                             >
                                                 {sub.name}

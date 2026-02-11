@@ -5,7 +5,7 @@ import { FaCheck, FaTimes, FaWhatsapp } from 'react-icons/fa';
 
 /**
  * Wholesale Form with Validation
- * Improved for usability and fixed layout issues
+ * Improved for usability y fixed layout issues
  */
 const WholesaleFormDrawer = ({ isOpen, onClose }) => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -65,7 +65,7 @@ const WholesaleFormDrawer = ({ isOpen, onClose }) => {
       // Open WhatsApp with form data
       window.open(getWhatsAppLink(submissionMessage), '_blank');
 
-      // Reset form and show success
+      // Reset form y show success
       setSubmitSuccess(true);
       setTimeout(() => {
         resetForm();

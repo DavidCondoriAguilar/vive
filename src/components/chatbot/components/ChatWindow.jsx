@@ -1,6 +1,6 @@
 /**
  * ChatWindow component
- * Main chat interface with messages and input
+ * Main chat interface with messages y input
  * Following atomic design principles
  */
 
@@ -90,10 +90,10 @@ const ChatWindow = ({
   };
 
   return (
-    <div className="fixed bottom-20 right-4 left-4 sm:left-auto sm:right-6 sm:w-96 h-[500px] bg-white dark:bg-gray-800 
-                rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 
+    <div className="fixed bottom-24 right-10 lg:right-20 left-10 sm:left-auto sm:w-[400px] h-[600px] bg-white dark:bg-[#0A0A0A] 
+                rounded-3xl shadow-[0_50px_100px_rgba(0,0,0,0.15)] dark:shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-white/5 
                 flex flex-col z-[190] animate-slide-up
-                max-h-[75vh] md:max-h-[70vh] overflow-hidden chatbot-window-premium">
+                max-h-[80vh] overflow-hidden chatbot-window-premium">
 
       {/* Header */}
       <div className="bg-vive-500 text-white px-4 py-3 rounded-t-2xl flex items-center justify-between chatbot-header-premium">

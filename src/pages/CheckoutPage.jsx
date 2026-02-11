@@ -403,7 +403,7 @@ const CheckoutPage = () => {
                     </div>
                   </div>
 
-                  {/* Terms and Conditions */}
+                  {/* Terms y Conditions */}
                   <div className="bg-vive-50 dark:bg-vive-500/10 border border-vive-200 dark:border-vive-500/30 rounded-lg p-4">
                     <label className="flex items-start gap-3 cursor-pointer">
                       <input

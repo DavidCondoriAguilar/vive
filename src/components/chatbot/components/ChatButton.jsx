@@ -28,10 +28,10 @@ const ChatButton = ({ isOpen, unreadCount, onClick, className = '' }) => {
     <button
       onClick={onClick}
       className={`
-        fixed bottom-6 right-6 w-14 h-14 bg-vive-500 hover:bg-vive-600 
-        text-white rounded-full shadow-lg transition-all duration-300 
+        fixed bottom-10 right-10 lg:right-20 w-12 h-12 bg-vive-600 hover:bg-black dark:hover:bg-white
+        text-white dark:hover:text-black rounded-2xl shadow-2xl transition-all duration-700 
         flex items-center justify-center z-[180] group
-        hover:scale-110 hover:shadow-xl
+        hover:scale-110 hover:-translate-y-2
         focus:outline-none focus:ring-4 focus:ring-vive-500/30
         ${className}
       `}

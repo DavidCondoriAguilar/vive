@@ -89,63 +89,83 @@ const CategoriesSection = () => {
 
   return (
     <SectionLayout background="gray">
-      <div className="relative">
+      <div className="relative overflow-hidden">
+        {/* Subtle Background Engineering Pattern */}
+        <div className="absolute top-0 right-0 w-full h-full opacity-[0.03] pointer-events-none rotate-12 -translate-y-1/2">
+          <div className="h-full w-full" style={{ backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)', backgroundSize: '100px 100px' }}></div>
+        </div>
 
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-vive-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade-in">Catálogo Oficial</span>
-          <h2 className="text-4xl md:text-6xl font-display font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tighter">
-            Nuestros <span className="text-vive-500">Productos</span>
+        {/* Section Header: Industrial Authority */}
+        <div className="text-center mb-20 relative z-10">
+          <div className="inline-flex items-center gap-4 px-4 py-1 bg-vive-600/5 border border-vive-600/10 rounded-full mb-6">
+            <span className="w-1.5 h-1.5 bg-vive-600 rounded-full animate-pulse"></span>
+            <span className="text-[10px] font-black text-vive-600 dark:text-vive-500 uppercase tracking-[0.5em]">Catálogo Oficial // Fábrica</span>
+          </div>
+          <h2 className="text-4xl md:text-8xl font-display font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tighter leading-[0.9]">
+            Nuestros <br className="hidden md:block" /> <span className="text-vive-600 dark:text-vive-500 italic font-light lowercase">productos</span>
           </h2>
-          <p className="text-lg text-gray-500 dark:text-gray-400 font-medium max-w-2xl mx-auto">
-            Calidad directa de fábrica para tu descanso perfecto. Ingeniería peruana de clase mundial.
+          <p className="text-xl text-gray-500 dark:text-gray-400 font-medium max-w-2xl mx-auto leading-relaxed px-4">
+            Ingeniería peruana de clase mundial. <br className="hidden md:block" />
+            <span className="text-gray-900 dark:text-white font-bold">Calidad directa</span> para un descanso sin compromisos.
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-16 px-4">
-          <FilterDropdown
-            label="Línea / Modelo"
-            placeholder="Todos los modelos"
-            options={typeOptions}
-            value={selectedType}
-            onChange={(val) => {
-              setSelectedType(val);
-              setCurrentSlide(0);
-            }}
-            icon={FaTags}
-          />
-          <FilterDropdown
-            label="Medida"
-            placeholder="Todas las medidas"
-            options={sizeOptions}
-            value={selectedSize}
-            onChange={(val) => {
-              setSelectedSize(val);
-              setCurrentSlide(0);
-            }}
-            icon={FaRulerCombined}
-          />
-        </div>
-
-        {/* Carousel Navigation Header */}
-        <div className="mb-8 flex flex-col sm:flex-row items-center justify-between gap-6 bg-gray-50/50 dark:bg-white/[0.02] p-6 rounded-3xl border border-gray-100 dark:border-white/5">
-          <div className="flex flex-col gap-2 flex-grow max-w-xs w-full sm:w-auto">
-            <div className="flex justify-between items-end">
-              <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Vista Rápida</span>
-              <span className="text-xs font-bold text-vive-500">
-                {Math.min(currentSlide + itemsPerView, filteredProducts.length)} / {filteredProducts.length}
-              </span>
+        {/* Filters: Technical Control Panel */}
+        <div className="max-w-4xl mx-auto mb-20 px-4">
+          <div className="bg-white dark:bg-[#0A0A0A] p-4 md:p-8 rounded-2xl border border-gray-100 dark:border-white/5 shadow-xl shadow-gray-200/50 dark:shadow-none flex flex-col md:flex-row gap-6 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+              <FaTags className="text-6xl text-gray-400" />
             </div>
-            <div className="h-[2px] w-full bg-gray-200 dark:bg-white/5 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-vive-500 transition-all duration-700 ease-out"
-                style={{ width: `${(Math.min(currentSlide + itemsPerView, filteredProducts.length) / filteredProducts.length) * 100}%` }}
+            <div className="flex-1">
+              <FilterDropdown
+                label="Línea / Modelo"
+                placeholder="Todos los modelos"
+                options={typeOptions}
+                value={selectedType}
+                onChange={(val) => {
+                  setSelectedType(val);
+                  setCurrentSlide(0);
+                }}
+                icon={FaTags}
+              />
+            </div>
+            <div className="w-px h-12 bg-gray-100 dark:bg-white/10 hidden md:block self-end mb-2"></div>
+            <div className="flex-1">
+              <FilterDropdown
+                label="Dimensión / Medida"
+                placeholder="Todas las medidas"
+                options={sizeOptions}
+                value={selectedSize}
+                onChange={(val) => {
+                  setSelectedSize(val);
+                  setCurrentSlide(0);
+                }}
+                icon={FaRulerCombined}
               />
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="hidden md:block text-[9px] font-black text-gray-400 uppercase tracking-widest animate-pulse">Desliza para explorar o usa las flechas laterales</span>
+          <div className="mt-4 flex justify-between px-2">
+            <span className="text-[9px] font-mono text-gray-400 uppercase tracking-widest">Protocol: Selective_Filter_V.2</span>
+            <span className="text-[9px] font-mono text-vive-600/50 font-bold uppercase tracking-widest">Active_Results: {filteredProducts.length}</span>
+          </div>
+        </div>
+
+        {/* Carousel Status: Technical HUD */}
+        <div className="mb-12 flex flex-col sm:flex-row items-center justify-between gap-6 bg-gray-100/50 dark:bg-white/[0.02] p-8 border border-gray-200 dark:border-white/5 relative overflow-hidden">
+          <div className="absolute bottom-0 left-0 h-[2px] w-full bg-gray-200 dark:bg-white/5">
+            <div
+              className="h-full bg-vive-600 transition-all duration-700 ease-out shadow-[0_0_10px_rgba(41,156,71,0.5)]"
+              style={{ width: `${(Math.min(currentSlide + itemsPerView, filteredProducts.length) / filteredProducts.length) * 100}%` }}
+            />
+          </div>
+          <div>
+            <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-1">Registro de Visualización</h4>
+            <p className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter">
+              {Math.min(currentSlide + itemsPerView, filteredProducts.length)} <span className="text-gray-300 dark:text-gray-700">/</span> {filteredProducts.length} <span className="text-xs text-vive-600 ml-2 font-mono">MOD_EXPLORE</span>
+            </p>
+          </div>
+          <div className="hidden md:flex items-center gap-4 py-3 px-6 border border-gray-200 dark:border-white/10 rounded-full bg-white dark:bg-black/40">
+            <span className="text-[9px] font-black text-vive-600 uppercase tracking-widest animate-pulse">Desliza para explorar ingeniería Vive</span>
           </div>
         </div>
 

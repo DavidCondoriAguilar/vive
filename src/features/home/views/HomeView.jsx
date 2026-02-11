@@ -1,13 +1,13 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { useScrollToTop } from '@/hooks/useTheme';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
-import HeroCarousel from '@/components/home/HeroCarousel';
-import CategoriesSection from '@/components/home/CategoriesSection';
+import HeroCarousel from '../components/HeroCarousel';
+import CategoriesSection from '../components/CategoriesSection';
 import ProductCarousel from '@/components/ui/ProductCarousel';
-import TestimonialsSection from '@/components/home/TestimonialsSection';
-import ProvincesSection from '@/components/home/ProvincesSection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import ProvincesSection from '../components/ProvincesSection';
 import InfiniteMarquee from '@/components/ui/InfiniteMarquee';
 import { ENHANCED_CATALOG, FEATURED_PRODUCTS } from '@/utils/constants';
 

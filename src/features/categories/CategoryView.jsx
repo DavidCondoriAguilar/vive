@@ -75,12 +75,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
 
     const products = ENHANCED_CATALOG.filter(p => {
         // Special handling for dormitorio subcategories
-        let matchesCategory = p.category === activeCategoryId;
-
-        // For dormitorio routes with subId, check subcategory instead
-        if (activeCategoryId === 'dormitorio' && subId) {
-            matchesCategory = true; // Allow all categories, will filter by subcategory
-        }
+        const matchesCategory = p.category === activeCategoryId;
 
         const matchesSize = selectedSize === 'todos' || (p.sizes && p.sizes.includes(selectedSize));
         const matchesThickness = selectedThickness === 'todos' || p.thickness === selectedThickness;
@@ -104,7 +99,11 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
 
     return (
         <MainLayout>
-            <div className="pt-32 pb-24 bg-white dark:bg-black min-h-screen transition-colors duration-700">
+            <Helmet>
+                <title>{categoryTitle} | Vive Fábrica de Colchones</title>
+                <meta name="description" content={`Explora nuestra línea de ${categoryTitle}. Venta directa de fábrica con tecnología de descanso avanzada en Perú.`} />
+            </Helmet>
+            <div className="pb-24 bg-white dark:bg-black min-h-screen transition-colors duration-700">
                 <div className="container mx-auto px-6 lg:px-20">
 
                     {/* Header Section */}
