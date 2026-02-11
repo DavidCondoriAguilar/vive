@@ -7,7 +7,7 @@ import { CHATBOT_INTENTS } from './types.js';
 
 export const CHATBOT_CONFIG = {
   // Bot identity
-  name: 'Susi de Sueño Dorado',
+  name: 'Susi de Vive',
   avatar: '✨',
 
   // UI Configuration
@@ -16,9 +16,9 @@ export const CHATBOT_CONFIG = {
   messageDelay: 500,
 
   // Business context
-  businessName: 'Sueño Dorado',
+  businessName: 'Vive',
   whatsappNumber: '51989223448',
-  websiteUrl: 'https://suenodorado.pe',
+  websiteUrl: 'https://vive.pe',
 
   // Suggested keywords for quick interaction
   suggestedKeywords: [
@@ -41,7 +41,7 @@ export const CHATBOT_CONFIG = {
 
 export const BOT_RESPONSES = {
   [CHATBOT_INTENTS.GREETING]: {
-    text: '¡Hola! 👋 Soy el asistente virtual de Sueño Dorado. ¿En qué puedo ayudarte hoy?',
+    text: '¡Hola! 👋 Soy el asistente virtual de Vive. ¿En qué puedo ayudarte a transformar tu descanso hoy?',
     options: CHATBOT_CONFIG.quickActions.slice(0, 4)
   },
 
@@ -76,7 +76,7 @@ export const BOT_RESPONSES = {
   },
 
   [CHATBOT_INTENTS.CONTACT]: {
-    text: 'Puedes contactarnos de varias formas:\n\n📱 WhatsApp: (01) 989 223 448\n📧 Email: hola@suenodorado.pe\n🌐 Web: www.suenodorado.pe\n\n¿Prefieres hablar ahora por WhatsApp?',
+    text: 'Puedes contactarnos de varias formas:\n\n📱 WhatsApp: (01) 989 223 448\n📧 Email: hola@vive.pe\n🌐 Web: www.vive.pe\n\n¿Prefieres hablar ahora por WhatsApp?',
     options: [
       { text: '📱 Hablar por WhatsApp', intent: 'whatsapp_contact', action: 'whatsapp' },
       { text: 'Enviar email', intent: 'email_contact' },

@@ -11,12 +11,12 @@ const ConversionCTA = ({
   urgency = true,
   className = ""
 }) => {
-  const waLink = getWhatsAppLink("Hola Sueño Dorado, me gustaría recibir asesoría personalizada para transformar mi descanso.");
+  const waLink = getWhatsAppLink("Hola Vive, solicito asesoría estratégica para optimizar mi sistema de descanso.");
 
   return (
     <section className={`relative py-24 px-6 overflow-hidden ${className}`}>
       {/* 2026 Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gold-50/50 via-white to-gold-50/50 dark:from-zinc-950 dark:via-black dark:to-zinc-950" />
+      <div className="absolute inset-0 bg-gradient-to-br from-vive-50/50 via-white to-vive-50/50 dark:from-zinc-950 dark:via-black dark:to-zinc-950" />
       <div className="absolute inset-0 dream-dots opacity-30 dark:opacity-20" />
       <div className="absolute inset-0 dream-noise" />
 

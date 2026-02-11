@@ -68,11 +68,11 @@ const ContactFormContent = () => {
     return (
       <div className="min-h-screen bg-white dark:bg-[#0A0A0A] flex items-center justify-center px-6">
         <div className="max-w-md w-full text-center">
-          <div className="w-24 h-24 bg-gold-500/10 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce-slow">
-            <FaCheckCircle className="w-12 h-12 text-gold-500" />
+          <div className="w-24 h-24 bg-vive-500/10 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce-slow">
+            <FaCheckCircle className="w-12 h-12 text-vive-500" />
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tighter">
-            ¡Mensaje <span className="text-gold-500">Recibido</span>!
+            ¡Mensaje <span className="text-vive-500">Recibido</span>!
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mb-10 text-lg">
             Nuestros asesores de descanso se pondrán en contacto contigo en breve para brindarte la mejor atención.
@@ -91,15 +91,15 @@ const ContactFormContent = () => {
   return (
     <div className="relative min-h-screen bg-white dark:bg-[#0A0A0A] transition-colors duration-500 overflow-hidden pt-32 pb-24">
       {/* Decorative Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-gold-500/5 to-transparent pointer-events-none"></div>
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-gold-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-vive-500/5 to-transparent pointer-events-none"></div>
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-vive-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header Section */}
         <div className="max-w-4xl mb-20">
-          <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade-in">Contacto Oficial</span>
+          <span className="text-vive-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade-in">Contacto Oficial</span>
           <h1 className="text-5xl md:text-8xl font-display font-black text-gray-900 dark:text-white uppercase leading-[0.9] tracking-tighter mb-8 animate-slide-up">
-            Hablemos del <br /><span className="text-gold-500">Descanso Perfecto</span>
+            Hablemos del <br /><span className="text-vive-500">Descanso Perfecto</span>
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 font-medium leading-relaxed max-w-2xl animate-fade-in delay-200">
             Estamos aquí para asesorarte. Ya sea que busques el colchón de tus sueños o una solución corporativa, nuestro equipo experto está a un clic de distancia.
@@ -129,8 +129,8 @@ const ContactFormContent = () => {
             </a>
 
             {/* Email Card */}
-            <div className="bg-gray-50 dark:bg-white/5 p-8 rounded-[2.5rem] border border-gray-100 dark:border-white/5 flex flex-col justify-between h-64 group hover:border-gold-500/30 transition-all">
-              <div className="w-12 h-12 bg-gold-500/10 rounded-2xl flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-black transition-all">
+            <div className="bg-gray-50 dark:bg-white/5 p-8 rounded-[2.5rem] border border-gray-100 dark:border-white/5 flex flex-col justify-between h-64 group hover:border-vive-500/30 transition-all">
+              <div className="w-12 h-12 bg-vive-500/10 rounded-2xl flex items-center justify-center text-vive-500 group-hover:bg-vive-500 group-hover:text-black transition-all">
                 <FaEnvelope className="w-5 h-5" />
               </div>
               <div>
@@ -151,9 +151,9 @@ const ContactFormContent = () => {
             </div>
 
             {/* Location Card - Full Width in Bento */}
-            <div className="md:col-span-2 bg-black text-white p-8 rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between group hover:shadow-2xl hover:shadow-gold-500/10 transition-all gap-6">
+            <div className="md:col-span-2 bg-black text-white p-8 rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between group hover:shadow-2xl hover:shadow-vive-500/10 transition-all gap-6">
               <div className="flex gap-6 items-center">
-                <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-gold-500 flex-shrink-0">
+                <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-vive-500 flex-shrink-0">
                   <FaMapMarkerAlt className="w-6 h-6" />
                 </div>
                 <div>
@@ -161,8 +161,8 @@ const ContactFormContent = () => {
                   <p className="text-gray-300 text-sm font-bold leading-tight">Mz. F Lote 22, Lotización Chillón - La Ensenada</p>
                   <p className="text-gray-400 text-xs mt-1">Puente Piedra, Lima</p>
                   <div className="mt-3 flex flex-col gap-1">
-                    <p className="text-[10px] text-gold-500 uppercase tracking-widest font-black flex items-center gap-2">
-                      <span className="w-4 h-[1px] bg-gold-500"></span> Referencia Principal
+                    <p className="text-[10px] text-vive-500 uppercase tracking-widest font-black flex items-center gap-2">
+                      <span className="w-4 h-[1px] bg-vive-500"></span> Referencia Principal
                     </p>
                     <p className="text-[11px] text-gray-500 italic">A solo 10 min de Pro, con acceso directo y rápido.</p>
                   </div>
@@ -181,10 +181,10 @@ const ContactFormContent = () => {
           <div className="lg:col-span-7">
             <div className="bg-white dark:bg-[#0F0F0F] p-8 md:p-12 rounded-[3rem] border border-gray-100 dark:border-white/5 shadow-2xl relative overflow-hidden group">
               {/* Form Background Accent */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-gold-500/10 transition-all duration-1000"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-vive-500/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-vive-500/10 transition-all duration-1000"></div>
 
               <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-10 uppercase tracking-tighter">
-                Escríbenos <span className="text-gold-500">Directo</span>
+                Escríbenos <span className="text-vive-500">Directo</span>
               </h3>
 
               <form
@@ -210,7 +210,7 @@ const ContactFormContent = () => {
                       onChange={handleChange}
                       required
                       placeholder="Ej: David Condori"
-                      className="w-full bg-gray-50 dark:bg-black/50 border-b-2 border-gray-100 dark:border-white/5 px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-700"
+                      className="w-full bg-gray-50 dark:bg-black/50 border-b-2 border-gray-100 dark:border-white/5 px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-vive-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-700"
                     />
                   </div>
                   <div className="space-y-2">
@@ -222,7 +222,7 @@ const ContactFormContent = () => {
                       onChange={handleChange}
                       required
                       placeholder="david@ejemplo.com"
-                      className="w-full bg-gray-50 dark:bg-black/50 border-b-2 border-gray-100 dark:border-white/5 px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-700"
+                      className="w-full bg-gray-50 dark:bg-black/50 border-b-2 border-gray-100 dark:border-white/5 px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-vive-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-700"
                     />
                   </div>
                 </div>
@@ -236,7 +236,7 @@ const ContactFormContent = () => {
                     required
                     rows={5}
                     placeholder="Cuéntanos sobre el producto que te interesa o tu proyecto corporativo..."
-                    className="w-full bg-gray-50 dark:bg-black/50 border-b-2 border-gray-100 dark:border-white/5 px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-gold-500 transition-all font-bold resize-none placeholder:text-gray-300 dark:placeholder:text-gray-700"
+                    className="w-full bg-gray-50 dark:bg-black/50 border-b-2 border-gray-100 dark:border-white/5 px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-vive-500 transition-all font-bold resize-none placeholder:text-gray-300 dark:placeholder:text-gray-700"
                   />
                 </div>
 
@@ -255,7 +255,7 @@ const ContactFormContent = () => {
                       </>
                     )}
                   </span>
-                  <div className="absolute inset-0 bg-gold-500 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                  <div className="absolute inset-0 bg-vive-500 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                 </button>
 
                 <p className="text-center text-[10px] text-gray-400 font-bold uppercase tracking-widest">

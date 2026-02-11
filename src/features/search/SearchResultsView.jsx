@@ -126,8 +126,8 @@ const SearchResultsView = () => {
   return (
     <>
       <Helmet>
-        <title>Resultados de búsqueda: "{query}" - Sueño Dorado</title>
-        <meta name="description" content={`Busca "${query}" en Sueño Dorado. Encuentra ${searchResults.length} productos relacionados.`} />
+        <title>Resultados de búsqueda: "{query}" - Vive</title>
+        <meta name="description" content={`Busca "${query}" en Vive. Encuentra ${searchResults.length} productos relacionados.`} />
       </Helmet>
 
       <MainLayout>
@@ -138,7 +138,7 @@ const SearchResultsView = () => {
               <div className="flex justify-center mb-6">
                 <Link
                   to="/"
-                  className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gold-500 transition-colors duration-200"
+                  className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-vive-500 transition-colors duration-200"
                   aria-label="Volver al inicio"
                 >
                   <MdArrowBack className="w-5 h-5" aria-hidden="true" />
@@ -146,10 +146,10 @@ const SearchResultsView = () => {
                 </Link>
               </div>
               <h1 className="text-4xl md:text-6xl font-display font-black text-gray-900 dark:text-white uppercase leading-tight tracking-tighter mb-6">
-                Resultados de <span className="text-gold-500">Búsqueda</span>
+                Resultados de <span className="text-vive-500">Búsqueda</span>
               </h1>
               <div className="flex items-center justify-center gap-3 mb-4">
-                <MdSearch className="w-6 h-6 text-gold-500" />
+                <MdSearch className="w-6 h-6 text-vive-500" />
                 <p className="text-xl text-gray-600 dark:text-gray-400">
                   "{query}"
                 </p>
@@ -166,13 +166,13 @@ const SearchResultsView = () => {
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 {/* Category Filter */}
                 <div>
-                  <label className="block text-xs font-black text-gold-500 uppercase tracking-widest mb-2">
+                  <label className="block text-xs font-black text-vive-500 uppercase tracking-widest mb-2">
                     Categoría
                   </label>
                   <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="w-full bg-gray-50 dark:bg-dream-dark-bg border border-gray-200 dark:border-dream-dark-border text-gray-900 dark:text-white text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold-500/20"
+                    className="w-full bg-gray-50 dark:bg-dream-dark-bg border border-gray-200 dark:border-dream-dark-border text-gray-900 dark:text-white text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-vive-500/20"
                   >
                     {availableCategories.map(cat => (
                       <option key={cat} value={cat}>
@@ -184,13 +184,13 @@ const SearchResultsView = () => {
 
                 {/* Size Filter */}
                 <div>
-                  <label className="block text-xs font-black text-gold-500 uppercase tracking-widest mb-2">
+                  <label className="block text-xs font-black text-vive-500 uppercase tracking-widest mb-2">
                     Medida
                   </label>
                   <select
                     value={selectedSize}
                     onChange={(e) => setSelectedSize(e.target.value)}
-                    className="w-full bg-gray-50 dark:bg-dream-dark-bg border border-gray-200 dark:border-dream-dark-border text-gray-900 dark:text-white text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold-500/20"
+                    className="w-full bg-gray-50 dark:bg-dream-dark-bg border border-gray-200 dark:border-dream-dark-border text-gray-900 dark:text-white text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-vive-500/20"
                   >
                     {availableSizes.map(size => (
                       <option key={size} value={size}>
@@ -202,13 +202,13 @@ const SearchResultsView = () => {
 
                 {/* Sort Filter */}
                 <div>
-                  <label className="block text-xs font-black text-gold-500 uppercase tracking-widest mb-2">
+                  <label className="block text-xs font-black text-vive-500 uppercase tracking-widest mb-2">
                     Ordenar por
                   </label>
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="w-full bg-gray-50 dark:bg-dream-dark-bg border border-gray-200 dark:border-dream-dark-border text-gray-900 dark:text-white text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold-500/20"
+                    className="w-full bg-gray-50 dark:bg-dream-dark-bg border border-gray-200 dark:border-dream-dark-border text-gray-900 dark:text-white text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-vive-500/20"
                   >
                     <option value="relevant">Más relevante</option>
                     <option value="name">Alfabético</option>
@@ -234,7 +234,7 @@ const SearchResultsView = () => {
             {/* Loading State */}
             {isLoading ? (
               <div className="flex justify-center items-center py-20">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold-500"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vive-500"></div>
               </div>
             ) : sortedResults.length === 0 ? (
               /* No Results State */
@@ -259,7 +259,7 @@ const SearchResultsView = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 gap-y-6 sm:gap-y-8 lg:gap-y-10">
                 {sortedResults.map((product) => (
                   <div key={product.id} className="group">
-                    <div className="bg-white dark:bg-dream-dark-surface rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-[480px] sm:h-[520px] lg:h-[560px] flex flex-col">
+                    <div className="bg-white dark:bg-dream-dark-surface rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-vive-500/10 hover:-translate-y-2 h-[480px] sm:h-[520px] lg:h-[560px] flex flex-col">
                       {/* Product Image */}
                       <div className="relative aspect-[4/3] bg-white dark:bg-dream-dark-surface overflow-hidden flex-shrink-0">
                         <Link to={`/producto/${product.id}`} className="block w-full h-full flex items-center justify-center p-3 sm:p-4">
@@ -285,11 +285,11 @@ const SearchResultsView = () => {
                       <div className="p-4 sm:p-5 flex flex-col flex-1">
                         <div className="flex-1 flex flex-col">
                           <div className="mb-2 sm:mb-3">
-                            <span className="text-gold-500 text-[8px] sm:text-[9px] font-black uppercase tracking-widest block mb-1.5 sm:mb-2">
+                            <span className="text-vive-500 text-[8px] sm:text-[9px] font-black uppercase tracking-widest block mb-1.5 sm:mb-2">
                               {product.subcategory || 'Premium'}
                             </span>
                             <Link to={`/producto/${product.id}`} className="block">
-                              <h3 className="text-sm sm:text-base font-black text-gray-900 dark:text-white mb-1.5 sm:mb-2 leading-snug hover:text-gold-500 transition-colors cursor-pointer line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem]">
+                              <h3 className="text-sm sm:text-base font-black text-gray-900 dark:text-white mb-1.5 sm:mb-2 leading-snug hover:text-vive-500 transition-colors cursor-pointer line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem]">
                                 {product.name}
                               </h3>
                             </Link>

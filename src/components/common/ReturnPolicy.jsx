@@ -11,8 +11,8 @@ const ReturnPolicy = () => {
     return (
         <>
             <Helmet>
-                <title>Política de Devoluciones - Sueño Dorado | Garantía 30 Días</title>
-                <meta name="description" content="Política de devoluciones transparente de Sueño Dorado. 30 días de prueba gratuita, garantía de 10 años y servicio de posventa excepcional." />
+                <title>Política de Devoluciones - Vive | Garantía 30 Días</title>
+                <meta name="description" content="Política de devoluciones transparente de Vive. 30 días de prueba gratuita, garantía de 10 años y servicio de posventa excepcional." />
             </Helmet>
             <MainLayout>
                 <div className="min-h-screen bg-white dark:bg-black">
@@ -55,7 +55,7 @@ const ReturnPolicy = () => {
                                     </div>
                                     <div className="prose dark:prose-invert max-w-none">
                                         <p className="text-gray-600 dark:text-gray-300 mb-4">
-                                            En Sueño Dorado, creemos que la mejor manera de probar un colchón es durmiendo en él. Por eso ofrecemos <strong>30 días completos de prueba gratuita</strong> en tu hogar.
+                                            En Vive, creemos que la mejor manera de probar un colchón es durmiendo en él. Por eso ofrecemos <strong>30 días completos de prueba gratuita</strong> en tu hogar.
                                         </p>
                                         <ul className="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
                                             <li>Prueba el colchón en tu entorno real durante un mes completo</li>

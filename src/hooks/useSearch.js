@@ -12,7 +12,7 @@ export const useSearch = () => {
   const highlightMatch = (text, term) => {
     if (!term) return text;
     const regex = new RegExp(`(${term})`, 'gi');
-    return text.replace(regex, '<mark class="bg-gold-500/20 text-gold-600 font-bold px-0.5 rounded">$1</mark>');
+    return text.replace(regex, '<mark class="bg-vive-500/20 text-vive-600 font-bold px-0.5 rounded">$1</mark>');
   };
 
   // Algoritmo de búsqueda avanzado con scoring

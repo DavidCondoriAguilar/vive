@@ -1,13 +1,13 @@
 export const APP_CONFIG = {
-  name: 'Sueño Dorado',
-  version: '1.0.0',
-  description: 'Premium mattress e-commerce platform',
-  
+  name: 'Vive',
+  version: '1.2.0',
+  description: 'Tecnología avanzada en descanso y fabricación nacional premium',
+
   // Asset paths
   assets: {
     logos: {
-      main: '/src/assets/images/logos/logo-main.jpg',
-      alt: '/src/assets/images/logos/logo-alt.png',
+      main: '/src/assets/images/logos/vive.png',
+      alt: '/src/assets/images/logos/only-logo.png',
       brand: '/src/assets/images/logos/brand.png'
     },
     images: {
@@ -16,7 +16,7 @@ export const APP_CONFIG = {
       icons: '/src/assets/images/icons/'
     }
   },
-  
+
   // Component paths for easier imports
   components: {
     common: '/src/components/common/',

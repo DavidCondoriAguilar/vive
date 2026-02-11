@@ -244,7 +244,7 @@ export const CartProvider = ({ children }) => {
   const generateWhatsAppMessage = () => {
     if (state.items.length === 0) return '';
 
-    let message = '*Nuevo Pedido - Sueño Dorado*\n\n';
+    let message = '*Nuevo Pedido - Vive*\n\n';
     message += '*Detalle del Pedido:*\n\n';
 
     state.items.forEach((item, index) => {
@@ -262,7 +262,7 @@ export const CartProvider = ({ children }) => {
     message += '   • Dirección/Ciudad\n\n';
     message += '*Nota: Un asesor se comunicará contigo para brindarte los precios oficiales y coordinar tu pedido.*\n\n';
     message += '---\n';
-    message += '*Sueño Dorado - Fábrica de Colchones Premium*';
+    message += '*Vive - Fábrica de Colchones Premium*';
 
     return message;
   };

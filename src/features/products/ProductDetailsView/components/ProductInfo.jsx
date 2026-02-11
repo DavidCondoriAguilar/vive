@@ -21,7 +21,7 @@ const ProductInfo = ({ product }) => {
                         </span>
                     </div>
                     {product.badge && (
-                        <span className="px-3 py-1 bg-gold-500 text-black text-xs font-bold rounded-full">
+                        <span className="px-3 py-1 bg-vive-500 text-black text-xs font-bold rounded-full">
                             {product.badge}
                         </span>
                     )}
@@ -48,25 +48,25 @@ const ProductInfo = ({ product }) => {
             {/* Trust Badges */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-gray-200 dark:border-gray-800">
                 <div className="flex items-center gap-2">
-                    <FaTruck className="w-5 h-5 text-gold-500" />
+                    <FaTruck className="w-5 h-5 text-vive-500" />
                     <span className="text-sm text-gray-700 dark:text-gray-300">
                         Envío Gratis
                     </span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <FaShieldAlt className="w-5 h-5 text-gold-500" />
+                    <FaShieldAlt className="w-5 h-5 text-vive-500" />
                     <span className="text-sm text-gray-700 dark:text-gray-300">
                         Garantía
                     </span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <FaStar className="w-5 h-5 text-gold-500" />
+                    <FaStar className="w-5 h-5 text-vive-500" />
                     <span className="text-sm text-gray-700 dark:text-gray-300">
                         Calidad Premium
                     </span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <FaShieldAlt className="w-5 h-5 text-gold-500" />
+                    <FaShieldAlt className="w-5 h-5 text-vive-500" />
                     <span className="text-sm text-gray-700 dark:text-gray-300">
                         Stock Limitado
                     </span>

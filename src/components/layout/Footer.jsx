@@ -28,7 +28,7 @@ const Footer = ({ onLogoClick }) => {
     return (
         <footer className="bg-white dark:bg-[#050505] text-gray-900 dark:text-white pt-24 pb-12 transition-colors duration-700 relative overflow-hidden border-t border-gray-100 dark:border-white/5">
             {/* Decorative Background Elements */}
-            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-vive-500/50 to-transparent"></div>
 
             <div className="container mx-auto px-6 lg:px-20 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-20">
@@ -38,14 +38,14 @@ const Footer = ({ onLogoClick }) => {
                         <Logo
                             size="xlarge"
                             onClick={onLogoClick}
-                            className="!w-32 !h-auto !justify-start"
+                            className="!w-44 !h-auto !justify-start"
                             variant="auto"
                         />
                         <p className="text-sm text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
-                            Redefiniendo el descanso en Perú desde nuestra planta industrial en Puente Piedra. Ingeniería de precisión y materiales de clase mundial.
+                            Liderando la vanguardia del descanso en Perú. Tecnología MP y manufactura de alta precisión para transformar cada noche en una experiencia extraordinaria.
                         </p>
                         <div className="space-y-4">
-                            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-gold-500">Síguenos</h4>
+                            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-vive-500">Síguenos</h4>
                             <SocialIcons />
                         </div>
                     </div>
@@ -53,7 +53,7 @@ const Footer = ({ onLogoClick }) => {
                     {/* 2. CORPORATIVO */}
                     <div className="lg:col-span-2 space-y-6">
                         <h4 className="text-xs font-black uppercase tracking-widest flex items-center gap-2">
-                            <LuShieldCheck className="text-gold-500" /> Corporativo
+                            <LuShieldCheck className="text-vive-500" /> Corporativo
                         </h4>
                         <ul className="space-y-3">
                             {[
@@ -66,7 +66,7 @@ const Footer = ({ onLogoClick }) => {
                                 <li key={item.name}>
                                     <button
                                         onClick={() => handleOpenModal(item.key)}
-                                        className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-gold-500 transition-colors font-bold uppercase tracking-tighter text-left"
+                                        className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors font-bold uppercase tracking-tighter text-left"
                                     >
                                         {item.name}
                                     </button>
@@ -78,7 +78,7 @@ const Footer = ({ onLogoClick }) => {
                     {/* 3. TIENDA Y AYUDA */}
                     <div className="lg:col-span-2 space-y-6">
                         <h4 className="text-xs font-black uppercase tracking-widest flex items-center gap-2">
-                            <LuTruck className="text-gold-500" /> Tienda y Ayuda
+                            <LuTruck className="text-vive-500" /> Tienda y Ayuda
                         </h4>
                         <ul className="space-y-3">
                             {[
@@ -91,17 +91,17 @@ const Footer = ({ onLogoClick }) => {
                                 <li key={item.name}>
                                     {item.type === 'wa' ? (
                                         <a
-                                            href={getWhatsAppLink("Hola Sueño Dorado, deseo registrar un reclamo en su Libro de Reclamaciones virtual.")}
+                                            href={getWhatsAppLink("Hola Vive, deseo registrar un reclamo en su Libro de Reclamaciones virtual.")}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-gold-500 transition-colors font-bold uppercase tracking-tighter"
+                                            className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors font-bold uppercase tracking-tighter"
                                         >
                                             {item.name}
                                         </a>
                                     ) : (
                                         <button
                                             onClick={() => handleOpenModal(item.key)}
-                                            className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-gold-500 transition-colors font-bold uppercase tracking-tighter text-left"
+                                            className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors font-bold uppercase tracking-tighter text-left"
                                         >
                                             {item.name}
                                         </button>
@@ -114,7 +114,7 @@ const Footer = ({ onLogoClick }) => {
                     {/* 4. ÁREA USUARIO */}
                     <div className="lg:col-span-2 space-y-6">
                         <h4 className="text-xs font-black uppercase tracking-widest flex items-center gap-2">
-                            <LuUsers className="text-gold-500" /> Usuarios
+                            <LuUsers className="text-vive-500" /> Usuarios
                         </h4>
                         <ul className="space-y-3">
                             {[
@@ -127,7 +127,7 @@ const Footer = ({ onLogoClick }) => {
                                 <li key={item.name}>
                                     <button
                                         onClick={() => handleOpenModal(item.key)}
-                                        className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-gold-500 transition-colors font-bold uppercase tracking-tighter text-left"
+                                        className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors font-bold uppercase tracking-tighter text-left"
                                     >
                                         {item.name}
                                     </button>
@@ -144,11 +144,11 @@ const Footer = ({ onLogoClick }) => {
                                 <input
                                     type="email"
                                     placeholder="Tu email principal"
-                                    className="w-full bg-white dark:bg-black border border-gray-200 dark:border-white/10 rounded-xl py-3 pl-4 pr-12 text-xs outline-none focus:border-gold-500 transition-all font-bold"
+                                    className="w-full bg-white dark:bg-black border border-gray-200 dark:border-white/10 rounded-xl py-3 pl-4 pr-12 text-xs outline-none focus:border-vive-500 transition-all font-bold"
                                 />
                                 <button
                                     type="submit"
-                                    className="absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-gold-500 text-black rounded-lg flex items-center justify-center hover:bg-gold-600 transition-colors"
+                                    className="absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-vive-500 text-white rounded-lg flex items-center justify-center hover:bg-vive-600 transition-colors"
                                     aria-label="Suscribirse al newsletter"
                                 >
                                     <LuArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -156,7 +156,7 @@ const Footer = ({ onLogoClick }) => {
                             </form>
                         </div>
                         <Link to="/contacto" className="w-full bg-black dark:bg-white text-white dark:text-black px-6 py-4 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
-                            <LuMail className="text-gold-500 text-lg" /> Contacto Directo
+                            <LuMail className="text-vive-500 text-lg" /> Contacto Directo
                         </Link>
                     </div>
 
@@ -167,7 +167,7 @@ const Footer = ({ onLogoClick }) => {
                     <div className="flex flex-col lg:flex-row justify-between items-center gap-8 text-center lg:text-left">
                         <div className="space-y-1">
                             <p className="text-[10px] font-black uppercase tracking-widest text-gray-600 dark:text-gray-400">
-                                © {currentYear} SUEÑO DORADO. Salud y placer siempre a tu lado.
+                                © {currentYear} VIVE. Tecnología Avanzada en Descanso e Innovación Nacional.
                             </p>
                             <p className="text-[10px] font-bold text-gray-500 dark:text-gray-500 uppercase tracking-tighter">
                                 Planta Industrial: Mz. F Lt. 22, Chillón - La Ensenada, Puente Piedra, Lima.
@@ -185,7 +185,7 @@ const Footer = ({ onLogoClick }) => {
                         </div>
 
                         <a
-                            href={getWhatsAppLink("Hola Sueño Dorado, deseo registrar un reclamo en su Libro de Reclamaciones virtual.")}
+                            href={getWhatsAppLink("Hola Vive, solicito acceso al Libro de Reclamaciones.")}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:scale-105 transition-transform"

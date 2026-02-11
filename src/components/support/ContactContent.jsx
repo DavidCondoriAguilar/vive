@@ -5,7 +5,7 @@ const ContactContent = () => (
     <div className="space-y-6 text-sm text-left">
         <div className="grid grid-cols-1 gap-4">
             <div className="flex items-center gap-4 bg-gray-50 dark:bg-white/5 p-4 rounded-2xl">
-                <div className="w-12 h-12 bg-gold-500/10 rounded-xl flex items-center justify-center text-gold-500">
+                <div className="w-12 h-12 bg-vive-500/10 rounded-xl flex items-center justify-center text-vive-500">
                     <FaHeadset />
                 </div>
                 <div>
@@ -17,7 +17,7 @@ const ContactContent = () => (
             <div className="space-y-3 px-2">
                 <p className="flex justify-between border-b border-gray-100 dark:border-white/5 pb-2">
                     <span className="text-gray-400 font-bold uppercase text-[9px]">WhatsApp VIP:</span>
-                    <span className="font-black text-gold-500">+51 989 223 448</span>
+                    <span className="font-black text-vive-500">+51 989 223 448</span>
                 </p>
                 <p className="flex justify-between border-b border-gray-100 dark:border-white/5 pb-2">
                     <span className="text-gray-400 font-bold uppercase text-[9px]">Consultas Email:</span>
@@ -31,7 +31,7 @@ const ContactContent = () => (
         </div>
 
         <div className="p-4 bg-black rounded-xl text-center">
-            <p className="text-gold-500 font-black text-[10px] uppercase tracking-widest">
+            <p className="text-vive-500 font-black text-[10px] uppercase tracking-widest">
                 Directo de Fábrica al Hogar
             </p>
         </div>

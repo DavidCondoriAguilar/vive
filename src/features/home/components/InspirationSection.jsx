@@ -24,19 +24,19 @@ const InspirationSection = () => {
             <div className="container mx-auto px-6 lg:px-20">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                     <div className="max-w-2xl">
-                        <span className="text-gold-500 text-xs font-black tracking-[0.4em] uppercase mb-4 block">
+                        <span className="text-vive-500 text-xs font-black tracking-[0.4em] uppercase mb-4 block">
                             Experiencia Sueño Dorado
                         </span>
                         <h2 className="text-4xl md:text-5xl font-brand font-black text-gray-900 dark:text-white leading-tight uppercase tracking-tighter">
-                            Explora e <span className="text-gold-500">Inspirate</span>
+                            Explora e <span className="text-vive-500">Inspirate</span>
                         </h2>
                         <p className="text-gray-500 dark:text-gray-400 mt-6 text-lg font-medium leading-relaxed">
                             Diseñamos más que colchones, creamos santuarios de descanso. Descubre cómo transformar tu habitación en un hotel de 5 estrellas.
                         </p>
                     </div>
-                    <button className="group flex items-center gap-4 text-xs font-black uppercase tracking-[0.3em] text-gray-900 dark:text-white border-b-2 border-gold-500 pb-2 hover:gap-6 transition-all">
+                    <button className="group flex items-center gap-4 text-xs font-black uppercase tracking-[0.3em] text-gray-900 dark:text-white border-b-2 border-vive-500 pb-2 hover:gap-6 transition-all">
                         Ver Galería Completa
-                        <svg className="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-vive-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </button>
@@ -51,13 +51,13 @@ const InspirationSection = () => {
                                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-10 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-                                <span className="text-gold-500 text-[10px] font-black tracking-[0.3em] uppercase mb-2">
+                                <span className="text-vive-500 text-[10px] font-black tracking-[0.3em] uppercase mb-2">
                                     {env.category}
                                 </span>
                                 <h3 className="text-white text-2xl font-brand font-black uppercase tracking-tight mb-4">
                                     {env.title}
                                 </h3>
-                                <div className="w-0 group-hover:w-16 h-1 bg-gold-500 transition-all duration-500"></div>
+                                <div className="w-0 group-hover:w-16 h-1 bg-vive-500 transition-all duration-500"></div>
                             </div>
                         </div>
                     ))}

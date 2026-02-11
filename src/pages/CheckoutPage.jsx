@@ -103,7 +103,7 @@ const CheckoutPage = () => {
     return (
       <div className={`flex items-center gap-3 ${isCompleted ? 'opacity-100' : 'opacity-50'}`}>
         <div className={`w-10 h-10 rounded-full flex items-center justify-center font-black text-sm transition-all ${isCompleted
-          ? 'bg-gold-500 text-white'
+          ? 'bg-vive-500 text-white'
           : currentStep > step
             ? 'bg-green-500 text-white'
             : 'bg-gray-200 dark:bg-white/10 text-gray-600 dark:text-gray-400'
@@ -127,7 +127,7 @@ const CheckoutPage = () => {
           </p>
           <button
             onClick={() => navigate('/catalogo')}
-            className="bg-gold-500 text-white px-8 py-3 rounded-lg font-medium hover:bg-gold-600 transition-colors"
+            className="bg-vive-500 text-white px-8 py-3 rounded-lg font-medium hover:bg-vive-600 transition-colors"
           >
             Ver Catálogo
           </button>
@@ -155,14 +155,14 @@ const CheckoutPage = () => {
             <StepIndicator step={1} title="Información de Envío" isCompleted={currentStep > 1} />
             <div className="flex-1 h-1 bg-gray-200 dark:bg-white/10 mx-4">
               <div
-                className="h-full bg-gold-500 transition-all duration-500"
+                className="h-full bg-vive-500 transition-all duration-500"
                 style={{ width: `${currentStep > 1 ? '100%' : '0%'}` }}
               />
             </div>
             <StepIndicator step={2} title="Método de Pago" isCompleted={currentStep > 2} />
             <div className="flex-1 h-1 bg-gray-200 dark:bg-white/10 mx-4">
               <div
-                className="h-full bg-gold-500 transition-all duration-500"
+                className="h-full bg-vive-500 transition-all duration-500"
                 style={{ width: `${currentStep > 2 ? '100%' : '0%'}` }}
               />
             </div>
@@ -181,7 +181,7 @@ const CheckoutPage = () => {
             {currentStep === 1 && (
               <div className="bg-white dark:bg-black rounded-2xl border border-gray-100 dark:border-white/10 p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <FaTruck className="text-gold-500 w-5 h-5" />
+                  <FaTruck className="text-vive-500 w-5 h-5" />
                   <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                     Información de Envío
                   </h2>
@@ -197,7 +197,7 @@ const CheckoutPage = () => {
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-vive-500 focus:ring-2 focus:ring-vive-500/20 outline-none transition-all"
                       placeholder="Tus nombres"
                     />
                   </div>
@@ -211,7 +211,7 @@ const CheckoutPage = () => {
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-vive-500 focus:ring-2 focus:ring-vive-500/20 outline-none transition-all"
                       placeholder="Tus apellidos"
                     />
                   </div>
@@ -225,7 +225,7 @@ const CheckoutPage = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-vive-500 focus:ring-2 focus:ring-vive-500/20 outline-none transition-all"
                       placeholder="correo@ejemplo.com"
                     />
                   </div>
@@ -239,7 +239,7 @@ const CheckoutPage = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-vive-500 focus:ring-2 focus:ring-vive-500/20 outline-none transition-all"
                       placeholder="+51 999 999 999"
                     />
                   </div>
@@ -253,7 +253,7 @@ const CheckoutPage = () => {
                       name="address"
                       value={formData.address}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-vive-500 focus:ring-2 focus:ring-vive-500/20 outline-none transition-all"
                       placeholder="Av. Principal 123, Depto 404"
                     />
                   </div>
@@ -266,7 +266,7 @@ const CheckoutPage = () => {
                       name="department"
                       value={formData.department}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-vive-500 focus:ring-2 focus:ring-vive-500/20 outline-none transition-all"
                     >
                       <option value="">Selecciona tu departamento</option>
                       <option value="lima">Lima</option>
@@ -285,7 +285,7 @@ const CheckoutPage = () => {
                       name="reference"
                       value={formData.reference}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-vive-500 focus:ring-2 focus:ring-vive-500/20 outline-none transition-all"
                       placeholder="Frente al centro comercial, color verde, etc."
                     />
                   </div>
@@ -297,14 +297,14 @@ const CheckoutPage = () => {
             {currentStep === 2 && (
               <div className="bg-white dark:bg-black rounded-2xl border border-gray-100 dark:border-white/10 p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <FaCreditCard className="text-gold-500 w-5 h-5" />
+                  <FaCreditCard className="text-vive-500 w-5 h-5" />
                   <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                     Método de Pago
                   </h2>
                 </div>
 
                 <div className="space-y-4">
-                  <label className="flex items-center p-4 border border-gray-200 dark:border-white/20 rounded-lg cursor-pointer hover:border-gold-500 transition-colors">
+                  <label className="flex items-center p-4 border border-gray-200 dark:border-white/20 rounded-lg cursor-pointer hover:border-vive-500 transition-colors">
                     <input
                       type="radio"
                       name="paymentMethod"
@@ -319,7 +319,7 @@ const CheckoutPage = () => {
                     </div>
                   </label>
 
-                  <label className="flex items-center p-4 border border-gray-200 dark:border-white/20 rounded-lg cursor-pointer hover:border-gold-500 transition-colors">
+                  <label className="flex items-center p-4 border border-gray-200 dark:border-white/20 rounded-lg cursor-pointer hover:border-vive-500 transition-colors">
                     <input
                       type="radio"
                       name="paymentMethod"
@@ -334,7 +334,7 @@ const CheckoutPage = () => {
                     </div>
                   </label>
 
-                  <label className="flex items-center p-4 border border-gray-200 dark:border-white/20 rounded-lg cursor-pointer hover:border-gold-500 transition-colors">
+                  <label className="flex items-center p-4 border border-gray-200 dark:border-white/20 rounded-lg cursor-pointer hover:border-vive-500 transition-colors">
                     <input
                       type="radio"
                       name="paymentMethod"
@@ -349,7 +349,7 @@ const CheckoutPage = () => {
                     </div>
                   </label>
 
-                  <label className="flex items-center p-4 border border-gray-200 dark:border-white/20 rounded-lg cursor-pointer hover:border-gold-500 transition-colors">
+                  <label className="flex items-center p-4 border border-gray-200 dark:border-white/20 rounded-lg cursor-pointer hover:border-vive-500 transition-colors">
                     <input
                       type="radio"
                       name="paymentMethod"
@@ -371,7 +371,7 @@ const CheckoutPage = () => {
             {currentStep === 3 && (
               <div className="bg-white dark:bg-black rounded-2xl border border-gray-100 dark:border-white/10 p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <FaCheck className="text-gold-500 w-5 h-5" />
+                  <FaCheck className="text-vive-500 w-5 h-5" />
                   <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                     Confirmar Pedido
                   </h2>
@@ -404,7 +404,7 @@ const CheckoutPage = () => {
                   </div>
 
                   {/* Terms and Conditions */}
-                  <div className="bg-gold-50 dark:bg-gold-500/10 border border-gold-200 dark:border-gold-500/30 rounded-lg p-4">
+                  <div className="bg-vive-50 dark:bg-vive-500/10 border border-vive-200 dark:border-vive-500/30 rounded-lg p-4">
                     <label className="flex items-start gap-3 cursor-pointer">
                       <input
                         type="checkbox"
@@ -412,7 +412,7 @@ const CheckoutPage = () => {
                         required
                       />
                       <span className="text-sm text-gray-700 dark:text-gray-300">
-                        Acepto los <a href="/terminos" className="text-gold-500 hover:underline">términos y condiciones</a> y la <a href="/politica-privacidad" className="text-gold-500 hover:underline">política de privacidad</a>
+                        Acepto los <a href="/terminos" className="text-vive-500 hover:underline">términos y condiciones</a> y la <a href="/politica-privacidad" className="text-vive-500 hover:underline">política de privacidad</a>
                       </span>
                     </label>
                   </div>
@@ -433,7 +433,7 @@ const CheckoutPage = () => {
               <button
                 onClick={currentStep === 3 ? handleSubmit : nextStep}
                 disabled={!validateStep(currentStep)}
-                className="px-8 py-3 bg-gold-500 text-white rounded-lg font-medium hover:bg-gold-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2"
+                className="px-8 py-3 bg-vive-500 text-white rounded-lg font-medium hover:bg-vive-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2"
               >
                 {currentStep === 3 ? 'Confirmar Pedido' : 'Siguiente'}
                 <FaArrowRight className="w-4 h-4" />
@@ -501,7 +501,7 @@ const CheckoutPage = () => {
                   <span>Envío Gratis a Lima</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
-                  <FaCheck className="text-gold-500" />
+                  <FaCheck className="text-vive-500" />
                   <span>Garantía de Fábrica</span>
                 </div>
               </div>

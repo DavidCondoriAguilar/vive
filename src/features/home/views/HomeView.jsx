@@ -17,13 +17,13 @@ const HomeView = () => {
   return (
     <>
       <Helmet>
-        <title>Sueño Dorado - Fábrica de Colchones en Perú | Venta Directa</title>
+        <title>Vive - Fábrica de Colchones en Perú | Venta Directa</title>
         <meta name="description" content="Fabricamos colchones en Perú. Venta directa de fábrica de espuma y resortes. Mayor y menor. Lima y provincias." />
-        <link rel="canonical" href="https://suenodorado.pe/" />
+        <link rel="canonical" href="https://vive.pe/" />
       </Helmet>
       <MainLayout>
         {/* H1 Semántico para SEO y Accesibilidad (Visualmente oculto) */}
-        <h1 className="sr-only">Sueño Dorado - Fábrica Premium de Colchones de Espuma y Resortes en Perú</h1>
+        <h1 className="sr-only">Vive - Fábrica Premium de Colchones de Espuma y Resortes en Perú</h1>
 
         {/* 1. HERO CAROUSEL - Visual impactante */}
         <HeroCarousel />

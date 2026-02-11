@@ -5,7 +5,7 @@ import ConocenosSection from '@/components/common/ConocenosSection';
 
 const Hero = () => {
     const [showScrollTop, setShowScrollTop] = useState(false);
-    const waLink = getWhatsAppLink("Hola Sueño Dorado, deseo recibir asesoría para mejorar mi descanso.");
+    const waLink = getWhatsAppLink("Hola Vive, deseo transformar mi descanso con su tecnología avanzada.");
 
     useEffect(() => {
         const handleScroll = () => {
@@ -25,22 +25,22 @@ const Hero = () => {
         <>
             <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-white dark:bg-black transition-colors duration-700">
                 {/* Subtle Gradient Background */}
-                <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-gold-50/30 dark:from-gold-900/10 to-transparent pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-vive-50/30 dark:from-vive-900/10 to-transparent pointer-events-none"></div>
 
                 <div className="container mx-auto px-6 lg:px-20 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                         {/* Content Area */}
                         <div className="max-w-xl animate-fade-in-up">
-                            <span className="text-gold-500 font-display text-sm lg:text-base tracking-[0.4em] uppercase mb-6 block font-bold">
-                                Descanso Real, Sueño Profundo
+                            <span className="text-vive-500 font-display text-sm lg:text-base tracking-[0.4em] uppercase mb-6 block font-bold">
+                                Vive tu Descanso, Transforma tu Vida
                             </span>
                             <h1 className="text-[2.8rem] lg:text-[5rem] font-display font-black text-gray-900 dark:text-white leading-[1] mb-8 tracking-tighter uppercase">
                                 EL PLACER DE <br />
-                                <span className="text-gold-500">DORMIR BIEN</span>
+                                <span className="text-vive-500">DORMIR BIEN</span>
                             </h1>
                             <p className="text-gray-500 dark:text-gray-400 text-lg lg:text-xl font-medium leading-relaxed mb-12">
-                                Transformamos tu descanso con tecnología de vanguardia y fabricación nacional. Porque un gran día comienza con la mejor noche.
+                                Transformamos el descanso en una experiencia de alta permanencia con tecnología MP. Fabricación nacional premium para una vida extraordinaria.
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center gap-6">
@@ -67,7 +67,7 @@ const Hero = () => {
                             <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl transition-transform duration-700 group-hover:rotate-y-3">
                                 <img
                                     src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=1200"
-                                    alt="Dormitorio Sueño Dorado"
+                                    alt="Dormitorio Vive - Tecnología MP"
                                     className="w-full aspect-[4/5] object-cover"
                                 />
                                 {/* Overlay for premium feel */}
@@ -75,7 +75,7 @@ const Hero = () => {
                             </div>
 
                             {/* Decorative elements */}
-                            <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-gold-500/10 rounded-full blur-[80px] -z-10 animate-pulse-slow"></div>
+                            <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-vive-500/10 rounded-full blur-[80px] -z-10 animate-pulse-slow"></div>
                             <div className="absolute top-1/2 -right-20 transform -translate-y-1/2 flex flex-col gap-4">
                                 <div className="px-6 py-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-white animate-fade-in-up">
                                     <p className="text-[10px] uppercase tracking-widest font-black mb-1">Tecnología</p>
@@ -97,12 +97,12 @@ const Hero = () => {
             {/* Floating Scroll to Top Button */}
             <button
                 onClick={scrollToTop}
-                className={`fixed bottom-8 right-8 z-50 w-14 h-14 bg-gold-500 hover:bg-gold-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group ${showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16 pointer-events-none'
+                className={`fixed bottom-8 right-8 z-50 w-14 h-14 bg-vive-500 hover:bg-vive-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group ${showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16 pointer-events-none'
                     }`}
                 aria-label="Volver al inicio"
             >
                 <FaArrowUp className="w-6 h-6 transition-transform group-hover:scale-110" />
-            </button>
+            </button >
         </>
     );
 };

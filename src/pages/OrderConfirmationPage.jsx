@@ -24,7 +24,7 @@ const OrderConfirmationPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold-500 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vive-500 mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400">Cargando información del pedido...</p>
         </div>
       </div>
@@ -121,7 +121,7 @@ const OrderConfirmationPage = () => {
             {/* Order Items */}
             <div className="bg-white dark:bg-black border border-gray-100 dark:border-white/10 rounded-2xl p-6">
               <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
-                <FaBox className="text-gold-500" />
+                <FaBox className="text-vive-500" />
                 Detalle del Pedido
               </h2>
               
@@ -235,9 +235,9 @@ const OrderConfirmationPage = () => {
               <div className="space-y-3">
                 <a 
                   href="tel:+51989223448"
-                  className="flex items-center gap-3 p-3 border border-gray-200 dark:border-white/20 rounded-lg hover:border-gold-500 transition-colors"
+                  className="flex items-center gap-3 p-3 border border-gray-200 dark:border-white/20 rounded-lg hover:border-vive-500 transition-colors"
                 >
-                  <FaPhone className="text-gold-500" />
+                  <FaPhone className="text-vive-500" />
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">Llamar ahora</div>
                     <div className="text-xs text-gray-600 dark:text-gray-400">(01) 989 223 448</div>
@@ -246,9 +246,9 @@ const OrderConfirmationPage = () => {
 
                 <a 
                   href="mailto:hola@suenodorado.pe"
-                  className="flex items-center gap-3 p-3 border border-gray-200 dark:border-white/20 rounded-lg hover:border-gold-500 transition-colors"
+                  className="flex items-center gap-3 p-3 border border-gray-200 dark:border-white/20 rounded-lg hover:border-vive-500 transition-colors"
                 >
-                  <FaEnvelope className="text-gold-500" />
+                  <FaEnvelope className="text-vive-500" />
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">Enviar email</div>
                     <div className="text-xs text-gray-600 dark:text-gray-400">hola@suenodorado.pe</div>
@@ -263,7 +263,7 @@ const OrderConfirmationPage = () => {
               
               <button
                 onClick={() => navigate('/catalogo')}
-                className="w-full bg-gold-500 text-white py-3 rounded-lg font-medium hover:bg-gold-600 transition-colors"
+                className="w-full bg-vive-500 text-white py-3 rounded-lg font-medium hover:bg-vive-600 transition-colors"
               >
                 Ver más productos
               </button>
@@ -282,7 +282,7 @@ const OrderConfirmationPage = () => {
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                   Guarda este número para hacer seguimiento de tu pedido
                 </p>
-                <button className="w-full border border-gold-500 text-gold-500 py-2 rounded-lg font-medium hover:bg-gold-50 dark:hover:bg-gold-500/10 transition-colors">
+                <button className="w-full border border-vive-500 text-vive-500 py-2 rounded-lg font-medium hover:bg-vive-50 dark:hover:bg-vive-500/10 transition-colors">
                   Copiar número de pedido
                 </button>
               </div>

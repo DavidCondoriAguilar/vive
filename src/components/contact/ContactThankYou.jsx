@@ -27,7 +27,7 @@ const ContactThankYou = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               to="/"
-              className="bg-gold-500 hover:bg-gold-600 text-white px-8 py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-all flex items-center gap-3 group"
+              className="bg-vive-500 hover:bg-vive-600 text-white px-8 py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-all flex items-center gap-3 group"
             >
               <FaArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span>Volver al Inicio</span>
@@ -35,7 +35,7 @@ const ContactThankYou = () => {
             
             <Link
               to="/contacto"
-              className="border border-gray-300 dark:border-white/20 hover:border-gold-500 text-gray-700 dark:text-gray-300 hover:text-gold-500 px-8 py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-all"
+              className="border border-gray-300 dark:border-white/20 hover:border-vive-500 text-gray-700 dark:text-gray-300 hover:text-vive-500 px-8 py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-all"
             >
               Enviar otro mensaje
             </Link>

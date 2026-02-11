@@ -90,7 +90,7 @@ const ProductDetailsView = () => {
         } else if (imageName.includes('detalle') || imageName.includes('technical')) {
             return `${productName} - Especificaciones técnicas y estructura interna del colchón`;
         } else {
-            return `${productName} - Imagen del colchón premium Sueño Dorado`;
+            return `${productName} - Innovación en descanso por Vive`;
         }
     };
 
@@ -98,34 +98,33 @@ const ProductDetailsView = () => {
         <>
             <Helmet>
                 {/* Basic SEO */}
-                <title>{product.name} - Colchón Premium Sueño Dorado | Precio por Consultar</title>
-                <meta name="description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y envío gratis en Lima.'}`} />
+                <title>{product.name} - Tecnología de Descanso Vive | Alta Permanencia</title>
+                <meta name="description" content={`Descubre el ${product.name} de Vive. Tecnología MP (Máxima Permanencia) y confort anatómico de clase mundial con envío gratis.`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="robots" content="index, follow, max-image-preview:large" />
-                <link rel="canonical" href={`https://suenodorado.pe/producto/${productId}`} />
+                <link rel="canonical" href={`https://vive.pe/producto/${productId}`} />
 
                 {/* Open Graph */}
-                <meta property="og:title" content={`${product.name} - Colchón Premium Sueño Dorado`} />
-                <meta property="og:description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y envío gratis en Lima.'}`} />
-                <meta property="og:image" content={`https://suenodorado.pe${product.image}`} />
+                <meta property="og:title" content={`${product.name} - Innovación Vive`} />
+                <meta property="og:description" content={`El ${product.name} redefine el descanso con tecnología de vanguardia. Experimenta la máxima permanencia.`} />
+                <meta property="og:image" content={`https://vive.pe${product.image}`} />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
-                <meta property="og:image:alt" content={`${product.name} - Colchón Premium Sueño Dorado`} />
+                <meta property="og:image:alt" content={`${product.name} - Tecnología Vive`} />
                 <meta property="og:type" content="product" />
-                <meta property="og:url" content={`https://suenodorado.pe/producto/${productId}`} />
-                <meta property="og:site_name" content="Sueño Dorado" />
+                <meta property="og:url" content={`https://vive.pe/producto/${productId}`} />
+                <meta property="og:site_name" content="Vive" />
                 <meta property="og:locale" content="es_PE" />
 
                 {/* Twitter Cards */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${product.name} - Colchón Premium Sueño Dorado`} />
-                <meta name="twitter:description" content={`Compra el ${product.name}, colchón premium de Sueño Dorado. ${product.description || 'Experimenta la cima del descanso peruano con resortes pocket y envío gratis en Lima.'}`} />
-                <meta name="twitter:image" content={`https://suenodorado.pe${product.image}`} />
-                <meta name="twitter:site" content="@suenodorado" />
+                <meta name="twitter:title" content={`${product.name} - Tecnología Vive`} />
+                <meta name="twitter:description" content={`Innovación peruana en descanso. Conoce el ${product.name}.`} />
+                <meta name="twitter:image" content={`https://vive.pe${product.image}`} />
 
                 {/* Additional SEO */}
-                <meta name="keywords" content={`${product.name}, colchón, sueñodorado, peru, resortes, descanso, garantía, ${product.category}, ${product.subcategory}`} />
-                <meta name="author" content="Sueño Dorado" />
+                <meta name="keywords" content={`${product.name}, vive, descanso premium, tecnologia MP, fabrica colchones peru, descanso inteligente`} />
+                <meta name="author" content="Vive" />
                 <meta name="language" content="Spanish" />
 
                 {/* Enhanced Structured Data */}
@@ -138,7 +137,7 @@ const ProductDetailsView = () => {
                         "image": `https://suenodorado.pe${product.image}`,
                         "brand": {
                             "@type": "Brand",
-                            "name": "Sueño Dorado"
+                            "name": "Vive"
                         },
                         "category": product.category,
                         "offers": {
@@ -148,8 +147,8 @@ const ProductDetailsView = () => {
                             "availability": "https://schema.org/InStock",
                             "seller": {
                                 "@type": "Organization",
-                                "name": "Sueño Dorado",
-                                "url": "https://suenodorado.pe"
+                                "name": "Vive",
+                                "url": "https://vive.pe"
                             }
                         },
                         "aggregateRating": {
@@ -377,29 +376,29 @@ const ProductDetailsView = () => {
                                     <div className="pt-2">
                                         <button
                                             onClick={() => setShowSpecsModal(true)}
-                                            className="group flex items-center gap-3 text-gold-500 hover:text-gold-600 transition-all duration-300"
+                                            className="group flex items-center gap-3 text-vive-500 hover:text-vive-600 transition-all duration-300"
                                         >
-                                            <div className="w-10 h-10 rounded-full border border-gold-500/30 flex items-center justify-center group-hover:bg-gold-500 group-hover:text-white transition-all">
+                                            <div className="w-10 h-10 rounded-full border border-vive-500/30 flex items-center justify-center group-hover:bg-vive-500 group-hover:text-white transition-all">
                                                 <FaTools className="w-4 h-4" />
                                             </div>
                                             <div className="flex flex-col items-start">
                                                 <span className="text-[10px] font-black uppercase tracking-[0.2em]">Especificaciones</span>
-                                                <span className="text-[12px] font-bold border-b border-gold-500/20 group-hover:border-gold-500 transition-all">Ver Análisis Técnico</span>
+                                                <span className="text-[12px] font-bold border-b border-vive-500/20 group-hover:border-vive-500 transition-all">Ver Análisis Técnico</span>
                                             </div>
                                         </button>
                                     </div>
                                 </div>
 
                                 <div className="space-y-4 py-8 px-8 bg-gray-50/50 dark:bg-zinc-900/50 rounded-[2.5rem] border border-gray-100 dark:border-white/5 relative overflow-hidden group">
-                                    <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-gold-500/10 transition-colors" />
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-vive-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-vive-500/10 transition-colors" />
 
-                                    <span className="text-[10px] font-black text-gold-500 uppercase tracking-[0.4em] block mb-2">Presupuesto Personalizado</span>
+                                    <span className="text-[10px] font-black text-vive-500 uppercase tracking-[0.4em] block mb-2">Presupuesto Estratégico</span>
 
                                     <div className="flex flex-col gap-6">
 
 
                                         <a
-                                            href={getWhatsAppLink(`Hola Sueño Dorado, estoy interesado(a) en el producto *${product.name}*.\nTalla: ${selectedSize || 'Por definir'}\n¿Podrían brindarme el precio y disponibilidad?`)}
+                                            href={getWhatsAppLink(`Hola Vive, solicito información técnica y comercial del sistema: *${product.name}*.\nTalla: ${selectedSize || 'Por definir'}\n¿Podrían indicarme disponibilidad para despacho inmediato?`)}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="inline-flex items-center justify-center gap-4 bg-green-500 hover:bg-green-600 text-white font-black py-5 px-8 rounded-2xl shadow-xl shadow-green-500/20 transition-all hover:-translate-y-1 uppercase tracking-widest text-xs"
@@ -555,24 +554,24 @@ const ProductDetailsView = () => {
 
                                         {/* WhatsApp Direct Button */}
                                         <a
-                                            href={getWhatsAppLink(`Hola Sueño Dorado, estoy interesado(a) en recibir información sobre ${product.name}.`)}
+                                            href={getWhatsAppLink(`Hola Vive, solicito asesoría senior para el modelo ${product.name}.`)}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-black py-5 rounded-full transition-all shadow-xl hover:shadow-2xl uppercase tracking-widest text-xs flex items-center justify-center gap-3"
                                         >
                                             <FaWhatsapp className="w-5 h-5" />
-                                            Asesoría Personalizada VIP
+                                            Asesoría Estratégica
                                         </a>
 
                                         {/* B2B Inquiry Button */}
                                         <a
-                                            href={getWhatsAppLink(`Hola, soy un cliente mayorista interesado en el producto: *${product.name}*\nTalla: ${selectedSize || 'Por definir'}\nCantidad estimada: ${quantity} unidades\n¿Podrían enviarme una cotización corporativa especial?`)}
+                                            href={getWhatsAppLink(`Hola, consulto como aliado comercial por el sistema: *${product.name}*\nCantidad proyectada: ${quantity} unidades\nSolicito propuesta corporativa B2B.`)}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="w-full bg-transparent border-2 border-gray-200 dark:border-white/10 hover:border-gold-500 text-gray-900 dark:text-white font-black py-5 rounded-full transition-all hover:text-gold-500 uppercase tracking-widest text-[10px] flex items-center justify-center gap-3"
+                                            className="w-full bg-transparent border-2 border-gray-200 dark:border-white/10 hover:border-vive-500 text-gray-900 dark:text-white font-black py-5 rounded-full transition-all hover:text-vive-500 uppercase tracking-widest text-[10px] flex items-center justify-center gap-3"
                                         >
                                             <FaBuilding className="w-4 h-4" />
-                                            Consulta de Venta por Mayor (B2B)
+                                            Alianza Distribución (B2B)
                                         </a>
                                     </div>
                                 </div>
@@ -582,7 +581,7 @@ const ProductDetailsView = () => {
                                     <div className="flex items-center justify-between">
                                         <div>
                                             <span className="text-xs text-gray-500 font-light uppercase tracking-widest">SKU:</span>
-                                            <span className="ml-2 text-xs font-black text-gray-900 dark:text-white uppercase">{product.sku || 'SUE-GOLD-MP-001'}</span>
+                                            <span className="ml-2 text-xs font-black text-gray-900 dark:text-white uppercase">{product.sku || 'SUE-vive-MP-001'}</span>
                                         </div>
                                         <div className="flex gap-2">
                                             <button className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">

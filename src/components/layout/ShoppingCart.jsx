@@ -43,7 +43,7 @@ const ShoppingCart = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
           {getTotalItems() > 0 && (
-            <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-gold-500 text-[10px] font-black text-white ring-2 ring-white dark:ring-gray-900 shadow-lg animate-pulse-subtle">
+            <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-vive-500 text-[10px] font-black text-white ring-2 ring-white dark:ring-gray-900 shadow-lg animate-pulse-subtle">
               {getTotalItems()}
             </span>
           )}
@@ -67,7 +67,7 @@ const ShoppingCart = () => {
             <div>
               <h2 className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter">Tu Pedido</h2>
               <div className="flex items-center gap-2 mt-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-vive-500 animate-pulse" />
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
                   {getTotalItems()} {getTotalItems() === 1 ? 'Artículo' : 'Artículos'} Seleccionados
                 </p>
@@ -75,7 +75,7 @@ const ShoppingCart = () => {
             </div>
             <button
               onClick={() => setIsCartOpen(false)}
-              className="w-12 h-12 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-500 hover:text-gold-500 flex items-center justify-center transition-all hover:bg-gray-100 dark:hover:bg-white/10 group"
+              className="w-12 h-12 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-500 hover:text-vive-500 flex items-center justify-center transition-all hover:bg-gray-100 dark:hover:bg-white/10 group"
               aria-label="Cerrar Carrito"
             >
               <svg className="w-6 h-6 transition-transform group-hover:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -97,7 +97,7 @@ const ShoppingCart = () => {
                 <p className="text-xs text-gray-500 max-w-[200px] leading-relaxed">Sus sueños merecen lo mejor. Agregue un colchón para comenzar.</p>
                 <button
                   onClick={() => setIsCartOpen(false)}
-                  className="mt-8 text-[10px] font-black text-gold-500 uppercase tracking-[0.3em] border-b border-gold-500/30 hover:border-gold-500 transition-all pb-1"
+                  className="mt-8 text-[10px] font-black text-vive-500 uppercase tracking-[0.3em] border-b border-vive-500/30 hover:border-vive-500 transition-all pb-1"
                 >
                   Continuar Explorando
                 </button>
@@ -111,7 +111,7 @@ const ShoppingCart = () => {
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     {/* Item Image */}
-                    <div className="relative w-16 h-16 bg-gray-50 dark:bg-zinc-900 rounded-2xl overflow-hidden flex-shrink-0 border border-transparent group-hover:border-gold-500/20 transition-all">
+                    <div className="relative w-16 h-16 bg-gray-50 dark:bg-zinc-900 rounded-2xl overflow-hidden flex-shrink-0 border border-transparent group-hover:border-vive-500/20 transition-all">
                       <img
                         src={item.image}
                         alt={item.name}
@@ -137,7 +137,7 @@ const ShoppingCart = () => {
                       </div>
 
                       {item.selectedSize && (
-                        <span className="text-[9px] font-black text-gold-500 uppercase tracking-widest block mb-4">
+                        <span className="text-[9px] font-black text-vive-500 uppercase tracking-widest block mb-4">
                           {item.selectedSize}
                         </span>
                       )}
@@ -162,7 +162,7 @@ const ShoppingCart = () => {
                           </button>
                         </div>
 
-                        <span className="text-[10px] font-black text-gold-500 uppercase tracking-widest">
+                        <span className="text-[10px] font-black text-vive-500 uppercase tracking-widest">
                           Precio por Consultar
                         </span>
                       </div>
@@ -182,7 +182,7 @@ const ShoppingCart = () => {
                   <p className="text-[10px] text-gray-900 dark:text-white font-bold uppercase tracking-widest">Precios vía WhatsApp</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-[11px] font-bold text-gold-500 uppercase tracking-widest">
+                  <span className="text-[11px] font-bold text-vive-500 uppercase tracking-widest">
                     Asesoría Premium
                   </span>
                 </div>

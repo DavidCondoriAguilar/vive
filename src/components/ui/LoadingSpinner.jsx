@@ -18,8 +18,8 @@ const LoadingSpinner = () => {
       <div className="relative z-10 flex flex-col items-center space-y-8">
         {/* Dual Ring Animation */}
         <div className="relative w-20 h-20 animate-fade-scale">
-          <div className="absolute inset-0 border-4 border-transparent border-t-gold-400 border-r-gold-400 rounded-full animate-spin-clockwise"></div>
-          <div className="absolute inset-2 border-4 border-transparent border-b-gold-400 border-l-gold-400 rounded-full animate-spin-counter-clockwise"></div>
+          <div className="absolute inset-0 border-4 border-transparent border-t-vive-400 border-r-vive-400 rounded-full animate-spin-clockwise"></div>
+          <div className="absolute inset-2 border-4 border-transparent border-b-vive-400 border-l-vive-400 rounded-full animate-spin-counter-clockwise"></div>
         </div>
 
         {/* Brand Name */}
@@ -28,9 +28,9 @@ const LoadingSpinner = () => {
             Sueño Dorado
           </h1>
           <div className="flex items-center justify-center space-x-2">
-            <div className="w-2 h-2 bg-gold-400 rounded-full animate-pulse"></div>
-            <div className="w-2 h-2 bg-gold-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-            <div className="w-2 h-2 bg-gold-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+            <div className="w-2 h-2 bg-vive-400 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-vive-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+            <div className="w-2 h-2 bg-vive-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
           </div>
         </div>
 

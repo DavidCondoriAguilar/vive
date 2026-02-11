@@ -1,8 +1,8 @@
 // Application Constants
 export const APP_CONFIG = {
-  name: 'Sueño Dorado',
-  version: '1.0.0',
-  author: 'David Condori Aguiar',
+  name: 'Vive',
+  version: '2.0.0',
+  author: 'David Condori Aguilar',
   year: 2026
 };
 
@@ -16,17 +16,17 @@ export const LOADING_CONFIG = {
 
 // SEO Constants
 export const SEO_DEFAULTS = {
-  title: `${APP_CONFIG.name} - Fábrica de Colchones Premium en Lima | Envío Gratis`,
-  description: `Fabrica peruana de colchones premium con hasta 10 años de garantía. Colchones pocket, viscoelásticos y spring. Envío gratis en Lima.`,
+  title: `Vive - Ingeniería Superior en Descanso | Fábrica Premium`,
+  description: `Lideramos la tecnología de descanso en el Perú. Expertos en sistemas de alta permanencia (MP), resortes pocket y ergonomía avanzada. Envío gratis en Lima.`,
   keywords: [
-    'colchones peru',
-    'fabrica colchones lima',
-    'colchones premium',
-    'colchones pocket',
-    'colchones viscoelasticos',
-    'colchones spring'
+    'vive colchones',
+    'tecnologia MP descanso',
+    'fabrica colchones peru',
+    'sistemas descanso premium',
+    'colchones pocket spring',
+    'descanso anatomico'
   ],
-  canonical: 'https://suenodorado.pe/'
+  canonical: 'https://vive.pe/'
 };
 
 // Route Constants

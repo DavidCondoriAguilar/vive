@@ -75,18 +75,18 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
       {/* Header & Controls - High Visibility */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-12">
         <div className="max-w-xl">
-          <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Selección Premium</span>
+          <span className="text-vive-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Selección Premium</span>
           <h2 className="text-4xl lg:text-5xl font-display font-black text-gray-900 dark:text-white uppercase leading-tight tracking-tighter mb-6">
             {title}
           </h2>
           <div className="flex items-center gap-4 mb-4">
             <div className="flex-1 h-[2px] bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gold-500 transition-all duration-1000 ease-out shadow-[0_0_10px_#d4af37]"
+                className="h-full bg-vive-500 transition-all duration-1000 ease-out shadow-[0_0_10px_#d4af37]"
                 style={{ width: `${((currentIndex + itemsPerView) / Math.max(1, filteredProducts.length)) * 100}% ` }}
               />
             </div>
-            <span className="text-[10px] font-black text-gold-500 uppercase tracking-widest whitespace-nowrap">
+            <span className="text-[10px] font-black text-vive-500 uppercase tracking-widest whitespace-nowrap">
               {currentIndex + itemsPerView} / {filteredProducts.length}
             </span>
           </div>
@@ -112,11 +112,11 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
       {/* Active Filter Description - Contexto para el usuario */}
       {selectedCategory !== 'Todos' && (
         <div className="mb-8">
-          <div className="bg-gold-50 dark:bg-gold-500/10 border border-gold-200 dark:border-gold-500/30 rounded-xl p-4">
+          <div className="bg-vive-50 dark:bg-vive-500/10 border border-vive-200 dark:border-vive-500/30 rounded-xl p-4">
             <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-gold-500 rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-vive-500 rounded-full animate-pulse" />
               <div>
-                <span className="text-[10px] font-black text-gold-600 dark:text-gold-400 uppercase tracking-widest">
+                <span className="text-[10px] font-black text-vive-600 dark:text-vive-400 uppercase tracking-widest">
                   Filtrando por: {filterOptions.find(f => f.id === selectedCategory)?.name}
                 </span>
                 <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
@@ -171,7 +171,7 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
               key={product.id}
               className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3"
             >
-              <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
+              <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-vive-500/10 hover:-translate-y-2 h-full flex flex-col">
                 <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-dream-dark-surface">
                   <Link to={`/producto/${product.id}`} className="block h-full w-full">
                     <img
@@ -189,11 +189,11 @@ const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {
 
                 <div className="p-6 flex flex-col flex-1">
                   <div className="mb-4">
-                    <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest">
+                    <span className="text-vive-500 text-[10px] font-black uppercase tracking-widest">
                       {product.subcategory}
                     </span>
                     <Link to={`/producto/${product.id}`}>
-                      <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-gold-500 transition-colors">
+                      <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-vive-500 transition-colors">
                         {product.name}
                       </h3>
                     </Link>

@@ -22,9 +22,9 @@ const EducationSection = () => {
             {/* Impact Header */}
             <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-display font-black text-gray-900 dark:text-white mb-4">
-                    Proceso <span className="text-gold-500">Industrial</span>
+                    Proceso <span className="text-vive-500">Industrial</span>
                 </h2>
-                <div className="w-24 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full"></div>
+                <div className="w-24 h-1 bg-gradient-to-r from-vive-400 to-vive-600 mx-auto rounded-full"></div>
             </div>
 
             {/* Visual Process Grid */}
@@ -39,19 +39,19 @@ const EducationSection = () => {
                     >
                         {/* Background Pattern */}
                         <div className="absolute inset-0 opacity-5">
-                            <div className="absolute top-4 right-4 w-20 h-20 border-2 border-gold-400 rounded-full"></div>
-                            <div className="absolute bottom-4 left-4 w-16 h-16 border-2 border-gold-500 rounded-full"></div>
+                            <div className="absolute top-4 right-4 w-20 h-20 border-2 border-vive-400 rounded-full"></div>
+                            <div className="absolute bottom-4 left-4 w-16 h-16 border-2 border-vive-500 rounded-full"></div>
                         </div>
 
                         {/* Content */}
                         <div className="relative p-8 text-center">
                             {/* Icon */}
-                            <div className="w-16 h-16 bg-gradient-to-br from-gold-400 to-gold-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <div className="w-16 h-16 bg-gradient-to-br from-vive-400 to-vive-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <span className="text-2xl font-bold text-white">{index + 1}</span>
                             </div>
 
                             {/* Title */}
-                            <h3 className="text-xl font-display font-bold text-gray-900 dark:text-white mb-3 group-hover:text-gold-500 transition-colors duration-300">
+                            <h3 className="text-xl font-display font-bold text-gray-900 dark:text-white mb-3 group-hover:text-vive-500 transition-colors duration-300">
                                 {item.title}
                             </h3>
 
@@ -63,14 +63,14 @@ const EducationSection = () => {
                             {/* CTA Button */}
                             <Link
                                 to="/catalogo"
-                                className="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105"
+                                className="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-vive-500 to-vive-600 hover:from-vive-600 hover:to-vive-700 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105"
                             >
                                 Ver Catálogo
                             </Link>
                         </div>
 
                         {/* Hover Effect Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-gold-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-vive-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
                 ))}
             </div>

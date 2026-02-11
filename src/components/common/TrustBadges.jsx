@@ -14,7 +14,7 @@ const TrustBadges = ({ className = "", variant = "grid", onBadgeClick }) => {
       subtitle: "24-48h en Lima",
       fullText: (
         <div className="space-y-4">
-          <p className="font-bold text-gold-500 text-xs uppercase tracking-widest">Compromiso De Entrega</p>
+          <p className="font-bold text-vive-500 text-xs uppercase tracking-widest">Compromiso De Entrega</p>
           <p className="text-gray-600 dark:text-gray-400">Nuestra logística propia nos permite garantizar entregas en un plazo máximo de <strong>48 horas hábiles</strong> dentro de Lima Metropolitana.</p>
           <div className="bg-gray-50 dark:bg-white/5 p-4 rounded-xl border border-gray-100 dark:border-white/10 text-[11px]">
             <p>• Monitoreo en tiempo real vía WhatsApp.</p>
@@ -31,7 +31,7 @@ const TrustBadges = ({ className = "", variant = "grid", onBadgeClick }) => {
       subtitle: "SSL certificado",
       fullText: (
         <div className="space-y-4">
-          <p className="font-bold text-gold-500 text-xs uppercase tracking-widest">Protección De Datos</p>
+          <p className="font-bold text-vive-500 text-xs uppercase tracking-widest">Protección De Datos</p>
           <p className="text-gray-600 dark:text-gray-400">Nuestra plataforma cuenta con <strong>Certificación SSL de 256 bits</strong>, garantizando que tu información financiera viaje de forma encriptada y segura.</p>
           <div className="flex gap-4 items-center justify-center pt-2">
             <span className="px-3 py-1 bg-green-500/10 text-green-500 text-[10px] font-bold rounded-full border border-green-500/20">PCI Compliant</span>
@@ -47,7 +47,7 @@ const TrustBadges = ({ className = "", variant = "grid", onBadgeClick }) => {
       subtitle: "Respaldo Industrial",
       fullText: (
         <div className="space-y-4">
-          <p className="font-bold text-gold-500 text-xs uppercase tracking-widest">Respaldo Industrial</p>
+          <p className="font-bold text-vive-500 text-xs uppercase tracking-widest">Respaldo Industrial</p>
           <p className="text-gray-600 dark:text-gray-400">Todos nuestros productos salen de planta con un control de calidad riguroso. Utilizamos espumas de alta densidad y resortes de material virgen.</p>
           <ul className="text-[11px] text-gray-500 space-y-1 bg-gray-50 dark:bg-white/5 p-4 rounded-xl">
             <li>• <strong>Densidad Real:</strong> Mayor soporte y vida útil.</li>
@@ -64,9 +64,9 @@ const TrustBadges = ({ className = "", variant = "grid", onBadgeClick }) => {
       subtitle: "Atención inmediata",
       fullText: (
         <div className="space-y-4">
-          <p className="font-bold text-gold-500 text-xs uppercase tracking-widest">Soporte VIP</p>
+          <p className="font-bold text-vive-500 text-xs uppercase tracking-widest">Soporte VIP</p>
           <p className="text-gray-600 dark:text-gray-400">No eres un número más. Nuestro equipo de atención post-venta está listo para resolver cualquier requerimiento técnico en tiempo récord.</p>
-          <p className="text-[11px] text-gold-500 font-bold italic">Respuesta garantizada en menos de 3 horas vía canales oficiales.</p>
+          <p className="text-[11px] text-vive-500 font-bold italic">Respuesta garantizada en menos de 3 horas vía canales oficiales.</p>
         </div>
       ),
       animation: "slideInBottom"
@@ -93,12 +93,12 @@ const TrustBadges = ({ className = "", variant = "grid", onBadgeClick }) => {
             onClick={() => onBadgeClick && onBadgeClick(badge)}
           >
             <div className="flex-shrink-0 mt-1">
-              <div className="text-gold-500 dark:text-gold-400 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-vive-500 dark:text-vive-400 group-hover:scale-110 transition-transform duration-300">
                 {badge.icon}
               </div>
             </div>
             <div>
-              <h4 className="text-sm font-bold text-gray-900 dark:text-gray-200 group-hover:text-gold-500 transition-colors">
+              <h4 className="text-sm font-bold text-gray-900 dark:text-gray-200 group-hover:text-vive-500 transition-colors">
                 {badge.title}
               </h4>
               <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -123,7 +123,7 @@ const TrustBadges = ({ className = "", variant = "grid", onBadgeClick }) => {
           }}
         >
           {/* Icon Container - Minimalist */}
-          <div className="relative mx-auto w-12 h-12 mb-4 rounded-xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 group-hover:text-gold-500 transition-all duration-300">
+          <div className="relative mx-auto w-12 h-12 mb-4 rounded-xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 group-hover:text-vive-500 transition-all duration-300">
             {badge.icon}
           </div>
 

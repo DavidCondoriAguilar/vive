@@ -40,8 +40,8 @@ const DesktopNav = ({ navLinks, currentPath }) => {
                         <Link
                             to={link.path}
                             className={`px-4 py-2 text-[12px] font-display font-black uppercase tracking-[0.2em] transition-all duration-300 rounded-xl flex items-center gap-2 z-50 ${currentPath === link.path || isOpen
-                                ? 'text-gold-500 bg-white border border-gray-100 dark:bg-white/5 dark:border-white/10 shadow-sm'
-                                : 'text-gray-900 dark:text-white hover:text-gold-500 hover:bg-white hover:border hover:border-gray-100 dark:hover:bg-white/5 dark:hover:border-white/10'
+                                ? 'text-vive-500 bg-white border border-gray-100 dark:bg-white/5 dark:border-white/10 shadow-sm'
+                                : 'text-gray-900 dark:text-white hover:text-vive-500 hover:bg-white hover:border hover:border-gray-100 dark:hover:bg-white/5 dark:hover:border-white/10'
                                 }`}
                             onClick={() => setActiveMenu(null)}
                         >
@@ -54,7 +54,7 @@ const DesktopNav = ({ navLinks, currentPath }) => {
 
                             {/* Luxury Badge */}
                             {link.badge && (
-                                <span className="px-2 py-0.5 text-[7px] font-black rounded-full shadow-lg text-white bg-gold-500 animate-pulse">
+                                <span className="px-2 py-0.5 text-[7px] font-black rounded-full shadow-lg text-white bg-vive-500 animate-pulse">
                                     {link.badge}
                                 </span>
                             )}
@@ -76,7 +76,7 @@ const DesktopNav = ({ navLinks, currentPath }) => {
                                 {link.megaMenu ? (
                                     <div className={`shadow-[0_50px_120px_rgba(0,0,0,0.4)] dark:shadow-[0_50px_120px_rgba(0,0,0,0.6)] rounded-[4rem] border border-white/20 dark:border-white/5 p-16 flex gap-8 w-screen max-w-[900px] overflow-hidden relative ${link.image ? 'bg-transparent' : 'bg-white dark:bg-black'}`}>
                                         {/* Elite Visual Accents */}
-                                        <div className="absolute inset-0 bg-gradient-to-b from-gold-500/10 to-transparent pointer-events-none opacity-30"></div>
+                                        <div className="absolute inset-0 bg-gradient-to-b from-vive-500/10 to-transparent pointer-events-none opacity-30"></div>
 
                                         {link.image && (
                                             <div className="absolute inset-0 z-0 pointer-events-none">
@@ -93,7 +93,7 @@ const DesktopNav = ({ navLinks, currentPath }) => {
                                         <div className="flex-1 flex gap-8 relative z-10 justify-center items-start">
                                             {link.megaMenu.map((group) => (
                                                 <div key={group.title} className="flex-1 min-w-[180px] px-4">
-                                                    <h4 className="text-[11px] font-black text-gold-500 uppercase tracking-[0.5em] mb-6 border-b-2 border-gold-500/20 pb-3 text-center">
+                                                    <h4 className="text-[11px] font-black text-vive-500 uppercase tracking-[0.5em] mb-6 border-b-2 border-vive-500/20 pb-3 text-center">
                                                         {group.title}
                                                     </h4>
                                                     <div className="flex flex-col gap-3 items-center">
@@ -101,7 +101,7 @@ const DesktopNav = ({ navLinks, currentPath }) => {
                                                             <Link
                                                                 key={item.name}
                                                                 to={item.path}
-                                                                className="text-[14px] font-bold text-white hover:text-gold-500 transition-all py-1.5 block leading-tight hover:translate-x-2 transform duration-300 text-center"
+                                                                className="text-[14px] font-bold text-white hover:text-vive-500 transition-all py-1.5 block leading-tight hover:translate-x-2 transform duration-300 text-center"
                                                                 onClick={() => setActiveMenu(null)}
                                                             >
                                                                 {item.name}
@@ -118,7 +118,7 @@ const DesktopNav = ({ navLinks, currentPath }) => {
                                             <Link
                                                 key={sub.name}
                                                 to={sub.path}
-                                                className="block px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400 hover:text-gold-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
+                                                className="block px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400 hover:text-vive-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
                                                 onClick={() => setActiveMenu(null)}
                                             >
                                                 {sub.name}

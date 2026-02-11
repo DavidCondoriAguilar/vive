@@ -17,7 +17,7 @@ const FeaturedProducts = () => {
                         Selección Destacada
                     </span>
                     <h2 className="text-3xl lg:text-5xl font-display font-black text-gray-900 dark:text-dark-text leading-tight mb-6 uppercase tracking-tighter">
-                        SOLUCIONES DE <span className="text-gold-500">DESCANSO</span>
+                        SOLUCIONES DE <span className="text-vive-500">DESCANSO</span>
                     </h2>
                     <p className="text-gray-500 dark:text-dark-text-secondary max-w-xl text-lg font-medium italic">
                         "Elegidos por su balance perfecto entre confort y soporte."
@@ -56,11 +56,11 @@ const FeaturedProducts = () => {
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-start gap-4">
                                         <div className="flex-grow">
-                                            <p className="text-[10px] font-display font-black text-gold-500 uppercase tracking-[0.2em] mb-2">
+                                            <p className="text-[10px] font-display font-black text-vive-500 uppercase tracking-[0.2em] mb-2">
                                                 {product.category}
                                             </p>
                                             <Link to={`/producto/${product.id}`}>
-                                                <h3 className="text-xl lg:text-2xl font-display font-black text-gray-900 dark:text-dark-text leading-tight uppercase tracking-tight hover:text-gold-500 transition-colors">
+                                                <h3 className="text-xl lg:text-2xl font-display font-black text-gray-900 dark:text-dark-text leading-tight uppercase tracking-tight hover:text-vive-500 transition-colors">
                                                     {product.name}
                                                 </h3>
                                             </Link>
@@ -92,7 +92,7 @@ const FeaturedProducts = () => {
 
                                             <div className="flex gap-1">
                                                 {[1, 2, 3, 4, 5].map(star => (
-                                                    <div key={star} className="w-1.5 h-1.5 rounded-full bg-gold-500/30"></div>
+                                                    <div key={star} className="w-1.5 h-1.5 rounded-full bg-vive-500/30"></div>
                                                 ))}
                                             </div>
                                         </div>
@@ -117,7 +117,7 @@ const FeaturedProducts = () => {
                         to="/categorias/colchones"
                         className="group flex items-center gap-4 px-12 py-5 bg-white dark:bg-dream-surface border border-gray-100 dark:border-dark-border rounded-full hover:bg-gray-50 dark:hover:bg-dream-elevated transition-all shadow-lg shadow-black/5"
                     >
-                        <span className="text-[10px] font-display font-black tracking-[0.3em] text-gray-900 dark:text-dark-text uppercase transition-colors group-hover:text-gold-500">
+                        <span className="text-[10px] font-display font-black tracking-[0.3em] text-gray-900 dark:text-dark-text uppercase transition-colors group-hover:text-vive-500">
                             Explorar Catálogo Completo
                         </span>
                     </Link>

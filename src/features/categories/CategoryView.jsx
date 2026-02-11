@@ -111,9 +111,9 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                     <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8 animate-fade-in">
                         <div className="max-w-2xl text-left">
                             <nav className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-600 dark:text-gray-400 mb-6" aria-label="Breadcrumb">
-                                <Link to="/" className="hover:text-gold-500 transition-colors">Inicio</Link>
+                                <Link to="/" className="hover:text-vive-500 transition-colors">Inicio</Link>
                                 <span>/</span>
-                                <Link to="/catalogo" className="hover:text-gold-500 transition-colors">Catálogo</Link>
+                                <Link to="/catalogo" className="hover:text-vive-500 transition-colors">Catálogo</Link>
                                 <span>/</span>
                                 <span className="text-gray-900 dark:text-white">{categoryTitle}</span>
                             </nav>
@@ -136,7 +136,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                             <select
                                 value={activeSub}
                                 onChange={(e) => setActiveSub(e.target.value)}
-                                className="w-full bg-white dark:bg-zinc-900 border border-transparent dark:border-white/10 rounded-xl px-4 py-3 text-xs font-bold text-gray-700 dark:text-white outline-none focus:border-gold-500 transition-all"
+                                className="w-full bg-white dark:bg-zinc-900 border border-transparent dark:border-white/10 rounded-xl px-4 py-3 text-xs font-bold text-gray-700 dark:text-white outline-none focus:border-vive-500 transition-all"
                             >
                                 <option value="todos">Todas las líneas</option>
                                 {currentCategory?.subcategories?.map(sub => (
@@ -151,7 +151,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                             <select
                                 value={selectedSize}
                                 onChange={(e) => setSelectedSize(e.target.value)}
-                                className="w-full bg-white dark:bg-zinc-900 border border-transparent dark:border-white/10 rounded-xl px-4 py-3 text-xs font-bold text-gray-700 dark:text-white outline-none focus:border-gold-500 transition-all"
+                                className="w-full bg-white dark:bg-zinc-900 border border-transparent dark:border-white/10 rounded-xl px-4 py-3 text-xs font-bold text-gray-700 dark:text-white outline-none focus:border-vive-500 transition-all"
                             >
                                 {availableSizes.map(size => <option key={size} value={size}>{size === 'todos' ? 'Todas las medidas' : size}</option>)}
                             </select>
@@ -165,7 +165,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                                 <select
                                     value={selectedThickness}
                                     onChange={(e) => setSelectedThickness(e.target.value)}
-                                    className="w-full bg-white dark:bg-zinc-900 border border-transparent dark:border-white/10 rounded-xl px-4 py-3 text-xs font-bold text-gray-700 dark:text-white outline-none focus:border-gold-500 transition-all"
+                                    className="w-full bg-white dark:bg-zinc-900 border border-transparent dark:border-white/10 rounded-xl px-4 py-3 text-xs font-bold text-gray-700 dark:text-white outline-none focus:border-vive-500 transition-all"
                                 >
                                     {availableThickness.map(t => <option key={t} value={t}>{t === 'todos' ? 'Todos los espesores' : t}</option>)}
                                 </select>
@@ -177,7 +177,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                     {products.length > 0 ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 animate-fade-in-up">
                             {products.map((product) => (
-                                <div key={product.id} className="group bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
+                                <div key={product.id} className="group bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-vive-500/10 hover:-translate-y-2 h-full flex flex-col">
                                     {/* Product Image - MISMAS MEDIDAS EXACTAS QUE EL CARRUSEL */}
                                     <div className="relative overflow-hidden bg-white dark:bg-dream-dark-surface p-6" style={{ aspectRatio: '16/9' }}>
                                         <Link to={`/producto/${product.id}`} className="block h-full w-full">
@@ -202,9 +202,9 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                                     </div>
                                     <div className="p-6 flex flex-col flex-1 bg-gray-50/50 dark:bg-zinc-900/50">
                                         <div className="mb-4">
-                                            <p className="text-[10px] font-black text-gold-500 uppercase tracking-widest mb-2">{getPrettySubcategoryName(product.subcategory) || product.category}</p>
+                                            <p className="text-[10px] font-black text-vive-500 uppercase tracking-widest mb-2">{getPrettySubcategoryName(product.subcategory) || product.category}</p>
                                             <Link to={`/producto/${product.id}`}>
-                                                <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-gold-500 transition-colors">{product.name}</h3>
+                                                <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-vive-500 transition-colors">{product.name}</h3>
                                             </Link>
                                         </div>
 
@@ -218,7 +218,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                                             <div className="space-y-2">
                                                 {product.features && product.features.slice(0, 3).map((feature, idx) => (
                                                     <div key={idx} className="flex items-center gap-2">
-                                                        <span className="w-1.5 h-1.5 bg-gold-500 rounded-full flex-shrink-0"></span>
+                                                        <span className="w-1.5 h-1.5 bg-vive-500 rounded-full flex-shrink-0"></span>
                                                         <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">{feature}</span>
                                                     </div>
                                                 ))}
@@ -261,7 +261,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                     ) : (
                         <div className="py-20 text-center animate-fade-in">
                             <p className="text-gray-400 font-display text-xl uppercase tracking-widest">Lo sentimos, no encontramos productos en esta categoría aún.</p>
-                            <Link to="/" className="mt-8 inline-block text-gold-500 font-black uppercase text-xs tracking-[0.3em] border-b-2 border-gold-500 pb-2">Volver al Inicio</Link>
+                            <Link to="/" className="mt-8 inline-block text-vive-500 font-black uppercase text-xs tracking-[0.3em] border-b-2 border-vive-500 pb-2">Volver al Inicio</Link>
                         </div>
                     )}
                 </div>

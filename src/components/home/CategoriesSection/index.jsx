@@ -75,7 +75,7 @@ const CategoriesSection = () => {
         <div className="text-center mt-12">
           <Link
             to="/catalogo"
-            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-white px-8 py-3 rounded-lg font-bold transition-all hover:scale-105"
+            className="inline-flex items-center gap-2 bg-vive-500 hover:bg-vive-600 text-white px-8 py-3 rounded-lg font-bold transition-all hover:scale-105"
           >
             Ver Catálogo Completo
           </Link>

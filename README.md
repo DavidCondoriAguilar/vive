@@ -1,4 +1,4 @@
-# 🚀 Sueño Dorado Web - CI/CD Ready
+# 🚀 Vive Web - CI/CD Ready
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)]()
 [![Deployment](https://img.shields.io/badge/deployment-automated-blue)]()
@@ -55,7 +55,7 @@
 ## 📁 ESTRUCTURA DEL PROYECTO
 
 ```
-sueno-dorado-web/
+vive-web/
 │
 ├── .github/
 │   └── workflows/
@@ -146,8 +146,8 @@ sueno-dorado-web/
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/TU_USUARIO/sueno-dorado-web.git
-cd sueno-dorado-web
+git clone https://github.com/TU_USUARIO/vive-web.git
+cd vive-web
 
 # 2. Instalar dependencias
 npm install
@@ -390,15 +390,15 @@ npm run build
 
 ## 📞 Soporte
 
-- 📧 **Email**: ventas@suenodorado.pe
+- 📧 **Email**: ventas@vive.pe
 - 📱 **WhatsApp**: +51 989 223 448
-- 🌐 **Sitio Web**: [suenodorado.pe](https://suenodorado.pe)
+- 🌐 **Sitio Web**: [vive.pe](https://vive.pe)
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto es privado y confidencial. © 2026 Sueño Dorado. Todos los derechos reservados.
+Este proyecto es privado y confidencial. © 2026 Vive. Todos los derechos reservados.
 
 ---
 
@@ -411,6 +411,6 @@ Este proyecto es privado y confidencial. © 2026 Sueño Dorado. Todos los derech
 
 ---
 
-**Desarrollado con ❤️ por el equipo de Sueño Dorado**
+**Desarrollado con ❤️ por el equipo de Vive**
 
 🚀 **Status**: Production Ready | ✅ **CI/CD**: Enabled | 🔐 **Security**: Configured

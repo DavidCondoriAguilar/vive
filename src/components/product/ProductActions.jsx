@@ -24,7 +24,7 @@ const ProductActions = ({
             <div className="flex items-center justify-between p-5 bg-gray-50 dark:bg-zinc-900 rounded-[2rem] border border-gray-100 dark:border-white/5 transition-all hover:bg-white dark:hover:bg-zinc-800">
                 <div className="space-y-1">
                     <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] block">Cantidad</span>
-                    <p className="text-[9px] text-gold-500 font-bold uppercase tracking-widest leading-none">Ajustar pedido</p>
+                    <p className="text-[9px] text-vive-500 font-bold uppercase tracking-widest leading-none">Ajustar pedido</p>
                 </div>
 
                 <div className="flex items-center gap-6 bg-white dark:bg-black rounded-2xl border border-gray-100 dark:border-white/10 p-1.5 shadow-sm">
@@ -97,7 +97,7 @@ const ProductActions = ({
 
             <button
                 onClick={onSpecsClick}
-                className="w-full py-6 text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 hover:text-gold-500 transition-colors border-t border-gray-100 dark:border-white/5 group flex items-center justify-center gap-3"
+                className="w-full py-6 text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 hover:text-vive-500 transition-colors border-t border-gray-100 dark:border-white/5 group flex items-center justify-center gap-3"
             >
                 Ficha Técnica del Material
                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

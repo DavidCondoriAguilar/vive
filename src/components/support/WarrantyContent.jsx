@@ -3,14 +3,14 @@ import React from 'react';
 const WarrantyContent = () => (
     <div className="space-y-6 text-sm max-h-[65vh] overflow-y-auto pr-2 custom-scrollbar text-left">
         <section>
-            <h4 className="font-bold text-gold-600 dark:text-gold-500 uppercase tracking-widest text-[10px] mb-3 border-b border-gold-500/20 pb-1">1. Recomendaciones para el Buen Uso</h4>
+            <h4 className="font-bold text-vive-600 dark:text-vive-500 uppercase tracking-widest text-[10px] mb-3 border-b border-vive-500/20 pb-1">1. Recomendaciones para el Buen Uso</h4>
             <div className="space-y-4 text-gray-600 dark:text-gray-400">
                 <p>Para mantener las propiedades de tu colchón por más tiempo, sigue estos consejos:</p>
                 <ul className="space-y-3">
-                    <li className="flex gap-3"><span className="text-gold-500 font-bold">•</span> <strong>Soporte adecuado:</strong> Utiliza el colchón siempre sobre una superficie totalmente plana y de las mismas dimensiones del colchón.</li>
-                    <li className="flex gap-3"><span className="text-gold-500 font-bold">•</span> <strong>Base de madera:</strong> Si usas tarimas, los travesaños deben tener al menos 10 cm de ancho y una separación máxima de 7 cm.</li>
-                    <li className="flex gap-3"><span className="text-gold-500 font-bold">•</span> <strong>Ventilación inicial:</strong> Retira el empaque y deja ventilar al menos dos horas antes del primer uso.</li>
-                    <li className="flex gap-3"><span className="text-gold-500 font-bold">•</span> <strong>Mantenimiento preventivo:</strong> Voltea y gira el colchón (de pies a cabeza) cada tres meses.</li>
+                    <li className="flex gap-3"><span className="text-vive-500 font-bold">•</span> <strong>Soporte adecuado:</strong> Utiliza el colchón siempre sobre una superficie totalmente plana y de las mismas dimensiones del colchón.</li>
+                    <li className="flex gap-3"><span className="text-vive-500 font-bold">•</span> <strong>Base de madera:</strong> Si usas tarimas, los travesaños deben tener al menos 10 cm de ancho y una separación máxima de 7 cm.</li>
+                    <li className="flex gap-3"><span className="text-vive-500 font-bold">•</span> <strong>Ventilación inicial:</strong> Retira el empaque y deja ventilar al menos dos horas antes del primer uso.</li>
+                    <li className="flex gap-3"><span className="text-vive-500 font-bold">•</span> <strong>Mantenimiento preventivo:</strong> Voltea y gira el colchón (de pies a cabeza) cada tres meses.</li>
                 </ul>
             </div>
         </section>
@@ -27,7 +27,7 @@ const WarrantyContent = () => (
         </section>
 
         <section>
-            <h4 className="font-bold text-gold-600 dark:text-gold-500 uppercase tracking-widest text-[10px] mb-3 border-b border-gold-500/20 pb-1">2. Condiciones de la Garantía</h4>
+            <h4 className="font-bold text-vive-600 dark:text-vive-500 uppercase tracking-widest text-[10px] mb-3 border-b border-vive-500/20 pb-1">2. Condiciones de la Garantía</h4>
             <ul className="space-y-2 text-gray-600 dark:text-gray-400">
                 <li className="flex gap-2"><strong>Validez:</strong> Condicionada al cumplimiento estricto de las recomendaciones mencionadas.</li>
                 <li className="flex gap-2"><strong>Cobertura:</strong> Cubre la durabilidad de la estructura interna del colchón.</li>

@@ -85,8 +85,8 @@ const UniversalProductFilters = ({
       {!compact && (
         <div className="flex items-center justify-between mb-8 px-2">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-gold-500/10 flex items-center justify-center">
-              <FaFilter className="w-3.5 h-3.5 text-gold-500" />
+            <div className="w-8 h-8 rounded-xl bg-vive-500/10 flex items-center justify-center">
+              <FaFilter className="w-3.5 h-3.5 text-vive-500" />
             </div>
             <div>
               <span className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.3em] block">Sinfonía de Confort</span>
@@ -94,9 +94,9 @@ const UniversalProductFilters = ({
             </div>
           </div>
           {activeFiltersCount > 0 && (
-            <div className="flex items-center gap-2 px-4 py-2 bg-gold-500/10 border border-gold-500/20 rounded-full">
-              <div className="w-2 h-2 rounded-full bg-gold-500 animate-pulse" />
-              <span className="text-[10px] font-black text-gold-600 dark:text-gold-400 uppercase tracking-widest">
+            <div className="flex items-center gap-2 px-4 py-2 bg-vive-500/10 border border-vive-500/20 rounded-full">
+              <div className="w-2 h-2 rounded-full bg-vive-500 animate-pulse" />
+              <span className="text-[10px] font-black text-vive-600 dark:text-vive-400 uppercase tracking-widest">
                 {activeFiltersCount} Filtros Activos
               </span>
             </div>
@@ -161,11 +161,11 @@ const UniversalProductFilters = ({
           {showCategory && selectedCategory !== 'todos' && (
             <div className="flex items-center gap-2 px-4 py-1.5 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full text-[10px] font-black uppercase tracking-widest transition-all hover:scale-105">
               {categories.find(c => c.id === selectedCategory)?.name || selectedCategory}
-              <button onClick={() => onCategoryChange('todos')} className="hover:text-gold-500 transition-colors">×</button>
+              <button onClick={() => onCategoryChange('todos')} className="hover:text-vive-500 transition-colors">×</button>
             </div>
           )}
           {selectedSubcategory !== 'todos' && (
-            <div className="flex items-center gap-2 px-4 py-1.5 bg-gold-500 text-black rounded-full text-[10px] font-black uppercase tracking-widest transition-all hover:scale-105">
+            <div className="flex items-center gap-2 px-4 py-1.5 bg-vive-500 text-black rounded-full text-[10px] font-black uppercase tracking-widest transition-all hover:scale-105">
               {getPrettySubcategoryName(selectedSubcategory)}
               <button onClick={() => onSubcategoryChange('todos')} className="hover:text-red-600 transition-colors">×</button>
             </div>

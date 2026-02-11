@@ -31,7 +31,7 @@ const InfoModal = ({ isOpen, onClose, content }) => {
 
                 <div className="flex flex-col md:flex-row h-full">
                     {/* Left Icon Accent */}
-                    <div className="w-full md:w-32 bg-gold-500/5 dark:bg-white/[0.02] flex items-center justify-center p-8 border-b md:border-b-0 md:border-r border-gray-100 dark:border-white/5">
+                    <div className="w-full md:w-32 bg-vive-500/5 dark:bg-white/[0.02] flex items-center justify-center p-8 border-b md:border-b-0 md:border-r border-gray-100 dark:border-white/5">
                         <div className="scale-[1.5]">
                             {content.icon}
                         </div>
@@ -40,7 +40,7 @@ const InfoModal = ({ isOpen, onClose, content }) => {
                     {/* Main Content */}
                     <div className="flex-1 p-8 md:p-12">
                         <div className="mb-8">
-                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-gold-500 mb-2 block">Sueño Dorado Oficial</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-vive-500 mb-2 block">Sueño Dorado Oficial</span>
                             <h2 className="text-3xl md:text-4xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none">
                                 {content.title}
                             </h2>
@@ -55,7 +55,7 @@ const InfoModal = ({ isOpen, onClose, content }) => {
                             <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Compromiso Industrial 2026</p>
                             <button
                                 onClick={onClose}
-                                className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-widest hover:text-gold-500 transition-colors"
+                                className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-widest hover:text-vive-500 transition-colors"
                             >
                                 Entendido
                             </button>

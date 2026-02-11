@@ -96,7 +96,7 @@ const ChatWindow = ({
                 max-h-[75vh] md:max-h-[70vh] overflow-hidden chatbot-window-premium">
 
       {/* Header */}
-      <div className="bg-gold-500 text-white px-4 py-3 rounded-t-2xl flex items-center justify-between chatbot-header-premium">
+      <div className="bg-vive-500 text-white px-4 py-3 rounded-t-2xl flex items-center justify-between chatbot-header-premium">
         <div className="flex items-center gap-3">
           <div>
             <h3 className="font-semibold text-white">{CHATBOT_CONFIG.name}</h3>
@@ -153,7 +153,7 @@ const ChatWindow = ({
                   key={index}
                   onClick={() => onSendMessage(keyword.value)}
                   className="whitespace-nowrap px-4 py-1.5 bg-gray-50 dark:bg-gray-700/50 
-                           hover:bg-gold-500 hover:text-white dark:hover:bg-gold-500
+                           hover:bg-vive-500 hover:text-white dark:hover:bg-vive-500
                            text-xs font-semibold text-gray-600 dark:text-gray-300
                            border border-gray-200 dark:border-gray-600 
                            rounded-full transition-all duration-300 transform active:scale-95
@@ -175,7 +175,7 @@ const ChatWindow = ({
                 placeholder="Escribe tu mensaje..."
                 className="flex-1 px-3 py-2 bg-gray-100 dark:bg-gray-700 
                          border border-gray-300 dark:border-gray-600 rounded-lg
-                         text-sm focus:outline-none focus:ring-2 focus:ring-gold-500/50
+                         text-sm focus:outline-none focus:ring-2 focus:ring-vive-500/50
                          placeholder-gray-500 dark:placeholder-gray-400"
                 maxLength={500}
               />
@@ -183,10 +183,10 @@ const ChatWindow = ({
               <button
                 type="submit"
                 disabled={!inputValue.trim()}
-                className="w-10 h-10 bg-gold-500 hover:bg-gold-600 text-white 
+                className="w-10 h-10 bg-vive-500 hover:bg-vive-600 text-white 
                          rounded-lg flex items-center justify-center transition-colors
                          disabled:opacity-50 disabled:cursor-not-allowed
-                         focus:outline-none focus:ring-2 focus:ring-gold-500/50"
+                         focus:outline-none focus:ring-2 focus:ring-vive-500/50"
                 title="Enviar mensaje"
               >
                 <FaPaperPlane className="w-4 h-4" />

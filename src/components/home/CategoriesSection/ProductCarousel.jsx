@@ -34,7 +34,7 @@ const ProductCarousel = ({
           <button
             onClick={onPrevSlide}
             disabled={!canGoPrev}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 text-gray-400 dark:text-gray-500 hover:text-gold-500 transition-all duration-300 ${!canGoPrev
+            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 text-gray-400 dark:text-gray-500 hover:text-vive-500 transition-all duration-300 ${!canGoPrev
               ? 'opacity-20 cursor-not-allowed'
               : 'hover:scale-125'
               }`}
@@ -46,7 +46,7 @@ const ProductCarousel = ({
           <button
             onClick={onNextSlide}
             disabled={!canGoNext}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 text-gray-400 dark:text-gray-500 hover:text-gold-500 transition-all duration-300 ${!canGoNext
+            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 text-gray-400 dark:text-gray-500 hover:text-vive-500 transition-all duration-300 ${!canGoNext
               ? 'opacity-20 cursor-not-allowed'
               : 'hover:scale-125'
               }`}
@@ -98,7 +98,7 @@ const ProductCarousel = ({
                 console.log('Navigate to slide:', targetSlide);
               }}
               className={`w-2 h-2 rounded-full transition-all ${Math.floor(currentSlide / itemsPerView) === index
-                ? 'bg-gold-500 w-8'
+                ? 'bg-vive-500 w-8'
                 : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               aria-label={`Ir a slide ${index + 1}`}

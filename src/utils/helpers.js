@@ -3,9 +3,9 @@
  */
 export const createSEOMetaTags = (pageData) => {
   const defaultMeta = {
-    title: "Sueño Dorado - Fábrica de Colchones Premium en Lima | Envío Gratis",
-    description: "Fabrica peruana de colchones premium. Colchones pocket, viscoelásticos y spring. Envío gratis en Lima.",
-    canonical: "https://suenodorado.pe/"
+    title: "Vive - Tecnología Avanzada en Descanso | Fábrica Premium",
+    description: "Lideramos la ingeniería del descanso en Perú. Sistemas de alta permanencia y confort anatómico con envío gratis en Lima.",
+    canonical: "https://vive.pe/"
   };
 
   return { ...defaultMeta, ...pageData };

@@ -63,7 +63,7 @@ const MainLayout = ({ children }) => {
     };
 
     return (
-        <div className="flex flex-col min-h-screen bg-white dark:bg-black transition-colors duration-700 font-sans selection:bg-gold-500 selection:text-white">
+        <div className="flex flex-col min-h-screen bg-white dark:bg-black transition-colors duration-700 font-sans selection:bg-vive-500 selection:text-white">
             <PromoBar />
             <Navbar />
             <Breadcrumbs />

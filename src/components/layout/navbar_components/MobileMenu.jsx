@@ -66,7 +66,7 @@ const MobileMenu = ({ isOpen, onClose, navLinks, waLink }) => {
                                             onClick={() => toggleSubMenu(link.name)}
                                             className="flex items-center w-full py-4 text-left group"
                                         >
-                                            <div className="w-10 h-10 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-400 flex items-center justify-center transition-colors group-hover:text-gold-500">
+                                            <div className="w-10 h-10 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-400 flex items-center justify-center transition-colors group-hover:text-vive-500">
                                                 {link.icon}
                                             </div>
                                             <span className="flex-1 ml-4 text-sm font-black text-gray-900 dark:text-white uppercase tracking-widest">
@@ -82,7 +82,7 @@ const MobileMenu = ({ isOpen, onClose, navLinks, waLink }) => {
                                                     // Mega Menu Layout
                                                     link.megaMenu.map((group) => (
                                                         <div key={group.title} className="space-y-3">
-                                                            <h5 className="text-[10px] font-black text-gold-500 uppercase tracking-[0.3em] border-l-2 border-gold-500/30 pl-3">
+                                                            <h5 className="text-[10px] font-black text-vive-500 uppercase tracking-[0.3em] border-l-2 border-vive-500/30 pl-3">
                                                                 {group.title}
                                                             </h5>
                                                             <div className="space-y-3 pl-3">
@@ -90,7 +90,7 @@ const MobileMenu = ({ isOpen, onClose, navLinks, waLink }) => {
                                                                     <Link
                                                                         key={item.name}
                                                                         to={item.path}
-                                                                        className="block text-[11px] font-bold text-gray-500 dark:text-gray-400 hover:text-gold-500 transition-colors py-1"
+                                                                        className="block text-[11px] font-bold text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors py-1"
                                                                         onClick={onClose}
                                                                     >
                                                                         {item.name}
@@ -105,7 +105,7 @@ const MobileMenu = ({ isOpen, onClose, navLinks, waLink }) => {
                                                         <Link
                                                             key={sub.name}
                                                             to={sub.path}
-                                                            className="block text-[10px] font-black text-gray-400 hover:text-gold-500 uppercase tracking-[0.2em] transition-colors"
+                                                            className="block text-[10px] font-black text-gray-400 hover:text-vive-500 uppercase tracking-[0.2em] transition-colors"
                                                             onClick={onClose}
                                                         >
                                                             {sub.name}
@@ -121,14 +121,14 @@ const MobileMenu = ({ isOpen, onClose, navLinks, waLink }) => {
                                         className="flex items-center py-4 group"
                                         onClick={onClose}
                                     >
-                                        <div className="w-10 h-10 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-400 flex items-center justify-center transition-colors group-hover:text-gold-500">
+                                        <div className="w-10 h-10 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-400 flex items-center justify-center transition-colors group-hover:text-vive-500">
                                             {link.icon}
                                         </div>
                                         <span className="ml-4 text-sm font-black text-gray-900 dark:text-white uppercase tracking-widest">
                                             {link.name}
                                         </span>
                                         {link.badge && (
-                                            <span className="ml-auto text-[8px] font-black px-2 py-1 rounded-full bg-gold-500 text-white uppercase">
+                                            <span className="ml-auto text-[8px] font-black px-2 py-1 rounded-full bg-vive-500 text-white uppercase">
                                                 {link.badge}
                                             </span>
                                         )}

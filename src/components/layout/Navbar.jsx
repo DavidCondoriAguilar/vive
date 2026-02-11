@@ -120,7 +120,7 @@ const Navbar = () => {
         },
     ];
 
-    const waLink = getWhatsAppLink("Hola Sueño Dorado, me gustaría recibir asesoría para mi próximo colchón.");
+    const waLink = getWhatsAppLink("Hola Vive, me gustaría recibir asesoría estratégica para mi próximo sistema de descanso.");
 
     return (
         <header className="fixed top-0 left-0 w-full z-[50] transition-all duration-500">
@@ -180,7 +180,7 @@ const Navbar = () => {
                             {/* Search Icon - Tablet/Laptop */}
                             <div className="hidden lg:block xl:hidden">
                                 <button
-                                    className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-gold-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300"
+                                    className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-vive-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300"
                                     aria-label="Buscar productos"
                                 >
                                     <MdOutlineSearch className="w-4 h-4" />

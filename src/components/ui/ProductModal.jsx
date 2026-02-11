@@ -77,7 +77,7 @@ const ProductModal = ({ product, isOpen, onClose, selectedSize = null }) => {
 
               {/* Product Badge */}
               {product.badge && (
-                <div className="absolute top-4 left-4 bg-gold-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                <div className="absolute top-4 left-4 bg-vive-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                   {product.badge}
                 </div>
               )}
@@ -93,13 +93,13 @@ const ProductModal = ({ product, isOpen, onClose, selectedSize = null }) => {
                   {product.name}
                 </h2>
                 {product.category && (
-                  <p className="text-gold-500 font-medium">{product.category}</p>
+                  <p className="text-vive-500 font-medium">{product.category}</p>
                 )}
               </div>
 
               {/* Price */}
               <div className="flex items-baseline gap-3">
-                <span className="text-3xl font-bold text-gold-600">
+                <span className="text-3xl font-bold text-vive-600">
                   {formatPrice(selectedSize ? product.sizes?.[selectedSize] || product.price : product.price)}
                 </span>
                 {selectedSize && (
@@ -130,7 +130,7 @@ const ProductModal = ({ product, isOpen, onClose, selectedSize = null }) => {
                   <ul className="space-y-2">
                     {product.features.map((feature, index) => (
                       <li key={index} className="flex items-start gap-2">
-                        <span className="text-gold-500 mt-1">•</span>
+                        <span className="text-vive-500 mt-1">•</span>
                         <span className="text-gray-600 dark:text-gray-300">{feature}</span>
                       </li>
                     ))}
@@ -150,12 +150,12 @@ const ProductModal = ({ product, isOpen, onClose, selectedSize = null }) => {
                         key={size}
                         className={`p-3 rounded-lg border-2 text-center transition-all ${
                           size === selectedSize
-                            ? 'border-gold-500 bg-gold-50 dark:bg-gold-900/20'
+                            ? 'border-vive-500 bg-vive-50 dark:bg-vive-900/20'
                             : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
                         }`}
                       >
                         <div className="font-medium text-gray-900 dark:text-white">{size}</div>
-                        <div className="text-sm text-gold-600 font-bold">{formatPrice(price)}</div>
+                        <div className="text-sm text-vive-600 font-bold">{formatPrice(price)}</div>
                       </div>
                     ))}
                   </div>
@@ -183,11 +183,11 @@ const ProductModal = ({ product, isOpen, onClose, selectedSize = null }) => {
 
               {/* Warranty */}
               {product.warranty && (
-                <div className="bg-gold-50 dark:bg-gold-900/20 p-4 rounded-lg">
-                  <h4 className="font-semibold text-gold-700 dark:text-gold-400 mb-1">
+                <div className="bg-vive-50 dark:bg-vive-900/20 p-4 rounded-lg">
+                  <h4 className="font-semibold text-vive-700 dark:text-vive-400 mb-1">
                     Garantía
                   </h4>
-                  <p className="text-gold-600 dark:text-gold-300">{product.warranty}</p>
+                  <p className="text-vive-600 dark:text-vive-300">{product.warranty}</p>
                 </div>
               )}
 
@@ -195,7 +195,7 @@ const ProductModal = ({ product, isOpen, onClose, selectedSize = null }) => {
               <div className="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-700">
                 <button
                   onClick={handleAddToCart}
-                  className="w-full bg-gold-500 hover:bg-gold-600 text-white py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-vive-500 hover:bg-vive-600 text-white py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
                 >
                   <FaShoppingCart className="w-5 h-5" />
                   Agregar al Carrito

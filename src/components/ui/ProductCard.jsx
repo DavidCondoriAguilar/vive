@@ -16,7 +16,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
+    <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-vive-500/10 hover:-translate-y-2 h-full flex flex-col">
       {/* Product Image - FORCE WHITE TO MATCH IMAGE BACKGROUND */}
       <div className="relative overflow-hidden bg-white p-6" style={{ aspectRatio: '16/9' }}>
         <Link
@@ -47,11 +47,11 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
       {/* Product Info - CURRENT COLORS FROM TOP MOVED HERE */}
       <div className="p-5 flex flex-col flex-1 bg-gray-50/80 dark:bg-dream-dark-surface/60">
         <div className="mb-3">
-          <span className="text-gold-500 text-[9px] font-bold uppercase tracking-widest">
+          <span className="text-vive-500 text-[9px] font-bold uppercase tracking-widest">
             {getPrettySubcategoryName(product.subcategory)}
           </span>
           <Link to={`/producto/${product.id}`}>
-            <h3 className="text-base font-bold text-gray-900 dark:text-white mt-1 mb-2 leading-tight hover:text-gold-500 transition-colors">
+            <h3 className="text-base font-bold text-gray-900 dark:text-white mt-1 mb-2 leading-tight hover:text-vive-500 transition-colors">
               {product.name}
             </h3>
           </Link>

@@ -9,17 +9,17 @@ export const FOOTER_CONTENT = {
     // SECCIÓN CORPORATIVO
     'nosotros-fabrica': {
         title: 'Nuestra Fábrica',
-        icon: <LuFactory className="text-gold-500 w-8 h-8" />,
+        icon: <LuFactory className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-6 text-gray-600 dark:text-gray-400">
                 <p className="font-bold text-gray-900 dark:text-white">Corazón Industrial del Descanso.</p>
                 <p>Nuestra planta principal ubicada en **Puente Piedra, Lima**, cuenta con tecnología de vanguardia para el soplado de espuma de alta densidad y el ensamblaje de paneles de resortes ortopédicos.</p>
                 <div className="grid grid-cols-2 gap-4 mt-4">
-                    <div className="border-l-2 border-gold-500 pl-4 py-2">
+                    <div className="border-l-2 border-vive-500 pl-4 py-2">
                         <h4 className="font-black text-gray-900 dark:text-white text-xs uppercase">Capacidad</h4>
                         <p className="text-[10px]">+5,000 colchones mensuales.</p>
                     </div>
-                    <div className="border-l-2 border-gold-500 pl-4 py-2">
+                    <div className="border-l-2 border-vive-500 pl-4 py-2">
                         <h4 className="font-black text-gray-900 dark:text-white text-xs uppercase">Tecnología</h4>
                         <p className="text-[10px]">Cámaras de curado controlado.</p>
                     </div>
@@ -30,7 +30,7 @@ export const FOOTER_CONTENT = {
     },
     'politica-calidad': {
         title: 'Gestión de la Calidad',
-        icon: <LuAward className="text-gold-500 w-8 h-8" />,
+        icon: <LuAward className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-6 text-gray-600 dark:text-gray-400">
                 <p className="font-bold text-gray-900 dark:text-white">Excelencia en cada fibra.</p>
@@ -70,11 +70,11 @@ export const FOOTER_CONTENT = {
     },
     'blog-info': {
         title: 'Blog del Sueño',
-        icon: <LuNewspaper className="text-gold-500 w-8 h-8" />,
+        icon: <LuNewspaper className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-6 text-gray-600 dark:text-gray-400">
                 <p>Próximamente compartiremos artículos escritos por especialistas en salud y postura.</p>
-                <div className="bg-gold-500/5 p-4 rounded-xl border border-gold-500/10">
+                <div className="bg-vive-500/5 p-4 rounded-xl border border-vive-500/10">
                     <h4 className="font-bold text-gray-900 dark:text-white text-sm mb-2">Temas que cubriremos:</h4>
                     <ul className="text-xs space-y-1">
                         <li>• Cómo elegir la densidad ideal según tu peso.</li>
@@ -89,21 +89,21 @@ export const FOOTER_CONTENT = {
     // SECCIÓN TIENDA Y AYUDA
     'rastreo-pedido': {
         title: 'Rastrea tu pedido',
-        icon: <LuMapPin className="text-gold-500 w-8 h-8" />,
+        icon: <LuMapPin className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-6 text-gray-600 dark:text-gray-400">
                 <p>Nuestra logística es directa y personalizada. Para saber el estado de tu entrega, por favor ten a la mano tu **número de pedido** o DNI.</p>
                 <p>Los despachos en Lima Metropolitana se realizan en un rango de 24 a 72 horas hábiles.</p>
                 <div className="bg-black text-white p-6 rounded-2xl flex items-center justify-between">
                     <div className="text-xs font-bold uppercase tracking-widest">Estado por WhatsApp</div>
-                    <LuTruck className="text-gold-500 animate-pulse text-2xl" />
+                    <LuTruck className="text-vive-500 animate-pulse text-2xl" />
                 </div>
             </div>
         )
     },
     'politicas-despacho': {
         title: 'Políticas de Despacho',
-        icon: <LuTruck className="text-gold-500 w-8 h-8" />,
+        icon: <LuTruck className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-6 text-gray-600 dark:text-gray-400">
                 <p className="font-bold">Zonas y Tiempos:</p>
@@ -117,7 +117,7 @@ export const FOOTER_CONTENT = {
     },
     'faq': {
         title: 'Preguntas Frecuentes',
-        icon: <LuCircleHelp className="text-gold-500 w-8 h-8" />,
+        icon: <LuCircleHelp className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-4">
                 {[
@@ -135,7 +135,7 @@ export const FOOTER_CONTENT = {
     },
     'cartilla-usuario': {
         title: 'Cartilla de Usuario',
-        icon: <LuPackageCheck className="text-gold-500 w-8 h-8" />,
+        icon: <LuPackageCheck className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-6 text-gray-600 dark:text-gray-400">
                 <p className="font-bold uppercase text-[10px] tracking-widest">Lo que debes saber:</p>
@@ -148,11 +148,11 @@ export const FOOTER_CONTENT = {
     // SECCIÓN USUARIOS / LEGALES
     'garantia': {
         title: 'Garantía de Fábrica',
-        icon: <LuShieldCheck className="text-gold-500 w-8 h-8" />,
+        icon: <LuShieldCheck className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-6 text-gray-600 dark:text-gray-400">
                 <p>Nuestra garantía cubre cualquier falla estructural de materiales o mano de obra bajo condiciones de uso normal.</p>
-                <div className="bg-gold-500 text-black p-4 rounded-lg font-black text-center text-xs uppercase">
+                <div className="bg-vive-500 text-black p-4 rounded-lg font-black text-center text-xs uppercase">
                     Validez según línea de producto
                 </div>
                 <p className="text-[10px]">Para hacerla efectiva, debe conservar su comprobante de pago y las etiquetas del producto.</p>
@@ -161,7 +161,7 @@ export const FOOTER_CONTENT = {
     },
     'distribuidores-b2b': {
         title: 'Distribuidores B2B',
-        icon: <LuUserPlus className="text-gold-500 w-8 h-8" />,
+        icon: <LuUserPlus className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-6 text-gray-600 dark:text-gray-400">
                 <p>Únete a nuestra red nacional de socios comerciales. Ofrecemos precios especiales para tiendas de departamentos, hoteles y mueblerías.</p>
@@ -178,7 +178,7 @@ export const FOOTER_CONTENT = {
         icon: <LuScrollText className="text-gray-500 w-8 h-8" />,
         content: (
             <div className="text-[11px] space-y-4 text-gray-500 leading-relaxed overflow-y-auto max-h-[400px]">
-                <p>Bienvenido a Sueño Dorado. Todos nuestros productos se fabrican bajo demanda o stock disponible.</p>
+                <p>Bienvenido a Vive. Todos nuestros productos se fabrican bajo demanda o stock disponible.</p>
                 <p>**Cancelaciones**: Solo se aceptan antes de que el producto salga de almacén.</p>
                 <p>**Derecho de Retracto**: En colchones, al ser productos de uso íntimo y personal, no aplica el retracto si el empaque termosellado ha sido abierto, por estrictas normas de bioseguridad.</p>
             </div>
@@ -186,7 +186,7 @@ export const FOOTER_CONTENT = {
     },
     'privacidad': {
         title: 'Privacidad de Datos',
-        icon: <LuLock className="text-gold-500 w-8 h-8" />,
+        icon: <LuLock className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-4 text-gray-600 dark:text-gray-400">
                 <p>Tus datos registrados están protegidos en nuestra base de datos automatizada. Se utilizan únicamente para gestión de pedidos, logística y ofertas exclusivas de la fábrica.</p>
@@ -196,21 +196,21 @@ export const FOOTER_CONTENT = {
     },
     'guia-cuidado': {
         title: 'Manual de Cuidado',
-        icon: <LuBookOpen className="text-gold-500 w-8 h-8" />,
+        icon: <LuBookOpen className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-4 text-gray-600 dark:text-gray-400">
                 <p className="font-bold underline">Checklist de Cuidado:</p>
                 <ul className="space-y-4">
                     <li className="flex gap-3">
-                        <span className="bg-gold-500 text-black font-bold h-5 w-5 rounded-full flex items-center justify-center text-[10px]">1</span>
+                        <span className="bg-vive-500 text-black font-bold h-5 w-5 rounded-full flex items-center justify-center text-[10px]">1</span>
                         <p className="text-xs">**Ambiente seco**: Evita la humedad excesiva en la habitación.</p>
                     </li>
                     <li className="flex gap-3">
-                        <span className="bg-gold-500 text-black font-bold h-5 w-5 rounded-full flex items-center justify-center text-[10px]">2</span>
+                        <span className="bg-vive-500 text-black font-bold h-5 w-5 rounded-full flex items-center justify-center text-[10px]">2</span>
                         <p className="text-xs">**Aseo**: Aspira el colchón superficialmente una vez al mes.</p>
                     </li>
                     <li className="flex gap-3">
-                        <span className="bg-gold-500 text-black font-bold h-5 w-5 rounded-full flex items-center justify-center text-[10px]">3</span>
+                        <span className="bg-vive-500 text-black font-bold h-5 w-5 rounded-full flex items-center justify-center text-[10px]">3</span>
                         <p className="text-xs">**Bases**: No uses tablas húmedas o con clavos expuestos.</p>
                     </li>
                 </ul>

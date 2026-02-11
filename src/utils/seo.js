@@ -16,7 +16,7 @@ export const getProductSchema = (product) => {
     '@type': 'Product',
     '@id': productUrl,
     'name': product.name,
-    'description': product.description || `${product.name} - Producto de Sueño Dorado`,
+    'description': product.description || `${product.name} - Sistema de descanso por Vive`,
     'image': product.image,
     'brand': {
       '@type': 'Brand',
@@ -54,11 +54,11 @@ export const getOrganizationSchema = () => {
     'name': import.meta.env.VITE_BRAND_NAME,
     'url': import.meta.env.VITE_PRODUCTION_URL,
     'logo': `${import.meta.env.VITE_PRODUCTION_URL}/logo.svg`,
-    'description': 'Fábrica peruana de colchones premium. Colchones pocket, viscoelásticos y spring. Envío gratis en Lima.',
+    'description': 'Líder en tecnología de descanso en Perú. Sistemas de alta permanencia y confort anatómico de clase mundial.',
     'sameAs': [
-      'https://www.facebook.com/suenodorado',
-      'https://www.instagram.com/suenodorado',
-      'https://www.whatsapp.com/message/suenodorado'
+      'https://www.facebook.com/vivepe',
+      'https://www.instagram.com/vive.pe',
+      'https://www.linkedin.com/company/vivepe'
     ],
     'contact': {
       '@type': 'ContactPoint',

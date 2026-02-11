@@ -30,7 +30,7 @@ const InfoModal = ({ isOpen, onClose, title, content, icon: Icon }) => {
             <div className={`relative bg-white dark:bg-gray-900 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300 ${isOpen ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'}`}>
 
                 {/* Header */}
-                <div className="relative bg-gold-500 p-6 text-white overflow-hidden">
+                <div className="relative bg-vive-500 p-6 text-white overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
 
                     <button

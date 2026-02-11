@@ -53,8 +53,8 @@ const CatalogView = () => {
   return (
     <>
       <Helmet>
-        <title>Catálogo Completo - Sueño Dorado | Expertos en Descanso</title>
-        <meta name="description" content="Explora nuestra colección completa de colchones de resorte y espuma, bases y muebles de dormitorio. Calidad de fábrica con garantía total." />
+        <title>Catálogo Completo - Vive | Tecnología en Descanso</title>
+        <meta name="description" content="Explora la colección oficial 2026 de Vive. Tecnología MP y manufactura avanzada en colchones de resorte y espuma de alta permanencia." />
       </Helmet>
 
       <MainLayout>
@@ -62,9 +62,9 @@ const CatalogView = () => {
           <SectionLayout background="white">
             {/* Elite Header */}
             <div className="max-w-4xl mb-20 px-4 md:px-0 text-center mx-auto">
-              <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade-in">Catálogo Oficial 2026</span>
+              <span className="text-vive-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade-in">Catálogo Oficial 2026</span>
               <h1 className="text-5xl md:text-8xl font-display font-black text-gray-900 dark:text-white uppercase leading-[0.9] tracking-tighter mb-8 animate-slide-up">
-                Nuestros <br /><span className="text-gold-500 italic font-light">Colchones</span>
+                Sistemas de <br /><span className="text-vive-500 italic font-light">Descanso</span>
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-400 font-medium leading-relaxed max-w-2xl mx-auto animate-fade-in delay-200">
                 Calidad directa de fábrica con respaldo industrial. Diseñados para transformar cada noche en una experiencia de lujo.
@@ -128,7 +128,7 @@ const CatalogView = () => {
                       <div className="absolute top-6 left-6 z-20">
                         <div className="bg-white/90 dark:bg-black/80 backdrop-blur-md border border-gray-100 dark:border-white/10 px-5 py-2 rounded-full shadow-sm">
                           <span className="text-[9px] font-black uppercase tracking-[0.4em] text-gray-900 dark:text-white flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-gold-500 animate-bounce"></span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-vive-500 animate-bounce"></span>
                             {product.badge || (product.subcategory === 'Diamont' ? 'Premium Suite' : 'Expert Series')}
                           </span>
                         </div>
@@ -151,7 +151,7 @@ const CatalogView = () => {
                         <div className="flex gap-3">
                           <Link
                             to={`/producto/${product.id}`}
-                            className="flex-1 py-5 bg-gray-950 text-white text-[10px] font-black uppercase tracking-[0.25em] hover:bg-gold-500 transition-all duration-300 text-center"
+                            className="flex-1 py-5 bg-gray-950 text-white text-[10px] font-black uppercase tracking-[0.25em] hover:bg-vive-500 transition-all duration-300 text-center"
                           >
                             Ver Detalle
                           </Link>
@@ -161,10 +161,10 @@ const CatalogView = () => {
 
                     {/* Info Block - BACKGROUND MOVED HERE */}
                     <div className="px-4 py-10 text-center bg-gray-50/50 dark:bg-zinc-900/40 rounded-b-[2rem] border-x border-b border-gray-100 dark:border-white/5 transition-all duration-700 group-hover:shadow-[0_40px_60px_rgba(0,0,0,0.05)] group-hover:-translate-y-1">
-                      <span className="text-gold-500 text-[9px] font-black uppercase tracking-[0.5em] mb-3 block">
+                      <span className="text-vive-500 text-[9px] font-black uppercase tracking-[0.5em] mb-3 block">
                         {getPrettySubcategoryName(product.subcategory) || 'Diseño de Autor'}
                       </span>
-                      <h3 className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none mb-6 group-hover:text-gold-500 transition-all duration-500 group-hover:tracking-wider">
+                      <h3 className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none mb-6 group-hover:text-vive-500 transition-all duration-500 group-hover:tracking-wider">
                         {product.name}
                       </h3>
 
@@ -172,7 +172,7 @@ const CatalogView = () => {
                         <div className="w-8 h-[1px] bg-gray-100 dark:bg-white/10" />
                         <div className="flex items-center justify-center">
                           <a
-                            href={getWhatsAppLink(`Hola Sueño Dorado, deseo información exclusiva sobre el colchón ${product.name}.`)}
+                            href={getWhatsAppLink(`Hola Vive, deseo información estratégica sobre el modelo ${product.name}.`)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-green-600 dark:text-green-400 font-black text-[10px] uppercase tracking-[0.2em] hover:text-green-800 transition-colors flex items-center gap-2 group/wa"

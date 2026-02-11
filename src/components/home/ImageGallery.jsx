@@ -39,16 +39,16 @@ const ImageGallery = ({ images = [], title = "Nuestra Galería de Productos" }) 
   return (
     <section className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden transition-colors duration-700">
       {/* Decorative Blur Elements */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gold-500/[0.02] rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-vive-500/[0.02] rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="container mx-auto px-6 lg:px-20 relative z-10">
 
         {/* Elite Header */}
         <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
-            <span className="text-gold-500 font-black text-[10px] uppercase tracking-[0.4em] mb-4 block">Portafolio Visual</span>
+            <span className="text-vive-500 font-black text-[10px] uppercase tracking-[0.4em] mb-4 block">Portafolio Visual</span>
             <h2 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white uppercase leading-[0.9] tracking-tighter">
-              Inspiración <br /> <span className="text-gold-500 italic font-light">en cada Detalle</span>
+              Inspiración <br /> <span className="text-vive-500 italic font-light">en cada Detalle</span>
             </h2>
           </div>
           <p className="text-gray-500 dark:text-gray-400 text-lg font-medium leading-relaxed max-w-sm md:text-right">
@@ -83,7 +83,7 @@ const ImageGallery = ({ images = [], title = "Nuestra Galería de Productos" }) 
 
               {/* Content Detail */}
               <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
-                <div className="text-gold-500 text-[9px] font-black uppercase tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition-opacity delay-100">Vista Exclusiva</div>
+                <div className="text-vive-500 text-[9px] font-black uppercase tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition-opacity delay-100">Vista Exclusiva</div>
                 <h3 className="text-white font-black text-xl uppercase tracking-tight mb-2 opacity-0 group-hover:opacity-100 transition-opacity delay-200">
                   {image.title || `Captura 0${index + 1}`}
                 </h3>
@@ -113,7 +113,7 @@ const ImageGallery = ({ images = [], title = "Nuestra Galería de Productos" }) 
         >
           <button
             onClick={closeFullscreen}
-            className="absolute top-8 right-8 z-[60] w-14 h-14 bg-white/5 border border-white/10 text-white rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-black transition-all group"
+            className="absolute top-8 right-8 z-[60] w-14 h-14 bg-white/5 border border-white/10 text-white rounded-full flex items-center justify-center hover:bg-vive-500 hover:text-black transition-all group"
           >
             <svg className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -145,13 +145,13 @@ const ImageGallery = ({ images = [], title = "Nuestra Galería de Productos" }) 
             <>
               <button
                 onClick={(e) => { e.stopPropagation(); setSelectedImage((prev) => (prev - 1 + images.length) % images.length); }}
-                className="absolute left-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-white/5 border border-white/10 text-white rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-black transition-all group"
+                className="absolute left-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-white/5 border border-white/10 text-white rounded-full flex items-center justify-center hover:bg-vive-500 hover:text-black transition-all group"
               >
                 <FaChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); setSelectedImage((prev) => (prev + 1) % images.length); }}
-                className="absolute right-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-white/5 border border-white/10 text-white rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-black transition-all group"
+                className="absolute right-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-white/5 border border-white/10 text-white rounded-full flex items-center justify-center hover:bg-vive-500 hover:text-black transition-all group"
               >
                 <FaChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </button>

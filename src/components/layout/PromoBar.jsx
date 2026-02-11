@@ -47,7 +47,7 @@ const PromoBar = () => {
                     <div className="flex flex-wrap justify-center md:justify-start gap-6 lg:gap-10">
                         {actions.map((item, index) => (
                             <div key={index} className="flex items-center gap-2 group cursor-default">
-                                <span className="text-gold-500 dark:text-gold-400 group-hover:scale-110 transition-transform duration-300">
+                                <span className="text-vive-500 dark:text-vive-400 group-hover:scale-110 transition-transform duration-300">
                                     {item.icon}
                                 </span>
                                 <div className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-1.5">
@@ -72,7 +72,7 @@ const PromoBar = () => {
                         </div>
                         <a
                             href="tel:+51989223448"
-                            className="flex items-center gap-2 text-gray-900 dark:text-white hover:text-gold-500 dark:hover:text-gold-400 transition-colors"
+                            className="flex items-center gap-2 text-gray-900 dark:text-white hover:text-vive-500 dark:hover:text-vive-400 transition-colors"
                         >
                             <LuPhone className="w-3.5 h-3.5" />
                             <span className="text-[10px] font-bold tracking-wide">{contact.phone}</span>

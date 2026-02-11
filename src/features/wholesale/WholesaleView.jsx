@@ -45,7 +45,7 @@ const WholesaleView = () => {
     setIsVisible(true);
   }, []);
 
-  const b2bMessage = "Hola, estoy interesado en información sobre la Venta por Mayor/B2B de Sueño Dorado.";
+  const b2bMessage = "Hola, estoy interesado en información sobre la Venta por Mayor/B2B de Vive.";
 
   const targetMarkets = [
     {
@@ -79,7 +79,7 @@ const WholesaleView = () => {
 
   const handleWaSubmit = (e) => {
     e.preventDefault();
-    const message = `Hola Sueño Dorado, solicito cotización mayorista para *${selectedMarket.title}*.\n\n` +
+    const message = `Hola Vive, solicito cotización mayorista para *${selectedMarket.title}*.\n\n` +
       `🏢 *Datos de la Empresa:*\n` +
       `- Razón Social: ${waData.reasonSocial}\n` +
       `- RUC/DNI: ${waData.dni}\n\n` +
@@ -105,25 +105,25 @@ const WholesaleView = () => {
     {
       title: "Producción por Volumen",
       desc: "Capacidad de escala para grandes pedidos con tiempos de entrega garantizados.",
-      icon: <FaChartLine className="w-8 h-8 text-gold-500" />,
+      icon: <FaChartLine className="w-8 h-8 text-vive-500" />,
       specs: ["+500 unidades/mes", "Tiempo: 72h"]
     },
     {
       title: "Personalización B2B",
       desc: "Fabricamos según sus especificaciones de densidad, resortes y acabados.",
-      icon: <FaHandshake className="w-8 h-8 text-gold-500" />,
+      icon: <FaHandshake className="w-8 h-8 text-vive-500" />,
       specs: ["Densidad: 25-70 kg/m³", "Resortes: Bonnell/Encapsulados"]
     },
     {
       title: "Logística Nacional",
       desc: "Llegamos a cualquier punto del Perú con embalaje de alta resistencia.",
-      icon: <FaGlobeAmericas className="w-8 h-8 text-gold-500" />,
+      icon: <FaGlobeAmericas className="w-8 h-8 text-vive-500" />,
       specs: ["Coverage: 24 regiones", "Packaging: Industrial"]
     },
     {
       title: "Calidad Certificada",
       desc: "Nuestros procesos cumplen con normas internacionales de higiene y ergonomía.",
-      icon: <FaCheckCircle className="w-8 h-8 text-gold-500" />,
+      icon: <FaCheckCircle className="w-8 h-8 text-vive-500" />,
       specs: ["ISO 9001", "Certificación INACAL"]
     }
   ];
@@ -132,7 +132,7 @@ const WholesaleView = () => {
   return (
     <MainLayout>
       <Helmet>
-        <title>Venta por Mayor & B2B | Sueño Dorado - Fábrica de Colchones</title>
+        <title>Venta por Mayor & B2B | Vive - Fábrica de Colchones</title>
         <meta name="description" content="Soluciones mayoristas para hoteles, tiendas y corporaciones. Colchones directo de fábrica con precios B2B y logística nacional." />
       </Helmet>
 
@@ -147,14 +147,14 @@ const WholesaleView = () => {
             {/* Left Column: Focused Content */}
             <div className={`lg:col-span-6 relative z-20 transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
               <div className="space-y-8">
-                <span className="inline-flex items-center gap-4 text-[10px] font-black tracking-[0.5em] uppercase text-gold-500">
-                  <span className="w-12 h-[2px] bg-gold-500"></span>
+                <span className="inline-flex items-center gap-4 text-[10px] font-black tracking-[0.5em] uppercase text-vive-500">
+                  <span className="w-12 h-[2px] bg-vive-500"></span>
                   Factory Direct
                 </span>
 
                 <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-black text-gray-900 dark:text-white leading-[0.85] tracking-tighter uppercase">
                   Ingeniería <br />
-                  <span className="text-gold-500 italic font-light lowercase">del</span> <span className="text-gold-500">Confort</span>
+                  <span className="text-vive-500 italic font-light lowercase">del</span> <span className="text-vive-500">Descanso</span>
                 </h1>
 
                 <p className="text-lg text-gray-600 dark:text-gray-400 font-text leading-relaxed max-w-md">
@@ -169,14 +169,14 @@ const WholesaleView = () => {
                     <span className="relative z-10 flex items-center gap-3">
                       Iniciar Cotización <FaArrowRight className="group-hover:translate-x-2 transition-transform" />
                     </span>
-                    <div className="absolute inset-0 bg-gold-500 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                    <div className="absolute inset-0 bg-vive-500 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                   </button>
 
                   <a
                     href={getWhatsAppLink(b2bMessage)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 px-10 py-6 border border-gray-200 dark:border-white/10 hover:border-gold-500 transition-colors text-xs font-black uppercase tracking-[0.2em] text-gray-900 dark:text-white"
+                    className="flex items-center gap-4 px-10 py-6 border border-gray-200 dark:border-white/10 hover:border-vive-500 transition-colors text-xs font-black uppercase tracking-[0.2em] text-gray-900 dark:text-white"
                   >
                     Directo Planta
                   </a>
@@ -188,13 +188,13 @@ const WholesaleView = () => {
             <div className={`lg:col-span-6 relative z-10 transition-all duration-1000 delay-300 transform ${isVisible ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-20 scale-95'}`}>
               <div className="relative group">
                 {/* Decorative Background Glow */}
-                <div className="absolute -inset-4 bg-gold-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                <div className="absolute -inset-4 bg-vive-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
 
                 {/* Main Hero Image Container */}
                 <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.3)]">
                   <img
                     src={luxuryHeroImg}
-                    alt="Atmósfera de Hotel de Lujo - Colchones Sueño Dorado"
+                    alt="Atmósfera de Hotel de Lujo - Colchones Vive"
                     className="w-full h-[650px] object-cover object-top hover:scale-110 transition-transform duration-[15s] ease-out origin-top"
                     width="800"
                     height="650"
@@ -204,9 +204,9 @@ const WholesaleView = () => {
                 </div>
 
                 {/* Floating Meta Card - Refined UX */}
-                <div className="absolute -bottom-10 -left-10 z-20 bg-white dark:bg-[#0A0A0A] p-8 md:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.2)] border-l-4 border-gold-500 hidden md:block group-hover:-translate-y-3 transition-transform duration-500">
+                <div className="absolute -bottom-10 -left-10 z-20 bg-white dark:bg-[#0A0A0A] p-8 md:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.2)] border-l-4 border-vive-500 hidden md:block group-hover:-translate-y-3 transition-transform duration-500">
                   <div className="flex flex-col gap-1">
-                    <span className="block text-[10px] font-black uppercase tracking-[0.4em] text-gold-500 mb-1">Elite Quality</span>
+                    <span className="block text-[10px] font-black uppercase tracking-[0.4em] text-vive-500 mb-1">Elite Quality</span>
                     <span className="text-4xl font-display font-black text-gray-900 dark:text-white tracking-tighter">30+ Años</span>
                     <div className="flex items-center gap-2 mt-2">
                       <span className="w-8 h-[1px] bg-gray-300 dark:bg-white/20"></span>
@@ -226,8 +226,8 @@ const WholesaleView = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 bg-white dark:bg-[#0A0A0A] border border-gray-100 dark:border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.1)] transition-all">
           {mainStats.map((stat, idx) => (
             <div key={idx} className="p-8 md:p-12 border-r border-gray-50 dark:border-white/5 last:border-0 flex flex-col items-center group overflow-hidden relative">
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gold-500 transform translate-y-full group-hover:translate-y-0 transition-transform"></div>
-              <span className="text-4xl md:text-5xl font-display font-black text-gold-500 mb-2">{stat.value}</span>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-vive-500 transform translate-y-full group-hover:translate-y-0 transition-transform"></div>
+              <span className="text-4xl md:text-5xl font-display font-black text-vive-500 mb-2">{stat.value}</span>
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400">{stat.label}</span>
             </div>
           ))}
@@ -241,7 +241,7 @@ const WholesaleView = () => {
           <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6 text-center md:text-left">
             <div className="max-w-xl">
               <h2 className="text-3xl md:text-6xl font-display font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tighter">
-                Soluciones <span className="text-gold-500 italic block md:inline font-light">Especializadas</span>
+                Soluciones <span className="text-vive-500 italic block md:inline font-light">Especializadas</span>
               </h2>
               <p className="text-gray-500 dark:text-gray-400 text-lg font-text">Entendemos que cada industria tiene necesidades distintas de confort y durabilidad.</p>
             </div>
@@ -264,7 +264,7 @@ const WholesaleView = () => {
                 {/* Content Overlay */}
                 <div className="absolute inset-0 p-10 flex flex-col justify-end">
                   <div className="mb-6 opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                    <span className="px-4 py-1.5 rounded-full bg-gold-500/20 backdrop-blur-md border border-gold-500/30 text-gold-400 text-[10px] font-bold uppercase tracking-widest mb-4 inline-block">
+                    <span className="px-4 py-1.5 rounded-full bg-vive-500/20 backdrop-blur-md border border-vive-500/30 text-vive-400 text-[10px] font-bold uppercase tracking-widest mb-4 inline-block">
                       {market.tag}
                     </span>
                   </div>
@@ -272,7 +272,7 @@ const WholesaleView = () => {
                     {market.icon}
                   </div>
                   <h3 className="text-3xl md:text-4xl font-display font-black text-white mb-2 leading-none uppercase">{market.title}</h3>
-                  <h4 className="text-gold-400 font-bold text-xs tracking-widest mb-6 uppercase italic font-display">{market.subtitle}</h4>
+                  <h4 className="text-vive-400 font-bold text-xs tracking-widest mb-6 uppercase italic font-display">{market.subtitle}</h4>
                   <p className="text-gray-300 text-sm leading-relaxed max-w-xs opacity-0 h-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-500 font-text">
                     {market.description}
                   </p>
@@ -293,18 +293,18 @@ const WholesaleView = () => {
       </section>
 
       {/* Manufacturing Advantages - Asymmetric Grid */}
-      <section className="py-24 bg-gray-900 border-y border-gold-500/10">
+      <section className="py-24 bg-gray-900 border-y border-vive-500/10">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="relative">
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-gold-500/10 rounded-full blur-3xl"></div>
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-vive-500/10 rounded-full blur-3xl"></div>
               <h2 className="text-3xl md:text-6xl font-display font-black text-white mb-8 leading-[1.1] uppercase tracking-tighter">
-                Ventaja Directa <br /> de <span className="text-gold-500 italic font-light">Fábrica</span>
+                Ventaja Directa <br /> de <span className="text-vive-500 italic font-light">Fábrica</span>
               </h2>
               <div className="space-y-10">
                 {benefits.map((benefit, idx) => (
                   <div key={idx} className="flex gap-6 group">
-                    <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-gold-500/10 group-hover:border-gold-500/30 transition-all">
+                    <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-vive-500/10 group-hover:border-vive-500/30 transition-all">
                       {benefit.icon}
                     </div>
                     <div className="flex-1">
@@ -313,7 +313,7 @@ const WholesaleView = () => {
                       {benefit.specs && (
                         <div className="flex flex-wrap gap-2">
                           {benefit.specs.map((spec, i) => (
-                            <span key={i} className="px-3 py-1 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-[10px] font-bold uppercase tracking-widest">
+                            <span key={i} className="px-3 py-1 bg-vive-500/20 border border-vive-500/30 rounded-full text-vive-400 text-[10px] font-bold uppercase tracking-widest">
                               {spec}
                             </span>
                           ))}
@@ -329,13 +329,13 @@ const WholesaleView = () => {
               <div className="relative aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-2 border-white/5">
                 <img
                   src={factoryProductionImg}
-                  alt="Procesos Industriales de Sueño Dorado"
+                  alt="Procesos Industriales de Vive"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-[10s]"
                   width="600"
                   height="600"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gold-500/10 mix-blend-overlay"></div>
+                <div className="absolute inset-0 bg-vive-500/10 mix-blend-overlay"></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
               </div>
 
@@ -358,7 +358,7 @@ const WholesaleView = () => {
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-8 border-white dark:border-[#0A0A0A]">
                 <img
                   src={premiumCutawayImg}
-                  alt="Vista interna (corte lateral) de un colchón premium de Sueño Dorado"
+                  alt="Vista interna (corte lateral) de un colchón premium de Vive"
                   className="w-full aspect-[4/5] object-cover"
                   width="500"
                   height="625"
@@ -366,21 +366,21 @@ const WholesaleView = () => {
                 />
               </div>
               {/* Overlapping Floating Labels */}
-              <div className="absolute top-1/4 -right-12 z-20 bg-white dark:bg-[#0A0A0A] p-6 shadow-2xl border-l-4 border-gold-500 animate-bounce-slow">
+              <div className="absolute top-1/4 -right-12 z-20 bg-white dark:bg-[#0A0A0A] p-6 shadow-2xl border-l-4 border-vive-500 animate-bounce-slow">
                 <span className="block text-[8px] font-black uppercase tracking-[0.3em] text-gray-400 mb-2">Capa Superior</span>
                 <span className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-tight">Cotton-Sensation™ 3D</span>
               </div>
-              <div className="absolute bottom-1/4 -left-12 z-20 bg-black text-white p-6 shadow-2xl border-r-4 border-gold-500 hidden md:block">
-                <span className="block text-[8px] font-black uppercase tracking-[0.3em] text-gold-500/50 mb-2">Núcleo</span>
+              <div className="absolute bottom-1/4 -left-12 z-20 bg-black text-white p-6 shadow-2xl border-r-4 border-vive-500 hidden md:block">
+                <span className="block text-[8px] font-black uppercase tracking-[0.3em] text-vive-500/50 mb-2">Núcleo</span>
                 <span className="text-sm font-bold uppercase tracking-tight">Pocket-Spring Elite</span>
               </div>
-              <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl -z-10"></div>
+              <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-vive-500/5 rounded-full blur-3xl -z-10"></div>
             </div>
 
             {/* Editorial Text Content */}
             <div className="order-1 lg:order-2 space-y-12">
               <div>
-                <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Craftsmanship & Science</span>
+                <span className="text-vive-500 text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Craftsmanship & Science</span>
                 <h2 className="text-5xl md:text-7xl font-display font-black text-gray-900 dark:text-white leading-[0.9] tracking-tighter uppercase">
                   Más allá de <br /> <span className="italic font-light">la Superficie</span>
                 </h2>
@@ -393,7 +393,7 @@ const WholesaleView = () => {
                   { title: "Soporte Ergonómico", desc: "Cada diseño es validado por especialistas para asegurar la alienación de la columna." }
                 ].map((item, i) => (
                   <div key={i} className="group flex gap-8 pb-8 border-b border-gray-100 dark:border-white/5 last:border-0 transition-all">
-                    <span className="text-2xl font-display font-black text-gold-500/30 group-hover:text-gold-500 transition-colors">0{i + 1}</span>
+                    <span className="text-2xl font-display font-black text-vive-500/30 group-hover:text-vive-500 transition-colors">0{i + 1}</span>
                     <div>
                       <h4 className="text-lg font-display font-black text-gray-900 dark:text-white uppercase mb-2 group-hover:tracking-widest transition-all">{item.title}</h4>
                       <p className="text-gray-500 dark:text-gray-400 font-text leading-relaxed">{item.desc}</p>
@@ -405,7 +405,7 @@ const WholesaleView = () => {
               <div className="pt-8">
                 <button
                   onClick={() => setIsFormOpen(true)}
-                  className="bg-gold-500 text-black px-12 py-5 font-black text-xs uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-xl"
+                  className="bg-vive-500 text-white px-12 py-5 font-black text-xs uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-xl"
                 >
                   Descargar Catálogo Técnico
                 </button>
@@ -422,13 +422,13 @@ const WholesaleView = () => {
             <div className="md:col-span-2 row-span-1 bg-gray-50 dark:bg-white/5 p-12 flex flex-col justify-center border border-gray-100 dark:border-white/10 group">
               <h3 className="text-3xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter mb-4">Calidad Certificada</h3>
               <p className="text-gray-500 dark:text-gray-400 font-text max-w-md">Respaldo total en la estructura y materiales. Un compromiso de fábrica directo con su inversión.</p>
-              <div className="mt-8 flex items-center gap-4 group-hover:translate-x-4 transition-transform text-gold-500 font-black text-xs uppercase tracking-widest">
+              <div className="mt-8 flex items-center gap-4 group-hover:translate-x-4 transition-transform text-vive-500 font-black text-xs uppercase tracking-widest">
                 Protocolo de Calidad <FaArrowRight />
               </div>
             </div>
 
-            <div className="bg-gold-500 p-12 flex flex-col justify-between">
-              <MdVerified className="text-black text-5xl" />
+            <div className="bg-vive-500 p-12 flex flex-col justify-between">
+              <MdVerified className="text-white text-5xl" />
               <div className="text-black">
                 <span className="text-5xl font-display font-black block tracking-tighter">100%</span>
                 <span className="text-xs font-black uppercase tracking-widest">Malla Peruana Certificada</span>
@@ -436,7 +436,7 @@ const WholesaleView = () => {
             </div>
 
             <div className="bg-black text-white p-12 border border-white/10 flex flex-col justify-between">
-              <FaCertificate className="text-gold-500 text-4xl" />
+              <FaCertificate className="text-vive-500 text-4xl" />
               <div>
                 <h4 className="font-display font-black text-sm uppercase tracking-widest mb-2">INACAL Standard</h4>
                 <p className="text-[10px] opacity-50 font-text uppercase tracking-widest">Normativa Técnica Peruana vigente para hostelería de alto tránsito.</p>
@@ -466,12 +466,12 @@ const WholesaleView = () => {
 
         <div className="container mx-auto px-6 text-center relative z-10">
           <div className="inline-flex items-center gap-3 px-6 py-2 bg-white/5 border border-white/10 rounded-full mb-10">
-            <span className="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+            <span className="w-2 h-2 rounded-full bg-vive-500 animate-pulse"></span>
             <span className="text-[10px] font-black text-white/50 uppercase tracking-[0.3em]">Cierre de Negocios Abierto</span>
           </div>
 
           <h2 className="text-4xl md:text-8xl font-display font-black text-white mb-10 leading-none uppercase tracking-tighter">
-            Lleve su Empresa al <br /> <span className="text-gold-500 line-through decoration-white/20">Siguiente</span> Nivel
+            Lleve su Empresa al <br /> <span className="text-vive-500 line-through decoration-white/20">Siguiente</span> Nivel
           </h2>
           <p className="text-gray-400 text-lg md:text-2xl font-text font-light max-w-3xl mx-auto mb-16 leading-relaxed">
             No somos solo proveedores, somos <span className="text-white font-bold">fabricantes directos</span> comprometidos con el éxito de su proyecto y el descanso de sus clientes.
@@ -480,7 +480,7 @@ const WholesaleView = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button
               onClick={() => setIsFormOpen(true)}
-              className="w-full sm:w-72 bg-gold-500 hover:bg-gold-600 text-black font-black px-12 py-5 rounded-full transition-all hover:scale-105 active:scale-95 shadow-[0_20px_50px_rgba(212,175,55,0.3)] uppercase tracking-widest text-sm"
+              className="w-full sm:w-72 bg-vive-500 hover:bg-vive-600 text-black font-black px-12 py-5 rounded-full transition-all hover:scale-105 active:scale-95 shadow-[0_20px_50px_rgba(212,175,55,0.3)] uppercase tracking-widest text-sm"
             >
               Iniciar Propuesta
             </button>
@@ -520,9 +520,9 @@ const WholesaleView = () => {
               </div>
 
               <div className="relative z-10">
-                <div className="w-12 h-1 bg-gold-500 mb-6"></div>
-                <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.5em] block mb-2">{selectedMarket.tag}</span>
-                <span className="text-white text-[10px] font-bold uppercase tracking-widest opacity-40 italic">Sueño Dorado Exclusive</span>
+                <div className="w-12 h-1 bg-vive-500 mb-6"></div>
+                <span className="text-vive-500 text-[10px] font-black uppercase tracking-[0.5em] block mb-2">{selectedMarket.tag}</span>
+                <span className="text-white text-[10px] font-bold uppercase tracking-widest opacity-40 italic">Vive Exclusive</span>
               </div>
 
               <div className="relative z-10">
@@ -531,7 +531,7 @@ const WholesaleView = () => {
                     <span key={i} className="block">{word}</span>
                   ))}
                 </h4>
-                <p className="text-gold-500/80 text-[10px] uppercase tracking-[0.2em] font-black leading-tight border-l border-gold-500/30 pl-4 py-1">
+                <p className="text-vive-500/80 text-[10px] uppercase tracking-[0.2em] font-black leading-tight border-l border-vive-500/30 pl-4 py-1">
                   {selectedMarket.subtitle}
                 </p>
               </div>
@@ -542,7 +542,7 @@ const WholesaleView = () => {
 
               <button
                 onClick={() => setSelectedMarket(null)}
-                className="absolute top-8 right-8 p-3 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-all text-gray-400 hover:text-gold-500 z-50 group"
+                className="absolute top-8 right-8 p-3 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-all text-gray-400 hover:text-vive-500 z-50 group"
                 aria-label="Cerrar modal de cotización"
               >
                 <MdClose className="w-6 h-6 transition-transform group-hover:rotate-90" />
@@ -550,8 +550,8 @@ const WholesaleView = () => {
 
               <div className="relative z-10 mb-10">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="h-[1px] w-8 bg-gold-500/30"></div>
-                  <span className="text-gold-500 text-[11px] font-black uppercase tracking-[0.4em]">Solicitud Mayorista</span>
+                  <div className="h-[1px] w-8 bg-vive-500/30"></div>
+                  <span className="text-vive-500 text-[11px] font-black uppercase tracking-[0.4em]">Solicitud Mayorista</span>
                 </div>
                 <h3 className="text-3xl md:text-4xl font-display font-black text-gray-900 dark:text-white uppercase mb-4 leading-tight tracking-tighter">
                   {selectedMarket.title}
@@ -562,14 +562,14 @@ const WholesaleView = () => {
 
                 {/* National Coverage Section - Specific for Wholesale Distribution */}
                 {selectedMarket.id === 'tiendas' && (
-                  <div className="mb-10 bg-gray-100 dark:bg-white/5 rounded-3xl p-8 border border-gold-500/10 relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/5 blur-3xl rounded-full"></div>
+                  <div className="mb-10 bg-gray-100 dark:bg-white/5 rounded-3xl p-8 border border-vive-500/10 relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-vive-500/5 blur-3xl rounded-full"></div>
                     <div className="relative z-10">
                       <div className="flex items-center gap-3 mb-6">
-                        <FaGlobeAmericas className="text-gold-500 text-xl" />
+                        <FaGlobeAmericas className="text-vive-500 text-xl" />
                         <div>
                           <h4 className="text-lg font-black text-gray-900 dark:text-white uppercase tracking-tight">Cobertura Total</h4>
-                          <p className="text-[10px] text-gold-500 font-black uppercase tracking-widest opacity-70">Sin Fronteras en el Territorio Nacional</p>
+                          <p className="text-[10px] text-vive-500 font-black uppercase tracking-widest opacity-70">Sin Fronteras en el Territorio Nacional</p>
                         </div>
                       </div>
 
@@ -581,13 +581,13 @@ const WholesaleView = () => {
                           'Pasco', 'Piura', 'Puno', 'San Martín', 'Tacna', 'Tumbes', 'Ucayali'
                         ].map((dept) => (
                           <div key={dept} className="flex items-center gap-2 group/item">
-                            <div className="w-1 h-1 rounded-full bg-gold-500 group-hover/item:scale-150 transition-transform"></div>
-                            <span className="text-[11px] font-bold text-gray-600 dark:text-gray-400 group-hover/item:text-gold-500 transition-colors uppercase tracking-tighter">{dept}</span>
+                            <div className="w-1 h-1 rounded-full bg-vive-500 group-hover/item:scale-150 transition-transform"></div>
+                            <span className="text-[11px] font-bold text-gray-600 dark:text-gray-400 group-hover/item:text-vive-500 transition-colors uppercase tracking-tighter">{dept}</span>
                           </div>
                         ))}
                       </div>
 
-                      <div className="p-4 bg-white/50 dark:bg-black/40 rounded-xl border border-gold-500/5">
+                      <div className="p-4 bg-white/50 dark:bg-black/40 rounded-xl border border-vive-500/5">
                         <p className="text-[11px] font-medium text-gray-500 dark:text-gray-400 leading-relaxed italic">
                           "Entregamos colchones, tarimas, cunas y almohadas con plazos garantizados y seguro de transporte integral en cada uno de los 24 departamentos."
                         </p>
@@ -607,7 +607,7 @@ const WholesaleView = () => {
                       placeholder="Nombre de la empresa"
                       value={waData.reasonSocial}
                       onChange={(e) => setWaData({ ...waData, reasonSocial: e.target.value })}
-                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
+                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-vive-500/50 focus:border-vive-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
                     />
                   </div>
                   <div className="space-y-3">
@@ -618,7 +618,7 @@ const WholesaleView = () => {
                       placeholder="Identificación fiscal"
                       value={waData.dni}
                       onChange={(e) => setWaData({ ...waData, dni: e.target.value })}
-                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
+                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-vive-500/50 focus:border-vive-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
                     />
                   </div>
                 </div>
@@ -631,7 +631,7 @@ const WholesaleView = () => {
                     placeholder="Nombre y Apellidos"
                     value={waData.name}
                     onChange={(e) => setWaData({ ...waData, name: e.target.value })}
-                    className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
+                    className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-vive-500/50 focus:border-vive-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
                   />
                 </div>
 
@@ -644,7 +644,7 @@ const WholesaleView = () => {
                       placeholder="Dirección física"
                       value={waData.address}
                       onChange={(e) => setWaData({ ...waData, address: e.target.value })}
-                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
+                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-vive-500/50 focus:border-vive-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
                     />
                   </div>
                   <div className="space-y-3">
@@ -655,7 +655,7 @@ const WholesaleView = () => {
                       placeholder="Ciudad / Distrito"
                       value={waData.city}
                       onChange={(e) => setWaData({ ...waData, city: e.target.value })}
-                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
+                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-vive-500/50 focus:border-vive-500 transition-all font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 text-[15px]"
                     />
                   </div>
                 </div>

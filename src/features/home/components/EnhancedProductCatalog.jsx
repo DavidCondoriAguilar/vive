@@ -80,7 +80,7 @@ const EnhancedProductCatalog = () => {
             <section className="relative py-32 bg-white dark:bg-black transition-colors duration-700 overflow-hidden" id="catalogo">
                 {/* 2025 Aesthetic Background */}
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gold-500/5 blur-[120px] rounded-full animate-pulse-slow"></div>
+                    <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-vive-500/5 blur-[120px] rounded-full animate-pulse-slow"></div>
                     <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-blue-500/5 blur-[120px] rounded-full animate-pulse-slow delay-1000"></div>
                     <div className="absolute inset-0 dream-noise opacity-20 dark:opacity-10"></div>
                 </div>
@@ -89,12 +89,12 @@ const EnhancedProductCatalog = () => {
                     {/* Header Section */}
                     <div className="max-w-4xl mb-24">
                         <div className="flex items-center gap-4 mb-8">
-                            <span className="w-12 h-[2px] bg-gold-500"></span>
-                            <span className="text-gold-500 text-xs font-black tracking-[0.5em] uppercase">Exclusividad Peruana</span>
+                            <span className="w-12 h-[2px] bg-vive-500"></span>
+                            <span className="text-vive-500 text-xs font-black tracking-[0.5em] uppercase">Exclusividad Peruana</span>
                         </div>
                         <h2 className="text-5xl lg:text-8xl font-display font-black text-gray-900 dark:text-white leading-[0.85] uppercase tracking-tighter mb-10">
                             SUEÑO <br />
-                            <span className="text-gold-500">DORADO</span> <br />
+                            <span className="text-vive-500">DORADO</span> <br />
                             <span className="text-gray-200 dark:text-zinc-800 italic">CATÁLOGO</span>
                         </h2>
                         <p className="text-gray-500 dark:text-gray-400 text-xl lg:text-2xl font-medium max-w-2xl leading-relaxed">
@@ -111,13 +111,13 @@ const EnhancedProductCatalog = () => {
                                     onClick={() => setActiveCategory(category.id)}
                                     className={`group relative px-6 py-3 rounded-xl transition-all duration-300 border ${activeCategory === category.id
                                         ? 'bg-gray-900 dark:bg-white text-white dark:text-black border-transparent shadow-2xl scale-105'
-                                        : 'bg-gray-50 dark:bg-zinc-900 border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:border-gold-500/50 hover:text-gray-900 dark:hover:text-white'
+                                        : 'bg-gray-50 dark:bg-zinc-900 border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:border-vive-500/50 hover:text-gray-900 dark:hover:text-white'
                                         }`}
                                 >
                                     <span className="flex items-center gap-3 font-display font-black text-[10px] uppercase tracking-widest relative z-10">
                                         {category.name}
                                         <span className={`text-[8px] px-2 py-0.5 rounded-full ${activeCategory === category.id
-                                            ? 'bg-gold-500 text-white'
+                                            ? 'bg-vive-500 text-white'
                                             : 'bg-gray-200 dark:bg-white/10 text-gray-500'
                                             }`}>
                                             {category.count}
@@ -188,11 +188,11 @@ const EnhancedProductCatalog = () => {
                                             style={{ animationDelay: `${index * 100}ms` }}
                                         >
                                             {/* Visual Container */}
-                                            <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden bg-gray-50 dark:bg-zinc-900 transition-all duration-700 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)] group-hover:-translate-y-2 border border-transparent hover:border-gold-500/20">
+                                            <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden bg-gray-50 dark:bg-zinc-900 transition-all duration-700 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)] group-hover:-translate-y-2 border border-transparent hover:border-vive-500/20">
                                                 {/* Advanced 2025 Badge System */}
                                                 <div className="absolute top-8 left-8 z-20">
                                                     <div className={`backdrop-blur-md border px-6 py-2 rounded-full overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-110 ${product.category === 'luxury'
-                                                            ? 'bg-gray-900/90 border-gold-500 text-gold-500'
+                                                            ? 'bg-gray-900/90 border-vive-500 text-vive-500'
                                                             : product.category === 'premium'
                                                                 ? 'bg-blue-600/80 border-blue-400 text-white'
                                                                 : product.category === 'professional'
@@ -203,7 +203,7 @@ const EnhancedProductCatalog = () => {
                                                         }`}>
                                                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
                                                         <span className="relative text-[9px] font-black uppercase tracking-[0.3em] flex items-center gap-2">
-                                                            <span className={`w-1.5 h-1.5 rounded-full ${product.category === 'luxury' ? 'bg-gold-500 animate-pulse' : 'bg-current opacity-70'}`}></span>
+                                                            <span className={`w-1.5 h-1.5 rounded-full ${product.category === 'luxury' ? 'bg-vive-500 animate-pulse' : 'bg-current opacity-70'}`}></span>
                                                             {product.badge}
                                                         </span>
                                                     </div>
@@ -238,13 +238,13 @@ const EnhancedProductCatalog = () => {
                                                                 setSelectedProduct(product);
                                                                 setIsSpecsModalOpen(true);
                                                             }}
-                                                            className="flex items-center gap-2 px-4 py-2 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-none hover:bg-gold-500 hover:text-white transition-colors"
+                                                            className="flex items-center gap-2 px-4 py-2 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-none hover:bg-vive-500 hover:text-white transition-colors"
                                                             title="Ver detalles del producto"
                                                         >
                                                             <FaEye className="w-4 h-4" />
                                                             <span>Visualizar</span>
                                                         </button>
-                                                        <Link to={`/producto/${product.id}`} className="flex items-center gap-2 px-4 py-2 bg-gold-500 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-none hover:bg-gold-600 transition-colors">
+                                                        <Link to={`/producto/${product.id}`} className="flex items-center gap-2 px-4 py-2 bg-vive-500 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-none hover:bg-vive-600 transition-colors">
                                                             <span>Explorar Ficha</span>
                                                         </Link>
                                                     </div>
@@ -255,10 +255,10 @@ const EnhancedProductCatalog = () => {
                                             <div className="mt-8 px-4">
                                                 <div className="flex justify-between items-start mb-4">
                                                     <div className="space-y-2">
-                                                        <span className="text-gold-500 text-[9px] font-black uppercase tracking-[0.3em]">
+                                                        <span className="text-vive-500 text-[9px] font-black uppercase tracking-[0.3em]">
                                                             {product.category}
                                                         </span>
-                                                        <h3 className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none group-hover:text-gold-500 transition-colors">
+                                                        <h3 className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none group-hover:text-vive-500 transition-colors">
                                                             {product.name}
                                                         </h3>
                                                     </div>
@@ -307,19 +307,19 @@ const EnhancedProductCatalog = () => {
 
                     {/* Final CTA / Contact Group */}
                     <div className="mt-40 relative group">
-                        <div className="absolute inset-0 bg-gold-500 rounded-[4rem] rotate-1 scale-[1.02] opacity-10 group-hover:rotate-0 transition-transform duration-700"></div>
+                        <div className="absolute inset-0 bg-vive-500 rounded-[4rem] rotate-1 scale-[1.02] opacity-10 group-hover:rotate-0 transition-transform duration-700"></div>
                         <div className="relative bg-zinc-950 rounded-[4rem] p-12 lg:p-24 text-center overflow-hidden">
                             {/* Decorative Background for CTA */}
                             <div className="absolute inset-0 opacity-10">
-                                <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-gold-500 to-transparent blur-[120px]"></div>
+                                <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-vive-500 to-transparent blur-[120px]"></div>
                                 <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-blue-500 to-transparent blur-[120px]"></div>
                             </div>
 
                             <div className="relative z-10 max-w-2xl mx-auto">
-                                <span className="text-gold-500 text-xs font-black tracking-[0.5em] uppercase mb-8 block">Atención Preferencial</span>
+                                <span className="text-vive-500 text-xs font-black tracking-[0.5em] uppercase mb-8 block">Atención Preferencial</span>
                                 <h3 className="text-4xl lg:text-7xl font-display font-black text-white leading-[0.9] uppercase tracking-tighter mb-10">
                                     ¿Busca algo <br />
-                                    <span className="text-gold-500 italic">Especial?</span>
+                                    <span className="text-vive-500 italic">Especial?</span>
                                 </h3>
                                 <p className="text-gray-400 text-lg lg:text-xl font-medium mb-12">
                                     Nuestro equipo de especialistas está listo para diseñar el set de descanso que su cuerpo y su hogar merecen.
@@ -329,7 +329,7 @@ const EnhancedProductCatalog = () => {
                                         href={getWhatsAppLink("Hola Sueño Dorado, busco un set de descanso especial y personalizado.")}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="px-12 py-5 bg-gold-500 text-white rounded-2xl font-display font-black text-xs uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-gold-500/20"
+                                        className="px-12 py-5 bg-vive-500 text-white rounded-2xl font-display font-black text-xs uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-vive-500/20"
                                     >
                                         Hablar con un Experto
                                     </a>

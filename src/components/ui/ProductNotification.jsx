@@ -94,7 +94,7 @@ const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) 
               </p>
             )}
 
-            <div className="text-[10px] font-bold text-gold-600 mb-3 uppercase tracking-widest">
+            <div className="text-[10px] font-bold text-vive-600 mb-3 uppercase tracking-widest">
               Precio por Consultar
             </div>
 

@@ -317,7 +317,7 @@ const ProductSpecsModal = ({
                         {/* Product Title */}
                         <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
                             <h2 className="text-2xl font-black text-gray-900 dark:text-white mb-2 uppercase tracking-tighter">{product.name}</h2>
-                            <p className="text-lg text-gold-600 dark:text-gold-400 font-medium">Consultar precio</p>
+                            <p className="text-lg text-vive-600 dark:text-vive-400 font-medium">Consultar precio</p>
                         </div>
 
                         {/* Quick Specs Grid */}
@@ -345,7 +345,7 @@ const ProductSpecsModal = ({
                                 <h4 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-4">Especificaciones Detalladas</h4>
                                 <div className="space-y-4">
                                     {detailedSpecs.map((category) => (
-                                        <div key={category.category} className="border-l-4 border-gold-500 pl-4">
+                                        <div key={category.category} className="border-l-4 border-vive-500 pl-4">
                                             <h5 className="text-sm font-black text-gray-900 dark:text-white mb-3 uppercase tracking-wide">{category.category}</h5>
                                             <div className="space-y-2">
                                                 {category.items.map((item) => (

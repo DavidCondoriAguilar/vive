@@ -111,9 +111,9 @@ const ProductDetailsView = () => {
                         <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
                             <nav className="flex items-center gap-2 text-sm font-light tracking-widest text-gray-500">
                                 <a href="/" className="hover:text-black dark:hover:text-white transition-colors">Inicio</a>
-                                <span className="text-gold-500">›</span>
+                                <span className="text-vive-500">›</span>
                                 <a href="/catalogo" className="hover:text-black dark:hover:text-white transition-colors">Catálogo</a>
-                                <span className="text-gold-500">›</span>
+                                <span className="text-vive-500">›</span>
                                 <span className="text-black dark:text-white font-medium">{product.name}</span>
                             </nav>
                         </div>

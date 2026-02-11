@@ -77,9 +77,9 @@ const CategoriesSection = () => {
 
           {/* Section Header */}
           <div className="text-center mb-16">
-            <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade-in">Catálogo Oficial</span>
+            <span className="text-vive-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade-in">Catálogo Oficial</span>
             <h2 className="text-4xl md:text-6xl font-display font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tighter">
-              Nuestros <span className="text-gold-500">Productos</span>
+              Nuestros <span className="text-vive-500">Productos</span>
             </h2>
             <p className="text-lg text-gray-500 dark:text-gray-400 font-medium max-w-2xl mx-auto">
               Calidad directa de fábrica para tu descanso perfecto. Ingeniería peruana de clase mundial.
@@ -117,13 +117,13 @@ const CategoriesSection = () => {
             <div className="flex flex-col gap-2 flex-grow max-w-xs w-full sm:w-auto">
               <div className="flex justify-between items-end">
                 <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Vista Rápida</span>
-                <span className="text-xs font-bold text-gold-500">
+                <span className="text-xs font-bold text-vive-500">
                 {Math.min(currentSlide + itemsPerView, filteredProducts.length)} / {filteredProducts.length}
               </span>
               </div>
               <div className="h-[2px] w-full bg-gray-200 dark:bg-white/5 rounded-full overflow-hidden">
                 <div
-                    className="h-full bg-gold-500 transition-all duration-700 ease-out"
+                    className="h-full bg-vive-500 transition-all duration-700 ease-out"
                     style={{ width: `${(Math.min(currentSlide + itemsPerView, filteredProducts.length) / filteredProducts.length) * 100}%` }}
                 />
               </div>
@@ -141,7 +141,7 @@ const CategoriesSection = () => {
                 disabled={currentSlide === 0}
                 className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-100 dark:border-white/5 flex items-center justify-center transition-all shadow-xl ${currentSlide === 0
                     ? 'opacity-0 pointer-events-none'
-                    : 'bg-white/90 dark:bg-zinc-900/90 text-gray-700 dark:text-gray-300 hover:bg-gold-500 hover:text-white hover:scale-110 active:scale-95 translate-x-1 sm:-translate-x-6'
+                    : 'bg-white/90 dark:bg-zinc-900/90 text-gray-700 dark:text-gray-300 hover:bg-vive-500 hover:text-white hover:scale-110 active:scale-95 translate-x-1 sm:-translate-x-6'
                 }`}
             >
               <FaChevronLeft className="w-4 h-4" />
@@ -152,7 +152,7 @@ const CategoriesSection = () => {
                 disabled={currentSlide >= filteredProducts.length - itemsPerView}
                 className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-100 dark:border-white/5 flex items-center justify-center transition-all shadow-xl ${currentSlide >= filteredProducts.length - itemsPerView
                     ? 'opacity-0 pointer-events-none'
-                    : 'bg-white/90 dark:bg-zinc-900/90 text-gray-700 dark:text-gray-300 hover:bg-gold-500 hover:text-white hover:scale-110 active:scale-95 -translate-x-1 sm:translate-x-6'
+                    : 'bg-white/90 dark:bg-zinc-900/90 text-gray-700 dark:text-gray-300 hover:bg-vive-500 hover:text-white hover:scale-110 active:scale-95 -translate-x-1 sm:translate-x-6'
                 }`}
             >
               <FaChevronRight className="w-4 h-4" />
@@ -179,7 +179,7 @@ const CategoriesSection = () => {
                           scrollSnapAlign: 'start'
                         }}
                     >
-                      <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 h-full flex flex-col">
+                      <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-vive-500/10 hover:-translate-y-2 h-full flex flex-col">
                         {/* Product Image */}
                         <div className="relative overflow-hidden bg-gray-50 dark:bg-dream-dark-surface p-6" style={{ aspectRatio: '16/9' }}>
                           <Link to={`/producto/${product.id}`} className="block h-full w-full">
@@ -201,11 +201,11 @@ const CategoriesSection = () => {
                         {/* Product Info */}
                         <div className="p-6 flex flex-col flex-1">
                           <div className="mb-4">
-                        <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest">
+                        <span className="text-vive-500 text-[10px] font-black uppercase tracking-widest">
                           {product.subcategory || 'Premium'}
                         </span>
                             <Link to={`/producto/${product.id}`}>
-                              <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-gold-500 transition-colors">
+                              <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-vive-500 transition-colors">
                                 {product.name}
                               </h3>
                             </Link>
@@ -233,7 +233,7 @@ const CategoriesSection = () => {
           <div className="text-center mt-12">
             <Link
                 to="/catalogo"
-                className="group inline-flex items-center gap-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-gold-500/25 relative overflow-hidden"
+                className="group inline-flex items-center gap-3 bg-gradient-to-r from-vive-500 to-vive-600 hover:from-vive-600 hover:to-vive-700 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-vive-500/25 relative overflow-hidden"
             >
             <span className="relative z-10 flex items-center gap-3">
               <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

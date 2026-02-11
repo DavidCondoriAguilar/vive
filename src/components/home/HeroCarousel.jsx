@@ -140,7 +140,7 @@ const HeroCarousel = () => {
               {slide.title}
             </h2>
 
-            <h2 className="text-sm md:text-lg font-medium text-gold-400 mb-6 md:mb-8 tracking-[0.2em] uppercase py-2 border-y border-gold-500/10 px-4">
+            <h2 className="text-sm md:text-lg font-medium text-vive-400 mb-6 md:mb-8 tracking-[0.2em] uppercase py-2 border-y border-vive-500/10 px-4">
               {slide.subtitle}
             </h2>
 
@@ -158,7 +158,7 @@ const HeroCarousel = () => {
               {/* Primary: Catálogo */}
               <button
                 onClick={() => navigate('/catalogo')}
-                className="group relative w-full sm:w-64 overflow-hidden bg-gold-500 text-black px-10 py-4 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(212,175,55,0.25)] border border-gold-500 active:scale-95"
+                className="group relative w-full sm:w-64 overflow-hidden bg-vive-500 text-black px-10 py-4 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(212,175,55,0.25)] border border-vive-500 active:scale-95"
               >
                 {/* Subtle Inner Glow Layer */}
                 <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-500" />
@@ -185,23 +185,23 @@ const HeroCarousel = () => {
 
               {/* Secondary: WhatsApp */}
               <a
-                href={getWhatsAppLink(`Hola Sueño Dorado, estoy interesado en recibir información sobre ${slide.title}.`)}
+                href={getWhatsAppLink(`Hola Vive, estoy interesado en recibir información sobre ${slide.title}.`)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative w-full sm:w-64 overflow-hidden border border-white/30 text-white px-10 py-4 transition-all duration-500 hover:border-gold-500"
+                className="group relative w-full sm:w-64 overflow-hidden border border-white/30 text-white px-10 py-4 transition-all duration-500 hover:border-vive-500"
               >
                 {/* Background Shimmer */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-vive-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
                 <div className="relative z-10 flex items-center justify-center gap-3">
-                  <span className="font-medium tracking-[0.3em] uppercase text-[10px] md:text-xs group-hover:text-gold-500 transition-colors duration-500">
+                  <span className="font-medium tracking-[0.3em] uppercase text-[10px] md:text-xs group-hover:text-vive-500 transition-colors duration-500">
                     Asesoría WA
                   </span>
-                  <div className="w-1.5 h-1.5 bg-gold-500 rounded-full animate-pulse group-hover:scale-150 transition-transform duration-500" />
+                  <div className="w-1.5 h-1.5 bg-vive-500 rounded-full animate-pulse group-hover:scale-150 transition-transform duration-500" />
                 </div>
 
                 {/* Minimalist Hover Lines */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-gold-500 group-hover:w-full transition-all duration-500" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-vive-500 group-hover:w-full transition-all duration-500" />
               </a>
             </div>
           </div>
@@ -216,7 +216,7 @@ const HeroCarousel = () => {
             onClick={() => goToSlide(index)}
             aria-label={`Ir al slide ${index + 1}`}
             className={`h-[3px] transition-all duration-500 rounded-full
-              ${index === currentSlide ? 'w-16 bg-gold-500' : 'w-8 bg-white/20'}
+              ${index === currentSlide ? 'w-16 bg-vive-500' : 'w-8 bg-white/20'}
             `}
           />
         ))}
@@ -226,21 +226,21 @@ const HeroCarousel = () => {
       <button
         onClick={prevSlide}
         aria-label="Anterior slide"
-        className="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 text-white/40 hover:text-gold-500 transition-all duration-300 z-10"
+        className="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 text-white/40 hover:text-vive-500 transition-all duration-300 z-10"
       >
         <FaChevronLeft className="sm:w-10 sm:h-10 w-6 h-6" aria-hidden="true" />
       </button>
       <button
         onClick={nextSlide}
         aria-label="Siguiente slide"
-        className="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 text-white/40 hover:text-gold-500 transition-all duration-300 z-10"
+        className="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 text-white/40 hover:text-vive-500 transition-all duration-300 z-10"
       >
         <FaChevronRight className="sm:w-10 sm:h-10 w-6 h-6" aria-hidden="true" />
       </button>
 
       {/* Progress Bar (Global) */}
       <div
-        className="absolute bottom-0 left-0 h-1 bg-gold-500/30 pointer-events-none"
+        className="absolute bottom-0 left-0 h-1 bg-vive-500/30 pointer-events-none"
         style={{
           width: `${progress}%`,
           transition: progress === 100 ? `width ${SLIDE_DURATION}ms linear` : 'none'

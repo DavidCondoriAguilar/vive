@@ -98,7 +98,7 @@ const WholesaleFormDrawer = ({ isOpen, onClose }) => {
         <div className="sticky top-0 bg-white dark:bg-[#0F0F0F] border-b border-gray-100 dark:border-white/5 px-6 py-6 flex items-center justify-between z-20">
           <div className="flex-1">
             <h3 id="form-title" className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter">
-              Solicitud <span className="text-gold-500 italic font-light">B2B Elite</span>
+              Solicitud <span className="text-vive-500 italic font-light">B2B Elite</span>
             </h3>
             <p className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-400 mt-1">Canal directo planta industrial</p>
           </div>
@@ -239,7 +239,7 @@ const WholesaleFormDrawer = ({ isOpen, onClose }) => {
                 value={values.businessType}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className="w-full px-4 py-4 border-b-2 border-gray-100 dark:border-white/5 text-gray-900 dark:text-white bg-gray-50 dark:bg-black/50 focus:outline-none focus:border-gold-500 transition-all font-bold uppercase text-xs tracking-widest outline-none"
+                className="w-full px-4 py-4 border-b-2 border-gray-100 dark:border-white/5 text-gray-900 dark:text-white bg-gray-50 dark:bg-black/50 focus:outline-none focus:border-vive-500 transition-all font-bold uppercase text-xs tracking-widest outline-none"
               >
                 <option value="hotel">Hotelería / Proyectos</option>
                 <option value="tienda">Tienda / Retail</option>
@@ -293,7 +293,7 @@ const WholesaleFormDrawer = ({ isOpen, onClose }) => {
                 </>
               )}
             </span>
-            <div className="absolute inset-0 bg-gold-500 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+            <div className="absolute inset-0 bg-vive-500 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
           </button>
           <button
             onClick={onClose}

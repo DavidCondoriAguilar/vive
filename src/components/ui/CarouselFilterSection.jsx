@@ -38,11 +38,11 @@ const CarouselFilterSection = ({
       {/* Active Filter Description */}
       {showActiveFilter && selectedCategory !== 'Todos' && (
         <div className="mb-8">
-          <div className="bg-gold-50 dark:bg-gold-500/10 border border-gold-200 dark:border-gold-500/30 rounded-xl p-4">
+          <div className="bg-vive-50 dark:bg-vive-500/10 border border-vive-200 dark:border-vive-500/30 rounded-xl p-4">
             <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-gold-500 rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-vive-500 rounded-full animate-pulse" />
               <div>
-                <span className="text-[10px] font-black text-gold-600 dark:text-gold-400 uppercase tracking-widest">
+                <span className="text-[10px] font-black text-vive-600 dark:text-vive-400 uppercase tracking-widest">
                   Filtrando por: {filterOptions.find(f => f.id === selectedCategory)?.name}
                 </span>
                 <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">

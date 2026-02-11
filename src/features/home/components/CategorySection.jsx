@@ -46,11 +46,11 @@ const CategorySection = () => {
 
             <div className="container mx-auto px-6 lg:px-20 relative z-10">
                 <div className="max-w-xl mb-20">
-                    <span className="text-gold-500 text-xs font-black tracking-[0.4em] uppercase mb-4 block animate-fade-in">
+                    <span className="text-vive-500 text-xs font-black tracking-[0.4em] uppercase mb-4 block animate-fade-in">
                         Excelencia en Fabricación
                     </span>
                     <h2 className="text-4xl lg:text-6xl font-display font-black text-gray-900 dark:text-white leading-[1.1] uppercase tracking-tighter">
-                        NUESTRA <span className="text-gold-500">COLECCIÓN</span>
+                        NUESTRA <span className="text-vive-500">COLECCIÓN</span>
                     </h2>
                 </div>
 
@@ -59,15 +59,15 @@ const CategorySection = () => {
                         <Link
                             key={cat.id}
                             to={cat.href}
-                            className="group relative p-8 bg-white dark:bg-zinc-900 rounded-[2rem] overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-black/5 border border-gray-100 dark:border-white/5 hover:border-gold-500/20"
+                            className="group relative p-8 bg-white dark:bg-zinc-900 rounded-[2rem] overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-black/5 border border-gray-100 dark:border-white/5 hover:border-vive-500/20"
                         >
                             {/* Icon */}
-                            <div className="mb-6 text-4xl text-gray-300 dark:text-white/20 group-hover:text-gold-500 group-hover:scale-110 transition-all duration-500">
+                            <div className="mb-6 text-4xl text-gray-300 dark:text-white/20 group-hover:text-vive-500 group-hover:scale-110 transition-all duration-500">
                                 <cat.icon />
                             </div>
 
                             {/* Content */}
-                            <span className="text-xs font-black text-gold-500 uppercase tracking-[0.2em] mb-3 block">
+                            <span className="text-xs font-black text-vive-500 uppercase tracking-[0.2em] mb-3 block">
                                 {cat.subtitle}
                             </span>
                             <h3 className="text-xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tight mb-4">
@@ -77,7 +77,7 @@ const CategorySection = () => {
                                 {cat.desc}
                             </p>
 
-                            <div className="flex items-center gap-3 text-xs font-black uppercase tracking-[0.2em] text-gray-900 dark:text-white group-hover:text-gold-500 transition-colors">
+                            <div className="flex items-center gap-3 text-xs font-black uppercase tracking-[0.2em] text-gray-900 dark:text-white group-hover:text-vive-500 transition-colors">
                                 Explorar
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -91,21 +91,21 @@ const CategorySection = () => {
                 <div className="mt-16">
                     <Link
                         to="/catalogo"
-                        className="group relative w-full p-12 bg-gradient-to-r from-gold-500/10 to-gold-500/5 dark:from-gold-500/20 dark:to-gold-500/10 rounded-[2rem] border border-gold-500/20 overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-gold-500/10 hover:border-gold-500/30"
+                        className="group relative w-full p-12 bg-gradient-to-r from-vive-500/10 to-vive-500/5 dark:from-vive-500/20 dark:to-vive-500/10 rounded-[2rem] border border-vive-500/20 overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-vive-500/10 hover:border-vive-500/30"
                     >
                         <div className="flex items-center justify-between">
                             <div>
-                                <span className="text-xs font-black text-gold-500 uppercase tracking-[0.4em] mb-3 block">
+                                <span className="text-xs font-black text-vive-500 uppercase tracking-[0.4em] mb-3 block">
                                     Catálogo Completo
                                 </span>
                                 <h3 className="text-3xl lg:text-5xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter mb-2">
-                                    VER TODOS LOS <span className="text-gold-500">PRODUCTOS</span>
+                                    VER TODOS LOS <span className="text-vive-500">PRODUCTOS</span>
                                 </h3>
                                 <p className="text-gray-600 dark:text-gray-300 text-lg font-medium">
-                                    Descuentos de fábrica hasta <span className="text-gold-500 font-black">-40%</span>
+                                    Descuentos de fábrica hasta <span className="text-vive-500 font-black">-40%</span>
                                 </p>
                             </div>
-                            <div className="text-gold-500/20 group-hover:text-gold-500/40 transition-colors duration-500">
+                            <div className="text-vive-500/20 group-hover:text-vive-500/40 transition-colors duration-500">
                                 <svg className="w-24 h-24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <circle cx="12" cy="12" r="10"/>
                                     <path d="m15 9-6 6"/>

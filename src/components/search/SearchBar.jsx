@@ -159,7 +159,7 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
                       role="option"
                       aria-selected={index === selectedIndex}
                       className={`group cursor-pointer transition-colors duration-200 ${index === selectedIndex
-                        ? 'bg-gold-50 dark:bg-gold-500/10'
+                        ? 'bg-vive-50 dark:bg-vive-500/10'
                         : 'hover:bg-gray-50 dark:hover:bg-white/5'
                         }`}
                       onClick={() => handleProductClick(product)}
@@ -185,13 +185,13 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
                             className="text-sm text-gray-600 dark:text-gray-400 truncate mt-1"
                             dangerouslySetInnerHTML={{ __html: sanitizeHTML(product.highlightedCategory) }}
                           />
-                          <div className="text-sm text-gold-600 dark:text-gold-400 font-medium mt-2">
+                          <div className="text-sm text-vive-600 dark:text-vive-400 font-medium mt-2">
                             Consultar precio
                           </div>
                         </div>
 
                         {/* Arrow Icon */}
-                        <div className="flex-shrink-0 text-gray-400 group-hover:text-gold-500 transition-colors duration-200">
+                        <div className="flex-shrink-0 text-gray-400 group-hover:text-vive-500 transition-colors duration-200">
                           <MdArrowForward className="w-5 h-5" />
                         </div>
                       </div>
@@ -203,7 +203,7 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
                 <div className="px-4 py-4 bg-gray-50 dark:bg-white/5 border-t border-gray-200 dark:border-white/10">
                   <button
                     onClick={handleViewAllResults}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gold-500 hover:bg-gold-600 text-white text-sm font-semibold rounded-lg transition-colors duration-200"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-vive-500 hover:bg-vive-600 text-white text-sm font-semibold rounded-lg transition-colors duration-200"
                   >
                     Ver todos los resultados
                     <MdArrowForward className="w-5 h-5" />

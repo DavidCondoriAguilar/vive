@@ -15,7 +15,7 @@ const NavActions = ({ toggleMobileMenu, isMobileMenuOpen, waLink }) => {
             {/* Search Button - Mobile */}
             <button
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:text-gold-500 hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300"
+                className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:text-vive-500 hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300"
                 aria-label="Buscar productos"
             >
                 <MdOutlineSearch className="w-5 h-5" />
@@ -24,7 +24,7 @@ const NavActions = ({ toggleMobileMenu, isMobileMenuOpen, waLink }) => {
             {/* Theme Toggle */}
             <button
                 onClick={toggleTheme}
-                className="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:text-gold-500 hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:text-vive-500 hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300"
                 aria-label="Cambiar tema"
             >
                 {theme === 'light' ? (
@@ -37,7 +37,7 @@ const NavActions = ({ toggleMobileMenu, isMobileMenuOpen, waLink }) => {
             {/* Cart Button */}
             <button
                 onClick={() => setIsCartOpen(true)}
-                className="relative group w-10 h-10 flex items-center justify-center rounded-xl text-gray-700 dark:text-gray-300 hover:text-gold-500 hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300"
+                className="relative group w-10 h-10 flex items-center justify-center rounded-xl text-gray-700 dark:text-gray-300 hover:text-vive-500 hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300"
                 aria-label="Carrito de compras"
             >
                 <div className="relative flex items-center justify-center">
@@ -46,7 +46,7 @@ const NavActions = ({ toggleMobileMenu, isMobileMenuOpen, waLink }) => {
                     </svg>
 
                     {getTotalItems() > 0 && (
-                        <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-gold-500 text-[8px] font-black leading-none text-white shadow-lg shadow-gold-500/30 border border-white dark:border-zinc-900 select-none transform transition-transform group-hover:scale-110">
+                        <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-vive-500 text-[8px] font-black leading-none text-white shadow-lg shadow-vive-500/30 border border-white dark:border-zinc-900 select-none transform transition-transform group-hover:scale-110">
                             {getTotalItems()}
                         </span>
                     )}

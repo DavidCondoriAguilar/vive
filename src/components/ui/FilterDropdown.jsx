@@ -33,7 +33,7 @@ const FilterDropdown = ({
     return (
         <div className={`relative flex-1 min-w-[140px] ${className}`} ref={dropdownRef}>
             {label && (
-                <label className="text-[10px] font-black text-gold-500 uppercase tracking-widest block mb-2 ml-1">
+                <label className="text-[10px] font-black text-vive-500 uppercase tracking-widest block mb-2 ml-1">
                     {label}
                 </label>
             )}
@@ -42,17 +42,17 @@ const FilterDropdown = ({
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
                 className={`w-full flex items-center justify-between px-5 py-3.5 bg-white dark:bg-black border rounded-2xl transition-all duration-300 group ${isOpen
-                    ? 'border-gold-500 ring-2 ring-gold-500/10 shadow-lg'
-                    : 'border-gray-100 dark:border-white/10 hover:border-gold-500/50'
+                    ? 'border-vive-500 ring-2 ring-vive-500/10 shadow-lg'
+                    : 'border-gray-100 dark:border-white/10 hover:border-vive-500/50'
                     }`}
             >
                 <div className="flex items-center gap-3 overflow-hidden">
-                    {Icon && <Icon className={`w-4 h-4 transition-colors ${isOpen ? 'text-gold-500' : 'text-gray-400 group-hover:text-gold-500'}`} />}
+                    {Icon && <Icon className={`w-4 h-4 transition-colors ${isOpen ? 'text-vive-500' : 'text-gray-400 group-hover:text-vive-500'}`} />}
                     <span className={`text-sm font-bold truncate ${isOpen ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'}`}>
                         {displayLabel}
                     </span>
                 </div>
-                <FaChevronDown className={`w-3 h-3 text-gold-500 transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`} />
+                <FaChevronDown className={`w-3 h-3 text-vive-500 transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {/* Options Menu */}
@@ -62,11 +62,11 @@ const FilterDropdown = ({
                     : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
                     }`}
             >
-                <div className="max-h-60 overflow-y-auto py-2 scrollbar-thin scrollbar-thumb-gold-500 scrollbar-track-transparent">
+                <div className="max-h-60 overflow-y-auto py-2 scrollbar-thin scrollbar-thumb-vive-500 scrollbar-track-transparent">
                     {options.map((option, idx) => {
                         if (option.isGroup) {
                             return (
-                                <div key={`group-${idx}`} className="px-5 py-2 text-[10px] font-black text-gold-500 uppercase tracking-[0.2em] bg-gray-50 dark:bg-white/5 mt-2 first:mt-0">
+                                <div key={`group-${idx}`} className="px-5 py-2 text-[10px] font-black text-vive-500 uppercase tracking-[0.2em] bg-gray-50 dark:bg-white/5 mt-2 first:mt-0">
                                     {option.name}
                                 </div>
                             );
@@ -85,8 +85,8 @@ const FilterDropdown = ({
                                     setIsOpen(false);
                                 }}
                                 className={`w-full text-left px-5 py-3 text-sm font-medium transition-all flex items-center justify-between group/opt ${isSelected
-                                    ? 'bg-gold-500 text-white'
-                                    : 'text-gray-600 dark:text-gray-400 hover:bg-gold-50 dark:hover:bg-gold-500/10 hover:text-gold-500'
+                                    ? 'bg-vive-500 text-white'
+                                    : 'text-gray-600 dark:text-gray-400 hover:bg-vive-50 dark:hover:bg-vive-500/10 hover:text-vive-500'
                                     }`}
                             >
                                 <span className={option.isSubOption ? 'pl-4' : ''}>{optLabel}</span>
