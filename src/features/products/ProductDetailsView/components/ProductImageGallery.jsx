@@ -33,7 +33,7 @@ const ProductImageGallery = ({
                 ref={containerRef}
             >
                 <div
-                    className="relative aspect-square bg-[#F8F8F8] dark:bg-white/[0.02] rounded-[3rem] overflow-hidden flex items-center justify-center transition-all duration-700 shadow-2xl shadow-black/5"
+                    className="relative aspect-square bg-white dark:bg-white rounded-[3rem] overflow-hidden flex items-center justify-center transition-all duration-700 shadow-2xl shadow-black/5"
                 >
                     {/* Primary Focus Engine */}
                     <div
@@ -120,8 +120,8 @@ const ProductImageGallery = ({
                         key={index}
                         onClick={() => setActiveImageIndex(index)}
                         className={`flex-shrink-0 w-24 h-24 rounded-[1.5rem] overflow-hidden border-2 transition-all duration-700 p-2 relative group-th ${activeImageIndex === index
-                            ? 'border-vive-600 bg-white dark:bg-zinc-900 scale-105 shadow-xl shadow-vive-600/10'
-                            : 'border-transparent bg-gray-50 dark:bg-zinc-900/10 hover:bg-gray-100'
+                            ? 'border-vive-600 bg-white scale-105 shadow-xl shadow-vive-600/10'
+                            : 'border-transparent bg-white hover:bg-gray-50'
                             }`}
                     >
                         <img

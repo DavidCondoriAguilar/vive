@@ -36,7 +36,7 @@ const ProductInfo = ({ product }) => {
             {/* Editorial Description - Tighter */}
             <div className="space-y-2">
                 <label className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-400">Visión de Diseño</label>
-                <p className="text-sm lg:text-base text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-lg">
+                <p className="text-base lg:text-lg text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-lg">
                     {product.description || 'Ingeniería de vanguardia diseñada para quienes buscan el equilibrio perfecto entre soporte y suavidad.'}
                 </p>
             </div>

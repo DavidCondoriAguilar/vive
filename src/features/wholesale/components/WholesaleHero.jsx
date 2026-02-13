@@ -43,8 +43,8 @@ const WholesaleHero = ({ isVisible, onOpenForm }) => {
                             </h1>
 
                             <p className="text-xl md:text-3xl text-gray-400 font-text leading-tight max-w-2xl border-l border-white/10 pl-8">
-                                Impulsamos el éxito de tiendas y socios comerciales con piezas de
-                                <span className="text-white font-bold ml-2">alta rotación</span>, escala industrial y soluciones estratégicas para el
+                                Potenciamos negocios con piezas de
+                                <span className="text-white font-bold ml-2">alta rotación</span> y soluciones estratégicas para el
                                 <span className="text-vive-500 italic ml-2 border-b border-vive-500/30">sector hotelero</span>.
                             </p>
                         </div>

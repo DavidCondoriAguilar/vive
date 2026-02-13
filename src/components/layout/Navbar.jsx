@@ -75,7 +75,7 @@ const Navbar = () => {
                 {
                     title: 'Colección Advance Diamont',
                     items: [
-                        { name: 'Absolut Pillow Mp', path: getProductPath('absolut-marco') },
+                        { name: 'Absolut Pillow Mp', path: getProductPath('ventto-marco') },
                         { name: 'Ternura Pocket Mp', path: getProductPath('ternura-pocket') },
                         { name: 'Matrimonial Pocket Mp', path: getProductPath('matrimonial-clasico') },
                         { name: 'Reconciliación Pocket Visco Mp', path: getProductPath('reconciliacion-pocket') }

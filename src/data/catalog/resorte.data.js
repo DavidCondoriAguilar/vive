@@ -1,4 +1,4 @@
-﻿// Importaciones de imgenes para Resorte
+// Importaciones de imgenes para Resorte
 import cunaTravesuraMain from '@assets/product-detail/cuna-travesura/travesura-main.webp';
 import cunaTravesuraTwo from '@assets/product-detail/cuna-travesura/travesura-two.webp';
 import cunaTravesuraDiag from '@assets/product-detail/cuna-travesura/travesura-diag.webp';
@@ -51,11 +51,45 @@ import ternuraPocketTwo from '@assets/product-detail/ternura-pocket/ternura-pock
 import ternuraPocketDiag from '@assets/product-detail/ternura-pocket/ternura-pocket-mp-diag.webp';
 import detalleTernura from '@assets/product-detail/ternura-pocket/detalle-ternura.webp';
 
-// ABSOLUT
-import absolutMain from '@assets/product-detail/absolut/absolut-main.webp';
-import absolutTwo from '@assets/product-detail/absolut/absolut-two.webp';
-import absolutDiag from '@assets/product-detail/absolut/absolut-diag.webp';
-import detalleAbsolut from '@assets/product-detail/absolut/detalle-absolut.webp';
+// VENTTO
+import geaMain from '@assets/product-detail/ventto/ventto-main.webp';
+import geaTwo from '@assets/product-detail/ventto/ventto-zoom.webp';
+import geaDiag from '@assets/product-detail/ventto/ventto.webp';
+
+// SENSE PREMIUM
+import sensePremiumMain from '@assets/product-detail/sense-premium/sense-premium-main.webp';
+import sensePremiumTwo from '@assets/product-detail/sense-premium/sense-premium-zoom.webp';
+import sensePremiumDiag from '@assets/product-detail/sense-premium/sense-premium-diagonal.webp';
+
+// GEA
+import geaOriginalMain from '@assets/product-detail/gea/gea-main.webp';
+import geaOriginalTwo from '@assets/product-detail/gea/gea-zoom.webp';
+import geaOriginalDiag from '@assets/product-detail/gea/gea-diagonal.webp';
+
+// KAI
+import kaiMain from '@assets/product-detail/kai/kai-main.webp';
+import kaiTwo from '@assets/product-detail/kai/kai-zoom.webp';
+import kaiDiag from '@assets/product-detail/kai/kai-diagonal.webp';
+
+// ENNA MP
+import ennaMpMain from '@assets/product-detail/enna-mp/enna-mp-diag.webp';
+import ennaMpTwo from '@assets/product-detail/enna-mp/enna-mp.webp';
+import ennaMpDiag from '@assets/product-detail/enna-mp/enna-mp-zoom.webp';
+
+// VANORA
+import vanoraMain from '@assets/product-detail/vanora/vanora-diagonal.webp';
+import vanoraTwo from '@assets/product-detail/vanora/vanora.webp';
+import vanoraDiag from '@assets/product-detail/vanora/vanora-zoom.webp';
+
+// VANORA DP
+import vanoraDpMain from '@assets/product-detail/vanora-dp/vanora-dp.webp';
+import vanoraDpTwo from '@assets/product-detail/vanora-dp/vanora-dp-zoom.webp';
+import vanoraDpDiag from '@assets/product-detail/vanora-dp/vanora-dp-diagonal.webp';
+
+// GEA DOBLE PILLOW
+import geaDpMain from '@assets/product-detail/gea-dp/gea-dp-diag.webp';
+import geaDpTwo from '@assets/product-detail/gea-dp/gea-dp-zoom.webp';
+import geaDpDiag from '@assets/product-detail/gea-dp/gea-dp-diag.webp';
 
 export const RESORTE_PRODUCTS = [
     // 1. RECONCILIACIN POCKET VISCO MP (DIAMONT - TOP 1)
@@ -94,25 +128,24 @@ export const RESORTE_PRODUCTS = [
             ]
         }
     },
-    // 2. ABSOLUT PILLOW MP (DIAMONT - TOP 2)
+    // 2. VENTTO MARCO POLIURETANO (DIAMONT - TOP 2)
     {
-        id: 'absolut-marco',
-        name: 'Absolut Pillow Mp',
+        id: 'ventto-marco',
+        name: 'Ventto Marco Poliuretano',
         category: 'resorte',
         subcategory: 'Diamont',
         price: 2199,
-        image: absolutMain,
+        image: geaMain,
         images: [
-            absolutMain,
-            absolutTwo,
-            absolutDiag
+            geaMain,
+            geaTwo,
+            geaDiag
         ],
-        technicalImage: detalleAbsolut,
         technicalSpecs: {
             colchon: [
                 'Tela Tricot 16 mm',
                 'Pillow densidad 23',
-                'Marco de poliuretano',
+                'Marco densidad 26',
                 'Sistema de resortes Bonnell Alto contenido de carbono',
                 'Diseño reversible (doble cara)',
                 'Soporte firme y uniforme'
@@ -120,11 +153,11 @@ export const RESORTE_PRODUCTS = [
             componentes: [
                 'Tela Tricot 16 mm',
                 'Pillow densidad 23',
-                'Marco densidad 18',
+                'Marco densidad 26',
                 'Lámina de Notex',
                 'Panel de resortes Bonnell Alto contenido de carbono',
                 'Lámina de Notex',
-                'Marco de poliuretano'
+                'Marco densidad 26'
             ]
         },
         description: 'Marco sellado al calor para máxima estabilidad perimetral y soporte total.',
@@ -132,7 +165,266 @@ export const RESORTE_PRODUCTS = [
         features: ['Marco Poliuretano', 'Máximo Soporte'],
         badge: 'Garantía de Fábrica'
     },
-    // 3. TERNURA POCKET MP (DIAMONT - TOP 3)
+    // 3. SENSE PREMIUM (DIAMONT - TOP 3)
+    {
+        id: 'sense-premium',
+        name: 'Sense Premium',
+        category: 'resorte',
+        subcategory: 'Diamont',
+        price: 1899,
+        image: sensePremiumMain,
+        images: [
+            sensePremiumMain,
+            sensePremiumTwo,
+            sensePremiumDiag
+        ],
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot Premium',
+                'Pillow densidad 25',
+                'Marco densidad 28',
+                'Sistema de resortes Pocket Elite',
+                'Diseño reversible (doble cara)',
+                'Soporte ultra firme'
+            ],
+            componentes: [
+                'Tela Tricot Premium 18 mm',
+                'Pillow densidad 25',
+                'Marco densidad 28',
+                'Lámina de Notex',
+                'Panel de resortes Pocket Elite',
+                'Lámina de Notex',
+                'Marco densidad 28'
+            ]
+        },
+        description: 'Sensación premium con tecnología de punta para un descanso excepcional.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Marco Poliuretano', 'Pocket Elite'],
+        badge: 'Premium Series'
+    },
+    // 4. GEA (DIAMONT - TOP 4)
+    {
+        id: 'gea-original',
+        name: 'Gea',
+        category: 'resorte',
+        subcategory: 'Diamont',
+        price: 1799,
+        image: geaOriginalMain,
+        images: [
+            geaOriginalMain,
+            geaOriginalTwo,
+            geaOriginalDiag
+        ],
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot Suave',
+                'Pillow densidad 24',
+                'Marco densidad 27',
+                'Sistema de resortes Bonnell Premium',
+                'Diseño reversible (doble cara)',
+                'Soporte superior'
+            ],
+            componentes: [
+                'Tela Tricot Suave 16 mm',
+                'Pillow densidad 24',
+                'Marco densidad 27',
+                'Lámina de Notex',
+                'Panel de resortes Bonnell Premium',
+                'Lámina de Notex',
+                'Marco densidad 27'
+            ]
+        },
+        description: 'Diseño elegante con tecnología avanzada para un confort superior.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Marco Poliuretano', 'Bonnell Premium'],
+        badge: 'Gea Collection'
+    },
+    // 5. KAI (DIAMONT - TOP 5)
+    {
+        id: 'kai',
+        name: 'Kai',
+        category: 'resorte',
+        subcategory: 'Diamont',
+        price: 1699,
+        image: kaiMain,
+        images: [
+            kaiMain,
+            kaiTwo,
+            kaiDiag
+        ],
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot Elite',
+                'Pillow densidad 23',
+                'Marco densidad 26',
+                'Sistema de resortes Bonnell Alto Carbono',
+                'Diseño reversible (doble cara)',
+                'Soporte optimizado'
+            ],
+            componentes: [
+                'Tela Tricot Elite 16 mm',
+                'Pillow densidad 23',
+                'Marco densidad 26',
+                'Lámina de Notex',
+                'Panel de resortes Bonnell Alto Carbono',
+                'Lámina de Notex',
+                'Marco densidad 26'
+            ]
+        },
+        description: 'Equilibrio perfecto entre tecnología y confort para un descanso superior.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Marco Poliuretano', 'Alto Carbono'],
+        badge: 'Kai Series'
+    },
+    // 6. ENNA MP (DIAMONT - TOP 6)
+    {
+        id: 'enna-mp',
+        name: 'Enna Mp',
+        category: 'resorte',
+        subcategory: 'Diamont',
+        price: 1599,
+        image: ennaMpMain,
+        images: [
+            ennaMpMain,
+            ennaMpTwo,
+            ennaMpDiag
+        ],
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot Premium',
+                'Pillow densidad 22',
+                'Marco densidad 25',
+                'Sistema de resortes Bonnell Carbono',
+                'Diseño reversible (doble cara)',
+                'Soporte superior'
+            ],
+            componentes: [
+                'Tela Tricot Premium 16 mm',
+                'Pillow densidad 22',
+                'Marco densidad 25',
+                'Lámina de Notex',
+                'Panel de resortes Bonnell Carbono',
+                'Lámina de Notex',
+                'Marco densidad 25'
+            ]
+        },
+        description: 'Tecnología MP avanzada con máximo confort y durabilidad para un descanso excepcional.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Marco Poliuretano', 'Tecnología MP'],
+        badge: 'Enna Collection'
+    },
+    // 7. VANORA (DIAMONT - TOP 7)
+    {
+        id: 'vanora',
+        name: 'Vanora',
+        category: 'resorte',
+        subcategory: 'Diamont',
+        price: 1499,
+        image: vanoraMain,
+        images: [
+            vanoraMain,
+            vanoraTwo,
+            vanoraDiag
+        ],
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot Suave',
+                'Pillow densidad 21',
+                'Marco densidad 24',
+                'Sistema de resortes Bonnell Estándar',
+                'Diseño reversible (doble cara)',
+                'Soporte confortable'
+            ],
+            componentes: [
+                'Tela Tricot Suave 16 mm',
+                'Pillow densidad 21',
+                'Marco densidad 24',
+                'Lámina de Notex',
+                'Panel de resortes Bonnell Estándar',
+                'Lámina de Notex',
+                'Marco densidad 24'
+            ]
+        },
+        description: 'Confort y elegancia en perfecta armonía para noches de descanso inolvidables.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Marco Poliuretano', 'Confort Superior'],
+        badge: 'Vanora Collection'
+    },
+    // 8. VANORA DP (DIAMONT - TOP 8)
+    {
+        id: 'vanora-dp',
+        name: 'Vanora Doble Pillow',
+        category: 'resorte',
+        subcategory: 'Diamont',
+        price: 1399,
+        image: vanoraDpMain,
+        images: [
+            vanoraDpMain,
+            vanoraDpTwo,
+            vanoraDpDiag
+        ],
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot Elite',
+                'Pillow densidad 20',
+                'Marco densidad 23',
+                'Sistema de resortes Bonnell Durabilidad',
+                'Diseño reversible (doble cara)',
+                'Soporte premium'
+            ],
+            componentes: [
+                'Tela Tricot Elite 16 mm',
+                'Pillow densidad 20',
+                'Marco densidad 23',
+                'Lámina de Notex',
+                'Panel de resortes Bonnell Durabilidad',
+                'Lámina de Notex',
+                'Marco densidad 23'
+            ]
+        },
+        description: 'Sistema DP de máxima permanencia con tecnología avanzada para un descanso superior.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Marco Poliuretano', 'Sistema DP'],
+        badge: 'Vanora DP Series'
+    },
+    // 9. GEA DOBLE PILLOW (DIAMONT - TOP 9)
+    {
+        id: 'gea-doble-pillow',
+        name: 'Gea Doble Pillow',
+        category: 'resorte',
+        subcategory: 'Diamont',
+        price: 1299,
+        image: geaDpMain,
+        images: [
+            geaDpMain,
+            geaDpTwo,
+            geaDpDiag
+        ],
+        technicalSpecs: {
+            colchon: [
+                'Tela Tricot Premium Plus',
+                'Doble Pillow densidad 19',
+                'Marco densidad 22',
+                'Sistema de resortes Bonnell Premium',
+                'Diseño reversible (doble cara)',
+                'Soporte ultra confortable'
+            ],
+            componentes: [
+                'Tela Tricot Premium Plus 18 mm',
+                'Doble Pillow densidad 19',
+                'Marco densidad 22',
+                'Lámina de Notex',
+                'Panel de resortes Bonnell Premium',
+                'Lámina de Notex',
+                'Marco densidad 22'
+            ]
+        },
+        description: 'Doble capa Pillow con tecnología avanzada para un confort excepcional y durabilidad superior.',
+        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
+        features: ['Marco Poliuretano', 'Doble Pillow'],
+        badge: 'Gea DP Collection'
+    },
+    // 10. TERNURA POCKET MP (DIAMONT - TOP 10)
     {
         id: 'ternura-pocket',
         name: 'Ternura Pocket Mp',
@@ -150,7 +442,7 @@ export const RESORTE_PRODUCTS = [
             colchon: [
                 'Tela Tricot 16 mm',
                 'Pillow densidad 23',
-                'Marco de poliuretano',
+                'Marco densidad 26',
                 'Sistema de resortes Pocket',
                 'Diseño reversible (doble cara)',
                 'Soporte firme y uniforme'
@@ -158,11 +450,11 @@ export const RESORTE_PRODUCTS = [
             componentes: [
                 'Tela Tricot 16 mm',
                 'Pillow densidad 23',
-                'Marco densidad 18',
+                'Marco densidad 26',
                 'Lámina de Notex',
                 'Panel de resortes Pocket',
                 'Lámina de Notex',
-                'Marco de poliuretano'
+                'Marco densidad 26'
             ]
         },
         description: 'Resortes independientes Pocket para una independencia de lechos total.',
@@ -188,7 +480,7 @@ export const RESORTE_PRODUCTS = [
             colchon: [
                 'Tela Tricot 16 mm',
                 'Pillow densidad 23',
-                'Marco de poliuretano',
+                'Marco densidad 26',
                 'Sistema de resortes Bonnell Alto contenido de carbono',
                 'Diseño reversible (doble cara)',
                 'Soporte firme y uniforme'
@@ -196,11 +488,11 @@ export const RESORTE_PRODUCTS = [
             componentes: [
                 'Tela Tricot 16 mm',
                 'Pillow densidad 23',
-                'Marco densidad 18',
+                'Marco densidad 26',
                 'Lámina de Notex',
                 'Panel de resortes Bonnell Alto contenido de carbono',
                 'Lámina de Notex',
-                'Marco de poliuretano'
+                'Marco densidad 26'
             ]
         },
         description: 'Pillow Top permanente de alta densidad diseñado para un confort eterno. Ingeniería Gold con refuerzo lumbar y sistema de Máxima Permanencia (MP) para garantizar una durabilidad superior con acabado de lujo.',
@@ -314,7 +606,7 @@ export const RESORTE_PRODUCTS = [
             colchon: [
                 'Tela Tricot 16 mm',
                 'Pillow densidad 23',
-                'Marco de poliuretano',
+                'Marco densidad 26',
                 'Sistema de resortes Bonnell Alto contenido de carbono',
                 'Diseño reversible (doble cara)',
                 'Soporte firme y uniforme'
@@ -322,11 +614,11 @@ export const RESORTE_PRODUCTS = [
             componentes: [
                 'Tela Tricot 16 mm',
                 'Pillow densidad 23',
-                'Marco densidad 18',
+                'Marco densidad 26',
                 'Lámina de Notex',
                 'Panel de resortes Bonnell Alto contenido de carbono',
                 'Lámina de Notex',
-                'Marco de poliuretano'
+                'Marco densidad 26'
             ]
         },
         description: 'Diseño eterno de alta resistencia con un pillow de gran confort y firmeza.',

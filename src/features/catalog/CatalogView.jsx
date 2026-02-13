@@ -66,9 +66,6 @@ const CatalogView = () => {
               <h1 className="text-5xl md:text-8xl font-display font-black text-gray-900 dark:text-white uppercase leading-[0.9] tracking-tighter mb-8 animate-slide-up">
                 Sistemas de <br /><span className="text-vive-500 italic font-light">Descanso</span>
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-400 font-medium leading-relaxed max-w-2xl mx-auto animate-fade-in delay-200">
-                Calidad directa de fabrica con respaldo industrial. Diseñados para transformar cada noche en una experiencia de lujo.
-              </p>
             </div>
 
             {/* Smart Filters Panel */}
