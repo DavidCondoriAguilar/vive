@@ -43,7 +43,7 @@ export const useSearch = () => {
         if (product.name.toLowerCase().includes(word)) {
           score += 50;
         }
-        if (product.subcategory.toLowerCase().includes(word)) {
+        if (product.subcategory?.toLowerCase().includes(word)) {
           score += 30;
         }
         if (product.category.toLowerCase().includes(word)) {
@@ -72,8 +72,8 @@ export const useSearch = () => {
         results.push({
           ...product,
           score,
-          highlightedName: highlightMatch(product.name, term),
-          highlightedCategory: highlightMatch(product.subcategory, term)
+          highlightedName: highlightMatch(product.name || '', term) || product.name || '',
+          highlightedCategory: highlightMatch(product.subcategory || '', term) || product.subcategory || ''
         });
       }
     });

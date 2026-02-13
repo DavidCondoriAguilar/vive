@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MdOutlineSearch, MdOutlineDarkMode, MdOutlineLightMode, MdOutlineShoppingCart } from 'react-icons/md';
 import { FaWhatsapp } from 'react-icons/fa';
 import { useTheme } from '@/hooks/useTheme';
 import { useCart } from '@/contexts/CartContext';
-import SearchBar from '@/components/search/SearchBar';
 
-const NavActions = ({ toggleMobileMenu, isMobileMenuOpen, waLink }) => {
+const NavActions = ({ toggleMobileMenu, isMobileMenuOpen, waLink, onOpenSearch }) => {
     const { theme, toggleTheme } = useTheme();
     const { getTotalItems, setIsCartOpen } = useCart();
-    const [isSearchOpen, setIsSearchOpen] = useState(false);
 
     return (
-        <div className="flex items-center justify-end gap-1 flex-shrink-0 animate-fade-in lg:border-l border-gray-100 dark:border-white/5 lg:pl-8 -mr-4 sm:mr-0">
-            {/* Search Button - Mobile */}
+        <div className="flex items-center justify-end gap-1.5 sm:gap-2 flex-shrink-0 animate-fade-in lg:border-l border-gray-100 dark:border-white/5 lg:pl-6 xl:pl-8">
+            {/* Search: solo icono, abre modal en todas las pantallas */}
             <button
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg text-gray-500 hover:text-vive-500 hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300"
+                onClick={() => onOpenSearch?.()}
+                className="w-9 h-9 min-w-[36px] flex-shrink-0 flex items-center justify-center rounded-lg text-gray-500 hover:text-vive-500 hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300"
                 aria-label="Buscar productos"
             >
                 <MdOutlineSearch className="w-5 h-5" />
@@ -77,12 +75,6 @@ const NavActions = ({ toggleMobileMenu, isMobileMenuOpen, waLink }) => {
                 </div>
             </button>
 
-            {/* Mobile Search Bar */}
-            {isSearchOpen && (
-                <div className="lg:hidden absolute top-full left-0 right-0 mt-2 p-4 bg-white dark:bg-black border-b border-gray-200 dark:border-white/10 shadow-lg">
-                    <SearchBar placeholder="Buscar productos..." />
-                </div>
-            )}
         </div>
     );
 };

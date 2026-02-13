@@ -163,7 +163,7 @@ const ReturnPolicy = () => {
                                                 <span className="text-3xl">🛡️</span>
                                             </div>
                                             <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Seguridad</h4>
-                                            <p className="text-xs text-gray-600 dark:text-gray-300">Certificación ISO 9001</p>
+                                            <p className="text-xs text-gray-600 dark:text-gray-300">Control de calidad en fabricación</p>
                                         </div>
                                         <div className="text-center">
                                             <div className="w-20 h-20 bg-yellow-100 dark:bg-yellow-900/30 rounded-full flex items-center justify-center mx-auto mb-3">

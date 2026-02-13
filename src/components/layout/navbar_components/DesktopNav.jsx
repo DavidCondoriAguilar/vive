@@ -25,7 +25,7 @@ const DesktopNav = ({ navLinks, currentPath }) => {
     };
 
     return (
-        <nav ref={navRef} className="hidden lg:flex items-center gap-1 xl:gap-2 h-full relative">
+        <nav ref={navRef} className="hidden lg:flex items-center gap-0.5 xl:gap-1 h-full relative">
             {navLinks.map((link) => {
                 const isOpen = activeMenu === link.name;
                 const hasDropdown = link.subLinks || link.megaMenu;
@@ -33,13 +33,13 @@ const DesktopNav = ({ navLinks, currentPath }) => {
                 return (
                     <div
                         key={link.name}
-                        className={`${link.megaMenu ? '' : 'relative'} h-full flex items-center`}
+                        className={`${link.megaMenu ? '' : 'relative'} h-full flex items-center flex-shrink-0`}
                         onMouseEnter={() => handleMouseEnter(link.name)}
                         onMouseLeave={handleMouseLeave}
                     >
                         <Link
                             to={link.path}
-                            className={`px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-500 rounded-full flex items-center gap-2 z-50 ${currentPath === link.path || isOpen
+                            className={`px-2 lg:px-3 py-1.5 text-[9px] xl:text-[10px] font-black uppercase tracking-[0.2em] xl:tracking-[0.25em] transition-all duration-500 rounded-full flex items-center gap-1.5 z-50 whitespace-nowrap ${currentPath === link.path || isOpen
                                 ? 'text-black dark:text-white bg-gray-50 dark:bg-white/5'
                                 : 'text-gray-400 hover:text-black dark:hover:text-white'
                                 }`}

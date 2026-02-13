@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
+import { FaWhatsapp } from 'react-icons/fa';
 import MainLayout from '@/layouts/MainLayout';
 import { useCart } from '@/contexts/CartContext';
+import { getWhatsAppLink } from '@/utils/constants';
 import { getStructuredData } from './utils/accessibility';
 import { useProductDetails, useProductImages, useProductSEO } from './hooks/useProductDetails';
 import ProductImageGallery from './components/ProductImageGallery';
@@ -65,7 +67,7 @@ const ProductDetailsView = () => {
                     </div>
 
                     {/* Integrated Presentation Grid - Tighter gaps */}
-                    <div className="container mx-auto px-6 lg:px-20 pb-12">
+                    <div className="container mx-auto px-6 lg:px-20 pb-20 md:pb-12">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
                             {/* Left Column: Visuals & Engineering Exhibit */}
@@ -107,6 +109,18 @@ const ProductDetailsView = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Sticky CTA Cotizar por WhatsApp - solo mobile */}
+                <a
+                    href={getWhatsAppLink(`Hola Vive, me interesa cotizar el modelo ${product.name}.`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="md:hidden fixed bottom-0 left-0 right-0 z-40 flex items-center justify-center gap-3 py-4 px-6 bg-green-600 hover:bg-green-700 text-white font-black text-sm uppercase tracking-widest shadow-[0_-4px_20px_rgba(0,0,0,0.1)]"
+                    style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
+                >
+                    <FaWhatsapp className="w-5 h-5 flex-shrink-0" />
+                    Cotizar por WhatsApp
+                </a>
 
                 {/* Legacy Tech Modal - Keeping for deep specs access */}
                 <ProductSpecsModal

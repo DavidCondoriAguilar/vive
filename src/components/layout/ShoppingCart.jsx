@@ -43,7 +43,9 @@ const ShoppingCart = () => {
             <div className="space-y-1">
               <h2 className="text-3xl font-black uppercase tracking-tighter text-gray-900 dark:text-white">Tu Selección</h2>
               <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">
-                {getTotalItems()} {getTotalItems() === 1 ? 'Modelo' : 'Modelos'} en lista
+                {getTotalItems() === 0
+                  ? 'Lista de cotización'
+                  : `${getTotalItems()} ${getTotalItems() === 1 ? 'Modelo' : 'Modelos'} en lista`}
               </p>
             </div>
             <button

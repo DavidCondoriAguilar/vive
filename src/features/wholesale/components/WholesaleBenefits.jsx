@@ -58,8 +58,8 @@ const WholesaleBenefits = ({ benefits, factoryProductionImg }) => {
                                 </div>
                                 <div className="p-8 bg-vive-600 dark:bg-vive-500 rounded-3xl shadow-2xl">
                                     <span className="block text-[10px] font-black text-white dark:text-black uppercase tracking-widest mb-1 italic">Vantage Level</span>
-                                    <span className="text-6xl font-display font-black text-white dark:text-black leading-none">-50%</span>
-                                    <p className="text-[9px] font-bold text-white dark:text-black uppercase tracking-tighter mt-1">Direct Factory Pricing Sync</p>
+                                    <span className="text-6xl font-display font-black text-white dark:text-black leading-none">Directo</span>
+                                    <p className="text-[9px] font-bold text-white dark:text-black uppercase tracking-tighter mt-1">Precio de fábrica sin intermediarios</p>
                                 </div>
                             </div>
                         </div>

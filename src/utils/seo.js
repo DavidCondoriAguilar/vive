@@ -10,6 +10,22 @@
  */
 export const getProductSchema = (product) => {
   const productUrl = `${import.meta.env.VITE_PRODUCTION_URL}/producto/${product.id}`;
+  const hasPrice = product.price != null && product.price !== '' && Number(product.price) > 0;
+
+  const offers = {
+    '@type': 'Offer',
+    'url': productUrl,
+    'availability': 'https://schema.org/InStock',
+    'seller': {
+      '@type': 'Organization',
+      'name': import.meta.env.VITE_BRAND_NAME,
+      'url': import.meta.env.VITE_PRODUCTION_URL
+    }
+  };
+  if (hasPrice) {
+    offers.priceCurrency = 'PEN';
+    offers.price = String(product.price);
+  }
 
   return {
     '@context': 'https://schema.org/',
@@ -22,18 +38,7 @@ export const getProductSchema = (product) => {
       '@type': 'Brand',
       'name': import.meta.env.VITE_BRAND_NAME
     },
-    'offers': {
-      '@type': 'Offer',
-      'url': productUrl,
-      'priceCurrency': 'PEN',
-      'price': product.price?.toString() || '0',
-      'availability': 'https://schema.org/InStock',
-      'seller': {
-        '@type': 'Organization',
-        'name': import.meta.env.VITE_BRAND_NAME,
-        'url': import.meta.env.VITE_PRODUCTION_URL
-      }
-    },
+    'offers': offers,
     'aggregateRating': product.rating ? {
       '@type': 'AggregateRating',
       'ratingValue': product.rating?.value || '4.8',

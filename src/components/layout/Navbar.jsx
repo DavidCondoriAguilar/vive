@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { getWhatsAppLink } from '@/utils/constants';
 import PromoBar from './PromoBar';
 import Logo from '@/components/common/Logo';
-import SearchBar from '@/components/search/SearchBar';
+import SearchModal from '@/components/search/SearchModal';
 import DesktopNav from './navbar_components/DesktopNav';
 import NavActions from './navbar_components/NavActions';
 import MobileMenu from './navbar_components/MobileMenu'; // Import MobileMenu
@@ -25,6 +25,7 @@ import { ROUTES, getProductPath } from '@/router/routes';
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isSearchOverlayOpen, setIsSearchOverlayOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -108,6 +109,11 @@ const Navbar = () => {
             ]
         },
         {
+            name: 'Catálogo',
+            path: ROUTES.CATALOG,
+            icon: <MdOutlineInventory className="w-5 h-5" />
+        },
+        {
             name: 'Mayorista',
             path: ROUTES.WHOLESALE,
             badge: 'B2B',
@@ -131,11 +137,11 @@ const Navbar = () => {
 
             {/* MAIN NAVBAR */}
             <div
-                className="bg-white dark:bg-black border-b border-gray-200 dark:border-white/5 transition-all duration-500"
+                className="bg-white dark:bg-black border-b border-gray-200 dark:border-white/5 transition-all duration-500 overflow-visible"
             >
-                <div className="w-full px-4 md:px-12 lg:px-20 relative">
+                <div className="w-full px-4 md:px-12 lg:px-20 relative overflow-visible">
                     {/* Mobile Layout - Professional & Responsive */}
-                    <div className="lg:hidden flex items-center min-h-[96px] w-full px-2 gap-2">
+                    <div className="lg:hidden flex items-center min-h-[96px] w-full px-2 gap-2 overflow-visible">
                         {/* LOGO - Fixed width for stability */}
                         <div className="flex-shrink-0 w-24">
                             <Logo
@@ -145,12 +151,13 @@ const Navbar = () => {
                             />
                         </div>
 
-                        {/* ACTIONS - Pushed to the right but with margin */}
-                        <div className="flex-1 flex justify-end pr-8">
+                        {/* ACTIONS - Siempre visibles (mínimo ancho para iconos + menú) */}
+                        <div className="flex-1 flex justify-end items-center flex-shrink-0 min-w-[200px]">
                             <NavActions
                                 toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                                 isMobileMenuOpen={isMobileMenuOpen}
                                 waLink={waLink}
+                                onOpenSearch={() => setIsSearchOverlayOpen(true)}
                             />
                         </div>
                     </div>
@@ -166,35 +173,19 @@ const Navbar = () => {
                             />
                         </div>
 
-                        {/* DESKTOP NAV - Center section */}
-                        <div className="flex-1 flex items-center justify-center px-4">
+                        {/* DESKTOP NAV - Centro sin scroll */}
+                        <div className="flex-1 min-w-0 flex items-center justify-center px-2">
                             <DesktopNav navLinks={navLinks} currentPath={location.pathname} />
                         </div>
 
-                        {/* RIGHT SECTION - Search + Actions */}
-                        <div className="flex items-center gap-4 flex-shrink-0">
-                            <div className="hidden xl:block w-48">
-                                <SearchBar placeholder="Buscar productos..." />
-                            </div>
-
-                            {/* Search Icon - Tablet/Laptop */}
-                            <div className="hidden lg:block xl:hidden">
-                                <button
-                                    className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-vive-500 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300"
-                                    aria-label="Buscar productos"
-                                >
-                                    <MdOutlineSearch className="w-4 h-4" />
-                                </button>
-                            </div>
-
-                            {/* ACTIONS */}
-                            <div className="flex-shrink-0">
-                                <NavActions
-                                    toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                                    isMobileMenuOpen={isMobileMenuOpen}
-                                    waLink={waLink}
-                                />
-                            </div>
+                        {/* ICONOS: búsqueda (solo icono) + tema, carrito, WhatsApp */}
+                        <div className="flex items-center gap-1.5 lg:gap-2 flex-shrink-0">
+                            <NavActions
+                                toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                isMobileMenuOpen={isMobileMenuOpen}
+                                waLink={waLink}
+                                onOpenSearch={() => setIsSearchOverlayOpen(true)}
+                            />
                         </div>
                     </div>
                 </div>
@@ -206,6 +197,12 @@ const Navbar = () => {
                 onClose={() => setIsMobileMenuOpen(false)}
                 navLinks={navLinks}
                 waLink={waLink}
+            />
+
+            {/* Modal de búsqueda moderno */}
+            <SearchModal
+                isOpen={isSearchOverlayOpen}
+                onClose={() => setIsSearchOverlayOpen(false)}
             />
         </header>
     );

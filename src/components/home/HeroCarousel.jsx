@@ -30,7 +30,7 @@ const HeroCarousel = () => {
       image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1200&auto=format&fit=crop',
       title: 'Envíos a Todo el Perú',
       subtitle: 'Lima, Callao y Provincias',
-      features: ['Entrega 24h', 'Flota Propia', 'Nacional'],
+      features: ['Entrega 48-72h', 'Flota Propia', 'Nacional'],
       badge: 'RAPIDEZ'
     },
     {
@@ -39,7 +39,7 @@ const HeroCarousel = () => {
       image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200&auto=format&fit=crop',
       title: 'Venta por Mayor & Corporativo',
       subtitle: 'Directo de nuestra Fábrica',
-      features: ['+30 Años Trayectoria', 'Ahorro -50%', 'Hoteles'],
+      features: ['+30 Años Trayectoria', 'Precio directo', 'Hoteles'],
       badge: 'NEGOCIOS'
     }
   ];

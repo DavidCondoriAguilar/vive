@@ -48,15 +48,15 @@ const WholesaleFinalCTA = ({ onOpenForm, whatsappLink }) => {
                 <div className="pt-10 flex flex-wrap justify-center gap-x-12 gap-y-4 opacity-40">
                     <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-vive-500 rounded-full"></span>
-                        <span className="text-[9px] font-black text-white uppercase tracking-widest">ISO 9001 Protocol</span>
+                        <span className="text-[9px] font-black text-white uppercase tracking-widest">Control de calidad</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-vive-500 rounded-full"></span>
-                        <span className="text-[9px] font-black text-white uppercase tracking-widest">Inacal Standard</span>
+                        <span className="text-[9px] font-black text-white uppercase tracking-widest">Estándares de fabricación</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-vive-500 rounded-full"></span>
-                        <span className="text-[9px] font-black text-white uppercase tracking-widest">High Transit Certification</span>
+                        <span className="text-[9px] font-black text-white uppercase tracking-widest">Despacho 48-72h Lima</span>
                     </div>
                 </div>
             </div>

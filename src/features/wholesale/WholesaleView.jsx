@@ -95,9 +95,9 @@ const WholesaleView = () => {
   };
 
   const mainStats = [
-    { value: "-50%", label: "Precio de Fábrica", desc: "Ahorro directo sin intermediarios" },
-    { value: "ISO", label: "Norma", desc: "Certificación de calidad industrial" },
-    { value: "24h", label: "Despacho", desc: "Logística propia para Lima" },
+    { value: "Directo", label: "Precio de Fábrica", desc: "Sin intermediarios, mejor tarifa" },
+    { value: "Calidad", label: "Estándares", desc: "Control de calidad en fabricación" },
+    { value: "48-72h", label: "Despacho", desc: "Entrega aprox. 48 a 72h en Lima" },
     { value: "+30", label: "Años", desc: "Experiencia industrial" }
   ];
 
@@ -124,7 +124,7 @@ const WholesaleView = () => {
       title: "Calidad Certificada",
       desc: "Nuestros procesos cumplen con normas internacionales de higiene y ergonomía.",
       icon: <FaCheckCircle className="w-8 h-8 text-vive-500" />,
-      specs: ["ISO 9001", "Certificación INACAL"]
+      specs: ["Control de calidad", "Estándares de fabricación"]
     }
   ];
 

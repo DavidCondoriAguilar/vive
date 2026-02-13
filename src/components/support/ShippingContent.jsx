@@ -27,7 +27,7 @@ const ShippingContent = () => (
         </div>
 
         <p className="text-[11px] text-center text-gray-400 italic">
-            * Nuestro equipo de despacho coordinará la fecha exacta vía WhatsApp 24h antes.
+            * Nuestro equipo de despacho coordinará la fecha exacta vía WhatsApp con 48h de anticipación.
         </p>
     </div>
 );

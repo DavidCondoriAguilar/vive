@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@/hooks/useTheme';
-import logoVive from '@assets/images/logos/vive.png';
+import logoVive from '@assets/images/ico-web/icon-web-icon.webp';
 
 const Logo = ({
   size = 'medium',

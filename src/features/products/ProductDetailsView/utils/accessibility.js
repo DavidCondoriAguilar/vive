@@ -17,6 +17,21 @@ export const getAltText = (imageName, productName) => {
 export const getStructuredData = (product) => {
     if (!product) return {};
 
+    const hasPrice = product.price != null && product.price !== '' && Number(product.price) > 0;
+    const offers = {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+            "@type": "Organization",
+            "name": "Vive",
+            "url": "https://vive.pe"
+        }
+    };
+    if (hasPrice) {
+        offers.priceCurrency = "PEN";
+        offers.price = String(product.price);
+    }
+
     return {
         "@context": "https://schema.org",
         "@type": "Product",
@@ -28,17 +43,7 @@ export const getStructuredData = (product) => {
             "name": "Vive"
         },
         "category": product.category,
-        "offers": {
-            "@type": "AggregateOffer",
-            "priceCurrency": "PEN",
-            "price": product.price || "0",
-            "availability": "https://schema.org/InStock",
-            "seller": {
-                "@type": "Organization",
-                "name": "Vive",
-                "url": "https://vive.pe"
-            }
-        },
+        "offers": offers,
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.8",

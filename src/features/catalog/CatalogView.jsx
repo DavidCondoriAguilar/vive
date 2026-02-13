@@ -59,6 +59,18 @@ const CatalogView = () => {
 
       <MainLayout>
         <div className="pb-24 bg-white dark:bg-black transition-colors duration-700">
+          {/* Sticky CTA Cotizar por WhatsApp - solo mobile */}
+          <a
+            href={getWhatsAppLink('Hola Vive, deseo cotizar productos del catálogo.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="md:hidden fixed bottom-0 left-0 right-0 z-40 flex items-center justify-center gap-3 py-4 px-6 bg-green-600 hover:bg-green-700 text-white font-black text-sm uppercase tracking-widest shadow-[0_-4px_20px_rgba(0,0,0,0.1)]"
+            style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
+          >
+            <FaWhatsapp className="w-5 h-5 flex-shrink-0" />
+            Cotizar por WhatsApp
+          </a>
+
           <SectionLayout background="white">
             {/* Elite Header */}
             <div className="max-w-4xl mb-20 px-4 md:px-0 text-center mx-auto">

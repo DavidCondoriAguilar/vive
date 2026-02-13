@@ -4,7 +4,7 @@ import { MdSearch, MdClose, MdArrowForward } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { sanitizeHTML } from '@/utils/security';
 
-const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
+const SearchBar = ({ className = '', placeholder = 'Buscar productos...', fullWidth = false }) => {
   const {
     searchTerm,
     setSearchTerm,
@@ -61,7 +61,7 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
   };
 
   return (
-    <div ref={searchContainerRef} className={`relative w-full max-w-44 ${className}`}>
+    <div ref={searchContainerRef} className={`relative w-full ${fullWidth ? 'max-w-none' : 'max-w-44'} ${className}`}>
       {/* Search Input Container */}
       <div className="relative group" style={{ zIndex: 50, position: 'relative' }}>
         {/* Search Icon */}
@@ -99,7 +99,7 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
             fontWeight: '500',
             letterSpacing: '-0.01em',
             width: '100%',
-            maxWidth: '200px', // Más reducido para no desbordar navbar
+            maxWidth: fullWidth ? 'none' : '200px',
             padding: '6px 24px 6px 32px', // Más espacio a la izquierda para la lupa
             border: 'none',
             borderBottom: '1px solid #d1d5db',
@@ -137,94 +137,106 @@ const SearchBar = ({ className = '', placeholder = 'Buscar productos...' }) => {
         )}
       </div>
 
-      {/* Search Results Dropdown */}
+      {/* Search Results Dropdown - cabecera y botón fijos, solo la lista hace scroll */}
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-black border border-gray-200 dark:border-white/10 rounded-xl shadow-2xl z-50 overflow-hidden min-w-[400px]">
-          <div className="max-h-[32rem] overflow-y-auto">
-            {hasResults ? (
-              <>
-                {/* Results Header */}
-                <div className="px-4 py-4 bg-gray-50 dark:bg-white/5 border-b border-gray-200 dark:border-white/10">
-                  <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                    {searchResults.length} producto{searchResults.length !== 1 ? 's' : ''} encontrado{searchResults.length !== 1 ? 's' : ''}
-                  </p>
-                </div>
-
-                {/* Search Results List */}
-                <ul role="listbox" className="py-3">
-                  {searchResults.map((product, index) => (
-                    <li
-                      key={product.id}
-                      id={`search-result-${index}`}
-                      role="option"
-                      aria-selected={index === selectedIndex}
-                      className={`group cursor-pointer transition-colors duration-200 ${index === selectedIndex
-                        ? 'bg-vive-50 dark:bg-vive-500/10'
-                        : 'hover:bg-gray-50 dark:hover:bg-white/5'
-                        }`}
-                      onClick={() => handleProductClick(product)}
-                    >
-                      <div className="px-4 py-4 flex items-center gap-4">
-                        {/* Product Image */}
-                        <div className="flex-shrink-0 w-14 h-14 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                          />
-                        </div>
-
-                        {/* Product Info */}
-                        <div className="flex-1 min-w-0">
-                          <div
-                            className="text-sm font-semibold text-gray-900 dark:text-white truncate"
-                            dangerouslySetInnerHTML={{ __html: sanitizeHTML(product.highlightedName) }}
-                          />
-                          <div
-                            className="text-sm text-gray-600 dark:text-gray-400 truncate mt-1"
-                            dangerouslySetInnerHTML={{ __html: sanitizeHTML(product.highlightedCategory) }}
-                          />
-                          <div className="text-sm text-vive-600 dark:text-vive-400 font-medium mt-2">
-                            Consultar precio
-                          </div>
-                        </div>
-
-                        {/* Arrow Icon */}
-                        <div className="flex-shrink-0 text-gray-400 group-hover:text-vive-500 transition-colors duration-200">
-                          <MdArrowForward className="w-5 h-5" />
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* View All Results Footer */}
-                <div className="px-4 py-4 bg-gray-50 dark:bg-white/5 border-t border-gray-200 dark:border-white/10">
-                  <button
-                    onClick={handleViewAllResults}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-vive-500 hover:bg-vive-600 text-white text-sm font-semibold rounded-lg transition-colors duration-200"
-                  >
-                    Ver todos los resultados
-                    <MdArrowForward className="w-5 h-5" />
-                  </button>
-                </div>
-              </>
-            ) : searchTerm.length > 0 ? (
-              /* No Results State */
-              <div className="px-4 py-10 text-center">
-                <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MdSearch className="w-8 h-8 text-gray-400" />
-                </div>
-                <p className="text-base font-semibold text-gray-900 dark:text-white mb-2">
-                  No se encontraron productos
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Intenta con otros términos de búsqueda
+        <div className={`absolute top-full left-0 right-0 mt-1.5 bg-white dark:bg-black border border-gray-200 dark:border-white/10 rounded-xl shadow-2xl z-[70] overflow-hidden flex flex-col max-h-[min(85vh,28rem)] ${fullWidth ? 'w-full min-w-0' : 'min-w-[400px]'}`}>
+          {hasResults ? (
+            <>
+              {/* Cabecera fija */}
+              <div className="flex-shrink-0 px-4 py-3 bg-gray-50 dark:bg-white/5 border-b border-gray-200 dark:border-white/10">
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  {searchResults.length} producto{searchResults.length !== 1 ? 's' : ''} encontrado{searchResults.length !== 1 ? 's' : ''}
                 </p>
               </div>
-            ) : null}
-          </div>
+
+              {/* Lista con scroll: cabecera y botón fijos, solo esta zona hace scroll */}
+              <ul role="listbox" className="flex-1 min-h-0 overflow-y-auto py-2 max-h-[13rem] sm:max-h-[18rem]">
+                  {searchResults.map((product, index) => {
+                    const imageSrc = product.image ?? product.images?.[0];
+                    const displayName = product.highlightedName ?? product.name ?? '';
+                    const displayCategory = product.highlightedCategory ?? product.subcategory ?? '';
+                    return (
+                      <li
+                        key={product.id}
+                        id={`search-result-${index}`}
+                        role="option"
+                        aria-selected={index === selectedIndex}
+                        className={`group cursor-pointer transition-colors duration-200 ${index === selectedIndex
+                          ? 'bg-vive-50 dark:bg-vive-500/10'
+                          : 'hover:bg-gray-50 dark:hover:bg-white/5'
+                          }`}
+                        onClick={() => handleProductClick(product)}
+                      >
+                        <div className="px-4 py-3 flex items-center gap-3">
+                          {/* Product Image */}
+                          <div className="flex-shrink-0 w-14 h-14 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
+                            {imageSrc ? (
+                              <img
+                                src={typeof imageSrc === 'string' ? imageSrc : (imageSrc?.default ?? imageSrc?.src ?? '')}
+                                alt={product.name || 'Producto'}
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs" aria-hidden>—</div>
+                            )}
+                          </div>
+
+                          {/* Product Info */}
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-semibold text-gray-900 dark:text-white truncate">
+                              {displayName ? (
+                                <span dangerouslySetInnerHTML={{ __html: sanitizeHTML(displayName) }} />
+                              ) : (
+                                product.name
+                              )}
+                            </div>
+                            {displayCategory && (
+                              <div
+                                className="text-sm text-gray-600 dark:text-gray-400 truncate mt-1"
+                                dangerouslySetInnerHTML={{ __html: sanitizeHTML(displayCategory) }}
+                              />
+                            )}
+                            <div className="text-sm text-vive-600 dark:text-vive-400 font-medium mt-2">
+                              Consultar precio
+                            </div>
+                          </div>
+
+                          {/* Arrow Icon */}
+                          <div className="flex-shrink-0 text-gray-400 group-hover:text-vive-500 transition-colors duration-200">
+                            <MdArrowForward className="w-5 h-5" />
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+              {/* Botón "Ver todos" siempre visible abajo */}
+              <div className="flex-shrink-0 px-4 py-3 bg-gray-50 dark:bg-white/5 border-t border-gray-200 dark:border-white/10">
+                <button
+                  onClick={handleViewAllResults}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-vive-500 hover:bg-vive-600 text-white text-sm font-semibold rounded-lg transition-colors duration-200"
+                >
+                  Ver todos los resultados
+                  <MdArrowForward className="w-5 h-5" />
+                </button>
+              </div>
+            </>
+          ) : searchTerm.length > 0 ? (
+            /* No Results State */
+            <div className="px-4 py-10 text-center">
+              <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MdSearch className="w-8 h-8 text-gray-400" />
+              </div>
+              <p className="text-base font-semibold text-gray-900 dark:text-white mb-2">
+                No se encontraron productos
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Intenta con otros términos de búsqueda
+              </p>
+            </div>
+          ) : null}
         </div>
       )}
     </div>
