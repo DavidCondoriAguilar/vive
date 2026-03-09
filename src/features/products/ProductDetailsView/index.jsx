@@ -59,15 +59,10 @@ const ProductDetailsView = () => {
             </Helmet>
 
             <MainLayout>
-                <div className="min-h-screen bg-white dark:bg-[#050505] selection:bg-vive-600/30 pt-4 lg:pt-8">
-
-                    {/* The Breadcrumb is provided by MainLayout, so we keep this space clear y tight */}
-                    <div className="container mx-auto px-6 lg:px-20 py-4">
-                        {/* Space placeholder if needed, otherwise transparent */}
-                    </div>
+                <div className="min-h-screen bg-white dark:bg-[#050505] selection:bg-vive-600/30 pt-0 lg:pt-4">
 
                     {/* Integrated Presentation Grid - Tighter gaps */}
-                    <div className="container mx-auto px-6 lg:px-20 pb-20 md:pb-12">
+                    <div className="container mx-auto px-6 lg:px-20 pb-20 md:pb-12 pt-4 lg:pt-8">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
                             {/* Left Column: Visuals & Engineering Exhibit */}

@@ -20,6 +20,8 @@ const ContactForm = lazy(() => import('@/components/contact/ContactForm'));
 const ContactThankYou = lazy(() => import('@/components/contact/ContactThankYou'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 const SearchRoutes = lazy(() => import('@/router/SearchRoutes'));
+const GuiaDescansoView = lazy(() => import('@features/guides/GuiaDescansoView'));
+const SleepTestView = lazy(() => import('@features/sleep-test/SleepTestView'));
 
 import ScrollToTop from '@/components/common/ScrollToTop';
 
@@ -49,6 +51,8 @@ function App() {
                 <Route path={ROUTES.RETURN_POLICY} element={<ReturnPolicyView />} />
                 <Route path={ROUTES.CONTACT} element={<ContactForm />} />
                 <Route path={ROUTES.CONTACT_THANKS} element={<ContactThankYou />} />
+                <Route path={ROUTES.GUIDES} element={<GuiaDescansoView />} />
+                <Route path={ROUTES.SLEEP_TEST} element={<SleepTestView />} />
                 <Route path={ROUTES.SEARCH} element={<SearchRoutes />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>

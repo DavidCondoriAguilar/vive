@@ -4,41 +4,28 @@ import { getWhatsAppLink } from '@/utils/constants';
 import MainLayout from '@/layouts/MainLayout';
 import WholesaleFormDrawer from '@/components/forms/WholesaleFormDrawer';
 import {
-  FaHotel,
   FaStore,
   FaHandshake,
   FaCheckCircle,
   FaBuilding,
   FaChartLine,
-  FaGlobeAmericas
+  FaGlobeAmericas,
+  FaHotel
 } from 'react-icons/fa';
 
-// Import local components
+// Streamlined component imports (removed Stats, Bento, Anatomy)
 import WholesaleHero from './components/WholesaleHero';
-import WholesaleStats from './components/WholesaleStats';
 import WholesaleSolutions from './components/WholesaleSolutions';
 import WholesaleBenefits from './components/WholesaleBenefits';
-import WholesaleAnatomy from './components/WholesaleAnatomy';
-import WholesaleBento from './components/WholesaleBento';
+import WholesaleSocialProof from './components/WholesaleSocialProof';
 import WholesaleFinalCTA from './components/WholesaleFinalCTA';
-import WholesaleQuoteModal from './components/WholesaleQuoteModal';
 
 // Import generated premium assets
-import premiumCutawayImg from '@/assets/images/generated/premium_mattress_cutaway_view_v2.webp';
 import factoryProductionImg from '@/assets/images/generated/wholesale_factory_production.webp';
-import modalBgImg from '@/assets/images/generated/wholesale_modal_bg.png';
 
 const WholesaleView = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedMarket, setSelectedMarket] = useState(null);
-  const [waData, setWaData] = useState({
-    reasonSocial: '',
-    name: '',
-    address: '',
-    city: '',
-    dni: ''
-  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -54,8 +41,9 @@ const WholesaleView = () => {
       icon: <FaStore />,
       title: "Tiendas y Comercio",
       subtitle: "Distribución y Márgenes Premium",
-      description: "Maximice la rentabilidad de su negocio con nuestra línea de alta rotación. Brindamos exclusividad de zona, material publicitado de alto impacto y soporte logístico prioritario para que solo se preocupe por vender.",
-      tag: "Distribución"
+      description: "Maximice la rentabilidad de su negocio con nuestra línea de alta rotación. Brindamos exclusividad de zona y soporte logístico prioritario.",
+      tag: "Distribución",
+      details: ["Margen de Utilidad +35%", "Material POP Exclusivo", "Publicidad en Redes", "Capacitación de Ventas"]
     },
     {
       id: 'corporativo',
@@ -63,8 +51,9 @@ const WholesaleView = () => {
       icon: <FaBuilding />,
       title: "B2B Corporativo",
       subtitle: "Proyectos y Soluciones a Medida",
-      description: "Atendemos licitaciones estatales, proyectos inmobiliarios y equipamiento de campamentos mineros con colchones diseñados para uso intensivo. Precios directos de planta que garantizan el mejor retorno de inversión.",
-      tag: "Proyectos"
+      description: "Atendemos licitaciones estatales y proyectos inmobiliarios con productos diseñados para uso intensivo y durabilidad extrema.",
+      tag: "Proyectos",
+      details: ["Garantía de Fábrica", "Precios Directos", "Licitaciones / Factura", "Diseño Personalizado"]
     },
     {
       id: 'hoteleria',
@@ -72,33 +61,10 @@ const WholesaleView = () => {
       icon: <FaHotel />,
       title: "Hotelería de Lujo",
       subtitle: "Turismo y Confort Internacional",
-      description: "Transforme la experiencia de sus huéspedes con nuestra gama hotelera de 4 y 5 estrellas. Colchones con certificación de durabilidad y tecnología de descanso que asegura reseñas positivas y la fidelidad de sus clientes.",
-      tag: "Turismo"
+      description: "Transforme la experiencia de sus huéspedes con nuestra gama hotelera de 4 y 5 estrellas. Fidelidad asegurada.",
+      tag: "Turismo",
+      details: ["Hipoalergénico Pro", "Estándar Internacional", "Soporte Post-Venta", "Logística de Reposición"]
     }
-  ];
-
-  const handleWaSubmit = (e) => {
-    e.preventDefault();
-    const message = `Hola Vive, solicito cotización mayorista para *${selectedMarket.title}*.\n\n` +
-      `🏢 *Datos de la Empresa:*\n` +
-      `- Razón Social: ${waData.reasonSocial}\n` +
-      `- RUC/DNI: ${waData.dni}\n\n` +
-      `👤 *Contacto:*\n` +
-      `- Nombre: ${waData.name}\n` +
-      `- Dirección: ${waData.address}\n` +
-      `- Ciudad/Provincia: ${waData.city}\n\n` +
-      `Quedo a la espera de su asesoría experta para concretar mi pedido.`;
-
-    window.open(getWhatsAppLink(message), '_blank', 'noopener,noreferrer');
-    setSelectedMarket(null);
-    setWaData({ reasonSocial: '', name: '', address: '', city: '', dni: '' });
-  };
-
-  const mainStats = [
-    { value: "Directo", label: "Precio de Fábrica", desc: "Sin intermediarios, mejor tarifa" },
-    { value: "Calidad", label: "Estándares", desc: "Control de calidad en fabricación" },
-    { value: "48-72h", label: "Despacho", desc: "Entrega aprox. 48 a 72h en Lima" },
-    { value: "+30", label: "Años", desc: "Experiencia industrial" }
   ];
 
   const benefits = [
@@ -118,13 +84,13 @@ const WholesaleView = () => {
       title: "Logística Nacional",
       desc: "Llegamos a cualquier punto del Perú con embalaje de alta resistencia.",
       icon: <FaGlobeAmericas className="w-8 h-8 text-vive-500" />,
-      specs: ["Coverage: 24 regiones", "Packaging: Industrial"]
+      specs: ["Cobertura: 24 regiones", "Empaque: Industrial"]
     },
     {
-      title: "Calidad Certificada",
-      desc: "Nuestros procesos cumplen con normas internacionales de higiene y ergonomía.",
+      title: "Garantía de Fábrica",
+      desc: "Nuestros productos cuentan con el respaldo total de nuestra planta para asegurar su inversión.",
       icon: <FaCheckCircle className="w-8 h-8 text-vive-500" />,
-      specs: ["Control de calidad", "Estándares de fabricación"]
+      specs: ["Garantía 10 Años", "Soporte Técnico"]
     }
   ];
 
@@ -135,37 +101,30 @@ const WholesaleView = () => {
         <meta name="description" content="Soluciones mayoristas para hoteles, tiendas y corporaciones. Colchones directo de fabrica con precios B2B y logística nacional." />
       </Helmet>
 
-      {/* Hero Section */}
+      {/* 1. Hero (with integrated stats) */}
       <WholesaleHero
         isVisible={isVisible}
         onOpenForm={() => setIsFormOpen(true)}
       />
 
-      {/* Authority Counter Bar */}
-      <WholesaleStats stats={mainStats} />
-
-      {/* Section 1: Strategic Solutions */}
+      {/* 2. Strategic Solutions — THE CORE */}
       <WholesaleSolutions
         markets={targetMarkets}
-        onSelectMarket={(market) => setSelectedMarket(market)}
+        onSelectMarket={() => { }}
       />
 
-      {/* Section 2: Industrial Superiority */}
+      {/* 3. Industrial Benefits */}
       <WholesaleBenefits
         benefits={benefits}
         factoryProductionImg={factoryProductionImg}
       />
 
-      {/* Section 3: Technical Anatomy */}
-      <WholesaleAnatomy
-        premiumCutawayImg={premiumCutawayImg}
-        onOpenForm={() => setIsFormOpen(true)}
-      />
+      {/* 4. Social Proof — NEW (replaces Bento + Anatomy) */}
+      <WholesaleSocialProof />
 
-      {/* Section 4: Authority Bento & Closing CTA */}
-      <section className="py-40 bg-gray-50 dark:bg-[#050505] relative overflow-hidden transition-colors duration-500">
+      {/* 5. Final CTA */}
+      <section className="py-24 lg:py-40 bg-gray-50 dark:bg-[#050505] relative overflow-hidden transition-colors duration-500">
         <div className="container mx-auto px-6 lg:px-20 relative z-10">
-          <WholesaleBento />
           <WholesaleFinalCTA
             onOpenForm={() => setIsFormOpen(true)}
             whatsappLink={getWhatsAppLink(b2bMessage)}
@@ -173,16 +132,7 @@ const WholesaleView = () => {
         </div>
       </section>
 
-      {/* Forms & Modals */}
-      <WholesaleQuoteModal
-        selectedMarket={selectedMarket}
-        waData={waData}
-        setWaData={setWaData}
-        onClose={() => setSelectedMarket(null)}
-        onSubmit={handleWaSubmit}
-        modalBgImg={modalBgImg}
-      />
-
+      {/* Form Drawer */}
       <WholesaleFormDrawer
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}

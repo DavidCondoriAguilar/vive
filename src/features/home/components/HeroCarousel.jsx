@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDragCarousel } from '@/hooks/useDragCarousel';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 // Sub-components
 import HeroBackground from './HeroBackground';
 import HeroContent from './HeroContent';
 import HeroControls from './HeroControls';
 import EngineeringGrid from '@/components/ui/EngineeringGrid';
+import kaiBanner from '@/assets/images/banners/kai-caorusel.png';
+import carousel2 from '@/assets/images/banners/carousel2.png';
+import geminiBanner from '@/assets/images/banners/gemini-hero.png';
 
 const HeroCarousel = () => {
   const navigate = useNavigate();
@@ -20,30 +24,54 @@ const HeroCarousel = () => {
   const slides = [
     {
       id: 1,
-      variant: 'zen',
-      image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop',
-      title: 'Tu Salud con Vive',
-      subtitle: 'Protección Certificada',
-      features: ['Antialérgico', 'Antiácaros', 'Esterilizado'],
-      badge: 'BIENESTAR'
+      variant: 'premium',
+      image: kaiBanner,
+      title: 'Vive Kai',
+      subtitle: 'Confort Infinito',
+      badge: 'LANZAMIENTO',
+      tech: 'KAI Fusion Flow',
+      hideContent: true,
+      pureImage: true,
+      specs: [
+        { label: 'Núcleo', value: 'High Density' },
+        { label: 'Tejido', value: 'Cool Touch' },
+        { label: 'Soporte', value: 'Ortopédico' },
+        { label: 'Calidad', value: 'Premium' }
+      ]
     },
     {
       id: 2,
-      variant: 'logistics',
-      image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1200&auto=format&fit=crop',
-      title: 'Envíos Nacionales',
-      subtitle: 'Cobertura a todo el Perú',
-      features: ['Entrega 48-72h', 'Flota Propia', 'Nacional'],
-      badge: 'RAPIDEZ'
+      variant: 'premium-4k',
+      image: carousel2,
+      title: 'Diseño Superior',
+      subtitle: 'Resolución Maestra',
+      badge: 'PREMIUM',
+      tech: '4K Ultra Fidelity',
+      hideContent: true,
+      pureImage: true,
+      specs: [
+        { label: 'Imagen', value: 'Ultra HD' },
+        { label: 'Fidelidad', value: '100%' },
+        { label: 'Detalle', value: 'Nivel Master' },
+        { label: 'Impacto', value: 'Cine' }
+      ]
     },
     {
       id: 3,
-      variant: 'business',
-      image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200&auto=format&fit=crop',
-      title: 'Soluciones B2B',
-      subtitle: 'Precio directo de Fábrica',
-      features: ['+30 Años', 'Precio directo', 'Hoteles'],
-      badge: 'NEGOCIOS'
+      variant: 'comfort',
+      image: geminiBanner,
+      title: 'Descanso Perfecto',
+      subtitle: 'Cuerpo y Mente',
+      badge: 'BIENESTAR',
+      tech: 'Ergo-Dynamic',
+      hideContent: true,
+      pureImage: true,
+      specs: [
+        { label: 'Soporte', value: 'Total' },
+        { label: 'Balance', value: 'Híbrido' },
+        { label: 'Confort', value: 'Máximo' },
+        { label: 'Garantía', value: '15 años' }
+      ]
     }
   ];
 
@@ -96,28 +124,47 @@ const HeroCarousel = () => {
 
   return (
     <section
-      className={`relative w-full h-[100dvh] overflow-hidden bg-[#050505] transition-opacity duration-1000 group/carousel ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+      className={`relative w-full h-[92dvh] lg:h-[88dvh] min-h-[600px] overflow-hidden bg-[#050505] transition-opacity duration-1000 group/carousel ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
       ref={carouselRef}
       {...handlers}
     >
       <HeroBackground slides={slides} currentSlide={currentSlide} />
 
-      <EngineeringGrid color="#ffffff" opacity="0.1" size="60px" />
+      <EngineeringGrid color="#299C47" opacity="0.04" size="60px" />
 
-      <div className="relative z-20 container mx-auto h-full px-6 lg:px-20 flex items-center">
-        <HeroContent slides={slides} currentSlide={currentSlide} navigate={navigate} />
-        <HeroControls slides={slides} currentSlide={currentSlide} goToSlide={goToSlide} progress={progress} />
+      {/* Content Overlay - Optimized for Clean Banners */}
+      <div className="absolute inset-0 z-20 pointer-events-none pt-[80px] lg:pt-[120px]">
+        <div className="container mx-auto h-full flex items-center justify-start px-6 lg:px-20">
+          <HeroContent slides={slides} currentSlide={currentSlide} navigate={navigate} />
+        </div>
       </div>
 
-      {/* Mobile Layout UI Nodes */}
-      <div className="lg:hidden absolute bottom-10 left-0 w-full flex justify-center items-center gap-3 z-30">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`h-[2px] rounded-full transition-all duration-500 ${index === currentSlide ? 'w-12 bg-vive-500 shadow-[0_0_10px_rgba(41,156,71,0.5)]' : 'w-6 bg-white/20'}`}
-          />
-        ))}
+      {/* Navigation Arrows - Minimalist 2026 Concept */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-40 px-4 lg:px-8 flex justify-between pointer-events-none transition-all duration-700">
+        <button
+          onClick={prevSlide}
+          className="w-12 h-20 flex items-center justify-center text-white/20 hover:text-white transition-all duration-500 pointer-events-auto group/btn-nav active:scale-95"
+          aria-label="Anterior"
+        >
+          <div className="relative flex items-center justify-center">
+            <div className="absolute w-8 h-8 bg-vive-500/0 group-hover/btn-nav:bg-vive-500/10 blur-xl rounded-full transition-all duration-700"></div>
+            <svg className="w-8 h-8 stroke-[1px] transition-transform duration-500 group-hover/btn-nav:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+        </button>
+        <button
+          onClick={nextSlide}
+          className="w-12 h-20 flex items-center justify-center text-white/20 hover:text-white transition-all duration-500 pointer-events-auto group/btn-nav active:scale-95"
+          aria-label="Siguiente"
+        >
+          <div className="relative flex items-center justify-center">
+            <div className="absolute w-8 h-8 bg-vive-500/0 group-hover/btn-nav:bg-vive-500/10 blur-xl rounded-full transition-all duration-700"></div>
+            <svg className="w-8 h-8 stroke-[1px] transition-transform duration-500 group-hover/btn-nav:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+        </button>
       </div>
 
       <div className="absolute bottom-6 left-6 z-30 lg:hidden text-white/50">

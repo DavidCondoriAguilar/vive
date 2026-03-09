@@ -18,7 +18,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
   return (
     <div className="group bg-white dark:bg-[#0A0A0A] rounded-3xl overflow-hidden transition-all duration-700 hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:-translate-y-3 h-full flex flex-col relative border border-gray-50 dark:border-white/5">
       {/* Product Image - Gallery Treatment */}
-      <div className="relative overflow-hidden bg-white aspect-[4/3] flex items-center justify-center p-8">
+      <div className="relative overflow-hidden bg-white aspect-[4/3] flex items-center justify-center p-2">
         <Link
           to={`/producto/${product.id}`}
           className="block h-full w-full"
@@ -27,7 +27,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
           <img
             src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=600&q=75&auto=format`}
             alt={product.name}
-            className="w-full h-full object-contain transition-transform duration-[2s] group-hover:scale-105"
+            className="w-full h-full object-contain transition-transform duration-[2s] scale-110 group-hover:scale-125"
             width="600"
             height="450"
             loading="lazy"

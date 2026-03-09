@@ -5,7 +5,7 @@ import { FaCheck, FaTimes, FaWhatsapp } from 'react-icons/fa';
 
 /**
  * Wholesale Form with Validation
- * Improved for usability y fixed layout issues
+ * Redesigned for Pro 2026 Minimalist Aesthetic
  */
 const WholesaleFormDrawer = ({ isOpen, onClose }) => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -59,13 +59,13 @@ const WholesaleFormDrawer = ({ isOpen, onClose }) => {
     },
     (formValues) => {
       // Submit handler
-      const message = `*SOLICITUD MAYORISTA - ${formValues.company.toUpperCase()}*\n\n`;
+      const message = `*SOLICITUD B2B - ${formValues.company.toUpperCase()}*\n\n`;
       const submissionMessage = `${message}Nombre: ${formValues.name}\nEmail: ${formValues.email}\nTeléfono: ${formValues.phone}\nTipo de Negocio: ${formValues.businessType}\n\nMensaje: ${formValues.message || 'Sin mensaje adicional'}`;
 
       // Open WhatsApp with form data
       window.open(getWhatsAppLink(submissionMessage), '_blank');
 
-      // Reset form y show success
+      // Reset form and show success
       setSubmitSuccess(true);
       setTimeout(() => {
         resetForm();
@@ -82,29 +82,29 @@ const WholesaleFormDrawer = ({ isOpen, onClose }) => {
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300"
+        className="fixed inset-0 z-40 bg-black/30 backdrop-blur-md transition-opacity duration-500"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Drawer */}
       <div
-        className={`fixed right-0 top-0 bottom-0 z-50 bg-white dark:bg-[#0A0A0A] shadow-2xl transition-transform duration-500 ease-out w-full max-w-lg overflow-hidden transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed right-0 top-0 bottom-0 z-50 bg-white dark:bg-[#0c0c0c] shadow-[0_0_100px_rgba(0,0,0,0.1)] transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] w-full max-w-lg overflow-hidden transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
         role="dialog"
         aria-labelledby="form-title"
         aria-modal="true"
       >
         {/* Header */}
-        <div className="sticky top-0 bg-white dark:bg-[#0F0F0F] border-b border-gray-100 dark:border-white/5 px-6 py-6 flex items-center justify-between z-20">
+        <div className="sticky top-0 bg-white/80 dark:bg-[#0c0c0c]/80 backdrop-blur-xl border-b border-gray-100 dark:border-white/5 px-8 py-10 flex items-center justify-between z-20">
           <div className="flex-1">
-            <h3 id="form-title" className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter">
-              Solicitud <span className="text-vive-500 italic font-light">B2B Elite</span>
+            <h3 id="form-title" className="text-3xl font-display font-medium text-gray-900 dark:text-white tracking-tight leading-none">
+              Inicie su <span className="text-vive-500 serif italic">Proyecto</span>
             </h3>
-            <p className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-400 mt-1">Canal directo planta industrial</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mt-2">Atención Corporativa Exclusiva</p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full transition-colors text-gray-500 dark:text-gray-400"
+            className="p-3 bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 rounded-full transition-all text-gray-500 transform hover:rotate-90"
             aria-label="Cerrar formulario"
           >
             <FaTimes className="w-4 h-4" />
@@ -113,25 +113,21 @@ const WholesaleFormDrawer = ({ isOpen, onClose }) => {
 
         {/* Success Message */}
         {submitSuccess && (
-          <div className="sticky top-[89px] bg-green-50 dark:bg-green-900/20 border-b border-green-200 dark:border-green-800 px-6 py-4 flex items-start gap-3 z-30">
-            <div className="flex-shrink-0">
-              <FaCheck className="w-5 h-5 text-green-600 dark:text-green-400 mt-0.5" />
-            </div>
-            <div>
-              <p className="text-sm font-medium text-green-800 dark:text-green-300 font-text">
-                ¡Solicitud enviada! Te contactaremos pronto con una cotización personalizada.
-              </p>
-            </div>
+          <div className="sticky top-0 bg-vive-500 text-black px-8 py-4 flex items-center gap-3 z-30 animate-fade-in">
+            <FaCheck className="w-5 h-5 flex-shrink-0" />
+            <p className="text-sm font-bold uppercase tracking-widest">
+              Solicitud Enviada con Éxito
+            </p>
           </div>
         )}
 
         {/* Form Content */}
-        <div className="overflow-y-auto h-[calc(100vh-180px)]">
-          <form id="b2b-form" onSubmit={handleSubmit} className="p-6 space-y-6" noValidate>
+        <div className="overflow-y-auto h-[calc(100vh-200px)] px-8 py-12 custom-scrollbar">
+          <form id="b2b-form" onSubmit={handleSubmit} className="space-y-8" noValidate>
             {/* Name Field */}
-            <div>
-              <label htmlFor="name" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider font-text">
-                Nombre Completo *
+            <div className="space-y-2">
+              <label htmlFor="name" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">
+                Representante *
               </label>
               <input
                 id="name"
@@ -140,72 +136,51 @@ const WholesaleFormDrawer = ({ isOpen, onClose }) => {
                 value={values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                placeholder="Juan Pérez García"
-                className={`w-full px-4 py-3 border rounded-none text-gray-900 dark:text-white bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 transition-all ${touched.name && errors.name
-                  ? 'border-red-500 dark:border-red-500 focus:ring-red-500'
-                  : 'border-gray-300 dark:border-gray-600 focus:ring-gray-400 dark:focus:ring-gray-500'
-                  }`}
+                placeholder="Nombre y apellido"
+                className={`w-full px-6 py-4 bg-gray-50 dark:bg-white/5 border border-transparent rounded-[1.5rem] text-gray-900 dark:text-white focus:outline-none focus:border-vive-500 transition-all font-medium placeholder:text-gray-300 dark:placeholder:text-gray-600 ${touched.name && errors.name ? 'border-red-500/50' : ''}`}
               />
               {touched.name && errors.name && (
-                <p className="mt-1 text-sm text-red-600 dark:text-red-400 flex items-center gap-2 font-text">
-                  <FaTimes className="w-4 h-4" /> {errors.name}
-                </p>
+                <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.name}</p>
               )}
             </div>
 
-            {/* Email Field */}
-            <div>
-              <label htmlFor="email" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider font-text">
-                Email *
-              </label>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="juan@empresa.com"
-                className={`w-full px-4 py-3 border rounded-none text-gray-900 dark:text-white bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 transition-all ${touched.email && errors.email
-                  ? 'border-red-500 dark:border-red-500 focus:ring-red-500'
-                  : 'border-gray-300 dark:border-gray-600 focus:ring-gray-400 dark:focus:ring-gray-500'
-                  }`}
-              />
-              {touched.email && errors.email && (
-                <p className="mt-1 text-sm text-red-600 dark:text-red-400 flex items-center gap-2 font-text">
-                  <FaTimes className="w-4 h-4" /> {errors.email}
-                </p>
-              )}
-            </div>
-
-            {/* Phone Field */}
-            <div>
-              <label htmlFor="phone" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider font-text">
-                Teléfono *
-              </label>
-              <input
-                id="phone"
-                type="tel"
-                name="phone"
-                value={values.phone}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="+51 989 223 448"
-                className={`w-full px-4 py-3 border rounded-none text-gray-900 dark:text-white bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 transition-all ${touched.phone && errors.phone
-                  ? 'border-red-500 dark:border-red-500 focus:ring-red-500'
-                  : 'border-gray-300 dark:border-gray-600 focus:ring-gray-400 dark:focus:ring-gray-500'
-                  }`}
-              />
-              {touched.phone && errors.phone && (
-                <p className="mt-1 text-sm text-red-600 dark:text-red-400 flex items-center gap-2 font-text">
-                  <FaTimes className="w-4 h-4" /> {errors.phone}
-                </p>
-              )}
+            {/* Email and Phone */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label htmlFor="email" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">
+                  Email *
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="ejemplo@empresa.com"
+                  className={`w-full px-6 py-4 bg-gray-50 dark:bg-white/5 border border-transparent rounded-[1.5rem] text-gray-900 dark:text-white focus:outline-none focus:border-vive-500 transition-all font-medium placeholder:text-gray-300 dark:placeholder:text-gray-600 ${touched.email && errors.email ? 'border-red-500/50' : ''}`}
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="phone" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">
+                  Teléfono *
+                </label>
+                <input
+                  id="phone"
+                  type="tel"
+                  name="phone"
+                  value={values.phone}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="+51"
+                  className={`w-full px-6 py-4 bg-gray-50 dark:bg-white/5 border border-transparent rounded-[1.5rem] text-gray-900 dark:text-white focus:outline-none focus:border-vive-500 transition-all font-medium placeholder:text-gray-300 dark:placeholder:text-gray-600 ${touched.phone && errors.phone ? 'border-red-500/50' : ''}`}
+                />
+              </div>
             </div>
 
             {/* Company Field */}
-            <div>
-              <label htmlFor="company" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider font-text">
+            <div className="space-y-2">
+              <label htmlFor="company" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">
                 Empresa *
               </label>
               <input
@@ -215,44 +190,41 @@ const WholesaleFormDrawer = ({ isOpen, onClose }) => {
                 value={values.company}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                placeholder="Hotel Paradise S.A.C"
-                className={`w-full px-4 py-3 border rounded-none text-gray-900 dark:text-white bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 transition-all ${touched.company && errors.company
-                  ? 'border-red-500 dark:border-red-500 focus:ring-red-500'
-                  : 'border-gray-300 dark:border-gray-600 focus:ring-gray-400 dark:focus:ring-gray-500'
-                  }`}
+                placeholder="Razón social"
+                className={`w-full px-6 py-4 bg-gray-50 dark:bg-white/5 border border-transparent rounded-[1.5rem] text-gray-900 dark:text-white focus:outline-none focus:border-vive-500 transition-all font-medium placeholder:text-gray-300 dark:placeholder:text-gray-600 ${touched.company && errors.company ? 'border-red-500/50' : ''}`}
               />
-              {touched.company && errors.company && (
-                <p className="mt-1 text-sm text-red-600 dark:text-red-400 flex items-center gap-2 font-text">
-                  <FaTimes className="w-4 h-4" /> {errors.company}
-                </p>
-              )}
             </div>
 
             {/* Business Type */}
-            <div>
-              <label htmlFor="businessType" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider font-text">
-                Tipo de Negocio *
+            <div className="space-y-2">
+              <label htmlFor="businessType" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">
+                Sector Comercial *
               </label>
-              <select
-                id="businessType"
-                name="businessType"
-                value={values.businessType}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className="w-full px-4 py-4 border-b-2 border-gray-100 dark:border-white/5 text-gray-900 dark:text-white bg-gray-50 dark:bg-black/50 focus:outline-none focus:border-vive-500 transition-all font-bold uppercase text-xs tracking-widest outline-none"
-              >
-                <option value="hotel">Hotelería / Proyectos</option>
-                <option value="tienda">Tienda / Retail</option>
-                <option value="distribuidor">Distribuidor Mayorista</option>
-                <option value="revendedor">Revendedor Independiente</option>
-                <option value="otro">Otros Proyectos</option>
-              </select>
+              <div className="relative">
+                <select
+                  id="businessType"
+                  name="businessType"
+                  value={values.businessType}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className="w-full px-6 py-4 bg-gray-50 dark:bg-white/5 border border-transparent rounded-[1.5rem] text-gray-900 dark:text-white focus:outline-none focus:border-vive-500 transition-all font-medium appearance-none outline-none"
+                >
+                  <option value="hotel">Hotelería / Proyectos</option>
+                  <option value="tienda">Tienda / Retail</option>
+                  <option value="distribuidor">Distribuidor Mayorista</option>
+                  <option value="revendedor">Revendedor Independiente</option>
+                  <option value="otro">Otros Proyectos</option>
+                </select>
+                <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+              </div>
             </div>
 
             {/* Message Field */}
-            <div>
-              <label htmlFor="message" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wider font-text">
-                Mensaje Adicional
+            <div className="space-y-2">
+              <label htmlFor="message" className="block text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">
+                Detalles del Proyecto
               </label>
               <textarea
                 id="message"
@@ -260,47 +232,30 @@ const WholesaleFormDrawer = ({ isOpen, onClose }) => {
                 value={values.message}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                placeholder="Cuéntanos más sobre tu negocio y qué necesitas..."
+                placeholder="¿En qué podemos ayudarle?"
                 rows="4"
-                className={`w-full px-4 py-3 border rounded-none text-gray-900 dark:text-white bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 resize-none transition-all ${touched.message && errors.message
-                  ? 'border-red-500 dark:border-red-500 focus:ring-red-500'
-                  : 'border-gray-300 dark:border-gray-600 focus:ring-gray-400 dark:focus:ring-gray-500'
-                  }`}
+                className="w-full px-6 py-4 bg-gray-50 dark:bg-white/5 border border-transparent rounded-[2rem] text-gray-900 dark:text-white focus:outline-none focus:border-vive-500 transition-all font-medium placeholder:text-gray-300 dark:placeholder:text-gray-600 resize-none h-40"
               />
-              <div className="mt-1 flex justify-between items-center">
-                <p className="text-xs text-gray-500 dark:text-gray-400 ml-auto font-text">
-                  {values.message.length}/500
-                </p>
-              </div>
             </div>
           </form>
         </div>
 
         {/* Footer - Actions */}
-        <div className="sticky bottom-0 bg-white dark:bg-[#0F0F0F] border-t border-gray-100 dark:border-white/5 px-6 py-6 space-y-3 z-20">
+        <div className="sticky bottom-0 bg-white/80 dark:bg-[#0c0c0c]/80 backdrop-blur-xl border-t border-gray-100 dark:border-white/5 px-8 py-8 z-20">
           <button
             form="b2b-form"
             type="submit"
             disabled={isSubmitting}
-            className="group relative w-full py-5 bg-black dark:bg-white text-white dark:text-black font-black text-xs uppercase tracking-[0.3em] overflow-hidden transition-all hover:scale-[0.99] active:scale-95 disabled:opacity-50"
-            aria-label="Enviar solicitud vía WhatsApp"
+            className="group relative w-full py-6 bg-gray-900 dark:bg-white text-white dark:text-black font-bold text-[11px] uppercase tracking-widest rounded-full overflow-hidden shadow-2xl transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50"
           >
             <span className="relative z-10 flex items-center justify-center gap-4">
               {isSubmitting ? 'Procesando...' : (
                 <>
-                  <FaWhatsapp className="text-xl text-green-500" />
-                  Enviar vía WhatsApp
+                  <FaWhatsapp className="text-xl text-vive-500" />
+                  Enviar Propuesta vía WhatsApp
                 </>
               )}
             </span>
-            <div className="absolute inset-0 bg-vive-500 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-          </button>
-          <button
-            onClick={onClose}
-            className="w-full text-[9px] font-black uppercase tracking-[0.3em] text-gray-400 hover:text-red-500 transition-colors"
-            aria-label="Cerrar formulario"
-          >
-            Cerrar Formulario
           </button>
         </div>
       </div>
@@ -309,3 +264,4 @@ const WholesaleFormDrawer = ({ isOpen, onClose }) => {
 };
 
 export default WholesaleFormDrawer;
+

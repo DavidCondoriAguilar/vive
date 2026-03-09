@@ -1,67 +1,127 @@
 import React from 'react';
+import { FaFileDownload, FaBezierCurve, FaWind, FaArrowsAltH } from 'react-icons/fa';
 
-const WholesaleAnatomy = ({ premiumCutawayImg, onOpenForm }) => {
+const WholesaleAnatomy = ({ premiumCutawayImg }) => {
     return (
-        <section className="py-24 md:py-40 bg-white dark:bg-[#050505] relative overflow-hidden transition-colors duration-500">
-            <div className="container mx-auto px-6 lg:px-20">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center overflow-visible">
-                    <div className="lg:col-span-6 relative order-2 lg:order-1">
-                        <div className="relative z-10 group">
-                            <div className="absolute -inset-10 bg-vive-600/5 dark:bg-vive-500/10 blur-[120px] rounded-full"></div>
-                            <img src={premiumCutawayImg} alt="Vive Technology Anatomy" className="relative z-10 w-full rounded-2xl border border-gray-100 dark:border-white/5 group-hover:scale-[1.01] transition-transform duration-1000 shadow-2xl" />
+        <section className="py-24 lg:py-48 bg-white dark:bg-[#050505] relative overflow-hidden transition-colors duration-1000">
+            {/* Technical Grid Overlay */}
+            <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.07] pointer-events-none">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:100px_100px]"></div>
+            </div>
 
-                            {/* Call-out Labels - Repositioned to stay inside bounds */}
-                            <div className="absolute top-[20%] right-0 lg:-right-4 z-20 flex items-center gap-3 group/callout max-w-[180px]">
-                                <div className="w-6 h-6 rounded-full border border-vive-600 dark:border-vive-500 flex items-center justify-center animate-pulse flex-shrink-0 bg-white/50 backdrop-blur-sm">
-                                    <div className="w-2 h-2 rounded-full bg-vive-600 dark:bg-vive-500"></div>
-                                </div>
-                                <div className="px-4 py-3 bg-white/95 dark:bg-black/95 backdrop-blur-xl border border-gray-100 dark:border-white/10 rounded-sm opacity-0 group-hover/callout:opacity-100 transition-all shadow-xl translation-x-2">
-                                    <span className="block text-[8px] font-black text-vive-600 dark:text-vive-500 uppercase tracking-widest mb-1">Layer_Top</span>
-                                    <span className="text-[10px] font-bold text-gray-900 dark:text-white uppercase tracking-tighter">Cotton-Sensation™</span>
+            <div className="container mx-auto px-6 lg:px-20 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+
+                    {/* Left: THE BLUEPRINT VISUALIZATION */}
+                    <div className="lg:col-span-7 relative group">
+                        <div className="relative border border-gray-100 dark:border-white/5 bg-gray-50/50 dark:bg-white/[0.02] p-4 lg:p-8">
+                            <div className="relative overflow-hidden">
+                                <img
+                                    src={premiumCutawayImg}
+                                    alt="Vive Internal Engineering"
+                                    className="w-full grayscale brightness-[0.7] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[2s] ease-out object-cover aspect-[4/3] lg:aspect-auto"
+                                />
+                                {/* Blueprint Lines HUD */}
+                                <div className="absolute inset-0 pointer-events-none">
+                                    <div className="absolute top-1/4 left-0 w-full h-px bg-vive-500/20"></div>
+                                    <div className="absolute top-2/4 left-0 w-full h-px bg-vive-500/10"></div>
+                                    <div className="absolute top-3/4 left-0 w-full h-px bg-vive-500/20"></div>
+                                    <div className="absolute left-1/4 top-0 h-full w-px bg-vive-500/10"></div>
+                                    <div className="absolute left-3/4 top-0 h-full w-px bg-vive-500/10"></div>
                                 </div>
                             </div>
 
-                            <div className="absolute bottom-[30%] left-0 lg:-left-4 z-20 flex flex-row-reverse items-center gap-3 group/callout max-w-[180px]">
-                                <div className="w-6 h-6 rounded-full border border-vive-600 dark:border-vive-500 flex items-center justify-center animate-pulse flex-shrink-0 bg-white/50 backdrop-blur-sm">
-                                    <div className="w-2 h-2 rounded-full bg-vive-600 dark:bg-vive-500"></div>
+                            {/* Technical Annotations */}
+                            <div className="absolute top-10 left-10 hidden md:block">
+                                <div className="flex items-center gap-4">
+                                    <span className="w-4 h-4 rounded-full border border-vive-500 flex items-center justify-center">
+                                        <span className="w-1 h-1 bg-vive-500 rounded-full animate-ping"></span>
+                                    </span>
+                                    <div className="text-[9px] font-black uppercase tracking-[0.3em] text-white bg-black/80 px-3 py-1">Layer 01_RESILIENCE</div>
                                 </div>
-                                <div className="px-4 py-3 bg-white/95 dark:bg-black/95 backdrop-blur-xl border border-gray-100 dark:border-white/10 rounded-sm opacity-0 group-hover/callout:opacity-100 transition-all text-right shadow-xl -translation-x-2">
-                                    <span className="block text-[8px] font-black text-vive-600 dark:text-vive-500 uppercase tracking-widest mb-1">System_Core</span>
-                                    <span className="text-[10px] font-bold text-gray-900 dark:text-white uppercase tracking-tighter">Pocket-Spring Elite</span>
+                            </div>
+
+                            <div className="absolute bottom-10 right-10 hidden md:block">
+                                <div className="flex items-center gap-4 flex-row-reverse">
+                                    <span className="w-4 h-4 rounded-full border border-blue-500 flex items-center justify-center">
+                                        <span className="w-1 h-1 bg-blue-500 rounded-full animate-ping"></span>
+                                    </span>
+                                    <div className="text-[9px] font-black uppercase tracking-[0.3em] text-white bg-black/80 px-3 py-1">Layer 04_CORE_POCKET</div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="lg:col-start-7 lg:col-span-6 space-y-8 lg:space-y-12 order-1 lg:order-2 lg:pl-10">
-                        <div className="space-y-4">
-                            <span className="text-vive-600 dark:text-vive-500 text-[10px] font-black uppercase tracking-[0.5em] block">Engineering Architecture</span>
-                            <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-black text-gray-900 dark:text-white leading-[1] lg:leading-[0.9] tracking-tighter uppercase whitespace-normal">
-                                Más allá de <br /> <span className="italic font-light lowercase text-vive-600 dark:text-vive-500">la superficie</span>
+                    {/* Right: THE DATA SHEET NARRATIVE */}
+                    <div className="lg:col-span-5 space-y-16">
+                        <div className="space-y-8">
+                            <div className="flex items-center gap-4">
+                                <span className="h-[2px] w-10 bg-vive-500"></span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-vive-600 dark:text-vive-400">
+                                    Internal Architecture
+                                </span>
+                            </div>
+                            <h2 className="text-[clamp(2.5rem,5vw,5.5rem)] font-display font-light text-gray-950 dark:text-white leading-[0.9] tracking-tighter">
+                                Más allá de lo <br />
+                                <span className="text-vive-500 italic serif font-medium lowercase">visible</span>.
                             </h2>
+                            <p className="text-xl text-gray-500 dark:text-gray-400 font-text leading-tight max-w-sm">
+                                La verdadera calidad se encuentra en el interior. Nuestra arquitectura interna está diseñada para ofrecer una <span className="text-gray-950 dark:text-white font-bold">respuesta adaptativa</span> a cada fisionomía.
+                            </p>
                         </div>
 
-                        <div className="space-y-1">
+                        {/* Surgical Items List */}
+                        <div className="space-y-4">
                             {[
-                                { title: "Núcleos Independientes", desc: "Sistema de resortes pocket encapsulados individualmente para cero transferencia de movimiento." },
-                                { title: "High Resilience (HR)", desc: "Capas de espuma de alta elasticidad y retorno que mantienen la ergonomía año tras año." },
-                                { title: "Soporte Ergonómico", desc: "Cada diseño de núcleo es validado por especialistas para asegurar la alineación de la columna." }
+                                {
+                                    icon: <FaArrowsAltH />,
+                                    title: "Resiliencia Adaptativa",
+                                    desc: "Núcleos de alta densidad que recuperan su forma original garantizando durabilidad extrema.",
+                                    tag: "HDV_90"
+                                },
+                                {
+                                    icon: <FaBezierCurve />,
+                                    title: "Aislamiento de Movimiento",
+                                    desc: "Sistemas pocket encapsulados para una independencia de lechos absoluta.",
+                                    tag: "IND_ZONE"
+                                },
+                                {
+                                    icon: <FaWind />,
+                                    title: "Termorregulación Activa",
+                                    desc: "Materiales transpirables que mantienen un flujo de aire constante durante el descanso.",
+                                    tag: "AIR_FLOW"
+                                }
                             ].map((item, i) => (
-                                <div key={i} className="group flex gap-5 lg:gap-8 p-6 lg:p-8 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] border-b border-black/5 dark:border-white/5 last:border-0 transition-all relative overflow-visible">
-                                    <span className="text-2xl lg:text-3xl font-display font-black text-black/10 dark:text-white/10 group-hover:text-vive-500/30 transition-colors flex-shrink-0">0{i + 1}</span>
-                                    <div className="space-y-1 flex-1">
-                                        <h4 className="text-base lg:text-lg font-display font-black text-gray-900 dark:text-white uppercase tracking-tight group-hover:text-vive-500 transition-all">{item.title}</h4>
-                                        <p className="text-gray-500 dark:text-gray-400 font-text text-sm lg:text-base leading-relaxed">{item.desc}</p>
+                                <div key={i} className="group flex gap-8 p-10 items-start border border-gray-100 dark:border-white/5 transition-all duration-500 hover:bg-gray-50 dark:hover:bg-white/[0.02]">
+                                    <div className="text-vive-500 text-xl pt-1 group-hover:scale-125 transition-transform">
+                                        {item.icon}
+                                    </div>
+                                    <div className="space-y-4">
+                                        <div className="flex justify-between items-center">
+                                            <h4 className="text-lg font-display font-medium text-gray-950 dark:text-white uppercase tracking-tight">{item.title}</h4>
+                                            <span className="text-[8px] font-mono text-gray-400 dark:text-gray-600 uppercase tracking-widest">{item.tag}</span>
+                                        </div>
+                                        <p className="text-sm text-gray-500 dark:text-gray-400 font-text leading-relaxed opacity-80 group-hover:opacity-100">
+                                            {item.desc}
+                                        </p>
                                     </div>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="pt-4 lg:pt-8 flex justify-center lg:justify-start">
-                            <button onClick={onOpenForm} className="group relative w-full lg:w-auto px-8 lg:px-12 py-5 lg:py-6 bg-transparent border border-gray-900 dark:border-vive-500 text-gray-900 dark:text-vive-500 font-black text-[9px] lg:text-[10px] uppercase tracking-[0.4em] hover:bg-gray-900 hover:text-white dark:hover:bg-vive-500 dark:hover:text-black transition-all">
-                                Descargar Catálogo Técnico .PDF
-                                <div className="absolute top-0 right-0 w-2 h-2 bg-gray-900 dark:bg-vive-500 -translate-y-1 translate-x-1"></div>
+                        {/* Technical CTA */}
+                        <div className="pt-4">
+                            <button className="group relative w-full px-12 py-8 bg-black dark:bg-white text-white dark:text-black font-black text-[12px] uppercase tracking-[0.4em] overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-2xl">
+                                <span className="relative z-10 flex items-center justify-center gap-6">
+                                    Descargar Dossier Técnico
+                                    <FaFileDownload className="text-lg transition-transform group-hover:translate-y-1" />
+                                </span>
+                                <div className="absolute inset-0 bg-vive-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                             </button>
+                            <div className="mt-4 flex items-center justify-between px-2">
+                                <span className="text-[8px] font-mono text-gray-400 uppercase tracking-widest">Version 2.0_2026</span>
+                                <span className="text-[8px] font-mono text-gray-400 uppercase tracking-widest">PDF _ 4.2MB</span>
+                            </div>
                         </div>
                     </div>
                 </div>

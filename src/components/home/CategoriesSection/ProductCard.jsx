@@ -16,7 +16,7 @@ const ProductCard = ({
   return (
     <div className="bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-vive-500/10 hover:-translate-y-2 h-full flex flex-col">
       {/* Product Image - Mismas medidas que el carrusel */}
-      <div className="relative overflow-hidden bg-gray-50 dark:bg-dream-dark-surface p-6" style={{ aspectRatio: '16/9' }}>
+      <div className="relative overflow-hidden bg-gray-50 dark:bg-dream-dark-surface p-2" style={{ aspectRatio: '16/9' }}>
         <Link to={`/producto/${product.id}`} className="block h-full w-full">
           <img
             src={product.image}

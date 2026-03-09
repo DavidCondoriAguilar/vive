@@ -1,69 +1,128 @@
 import React from 'react';
+import { FaShieldAlt, FaChartBar, FaExpand, FaTruckLoading } from 'react-icons/fa';
 
 const WholesaleBenefits = ({ benefits, factoryProductionImg }) => {
     return (
-        <section className="py-40 bg-gray-50 dark:bg-black relative transition-colors duration-500">
-            <div className="absolute inset-0 z-0 opacity-[0.05] dark:opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#299C47 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        <section className="py-24 lg:py-48 bg-white dark:bg-[#050505] relative overflow-hidden transition-colors duration-1000">
+            {/* Architectural Grid Background */}
+            <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+            </div>
 
             <div className="container mx-auto px-6 lg:px-20 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-                    <div className="space-y-16">
-                        <div className="space-y-6">
-                            <span className="text-vive-600 dark:text-vive-500 text-[10px] font-black uppercase tracking-[0.5em] block">Factory Infrastructure</span>
-                            <h2 className="text-5xl md:text-7xl font-display font-black text-gray-900 dark:text-white leading-none tracking-tighter uppercase">
-                                Ventaja Directa <br /> de <span className="text-vive-600 dark:text-vive-500 italic font-light lowercase">Fábrica</span>
-                            </h2>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32 items-start">
+
+                    {/* Left: Messaging & Strategy */}
+                    <div className="lg:col-span-6 space-y-24">
+                        <div className="space-y-12">
+                            <div className="flex items-center gap-4 overflow-hidden">
+                                <span className="h-[2px] w-12 bg-vive-500"></span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-vive-600 dark:text-vive-400">
+                                    Why Choose Vive B2B // INDUSTRIAL EDGE
+                                </span>
+                            </div>
+
+                            <div className="space-y-8">
+                                <h2 className="text-[clamp(3rem,7vw,7rem)] font-display font-light text-gray-950 dark:text-white leading-[0.9] tracking-tighter">
+                                    La Ventaja de una <br />
+                                    <span className="text-vive-500 italic serif font-medium lowercase">planta</span> <br />
+                                    de última generación.
+                                </h2>
+                                <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-text leading-tight max-w-xl">
+                                    Eliminamos intermediarios para entregarte <span className="text-gray-900 dark:text-white font-bold">valor real</span>: tecnología de exportación, certificaciones internacionales y una logística diseñada para el éxito de tu negocio.
+                                </p>
+                            </div>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-16">
+                        {/* Technical Benefit Cards */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {benefits.map((benefit, idx) => (
-                                <div key={idx} className="group space-y-6">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-14 h-14 rounded-2xl bg-vive-600/5 dark:bg-vive-500/10 border border-vive-600/20 dark:border-vive-500/20 flex items-center justify-center text-vive-600 dark:text-vive-500 text-2xl group-hover:bg-vive-600 group-hover:text-white dark:group-hover:bg-vive-500 dark:group-hover:text-black transition-all duration-500">
-                                            {benefit.icon}
-                                        </div>
-                                        <div className="h-[1px] flex-1 bg-gray-200 dark:bg-white/10"></div>
+                                <div key={idx} className="group p-10 border border-gray-100 dark:border-white/5 bg-gray-50/50 dark:bg-white/[0.02] transition-all duration-700 hover:bg-white dark:hover:bg-white/[0.05] hover:shadow-2xl hover:shadow-vive-500/5 hover:-translate-y-2">
+                                    <div className="w-12 h-12 mb-8 flex items-center justify-center bg-white dark:bg-black border border-gray-100 dark:border-white/10 text-vive-500 group-hover:bg-vive-500 group-hover:text-white transition-all duration-500">
+                                        {benefit.icon}
                                     </div>
-                                    <div>
-                                        <h4 className="text-lg font-display font-bold text-gray-900 dark:text-white mb-2 uppercase tracking-wide group-hover:text-vive-600 dark:group-hover:text-vive-500 transition-colors">
-                                            {benefit.title}
-                                        </h4>
-                                        <p className="text-gray-500 dark:text-gray-500 text-xs font-text leading-relaxed mb-4">{benefit.desc}</p>
-                                        <div className="flex flex-wrap gap-2">
-                                            {benefit.specs.map((spec, i) => (
-                                                <span key={i} className="text-[9px] font-mono text-vive-600 dark:text-vive-500 border border-vive-600/20 dark:border-vive-500/20 px-2 py-1 uppercase tracking-widest">{spec}</span>
-                                            ))}
-                                        </div>
+                                    <h4 className="text-xl font-display font-medium text-gray-950 dark:text-white mb-4 uppercase tracking-tight">
+                                        {benefit.title}
+                                    </h4>
+                                    <p className="text-sm text-gray-400 dark:text-gray-500 font-text leading-relaxed mb-6">
+                                        {benefit.desc}
+                                    </p>
+                                    <div className="flex flex-wrap gap-3 pt-4 border-t border-gray-100 dark:border-white/5">
+                                        {benefit.specs.map((spec, i) => (
+                                            <div key={i} className="flex items-center gap-2">
+                                                <div className="w-1 h-1 bg-vive-500 rounded-full"></div>
+                                                <span className="text-[9px] font-black uppercase tracking-widest text-gray-950 dark:text-white/80">
+                                                    {spec}
+                                                </span>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    <div className="relative">
-                        <div className="relative aspect-square rounded-[4rem] overflow-hidden border border-gray-200 dark:border-white/5 shadow-2xi group">
-                            <img src={factoryProductionImg} alt="Vive Industrial Process" className="w-full h-full object-cover grayscale brightness-[0.9] dark:brightness-[0.4] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent dark:from-black"></div>
+                    {/* Right: Immersive Production Visual */}
+                    <div className="lg:col-span-6 lg:sticky lg:top-32">
+                        <div className="relative group">
+                            {/* Main Industrial Image */}
+                            <div className="relative aspect-[4/5] overflow-hidden border border-gray-100 dark:border-white/10 bg-gray-100 dark:bg-white/5">
+                                <img
+                                    src={factoryProductionImg}
+                                    alt="Vive Production Plant"
+                                    className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[2.5s] ease-out"
+                                />
 
-                            {/* HUD Data Overlay */}
-                            <div className="absolute top-10 right-10 text-right space-y-2">
-                                <div className="text-vive-600 dark:text-vive-500 text-[10px] font-mono uppercase tracking-widest">Efficiency Sync</div>
-                                <div className="text-gray-900 dark:text-white text-3xl font-display font-black">99.8%</div>
+                                {/* Overlay Technical HUD */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+
+                                <div className="absolute top-10 right-10 flex flex-col items-end gap-2">
+                                    <div className="px-4 py-1 bg-vive-500 text-black text-[9px] font-black uppercase tracking-widest">
+                                        Live Production
+                                    </div>
+                                    <div className="text-[8px] font-mono text-white/40 uppercase tracking-widest">
+                                        VIVE_SYSTEM_V.4.2
+                                    </div>
+                                </div>
+
+                                <div className="absolute bottom-10 left-10 right-10 space-y-8">
+                                    <div className="space-y-4">
+                                        <div className="flex items-center gap-3">
+                                            <span className="w-8 h-px bg-vive-500"></span>
+                                            <span className="text-[10px] font-bold text-vive-500 uppercase tracking-[0.3em]">Qualité Certifiée</span>
+                                        </div>
+                                        <h3 className="text-4xl md:text-5xl font-display text-white leading-[0.9] tracking-tighter uppercase font-light">
+                                            Excelencia <br />
+                                            <span className="font-serif italic text-vive-500 lowercase font-medium">industrial</span>
+                                        </h3>
+                                        <p className="text-gray-400 text-sm font-text max-w-sm leading-relaxed">
+                                            Cada unidad es sometida a rigurosas pruebas de <span className="text-white">resiliencia y fatiga</span> bajo estándares internacionales ISO.
+                                        </p>
+                                    </div>
+
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="p-6 bg-white/5 backdrop-blur-md border border-white/10">
+                                            <div className="text-2xl font-display text-white mb-1">ISO 9001</div>
+                                            <div className="text-[8px] text-gray-500 uppercase tracking-widest">Gestión de Calidad</div>
+                                        </div>
+                                        <div className="p-6 bg-white/5 backdrop-blur-md border border-white/10">
+                                            <div className="text-2xl font-display text-white mb-1">OEKO-TEX</div>
+                                            <div className="text-[8px] text-gray-500 uppercase tracking-widest">Seguridad Textil</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="absolute bottom-12 left-12 space-y-4">
-                                <div className="flex items-center gap-4">
-                                    <span className="w-2 h-2 bg-vive-600 dark:bg-vive-500 rounded-full animate-ping"></span>
-                                    <span className="text-[10px] font-black text-white dark:text-white uppercase tracking-[0.3em] drop-shadow-md">Live Terminal // Industrial 4.0</span>
-                                </div>
-                                <div className="p-8 bg-vive-600 dark:bg-vive-500 rounded-3xl shadow-2xl">
-                                    <span className="block text-[10px] font-black text-white dark:text-black uppercase tracking-widest mb-1 italic">Vantage Level</span>
-                                    <span className="text-6xl font-display font-black text-white dark:text-black leading-none">Directo</span>
-                                    <p className="text-[9px] font-bold text-white dark:text-black uppercase tracking-tighter mt-1">Precio de fábrica sin intermediarios</p>
-                                </div>
+                            {/* Floating "Made in" Badge */}
+                            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gray-950 text-white flex flex-col items-center justify-center p-8 text-center border border-white/10 group-hover:rotate-6 transition-transform duration-700">
+                                <span className="text-[8px] font-black uppercase tracking-[0.4em] text-vive-500 mb-2">Heritage</span>
+                                <span className="text-2xl font-display uppercase tracking-widest font-light">Peru</span>
+                                <div className="mt-4 w-6 h-px bg-white/20"></div>
+                                <span className="mt-4 text-[7px] text-gray-500 uppercase tracking-widest">Proudly Manufactured</span>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>

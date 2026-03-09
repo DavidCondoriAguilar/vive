@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { getWhatsAppLink } from '@/utils/constants';
 import Navbar from '@/components/layout/Navbar';
 import PromoBar from '@/components/layout/PromoBar';
@@ -16,7 +16,10 @@ import ContactContent from '@/components/support/ContactContent';
 
 const MainLayout = ({ children }) => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [activeModal, setActiveModal] = useState(null);
+
+    const isHome = location.pathname === '/inicio' || location.pathname === '/';
 
     const handleLogoClick = () => {
         navigate('/');
@@ -63,10 +66,10 @@ const MainLayout = ({ children }) => {
     };
 
     return (
-        <div className="flex flex-col min-h-screen bg-white dark:bg-black transition-colors duration-700 font-sans selection:bg-vive-500 selection:text-white pt-[140px]">
+        <div className="flex flex-col min-h-screen bg-white dark:bg-black transition-colors duration-700 font-sans selection:bg-vive-500 selection:text-white overflow-x-hidden">
             <Navbar />
             <Breadcrumbs />
-            <main className="flex-grow">
+            <main className={`flex-grow ${!isHome ? 'pt-4 md:pt-8' : ''}`}>
                 {children}
             </main>
 

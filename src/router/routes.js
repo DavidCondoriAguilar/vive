@@ -18,6 +18,8 @@ export const ROUTES = {
     RETURN_POLICY: '/politica-devoluciones',
     CONTACT: '/contacto',
     CONTACT_THANKS: '/contacto/gracias',
+    GUIDES: '/guia-de-descanso',
+    SLEEP_TEST: '/test-de-sueno',
     SEARCH: '/busqueda',
 };
 

@@ -66,7 +66,7 @@ const Footer = ({ onLogoClick }) => {
                                 <li key={item.name}>
                                     <button
                                         onClick={() => handleOpenModal(item.key)}
-                                        className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors font-bold uppercase tracking-tighter text-left"
+                                        className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors font-bold uppercase tracking-tighter text-left block w-full"
                                     >
                                         {item.name}
                                     </button>
@@ -94,14 +94,14 @@ const Footer = ({ onLogoClick }) => {
                                             href={getWhatsAppLink("Hola Vive, deseo registrar un reclamo en su Libro de Reclamaciones virtual.")}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors font-bold uppercase tracking-tighter"
+                                            className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors font-bold uppercase tracking-tighter text-left block w-full"
                                         >
                                             {item.name}
                                         </a>
                                     ) : (
                                         <button
                                             onClick={() => handleOpenModal(item.key)}
-                                            className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors font-bold uppercase tracking-tighter text-left"
+                                            className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors font-bold uppercase tracking-tighter text-left block w-full"
                                         >
                                             {item.name}
                                         </button>
@@ -127,7 +127,7 @@ const Footer = ({ onLogoClick }) => {
                                 <li key={item.name}>
                                     <button
                                         onClick={() => handleOpenModal(item.key)}
-                                        className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors font-bold uppercase tracking-tighter text-left"
+                                        className="text-[11px] text-gray-500 dark:text-gray-400 hover:text-vive-500 transition-colors font-bold uppercase tracking-tighter text-left block w-full"
                                     >
                                         {item.name}
                                     </button>

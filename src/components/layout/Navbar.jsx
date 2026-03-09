@@ -23,6 +23,7 @@ import resorteNavImg from '@/assets/images/generated/resorte_nav.png';
 import { ROUTES, getProductPath } from '@/router/routes';
 
 const Navbar = () => {
+    const [scrollY, setScrollY] = useState(0);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSearchOverlayOpen, setIsSearchOverlayOpen] = useState(false);
@@ -31,9 +32,11 @@ const Navbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+            const currentScroll = window.scrollY;
+            setScrollY(currentScroll);
+            setIsScrolled(currentScroll > 44);
         };
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -42,6 +45,7 @@ const Navbar = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    // ... (rest of the links remain same)
     const navLinks = [
         {
             name: 'Resorte',
@@ -98,7 +102,7 @@ const Navbar = () => {
         },
         {
             name: 'Dormitorio',
-            path: '/categorias/dormitorio', // Manual override for specific category
+            path: '/categorias/dormitorio',
             icon: <MdOutlineHome className="w-5 h-5" />,
             subLinks: [
                 { name: 'Box Universal', path: ROUTES.DORMITORIO_SUB.replace(':subId', 'box-universal') },
@@ -120,78 +124,68 @@ const Navbar = () => {
             icon: <MdOutlineLocalOffer className="w-5 h-5" />
         },
         {
-            name: 'Contacto',
-            path: ROUTES.CONTACT,
-            icon: <MdOutlineMail className="w-5 h-5" />
+            name: 'Guías',
+            path: ROUTES.GUIDES,
+            icon: <MdOutlineBed className="w-5 h-5" />
         },
     ];
 
     const waLink = getWhatsAppLink("Hola Vive, me gustaría recibir asesoría estratégica para mi próximo sistema de descanso.");
+    const isHome = location.pathname === '/inicio' || location.pathname === '/';
+
+    // Calculate dynamic offset to hide Promo Bar smoothly
+    const dynamicTranslate = Math.min(scrollY, 44);
 
     return (
-        <header className="fixed top-0 left-0 w-full z-[50] transition-all duration-500">
-            {/* PROMO BAR INTEGRATION */}
-            <div className={`transition-all duration-500 overflow-hidden z-50 ${isScrolled ? 'max-h-0' : 'max-h-[300px]'}`}>
-                <PromoBar />
-            </div>
-
-            {/* MAIN NAVBAR */}
+        <>
+            {/* COMPLETE NAVIGATION SYSTEM - Shared Fixed Container */}
             <div
-                className="bg-white dark:bg-black border-b border-gray-200 dark:border-white/5 transition-all duration-500 overflow-visible"
+                className="fixed top-0 left-0 w-full z-[80] transition-transform duration-300 ease-out"
+                style={{ transform: `translateY(-${dynamicTranslate}px)` }}
             >
-                <div className="w-full px-4 md:px-12 lg:px-20 relative overflow-visible">
-                    {/* Mobile Layout - Professional & Responsive */}
-                    <div className="lg:hidden flex items-center min-h-[96px] w-full px-2 gap-2 overflow-visible">
-                        {/* LOGO - Fixed width for stability */}
-                        <div className="flex-shrink-0 w-24">
-                            <Logo
-                                size="small"
-                                to={ROUTES.HOME}
-                                variant="auto"
-                            />
-                        </div>
+                {/* 1. PROMO BAR */}
+                <PromoBar />
 
-                        {/* ACTIONS - Siempre visibles (mínimo ancho para iconos + menú) */}
-                        <div className="flex-1 flex justify-end items-center flex-shrink-0 min-w-[200px]">
-                            <NavActions
-                                toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                                isMobileMenuOpen={isMobileMenuOpen}
-                                waLink={waLink}
-                                onOpenSearch={() => setIsSearchOverlayOpen(true)}
-                            />
+                {/* 2. MAIN NAVBAR - Transparent initially, solid on scroll */}
+                <header
+                    className={`w-full transition-all duration-700 bg-white/95 dark:bg-black/95 backdrop-blur-sm border-b border-gray-100 dark:border-white/5 
+                        ${isScrolled ? 'bg-white/80 dark:bg-black/80 backdrop-blur-2xl border-vive-500/10 shadow-2xl' : ''}
+                    `}
+                >
+                    <div className={`h-[2px] w-full bg-gradient-to-r from-transparent via-vive-500 to-transparent transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0'}`}></div>
+
+                    <div className="w-full px-4 md:px-12 lg:px-20 relative overflow-hidden">
+                        <div className={`flex items-center justify-between w-full transition-all duration-700 ${isScrolled ? 'h-[60px] lg:h-[68px]' : 'h-[68px] lg:h-[76px]'}`}>
+                            <div className="flex-shrink-0 relative z-10">
+                                <Logo
+                                    size={isScrolled ? "small" : "medium"}
+                                    to={ROUTES.HOME}
+                                    variant="auto"
+                                    className="transition-transform duration-500 hover:scale-105"
+                                />
+                            </div>
+
+                            <div className="hidden lg:flex flex-1 items-center justify-center px-8 relative z-10">
+                                <DesktopNav navLinks={navLinks} currentPath={location.pathname} />
+                            </div>
+
+                            <div className="flex items-center relative z-10">
+                                <NavActions
+                                    toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                    isMobileMenuOpen={isMobileMenuOpen}
+                                    waLink={waLink}
+                                    onOpenSearch={() => setIsSearchOverlayOpen(true)}
+                                />
+                            </div>
                         </div>
                     </div>
-
-                    {/* Desktop Layout */}
-                    <div className="hidden lg:flex items-center justify-between min-h-24 w-full">
-                        {/* LOGO - Desktop */}
-                        <div className="flex-shrink-0">
-                            <Logo
-                                size="medium"
-                                to={ROUTES.HOME}
-                                variant="auto"
-                            />
-                        </div>
-
-                        {/* DESKTOP NAV - Centro sin scroll */}
-                        <div className="flex-1 min-w-0 flex items-center justify-center px-2">
-                            <DesktopNav navLinks={navLinks} currentPath={location.pathname} />
-                        </div>
-
-                        {/* ICONOS: búsqueda (solo icono) + tema, carrito, WhatsApp */}
-                        <div className="flex items-center gap-1.5 lg:gap-2 flex-shrink-0">
-                            <NavActions
-                                toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                                isMobileMenuOpen={isMobileMenuOpen}
-                                waLink={waLink}
-                                onOpenSearch={() => setIsSearchOverlayOpen(true)}
-                            />
-                        </div>
-                    </div>
-                </div>
+                </header>
             </div>
 
-            {/* Mobile Menu Overlay */}
+            {/* Spacer to prevent layout jump from fixed header */}
+            {!isHome && <div className="h-[112px] lg:h-[120px]"></div>}
+
+            {/* 3. OVERLAYS - Outside the header to avoid layout shift conflicts */}
             <MobileMenu
                 isOpen={isMobileMenuOpen}
                 onClose={() => setIsMobileMenuOpen(false)}
@@ -199,13 +193,14 @@ const Navbar = () => {
                 waLink={waLink}
             />
 
-            {/* Modal de búsqueda moderno */}
             <SearchModal
                 isOpen={isSearchOverlayOpen}
                 onClose={() => setIsSearchOverlayOpen(false)}
             />
-        </header>
+        </>
     );
 };
+
+
 
 export default Navbar;

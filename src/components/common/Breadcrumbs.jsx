@@ -41,6 +41,10 @@ const Breadcrumbs = () => {
           case 'politica-devoluciones':
             name = 'Política de Devoluciones';
             break;
+          case 'guia-de-descanso':
+            name = 'Guía de Descanso';
+            break;
+
           default:
             // Dynamic naming for product IDs or category IDs
             if (pathname.length > 10 || pathname.includes('-')) {

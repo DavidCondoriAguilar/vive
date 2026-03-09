@@ -156,15 +156,24 @@ const CatalogView = () => {
                       </div>
 
                       {/* Main Product Image Link */}
-                      <Link to={`/producto/${product.id}`} className="absolute inset-0 flex items-center justify-center p-12">
-                        <img
-                          src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=400&q=75&auto=format`}
-                          alt={product.name}
-                          className="w-full h-auto object-contain transition-transform duration-1000 group-hover:scale-110"
-                          width="400"
-                          height="500"
-                          loading="lazy"
-                        />
+                      <Link to={`/producto/${product.id}`} className="absolute inset-0 flex items-center justify-center p-2">
+                        <div
+                          className="w-full h-full flex items-center justify-center transition-transform duration-1000"
+                          style={{
+                            transform: (product.name === 'Infinito Mp' || product.name === 'Goldencito Anatomico Mp')
+                              ? 'translateY(-12px)'
+                              : 'none'
+                          }}
+                        >
+                          <img
+                            src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=400&q=75&auto=format`}
+                            alt={product.name}
+                            className="w-full h-auto object-contain transition-transform duration-1000 scale-110 group-hover:scale-125"
+                            width="400"
+                            height="500"
+                            loading="lazy"
+                          />
+                        </div>
                       </Link>
 
                       {/* Professional Hover Overlay */}

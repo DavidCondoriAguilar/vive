@@ -13,6 +13,10 @@ const ProductImageGallery = ({
     const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
     const containerRef = useRef();
 
+    // Utility to determine if we should enable the optical engine (Desktop only)
+    const isMobile = typeof window !== 'undefined' ? window.innerWidth < 1024 : false;
+    const enableOpticalEngine = isHovered && !isMobile;
+
     const handleMouseMove = (e) => {
         if (!containerRef.current) return;
         const rect = containerRef.current.getBoundingClientRect();
@@ -37,46 +41,48 @@ const ProductImageGallery = ({
                 >
                     {/* Primary Focus Engine */}
                     <div
-                        className="absolute inset-0 transition-transform duration-700 ease-out flex items-center justify-center p-8"
+                        className="absolute inset-0 transition-transform duration-700 ease-out flex items-center justify-center p-4 lg:p-6"
                         style={{
-                            transform: isHovered ? `scale(1.05) translate(${(50 - mousePos.x) / 15}%, ${(50 - mousePos.y) / 15}%)` : 'scale(1) translate(0,0)'
+                            transform: enableOpticalEngine ? `scale(1.05) translate(${(50 - mousePos.x) / 15}%, ${(50 - mousePos.y) / 15}%)` : 'scale(1) translate(0,0)'
                         }}
                     >
                         <LazyImage
                             src={productImages[activeImageIndex]}
                             alt={productName}
                             priority={true}
-                            className={`max-w-full max-h-full object-contain transition-all duration-700 ${isHovered ? 'blur-[1px] opacity-40' : 'opacity-100'}`}
+                            className={`max-w-full max-h-full object-contain transition-all duration-700 ${enableOpticalEngine ? 'blur-[1px] opacity-40' : 'opacity-100'}`}
                         />
                     </div>
 
-                    {/* Hyper-Detail Portal (2026 Lens Effect) */}
-                    <div
-                        className={`absolute inset-0 pointer-events-none transition-opacity duration-500 overflow-hidden ${isHovered ? 'opacity-100' : 'opacity-0'}`}
-                        style={{
-                            clipPath: `circle(120px at ${mousePos.x}% ${mousePos.y}%)`,
-                            WebkitClipPath: `circle(120px at ${mousePos.x}% ${mousePos.y}%)`,
-                        }}
-                    >
+                    {/* Hyper-Detail Portal (2026 Lens Effect - DESKTOP ONLY) */}
+                    {!isMobile && (
                         <div
-                            className="absolute inset-0 flex items-center justify-center transition-transform duration-150 ease-out"
+                            className={`absolute inset-0 pointer-events-none transition-opacity duration-500 overflow-hidden ${enableOpticalEngine ? 'opacity-100' : 'opacity-0'}`}
                             style={{
-                                transform: `scale(1.8) translate(${(50 - mousePos.x) / 1.8}%, ${(50 - mousePos.y) / 1.8}%)`
+                                clipPath: `circle(120px at ${mousePos.x}% ${mousePos.y}%)`,
+                                WebkitClipPath: `circle(120px at ${mousePos.x}% ${mousePos.y}%)`,
                             }}
                         >
-                            <img
-                                src={productImages[activeImageIndex]}
-                                alt={`${productName} Zoom`}
-                                className="max-w-full max-h-full object-contain"
-                            />
+                            <div
+                                className="absolute inset-0 flex items-center justify-center transition-transform duration-150 ease-out"
+                                style={{
+                                    transform: `scale(1.8) translate(${(50 - mousePos.x) / 1.8}%, ${(50 - mousePos.y) / 1.8}%)`
+                                }}
+                            >
+                                <img
+                                    src={productImages[activeImageIndex]}
+                                    alt={`${productName} Zoom`}
+                                    className="max-w-full max-h-full object-contain"
+                                />
+                            </div>
+                            {/* High-End Optics Glow */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent mix-blend-overlay"></div>
                         </div>
-                        {/* High-End Optics Glow */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent mix-blend-overlay"></div>
-                    </div>
+                    )}
 
-                    {/* Custom 2026 Cursor */}
+                    {/* Custom 2026 Cursor (Desktop Only) */}
                     <div
-                        className={`absolute w-16 h-16 border border-vive-600/30 rounded-full pointer-events-none z-[110] mix-blend-difference items-center justify-center hidden lg:flex transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+                        className={`absolute w-16 h-16 border border-vive-600/30 rounded-full pointer-events-none z-[110] mix-blend-difference items-center justify-center hidden lg:flex transition-opacity duration-300 ${enableOpticalEngine ? 'opacity-100' : 'opacity-0'}`}
                         style={{
                             left: `${mousePos.x}%`,
                             top: `${mousePos.y}%`,
@@ -87,11 +93,13 @@ const ProductImageGallery = ({
                         <span className="absolute -bottom-6 text-[8px] font-black text-white/50 uppercase tracking-[0.3em]">Enfoque_HD</span>
                     </div>
 
-                    {/* Studio Light Highlight Layer */}
-                    <div
-                        className="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/20 via-transparent to-black/10 opacity-30 mix-blend-overlay transition-transform duration-1000"
-                        style={{ transform: `translate(${(mousePos.x - 50) / 20}%, ${(mousePos.y - 50) / 20}%)` }}
-                    ></div>
+                    {/* Studio Light Highlight Layer (Desktop Only) */}
+                    {!isMobile && (
+                        <div
+                            className="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/20 via-transparent to-black/10 opacity-30 mix-blend-overlay transition-transform duration-1000"
+                            style={{ transform: `translate(${(mousePos.x - 50) / 20}%, ${(mousePos.y - 50) / 20}%)` }}
+                        ></div>
+                    )}
 
                     {/* Minimal Overlays */}
                     <div className="absolute top-8 right-8 flex flex-col gap-4 z-20">
