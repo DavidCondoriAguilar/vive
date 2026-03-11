@@ -1,8 +1,6 @@
 /**
- * REFACTORIZACIÓN EXITOSA - SENIOR UI/UX APPROACH
- * Este archivo ahora sirve como un puente (Bridge) para mantener la compatibilidad 
- * con el resto de la aplicación sin romper nada, pero los datos reales viven 
- * de forma organizada en la carpeta /src/data/catalog/
+ * BRIDGE - Compatibilidad hacia atrás
+ * Los datos reales viven en: src/features/catalog/data/
  */
 
 export {
@@ -12,4 +10,4 @@ export {
     COMPLEMENTARIOS_PRODUCTS,
     ENHANCED_CATALOG,
     FEATURED_PRODUCTS
-} from '../data/catalog';
+} from '../features/catalog/data';

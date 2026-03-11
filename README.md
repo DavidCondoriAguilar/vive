@@ -52,7 +52,7 @@
 
 ---
 
-## 📁 ESTRUCTURA DEL PROYECTO
+## 📁 ESTRUCTURA DEL PROYECTO (Feature-Based Architecture)
 
 ```
 vive-web/
@@ -63,74 +63,124 @@ vive-web/
 │
 ├── docs/                        # 📚 Documentación completa
 │   ├── README.md                # Índice de documentación
-│   ├── START_HERE.md            # ⭐ Empieza aquí - Resumen ejecutivo
-│   ├──CHECKLIST.md           # ✅ Checklist de deployment
-│   ├── DEPLOYMENT.md            # 🚀 Guía de despliegue
-│   ├── GITHUB_SECRETS.md        # 🔐 Configuración de secrets
-│   └── AUDIT.md                  # 📊 Reporte de auditoría
+│   ├── START_HERE.md           # ⭐ Empieza aquí
+│   ├── CHECKLIST.md            # ✅ Checklist de deployment
+│   ├── DEPLOYMENT.md           # 🚀 Guía de despliegue
+│   ├── GITHUB_SECRETS.md       # 🔐 Configuración de secrets
+│   └── AUDIT.md                # 📊 Reporte de auditoría
 │
 ├── dist/                        # 📦 Build de producción (generado)
-│   ├── .htaccess                # ⚙️ Configuración Apache
+│   ├── .htaccess               # ⚙️ Configuración Apache
 │   ├── index.html
-│   └── assets/                  # JS/CSS con hash
+│   └── assets/                 # JS/CSS con hash
 │
-├── public/                      # 📁 Assets estáticos
-│   ├── .htaccess                # ⚙️ Config para Hostinger
+├── public/                     # 📁 Assets estáticos
 │   ├── favicon.png
 │   ├── manifest.json
 │   ├── robots.txt
 │   ├── sitemap.xml
-│   └── images/                  # Imágenes estáticas (optimizadas WebP)
+│   └── images/                 # Imágenes estáticas
 │
-├── src/                         # 💻 Código fuente
-│   ├── assets/                  # Assets procesados por Vite
-│   │   ├── images/
-│   │   ├── product-detail/
-│   │   └── styles/
+├── src/                        # 💻 Código fuente
+│   ├── core/                   # 🔧 Utilidades globales
+│   │   ├── config/             # Configuración de app
+│   │   ├── constants/          # Constantes globales
+│   │   ├── utils/              # Utilidades puras
+│   │   └── legal/              # Contenido legal
 │   │
-│   ├── components/              # Componentes React
-│   │   ├── common/
-│   │   ├── layout/
-│   │   ├── search/
-│   │   └── ui/
+│   ├── shared/                 # 🔄 Código compartido
+│   │   ├── components/         # Componentes UI reutilizables
+│   │   │   ├── ui/            # Button, Modal, Card, etc.
+│   │   │   └── common/        # Logo, Breadcrumbs, etc.
+│   │   ├── contexts/          # Contextos globales (Cart, Theme)
+│   │   ├── hooks/             # Hooks reutilizables
+│   │   └── types/             # Tipos TypeScript
 │   │
-│   ├── data/                    # Data estática
-│   │   └── catalog/
+│   ├── features/               # 🎯 Módulos de negocio
+│   │   ├── catalog/           # Catálogo de productos
+│   │   │   └── data/          # Datos de productos
+│   │   ├── products/          # Detalles de producto
+│   │   │   └── services/      # Servicios de productos
+│   │   ├── checkout/          # Proceso de compra
+│   │   ├── contact/           # Formulario de contacto
+│   │   ├── search/            # Búsqueda
+│   │   ├── home/              # Página principal
+│   │   ├── wholesale/         # Ventas mayoristas
+│   │   ├── sleep-test/        # Test de sueño
+│   │   ├── guides/            # Guías de descanso
+│   │   ├── support/           # Políticas de soporte
+│   │   └── categories/        # Vistas de categorías
 │   │
-│   ├── features/                # Módulos de funcionalidad
-│   │   ├── cart/
-│   │   ├── checkout/
-│   │   ├── product/
-│   │   └── wholesale/
+│   ├── layouts/               # 🎨 Layouts principales
+│   │   └── MainLayout/       # Layout con header/footer
 │   │
-│   ├── hooks/                   # Custom React hooks
-│   ├── layouts/                 # Layout components
-│   ├── pages/                   # Páginas/Vistas
-│   ├── services/                # API services
-│   ├── store/                   # State management
-│   ├── styles/                  # Estilos globales
-│   ├── utils/                   # Utilidades
-│   │   ├── constants.js
-│   │   └── seo.js
+│   ├── router/                # 🧭 Configuración de rutas
 │   │
-│   ├── App.jsx                  # Componente principal
-│   └── main.jsx                 # Entry point
+│   ├── assets/                # 🖼️ Imágenes y recursos
+│   │
+│   ├── App.jsx                # Componente principal
+│   └── main.jsx               # Entry point
 │
-├── scripts/
-│   ├── validate-deployment.js   # ✅ Script de validación
-│   └── analyze-images.js        # 📊 Análisis de imágenes
+├── scripts/                   # 🔧 Scripts de utilidad
+│   ├── validate-deployment.js
+│   └── analyze-images.js
 │
-├── .env.example                 # 📝 Template de variables
-├── .env.production              # 🔐 Variables de producción (gitignored)
-├── .gitignore                   # 🚫 Archivos ignorados
-├── eslint.config.js             # 🔍 ESLint config
-├── index.html                   # 📄 HTML template
-├── package.json                 # 📦 Dependencias
-├── postcss.config.js            # 🎨 PostCSS config
-├── tailwind.config.js           # 🎨 Tailwind config
-├── vite.config.js               # ⚡ Vite config
-└── README.md                    # 📖 Este archivo
+├── .env.example               # 📝 Template de variables
+├── .env.production           # 🔐 Variables de producción
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── vite.config.js
+└── README.md
 ```
+
+---
+
+## 🏗️ ARQUITECTURA
+
+### Principios de Diseño
+
+| Principio | Descripción |
+|-----------|-------------|
+| **Feature-Based** | Cada funcionalidad en su propia carpeta |
+| **Colocation** | Componentes, hooks, servicios juntos |
+| **Shared vs Core** | `shared` = reusable, `core` = utilitarios |
+| **Lazy Loading** | Code splitting por ruta |
+
+### Reglas de Imports
+
+```jsx
+// ✅ Components UI genéricos
+import Button from '@shared/components/ui/Button';
+import Modal from '@shared/components/ui/Modal';
+
+// ✅ Contextos globales
+import { useCart } from '@shared/contexts/CartContext';
+
+// ✅ Utilidades
+import { getWhatsAppLink } from '@core/constants/app';
+
+// ✅ Features
+import CatalogView from '@features/catalog/CatalogView';
+import ProductDetails from '@features/products/ProductDetailsView';
+
+// ❌ Evitar imports absolutos largos
+// import from '@/components/ui/Button'  // NO
+```
+
+### Alias Disponibles
+
+| Alias | Destino |
+|-------|---------|
+| `@core` | `src/core/` |
+| `@shared` | `src/shared/` |
+| `@features` | `src/features/` |
+| `@layouts` | `src/layouts/` |
+| `@assets` | `src/assets/` |
+| `@components` | `src/components/` |
 
 ---
 

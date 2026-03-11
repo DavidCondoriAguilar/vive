@@ -2,32 +2,27 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
-// UI Components
-import ShoppingCart from '@/components/layout/ShoppingCart';
-import CartNotification from '@/components/ui/CartNotification';
-import Chatbot from '@/components/chatbot';
-import { CartProvider } from '@/contexts/CartContext';
+import { ThemeProvider } from '@shared/contexts/ThemeContext';
+import { CartProvider } from '@shared/contexts/CartContext';
+import { ROUTES } from './router/routes';
 
-// Lazy load feature components for better performance
 const HomeView = lazy(() => import('@features/home/views/HomeView'));
 const CategoryView = lazy(() => import('@features/categories/CategoryView'));
 const CatalogView = lazy(() => import('@features/catalog/CatalogView'));
 const WholesaleView = lazy(() => import('@features/wholesale/WholesaleView'));
 const ProductDetailsView = lazy(() => import('@features/products/ProductDetailsView/index'));
-const ReturnPolicyView = lazy(() => import('@/components/common/ReturnPolicy'));
-const OrderConfirmationPage = lazy(() => import('@/pages/OrderConfirmationPage'));
-const ContactForm = lazy(() => import('@/components/contact/ContactForm'));
-const ContactThankYou = lazy(() => import('@/components/contact/ContactThankYou'));
-const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
-const SearchRoutes = lazy(() => import('@/router/SearchRoutes'));
+const CheckoutView = lazy(() => import('@features/checkout/views/CheckoutPage'));
+const OrderConfirmationView = lazy(() => import('@features/checkout/views/OrderConfirmationPage'));
+const NotFoundPage = lazy(() => import('@features/checkout/views/NotFoundPage'));
+const SearchRoutes = lazy(() => import('@features/search/SearchRoutes'));
 const GuiaDescansoView = lazy(() => import('@features/guides/GuiaDescansoView'));
 const SleepTestView = lazy(() => import('@features/sleep-test/SleepTestView'));
 
-import ScrollToTop from '@/components/common/ScrollToTop';
-
-import { ThemeProvider } from '@/contexts/ThemeContext';
-
-import { ROUTES } from '@/router/routes';
+const MainLayout = lazy(() => import('@layouts/MainLayout'));
+const ShoppingCart = lazy(() => import('@components/layout/ShoppingCart'));
+const CartNotification = lazy(() => import('@components/ui/CartNotification'));
+const Chatbot = lazy(() => import('@components/chatbot'));
+const ScrollToTop = lazy(() => import('@components/common/ScrollToTop'));
 
 function App() {
   return (
@@ -47,7 +42,8 @@ function App() {
                 <Route path={ROUTES.CATALOG} element={<CatalogView />} />
                 <Route path={ROUTES.WHOLESALE} element={<WholesaleView />} />
                 <Route path={ROUTES.PRODUCT_DETAIL} element={<ProductDetailsView />} />
-                <Route path={ROUTES.ORDER_CONFIRMATION} element={<OrderConfirmationPage />} />
+                <Route path={ROUTES.CHECKOUT} element={<CheckoutView />} />
+                <Route path={ROUTES.ORDER_CONFIRMATION} element={<OrderConfirmationView />} />
                 <Route path={ROUTES.RETURN_POLICY} element={<ReturnPolicyView />} />
                 <Route path={ROUTES.CONTACT} element={<ContactForm />} />
                 <Route path={ROUTES.CONTACT_THANKS} element={<ContactThankYou />} />
