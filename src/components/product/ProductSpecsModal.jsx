@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MdShield, MdSettings, MdVerifiedUser, MdLayers } from 'react-icons/md';
 import { FaDownload, FaWhatsapp, FaTimes } from 'react-icons/fa';
 import { getWhatsAppLink } from '@/utils/constants';
+import logoVive from '@/assets/images/logos/vive.png';
 
 const ProductSpecsModal = ({
     product,
@@ -74,11 +75,17 @@ const ProductSpecsModal = ({
             doc.setFillColor(...viveGreen);
             doc.rect(0, 0, pageWidth, 40, 'F');
 
-            doc.setTextColor(255, 255, 255);
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(28);
-            doc.text('VIVE', margin, 25);
+            // Add Logo Image
+            try {
+                doc.addImage(logoVive, 'PNG', margin, 6, 50, 20);
+            } catch (e) {
+                doc.setTextColor(255, 255, 255);
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(28);
+                doc.text('VIVE', margin, 25);
+            }
 
+            doc.setTextColor(255, 255, 255);
             doc.setFontSize(8);
             doc.setFont('helvetica', 'normal');
             doc.setCharSpace(2);

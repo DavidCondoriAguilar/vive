@@ -15,7 +15,7 @@ const WholesaleFinalCTA = ({ whatsappLink }) => {
             <div className="relative z-10 space-y-16">
                 <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-white/5 border border-white/10 rounded-full">
                     <span className="w-1.5 h-1.5 bg-vive-500 rounded-full animate-pulse"></span>
-                    <span className="text-[10px] font-bold text-gray-300 uppercase tracking-[0.3em]">Exclusive Business Channel</span>
+                    <span className="text-[10px] font-bold text-gray-300 uppercase tracking-[0.3em]">Canal de Negocios Exclusivo</span>
                 </div>
 
                 <div className="space-y-8">
@@ -53,7 +53,7 @@ const WholesaleFinalCTA = ({ whatsappLink }) => {
                 {/* Bottom Trust Indicators */}
                 <div className="pt-20 grid grid-cols-1 sm:grid-cols-3 gap-12 border-t border-white/5 max-w-5xl mx-auto">
                     {[
-                        { label: "QA Protocol", value: "Internacional" },
+                        { label: "Protocolo QA", value: "Internacional" },
                         { label: "Capacidad", value: "Industrial Pro" },
                         { label: "Logística", value: "Sincronizada" }
                     ].map((item, i) => (

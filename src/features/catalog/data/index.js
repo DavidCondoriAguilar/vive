@@ -7,35 +7,37 @@ export { RESORTE_PRODUCTS } from './resorte.data';
 export { ESPUMA_PRODUCTS } from './espuma.data';
 export { COMPLEMENTARIOS_PRODUCTS } from './dormitorio.data';
 
-// 1. PRODUCTOS DE ALTA PRIORIDAD (Se mostrarán primero en la sección "Nuestros Productos")
-// Marketing Strategy: 1. Hero Brand (Golden Dream), 2. High Margin Upsell (Box/Cama Premium), 3. Tech Anchor (Pocket Visco), 4. Foam Luxury
+// 1. PRODUCTOS DE ALTA PRIORIDAD — Solo colchones top al inicio
 const TOP_MAIN_IDS = [
-    'golden-dream-mp',        // The "Hero" of the brand
-    'box-tarima-universal',   // NEW: Best seller accessibility (Cama Universal)
-    'cama-tapizada-premium-brazo', // High margin upsell
-    'reconciliacion-pocket',   // The Tech Anchor
-    'topacio',                 // The King of Foam (D30)
-    'box-tarima-premium-tapizado', // High-visibility premium furniture
-    'siempre-pt'             // The "Best Seller" (Reliability)
+    'gea-pt-mp-two-ortopedico-de-lujo', // Nuevo lanzamiento premium
+    'ventto-marco',                       // Ultra Firme - Top técnico
+    'sense-premium',                      // Premium Series
+    'itta',                               // Nuevo ingreso ortopédico
+    'kasse',                              // Nuevo ingreso exclusivo
+    'kai',                                // Kai Series
+    'enna-mp',                            // Enna Collection
 ];
 
-// 2. PRODUCTOS DESTACADOS (Variedad y Alternativas de Valor)
+// 2. PRODUCTOS DESTACADOS (carrusel home)
 const FEATURED_PRIORITY_IDS = [
-    'ternura-pocket',         // Great alternative to Reconciliación
-    'mueble-luxe',            // NEW: Showing that we sell sofas/seccionales too
-    'matrimonial-clasico',     // The classical matrimonial choice
-    'plus-resilense'          // The "Health/Orthopedic" choice
+    'vanora-dp',                          // Vanora DP Series
+    'gea-pt-mp-two-ortopedico-de-lujo',   // Nuevo lanzamiento
+    'ventto-marco',                        // Ultra Firme
+    'itta',                                // Ortopédico
+    'kasse',                               // Exclusivo
 ];
 
+// Colchones primero, luego dormitorio
 const ALL_PRODUCTS = [
     ...RESORTE_PRODUCTS,
     ...ESPUMA_PRODUCTS,
     ...COMPLEMENTARIOS_PRODUCTS
 ];
 
-// Generar ENHANCED_CATALOG (Priorizando TOP_MAIN_IDS)
+// Generar ENHANCED_CATALOG (colchones top primero, luego el resto, muebles al final)
 const priorityMain = [];
-const regularMain = [];
+const regularColchones = [];
+const dormitorioProducts = [];
 const mainIdsSet = new Set(TOP_MAIN_IDS);
 
 TOP_MAIN_IDS.forEach(id => {
@@ -44,10 +46,16 @@ TOP_MAIN_IDS.forEach(id => {
 });
 
 ALL_PRODUCTS.forEach(p => {
-    if (!mainIdsSet.has(p.id)) regularMain.push(p);
+    if (!mainIdsSet.has(p.id)) {
+        if (p.category === 'dormitorio') {
+            dormitorioProducts.push(p);
+        } else {
+            regularColchones.push(p);
+        }
+    }
 });
 
-export const ENHANCED_CATALOG = [...priorityMain, ...regularMain];
+export const ENHANCED_CATALOG = [...priorityMain, ...regularColchones, ...dormitorioProducts];
 
 // Generar FEATURED_PRODUCTS (Priorizando FEATURED_PRIORITY_IDS para evitar repetición visual inmediata)
 const priorityFeatured = [];

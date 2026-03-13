@@ -1,8 +1,8 @@
-﻿// Importaciones de imágenes para Dormitorio y Complementos
+// Importaciones de imágenes para Dormitorio y Complementos
 import boxMain from '@assets/product-detail/box-cabecera/box-main.webp';
 import boxDiag from '@assets/product-detail/box-cabecera/box-diag.webp';
 import boxZoom from '@assets/product-detail/box-cabecera/box-zoom.webp';
-import siempreOpMain from '@assets/product-detail/siempre-op/simpe-op.webp';
+
 import boxPremiumMain from '@assets/product-detail/box-tarima-premium/box-tarima-premium.webp';
 import boxPremiumDiag from '@assets/product-detail/box-tarima-premium/box-tarima-premium-diagonal.webp';
 import boxPremiumZoom from '@assets/product-detail/box-tarima-premium/box-tarima-premium-zoom.webp';

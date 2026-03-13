@@ -69,28 +69,28 @@ const WholesaleView = () => {
 
   const benefits = [
     {
-      title: "Producción por Volumen",
-      desc: "Capacidad de escala para grandes pedidos con tiempos de entrega garantizados.",
+      title: "Producción Industrial",
+      desc: "Escalabilidad garantizada para grandes pedidos con tiempos de entrega récord.",
       icon: <FaChartLine className="w-8 h-8 text-vive-500" />,
-      specs: ["+500 unidades/mes", "Tiempo: 72h"]
+      specs: ["+500 unidades/mes", "Entrega: 72h"]
     },
     {
-      title: "Personalización B2B",
-      desc: "Fabricamos según sus especificaciones de densidad, resortes y acabados.",
+      title: "Personalización Total",
+      desc: "Fabricación a medida: densidades, estructuras y acabados según requerimiento.",
       icon: <FaHandshake className="w-8 h-8 text-vive-500" />,
-      specs: ["Densidad: 25-70 kg/m³", "Resortes: Bonnell/Encapsulados"]
+      specs: ["Densidad: 25-70 kg/m³", "Estructura: Bonnell/Pocket"]
     },
     {
       title: "Logística Nacional",
-      desc: "Llegamos a cualquier punto del Perú con embalaje de alta resistencia.",
+      desc: "Cobertura total en Perú con embalaje industrial de alta resistencia.",
       icon: <FaGlobeAmericas className="w-8 h-8 text-vive-500" />,
-      specs: ["Cobertura: 24 regiones", "Empaque: Industrial"]
+      specs: ["24 Regiones", "Empaque Reforzado"]
     },
     {
-      title: "Garantía de Fábrica",
-      desc: "Nuestros productos cuentan con el respaldo total de nuestra planta para asegurar su inversión.",
+      title: "Respaldo Directo",
+      desc: "Garantía de fábrica y soporte técnico especializado sin intermediarios.",
       icon: <FaCheckCircle className="w-8 h-8 text-vive-500" />,
-      specs: ["Garantía 10 Años", "Soporte Técnico"]
+      specs: ["Garantía 10 Años", "Soporte VIP"]
     }
   ];
 

@@ -12,12 +12,12 @@ const WholesaleHero = ({ isVisible, onOpenForm }) => {
     ];
 
     const techValues = [
-        "ISO 9001 COMPLIANT",
-        "HIGH VOLUME CAPACITY",
-        "BIOMECHANICAL ENGINEERING",
-        "DIRECT FROM SOURCE",
-        "CUSTOM OEM SOLUTIONS",
-        "NATIONWIDE LOGISTICS"
+        "CALIDAD ISO 9001",
+        "ALTA CAPACIDAD DE VOLUMEN",
+        "INGENIERÍA BIOMECÁNICA",
+        "DIRECTO DE FÁBRICA",
+        "SOLUCIONES PERSONALIZADAS",
+        "LOGÍSTICA NACIONAL"
     ];
 
     return (
@@ -63,7 +63,7 @@ const WholesaleHero = ({ isVisible, onOpenForm }) => {
 
                             <h1 className="text-[clamp(2.5rem,8vw,6.5rem)] font-display text-white leading-[0.85] tracking-tighter">
                                 Potencia <br />
-                                <span className="text-vive-500 italic font-serif font-medium">B2B Solutions</span> —
+                                <span className="text-vive-500 italic font-serif font-medium">Soluciones Corporativas</span> —
                             </h1>
 
                             <p className="text-xl md:text-2xl text-gray-400 font-brand leading-[1.3] max-w-2xl border-l border-vive-500/30 pl-6">
@@ -79,7 +79,7 @@ const WholesaleHero = ({ isVisible, onOpenForm }) => {
                                 className="group relative px-14 py-7 bg-white text-black overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_50px_rgba(255,255,255,0.1)] active:shadow-none"
                             >
                                 <span className="relative z-10 flex items-center gap-4 text-[11px] font-black uppercase tracking-widest transition-transform group-hover:px-2">
-                                    SOLICITAR DOSSIER INDUSTRIAL
+                                    DESCUBRIR CATÁLOGO INDUSTRIAL
                                     <FaArrowRight className="transition-transform group-hover:translate-x-3" />
                                 </span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-vive-500 to-vive-600 -translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
@@ -90,7 +90,7 @@ const WholesaleHero = ({ isVisible, onOpenForm }) => {
                                     <LuFactory className="text-vive-500 text-xl" />
                                 </div>
                                 <div className="space-y-1">
-                                    <span className="text-[9px] uppercase font-mono font-bold tracking-widest text-gray-500 block">MANUFACTURING SINCE</span>
+                                    <span className="text-[9px] uppercase font-mono font-bold tracking-widest text-gray-500 block">FABRICANDO DESDE</span>
                                     <span className="text-sm font-serif italic text-white group-hover:text-vive-500 transition-colors">1994 — Lima, Perú</span>
                                 </div>
                             </div>
@@ -98,17 +98,19 @@ const WholesaleHero = ({ isVisible, onOpenForm }) => {
                     </div>
 
                     {/* RIGHT STATS BLOCK (VERTICAL DASHBOARD STYLE) */}
-                    <div className="lg:col-span-4 hidden lg:block">
-                        <div className="bg-white/[0.02] border border-white/5 p-10 backdrop-blur-xl relative overflow-hidden group">
+                    <div className="lg:col-span-4 mt-12 lg:mt-0">
+                        <div className="bg-white/[0.03] border border-white/10 p-8 md:p-10 backdrop-blur-xl relative overflow-hidden group rounded-3xl lg:rounded-none">
                             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-vive-500/0 via-vive-500 to-vive-500/0"></div>
-                            <div className="space-y-12">
+                            <div className="grid grid-cols-2 lg:grid-cols-1 gap-8 md:gap-12 lg:space-y-12">
                                 {stats.map((stat, idx) => (
                                     <div key={idx} className="space-y-3 group/item">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-[8px] font-mono font-bold text-gray-500 uppercase tracking-widest">{stat.label}</span>
-                                            {stat.accent && <LuShieldCheck className="text-vive-500 text-xs animate-pulse" />}
+                                            <span className="text-[10px] md:text-xs font-mono font-black text-gray-300 uppercase tracking-[0.2em]">
+                                                {stat.label}
+                                            </span>
+                                            {stat.accent && <LuShieldCheck className="text-vive-500 text-sm animate-pulse" />}
                                         </div>
-                                        <div className={`text-4xl xl:text-5xl font-display font-light tracking-tighter transition-all duration-700 ${stat.accent ? 'text-vive-500 scale-105' : 'text-white/80 group-hover/item:text-white'}`}>
+                                        <div className={`text-4xl md:text-5xl xl:text-6xl font-display font-black tracking-tighter transition-all duration-700 ${stat.accent ? 'text-vive-500 scale-105' : 'text-white group-hover/item:text-vive-500'}`}>
                                             {stat.value}
                                         </div>
                                     </div>
@@ -139,7 +141,7 @@ const WholesaleHero = ({ isVisible, onOpenForm }) => {
             {/* SIDE TECH LABEL */}
             <div className="absolute left-6 bottom-32 -rotate-90 origin-left hidden xl:flex items-center gap-8 pointer-events-none opacity-20 hover:opacity-100 transition-opacity">
                 <span className="text-[9px] font-mono font-black uppercase tracking-[0.5em] text-white">
-                    B2B // INDUSTRIAL_ACCESS_ONLY
+                    MAYORISTAS // ACCESO_INDUSTRIAL_ÚNICAMENTE
                 </span>
                 <div className="h-px w-24 bg-gradient-to-r from-vive-500 to-transparent"></div>
             </div>

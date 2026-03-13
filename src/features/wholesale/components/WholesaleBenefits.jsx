@@ -18,7 +18,7 @@ const WholesaleBenefits = ({ benefits, factoryProductionImg }) => {
                             <div className="flex items-center gap-4 overflow-hidden">
                                 <span className="h-[2px] w-12 bg-vive-500"></span>
                                 <span className="text-[10px] font-black uppercase tracking-[0.5em] text-vive-600 dark:text-vive-400">
-                                    Why Choose Vive B2B // INDUSTRIAL EDGE
+                                    VIVE MAYORISTA // VENTAJA INDUSTRIAL
                                 </span>
                             </div>
 
@@ -29,7 +29,7 @@ const WholesaleBenefits = ({ benefits, factoryProductionImg }) => {
                                     de última generación.
                                 </h2>
                                 <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-text leading-tight max-w-xl">
-                                    Eliminamos intermediarios para entregarte <span className="text-gray-900 dark:text-white font-bold">valor real</span>: tecnología de exportación, certificaciones internacionales y una logística diseñada para el éxito de tu negocio.
+                                    Venta directa de fábrica. <span className="text-gray-900 dark:text-white font-bold">Sin intermediarios</span>. Tecnología de exportación y logística sincronizada para su negocio.
                                 </p>
                             </div>
                         </div>
@@ -78,10 +78,10 @@ const WholesaleBenefits = ({ benefits, factoryProductionImg }) => {
 
                                 <div className="absolute top-10 right-10 flex flex-col items-end gap-2">
                                     <div className="px-4 py-1 bg-vive-500 text-black text-[9px] font-black uppercase tracking-widest">
-                                        Live Production
+                                        Producción en Vivo
                                     </div>
                                     <div className="text-[8px] font-mono text-white/40 uppercase tracking-widest">
-                                        VIVE_SYSTEM_V.4.2
+                                        SISTEMA_VIVE_V.4.2
                                     </div>
                                 </div>
 
@@ -89,14 +89,14 @@ const WholesaleBenefits = ({ benefits, factoryProductionImg }) => {
                                     <div className="space-y-4">
                                         <div className="flex items-center gap-3">
                                             <span className="w-8 h-px bg-vive-500"></span>
-                                            <span className="text-[10px] font-bold text-vive-500 uppercase tracking-[0.3em]">Qualité Certifiée</span>
+                                            <span className="text-[10px] font-bold text-vive-500 uppercase tracking-[0.3em] font-mono">Calidad Certificada</span>
                                         </div>
                                         <h3 className="text-4xl md:text-5xl font-display text-white leading-[0.9] tracking-tighter uppercase font-light">
                                             Excelencia <br />
                                             <span className="font-serif italic text-vive-500 lowercase font-medium">industrial</span>
                                         </h3>
                                         <p className="text-gray-400 text-sm font-text max-w-sm leading-relaxed">
-                                            Cada unidad es sometida a rigurosas pruebas de <span className="text-white">resiliencia y fatiga</span> bajo estándares internacionales ISO.
+                                            Test de resiliencia bajo estándar ISO para garantizar <span className="text-white">máxima durabilidad</span>.
                                         </p>
                                     </div>
 
@@ -115,10 +115,10 @@ const WholesaleBenefits = ({ benefits, factoryProductionImg }) => {
 
                             {/* Floating "Made in" Badge */}
                             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gray-950 text-white flex flex-col items-center justify-center p-8 text-center border border-white/10 group-hover:rotate-6 transition-transform duration-700">
-                                <span className="text-[8px] font-black uppercase tracking-[0.4em] text-vive-500 mb-2">Heritage</span>
-                                <span className="text-2xl font-display uppercase tracking-widest font-light">Peru</span>
+                                <span className="text-[8px] font-black uppercase tracking-[0.4em] text-vive-500 mb-2">HERENCIA</span>
+                                <span className="text-2xl font-display uppercase tracking-widest font-light">Perú</span>
                                 <div className="mt-4 w-6 h-px bg-white/20"></div>
-                                <span className="mt-4 text-[7px] text-gray-500 uppercase tracking-widest">Proudly Manufactured</span>
+                                <span className="mt-4 text-[7px] text-gray-500 uppercase tracking-widest">Fabricado con Orgullo</span>
                             </div>
                         </div>
                     </div>

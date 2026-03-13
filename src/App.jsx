@@ -2,8 +2,8 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
-import { ThemeProvider } from '@shared/contexts/ThemeContext';
-import { CartProvider } from '@shared/contexts/CartContext';
+import { ThemeProvider } from '@/contexts/ThemeContext';
+import { CartProvider } from '@/contexts/CartContext';
 import { ROUTES } from './router/routes';
 
 const HomeView = lazy(() => import('@features/home/views/HomeView'));
@@ -17,8 +17,10 @@ const NotFoundPage = lazy(() => import('@features/checkout/views/NotFoundPage'))
 const SearchRoutes = lazy(() => import('@features/search/SearchRoutes'));
 const GuiaDescansoView = lazy(() => import('@features/guides/GuiaDescansoView'));
 const SleepTestView = lazy(() => import('@features/sleep-test/SleepTestView'));
+const ReturnPolicyView = lazy(() => import('@features/support/components/ReturnPolicy'));
+const ContactForm = lazy(() => import('@features/contact/components/ContactForm'));
+const ContactThankYou = lazy(() => import('@features/contact/views/ContactThankYou'));
 
-const MainLayout = lazy(() => import('@layouts/MainLayout'));
 const ShoppingCart = lazy(() => import('@components/layout/ShoppingCart'));
 const CartNotification = lazy(() => import('@components/ui/CartNotification'));
 const Chatbot = lazy(() => import('@components/chatbot'));
@@ -30,8 +32,8 @@ function App() {
       <ThemeProvider>
         <CartProvider>
           <Router>
-            <ScrollToTop />
             <Suspense fallback={<div className="min-h-screen bg-white dark:bg-black" />}>
+              <ScrollToTop />
               <Routes>
                 <Route path={ROUTES.HOME} element={<Navigate to={ROUTES.INICIO} replace />} />
                 <Route path={ROUTES.INICIO} element={<HomeView />} />
@@ -52,10 +54,10 @@ function App() {
                 <Route path={ROUTES.SEARCH} element={<SearchRoutes />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
+              <ShoppingCart />
+              <CartNotification />
+              <Chatbot />
             </Suspense>
-            <ShoppingCart />
-            <CartNotification />
-            <Chatbot />
           </Router>
         </CartProvider>
       </ThemeProvider>

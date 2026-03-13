@@ -4,12 +4,12 @@ import { MdVerified } from 'react-icons/md';
 
 const WholesaleSocialProof = () => {
     const clients = [
-        { name: 'Hotel Chains', sector: 'Hotelería' },
-        { name: 'Retail Partners', sector: 'Distribución' },
-        { name: 'Real Estate', sector: 'Inmobiliario' },
-        { name: 'Government', sector: 'Sector Público' },
-        { name: 'Healthcare', sector: 'Salud' },
-        { name: 'Education', sector: 'Educación' }
+        { name: 'Cadenas de Hoteles', sector: 'Hotelería' },
+        { name: 'Socios Minoristas', sector: 'Distribución' },
+        { name: 'Inmobiliarias', sector: 'Proyectos' },
+        { name: 'Gobierno', sector: 'Sector Público' },
+        { name: 'Salud', sector: 'Clínicas' },
+        { name: 'Educación', sector: 'Universidades' }
     ];
 
     const testimonials = [
@@ -40,7 +40,7 @@ const WholesaleSocialProof = () => {
                     <div className="inline-flex items-center gap-3">
                         <div className="h-px w-8 bg-vive-500"></div>
                         <span className="text-[10px] font-mono font-black uppercase tracking-[0.4em] text-vive-600 dark:text-vive-400">
-                            Trust & Track Record
+                            Confianza y Trayectoria
                         </span>
                     </div>
                     <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-light text-gray-950 dark:text-white leading-[0.9] tracking-tighter">

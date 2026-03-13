@@ -16,7 +16,7 @@ const WholesaleSolutions = ({ markets }) => {
                     <div className="inline-flex items-center gap-3 px-3 py-1 bg-vive-500/5 border border-vive-500/10 rounded-full">
                         <span className="w-1.5 h-1.5 rounded-full bg-vive-500"></span>
                         <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-vive-600 dark:text-vive-400">
-                            Custom B2B Ecosystems
+                            Ecosistemas B2B Personalizados
                         </span>
                     </div>
                     <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-medium text-gray-900 dark:text-white leading-[1.1] tracking-tight">

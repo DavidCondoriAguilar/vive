@@ -18,6 +18,7 @@ import {
     MdOutlineSearch
 } from 'react-icons/md';
 
+
 import resorteNavImg from '@/assets/images/generated/resorte_nav.png';
 
 import { ROUTES, getProductPath } from '@/router/routes';
@@ -81,9 +82,9 @@ const Navbar = () => {
                     title: 'Colección Advance Diamont',
                     items: [
                         { name: 'Absolut Pillow Mp', path: getProductPath('ventto-marco') },
-                        { name: 'Ternura Pocket Mp', path: getProductPath('ternura-pocket') },
-                        { name: 'Matrimonial Pocket Mp', path: getProductPath('matrimonial-clasico') },
-                        { name: 'Reconciliación Pocket Visco Mp', path: getProductPath('reconciliacion-pocket') }
+                        { name: 'Vanora Doble Pillow', path: getProductPath('vanora-dp') },
+                        { name: 'Itta Ortopédico', path: getProductPath('itta') },
+                        { name: 'Kasse Confort', path: getProductPath('kasse') }
                     ]
                 }
             ],
