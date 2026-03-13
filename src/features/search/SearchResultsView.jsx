@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { MdSearch, MdFilterList, MdArrowBack } from 'react-icons/md';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
 import { ProductCard } from '@/components/ui/Cards';
@@ -12,6 +13,7 @@ import { useFavorites } from '@/hooks/useFavorites';
 import { useTheme } from '@/hooks/useTheme';
 
 const SearchResultsView = () => {
+  useScrollReveal();
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
   const [searchResults, setSearchResults] = useState([]);

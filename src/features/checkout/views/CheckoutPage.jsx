@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '@/contexts/CartContext';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { FaArrowRight, FaCheck, FaLock, FaTruck, FaCreditCard } from 'react-icons/fa';
 
 const CheckoutPage = () => {
+  useScrollReveal();
   const navigate = useNavigate();
   const { cartItems, getTotal, getTotalItems, clearCart } = useCart();
   const [currentStep, setCurrentStep] = useState(1);

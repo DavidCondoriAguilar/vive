@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { getWhatsAppLink } from '@/utils/constants';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
 import WholesaleFormDrawer from '@/components/forms/WholesaleFormDrawer';
 import {
@@ -26,6 +27,8 @@ import factoryProductionImg from '@/assets/images/generated/wholesale_factory_pr
 const WholesaleView = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+
+  useScrollReveal();
 
   useEffect(() => {
     window.scrollTo(0, 0);

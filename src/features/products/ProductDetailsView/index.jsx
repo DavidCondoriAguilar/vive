@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
 import { useCart } from '@/contexts/CartContext';
 import { getWhatsAppLink } from '@/utils/constants';
@@ -15,6 +16,7 @@ import ProductEngineeringDetails from './components/ProductEngineeringDetails';
 import ProductSpecsModal from '@/components/product/ProductSpecsModal';
 
 const ProductDetailsView = () => {
+    useScrollReveal();
     const { productId } = useParams();
     const { product, loading, error } = useProductDetails();
     const { productImages, activeImageIndex, setActiveImageIndex } = useProductImages(product);

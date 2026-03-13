@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
 import { ROUTES, getProductPath } from '@/router/routes';
 import { LuArrowLeft, LuArrowRight, LuStar, LuCircleCheck, LuShieldCheck } from 'react-icons/lu';
@@ -15,6 +16,7 @@ import { OptionCard } from './components/OptionCard';
 import { ResultCard } from './components/ResultCard';
 
 const SleepTestView = () => {
+    useScrollReveal();
     const navigate = useNavigate();
     const [currentStep, setCurrentStep] = useState(0); // 0 = intro
     const [answers, setAnswers] = useState({});

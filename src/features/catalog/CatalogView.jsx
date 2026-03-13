@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useScrollToTop } from '@/hooks/useTheme';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { FaWhatsapp } from 'react-icons/fa';
 import { useCart } from '@/contexts/CartContext';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
-import UniversalProductFilters from '@/components/home/CategoriesSection/ProductFilters';
+import UniversalProductFilters from '@/components/ui/ProductFilters';
 import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink, getPrettySubcategoryName } from '@/utils/constants';
 
 /**
@@ -15,6 +16,7 @@ import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink, getPrettySubcategoryName
  */
 const CatalogView = () => {
   useScrollToTop();
+  useScrollReveal();
   const { addToCart } = useCart();
 
   const [selectedCategory, setSelectedCategory] = useState('todos');

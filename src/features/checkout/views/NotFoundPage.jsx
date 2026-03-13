@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { FaHome, FaSearch, FaArrowLeft } from 'react-icons/fa';
 
 const NotFoundPage = () => {
+  useScrollReveal();
   return (
     <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center px-6 transition-colors duration-700">
       {/* Background Pattern */}

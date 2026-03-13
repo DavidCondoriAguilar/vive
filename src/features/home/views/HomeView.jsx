@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useScrollToTop } from '@/hooks/useTheme';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
 import HeroCarousel from '../components/HeroCarousel';
@@ -13,6 +14,7 @@ import { ENHANCED_CATALOG, FEATURED_PRODUCTS } from '@/utils/constants';
 
 const HomeView = () => {
   useScrollToTop();
+  useScrollReveal();
 
   return (
     <>

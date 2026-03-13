@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
 import RestMasterclass from './components/RestMasterclass';
 
 const GuiaDescansoView = () => {
+    useScrollReveal();
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
