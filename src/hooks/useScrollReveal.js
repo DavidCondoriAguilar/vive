@@ -1,23 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 /**
- * Hook to apply scroll-reveal animations using Intersection Observer.
+ * Hook to apply ultra minimal 2026 scroll-reveal animations using Intersection Observer.
+ * Specifically optimized for React to handle dynamic routes cleanly.
  * @param {Object} options - Observer options (threshold, rootMargin).
  * @param {boolean} triggerOnce - Whether an element should animate only once.
  */
-export const useScrollReveal = ({ threshold = 0.1, rootMargin = '0px', triggerOnce = true } = {}) => {
-  const initialized = useRef(false);
-
+export const useScrollReveal = ({ threshold = 0.05, rootMargin = '50px', triggerOnce = true } = {}) => {
   useEffect(() => {
-    if (initialized.current) return;
-    initialized.current = true;
-
-    const observerOptions = {
-      root: null,
-      rootMargin,
-      threshold,
-    };
-
+    // 1. Create the Intersection Observer
     const handleIntersect = (entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -29,23 +20,47 @@ export const useScrollReveal = ({ threshold = 0.1, rootMargin = '0px', triggerOn
       });
     };
 
-    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+    const intersectionObserver = new IntersectionObserver(handleIntersect, {
+      root: null,
+      rootMargin,
+      threshold,
+    });
 
-    // Small delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      const revealElements = document.querySelectorAll('.reveal');
+    // 2. Discover and observe elements function
+    const observeElements = () => {
+      // Find all reveal elements that haven't been observed natively yet
+      const revealElements = document.querySelectorAll('.reveal:not(.is-observed)');
+      
       revealElements.forEach((el) => {
-        observer.observe(el);
+        el.classList.add('is-observed'); // Mark to avoid duplicate processing
         
-        // Delay stagger logic based on data attribute
-        const delay = el.getAttribute('data-reveal-delay') || '0';
-        el.style.transitionDelay = `${delay}ms`;
+        // Add stagger delay natively if specified
+        const delay = el.getAttribute('data-reveal-delay');
+        if (delay && delay !== '0') {
+            el.style.transitionDelay = `${delay}ms`;
+        }
+        
+        // Start observing
+        intersectionObserver.observe(el);
       });
-    }, 100);
+    };
 
+    // Run once on mount
+    observeElements();
+
+    // 3. Keep searching for new elements dynamically loaded (React Router, Filters, etc)
+    const intervalId = setInterval(observeElements, 500);
+
+    // 4. Cleanup ONLY the observer and interval!
     return () => {
-      clearTimeout(timer);
-      observer.disconnect();
+      clearInterval(intervalId);
+      intersectionObserver.disconnect();
+      
+      // Remove the 'is-observed' class on unmount
+      // so if the view remounts (Navigating from Catalog to Home), it catches them again.
+      document.querySelectorAll('.is-observed').forEach(el => {
+          el.classList.remove('is-observed');
+      });
     };
   }, [threshold, rootMargin, triggerOnce]);
 };
