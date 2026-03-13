@@ -7,6 +7,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { useCart } from '@/contexts/CartContext';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
+import RevealSection from '@/components/ui/RevealSection';
 import UniversalProductFilters from '@/components/ui/ProductFilters';
 import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink, getPrettySubcategoryName } from '@/utils/constants';
 

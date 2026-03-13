@@ -4,6 +4,7 @@ import { useScrollToTop } from '@/hooks/useTheme';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
+import RevealSection from '@/components/ui/RevealSection';
 import HeroCarousel from '../components/HeroCarousel';
 import CategoriesSection from '../components/CategoriesSection';
 import ProductCarousel from '@/components/ui/ProductCarousel';
@@ -31,24 +32,34 @@ const HomeView = () => {
         <HeroCarousel />
 
         {/* MARQUEE PROMOCIONAL - Minimalista e Infinito */}
-        <InfiniteMarquee />
+        <RevealSection delay={100}>
+          <InfiniteMarquee />
+        </RevealSection>
 
         {/* 2. CATEGORÍAS - Grid limpio estilo Paraíso */}
-        <CategoriesSection />
+        <RevealSection delay={200}>
+          <CategoriesSection />
+        </RevealSection>
 
         {/* 3. PRODUCT CAROUSEL - Destacados visuales */}
-        <SectionLayout background="gray">
-          <ProductCarousel
-            products={FEATURED_PRODUCTS}
-            title="Nuestros Productos Destacados"
-          />
-        </SectionLayout>
+        <RevealSection delay={300}>
+          <SectionLayout background="gray">
+            <ProductCarousel
+              products={FEATURED_PRODUCTS}
+              title="Nuestros Productos Destacados"
+            />
+          </SectionLayout>
+        </RevealSection>
 
         {/* 4. PROVINCIAS - Cobertura nacional */}
-        <ProvincesSection />
+        <RevealSection delay={400}>
+          <ProvincesSection />
+        </RevealSection>
 
         {/* 5. TESTIMONIALS - Prueba social real */}
-        <TestimonialsSection />
+        <RevealSection delay={500}>
+          <TestimonialsSection />
+        </RevealSection>
       </MainLayout>
     </>
   );
