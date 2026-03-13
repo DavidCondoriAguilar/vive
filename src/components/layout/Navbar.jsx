@@ -31,14 +31,25 @@ const Navbar = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const [promoHeight, setPromoHeight] = useState(44);
+
     useEffect(() => {
         const handleScroll = () => {
             const currentScroll = window.scrollY;
             setScrollY(currentScroll);
-            setIsScrolled(currentScroll > 44);
+            
+            // Adjust threshold based on screen size
+            const threshold = window.innerWidth >= 1024 ? 44 : 80;
+            setIsScrolled(currentScroll > threshold);
+            setPromoHeight(threshold);
         };
+        handleScroll(); // Initial call
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);
+        };
     }, []);
 
     const handleLogoClick = () => {
@@ -135,7 +146,7 @@ const Navbar = () => {
     const isHome = location.pathname === '/inicio' || location.pathname === '/';
 
     // Calculate dynamic offset to hide Promo Bar smoothly
-    const dynamicTranslate = Math.min(scrollY, 44);
+    const dynamicTranslate = Math.min(scrollY, promoHeight);
 
     return (
         <>

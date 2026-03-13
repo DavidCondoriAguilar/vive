@@ -64,10 +64,10 @@ const CategoriesSection = () => {
   });
 
   return (
-    <section className="bg-white py-12 relative overflow-hidden">
-      <div className="relative overflow-hidden">
-        {/* Subtle Luxury Vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-vive-600/[0.02] pointer-events-none"></div>
+    <section className="bg-white dark:bg-[#030303] py-24 md:py-40 relative overflow-hidden transition-colors duration-1000 border-t border-gray-100 dark:border-white/5">
+      <div className="relative z-10">
+        
+        <CategoriesHeader />
 
         <CategoriesFilters
           typeOptions={typeOptions}

@@ -34,7 +34,7 @@ const ContactFormContent = () => {
 
     try {
       // Real form submission using fetch to FormSubmit.co
-      const response = await fetch("https://formsubmit.co/ajax/ventas@suenodorado.pe", {
+      const response = await fetch("https://formsubmit.co/ajax/ventasvive@colchonesvive.com", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ const ContactFormContent = () => {
               </div>
               <div>
                 <h3 className="text-lg font-black text-gray-900 dark:text-white uppercase mb-1">Email</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm font-medium break-all">ventasisd@grupoisd.com</p>
+                <p className="text-gray-600 dark:text-gray-400 text-sm font-medium break-all">ventasvive@colchonesvive.com</p>
               </div>
             </div>
 
@@ -188,7 +188,7 @@ const ContactFormContent = () => {
               </h3>
 
               <form
-                action="https://formsubmit.co/ventas@suenodorado.pe"
+                action="https://formsubmit.co/ventasvive@colchonesvive.com"
                 method="POST"
                 onSubmit={handleSubmit}
                 className="space-y-8"

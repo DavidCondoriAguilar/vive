@@ -23,13 +23,13 @@ const CategoriesCarousel = ({
                     <div className="flex gap-2">
                         <button
                             onClick={prevSlide}
-                            className="w-12 h-12 rounded-full bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 flex items-center justify-center text-gray-400 hover:bg-vive-600 hover:text-white transition-all duration-300 active:scale-90"
+                            className="w-12 h-12 rounded-full bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 flex items-center justify-center text-gray-400 hover:bg-vive-600 hover:text-white transition-all duration-300 active:scale-90"
                         >
                             <FaChevronLeft className="w-4 h-4" />
                         </button>
                         <button
                             onClick={nextSlide}
-                            className="w-12 h-12 rounded-full bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 flex items-center justify-center text-gray-400 hover:bg-vive-600 hover:text-white transition-all duration-300 active:scale-90"
+                            className="w-12 h-12 rounded-full bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 flex items-center justify-center text-gray-400 hover:bg-vive-600 hover:text-white transition-all duration-300 active:scale-90"
                         >
                             <FaChevronRight className="w-4 h-4" />
                         </button>

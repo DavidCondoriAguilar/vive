@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { getWhatsAppLink } from '@/utils/constants';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
+import RevealSection from '@/components/ui/RevealSection';
 import WholesaleFormDrawer from '@/components/forms/WholesaleFormDrawer';
 import {
   FaStore,
@@ -111,29 +112,37 @@ const WholesaleView = () => {
       />
 
       {/* 2. Strategic Solutions — THE CORE */}
-      <WholesaleSolutions
-        markets={targetMarkets}
-        onSelectMarket={() => { }}
-      />
+      <RevealSection delay={100}>
+        <WholesaleSolutions
+          markets={targetMarkets}
+          onSelectMarket={() => { }}
+        />
+      </RevealSection>
 
       {/* 3. Industrial Benefits */}
-      <WholesaleBenefits
-        benefits={benefits}
-        factoryProductionImg={factoryProductionImg}
-      />
+      <RevealSection delay={200}>
+        <WholesaleBenefits
+          benefits={benefits}
+          factoryProductionImg={factoryProductionImg}
+        />
+      </RevealSection>
 
       {/* 4. Social Proof — NEW (replaces Bento + Anatomy) */}
-      <WholesaleSocialProof />
+      <RevealSection delay={300}>
+        <WholesaleSocialProof />
+      </RevealSection>
 
       {/* 5. Final CTA */}
-      <section className="py-24 lg:py-40 bg-gray-50 dark:bg-[#050505] relative overflow-hidden transition-colors duration-500">
-        <div className="container mx-auto px-6 lg:px-20 relative z-10">
-          <WholesaleFinalCTA
-            onOpenForm={() => setIsFormOpen(true)}
-            whatsappLink={getWhatsAppLink(b2bMessage)}
-          />
-        </div>
-      </section>
+      <RevealSection delay={400}>
+        <section className="py-24 lg:py-40 bg-gray-50 dark:bg-[#050505] relative overflow-hidden transition-colors duration-500">
+          <div className="container mx-auto px-6 lg:px-20 relative z-10">
+            <WholesaleFinalCTA
+              onOpenForm={() => setIsFormOpen(true)}
+              whatsappLink={getWhatsAppLink(b2bMessage)}
+            />
+          </div>
+        </section>
+      </RevealSection>
 
       {/* Form Drawer */}
       <WholesaleFormDrawer

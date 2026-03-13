@@ -28,7 +28,7 @@ export const getWhatsAppLink = (message = '') => {
  * Generate email link
  */
 export const getEmailLink = (subject = '', body = '') => {
-    const email = import.meta.env.VITE_BRAND_EMAIL || 'ventas@vive.pe';
+    const email = import.meta.env.VITE_BRAND_EMAIL || 'ventasvive@colchonesvive.com';
     return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 };
 /**

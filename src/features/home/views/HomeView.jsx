@@ -11,6 +11,9 @@ import ProductCarousel from '@/components/ui/ProductCarousel';
 import TestimonialsSection from '../components/TestimonialsSection';
 import ProvincesSection from '../components/ProvincesSection';
 import InfiniteMarquee from '@/components/ui/InfiniteMarquee';
+import SleepTestTeaser from '../components/SleepTestTeaser';
+import EngineeringTeaser from '../components/EngineeringTeaser';
+import RiskReversal from '../components/RiskReversal';
 import { ENHANCED_CATALOG, FEATURED_PRODUCTS } from '@/utils/constants';
 
 const HomeView = () => {
@@ -43,7 +46,7 @@ const HomeView = () => {
 
         {/* 3. PRODUCT CAROUSEL - Destacados visuales */}
         <RevealSection delay={300}>
-          <SectionLayout background="gray">
+          <SectionLayout background="white">
             <ProductCarousel
               products={FEATURED_PRODUCTS}
               title="Nuestros Productos Destacados"
@@ -51,15 +54,22 @@ const HomeView = () => {
           </SectionLayout>
         </RevealSection>
 
+        {/* ARQUITECTURA DEL DESCANSO - Ingeniería al desnudo */}
+        <EngineeringTeaser />
+
+        {/* ORÁCULO INMERSIVO - Teaser interactivo del test de sueño */}
+        <SleepTestTeaser />
+
         {/* 4. PROVINCIAS - Cobertura nacional */}
         <RevealSection delay={400}>
           <ProvincesSection />
         </RevealSection>
 
         {/* 5. TESTIMONIALS - Prueba social real */}
-        <RevealSection delay={500}>
-          <TestimonialsSection />
-        </RevealSection>
+        <TestimonialsSection />
+
+        {/* ESCUDO ANTI-RIESGO - Eliminación de objeciones */}
+        <RiskReversal />
       </MainLayout>
     </>
   );

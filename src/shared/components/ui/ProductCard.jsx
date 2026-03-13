@@ -27,7 +27,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
           <img
             src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=600&q=75&auto=format`}
             alt={product.name}
-            className="w-full h-full object-contain transition-transform duration-[2s] scale-110 group-hover:scale-125"
+            className="w-full h-full object-contain"
             width="600"
             height="450"
             loading="lazy"

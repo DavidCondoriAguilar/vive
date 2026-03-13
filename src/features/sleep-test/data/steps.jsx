@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    LuMoon, LuWeight, LuRuler, LuLeaf, LuTrophy, LuSparkles, LuZap
+    LuMoon, LuWeight, LuRuler, LuLeaf, LuTrophy, LuSparkles, LuZap, LuActivity, LuBed
 } from 'react-icons/lu';
 import {
     FaBed, FaPersonWalking, FaMountain, FaCloud,

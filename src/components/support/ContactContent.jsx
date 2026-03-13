@@ -21,7 +21,7 @@ const ContactContent = () => (
                 </p>
                 <p className="flex justify-between border-b border-gray-100 dark:border-white/5 pb-2">
                     <span className="text-gray-400 font-bold uppercase text-[9px]">Consultas Email:</span>
-                    <span className="font-bold break-all">hola@suenodorado.pe</span>
+                    <span className="font-bold break-all">ventasvive@colchonesvive.com</span>
                 </p>
                 <p className="flex justify-between border-b border-gray-100 dark:border-white/5 pb-2">
                     <span className="text-gray-400 font-bold uppercase text-[9px]">Planta Central:</span>

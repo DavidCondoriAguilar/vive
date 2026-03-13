@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
+import RevealSection from '@/components/ui/RevealSection';
 import RestMasterclass from './components/RestMasterclass';
 
 const GuiaDescansoView = () => {
@@ -17,7 +18,9 @@ const GuiaDescansoView = () => {
                 <meta name="description" content="Descubra la ciencia del sueño profundo con la Guía Maestra de Vive. Biomecánica, protocolos de cuidado y optimización del ambiente zen." />
             </Helmet>
 
-            <RestMasterclass />
+            <RevealSection>
+                <RestMasterclass />
+            </RevealSection>
         </MainLayout>
     );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
-import { FaTags, FaRulerCombined } from 'react-icons/fa';
+import { FaLayerGroup, FaRulerCombined } from 'react-icons/fa';
 import FilterDropdown from '@/components/ui/FilterDropdown';
+import RevealSection from '@/components/ui/RevealSection';
 
 const CategoriesFilters = ({
     typeOptions,
@@ -12,22 +13,22 @@ const CategoriesFilters = ({
     resultsCount
 }) => {
     return (
-        <div className="max-w-5xl mx-auto mb-10 px-4">
-            <div className="bg-gray-50 dark:bg-white/[0.03] p-2 rounded-3xl flex flex-col md:flex-row gap-2 relative group border border-gray-100 dark:border-white/5 shadow-2xl shadow-black/[0.02] z-[60]">
-                <div className="flex-1">
+        <RevealSection className="max-w-4xl mx-auto mb-16 px-6">
+            <div className="bg-gray-50 dark:bg-[#0A0A0A] p-3 rounded-[2.5rem] grid grid-cols-1 md:grid-cols-2 gap-3 relative border border-gray-100 dark:border-white/5 shadow-2xl transition-all duration-700 hover:border-vive-500/20">
+                <div className="relative group/filter">
                     <FilterDropdown
-                        label="Línea / Modelo"
-                        placeholder="Todos los modelos"
+                        label="Gama de Producto"
+                        placeholder="Filtrar por arquitectura"
                         options={typeOptions}
                         value={selectedType}
                         onChange={onTypeChange}
-                        icon={FaTags}
+                        icon={FaLayerGroup}
                     />
                 </div>
-                <div className="flex-1">
+                <div className="relative group/filter">
                     <FilterDropdown
-                        label="Dimensión / Medida"
-                        placeholder="Todas las medidas"
+                        label="Medida Técnica"
+                        placeholder="Filtrar por dimensión"
                         options={sizeOptions}
                         value={selectedSize}
                         onChange={onSizeChange}
@@ -35,11 +36,22 @@ const CategoriesFilters = ({
                     />
                 </div>
             </div>
-            <div className="mt-4 flex justify-between px-2">
-                <span className="text-[9px] font-mono text-gray-400 uppercase tracking-widest">Filtro Personalizado</span>
-                <span className="text-[9px] font-mono text-vive-600/50 font-bold uppercase tracking-widest">Modelos Disponibles: {resultsCount}</span>
+            
+            <div className="mt-8 flex items-center justify-between px-6">
+                <div className="flex items-center gap-3">
+                    <span className="w-1 h-1 bg-vive-500 rounded-full animate-ping"></span>
+                    <span className="text-[10px] font-mono text-gray-400 uppercase tracking-widest leading-none">
+                        Filtro Inteligente Activo
+                    </span>
+                </div>
+                <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-black text-gray-900 dark:text-gray-300 uppercase tracking-widest">
+                        {resultsCount} Modelos Encontrados
+                    </span>
+                    <div className="w-8 h-px bg-vive-500/30"></div>
+                </div>
             </div>
-        </div>
+        </RevealSection>
     );
 };
 

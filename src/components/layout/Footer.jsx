@@ -155,9 +155,20 @@ const Footer = ({ onLogoClick }) => {
                                 </button>
                             </form>
                         </div>
-                        <Link to="/contacto" className="w-full bg-black dark:bg-white text-white dark:text-black px-6 py-4 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
-                            <LuMail className="text-vive-500 text-lg" /> Contacto Directo
-                        </Link>
+                        <div className="space-y-4">
+                            <a 
+                                href="mailto:ventasvive@colchonesvive.com" 
+                                className="group flex flex-col gap-1"
+                            >
+                                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-vive-500">Email de Ventas</span>
+                                <span className="text-[11px] md:text-xs font-bold text-gray-900 dark:text-white hover:text-vive-500 transition-colors">
+                                    ventasvive@colchonesvive.com
+                                </span>
+                            </a>
+                            <Link to="/contacto" className="w-full bg-black dark:bg-white text-white dark:text-black px-6 py-4 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:scale-[1.02] transition-all flex items-center justify-center gap-3 shadow-lg shadow-black/5">
+                                <LuMail className="text-vive-500 text-lg" /> Contacto Directo
+                            </Link>
+                        </div>
                     </div>
 
                 </div>
