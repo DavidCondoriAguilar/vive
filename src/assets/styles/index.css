@@ -1,3 +1,6 @@
+/* Import button typography - MUST be at top before @tailwind */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -411,9 +414,6 @@ img[src] {
 }
 
 /* ==================== Premium Button Styles 2026 ==================== */
-
-/* Import button typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
 
 /* Base button styling */
 button {
