@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { getWhatsAppLink } from '@/utils/constants';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { getWhatsAppLink } from '@core/utils/constants';
+import { useScrollReveal } from '@shared/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
 import RevealSection from '@/components/ui/RevealSection';
 import WholesaleFormDrawer from '@/components/forms/WholesaleFormDrawer';

@@ -1,4 +1,4 @@
-import { ENHANCED_CATALOG } from '@/utils/constants';
+import { ENHANCED_CATALOG } from '@core/utils/constants';
 
 /**
  * Product Service

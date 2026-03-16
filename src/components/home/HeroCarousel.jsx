@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { getWhatsAppLink } from '@/utils/constants';
-import { useDragCarousel } from '@/hooks/useDragCarousel';
+import { getWhatsAppLink } from '@core/utils/constants';
+import { useDragCarousel } from '@shared/hooks/useDragCarousel';
 
 const HeroCarousel = () => {
   const navigate = useNavigate();

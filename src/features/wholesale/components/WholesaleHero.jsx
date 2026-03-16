@@ -12,7 +12,7 @@ const WholesaleHero = ({ isVisible, onOpenForm }) => {
     ];
 
     const techValues = [
-        "CALIDAD ISO 9001",
+        "CERTIFICACIÓN GLOBAL DE CALIDAD",
         "ALTA CAPACIDAD DE VOLUMEN",
         "INGENIERÍA BIOMECÁNICA",
         "DIRECTO DE FÁBRICA",

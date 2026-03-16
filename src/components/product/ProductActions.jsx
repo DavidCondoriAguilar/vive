@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PrimaryButton, SecondaryButton } from '@/components/ui/Buttons';
-import { getWhatsAppLink } from '@/utils/constants';
-import { useCart } from '@/contexts/CartContext';
+import { getWhatsAppLink } from '@core/utils/constants';
+import { useCart } from '@shared/contexts/CartContext';
 import { FaPlus, FaMinus, FaShoppingCart, FaWhatsapp } from 'react-icons/fa';
 
 const ProductActions = ({

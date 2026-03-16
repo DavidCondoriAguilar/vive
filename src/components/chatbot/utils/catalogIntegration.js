@@ -3,7 +3,7 @@
  * Connects chatbot with real product data for accurate responses
  */
 
-import { ENHANCED_CATALOG, CATEGORIES } from '@/utils/constants';
+import { ENHANCED_CATALOG, CATEGORIES } from '@core/utils/constants';
 
 /**
  * Get products by specific line/subcategory

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getWhatsAppLink } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
 import { FaArrowRight, FaIndustry } from 'react-icons/fa';
 
 const FactoryHero = () => {

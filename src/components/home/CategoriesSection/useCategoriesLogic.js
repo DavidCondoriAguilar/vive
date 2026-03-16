@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CATEGORIES, ENHANCED_CATALOG } from '@/utils/constants';
+import { CATEGORIES, ENHANCED_CATALOG } from '@core/utils/constants';
 
 export const useCategoriesLogic = () => {
   // State

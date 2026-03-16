@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useCart } from '@/contexts/CartContext';
+import { useCart } from '@shared/contexts/CartContext';
 import ProductNotification from '@/components/ui/ProductNotification';
 
 // Component imports

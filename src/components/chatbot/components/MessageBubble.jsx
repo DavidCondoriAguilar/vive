@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { FaUser, FaRobot } from 'react-icons/fa';
-import { sanitizeHTML } from '@/utils/security';
+import { sanitizeHTML } from '@core/utils/security';
 
 /**
  * MessageBubble component props

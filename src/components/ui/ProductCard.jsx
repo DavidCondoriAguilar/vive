@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaCartPlus, FaInfoCircle, FaRegCheckCircle } from 'react-icons/fa';
-import { useCart } from '@/contexts/CartContext';
-import { getPrettySubcategoryName } from '@/utils/constants';
+import { useCart } from '@shared/contexts/CartContext';
+import { getPrettySubcategoryName } from '@core/utils/constants';
 
 const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
   const { addToCart } = useCart();

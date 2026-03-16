@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { MdSearch, MdFilterList, MdArrowBack } from 'react-icons/md';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useScrollReveal } from '@shared/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
 import { ProductCard } from '@/components/ui/Cards';
 import { PrimaryButton, SecondaryButton, DetailsButton, PriceInquiryButton } from '@/components/ui/Buttons';
-import { ENHANCED_CATALOG } from '@/utils/constants';
-import { useCart } from '@/contexts/CartContext';
-import { useFavorites } from '@/hooks/useFavorites';
-import { useTheme } from '@/hooks/useTheme';
+import { ENHANCED_CATALOG } from '@core/utils/constants';
+import { useCart } from '@shared/contexts/CartContext';
+import { useFavorites } from '@shared/hooks/useFavorites';
+import { useTheme } from '@shared/hooks/useTheme';
 
 const SearchResultsView = () => {
   useScrollReveal();

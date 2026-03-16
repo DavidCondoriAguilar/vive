@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { getThemeFromStorage, applyTheme } from '@/utils/helpers';
+import { getThemeFromStorage, applyTheme } from '@core/utils/helpers';
 
 const ThemeContext = createContext();
 

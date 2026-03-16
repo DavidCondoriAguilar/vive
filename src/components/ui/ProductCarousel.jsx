@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useDragCarousel } from '@/hooks/useDragCarousel';
-import { useCart } from '@/contexts/CartContext';
+import { useDragCarousel } from '@shared/hooks/useDragCarousel';
+import { useCart } from '@shared/contexts/CartContext';
 import ProductCard from './ProductCard';
 import CarouselControls from './CarouselControls';
 import CarouselHeader from './CarouselHeader';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from '@/contexts/CartContext';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useCart } from '@shared/contexts/CartContext';
+import { useScrollReveal } from '@shared/hooks/useScrollReveal';
 import { FaArrowRight, FaCheck, FaLock, FaTruck, FaCreditCard } from 'react-icons/fa';
 
 const CheckoutPage = () => {

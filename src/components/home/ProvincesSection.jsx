@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaTruck, FaMapMarkerAlt, FaBox, FaCheckCircle, FaRoute, FaArrowRight, FaShip, FaPlane, FaClock } from 'react-icons/fa';
-import { getWhatsAppLink } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
 
 const ProvincesSection = () => {
   const provinces = [

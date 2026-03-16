@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getWhatsAppLink } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
 import PromoBar from './PromoBar';
 import Logo from '@/components/common/Logo';
 import SearchModal from '@/components/search/SearchModal';

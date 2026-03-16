@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDragCarousel } from '@/hooks/useDragCarousel';
+import { useDragCarousel } from '@shared/hooks/useDragCarousel';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 // Sub-components

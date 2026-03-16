@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight, FaLayerGroup } from 'react-icons/fa';
 import { PrimaryButton, DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
-import { useDragCarousel } from '@/hooks/useDragCarousel';
-import { useCart } from '@/contexts/CartContext';
-import { CATEGORIES } from '@/utils/constants';
+import { useDragCarousel } from '@shared/hooks/useDragCarousel';
+import { useCart } from '@shared/contexts/CartContext';
+import { CATEGORIES } from '@core/utils/constants';
 import FilterDropdown from '@/components/ui/FilterDropdown';
 
 const ProductCarousel = ({ products = [], title = "Nuestra Colección" }) => {

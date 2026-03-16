@@ -6,40 +6,36 @@ import RevealSection from '@/components/ui/RevealSection';
 const TestimonialsSection = () => {
     const testimonials = [
         {
-            name: "María Gutiérrez",
-            location: "San Borja, Lima",
+            name: "Maricielo Ramos",
+            location: "Surco, Lima",
             rating: 5,
-            comment: "El mejor colchón que he tenido. Mi dolor de espalda desapareció en una semana. Vale cada sol invertido por la salud de mi columna.",
+            comment: "Increíble. Mi espalda ya no sufre y el envío a Surco fue súper rápido. ¡Un éxito total!",
             product: "Golden Dream Premium",
-            type: "Residencial",
-            date: "Hace 2 meses"
+            date: "Hace 2 días"
         },
         {
-            name: "Carlos Rodríguez",
-            location: "Yanahuara, Arequipa",
+            name: "Ricardo Palma",
+            location: "Miraflores, Lima",
             rating: 5,
-            comment: "Increíble soporte. Compré el Absolut Pocket para mi departamento y la independencia de movimiento es real. Mi esposa ya no siente cuando me muevo.",
+            comment: "Tecnología de otro nivel. El soporte es firme pero muy fresco. Lo mejor que hay en el mercado.",
             product: "Absolut Pocket",
-            type: "Pareja",
-            date: "Hace 3 semanas"
+            date: "Hace 1 semana"
         },
         {
-            name: "Ana Fernández",
-            location: "Centro Histórico, Cusco",
+            name: "Elena Espinoza",
+            location: "San Miguel, Lima",
             rating: 5,
-            comment: "La calidad suprema. Soy arquitecta y valoro el diseño estructural. Después de años sigue como el primer día, impecable.",
-            product: "Siempre Viscoelástico",
-            type: "Estructural",
-            date: "Hace 5 meses"
+            comment: "Calidad de exportación. Es como dormir en un hotel 5 estrellas todas las noches.",
+            product: "Siempre Visco",
+            date: "Hace 3 días"
         },
         {
-            name: "Hotel Boutique Luna",
-            location: "Mancora, Piura",
+            name: "Javier Ortiz",
+            location: "Los Olivos, Lima",
             rating: 5,
-            comment: "Equipamos 12 suites con Vive. Los huéspedes preguntan qué marca son los colchones. La logística a provincia fue impecable.",
-            product: "Línea Hotelera Pro",
-            type: "Corporativo",
-            date: "Hace 1 mes"
+            comment: "Atención impecable y el colchón es otro mundo. Se nota la ingeniería desde el primer uso.",
+            product: "Kasse Confort",
+            date: "Hace 2 semanas"
         }
     ];
 
@@ -67,7 +63,7 @@ const TestimonialsSection = () => {
                             </span>
                         </h2>
                         <p className="text-gray-500 dark:text-gray-400 font-medium text-lg leading-relaxed max-w-xl">
-                            No es solo un colchón, es un cambio de vida certificado por quienes ya experimentan el equilibrio Vive.
+                            Experiencias reales de quienes transformaron su descanso con ingeniería peruana de clase mundial.
                         </p>
                     </div>
 
@@ -138,7 +134,7 @@ const TestimonialsSection = () => {
                         <div className="absolute inset-0 bg-gradient-to-br from-vive-500/20 to-transparent"></div>
                         <div className="relative z-10">
                             <h5 className="text-3xl font-black uppercase tracking-tighter mb-4 font-display">
-                                Sé parte de la <br /> Revolución
+                                Tu próximo gran <br /> despertar
                             </h5>
                             <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-60 mb-8 font-mono">
                                 Garantía de bienestar real

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getWhatsAppLink } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
 import Logo from '@/components/common/Logo';
 import SocialIcons from '@/components/common/SocialIcons';
 import { LuMail, LuArrowRight, LuShieldCheck, LuTruck, LuUsers } from 'react-icons/lu';

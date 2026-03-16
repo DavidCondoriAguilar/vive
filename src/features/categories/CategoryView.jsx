@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useScrollReveal } from '@shared/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
-import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink, getPrettySubcategoryName } from '@/utils/constants';
+import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink, getPrettySubcategoryName } from '@core/utils/constants';
 import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
-import { useCart } from '@/contexts/CartContext';
+import { useCart } from '@shared/contexts/CartContext';
 
 const CategoryView = ({ categoryId: propCategoryId }) => {
     useScrollReveal();

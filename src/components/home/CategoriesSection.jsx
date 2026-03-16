@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { CATEGORIES, ENHANCED_CATALOG } from '@/utils/constants';
+import { CATEGORIES, ENHANCED_CATALOG } from '@core/utils/constants';
 import { FaShoppingCart, FaStar, FaChevronLeft, FaChevronRight, FaWhatsapp, FaTags, FaRulerCombined } from 'react-icons/fa';
 import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
-import { useCart } from '@/contexts/CartContext';
+import { useCart } from '@shared/contexts/CartContext';
 import ProductNotification from '@/components/ui/ProductNotification';
 import FilterDropdown from '@/components/ui/FilterDropdown';
 import SectionLayout from '@/components/layout/SectionLayout';
-import { useDragCarousel } from '@/hooks/useDragCarousel';
+import { useDragCarousel } from '@shared/hooks/useDragCarousel';
 import ProductCard from '@/components/ui/ProductCard'; // MISMO COMPONENTE QUE PRODUCTCAROUSEL
 
 const CategoriesSection = () => {

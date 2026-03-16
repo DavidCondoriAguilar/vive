@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaArrowRight, FaCheck } from 'react-icons/fa';
-import { getWhatsAppLink } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
 
 const WholesaleSolutions = ({ markets }) => {
     return (

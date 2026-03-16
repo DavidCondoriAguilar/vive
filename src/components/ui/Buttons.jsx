@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaWhatsapp, FaChevronRight, FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { getWhatsAppLink } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
 
 /**
  * Common styles for premium buttons

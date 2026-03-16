@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { getWhatsAppLink } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
 import Navbar from '@/components/layout/Navbar';
 import PromoBar from '@/components/layout/PromoBar';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
@@ -69,7 +69,7 @@ const MainLayout = ({ children }) => {
         <div className="flex flex-col min-h-screen bg-white dark:bg-black transition-colors duration-700 font-sans selection:bg-vive-500 selection:text-white overflow-x-hidden">
             <Navbar />
             <Breadcrumbs />
-            <main className={`flex-grow ${!isHome ? 'pt-4 md:pt-8' : ''}`}>
+            <main className="flex-grow">
                 {children}
             </main>
 

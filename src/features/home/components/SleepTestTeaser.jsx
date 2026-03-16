@@ -9,9 +9,10 @@ const SleepTestTeaser = () => {
 
     const handleQuickAnswer = (answer) => {
         setIsProcessing(true);
+        // Fast, high-tech transition to the full test
         setTimeout(() => {
-            navigate('/test-de-sueno');
-        }, 1200);
+            navigate('/test-de-sueno', { state: { initialAnswer: answer } });
+        }, 800);
     };
 
     return (

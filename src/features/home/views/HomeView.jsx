@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useScrollToTop } from '@/hooks/useTheme';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useScrollToTop } from '@shared/hooks/useTheme';
+import { useScrollReveal } from '@shared/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
 import RevealSection from '@/components/ui/RevealSection';
@@ -14,7 +14,7 @@ import InfiniteMarquee from '@/components/ui/InfiniteMarquee';
 import SleepTestTeaser from '../components/SleepTestTeaser';
 import EngineeringTeaser from '../components/EngineeringTeaser';
 import RiskReversal from '../components/RiskReversal';
-import { ENHANCED_CATALOG, FEATURED_PRODUCTS } from '@/utils/constants';
+import { ENHANCED_CATALOG, FEATURED_PRODUCTS } from '@core/utils/constants';
 
 const HomeView = () => {
   useScrollToTop();

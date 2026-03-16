@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { ENHANCED_CATALOG } from '@/utils/constants';
+import { ENHANCED_CATALOG } from '@core/utils/constants';
 
 export const useProductDetails = () => {
     const { productId } = useParams();

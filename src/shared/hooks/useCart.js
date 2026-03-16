@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getWhatsAppLink } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
 
 export const useCart = () => {
   const [cartItems, setCartItems] = useState([]);

@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useScrollToTop } from '@/hooks/useTheme';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useScrollToTop } from '@shared/hooks/useTheme';
+import { useScrollReveal } from '@shared/hooks/useScrollReveal';
 import { FaWhatsapp } from 'react-icons/fa';
-import { useCart } from '@/contexts/CartContext';
+import { useCart } from '@shared/contexts/CartContext';
 import MainLayout from '@/layouts/MainLayout';
 import SectionLayout from '@/components/layout/SectionLayout';
 import RevealSection from '@/components/ui/RevealSection';
 import UniversalProductFilters from '@/components/ui/ProductFilters';
-import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink, getPrettySubcategoryName } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
+import { useCatalog } from '../hooks/useCatalog';
 
 /**
  * Full Catalog Page
@@ -19,39 +20,26 @@ const CatalogView = () => {
   useScrollToTop();
   useScrollReveal();
   const { addToCart } = useCart();
-
-  const [selectedCategory, setSelectedCategory] = useState('todos');
-  const [selectedSubcategory, setSelectedSubcategory] = useState('todos');
-  const [selectedSize, setSelectedSize] = useState('todos');
-  const [sortBy, setSortBy] = useState('featured');
-
-  // 1. Get products for the current category first
-  const categoryProducts = ENHANCED_CATALOG.filter(p =>
-    selectedCategory === 'todos' || p.category === selectedCategory
-  );
-
-  // 2. Derive dynamic filters ONLY from products in the selected category
-  const subcategories = ['todos', ...new Set(categoryProducts.map(p => p.subcategory).filter(Boolean))];
-  const sizes = ['todos', ...new Set(categoryProducts.flatMap(p => p.sizes || []).filter(Boolean))];
-
-  const categories = [
-    { id: 'todos', name: 'Todas las Categorías' },
-    ...CATEGORIES.map(cat => ({ id: cat.id, name: cat.name }))
-  ];
-
-  // 3. Final Filtering
-  const filteredProducts = categoryProducts.filter(product => {
-    const subcategoryMatch = selectedSubcategory === 'todos' || product.subcategory === selectedSubcategory;
-    const sizeMatch = selectedSize === 'todos' || (product.sizes && product.sizes.includes(selectedSize));
-    return subcategoryMatch && sizeMatch;
-  });
-
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    switch (sortBy) {
-      case 'name': return a.name.localeCompare(b.name);
-      default: return 0;
-    }
-  });
+  
+  // Use catalog hook for all catalog logic
+  const {
+    selectedCategory,
+    selectedSubcategory,
+    selectedSize,
+    sortBy,
+    categories,
+    subcategories,
+    sizes,
+    filteredProducts,
+    totalProducts,
+    hasActiveFilters,
+    setCategory,
+    setSelectedSubcategory,
+    setSelectedSize,
+    setSortBy,
+    resetFilters,
+    getPrettySubcategoryName,
+  } = useCatalog();
 
   return (
     <>
@@ -93,10 +81,7 @@ const CatalogView = () => {
                 categories={categories}
                 subcategories={subcategories}
                 sizes={sizes}
-                onCategoryChange={(cat) => {
-                  setSelectedCategory(cat);
-                  setSelectedSubcategory('todos');
-                }}
+                onCategoryChange={setCategory}
                 onSubcategoryChange={setSelectedSubcategory}
                 onSizeChange={setSelectedSize}
                 onSortChange={setSortBy}
@@ -118,7 +103,7 @@ const CatalogView = () => {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] font-black text-gray-900 dark:text-white uppercase tracking-widest">
-                    Modelos Disponibles: {sortedProducts.length}
+                    Modelos Disponibles: {totalProducts}
                   </span>
                   <p className="text-[8px] font-bold text-gray-400 uppercase tracking-[0.2em]">
                     Mostrando resultados de alta ingeniería
@@ -126,13 +111,9 @@ const CatalogView = () => {
                 </div>
               </div>
 
-              {(selectedCategory !== 'todos' || selectedSubcategory !== 'todos' || selectedSize !== 'todos') && (
+              {hasActiveFilters && (
                 <button
-                  onClick={() => {
-                    setSelectedCategory('todos');
-                    setSelectedSubcategory('todos');
-                    setSelectedSize('todos');
-                  }}
+                  onClick={resetFilters}
                   className="px-5 py-2 bg-red-500/5 text-red-500 border border-red-500/20 rounded-full text-[9px] font-black uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all transform hover:scale-105 active:scale-95"
                 >
                   Restablecer Búsqueda ×
@@ -140,11 +121,11 @@ const CatalogView = () => {
               )}
             </div>
 
-            {/* Catalog Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-12 gap-y-24 px-4 sm:px-6 md:px-0">
-              {sortedProducts.map((product, index) => (
-                <div key={product.id} className="group">
-                  <div className="group relative flex flex-col h-full animate-fade-in-up" style={{ animationDelay: `${index * 50}ms` }}>
+            {/* Catalog Grid - Precise & Unified */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-16 px-4 sm:px-6 md:px-0">
+              {filteredProducts.map((product, index) => (
+                <div key={product.id} className="group flex flex-col h-full">
+                  <div className="relative flex flex-col h-full animate-fade-in-up" style={{ animationDelay: `${index * 50}ms` }}>
                     {/* Visual Container - FORCE PURE WHITE FOR BLENDING */}
                     <div className="relative aspect-[4/5] rounded-t-[2rem] overflow-hidden bg-white transition-all duration-700 group-hover:shadow-[0_40px_60px_rgba(0,0,0,0.05)] border border-gray-100 dark:border-white/5">
 
@@ -171,7 +152,7 @@ const CatalogView = () => {
                           <img
                             src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=400&q=75&auto=format`}
                             alt={product.name}
-                            className="w-full h-auto object-contain transition-transform duration-1000 scale-110 group-hover:scale-125"
+                            className="w-full h-full object-contain transition-transform duration-1000 scale-[0.85] group-hover:scale-95"
                             width="400"
                             height="500"
                             loading="lazy"
@@ -192,14 +173,16 @@ const CatalogView = () => {
                       </div>
                     </div>
 
-                    {/* Info Block - BACKGROUND MOVED HERE */}
-                    <div className="px-4 py-10 text-center bg-gray-50/50 dark:bg-zinc-900/40 rounded-b-[2rem] border-x border-b border-gray-100 dark:border-white/5 transition-all duration-700 group-hover:shadow-[0_40px_60px_rgba(0,0,0,0.05)] group-hover:-translate-y-1">
-                      <span className="text-vive-500 text-[9px] font-black uppercase tracking-[0.5em] mb-3 block">
-                        {getPrettySubcategoryName(product.subcategory) || 'Diseño de Autor'}
-                      </span>
-                      <h3 className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none mb-6 group-hover:text-vive-500 transition-all duration-500 group-hover:tracking-wider">
-                        {product.name}
-                      </h3>
+                    {/* Info Block - FLEX-1 TO UNIFY HEIGHT */}
+                    <div className="flex-1 px-4 py-10 text-center bg-gray-50/30 dark:bg-zinc-900/20 rounded-b-[2rem] border-x border-b border-gray-100 dark:border-white/5 transition-all duration-700 group-hover:shadow-[0_40px_60px_rgba(0,0,0,0.03)] group-hover:-translate-y-1 flex flex-col justify-between">
+                      <div>
+                        <span className="text-vive-500 text-[9px] font-black uppercase tracking-[0.5em] mb-3 block">
+                          {getPrettySubcategoryName(product.subcategory) || 'Diseño de Autor'}
+                        </span>
+                        <h3 className="text-2xl font-display font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none mb-6 group-hover:text-vive-500 transition-all duration-500 min-h-[3rem] flex items-center justify-center">
+                          {product.name}
+                        </h3>
+                      </div>
 
                       <div className="flex flex-col gap-4 items-center">
                         <div className="w-8 h-[1px] bg-gray-100 dark:bg-white/10" />
@@ -221,7 +204,7 @@ const CatalogView = () => {
             </div>
 
             {/* Empty State */}
-            {sortedProducts.length === 0 && (
+            {filteredProducts.length === 0 && (
               <div className="text-center py-20">
                 <div className="max-w-md mx-auto">
                   <div className="w-20 h-20 bg-gray-100 dark:bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-6" aria-hidden="true">

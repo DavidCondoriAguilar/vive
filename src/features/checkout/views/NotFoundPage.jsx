@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useScrollReveal } from '@shared/hooks/useScrollReveal';
 import { FaHome, FaSearch, FaArrowLeft } from 'react-icons/fa';
 
 const NotFoundPage = () => {

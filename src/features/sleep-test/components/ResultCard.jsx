@@ -1,6 +1,6 @@
 import React from 'react';
 import { LuStar } from 'react-icons/lu';
-import { RESORTE_PRODUCTS, ESPUMA_PRODUCTS } from '@/utils/catalogData';
+import { RESORTE_PRODUCTS, ESPUMA_PRODUCTS } from '@core/utils/catalogData';
 
 export function ResultCard({ mattress, rank, onClick }) {
     const resorteMatch = RESORTE_PRODUCTS.find(p => p.id === mattress.id);

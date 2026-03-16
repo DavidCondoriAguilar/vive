@@ -1,0 +1,38 @@
+
+> sue-o-dorado-web@0.0.0 build
+> vite build
+
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32m✓[39m 71 modules transformed.
+[31m✗[39m Build failed in 2.06s
+[31merror during build:
+[31m[vite:esbuild] Transform failed with 2 errors:
+C:/Users/porra/OneDrive/Escritorio/WEBS/vive/src/features/guides/components/RestMasterclass.jsx:431:10: ERROR: Unexpected closing "section" tag does not match opening "div" tag
+C:/Users/porra/OneDrive/Escritorio/WEBS/vive/src/features/guides/components/RestMasterclass.jsx:436:0: ERROR: Unexpected end of file before a closing "div" tag[31m
+file: [36mC:/Users/porra/OneDrive/Escritorio/WEBS/vive/src/features/guides/components/RestMasterclass.jsx:431:10[31m
+[33m
+[33mUnexpected closing "section" tag does not match opening "div" tag[33m
+429 |              </div>
+430 |  
+431 |          </section>
+    |            ^
+432 |      );
+433 |  };
+
+[33mUnexpected end of file before a closing "div" tag[33m
+434 |  
+435 |  export default RestMasterclass;
+436 |  
+    |  ^
+[31m
+    at failureErrorWithLog (C:\Users\porra\OneDrive\Escritorio\WEBS\vive\node_modules\esbuild\lib\main.js:1467:15)
+    at C:\Users\porra\OneDrive\Escritorio\WEBS\vive\node_modules\esbuild\lib\main.js:736:50
+    at responseCallbacks.<computed> (C:\Users\porra\OneDrive\Escritorio\WEBS\vive\node_modules\esbuild\lib\main.js:603:9)
+    at handleIncomingPacket (C:\Users\porra\OneDrive\Escritorio\WEBS\vive\node_modules\esbuild\lib\main.js:658:12)
+    at Socket.readFromStdout (C:\Users\porra\OneDrive\Escritorio\WEBS\vive\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)[39m

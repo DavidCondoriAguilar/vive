@@ -1,8 +1,8 @@
 import React from 'react';
 import { MdOutlineSearch, MdOutlineDarkMode, MdOutlineLightMode, MdOutlineShoppingCart } from 'react-icons/md';
 import { FaWhatsapp } from 'react-icons/fa';
-import { useTheme } from '@/hooks/useTheme';
-import { useCart } from '@/contexts/CartContext';
+import { useTheme } from '@shared/hooks/useTheme';
+import { useCart } from '@shared/contexts/CartContext';
 
 const NavActions = ({ toggleMobileMenu, isMobileMenuOpen, waLink, onOpenSearch }) => {
     const { theme, toggleTheme } = useTheme();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaShoppingCart, FaTimes, FaPlus, FaMinus, FaTrash, FaWhatsapp, FaArrowRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from '@/contexts/CartContext';
+import { useCart } from '@shared/contexts/CartContext';
 
 const ShoppingCart = () => {
   const navigate = useNavigate();

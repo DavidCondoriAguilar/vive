@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ENHANCED_CATALOG } from '@/utils/constants';
+import { ENHANCED_CATALOG } from '@core/utils/constants';
 
 export const useSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');

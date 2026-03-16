@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import ProductCard from './ProductCard';
-import { useDragCarousel } from '@/hooks/useDragCarousel';
+import { useDragCarousel } from '@shared/hooks/useDragCarousel';
 
 const ProductCarousel = ({
   products,

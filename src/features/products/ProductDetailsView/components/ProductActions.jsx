@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaPlus, FaMinus, FaWhatsapp, FaTools } from 'react-icons/fa';
-import { getWhatsAppLink } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
 
 const ProductActions = ({ product, onAddToCart, onShowSpecs }) => {
     const [selectedSize, setSelectedSize] = useState(product.sizes?.[0] || '');

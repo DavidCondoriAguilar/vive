@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useFormValidation } from '@/hooks/useFormValidation';
-import { getWhatsAppLink } from '@/utils/constants';
+import { useFormValidation } from '@shared/hooks/useFormValidation';
+import { getWhatsAppLink } from '@core/utils/constants';
 import { FaCheck, FaTimes, FaWhatsapp } from 'react-icons/fa';
 
 /**

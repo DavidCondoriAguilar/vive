@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useScrollReveal } from '@shared/hooks/useScrollReveal';
 import { FaCheckCircle, FaArrowLeft, FaWhatsapp, FaPhone, FaEnvelope } from 'react-icons/fa';
 
 const ContactThankYou = () => {

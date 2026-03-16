@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ENHANCED_CATALOG } from '@/utils/constants';
-import { useCart } from '@/contexts/CartContext';
+import { ENHANCED_CATALOG } from '@core/utils/constants';
+import { useCart } from '@shared/contexts/CartContext';
 import ProductNotification from '@/components/ui/ProductNotification';
 import SectionLayout from '@/components/layout/SectionLayout';
-import { useDragCarousel } from '@/hooks/useDragCarousel';
+import { useDragCarousel } from '@shared/hooks/useDragCarousel';
 import EngineeringGrid from '@/components/ui/EngineeringGrid';
 
 // Sub-components

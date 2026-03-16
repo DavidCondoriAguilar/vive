@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useScrollReveal } from '@shared/hooks/useScrollReveal';
 import { FaCheck, FaTruck, FaBox, FaPhone, FaEnvelope, FaHome } from 'react-icons/fa';
 
 const OrderConfirmationPage = () => {

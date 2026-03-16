@@ -2,13 +2,13 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
-import { ThemeProvider } from '@/contexts/ThemeContext';
-import { CartProvider } from '@/contexts/CartContext';
+import { ThemeProvider } from '@shared/contexts/ThemeContext';
+import { CartProvider } from '@shared/contexts/CartContext';
 import { ROUTES } from './router/routes';
 
 const HomeView = lazy(() => import('@features/home/views/HomeView'));
 const CategoryView = lazy(() => import('@features/categories/CategoryView'));
-const CatalogView = lazy(() => import('@features/catalog/CatalogView'));
+const CatalogView = lazy(() => import('@features/catalog/views/CatalogView'));
 const WholesaleView = lazy(() => import('@features/wholesale/WholesaleView'));
 const ProductDetailsView = lazy(() => import('@features/products/ProductDetailsView/index'));
 const CheckoutView = lazy(() => import('@features/checkout/views/CheckoutPage'));

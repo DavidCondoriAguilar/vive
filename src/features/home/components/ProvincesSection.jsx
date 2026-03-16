@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getWhatsAppLink } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
 import { FaTruckLoading, FaMapMarkedAlt, FaShieldAlt, FaRocket, FaGlobeAmericas, FaArrowRight } from 'react-icons/fa';
 import RevealSection from '@/components/ui/RevealSection';
 

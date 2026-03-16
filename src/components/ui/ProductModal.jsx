@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaTimes, FaWhatsapp, FaShoppingCart } from 'react-icons/fa';
-import { useCart } from '@/contexts/CartContext';
-import { getWhatsAppLink } from '@/utils/constants';
+import { useCart } from '@shared/contexts/CartContext';
+import { getWhatsAppLink } from '@core/utils/constants';
 
 const ProductModal = ({ product, isOpen, onClose, selectedSize = null }) => {
   const { addToCart } = useCart();

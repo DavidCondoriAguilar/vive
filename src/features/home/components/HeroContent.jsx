@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaChevronRight } from 'react-icons/fa';
-import { getWhatsAppLink } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
 
 const HeroContent = ({ slides, currentSlide, navigate }) => {
     return (

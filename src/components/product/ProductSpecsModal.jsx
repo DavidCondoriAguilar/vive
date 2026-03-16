@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MdShield, MdSettings, MdVerifiedUser, MdLayers } from 'react-icons/md';
 import { FaDownload, FaWhatsapp, FaTimes } from 'react-icons/fa';
-import { getWhatsAppLink } from '@/utils/constants';
+import { getWhatsAppLink } from '@core/utils/constants';
 import logoVive from '@/assets/images/logos/vive.png';
 
 const ProductSpecsModal = ({

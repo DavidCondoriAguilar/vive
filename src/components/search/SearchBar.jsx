@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
-import { useSearch } from '@/hooks/useSearch';
+import { useSearch } from '@shared/hooks/useSearch';
 import { MdSearch, MdClose, MdArrowForward } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import { sanitizeHTML } from '@/utils/security';
+import { sanitizeHTML } from '@core/utils/security';
 
 const SearchBar = ({ className = '', placeholder = 'Buscar productos...', fullWidth = false }) => {
   const {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { FaCheck } from 'react-icons/fa';
-import { useCart } from '@/contexts/CartContext';
+import { useCart } from '@shared/contexts/CartContext';
 
 const CartNotification = () => {
   const { notification, hideNotification } = useCart();

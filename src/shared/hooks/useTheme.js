@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { useThemeContext } from '@/contexts/ThemeContext';
+import { useThemeContext } from '@shared/contexts/ThemeContext';
 
 /**
  * Hook personalizado para manejar el tema de la aplicación

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { FaTimes, FaShoppingCart, FaWhatsapp } from 'react-icons/fa';
-import { useCart } from '@/contexts/CartContext';
-import { getWhatsAppLink } from '@/utils/constants';
+import { useCart } from '@shared/contexts/CartContext';
+import { getWhatsAppLink } from '@core/utils/constants';
 import { PrimaryButton, WhatsAppButton } from '@/components/ui/Buttons';
 
 const ProductNotification = ({ product, isOpen, onClose, selectedSize = null }) => {

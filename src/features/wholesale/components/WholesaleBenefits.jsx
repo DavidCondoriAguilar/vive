@@ -96,13 +96,13 @@ const WholesaleBenefits = ({ benefits, factoryProductionImg }) => {
                                             <span className="font-serif italic text-vive-500 lowercase font-medium">industrial</span>
                                         </h3>
                                         <p className="text-gray-400 text-sm font-text max-w-sm leading-relaxed">
-                                            Test de resiliencia bajo estándar ISO para garantizar <span className="text-white">máxima durabilidad</span>.
+                                            Test de resiliencia bajo protocolo internacional para garantizar <span className="text-white">máxima durabilidad</span>.
                                         </p>
                                     </div>
 
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="p-6 bg-white/5 backdrop-blur-md border border-white/10">
-                                            <div className="text-2xl font-display text-white mb-1">ISO 9001</div>
+                                            <div className="text-2xl font-display text-white mb-1">GESTIÓN DE EXCELENCIA</div>
                                             <div className="text-[8px] text-gray-500 uppercase tracking-widest">Gestión de Calidad</div>
                                         </div>
                                         <div className="p-6 bg-white/5 backdrop-blur-md border border-white/10">
