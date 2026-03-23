@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useScrollReveal } from '@shared/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
 import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink, getPrettySubcategoryName } from '@core/utils/constants';
@@ -182,14 +183,28 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                                     {/* Product Image - MISMAS MEDIDAS EXACTAS QUE EL CARRUSEL */}
                                     <div className="relative overflow-hidden bg-white dark:bg-dream-dark-surface p-6" style={{ aspectRatio: '16/9' }}>
                                         <Link to={`/producto/${product.id}`} className="block h-full w-full">
-                                            <img
-                                                src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=400&q=75&auto=format`}
-                                                alt={product.name}
-                                                className="w-full h-full object-contain transition-transform duration-[10s] group-hover:scale-110"
-                                                width="400"
-                                                height="225"
-                                                loading="lazy"
-                                            />
+                                            <div
+                                                className="w-full h-full flex items-center justify-center transition-transform duration-1000"
+                                                style={{
+                                                    transform:
+                                                        product.name === 'Infinito Mp' ? 'translateY(-12px)' :
+                                                            product.name === 'Goldencito Anatomico Mp' ? 'translateY(-12px)' :
+                                                                product.name === 'Gea Two Ortopédico de Lujo' ? 'scale(0.83)' :
+                                                                    product.name === 'Itta Ortopédico' ? 'scale(0.85)' :
+                                                                        product.name === 'Enna Mp' ? 'scale(0.81)' :
+                                                                            product.name === 'Colchón Riveteado' ? 'scale(0.79)' :
+                                                                                'none'
+                                                }}
+                                            >
+                                                <img
+                                                    src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=400&q=75&auto=format`}
+                                                    alt={product.name}
+                                                    className="w-full h-full object-contain transition-transform duration-[10s] group-hover:scale-110"
+                                                    width="400"
+                                                    height="225"
+                                                    loading="lazy"
+                                                />
+                                            </div>
                                         </Link>
 
                                         {/* Badge - Igual que el carrusel */}

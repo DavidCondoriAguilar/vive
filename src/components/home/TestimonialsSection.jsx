@@ -8,28 +8,28 @@ const TestimonialsSection = () => {
       name: "María Gutiérrez",
       location: "Lima, Perú",
       rating: 5,
-      comment: "El mejor colchón que he comprado. Mi dolor de espalda desapareció en una semana. Vale cada sol invertido.",
+      comment: "¡Mi dolor de espalda desapareció en una semana! Es increíble, valió cada sol invertido.",
       product: "Golden Dream Premium"
     },
     {
       name: "Carlos Rodríguez",
       location: "Arequipa, Perú",
       rating: 5,
-      comment: "Como vendedor, los colchones de Vive me dan las mejores comisiones y mis clientes siempre quedan satisfechos.",
+      comment: "Los colchones Vive son un éxito total en mi zona. Calidad impecable y clientes 100% felices.",
       product: "Absolut Pocket"
     },
     {
       name: "Ana Fernández",
       location: "Cusco, Perú",
       rating: 5,
-      comment: "La calidad es impresionante. Después de 5 años sigue como nuevo. La garantía real cumple lo que promete.",
+      comment: "5 años después y sigue como nuevo. ¡La mejor inversión que he hecho para mi casa!",
       product: "Siempre Viscoelástico"
     },
     {
       name: "Luis Mendoza",
       location: "Piura, Perú",
       rating: 5,
-      comment: "Fabrica directa = mejor precio. Compré para mi hotel y mis huéspedes felicitan la calidad del descanso.",
+      comment: "Directo de fábrica y a un precio justo. Mis huéspedes siempre felicitan la calidad del descanso.",
       product: "Venta por Mayor"
     }
   ];

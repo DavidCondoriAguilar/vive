@@ -144,9 +144,15 @@ const CatalogView = () => {
                         <div
                           className="w-full h-full flex items-center justify-center transition-transform duration-1000"
                           style={{
-                            transform: (product.name === 'Infinito Mp' || product.name === 'Goldencito Anatomico Mp')
-                              ? 'translateY(-12px)'
-                              : 'none'
+                            /* Ajustes finos Individuales para cada modelo para que se vea perfecto */
+                            transform: 
+                                product.name === 'Infinito Mp' ? 'translateY(-12px)' : 
+                                product.name === 'Goldencito Anatomico Mp' ? 'translateY(-12px)' : 
+                                product.name === 'Gea Two Ortopédico de Lujo' ? 'scale(0.83)' : 
+                                product.name === 'Itta Ortopédico' ? 'scale(0.85)' : 
+                                product.name === 'Enna Mp' ? 'scale(0.81)' : 
+                                product.name === 'Colchón Riveteado' ? 'scale(0.79)' :
+                                'none'
                           }}
                         >
                           <img
