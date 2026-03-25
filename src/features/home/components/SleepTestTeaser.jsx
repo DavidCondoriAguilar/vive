@@ -9,76 +9,81 @@ const SleepTestTeaser = () => {
 
     const handleQuickAnswer = (answer) => {
         setIsProcessing(true);
-        // Fast, high-tech transition to the full test
         setTimeout(() => {
             navigate('/test-de-sueno', { state: { initialAnswer: answer } });
         }, 800);
     };
 
     return (
-        <section className="py-24 md:py-40 w-full bg-[#030303] relative border-b border-white/5 flex items-center justify-center">
-            <div className="container mx-auto px-6 lg:px-12 relative z-10 w-full max-w-4xl">
-                <RevealSection className="text-center">
-                    
-                    <div className={!isProcessing ? "opacity-100 transition-opacity duration-700 relative z-10" : "opacity-0 absolute inset-0 transition-opacity duration-700 pointer-events-none"}>
-                        
-                        {/* Minimalist Header */}
-                        <div className="flex flex-col items-center justify-center space-y-6 mb-16">
-                            <FaBrain className="text-4xl md:text-5xl text-vive-500 opacity-80" />
-                            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-white font-display uppercase tracking-tighter leading-[0.9]">
-                                Inteligencia <br className="hidden md:block"/>
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-gray-500 italic font-brand lowercase tracking-normal">
-                                    biomecánica
-                                </span>
-                            </h2>
-                            <p className="text-gray-400 font-medium text-base md:text-lg max-w-lg mx-auto leading-relaxed pt-4">
-                                No adivines tu descanso. Nuestro algoritmo diseña tu entorno de sueño basándose en tu morfología.
-                            </p>
-                        </div>
+        <section className="py-16 md:py-24 w-full bg-[#050505] relative border-y border-white/5 overflow-hidden transition-colors duration-1000">
+            {/* Background Texture */}
+            <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(41,156,71,0.15)_1px,transparent_0)] bg-[size:40px_40px]"></div>
+            </div>
 
-                        {/* Interactive Quiz Trigger */}
-                        <div className="w-full mx-auto bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12 hover:border-white/20 transition-all duration-500 group">
-                            <h3 className="text-gray-300 tracking-[0.2em] uppercase font-black text-[10px] md:text-xs mb-8 text-center">
-                                Pregunta Analítica 01
-                            </h3>
-                            <h4 className="text-xl md:text-2xl font-bold text-white mb-10 text-center font-display">
-                                ¿En qué posición duermes habitualmente?
-                            </h4>
-                            
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                                <button 
-                                    onClick={() => handleQuickAnswer('lado')}
-                                    className="flex flex-col items-center justify-center gap-4 p-8 bg-black/40 hover:bg-vive-500/10 border border-white/5 hover:border-vive-500/30 rounded-2xl transition-all duration-300 focus:outline-none"
-                                >
-                                    <FaUserNinja className="text-3xl md:text-4xl text-gray-500 group-hover:text-vive-400 transition-colors" />
-                                    <span className="text-white font-black uppercase tracking-widest text-xs md:text-sm">De Lado</span>
-                                </button>
-                                
-                                <button 
-                                    onClick={() => handleQuickAnswer('espalda')}
-                                    className="flex flex-col items-center justify-center gap-4 p-8 bg-black/40 hover:bg-vive-500/10 border border-white/5 hover:border-vive-500/30 rounded-2xl transition-all duration-300 focus:outline-none"
-                                >
-                                    <FaBed className="text-3xl md:text-4xl text-gray-500 group-hover:text-vive-400 transition-colors" />
-                                    <span className="text-white font-black uppercase tracking-widest text-xs md:text-sm">Boca Arriba/Abajo</span>
-                                </button>
+            <div className="container mx-auto px-6 lg:px-20 relative z-10 w-full">
+                <RevealSection>
+                    {!isProcessing ? (
+                        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+                            {/* Left: Tactical Branding */}
+                            <div className="flex flex-col items-center lg:items-start space-y-4 max-w-md text-center lg:text-left group">
+                                <div className="flex items-center gap-3">
+                                    <div className="p-2 bg-vive-500/10 rounded-lg">
+                                        <FaBrain className="text-vive-500 text-lg" />
+                                    </div>
+                                    <span className="text-vive-500 font-mono text-[9px] tracking-[0.4em] uppercase font-black">Test de Morfología</span>
+                                </div>
+                                <h2 className="text-4xl md:text-5xl font-display text-white tracking-tighter uppercase font-light leading-[0.9]">
+                                    Inteligencia <br className="hidden md:block"/>
+                                    <span className="text-vive-500 italic font-serif lowercase font-medium">biomecánica</span>
+                                </h2>
+                                <p className="text-gray-500 dark:text-gray-400 text-xs md:text-sm font-text max-w-xs leading-relaxed">
+                                    No adivines tu descanso. Nuestro algoritmo diseña tu entorno de sueño basándose en tu morfología única.
+                                </p>
+                            </div>
+
+                            {/* Right: Compressed Quick Action */}
+                            <div className="flex-1 w-full max-w-2xl bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-8 md:p-10 hover:border-vive-500/30 hover:bg-vive-500/[0.01] transition-all duration-1000">
+                                <div className="flex flex-col md:flex-row items-center gap-8 justify-between">
+                                    <div className="space-y-1 text-center md:text-left">
+                                        <span className="text-[9px] font-mono font-black text-gray-500 uppercase tracking-widest">Pregunta 01: Posición</span>
+                                        <h4 className="text-lg md:text-xl font-display text-white uppercase tracking-tighter">
+                                            ¿Cómo sueles dormir?
+                                        </h4>
+                                    </div>
+                                    
+                                    <div className="flex gap-4 w-full md:w-auto">
+                                        <button 
+                                            onClick={() => handleQuickAnswer('lado')}
+                                            className="flex-1 md:flex-none flex items-center justify-center gap-4 px-8 py-5 bg-white text-black hover:bg-vive-500 hover:text-white transition-all duration-500 rounded-2xl active:scale-95 group/btn shadow-xl shadow-white/5"
+                                        >
+                                            <FaUserNinja className="text-lg group-hover/btn:-rotate-12 transition-transform" />
+                                            <span className="font-display font-black uppercase tracking-widest text-[10px]">De Lado</span>
+                                        </button>
+                                        
+                                        <button 
+                                            onClick={() => handleQuickAnswer('espalda')}
+                                            className="flex-1 md:flex-none flex items-center justify-center gap-4 px-8 py-5 bg-transparent border border-white/20 text-white hover:border-vive-500 hover:text-vive-500 transition-all duration-500 rounded-2xl active:scale-95 group/btn"
+                                        >
+                                            <FaBed className="text-lg group-hover/btn:translate-y-[-2px] transition-transform" />
+                                            <span className="font-display font-black uppercase tracking-widest text-[10px]">Boca Arriba</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                    </div>
-
-                    {/* Ultra Minimalist Processing State */}
-                    {isProcessing && (
-                        <div className="flex flex-col items-center justify-center py-20">
-                            <div className="w-px h-16 bg-gradient-to-b from-transparent via-vive-500 to-transparent animate-ping mb-8"></div>
-                            <h3 className="text-white font-mono uppercase tracking-[0.3em] font-black text-xs md:text-sm mb-4">
-                                Procesando Morfología
+                    ) : (
+                        /* Compressed Processing State */
+                        <div className="flex flex-col items-center justify-center py-10 scale-90 animate-pulse">
+                            <div className="w-px h-12 bg-gradient-to-b from-transparent via-vive-500 to-transparent mb-6"></div>
+                            <h3 className="text-white font-mono uppercase tracking-[0.2em] font-black text-xs mb-3">
+                                Escaneando Perfil...
                             </h3>
-                            <div className="flex items-center gap-2 text-gray-500 font-mono text-[9px] uppercase tracking-widest">
-                                Iniciando Test de Sueño <FaArrowRight className="animate-pulse" />
+                            <div className="flex items-center gap-2 text-gray-600 font-mono text-[8px] uppercase tracking-widest">
+                                Precisión de descanso al 99% <FaArrowRight />
                             </div>
                         </div>
                     )}
-
                 </RevealSection>
             </div>
         </section>

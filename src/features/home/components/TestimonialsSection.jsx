@@ -28,14 +28,6 @@ const TestimonialsSection = () => {
             comment: "Calidad de exportación. Es como dormir en un hotel 5 estrellas todas las noches.",
             product: "Siempre Visco",
             date: "Hace 3 días"
-        },
-        {
-            name: "Javier Ortiz",
-            location: "Los Olivos, Lima",
-            rating: 5,
-            comment: "Atención impecable y el colchón es otro mundo. Se nota la ingeniería desde el primer uso.",
-            product: "Kasse Confort",
-            date: "Hace 2 semanas"
         }
     ];
 

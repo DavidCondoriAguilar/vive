@@ -3,7 +3,7 @@
 // VENTTO
 import geaMain from '@assets/product-detail/ventto/ventto-main.webp';
 import geaTwo from '@assets/product-detail/ventto/ventto-zoom.webp';
-import geaDiag from '@assets/product-detail/ventto/ventto.webp';
+import geaDiag from '@assets/product-detail/ventto/ventto-diag.webp';
 
 // SENSE PREMIUM
 import sensePremiumMain from '@assets/product-detail/sense-premium/sense-premium-main.webp';

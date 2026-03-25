@@ -23,9 +23,7 @@ const WholesaleSolutions = ({ markets }) => {
                         Soluciones para <br />
                         <span className="text-vive-500 serif italic lowercase">Proyectos</span> de alto rendimiento.
                     </h2>
-                    <p className="text-gray-500 dark:text-gray-400 text-xl font-text max-w-2xl leading-relaxed">
-                        Desarrollamos ingeniería de descanso adaptada a la exigencia del sector corporativo, logrando el balance perfecto entre durabilidad y confort sublime.
-                    </p>
+
                 </div>
 
                 {/* Refined Bento Grid */}

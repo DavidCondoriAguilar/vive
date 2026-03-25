@@ -146,6 +146,10 @@ const CatalogView = () => {
                           style={{
                             /* Ajustes finos Individuales para cada modelo para que se vea perfecto */
                             transform: 
+                                product.name === 'Ventto Marco Poliuretano' ? 'scale(1.15)' : 
+                                product.name === 'Sense Premium' ? 'scale(1.35)' : 
+                                product.name === 'Vanora Doble Pillow' ? 'scale(1.70)' : 
+                                product.name === 'Kai' ? 'scale(1.85)' :
                                 product.name === 'Infinito Mp' ? 'translateY(-12px)' : 
                                 product.name === 'Goldencito Anatomico Mp' ? 'translateY(-12px)' : 
                                 product.name === 'Gea Two Ortopédico de Lujo' ? 'scale(0.83)' : 
@@ -158,7 +162,7 @@ const CatalogView = () => {
                           <img
                             src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=400&q=75&auto=format`}
                             alt={product.name}
-                            className="w-full h-full object-contain transition-transform duration-1000 scale-[0.85] group-hover:scale-95"
+                            className="w-full h-full object-contain transition-transform duration-1000 scale-[0.85]"
                             width="400"
                             height="500"
                             loading="lazy"

@@ -187,6 +187,10 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                                                 className="w-full h-full flex items-center justify-center transition-transform duration-1000"
                                                 style={{
                                                     transform:
+                                                        product.name === 'Ventto Marco Poliuretano' ? 'scale(1.15)' :
+                                                        product.name === 'Sense Premium' ? 'scale(1.35)' :
+                                                        product.name === 'Vanora Doble Pillow' ? 'scale(1.70)' :
+                                                        product.name === 'Kai' ? 'scale(1.85)' :
                                                         product.name === 'Infinito Mp' ? 'translateY(-12px)' :
                                                             product.name === 'Goldencito Anatomico Mp' ? 'translateY(-12px)' :
                                                                 product.name === 'Gea Two Ortopédico de Lujo' ? 'scale(0.83)' :
@@ -199,7 +203,7 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
                                                 <img
                                                     src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=400&q=75&auto=format`}
                                                     alt={product.name}
-                                                    className="w-full h-full object-contain transition-transform duration-[10s] group-hover:scale-110"
+                                                    className="w-full h-full object-contain transition-transform duration-[10s]"
                                                     width="400"
                                                     height="225"
                                                     loading="lazy"

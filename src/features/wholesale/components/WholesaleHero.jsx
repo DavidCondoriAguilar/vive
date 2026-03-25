@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaArrowRight, FaCrosshairs } from 'react-icons/fa';
 import { LuBinary, LuFactory, LuShieldCheck } from 'react-icons/lu';
 import b2bHeroImg from '@/assets/images/generated/b2b_industrial_hero_2026.png';
 
 const WholesaleHero = ({ isVisible, onOpenForm }) => {
+    const navigate = useNavigate();
     const stats = [
         { value: 'Directo', label: 'Precio de Fábrica', accent: false },
         { value: '+5,000', label: 'Unidades / Mes', accent: true },
@@ -12,12 +14,12 @@ const WholesaleHero = ({ isVisible, onOpenForm }) => {
     ];
 
     const techValues = [
-        "CERTIFICACIÓN GLOBAL DE CALIDAD",
-        "ALTA CAPACIDAD DE VOLUMEN",
-        "INGENIERÍA BIOMECÁNICA",
-        "DIRECTO DE FÁBRICA",
-        "SOLUCIONES PERSONALIZADAS",
-        "LOGÍSTICA NACIONAL"
+        "PRECIOS ESPECIALES PARA DISTRIBUIDORES",
+        "ALTA ROTACIÓN DE PRODUCTO",
+        "MATERIAL PROMOCIONAL INCLUIDO",
+        "ABASTECIMIENTO RÁPIDO",
+        "SOPORTE POST-VENTA DIRECTO",
+        "ENVÍOS A TODO EL PAÍS"
     ];
 
     return (
@@ -57,25 +59,25 @@ const WholesaleHero = ({ isVisible, onOpenForm }) => {
                             <div className="inline-flex items-center gap-4 bg-vive-500/5 border border-vive-500/10 px-4 py-2 rounded-full backdrop-blur-sm animate-in fade-in slide-in-from-left-4 duration-700">
                                 <span className="flex h-2 w-2 rounded-full bg-vive-500 animate-ping"></span>
                                 <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-vive-400">
-                                    ESTÁNDAR INDUSTRIAL PREMIUM
+                                    SOCIO ESTRATÉGICO PARA TU NEGOCIO
                                 </span>
                             </div>
 
                             <h1 className="text-[clamp(2.5rem,8vw,6.5rem)] font-display text-white leading-[0.85] tracking-tighter">
-                                Potencia <br />
-                                <span className="text-vive-500 italic font-serif font-medium">Soluciones Corporativas</span> —
+                                Impulsa <br />
+                                <span className="text-vive-500 italic font-serif font-medium">tus Puntos de Venta</span> —
                             </h1>
 
                             <p className="text-xl md:text-2xl text-gray-400 font-brand leading-[1.3] max-w-2xl border-l border-vive-500/30 pl-6">
-                                Redefinimos el estándar de descanso para el sector corporativo y hotelero.
-                                <span className="text-white font-medium italic block mt-2 opacity-80">Capacidad manufacturera de exportación, escalada para proyectos de alta demanda.</span>
+                                Abastecimiento directo y estratégico para tu red comercial. 
+                                <span className="text-white font-medium italic block mt-2 opacity-80">Calidad industrial, máxima rentabilidad.</span>
                             </p>
                         </div>
 
                         {/* CTAs */}
                         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 lg:gap-12">
                             <button
-                                onClick={onOpenForm}
+                                onClick={() => navigate('/catalogo')}
                                 className="group relative px-14 py-7 bg-white text-black overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_50px_rgba(255,255,255,0.1)] active:shadow-none"
                             >
                                 <span className="relative z-10 flex items-center gap-4 text-[11px] font-black uppercase tracking-widest transition-transform group-hover:px-2">
@@ -86,13 +88,7 @@ const WholesaleHero = ({ isVisible, onOpenForm }) => {
                             </button>
 
                             <div className="flex items-center gap-6 group cursor-default">
-                                <div className="h-12 w-12 rounded-sm border border-white/10 flex items-center justify-center group-hover:border-vive-500 transition-colors">
-                                    <LuFactory className="text-vive-500 text-xl" />
-                                </div>
-                                <div className="space-y-1">
-                                    <span className="text-[9px] uppercase font-mono font-bold tracking-widest text-gray-500 block">FABRICANDO DESDE</span>
-                                    <span className="text-sm font-serif italic text-white group-hover:text-vive-500 transition-colors">1994 — Lima, Perú</span>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -128,8 +124,8 @@ const WholesaleHero = ({ isVisible, onOpenForm }) => {
                     <div className="flex animate-marquee group-hover:pause gap-12 lg:gap-24">
                         {[...techValues, ...techValues].map((val, i) => (
                             <div key={i} className="flex items-center gap-4">
-                                <span className="h-1.5 w-1.5 rounded-full bg-vive-500"></span>
-                                <span className="text-[10px] lg:text-[11px] font-mono font-black uppercase tracking-[0.3em] text-gray-600 hover:text-vive-400 transition-colors">
+                                <span className="h-1.5 w-1.5 rounded-full bg-vive-500 shadow-[0_0_8px_rgba(41,156,71,0.6)] flex-shrink-0"></span>
+                                <span className="text-[10px] lg:text-[11px] font-mono font-black uppercase tracking-[0.3em] text-gray-400 hover:text-white transition-colors">
                                     {val}
                                 </span>
                             </div>

@@ -21,7 +21,9 @@ export const CATEGORIES = [
             { name: 'Poliseda', filter: 'Poliseda' },
             { name: 'Plus Resilense', filter: 'Plus Resilense' },
             { name: 'Splendido', filter: 'Splendido' },
-            { name: 'Topacio', filter: 'Topacio' }
+            { name: 'Topacio', filter: 'Topacio' },
+            { name: 'Complementos', filter: 'Complementos' },
+            { name: 'Colchones Riveteado', filter: 'Colchones-Riveteado' }
         ]
     },
     {
