@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaFilter, FaSortAmountDown, FaTags, FaRulerCombined, FaLayerGroup } from 'react-icons/fa';
-import FilterDropdown from '@/components/ui/FilterDropdown';
+import FilterDropdown from '@shared/components/ui/FilterDropdown';
 import { CATEGORIES as ALL_CATEGORIES, getPrettySubcategoryName } from '@core/utils/constants';
 
 const UniversalProductFilters = ({

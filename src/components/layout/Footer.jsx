@@ -4,7 +4,7 @@ import { getWhatsAppLink } from '@core/utils/constants';
 import Logo from '@/components/common/Logo';
 import SocialIcons from '@/components/common/SocialIcons';
 import { LuMail, LuArrowRight, LuShieldCheck, LuTruck, LuUsers } from 'react-icons/lu';
-import InfoModal from '@/components/ui/InfoModal';
+import InfoModal from '@shared/components/ui/InfoModal';
 import { FOOTER_CONTENT } from '@/data/legal/footerContent';
 
 import libroReclamacionesImg from '@/assets/images/banners/libro-reclamaciones_2.webp';

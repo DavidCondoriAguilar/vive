@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaLayerGroup, FaRulerCombined } from 'react-icons/fa';
-import FilterDropdown from '@/components/ui/FilterDropdown';
-import RevealSection from '@/components/ui/RevealSection';
+import FilterDropdown from '@shared/components/ui/FilterDropdown';
+import RevealSection from '@shared/components/ui/RevealSection';
 
 const CategoriesFilters = ({
     typeOptions,

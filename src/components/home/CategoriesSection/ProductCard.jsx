@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaShoppingCart, FaWhatsapp } from 'react-icons/fa';
-import { DetailsButton, PriceInquiryButton } from '../../ui/Buttons';
+import { DetailsButton, PriceInquiryButton } from '@shared/components/ui/Buttons';
 import { Link } from 'react-router-dom';
 
 const ProductCard = ({

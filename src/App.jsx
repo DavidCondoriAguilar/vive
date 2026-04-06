@@ -22,7 +22,7 @@ const ContactForm = lazy(() => import('@features/contact/components/ContactForm'
 const ContactThankYou = lazy(() => import('@features/contact/views/ContactThankYou'));
 
 const ShoppingCart = lazy(() => import('@components/layout/ShoppingCart'));
-const CartNotification = lazy(() => import('@components/ui/CartNotification'));
+const CartNotification = lazy(() => import('@shared/components/ui/CartNotification'));
 const Chatbot = lazy(() => import('@components/chatbot'));
 const ScrollToTop = lazy(() => import('@components/common/ScrollToTop'));
 

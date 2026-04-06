@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaLayerGroup } from 'react-icons/fa';
-import FilterDropdown from '@/components/ui/FilterDropdown';
+import FilterDropdown from '@shared/components/ui/FilterDropdown';
 
 const CarouselFilterSection = ({ 
   selectedCategory, 

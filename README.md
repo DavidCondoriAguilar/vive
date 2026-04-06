@@ -40,15 +40,6 @@
 
 ### DevOps & CI/CD
 - 🔄 **GitHub Actions** - Deployment automático a Hostinger
-- 🔐 **GitHub Secrets** - Manejo seguro de credenciales
-- ✅ **Pre-deployment Validation** - Script de validación automática
-- 📊 **Build Metrics** - Análisis de tamaño de bundles
-
-### SEO & Performance
-- 🔍 **SEO Optimizado** - Meta tags, Open Graph, Schema.org
-- ⚡ **Lighthouse 90+** - Performance optimizado
-- 🗺️ **Sitemap.xml** - Indexación mejorada
-- 🤖 **Robots.txt** - Control de crawlers
 
 ---
 
@@ -62,130 +53,87 @@ vive-web/
 │       └── deploy.yml           # 🚀 GitHub Actions CI/CD
 │
 ├── docs/                        # 📚 Documentación completa
-│   ├── README.md                # Índice de documentación
-│   ├── START_HERE.md           # ⭐ Empieza aquí
-│   ├── CHECKLIST.md            # ✅ Checklist de deployment
-│   ├── DEPLOYMENT.md           # 🚀 Guía de despliegue
-│   ├── GITHUB_SECRETS.md       # 🔐 Configuración de secrets
-│   └── AUDIT.md                # 📊 Reporte de auditoría
-│
-├── dist/                        # 📦 Build de producción (generado)
-│   ├── .htaccess               # ⚙️ Configuración Apache
-│   ├── index.html
-│   └── assets/                 # JS/CSS con hash
 │
 ├── public/                     # 📁 Assets estáticos
-│   ├── favicon.png
-│   ├── manifest.json
-│   ├── robots.txt
-│   ├── sitemap.xml
-│   └── images/                 # Imágenes estáticas
 │
 ├── src/                        # 💻 Código fuente
-│   ├── core/                   # 🔧 Utilidades globales
-│   │   ├── config/             # Configuración de app
-│   │   ├── constants/          # Constantes globales
-│   │   ├── utils/              # Utilidades puras
-│   │   └── legal/              # Contenido legal
+│   ├── core/                   # 🔧 Lógica del sistema
+│   │   ├── config/             # Configuración (Firebase/API)
+│   │   ├── constants/          # Constantes del sistema
+│   │   └── utils/              # Utilidades puras (formatters, etc.)
 │   │
-│   ├── shared/                 # 🔄 Código compartido
-│   │   ├── components/         # Componentes UI reutilizables
-│   │   │   ├── ui/            # Button, Modal, Card, etc.
-│   │   │   └── common/        # Logo, Breadcrumbs, etc.
-│   │   ├── contexts/          # Contextos globales (Cart, Theme)
-│   │   ├── hooks/             # Hooks reutilizables
-│   │   └── types/             # Tipos TypeScript
+│   ├── data/                   # 📖 Contenido estático
+│   │   └── legal/              # Textos legales y de footer
 │   │
-│   ├── features/               # 🎯 Módulos de negocio
-│   │   ├── catalog/           # Catálogo de productos
-│   │   │   └── data/          # Datos de productos
-│   │   ├── products/          # Detalles de producto
-│   │   │   └── services/      # Servicios de productos
-│   │   ├── checkout/          # Proceso de compra
-│   │   ├── contact/           # Formulario de contacto
-│   │   ├── search/            # Búsqueda
-│   │   ├── home/              # Página principal
-│   │   ├── wholesale/         # Ventas mayoristas
-│   │   ├── sleep-test/        # Test de sueño
-│   │   ├── guides/            # Guías de descanso
-│   │   ├── support/           # Políticas de soporte
-│   │   └── categories/        # Vistas de categorías
+│   ├── shared/                 # 🔄 Código reusado entre features
+│   │   ├── components/
+│   │   │   ├── ui/             # 💎 Átomos de UI (Buttons, Cards, Modals)
+│   │   │   │   └── index.js    # 📦 Barrel file para imports limpios
+│   │   │   └── common/         # Componentes transversales (Logo, Nav)
+│   │   ├── contexts/           # Contextos globales (Cart, Theme)
+│   │   ├── hooks/              # Hooks transversales
+│   │   └── services/           # Servicios compartidos
 │   │
-│   ├── layouts/               # 🎨 Layouts principales
-│   │   └── MainLayout/       # Layout con header/footer
+│   ├── features/               # 🎯 Módulos de negocio (Dominio)
+│   │   ├── catalog/            # Catálogo completo
+│   │   ├── wholesale/          # Ventas B2B (Componentes limpios)
+│   │   ├── home/               # Landing principal
+│   │   ├── products/           # Detalle de producto
+│   │   └── ...                 # Otros dominios
 │   │
-│   ├── router/                # 🧭 Configuración de rutas
-│   │
-│   ├── assets/                # 🖼️ Imágenes y recursos
-│   │
-│   ├── App.jsx                # Componente principal
-│   └── main.jsx               # Entry point
+│   ├── layouts/                # 🎨 Estructuras de página (MainLayout)
+│   ├── router/                 # 🧭 Configuración de React Router
+│   ├── assets/                 # 🖼️ Recursos multimedia locales
+│   ├── App.jsx                 # Raíz de la aplicación
+│   └── main.jsx                # Punto de entrada Vite
 │
-├── scripts/                   # 🔧 Scripts de utilidad
-│   ├── validate-deployment.js
-│   └── analyze-images.js
-│
-├── .env.example               # 📝 Template de variables
-├── .env.production           # 🔐 Variables de producción
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package.json
-├── postcss.config.js
-├── tailwind.config.js
-├── vite.config.js
-└── README.md
+└── ... config files
 ```
 
 ---
 
-## 🏗️ ARQUITECTURA
+## 🏗️ ARQUITECTURA E INTERVENCIONES
 
-### Principios de Diseño
+### Principios de Diseño Aplicados
 
 | Principio | Descripción |
 |-----------|-------------|
-| **Feature-Based** | Cada funcionalidad en su propia carpeta |
-| **Colocation** | Componentes, hooks, servicios juntos |
-| **Shared vs Core** | `shared` = reusable, `core` = utilitarios |
-| **Lazy Loading** | Code splitting por ruta |
+| **Feature-Based** | La lógica de negocio vive en `features/`. Si algo es solo de esa pantalla, se queda ahí. |
+| **Shared UI Single Source** | Todos los componentes atómicos (Buttons, Inputs) viven **únicamente** en `src/shared/components/ui/`. |
+| **Context-Aware Naming** | Evitamos redundancia: `Hero.jsx` dentro de `features/home` en lugar de `HomeHero.jsx`. |
+| **Barrelling** | Usamos `index.js` en carpetas clave para simplificar imports y mejorar la legibilidad. |
 
-### Reglas de Imports
+### Reglas de Imports (Mejores Prácticas)
 
 ```jsx
-// ✅ Components UI genéricos
-import Button from '@shared/components/ui/Button';
-import Modal from '@shared/components/ui/Modal';
+// ✅ Import limpio usando Barrel (Preferido)
+import { PrimaryButton, Badge } from '@shared/components/ui';
 
-// ✅ Contextos globales
-import { useCart } from '@shared/contexts/CartContext';
+// ✅ Import desde Core (Lógica pura)
+import { getWhatsAppLink } from '@core/utils/constants';
 
-// ✅ Utilidades
-import { getWhatsAppLink } from '@core/constants/app';
+// ✅ Datos estáticos
+import { FOOTER_CONTENT } from '@/data/legal/footerContent';
 
-// ✅ Features
-import CatalogView from '@features/catalog/CatalogView';
-import ProductDetails from '@features/products/ProductDetailsView';
-
-// ❌ Evitar imports absolutos largos
-// import from '@/components/ui/Button'  // NO
+// ❌ EVITAR Duplicidad
+// No importar de carpetas 'deprecated' o 'old'
 ```
 
 ### Alias Disponibles
 
-| Alias | Destino |
-|-------|---------|
-| `@core` | `src/core/` |
-| `@shared` | `src/shared/` |
-| `@features` | `src/features/` |
-| `@layouts` | `src/layouts/` |
-| `@assets` | `src/assets/` |
-| `@components` | `src/components/` |
+| Alias | Destino | Propósito |
+|-------|---------|-----------|
+| `@core` | `src/core/` | Lógica pura y configs |
+| `@shared` | `src/shared/` | UI compartida y hooks reusables |
+| `@features` | `src/features/` | Funcionalidades de negocio |
+| `@layouts` | `src/layouts/` | Estructuras de página |
+| `@assets` | `src/assets/` | Imágenes y estilos |
+| `@` | `src/` | Raíz del código |
+
 
 ---
 
 ## 🚀 Inicio Rápido
-
 ### Prerrequisitos
 
 - **Node.js** 20.x o superior

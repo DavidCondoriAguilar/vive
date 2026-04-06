@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
+import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@shared/components/ui/Buttons';
 import { useCart } from '@shared/contexts/CartContext';
 import { getPrettySubcategoryName } from '@core/utils/constants';
 

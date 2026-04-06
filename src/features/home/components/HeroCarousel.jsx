@@ -7,7 +7,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import HeroBackground from './HeroBackground';
 import HeroContent from './HeroContent';
 import HeroControls from './HeroControls';
-import EngineeringGrid from '@/components/ui/EngineeringGrid';
+import EngineeringGrid from '@shared/components/ui/EngineeringGrid';
 import kaiBanner from '@/assets/images/banners/kai-caorusel.png';
 import carousel2 from '@/assets/images/banners/carousel2.png';
 import geminiBanner from '@/assets/images/banners/gemini-hero.png';

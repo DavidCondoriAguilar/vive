@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { getWhatsAppLink } from '@core/utils/constants';
 import { useScrollReveal } from '@shared/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
-import RevealSection from '@/components/ui/RevealSection';
+import RevealSection from '@shared/components/ui/RevealSection';
 import WholesaleFormDrawer from '@/components/forms/WholesaleFormDrawer';
 import {
   FaStore,
@@ -16,11 +16,11 @@ import {
 } from 'react-icons/fa';
 
 // Streamlined component imports (removed Stats, Bento, Anatomy)
-import WholesaleHero from './components/WholesaleHero';
-import WholesaleSolutions from './components/WholesaleSolutions';
-import WholesaleBenefits from './components/WholesaleBenefits';
-import WholesaleSocialProof from './components/WholesaleSocialProof';
-import WholesaleFinalCTA from './components/WholesaleFinalCTA';
+import Hero from './components/Hero';
+import Solutions from './components/Solutions';
+import Benefits from './components/Benefits';
+import SocialProof from './components/SocialProof';
+import FinalCTA from './components/FinalCTA';
 
 // Import generated premium assets
 import factoryProductionImg from '@/assets/images/generated/wholesale_factory_production.webp';
@@ -106,14 +106,14 @@ const WholesaleView = () => {
       </Helmet>
 
       {/* 1. Hero (with integrated stats) */}
-      <WholesaleHero
+      <Hero
         isVisible={isVisible}
         onOpenForm={() => setIsFormOpen(true)}
       />
 
       {/* 2. Strategic Solutions — THE CORE */}
       <RevealSection delay={100}>
-        <WholesaleSolutions
+        <Solutions
           markets={targetMarkets}
           onSelectMarket={() => { }}
         />
@@ -121,7 +121,7 @@ const WholesaleView = () => {
 
       {/* 3. Industrial Benefits */}
       <RevealSection delay={200}>
-        <WholesaleBenefits
+        <Benefits
           benefits={benefits}
           factoryProductionImg={factoryProductionImg}
         />
@@ -129,14 +129,14 @@ const WholesaleView = () => {
 
       {/* 4. Social Proof — NEW (replaces Bento + Anatomy) */}
       <RevealSection delay={300}>
-        <WholesaleSocialProof />
+        <SocialProof />
       </RevealSection>
 
       {/* 5. Final CTA */}
       <RevealSection delay={400}>
         <section className="py-24 lg:py-40 bg-gray-50 dark:bg-[#050505] relative overflow-hidden transition-colors duration-500">
           <div className="container mx-auto px-6 lg:px-20 relative z-10">
-            <WholesaleFinalCTA
+            <FinalCTA
               onOpenForm={() => setIsFormOpen(true)}
               whatsappLink={getWhatsAppLink(b2bMessage)}
             />

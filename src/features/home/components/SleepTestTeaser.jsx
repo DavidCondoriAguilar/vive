@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUserNinja, FaBed, FaBrain, FaArrowRight } from 'react-icons/fa';
-import RevealSection from '@/components/ui/RevealSection';
+import RevealSection from '@shared/components/ui/RevealSection';
 
 const SleepTestTeaser = () => {
     const navigate = useNavigate();

@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { useScrollReveal } from '@shared/hooks/useScrollReveal';
 import MainLayout from '@/layouts/MainLayout';
 import { ENHANCED_CATALOG, CATEGORIES, getWhatsAppLink, getPrettySubcategoryName } from '@core/utils/constants';
-import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@/components/ui/Buttons';
+import { DetailsButton, PriceInquiryButton, QuoteIconButton } from '@shared/components/ui/Buttons';
 import { useCart } from '@shared/contexts/CartContext';
 
 const CategoryView = ({ categoryId: propCategoryId }) => {

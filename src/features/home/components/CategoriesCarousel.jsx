@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import ProductCard from '@/components/ui/ProductCard';
+import ProductCard from '@shared/components/ui/ProductCard';
 
 const CategoriesCarousel = ({
     filteredProducts,

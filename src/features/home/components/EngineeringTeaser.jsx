@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaWaveSquare, FaCrosshairs, FaBolt } from 'react-icons/fa';
 import { GiSoundWaves, GiCottonFlower, GiSpinalCoil } from 'react-icons/gi';
-import RevealSection from '@/components/ui/RevealSection';
+import RevealSection from '@shared/components/ui/RevealSection';
 
 const EngineeringTeaser = () => {
     const [activeLayer, setActiveLayer] = useState(0);

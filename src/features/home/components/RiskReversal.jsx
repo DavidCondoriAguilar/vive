@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaShieldAlt, FaMedal, FaHeadset } from 'react-icons/fa';
-import RevealSection from '@/components/ui/RevealSection';
+import RevealSection from '@shared/components/ui/RevealSection';
 
 const RiskReversal = () => {
     const policies = [

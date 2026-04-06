@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaStar, FaQuoteRight, FaCheckCircle, FaArrowRight, FaMapMarkerAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import RevealSection from '@/components/ui/RevealSection';
+import RevealSection from '@shared/components/ui/RevealSection';
 
 const TestimonialsSection = () => {
     const testimonials = [
