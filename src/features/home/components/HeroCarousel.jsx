@@ -8,6 +8,7 @@ import HeroBackground from './HeroBackground';
 import HeroContent from './HeroContent';
 import HeroControls from './HeroControls';
 import EngineeringGrid from '@shared/components/ui/EngineeringGrid';
+import DownloadCatalogButton from '@shared/components/ui/DownloadCatalogButton';
 import kaiBanner from '@/assets/images/banners/kai-caorusel.png';
 import carousel2 from '@/assets/images/banners/carousel2.png';
 import geminiBanner from '@/assets/images/banners/gemini-hero.png';
@@ -134,8 +135,13 @@ const HeroCarousel = () => {
 
       {/* Content Overlay - Optimized for Clean Banners */}
       <div className="absolute inset-0 z-20 pointer-events-none pt-[80px] lg:pt-[120px]">
-        <div className="container mx-auto h-full flex items-center justify-start px-6 lg:px-20">
+        <div className="container mx-auto h-full flex flex-col items-start justify-center px-6 lg:px-20">
           <HeroContent slides={slides} currentSlide={currentSlide} navigate={navigate} />
+          
+          {/* Home Page Catalog CTA */}
+          <div className="mt-12 pointer-events-auto animate-fade-in-up delay-700">
+            <DownloadCatalogButton />
+          </div>
         </div>
       </div>
 

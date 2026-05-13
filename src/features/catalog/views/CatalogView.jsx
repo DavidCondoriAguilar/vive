@@ -12,6 +12,7 @@ import UniversalProductFilters from '@shared/components/ui/ProductFilters';
 import { LuxuryFilterSidebar } from '@shared/components/ui';
 import { getWhatsAppLink } from '@core/utils/constants';
 import { useCatalog } from '../hooks/useCatalog';
+import DownloadCatalogButton from '@shared/components/ui/DownloadCatalogButton';
 
 /**
  * Full Catalog Page
@@ -115,6 +116,33 @@ const CatalogView = () => {
 
               {/* Products Content Area */}
               <div className="flex-1">
+                {/* Luxury Page Header */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 animate-fade-in">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-1 bg-vive-600 rounded-full"></div>
+                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-vive-600">Catálogo Vive 2026</span>
+                    </div>
+                    <h1 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white tracking-tighter uppercase">
+                      Arquitectura <br /> 
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400">del Descanso</span>
+                    </h1>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-4">
+                    {/* Catalog Export Button */}
+                    <DownloadCatalogButton />
+                    
+                    {/* Sort Info / Summary */}
+                    <div className="hidden sm:flex flex-col items-end">
+                      <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Resultados</span>
+                      <span className="text-lg font-bold text-gray-900 dark:text-white">
+                        {totalProducts} <span className="text-sm font-medium text-gray-500">Modelos</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Catalog Grid - Precise & Unified */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16">
                   {filteredProducts.map((product, index) => (
@@ -139,17 +167,19 @@ const CatalogView = () => {
                               className="w-full h-full flex items-center justify-center transition-transform duration-1000"
                               style={{
                                 transform: 
-                                    product.name === 'Ventto Marco Poliuretano' ? 'scale(1.15)' : 
-                                    product.name === 'Sense Premium' ? 'scale(1.35)' : 
-                                    product.name === 'Vanora Doble Pillow' ? 'scale(1.70)' : 
-                                    product.name === 'Kai' ? 'scale(1.85)' :
-                                    product.name === 'Infinito Mp' ? 'translateY(-12px)' : 
-                                    product.name === 'Goldencito Anatomico Mp' ? 'translateY(-12px)' : 
-                                    product.name === 'Gea Two Ortopédico de Lujo' ? 'scale(0.83)' : 
-                                    product.name === 'Itta Ortopédico' ? 'scale(0.85)' : 
-                                    product.name === 'Enna Mp' ? 'scale(0.81)' : 
-                                    product.name === 'Colchón Riveteado' ? 'scale(0.79)' :
-                                    'none'
+                                    product.id === 'ventto-marco' ? 'scale(1.35)' : 
+                                    product.id === 'sense-premium' ? 'scale(1.45)' : 
+                                    product.id === 'vanora-dp' ? 'scale(1.70)' : 
+                                    product.id === 'kai' ? 'scale(1.85)' :
+                                    product.id === 'infinito' ? 'translateY(-12px) scale(1.1)' : 
+                                    product.id === 'goldencito' ? 'translateY(-12px) scale(1.1)' : 
+                                    product.id === 'gea-pt-mp-two-ortopedico-de-lujo' ? 'scale(1.30)' : 
+                                    product.id === 'itta' ? 'scale(1.35)' : 
+                                    product.id === 'enna-mp' ? 'scale(1.25)' : 
+                                    product.id === 'riveteado' ? 'scale(1.45)' :
+                                    product.id === 'extra-descanso' ? 'scale(1.30)' :
+                                    product.id === 'buen-descanso' ? 'scale(1.35)' :
+                                    'scale(1.1)'
                               }}
                             >
                               <img

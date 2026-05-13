@@ -10,19 +10,19 @@ const ProductEngineeringDetails = ({ product }) => {
         <div className="mt-4 space-y-4 animate-in fade-in slide-in-from-right duration-1000">
             {/* Ultra Compact Header */}
             <div className="flex items-center gap-2">
-                <span className="text-[11px] uppercase font-black tracking-widest text-vive-600">DNA</span>
+                <span className="text-[11px] uppercase font-black tracking-widest text-vive-600">Ficha Técnica</span>
                 <div className="flex-grow h-px bg-gray-100 dark:bg-white/5"></div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* Core Architecture */}
                 <div className="p-4 bg-gray-50/50 dark:bg-zinc-900/40 rounded-2xl border border-gray-100 dark:border-white/5">
-                    <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-900 dark:text-white mb-3">Núcleo y Soporte</h4>
+                    <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-900 dark:text-white mb-3">Diseño y Soporte</h4>
                     <ul className="space-y-2">
-                        {specs.slice(0, 4).map((spec, index) => (
+                        {specs.slice(0, 15).map((spec, index) => (
                             <li key={index} className="flex items-start gap-2">
-                                <div className="w-1 h-1 rounded-full bg-vive-600 mt-1.5 shrink-0 opacity-40"></div>
-                                <span className="text-[10px] font-bold text-gray-500 uppercase leading-tight tracking-tighter">
+                                <div className="w-1.5 h-1.5 rounded-full bg-vive-600 mt-1.5 shrink-0 opacity-80 shadow-[0_0_8px_rgba(41,156,71,0.2)]"></div>
+                                <span className="text-[11px] font-bold text-gray-600 dark:text-gray-400 uppercase leading-tight tracking-tight">
                                     {spec.split(':')[0]}
                                 </span>
                             </li>
@@ -32,12 +32,12 @@ const ProductEngineeringDetails = ({ product }) => {
 
                 {/* Material Quality */}
                 <div className="p-4 bg-gray-50/50 dark:bg-zinc-900/40 rounded-2xl border border-gray-100 dark:border-white/5">
-                    <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-900 dark:text-white mb-3">Materiales</h4>
+                    <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-900 dark:text-white mb-3">Materiales del Interior</h4>
                     <ul className="space-y-2">
                         {components.slice(0, 4).map((comp, index) => (
                             <li key={index} className="flex items-start gap-2">
-                                <div className="w-1 h-1 rounded-full bg-vive-600 mt-1.5 shrink-0 opacity-40"></div>
-                                <span className="text-[10px] font-bold text-gray-500 uppercase leading-tight tracking-tighter">
+                                <div className="w-1.5 h-1.5 rounded-full bg-vive-600 mt-1.5 shrink-0 opacity-80 shadow-[0_0_8px_rgba(41,156,71,0.2)]"></div>
+                                <span className="text-[11px] font-bold text-gray-600 dark:text-gray-400 uppercase leading-tight tracking-tight">
                                     {comp.split(':')[0]}
                                 </span>
                             </li>

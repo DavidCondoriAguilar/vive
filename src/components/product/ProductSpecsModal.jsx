@@ -42,10 +42,10 @@ const ProductSpecsModal = ({
 
     // Build sections with deduplication to prevent double labels
     const coreList = getDeduplicatedItems(product.technicalSpecs?.colchon || product.features || []);
-    if (coreList.length > 0) sections.push({ category: 'Arquitectura e Ingeniería', items: coreList.slice(0, 10) });
+    if (coreList.length > 0) sections.push({ category: 'Diseño y Soporte', items: coreList.slice(0, 10) });
 
     const materialList = getDeduplicatedItems(product.technicalSpecs?.componentes || product.componentes || []);
-    if (materialList.length > 0) sections.push({ category: 'Componentes y Materiales', items: materialList.slice(0, 10) });
+    if (materialList.length > 0) sections.push({ category: 'Materiales del Interior', items: materialList.slice(0, 10) });
 
     const experienceList = (product.beneficios || []).map(b => ({ name: 'Ventaja', value: b }));
     if (experienceList.length > 0) sections.push({ category: 'Protocolos de Bienestar', items: experienceList.slice(0, 6) });
@@ -213,7 +213,7 @@ const ProductSpecsModal = ({
                 {/* Header */}
                 <div className="px-10 py-12 flex items-center justify-between">
                     <div className="space-y-1">
-                        <h3 className="text-3xl font-black uppercase tracking-tighter text-gray-900 dark:text-white">Análisis Técnico</h3>
+                        <h3 className="text-3xl font-black uppercase tracking-tighter text-gray-900 dark:text-white">Especificaciones</h3>
                         <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">{product.name}</p>
                     </div>
                     <button

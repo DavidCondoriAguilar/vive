@@ -115,7 +115,7 @@ const ProductImageGallery = ({
                     <div className="absolute bottom-8 left-10 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
                         <div className="flex items-center gap-3">
                             <div className="w-1 h-6 bg-vive-600"></div>
-                            <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-gray-900 dark:text-white uppercase">Vive // Optical Detail</span>
+                            <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-gray-900 dark:text-white uppercase">Vive</span>
                         </div>
                     </div>
                 </div>

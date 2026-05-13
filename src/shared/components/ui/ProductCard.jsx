@@ -64,7 +64,7 @@ const ProductCard = ({ product, selectedSize = null, onAddToCart }) => {
         <div className="flex items-center gap-2 mb-8 items-center">
           <div className="w-1 h-1 bg-vive-500 rounded-full"></div>
           <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest italic">
-            Disponibilidad: {product.sizes.length} Medidas
+            Disponibilidad: {product.sizes?.length || 0} Medidas
           </span>
         </div>
 

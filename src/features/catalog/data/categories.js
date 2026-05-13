@@ -6,10 +6,11 @@ export const CATEGORIES = [
         slug: 'colchones-resorte',
         subcategories: [
             { name: 'Colección Infantil', filter: 'Infantil' },
-            { name: 'Avance', filter: 'Avance' },
-            { name: 'Avance Marco de Poliuretano', filter: 'Marco de Poliuretano' },
-            { name: 'Avance Gold', filter: 'Gold' },
-            { name: 'Avance Diamont', filter: 'Diamont' }
+            { name: 'Línea Advance', filter: 'Avance' },
+            { name: 'Línea Advance Marco Poliuretano', filter: 'Marco de Poliuretano' },
+            { name: 'Línea Advance Gold', filter: 'Gold' },
+            { name: 'Línea Advance Diamante', filter: 'Diamont' },
+            { name: 'Línea Económica', filter: 'Económica' }
         ]
     },
     {
@@ -23,7 +24,8 @@ export const CATEGORIES = [
             { name: 'Splendido', filter: 'Splendido' },
             { name: 'Topacio', filter: 'Topacio' },
             { name: 'Complementos', filter: 'Complementos' },
-            { name: 'Colchones Riveteado', filter: 'Colchones-Riveteado' }
+            { name: 'Colchones Riveteado', filter: 'Colchones-Riveteado' },
+            { name: 'Colchones Hoteleros', filter: 'Colchones-Hoteleros', slug: 'colchones-hoteleros' }
         ]
     },
     {

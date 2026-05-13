@@ -47,11 +47,111 @@ import geaTwoOrtopedicoMain from '@assets/product-detail/gea-pt-mp/gea-pt-mp-mai
 import geaTwoOrtopedicoDiag from '@assets/product-detail/gea-pt-mp/gea-pt-mp-diag.webp';
 import geaTwoOrtopedicoZoom from '@assets/product-detail/gea-pt-mp/gea-pt-mp-zoom.webp';
 
+// VANORA SS
+import vanoraSsMain from '@assets/product-detail/vanora-mp-ss/vanora-ss.webp';
+import vanoraSsDiag from '@assets/product-detail/vanora-mp-ss/vanora-ss-diag.webp';
+import vanoraSsTwo from '@assets/product-detail/vanora-mp-ss/vanora-ss-zoom.webp';
+
 export const RESORTE_PRODUCTS = [
-    // 1. VENTTO MARCO POLIURETANO (DIAMONT - TOP 1)
+    // 1. ENNA MP (ECONÓMICA - TOP 1)
+    {
+        id: 'enna-mp',
+        name: 'Enna Mp',
+        category: 'resorte',
+        subcategory: 'Económica',
+        warranty: '2 años de garantía',
+        price: 1599,
+        image: ennaMpMain,
+        images: [
+            ennaMpMain,
+            ennaMpTwo,
+            ennaMpDiag
+        ],
+        technicalSpecs: {
+            colchon: [
+                'Tela Acolchada de Alta Resistencia Premium',
+                'Aislante de tela termofusionada de 10mml',
+                'Marco de espuma en alta densidad',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
+                'Diseño reversible (doble cara)',
+                'Capa Protectora de Fibra (Notex) aislante',
+                '1 PLZ: 0.90m x 1.90m',
+                '1.5 PLZ: 1.05m x 1.90m',
+                '2 PLZ: 1.35m x 1.90m',
+                'Soporte superior'
+            ],
+            componentes: [
+                'Tela Acolchada de Alta Resistencia Premium 16 mm',
+                'Aislante de tela termofusionada de 10mml',
+                'Marco de espuma en alta densidad',
+                'Capa Protectora de Fibra (Notex)',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
+                'Capa Protectora de Fibra (Notex)',
+                'Marco de espuma en alta densidad'
+            ]
+        },
+        description: 'Tecnología MP avanzada con máximo confort y durabilidad para un descanso excepcional.',
+        sizes: ['1 PLZ (0.90m x 1.90m)', '1.5 PLZ (1.05m x 1.90m)', '2 PLZ (1.35m x 1.90m)'],
+        dimensionsInfo: [
+            { label: '1 PLZ', value: '0.90m x 1.90m' },
+            { label: '1.5 PLZ', value: '1.05m x 1.90m' },
+            { label: '2 PLZ', value: '1.35m x 1.90m' }
+        ],
+        features: ['Marco Poliuretano', 'Tecnología MP'],
+        firmness: 2,
+        firmnessLabel: 'Ultra Suave',
+        badge: 'Enna Collection'
+    },
+    // 2. ITTA (DIAMONT - TOP 2)
+    {
+        id: 'itta',
+        name: 'Itta',
+        category: 'resorte',
+        subcategory: 'Económica',
+        warranty: '4 años de garantía',
+        price: 1849,
+        image: ittaMain,
+        images: [
+            ittaMain,
+            ittaTwo,
+            ittaDiag
+        ],
+        description: 'Confort y elegancia en perfecta armonía para noches de descanso inolvidables. Sistema de soporte avanzado diseñado para la alineación perfecta de la columna.',
+        sizes: ['1.5 PLZ (1.05m x 1.90m)', '2 PLZ (1.35m x 1.90m)', 'QUEEN (1.53m x 2.03m)', 'KING (1.93m x 2.03m)'],
+        dimensionsInfo: [
+            { label: '1.5 PLZ', value: '1.05m x 1.90m' },
+            { label: '2 PLZ', value: '1.35m x 1.90m' },
+            { label: 'QUEEN', value: '1.53m x 2.03m' },
+            { label: 'KING', value: '1.93m x 2.03m' }
+        ],
+        features: ['Soporte Ortopédico', 'Tejido Tricot', 'Doble Cara'],
+        firmness: 7,
+        firmnessLabel: 'Equilibrado',
+        badge: 'Nuevo Ingreso',
+        technicalSpecs: {
+            colchon: [
+                'Tela Acolchada de Alta Resistencia (Tricot)',
+                'Acolchado de 16mm',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
+                'Diseño reversible (doble cara)',
+                '1 PLZ: 0.90m x 1.90m',
+                '1.5 PLZ: 1.05m x 1.90m',
+                '2 PLZ: 1.35m x 1.90m',
+                'QUEEN: 1.53m x 2.03m',
+                'KING: 1.93m x 2.03m',
+                'Soporte firme Ergonómico'
+            ],
+            componentes: [
+                'Tela Acolchada de Alta Resistencia (Tricot)',
+                'Capa Protectora de Fibra (Notex) aislante',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente'
+            ]
+        }
+    },
+    // 3. VENTTO MARCO POLIURETANO (DIAMONT - TOP 3)
     {
         id: 'ventto-marco',
-        name: 'Ventto Marco Poliuretano',
+        name: 'Ventto MP PT',
         category: 'resorte',
         subcategory: 'Diamont',
         price: 2199,
@@ -63,29 +163,42 @@ export const RESORTE_PRODUCTS = [
         ],
         technicalSpecs: {
             colchon: [
-                'Tela Tricot 16 mm',
-                'Pillow densidad 23',
-                'Marco densidad 26',
-                'Sistema de resortes Bonnell Alto contenido de carbono',
+                'Tela tejido de punto de alto bramaje, alcolchada en 20mm',
+                'Tela Acolchada de Alta Resistencia 16 mm',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
+                'Aislante de tela termofusionada',
+                'Lamina de poliuretano de alta densidad 640H',
+                'Marco de poliuretano en alta densidad 826H',
+                'Capa de Confort Superior (Pillow)',
                 'Diseño reversible (doble cara)',
+                '1.5 PLZ: 1.05m x 1.90m',
+                '2 PLZ: 1.35m x 1.90m',
+                'QUEEN: 1.53m x 2.03m',
+                'KING: 1.93m x 2.03m',
                 'Soporte firme y uniforme'
             ],
             componentes: [
-                'Tela Tricot 16 mm',
-                'Pillow densidad 23',
-                'Marco densidad 26',
-                'Lámina de Notex',
-                'Panel de resortes Bonnell Alto contenido de carbono',
-                'Lámina de Notex',
-                'Marco densidad 26'
+                'Tela Acolchada de Alta Resistencia 16 mm',
+                'Capa de Confort Superior (Pillow)',
+                'Capa Protectora de Fibra (Notex)',
+                'Capa Protectora de Fibra (Notex)',
+                'Refuerzo Lateral Firme (D26)'
             ]
         },
-        description: 'Marco sellado al calor para máxima estabilidad perimetral y soporte total.',
-        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Marco Poliuretano', 'Máximo Soporte'],
-        badge: 'Garantía de Fábrica'
+        description: 'Ingeniería de Confort Termo-Sellado: Marco perimetral de alta densidad diseñado para una estabilidad lateral superior, eliminando deformaciones y optimizando el soporte en cada rincón de descanso.',
+        sizes: ['1.5 PLZ (1.05m x 1.90m)', '2 PLZ (1.35m x 1.90m)', 'QUEEN (1.53m x 2.03m)', 'KING (1.93m x 2.03m)'],
+        dimensionsInfo: [
+            { label: '1.5 PLZ', value: '1.05m x 1.90m' },
+            { label: '2 PLZ', value: '1.35m x 1.90m' },
+            { label: 'QUEEN', value: '1.53m x 2.03m' },
+            { label: 'KING', value: '1.93m x 2.03m' }
+        ],
+        features: ['Marco Termosellado', 'Poliuretano 826H', 'Soporte 9/10'],
+        firmness: 9,
+        firmnessLabel: 'Extra Firme',
+        badge: 'Top Estabilidad'
     },
-    // 3. SENSE PREMIUM (DIAMONT - TOP 3)
+    // 4. SENSE PREMIUM (DIAMONT - TOP 4)
     {
         id: 'sense-premium',
         name: 'Sense Premium',
@@ -100,21 +213,25 @@ export const RESORTE_PRODUCTS = [
         ],
         technicalSpecs: {
             colchon: [
-                'Tela Tricot Premium',
+                'Tela Acolchada de Alta Resistencia Premium',
                 'Pillow densidad 25',
-                'Marco densidad 28',
-                'Sistema de resortes Pocket Elite',
+                'Refuerzo Lateral Extra Firme (D28)',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
                 'Diseño reversible (doble cara)',
+                '1.5 PLZ: 1.05m x 1.90m',
+                '2 PLZ: 1.35m x 1.90m',
+                'QUEEN: 1.53m x 2.03m',
+                'KING: 1.93m x 2.03m',
                 'Soporte ultra firme'
             ],
             componentes: [
-                'Tela Tricot Premium 18 mm',
+                'Tela Acolchada de Alta Resistencia Premium 18 mm',
                 'Pillow densidad 25',
-                'Marco densidad 28',
-                'Lámina de Notex',
-                'Panel de resortes Pocket Elite',
-                'Lámina de Notex',
-                'Marco densidad 28'
+                'Refuerzo Lateral Extra Firme (D28)',
+                'Capa Protectora de Fibra (Notex)',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
+                'Capa Protectora de Fibra (Notex)',
+                'Refuerzo Lateral Extra Firme (D28)'
             ]
         },
         description: 'Sensación premium con tecnología de punta para un descanso excepcional.',
@@ -128,7 +245,7 @@ export const RESORTE_PRODUCTS = [
         name: 'Kai',
         category: 'resorte',
         subcategory: 'Diamont',
-        price: 1699,
+        price: 2899,
         image: kaiMain,
         images: [
             kaiMain,
@@ -137,107 +254,47 @@ export const RESORTE_PRODUCTS = [
         ],
         technicalSpecs: {
             colchon: [
-                'Tela Tricot Elite',
-                'Pillow densidad 23',
-                'Marco densidad 26',
-                'Sistema de resortes Bonnell Alto Carbono',
-                'Diseño reversible (doble cara)',
-                'Soporte optimizado'
+                'Tela Tejido de Punto Premium de alto gramaje',
+                'Arquitectura Híbrida: Resortes Pocket + Memory Foam',
+                'Lamina de espuma Memory Foam de 1 pulgada en ambas caras',
+                'Lamina de espuma 640H de 1 pulgada en ambas caras',
+                'PANEL DE RESORTES POCKET (Independencia total)',
+                'Refuerzo Lateral Firme 826H',
+                'Tela no tejida NON-WOVEN de alta resistencia',
+                'Tratamiento térmico y antibacterial',
+                '1.5 PLZ: 1.05m x 1.90m',
+                '2 PLZ: 1.35m x 1.90m',
+                'QUEEN: 1.53m x 2.03m',
+                'KING: 1.93m x 2.03m',
+                'Adaptabilidad Anatómica Superior'
             ],
             componentes: [
-                'Tela Tricot Elite 16 mm',
-                'Pillow densidad 23',
-                'Marco densidad 26',
-                'Lámina de Notex',
-                'Panel de resortes Bonnell Alto Carbono',
-                'Lámina de Notex',
-                'Marco densidad 26'
+                'Memory Foam de alta densidad',
+                'Sistema de Resortes Pocket',
+                'Espuma 640H Hi-Resilience',
+                'Refuerzo Perimetral 826H'
             ]
         },
-        description: 'Equilibrio perfecto entre tecnología y confort para un descanso superior.',
-        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Marco Poliuretano', 'Alto Carbono'],
-        badge: 'Kai Series'
-    },
-    // 6. ENNA MP (DIAMONT - TOP 6)
-    {
-        id: 'enna-mp',
-        name: 'Enna Mp',
-        category: 'resorte',
-        subcategory: 'Diamont',
-        price: 1599,
-        image: ennaMpMain,
-        images: [
-            ennaMpMain,
-            ennaMpTwo,
-            ennaMpDiag
+        description: 'Arquitectura de Descanso Híbrida: Fusión maestra de resortes Pocket y Memory Foam de alta densidad, diseñada para una adaptabilidad anatómica sin precedentes y una independencia de movimiento absoluta.',
+        sizes: ['1.5 PLZ (1.05m x 1.90m)', '2 PLZ (1.35m x 1.90m)', 'QUEEN (1.53m x 2.03m)', 'KING (1.93m x 2.03m)'],
+        dimensionsInfo: [
+            { label: '1.5 PLZ', value: '1.05m x 1.90m' },
+            { label: '2 PLZ', value: '1.35m x 1.90m' },
+            { label: 'QUEEN', value: '1.53m x 2.03m' },
+            { label: 'KING', value: '1.93m x 2.03m' }
         ],
-        technicalSpecs: {
-            colchon: [
-                'Tela Tricot Premium',
-                'Pillow densidad 22',
-                'Marco densidad 25',
-                'Sistema de resortes Bonnell Carbono',
-                'Diseño reversible (doble cara)',
-                'Soporte superior'
-            ],
-            componentes: [
-                'Tela Tricot Premium 16 mm',
-                'Pillow densidad 22',
-                'Marco densidad 25',
-                'Lámina de Notex',
-                'Panel de resortes Bonnell Carbono',
-                'Lámina de Notex',
-                'Marco densidad 25'
-            ]
-        },
-        description: 'Tecnología MP avanzada con máximo confort y durabilidad para un descanso excepcional.',
-        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Marco Poliuretano', 'Tecnología MP'],
-        badge: 'Enna Collection'
+        features: ['Resortes Pocket', 'Memory Foam', 'Cero Movimiento'],
+        firmness: 7,
+        firmnessLabel: 'Equilibrado',
+        badge: 'Híbrido Premium'
     },
-    // 7. ITTA ORTOPÉDICO (DIAMONT - TOP 7)
-    {
-        id: 'itta',
-        name: 'Itta Ortopédico',
-        category: 'resorte',
-        subcategory: 'Diamont',
-        price: 1849,
-        image: ittaMain,
-        images: [
-            ittaMain,
-            ittaTwo,
-            ittaDiag
-        ],
-        description: 'Confort y elegancia en perfecta armonía para noches de descanso inolvidables. Sistema de soporte avanzado diseñado para la alineación perfecta de la columna.',
-        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Soporte Ortopédico', 'Tejido de Punto', 'Doble Cara'],
-        badge: 'Nuevo Ingreso',
-        technicalSpecs: {
-            colchon: [
-                'Tela Tejido de Punto Acolchada',
-                'Capa de espuma de alta densidad D26',
-                'Resortes Bonnell de 2.4mm',
-                'Marco de poliuretano D28',
-                'Tratamiento antialérgico',
-                'Soporte firme progresivo'
-            ],
-            componentes: [
-                'Tela de punto súper suave',
-                'Espuma de confort D26',
-                'Lámina de Notex aislante',
-                'Panel de resortes de alto carbono',
-                'Marco perimetral de poliuretano',
-                'Acolchado premium de 28mm'
-            ]
-        }
-    },
-    // 8. VANORA DP (DIAMONT - TOP 8)
+    // 6. VANORA DP (DIAMONT - TOP 6)
     {
         id: 'vanora-dp',
-        name: 'Vanora Doble Pillow',
+        name: 'Vanora MP PT',
         category: 'resorte',
-        subcategory: 'Diamont',
+        subcategory: 'Intermedia',
+        warranty: '7 años de garantía',
         price: 1399,
         image: vanoraDpMain,
         images: [
@@ -245,35 +302,50 @@ export const RESORTE_PRODUCTS = [
             vanoraDpTwo,
             vanoraDpDiag
         ],
+        sizes: ['1.5 PLZ (1.05m x 1.90m)', '2 PLZ (1.35m x 1.90m)', 'QUEEN (1.53m x 2.03m)', 'KING (1.93m x 2.03m)'],
+        dimensionsInfo: [
+            { label: '1.5 PLZ', value: '1.05m x 1.90m' },
+            { label: '2 PLZ', value: '1.35m x 1.90m' },
+            { label: 'QUEEN', value: '1.53m x 2.03m' },
+            { label: 'KING', value: '1.93m x 2.03m' }
+        ],
         technicalSpecs: {
             colchon: [
-                'Tela Tricot Elite',
-                'Pillow densidad 20',
-                'Marco densidad 23',
-                'Sistema de resortes Bonnell Durabilidad',
-                'Diseño reversible (doble cara)',
-                'Soporte premium'
+                'Tela Tejido de Punto de alto gramaje',
+                'Tratamiento Antibacterial y Antialérgico',
+                'Tela acolchada de 18mm',
+                'Doble Acolchado (Doble Pillow)',
+                'Capa de espuma de 3/4 pulgada en ambos lados (1 pulgada)',
+                'Capa de espuma de 3/4 pulgada en ambos lados (1 pulgada)',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
+                'Marco Poliuretano 500H',
+                'Tela aislante termofusionada de 6mm',
+                '1.5 PLZ: 1.05m x 1.90m',
+                '2 PLZ: 1.35m x 1.90m',
+                'QUEEN: 1.53m x 2.03m',
+                'KING: 1.93m x 2.03m',
+                'Soporte Ergonómico Superior'
             ],
             componentes: [
-                'Tela Tricot Elite 16 mm',
-                'Pillow densidad 20',
-                'Marco densidad 23',
-                'Lámina de Notex',
-                'Panel de resortes Bonnell Durabilidad',
-                'Lámina de Notex',
-                'Marco densidad 23'
+                'Tejido de Punto de Lujo',
+                'Doble Capa de Espuma (D18 y D23)',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
+                'Aislante termofusionado 6mm'
             ]
         },
-        description: 'Sistema DP de máxima permanencia con tecnología avanzada para un descanso superior.',
-        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Marco Poliuretano', 'Sistema DP'],
-        badge: 'Vanora DP Series'
+        description: 'Doble arquitectura de confort (Pillow Top) diseñada para una acogida envolvente y alivio de presión ergonómica. Sistema de máxima permanencia que garantiza un soporte elástico y duradero bajo estándares de ingeniería avanzada.',
+        features: ['Doble Pillow Top', 'Soporte Ergonómico', 'Tejido Anti-Bacterial'],
+        firmness: 7,
+        firmnessLabel: 'Equilibrado',
+        badge: 'Vanora MP PT Series'
     },
+    // 7. GEA PT (INTERMEDIA)
     {
         id: 'gea-pt-mp-two-ortopedico-de-lujo',
-        name: 'Gea Two Ortopédico de Lujo',
+        name: 'GEA PT',
         category: 'resorte',
-        subcategory: 'Diamont',
+        subcategory: 'Intermedia',
+        warranty: '5 años de garantía',
         price: 2699,
         image: geaTwoOrtopedicoMain,
         images: [
@@ -281,34 +353,47 @@ export const RESORTE_PRODUCTS = [
             geaTwoOrtopedicoDiag,
             geaTwoOrtopedicoZoom
         ],
-        description: 'La máxima expresión del confort ortopédico. Sistema de Pillow Top reforzado para un soporte lumbar de élite y materiales de lujo.',
-        sizes: ['2 PLZ', 'QUEEN', 'KING'],
-        features: ['Ortopédico de Lujo', 'Refuerzo Lumbar', 'Sistema MP'],
+        description: 'La máxima expresión del confort ergonómico. Sistema de Pillow Top reforzado para un soporte lumbar de élite y materiales de lujo.',
+        sizes: ['1 PLZ (0.90m x 1.90m)', '1.5 PLZ (1.05m x 1.90m)', '2 PLZ (1.35m x 1.90m)', 'QUEEN (1.53m x 2.03m)', 'KING (1.93m x 2.03m)'],
+        dimensionsInfo: [
+            { label: '1 PLZ', value: '0.90m x 1.90m' },
+            { label: '1.5 PLZ', value: '1.05m x 1.90m' },
+            { label: '2 PLZ', value: '1.35m x 1.90m' },
+            { label: 'QUEEN', value: '1.53m x 2.03m' },
+            { label: 'KING', value: '1.93m x 2.03m' }
+        ],
+        features: ['Pillow Top (doble acolchado)', 'Soporte Lumbar', 'Ergonómico'],
+        firmness: 6,
+        firmnessLabel: 'Equilibrado',
         badge: 'Nuevo Lanzamiento',
         technicalSpecs: {
             colchon: [
-                'Tela Tejido de Punto de 32 mm',
-                'Doble Pillow Top Alta Densidad',
-                'Estructura de resortes Bonnell de alto carbono',
+                'Tela tricot acolchada de 16mm',
+                'Doble Pillow Top',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
                 'Marco perimetral reforzado',
-                'Tratamiento anticaros y antialérgico',
-                'Soporte extra firme ortopédico'
+                'Tratamiento antiácaros y antialérgico',
+                '1 PLZ: 0.90m x 1.90m',
+                '1.5 PLZ: 1.05m x 1.90m',
+                '2 PLZ: 1.35m x 1.90m',
+                'QUEEN: 1.53m x 2.03m',
+                'KING: 1.93m x 2.03m',
+                'Soporte extra firme ergonómico'
             ],
             componentes: [
-                'Capa superior Tejido de Punto Elite',
-                'Doble capa de espuma Resilense D30',
-                'Plancha de prensado Rebond de 2 pulgadas',
-                'Panel de resortes reforzado con 2.4mm de espesor',
-                'Marco de poliuretano D30 de alta resistencia',
-                'Base inferior antideslizante'
+                'Capa superior tela tricot',
+                'Doble capa de espuma D18',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente'
             ]
         }
     },
+    // 8. KASSE MP (ECONÓMICA)
     {
         id: 'kasse',
-        name: 'Kasse Confort',
+        name: 'Kasse MP',
         category: 'resorte',
-        subcategory: 'Diamont',
+        subcategory: 'Económica',
+        warranty: '4 años de garantía',
         price: 1749,
         image: kasseMain,
         images: [
@@ -316,26 +401,83 @@ export const RESORTE_PRODUCTS = [
             kasseTwo,
             kasseDiag
         ],
-        description: 'Sofisticación y soporte en un solo diseño. El modelo Kasse ofrece una experiencia de descanso equilibrada con materiales de alta resiliencia.',
-        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Confort Equilibrado', 'Tela Premium', 'Alta Resiliencia'],
+        description: 'Sofisticación y soporte en un solo diseño. El modelo Kasse ofrece una experiencia de descanso equilibrada con materiales de alta resiliencia, con tecnologia invierno verano.',
+        sizes: ['1 PLZ (0.90m x 1.90m)', '1.5 PLZ (1.05m x 1.90m)', '2 PLZ (1.35m x 1.90m)'],
+        dimensionsInfo: [
+            { label: '1 PLZ', value: '0.90m x 1.90m' },
+            { label: '1.5 PLZ', value: '1.05m x 1.90m' },
+            { label: '2 PLZ', value: '1.35m x 1.90m' }
+        ],
+        features: ['Invierno / Verano', 'Alta Resiliencia', 'Tecnología MP'],
+        firmness: 5,
+        firmnessLabel: 'Equilibrado',
         badge: 'Exclusivo',
         technicalSpecs: {
             colchon: [
-                'Tela Tejido de Punto Suave',
-                'Capa de espuma de confort D25',
-                'Sistema de resortes Bonnell Reforzado',
-                'Marco de poliuretano de alta densidad',
+                'Lado Invierno: Tela Tejido de Punto Suave',
+                'Lado Verano: Tela Acolchada de Alta Resistencia (Tricot) de 16mm',
+                'Capa de espuma de alta firmeza (440H)',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
+                'Refuerzo Lateral de Soporte (D18)',
                 'Independencia de movimiento optimizada',
                 'Soporte ergonómico'
             ],
             componentes: [
-                'Tela de punto con tratamiento Fresh',
-                'Espuma de poliuretano D25',
-                'Lámina de Notex de alta densidad',
-                'Panel de resortes de acero al carbono',
-                'Marco perimetral reforzado',
-                'Acolchado de lujo en multicapas'
+                'Tela Tejido de Punto Suave (Lado Invierno)',
+                'Tela Acolchada de Alta Resistencia (Tricot) 16mm (Lado Verano)',
+                'Espuma de poliuretano de alta firmeza (440H)',
+                'Capa Protectora de Fibra (Notex) de alta densidad',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
+                'Refuerzo Lateral de Soporte (D18)'
+            ]
+        }
+    },
+    // 9. VANORA SS (INTERMEDIA)
+    {
+        id: 'vanora-ss',
+        name: 'Vanora MP SS',
+        category: 'resorte',
+        subcategory: 'Intermedia',
+        warranty: '6 años de garantía',
+        price: 1999,
+        image: vanoraSsMain,
+        images: [
+            vanoraSsMain,
+            vanoraSsTwo,
+            vanoraSsDiag
+        ],
+        description: 'Ingeniería de Soporte Perimetral: El modelo Vanora MP Super Side integra una arquitectura reforzada que elimina los puntos de presión y garantiza una estabilidad absoluta hasta en el último centímetro del colchón.',
+        sizes: ['1.5 PLZ (1.05m x 1.90m)', '2 PLZ (1.35m x 1.90m)', 'QUEEN (1.53m x 2.03m)', 'KING (1.93m x 2.03m)'],
+        dimensionsInfo: [
+            { label: '1.5 PLZ', value: '1.05m x 1.90m' },
+            { label: '2 PLZ', value: '1.35m x 1.90m' },
+            { label: 'QUEEN', value: '1.53m x 2.03m' },
+            { label: 'KING', value: '1.93m x 2.03m' }
+        ],
+        features: ['Super Side Reforzado', 'Tratamiento Antibacterial', 'Alta Densidad'],
+        firmness: 8,
+        firmnessLabel: 'Firme',
+        badge: 'Nuevo Ingreso',
+        technicalSpecs: {
+            colchon: [
+                'Tela Tejido de Punto de alto gramaje',
+                'Tratamiento Antibacterial y Antialérgico',
+                'Tela acolchada de 18mm',
+                'Banda Perimetral Mesh de 5cm: Tecnología de ventilación activa y transpirabilidad',
+                'Capa de espuma de 1 pulgada en ambos lados (440H)',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
+                'Tela aislante termofusionada de 6mm',
+                '1.5 PLZ: 1.05m x 1.90m',
+                '2 PLZ: 1.35m x 1.90m',
+                'QUEEN: 1.53m x 2.03m',
+                'KING: 1.93m x 2.03m'
+            ],
+            componentes: [
+                'Tejido de Punto Premium',
+                'Banda de Respiración Mesh (5cm)',
+                'Espuma de alta resiliencia (440H)',
+                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
+                'Aislante termofusionado 6mm'
             ]
         }
     }

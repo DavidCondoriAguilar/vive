@@ -118,7 +118,7 @@ export const COMPLEMENTARIOS_PRODUCTS = [
         ],
         especificaciones: {
             'Estructura': 'Madera seleccionada',
-            'Tapiz': 'Tela Poliseda / Tricot',
+            'Tapiz': 'Tela Acolchada de Alta Resistencia (Premium)',
             'Alto Base': '35 cm',
             'Alto Cabecera': '110 cm',
             'Ancho Brazo': '12 cm por lado',
@@ -155,7 +155,7 @@ export const COMPLEMENTARIOS_PRODUCTS = [
         ],
         especificaciones: {
             'Material Estructura': 'Madera seleccionada',
-            'Tapiz': 'Tela Poliseda / Tricot',
+            'Tapiz': 'Tela Acolchada de Alta Resistencia (Premium)',
             'Altura Base': '25 cm',
             'Altura Patas': '10 cm',
             'Altura Total': '35 cm',
@@ -184,7 +184,7 @@ export const COMPLEMENTARIOS_PRODUCTS = [
         badge: 'Pieza de Autor',
         componentes: [
             'Estructura de madera tornillo tratada',
-            'Relleno de espuma de alta densidad D25',
+            'Relleno de espuma de alta firmeza (D25)',
             'Tapicería en tela premium antimanchas',
             '4 Cojines decorativos de fibra siliconada',
             'Patas de material resistente con acabado espejo',
