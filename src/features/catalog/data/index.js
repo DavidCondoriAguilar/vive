@@ -11,7 +11,6 @@ export { COMPLEMENTARIOS_PRODUCTS } from './dormitorio.data';
 const TOP_MAIN_IDS = [
     'gea-pt-mp-two-ortopedico-de-lujo', // Nuevo lanzamiento premium
     'ventto-marco',                       // Ultra Firme - Top técnico
-    'sense-premium',                      // Premium Series
     'itta',                               // Nuevo ingreso ortopédico
     'kasse',                              // Nuevo ingreso exclusivo
     'kai',                                // Kai Series

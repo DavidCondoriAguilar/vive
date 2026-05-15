@@ -294,8 +294,7 @@ class ResponseGenerator {
         'Hablar con ventas'
       ] : [
         'Ver productos',
-        'Conocer garantía',
-        'Envíos a domicilio'
+        'Conocer garantía'
       ],
       
       product_inquiry: isBusiness ? [

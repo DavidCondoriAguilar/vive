@@ -11,7 +11,7 @@ const EngineeringTeaser = () => {
             id: '01',
             name: "Eco-Bamboo™ Surface",
             subtitle: "Bio-Blindaje Termoregulador",
-            desc: "Ingeniería textil de alto gramaje con fibras botánicas. Nuestra barrera inteligente disipa el exceso de calor en segundos, garantizando una superficie antibacterial y fresca perpetuamente.",
+            desc: "Barrera textil inteligente que disipa el exceso de calor al instante. Superficie antibacterial y fresca.",
             icon: <GiCottonFlower className="w-10 h-10" />,
             metrics: ["-3.5°C Gradiente Térmico", "Certificación Hipoalergénica"],
             color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
@@ -21,7 +21,7 @@ const EngineeringTeaser = () => {
             id: '02',
             name: "Cognitive-Memory™ Foam",
             subtitle: "Adaptación de Gravedad Cero",
-            desc: "Viscoelástica de ultra-alta densidad (65kg/m³) con memoria celular. Diseñada para neutralizar los puntos de presión en hombros y cadera, facilitando una regeneración profunda del sistema nervioso.",
+            desc: "Espuma viscoelástica de ultra-alta densidad que neutraliza puntos de presión. Regeneración muscular profunda.",
             icon: <GiSoundWaves className="w-10 h-10" />,
             metrics: ["65kg/m³ Densidad Médica", "Adaptación Anatómica 4D"],
             color: "bg-blue-500/10 text-blue-400 border-blue-500/30",
@@ -31,7 +31,7 @@ const EngineeringTeaser = () => {
             id: '03',
             name: "Hydro-Active™ Matrix",
             subtitle: "Núcleo de Oxigenación Celular",
-            desc: "Arquitectura de celdas abiertas que permite una ventilación cruzada multidireccional. Actúa como el pulmón del sistema, evitando la acumulación de humedad y garantizando la integridad estructural.",
+            desc: "Arquitectura de celdas abiertas para ventilación cruzada multidireccional. El pulmón del sistema que elimina la humedad.",
             icon: <FaWaveSquare className="w-10 h-10" />,
             metrics: ["Flujo de Aire Constante", "Soporte de Alta Resiliencia"],
             color: "bg-purple-500/10 text-purple-400 border-purple-500/30",
@@ -41,7 +41,7 @@ const EngineeringTeaser = () => {
             id: '04',
             name: "Titan-Quantum™ Core",
             subtitle: "Suspensión de Soporte Infinito",
-            desc: "El corazón de nuestra promesa. +880 resortes ensacados en acero al carbono y titanio. Ofrece una independencia de lechos absoluta: tu descanso no será afectado por el movimiento ajeno.",
+            desc: "+880 resortes ensacados en acero al carbono y titanio. Independencia de lechos absoluta, movimiento cero.",
             icon: <GiSpinalCoil className="w-10 h-10" />,
             metrics: ["880+ Puntos de Repercusión", "Independencia Total de Movimiento"],
             color: "bg-vive-500/10 text-vive-400 border-vive-500/30",
@@ -143,7 +143,7 @@ const EngineeringTeaser = () => {
                                                     {l.icon}
                                                 </div>
                                                 <div>
-                                                    <h5 className="text-[10px] md:text-[11px] font-black uppercase text-vive-500 tracking-[0.4em] font-mono mb-2">{l.subtitle}</h5>
+                                                    <h4 className="text-[10px] md:text-[11px] font-black uppercase text-vive-500 tracking-[0.4em] font-mono mb-2">{l.subtitle}</h4>
                                                     <h3 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none">{l.name}</h3>
                                                 </div>
                                             </div>

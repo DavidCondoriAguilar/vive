@@ -9,6 +9,11 @@ const GuiaDescansoView = () => {
             <Helmet>
                 <title>Guía Maestra de Descanso | Vive - Innovación Nacional</title>
                 <meta name="description" content="Descubra la ciencia del sueño profundo con la Guía Maestra de Vive. Biomecánica, protocolos de cuidado y optimización del ambiente zen." />
+                <meta property="og:title" content="Guía Maestra de Descanso | Vive" />
+                <meta property="og:description" content="Descubra la ciencia del sueño profundo. Biomecánica, protocolos y optimización del descanso." />
+                <meta property="og:image" content="https://vive.pe/logo-main.jpg" />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:card" content="summary_large_image" />
             </Helmet>
 
             <RestMasterclass />

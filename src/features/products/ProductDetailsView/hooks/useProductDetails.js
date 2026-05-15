@@ -60,13 +60,19 @@ export const useProductSEO = (product) => {
     if (!product) return {};
 
     const brand = 'Vive';
+    const categoryLabel = product.category === 'resorte' ? 'Colchón de Resortes' :
+                          product.category === 'espuma' ? 'Colchón de Espuma' :
+                          'Producto';
+
+    const description = `${product.name}: ${categoryLabel} premium fabricado por ${brand} en Perú. ${product.features?.slice(0, 2).join(', ') || 'Tecnología de descanso avanzada'}. Compra directa de fábrica.`;
+
     return {
-        title: `${product.name} - Tecnología de Descanso ${brand} | Alta Permanencia`,
-        description: `Descubre el ${product.name} de ${brand}. Tecnología MP y confort anatómico de clase mundial con envío gratis. Experimenta el descanso inteligente.`,
+        title: `${product.name} - ${categoryLabel} Premium | ${brand} Perú`,
+        description,
         canonical: `https://vive.pe/producto/${product.id}`,
         openGraph: {
-            title: `${product.name} - Innovación ${brand}`,
-            description: `El ${product.name} redefine el descanso con tecnología de vanguardia. Experimenta la máxima permanencia emocional y física.`,
+            title: `${product.name} - ${brand} Perú`,
+            description,
             image: `https://vive.pe${product.image}`,
             type: 'product'
         }

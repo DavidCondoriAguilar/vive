@@ -103,6 +103,15 @@ const WholesaleView = () => {
       <Helmet>
         <title>Venta por Mayor & B2B | Vive - Fábrica de Colchones</title>
         <meta name="description" content="Soluciones mayoristas para hoteles, tiendas y corporaciones. Colchones directo de fabrica con precios B2B y logística nacional." />
+        <meta property="og:title" content="Venta por Mayor & B2B | Vive - Fábrica de Colchones" />
+        <meta property="og:description" content="Soluciones mayoristas para hoteles, tiendas y corporaciones. Precios B2B directo de fábrica con envíos a todo Perú." />
+        <meta property="og:image" content="https://vive.pe/logo-main.jpg" />
+        <meta property="og:url" content="https://vive.pe/venta-por-mayor" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Venta por Mayor B2B | Vive" />
+        <meta name="twitter:description" content="Colchones directo de fábrica con precios B2B. Logística nacional." />
+        <meta name="twitter:image" content="https://vive.pe/logo-main.jpg" />
       </Helmet>
 
       {/* 1. Hero (with integrated stats) */}

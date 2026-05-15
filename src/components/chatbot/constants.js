@@ -25,7 +25,6 @@ export const CHATBOT_CONFIG = {
     { text: 'Resortes ➰', value: 'resortes' },
     { text: 'Espuma 🧽', value: 'espuma' },
     { text: 'Precios 💰', value: 'precios' },
-    { text: 'Envíos 🚚', value: 'envíos' },
     { text: 'Garantía 🛡️', value: 'garantía' },
     { text: 'Ofertas 🔥', value: 'ofertas' }
   ],
@@ -33,7 +32,6 @@ export const CHATBOT_CONFIG = {
   // Quick actions
   quickActions: [
     { text: '📋 Ver Catálogo', intent: CHATBOT_INTENTS.CATALOG },
-    { text: '🚚 Envíos', intent: CHATBOT_INTENTS.SHIPPING },
     { text: '📞 Contactar', intent: CHATBOT_INTENTS.CONTACT },
     { text: '👤 Hablar con humano', intent: CHATBOT_INTENTS.HUMAN_AGENT }
   ]
@@ -65,16 +63,6 @@ export const BOT_RESPONSES = {
     ]
   },
 
-  [CHATBOT_INTENTS.SHIPPING]: {
-    text: '🚚 Realizamos envíos a todo Perú:\n\n• Lima Metropolitana: 24-48h (Gratis)\n• Provincias: 3-5 días\n• Entrega directa de fabrica\n\n¿A dónde te gustaría recibir tu pedido?',
-    options: [
-      { text: 'Lima Metropolitana', intent: 'lima_shipping' },
-      { text: 'Provincias', intent: 'provinces_shipping' },
-      { text: 'Consultar costo', intent: CHATBOT_INTENTS.CONTACT },
-      { text: '🏠 Volver al menú principal', intent: CHATBOT_INTENTS.HELP }
-    ]
-  },
-
   [CHATBOT_INTENTS.CONTACT]: {
     text: 'Puedes contactarnos de varias formas:\n\n📱 WhatsApp: (01) 989 223 448\n📧 Email: hola@vive.pe\n🌐 Web: www.vive.pe\n\n¿Prefieres hablar ahora por WhatsApp?',
     options: [
@@ -96,10 +84,9 @@ export const BOT_RESPONSES = {
   },
 
   [CHATBOT_INTENTS.HELP]: {
-    text: '🏠 ¡Bienvenido al menú principal! Puedo ayudarte con:\n\n📋 Información técnica de productos\n🚚 Envíos y entregas\n🛡️ Garantías de fabrica\n📞 Contacto directo\n\n¿Qué necesitas saber?',
+    text: '🏠 ¡Bienvenido al menú principal! Puedo ayudarte con:\n\n📋 Información técnica de productos\n🛡️ Garantías de fabrica\n📞 Contacto directo\n\n¿Qué necesitas saber?',
     options: [
       { text: '📋 Ver Catálogo', intent: CHATBOT_INTENTS.CATALOG },
-      { text: '🚚 Envíos', intent: CHATBOT_INTENTS.SHIPPING },
       { text: '📞 Contactar', intent: CHATBOT_INTENTS.CONTACT },
       { text: '👤 Hablar con humano', intent: CHATBOT_INTENTS.HUMAN_AGENT }
     ]
@@ -245,12 +232,6 @@ export const KEYWORDS_INTENTS = {
   cuanto: CHATBOT_INTENTS.CONTACT,
   valor: CHATBOT_INTENTS.CONTACT,
 
-  // Shipping patterns
-  envío: CHATBOT_INTENTS.SHIPPING,
-  envio: CHATBOT_INTENTS.SHIPPING,
-  envíos: CHATBOT_INTENTS.SHIPPING,
-  delivery: CHATBOT_INTENTS.SHIPPING,
-  entrega: CHATBOT_INTENTS.SHIPPING,
   donde: CHATBOT_INTENTS.CONTACT,
   ubicacion: CHATBOT_INTENTS.CONTACT,
   tienda: CHATBOT_INTENTS.CONTACT,

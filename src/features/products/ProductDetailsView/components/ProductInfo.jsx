@@ -126,27 +126,23 @@ const ProductInfo = ({ product }) => {
                 </div>
             )}
 
-            {/* Price Info - Integrated y Slim */}
-            <div className="py-4 px-6 bg-gray-50/50 dark:bg-zinc-900/40 rounded-3xl border border-gray-100 dark:border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="space-y-0.5">
-                    <p className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-400">Precio de Referencia</p>
-                    <span className="text-xl font-black text-gray-900 dark:text-white">Consultar con Asesor</span>
-                </div>
-                <div className="hidden sm:block w-px h-8 bg-gray-200 dark:bg-white/10"></div>
-                <p className="text-[8px] text-gray-500 font-bold uppercase tracking-tight max-w-[120px]">
-                    Cotización personalizada por volúmenes
+            {/* Nota de Cotización Directa */}
+            <div className="py-4 px-6 bg-gray-50/50 dark:bg-zinc-900/40 rounded-3xl border border-gray-100 dark:border-white/5 flex items-center gap-4">
+                <div className="w-2 h-2 rounded-full bg-vive-600 animate-pulse"></div>
+                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-relaxed">
+                    Solicite una cotización personalizada según volumen y medidas directamente con nuestro equipo comercial.
                 </p>
             </div>
 
-            {/* Trust DNA - Smaller y more joined */}
+            {/* DNA de Marca - Calidad y Tecnología */}
             <div className="grid grid-cols-2 gap-4 py-4 border-t border-gray-100 dark:border-white/5">
                 <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-xl bg-gray-50 dark:bg-white/5 flex items-center justify-center text-gray-400">
                         <FaAward className="w-3.5 h-3.5" />
                     </div>
                     <div>
-                        <h4 className="text-[9px] font-black uppercase tracking-widest text-gray-900 dark:text-white">Garantía Real</h4>
-                        <p className="text-[8px] font-bold text-gray-500 uppercase">Respaldo directo</p>
+                        <h4 className="text-[9px] font-black uppercase tracking-widest text-gray-900 dark:text-white">Calidad Élite</h4>
+                        <p className="text-[8px] font-bold text-gray-500 uppercase">Respaldo Directo</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -155,7 +151,7 @@ const ProductInfo = ({ product }) => {
                     </div>
                     <div>
                         <h4 className="text-[9px] font-black uppercase tracking-widest text-gray-900 dark:text-white">Tecnología MP</h4>
-                        <p className="text-[8px] font-bold text-gray-500 uppercase">Máxima Durabilidad</p>
+                        <p className="text-[8px] font-bold text-gray-500 uppercase">Arquitectura Superior</p>
                     </div>
                 </div>
             </div>

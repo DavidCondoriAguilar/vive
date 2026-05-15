@@ -55,7 +55,6 @@ export const CHATBOT_INTENTS = {
   GREETING: 'greeting',
   PRODUCT_INFO: 'product_info',
   PRICING: 'pricing',
-  SHIPPING: 'shipping',
   WARRANTY: 'warranty',
   CONTACT: 'contact',
   CATALOG: 'catalog',

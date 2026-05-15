@@ -4,7 +4,7 @@
 export const createSEOMetaTags = (pageData) => {
   const defaultMeta = {
     title: "Vive - Tecnología Avanzada en Descanso | Fábrica Premium",
-    description: "Lideramos la ingeniería del descanso en Perú. Sistemas de alta permanencia y confort anatómico con envío gratis en Lima.",
+    description: "Lideramos la ingeniería del descanso en Perú. Sistemas de alta permanencia y confort anatómico.",
     canonical: "https://vive.pe/"
   };
 

@@ -93,6 +93,11 @@ const SleepTestView = () => {
             <Helmet>
                 <title>Test de Sueño | Encuentra tu Colchón Ideal | Vive</title>
                 <meta name="description" content="Responde 5 preguntas y descubre el colchón perfecto para tu tipo de descanso. Algoritmo biomecánico personalizado de Vive." />
+                <meta property="og:title" content="Test de Sueño | Encuentra tu Colchón Ideal | Vive" />
+                <meta property="og:description" content="Descubre el colchón perfecto para tu tipo de descanso con nuestro test biomecánico personalizado." />
+                <meta property="og:image" content="https://vive.pe/logo-main.jpg" />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:card" content="summary_large_image" />
             </Helmet>
 
             <div className="min-h-[calc(100vh-70px)] bg-white dark:bg-[#050505] flex items-center justify-center py-10">

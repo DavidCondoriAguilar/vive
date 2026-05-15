@@ -61,7 +61,7 @@ const ReturnPolicy = () => {
                                             <li>Prueba el colchón en tu entorno real durante un mes completo</li>
                                             <li>Sin compromiso de compra durante el período de prueba</li>
                                             <li>Si no estás completamente satisfecho, retiramos el producto sin costo adicional</li>
-                                            <li>Envío y retiro gratuito en Lima y alrededores</li>
+                                            <li>Retiro gratuito en Lima y alrededores</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@ const ReturnPolicy = () => {
                                                 </div>
                                                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">2. Retiro</h4>
                                                 <p className="text-sm text-gray-600 dark:text-gray-300">
-                                                    Coordinamos la recogida gratuita en tu domicilio
+                                                    Coordinamos la recogida gratuita
                                                 </p>
                                             </div>
                                             <div className="text-center">

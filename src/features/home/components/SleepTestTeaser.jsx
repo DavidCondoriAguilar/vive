@@ -47,9 +47,9 @@ const SleepTestTeaser = () => {
                                 <div className="flex flex-col md:flex-row items-center gap-8 justify-between">
                                     <div className="space-y-1 text-center md:text-left">
                                         <span className="text-[9px] font-mono font-black text-gray-500 uppercase tracking-widest">Pregunta 01: Posición</span>
-                                        <h4 className="text-lg md:text-xl font-display text-white uppercase tracking-tighter">
+                                        <h3 className="text-lg md:text-xl font-display text-white uppercase tracking-tighter">
                                             ¿Cómo sueles dormir?
-                                        </h4>
+                                        </h3>
                                     </div>
                                     
                                     <div className="flex gap-4 w-full md:w-auto">

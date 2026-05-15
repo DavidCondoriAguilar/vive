@@ -25,8 +25,8 @@ export const COMPLEMENTARIOS_PRODUCTS = [
         category: 'dormitorio',
         subcategory: 'Box-Premium',
         price: 899,
-        image: camaPremiumMain,
-        images: [camaPremiumMain, camaPremiumDiag],
+        image: camaPremiumDiag,
+        images: [camaPremiumDiag, camaPremiumMain],
         description: 'La máxima expresión de elegancia y soporte para tu colchón. Nuestro Box Tarima Premium está construido con madera seleccionada de alta densidad, tapizado en tela de alto gramaje con acolchado de última generación y esquineros reforzados para una durabilidad incomparable.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: ['Madera Seleccionada', 'Patas Cromadas', 'Tela Alto Gramaje', 'Esquineros Reforzados', 'Acolchado Premium'],
@@ -65,8 +65,8 @@ export const COMPLEMENTARIOS_PRODUCTS = [
         category: 'dormitorio',
         subcategory: 'Cama-Premium-Brazos',
         price: 1499,
-        image: boxPremiumMain,
-        images: [boxPremiumMain, boxPremiumDiag, boxPremiumZoom],
+        image: boxPremiumDiag,
+        images: [boxPremiumDiag, boxPremiumMain, boxPremiumZoom],
         description: 'La cúspide del confort y la sofisticación. Esta cama integra una base de alta resistencia con una cabecera envolvente de brazos laterales acolchados, diseñada para quienes buscan un refugio de descanso con estética editorial y materiales de primera línea.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: ['Brazos Laterales', 'Cabecera Ergonómica', 'Madera seleccionada', 'Tela Premium Soft', 'Soporte Ultra-Firme'],
@@ -93,7 +93,7 @@ export const COMPLEMENTARIOS_PRODUCTS = [
             'Estructura robusta que elimina ruidos y movimientos',
             'Tela de fácil mantenimiento y alta resistencia al roce',
             'Estética premium que eleva el diseño de cualquier habitación',
-            'Instalación profesional incluida en el envío'
+            'Instalación profesional incluida'
         ]
     },
     {
@@ -102,8 +102,8 @@ export const COMPLEMENTARIOS_PRODUCTS = [
         category: 'dormitorio',
         subcategory: 'Cama-Universal-Brazos',
         price: 1299,
-        image: boxUniversalMain,
-        images: [boxUniversalMain, boxUniversalDiag, boxUniversalTwo],
+        image: boxUniversalDiag,
+        images: [boxUniversalDiag, boxUniversalMain, boxUniversalTwo],
         description: 'La combinación ideal de funcionalidad y confort para el hogar moderno. Este conjunto integra nuestra sólida base universal con una cabecera de diseño contemporáneo y brazos laterales ligeramente acolchados, ofreciendo una experiencia de descanso completa y accesible.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: ['Brazos Laterales', 'Madera seleccionada', 'Tela de Alta Resistencia', 'Fácil Instalación', 'Soporte Estable'],
@@ -139,8 +139,8 @@ export const COMPLEMENTARIOS_PRODUCTS = [
         category: 'dormitorio',
         subcategory: 'Box-Universal',
         price: 599,
-        image: camaUniversalMain,
-        images: [camaUniversalMain, camaUniversalHoriz],
+        image: camaUniversalHoriz,
+        images: [camaUniversalHoriz, camaUniversalMain],
         description: 'La base fundamental para un descanso estable y duradero. El Box Tarima Universal combina una estructura de madera seleccionada con un diseño funcional de alta ventilación, optimizando el rendimiento de cualquier colchón y prolongando su vida útil.',
         sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
         features: ['Estructura Robusta', 'Ventilación Óptima', 'Madera Tratada', 'Tapizado Clásico', 'Soporte Equilibrado'],
@@ -176,8 +176,8 @@ export const COMPLEMENTARIOS_PRODUCTS = [
         category: 'dormitorio',
         subcategory: 'Muebles-Independientes',
         price: 1899,
-        image: luxeSeccionalMain,
-        images: [luxeSeccionalMain, luxeSeccionalFront],
+        image: luxeSeccionalFront,
+        images: [luxeSeccionalFront, luxeSeccionalMain],
         description: 'Sofá seccional de diseño contemporáneo que combina elegancia y máximo confort. Incluye cojines decorativos de suave textura y una estructura robusta para una durabilidad excepcional en tu sala o dormitorio.',
         sizes: ['Seccional'],
         features: ['Diseño Seccional', 'Cojines Premium', 'Textura Soft', 'Estructura Reforzada'],
@@ -204,7 +204,7 @@ export const COMPLEMENTARIOS_PRODUCTS = [
             'Incluye cojines decorativos sin costo extra',
             'Acabados de lujo para ambientes modernos',
             'Soporte lumbar ergonómico',
-            'Entrega e instalación profesional gratuita'
+            'Instalación profesional gratuita'
         ]
     }
 ];

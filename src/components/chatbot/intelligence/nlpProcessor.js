@@ -270,7 +270,7 @@ class NLPProcessor {
     } else {
       // Regular customer suggestions
       if (intent === 'greeting') {
-        suggestions.push('Ver productos', 'Conocer garantía', 'Envíos a domicilio');
+        suggestions.push('Ver productos', 'Conocer garantía');
       } else if (intent === 'product_inquiry') {
         suggestions.push('Ver características', 'Comparar modelos', 'Probar en tienda');
       }

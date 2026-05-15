@@ -5,7 +5,6 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 // Sub-components
 import HeroBackground from './HeroBackground';
-import HeroContent from './HeroContent';
 import HeroControls from './HeroControls';
 import EngineeringGrid from '@shared/components/ui/EngineeringGrid';
 import DownloadCatalogButton from '@shared/components/ui/DownloadCatalogButton';
@@ -133,43 +132,32 @@ const HeroCarousel = () => {
 
       <EngineeringGrid color="#299C47" opacity="0.04" size="60px" />
 
-      {/* Content Overlay - Optimized for Clean Banners */}
-      <div className="absolute inset-0 z-20 pointer-events-none pt-[80px] lg:pt-[120px]">
-        <div className="container mx-auto h-full flex flex-col items-start justify-center px-6 lg:px-20">
-          <HeroContent slides={slides} currentSlide={currentSlide} navigate={navigate} />
-          
-          {/* Home Page Catalog CTA */}
-          <div className="mt-12 pointer-events-auto animate-fade-in-up delay-700">
-            <DownloadCatalogButton />
-          </div>
-        </div>
+      {/* Download CTA — bottom-left */}
+      <div className="absolute bottom-8 lg:bottom-10 left-6 lg:left-10 z-30 pointer-events-auto animate-fade-in-up delay-700">
+        <DownloadCatalogButton />
       </div>
 
-      {/* Navigation Arrows - Minimalist 2026 Concept */}
-      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-40 px-4 lg:px-8 flex justify-between pointer-events-none transition-all duration-700">
+      {/* Navigation — Minimal Arrows */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-40 px-3 lg:px-6 flex justify-between pointer-events-none">
         <button
           onClick={prevSlide}
-          className="w-12 h-20 flex items-center justify-center text-white/20 hover:text-white transition-all duration-500 pointer-events-auto group/btn-nav active:scale-95"
+          className="group/btn-prev w-12 h-12 flex items-center justify-center pointer-events-auto relative"
           aria-label="Anterior"
         >
-          <div className="relative flex items-center justify-center">
-            <div className="absolute w-8 h-8 bg-vive-500/0 group-hover/btn-nav:bg-vive-500/10 blur-xl rounded-full transition-all duration-700"></div>
-            <svg className="w-8 h-8 stroke-[1px] transition-transform duration-500 group-hover/btn-nav:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
+          <div className="absolute inset-0 rounded-full bg-white/0 group-hover/btn-prev:bg-white/5 transition-all duration-700"></div>
+          <svg className="relative w-6 h-6 text-vive-500/40 group-hover/btn-prev:text-vive-500 -translate-x-[1px] group-hover/btn-prev:-translate-x-[3px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </button>
         <button
           onClick={nextSlide}
-          className="w-12 h-20 flex items-center justify-center text-white/20 hover:text-white transition-all duration-500 pointer-events-auto group/btn-nav active:scale-95"
+          className="group/btn-next w-12 h-12 flex items-center justify-center pointer-events-auto relative"
           aria-label="Siguiente"
         >
-          <div className="relative flex items-center justify-center">
-            <div className="absolute w-8 h-8 bg-vive-500/0 group-hover/btn-nav:bg-vive-500/10 blur-xl rounded-full transition-all duration-700"></div>
-            <svg className="w-8 h-8 stroke-[1px] transition-transform duration-500 group-hover/btn-nav:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
+          <div className="absolute inset-0 rounded-full bg-white/0 group-hover/btn-next:bg-white/5 transition-all duration-700"></div>
+          <svg className="relative w-6 h-6 text-vive-500/40 group-hover/btn-next:text-vive-500 translate-x-[1px] group-hover/btn-next:translate-x-[3px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </button>
       </div>
 

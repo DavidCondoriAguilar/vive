@@ -119,7 +119,6 @@ export const useChatbotFixed = () => {
       catalog: ['catalogo', 'productos', 'colchones', 'colchon', 'item', 'modelos', 'ver todo'],
       contact: ['contactar', 'contacto', 'whatsapp', 'llamar', 'llamada', 'comunicarse', 'numero', 'telefono', 'email', 'escribir'],
       payment: ['pago', 'pagos', 'metodo pago', 'tarjeta', 'efectivo', 'transferencia', 'yape', 'plin'],
-      shipping: ['envio', 'envios', 'delivery', 'entrega', 'donde', 'ubicacion', 'tiempo', 'demora'],
       warranty: ['garantia', 'garantias', 'asegurar', 'seguro', 'respaldo', 'calidad']
     };
 
@@ -163,14 +162,6 @@ export const useChatbotFixed = () => {
             { text: '📞 Llamar ahora', intent: 'contact', action: 'call' }
           ]
         },
-        shipping: {
-          text: '🚚 LOGÍSTICA MAYORISTA - SUEÑO DORADO\n\nContamos con una cadena de suministro optimizada para negocios:\n\n📍 **FLETES:** Convenios con agencias de carga pesada a todo el país.\n📍 **VOLUMEN:** Despachos programados para grandes pedidos.\n📍 **PICK-UP:** Recojo directo de fabrica sin esperas.\n\n¿Deseas coordinar la logística de un pedido específico?',
-          options: [
-            { text: '📱 Coordinar Logística', intent: 'contact', action: 'whatsapp_direct' },
-            { text: '💰 Ver precios por volumen', intent: 'pricing' },
-            { text: '🏠 Menú Empresarial', intent: 'help' }
-          ]
-        },
         pricing: {
           text: '💰 COTIZACIONES B2B - SUEÑO DORADO\n\nOfrecemos la mejor rentabilidad del mercado para distribuidores:\n\n• Escalas de descuento según volumen (Lotes 10, 50, 100+).\n• Precios puestos en agencia o en fabrica.\n• Catálogo técnico con precios de lista y descuentos.\n\n¿Te gustaría recibir nuestra lista de precios actualizada?',
           options: [
@@ -187,11 +178,10 @@ export const useChatbotFixed = () => {
           ]
         },
         help: {
-          text: '💼 Soy tu asistente empresarial. Puedo ayudarte con:\n\n📋 Catálogo mayorista para socios\n💰 Cotizaciones por volumen\n🚚 Envíos logísticos especiales\n🛡️ Garantía industrial\n\n¿Qué necesitas?',
+          text: '💼 Soy tu asistente empresarial. Puedo ayudarte con:\n\n📋 Catálogo mayorista para socios\n💰 Cotizaciones por volumen\n🛡️ Garantía industrial\n\n¿Qué necesitas?',
           options: [
             { text: '📋 Ver catálogo mayorista', intent: 'catalog' },
             { text: '💰 Consultar precios B2B', intent: 'pricing' },
-            { text: '🚚 Logística de envíos', intent: 'shipping' },
             { text: '🛡️ Garantía y Calidad', intent: 'warranty' }
           ]
         }
@@ -241,19 +231,10 @@ export const useChatbotFixed = () => {
           ]
         },
         help: {
-          text: '¡Hola! Soy Susi, tu experta en descanso. ¿En qué puedo asesorarte hoy?\n\n📋 Información técnica de productos\n🚚 Envíos gratis a todo Lima\n🛡️ Garantías directas de fabrica\n📞 Contacto con ventas\n\n¿Qué información necesitas?',
+          text: '¡Hola! Soy Susi, tu experta en descanso. ¿En qué puedo asesorarte hoy?\n\n📋 Información técnica de productos\n🛡️ Garantías directas de fabrica\n📞 Contacto con ventas\n\n¿Qué información necesitas?',
           options: [
             { text: '📋 Ver productos', intent: 'catalog' },
-            { text: '🚚 Envíos y Entregas', intent: 'shipping' },
             { text: '📞 Hablar con Ventas', intent: 'contact' }
-          ]
-        },
-        shipping: {
-          text: '🚚 LOGÍSTICA DE ENTREGAS SUEÑO DORADO\n\nQueremos que estrenes tu colchón lo antes posible:\n\n📍 **LIMA METROPOLITANA:** Entregas en 24-48 horas. ¡Envío GRATIS!\n📍 **PROVINCIAS:** Envíos a todo el país vía agencias rápidas (Shalom, Marvisur, etc.).\n📍 **FÁBRICA:** También puedes recoger tu pedido directamente en nuestro almacén.\n\n¿Deseas que te ayudemos a cotizar el envío a tu ciudad?',
-          options: [
-            { text: '📱 Consultar para Lima', intent: 'contact', action: 'whatsapp_direct' },
-            { text: '📱 Consultar para Provincia', intent: 'contact', action: 'whatsapp_direct' },
-            { text: '🏠 Menú Principal', intent: 'help' }
           ]
         },
         offers: {
@@ -351,9 +332,8 @@ www.suenodorado.pe`;
 • Email: respuestas en 2-4 horas
 • Web chat: disponible siempre
 
-🚚 ENTREGAS:
+🚚 DESPACHOS:
 • Programación flexible
-• Entrega el mismo día (Lima)
 • Seguimiento en tiempo real
 
 ¿En qué puedo ayudarte hoy?`;

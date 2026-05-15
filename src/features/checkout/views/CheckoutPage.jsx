@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '@shared/contexts/CartContext';
 import { useScrollReveal } from '@shared/hooks/useScrollReveal';
-import { FaArrowRight, FaCheck, FaLock, FaTruck, FaCreditCard } from 'react-icons/fa';
+import { FaArrowRight, FaCheck, FaLock, FaCreditCard } from 'react-icons/fa';
 
 const CheckoutPage = () => {
   useScrollReveal();
@@ -52,12 +52,11 @@ const CheckoutPage = () => {
   const validateStep = (step) => {
     switch (step) {
       case 1:
-        // Validate shipping info
+        // Validate personal info
         return formData.firstName &&
           formData.lastName &&
           formData.email &&
-          formData.phone &&
-          formData.address;
+          formData.phone;
       case 2:
         // Validate payment method
         return formData.paymentMethod;
@@ -154,7 +153,7 @@ const CheckoutPage = () => {
 
           {/* Progress Steps */}
           <div className="flex items-center justify-between max-w-2xl mx-auto">
-            <StepIndicator step={1} title="Información de Envío" isCompleted={currentStep > 1} />
+            <StepIndicator step={1} title="Información Personal" isCompleted={currentStep > 1} />
             <div className="flex-1 h-1 bg-gray-200 dark:bg-white/10 mx-4">
               <div
                 className="h-full bg-vive-500 transition-all duration-500"
@@ -179,13 +178,13 @@ const CheckoutPage = () => {
           {/* Main Content */}
           <div className="lg:col-span-2">
 
-            {/* Step 1: Shipping Information */}
+            {/* Step 1: Personal Information */}
             {currentStep === 1 && (
               <div className="bg-white dark:bg-black rounded-2xl border border-gray-100 dark:border-white/10 p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <FaTruck className="text-vive-500 w-5 h-5" />
+                  <FaCheck className="text-vive-500 w-5 h-5" />
                   <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-                    Información de Envío
+                    Información Personal
                   </h2>
                 </div>
 
@@ -243,52 +242,6 @@ const CheckoutPage = () => {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-vive-500 focus:ring-2 focus:ring-vive-500/20 outline-none transition-all"
                       placeholder="+51 999 999 999"
-                    />
-                  </div>
-
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Dirección de Entrega *
-                    </label>
-                    <input
-                      type="text"
-                      name="address"
-                      value={formData.address}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-vive-500 focus:ring-2 focus:ring-vive-500/20 outline-none transition-all"
-                      placeholder="Av. Principal 123, Depto 404"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Departamento
-                    </label>
-                    <select
-                      name="department"
-                      value={formData.department}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-vive-500 focus:ring-2 focus:ring-vive-500/20 outline-none transition-all"
-                    >
-                      <option value="">Selecciona tu departamento</option>
-                      <option value="lima">Lima</option>
-                      <option value="arequipa">Arequipa</option>
-                      <option value="cusco">Cusco</option>
-                      {/* Add more departments */}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Referencia
-                    </label>
-                    <input
-                      type="text"
-                      name="reference"
-                      value={formData.reference}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-white/20 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-white focus:border-vive-500 focus:ring-2 focus:ring-vive-500/20 outline-none transition-all"
-                      placeholder="Frente al centro comercial, color verde, etc."
                     />
                   </div>
                 </div>
@@ -380,15 +333,13 @@ const CheckoutPage = () => {
                 </div>
 
                 <div className="space-y-6">
-                  {/* Shipping Info Summary */}
+                  {/* Contact Info Summary */}
                   <div>
-                    <h3 className="font-medium text-gray-900 dark:text-white mb-3">Información de Envío</h3>
+                    <h3 className="font-medium text-gray-900 dark:text-white mb-3">Información Personal</h3>
                     <div className="bg-gray-50 dark:bg-white/5 rounded-lg p-4 text-sm text-gray-700 dark:text-gray-300">
                       <p><strong>Nombre:</strong> {formData.firstName} {formData.lastName}</p>
                       <p><strong>Email:</strong> {formData.email}</p>
                       <p><strong>Teléfono:</strong> {formData.phone}</p>
-                      <p><strong>Dirección:</strong> {formData.address}</p>
-                      {formData.reference && <p><strong>Referencia:</strong> {formData.reference}</p>}
                     </div>
                   </div>
 
@@ -482,10 +433,6 @@ const CheckoutPage = () => {
                     S/. {getTotal().toFixed(2)}
                   </span>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-600 dark:text-gray-400">Envío</span>
-                  <span className="font-medium text-green-600">Gratis</span>
-                </div>
                 <div className="flex justify-between text-lg font-bold text-gray-900 dark:text-white pt-2 border-t border-gray-200 dark:border-white/10">
                   <span>Total</span>
                   <span>S/. {getTotal().toFixed(2)}</span>
@@ -497,10 +444,6 @@ const CheckoutPage = () => {
                 <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
                   <FaLock className="text-green-500" />
                   <span>Pago 100% Seguro</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
-                  <FaTruck className="text-blue-500" />
-                  <span>Envío Gratis a Lima</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
                   <FaCheck className="text-vive-500" />

@@ -7,10 +7,9 @@ import Breadcrumbs from '@/components/common/Breadcrumbs';
 import PaymentIcons from '@/components/common/PaymentIcons';
 import InfoModal from '@/components/common/InfoModal';
 import Footer from '@/components/layout/Footer';
-import { FaShieldAlt, FaTruck, FaUndo, FaHeadset } from 'react-icons/fa';
+import { FaShieldAlt, FaUndo, FaHeadset } from 'react-icons/fa';
 
 import WarrantyContent from '@/components/support/WarrantyContent';
-import ShippingContent from '@/components/support/ShippingContent';
 import ReturnsContent from '@/components/support/ReturnsContent';
 import ContactContent from '@/components/support/ContactContent';
 
@@ -30,11 +29,6 @@ const MainLayout = ({ children }) => {
             title: 'Respaldo y Garantía de Fábrica',
             content: <WarrantyContent />,
             icon: FaShieldAlt
-        },
-        'Envíos': {
-            title: 'Logística y Despacho Nacional',
-            content: <ShippingContent />,
-            icon: FaTruck
         },
         'Devoluciones': {
             title: 'Política de Cambios y Retornos',

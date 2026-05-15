@@ -9,6 +9,7 @@ const HeroControls = ({ slides, currentSlide, goToSlide, progress }) => {
                 <button
                     key={index}
                     onClick={() => goToSlide(index)}
+                    aria-label={`Ver slide ${index + 1}: ${slide.title}`}
                     className="group relative flex flex-col items-center"
                 >
                     {/* Progress Track Vertical */}

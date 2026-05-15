@@ -54,6 +54,17 @@ const ProductDetailsView = () => {
                 <title>{seoData.title}</title>
                 <meta name="description" content={seoData.description} />
                 <link rel="canonical" href={seoData.canonical} />
+                <meta property="og:title" content={seoData.openGraph?.title || seoData.title} />
+                <meta property="og:description" content={seoData.openGraph?.description || seoData.description} />
+                <meta property="og:image" content={seoData.openGraph?.image || 'https://vive.pe/logo-main.jpg'} />
+                <meta property="og:url" content={seoData.canonical} />
+                <meta property="og:type" content="product" />
+                <meta property="product:brand" content="Vive" />
+                <meta property="product:availability" content="in stock" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={seoData.openGraph?.title || seoData.title} />
+                <meta name="twitter:description" content={seoData.openGraph?.description || seoData.description} />
+                <meta name="twitter:image" content={seoData.openGraph?.image || 'https://vive.pe/logo-main.jpg'} />
                 {/* Structured Data */}
                 <script type="application/ld+json">
                     {JSON.stringify(structuredData)}

@@ -8,12 +8,11 @@ import RevealSection from '@shared/components/ui/RevealSection';
 import HeroCarousel from '../components/HeroCarousel';
 import CategoriesSection from '../components/CategoriesSection';
 import ProductCarousel from '@shared/components/ui/ProductCarousel';
-import TestimonialsSection from '../components/TestimonialsSection';
 import ProvincesSection from '../components/ProvincesSection';
+import PhysiologicalSection from '../components/TestimonialsSection';
 import InfiniteMarquee from '@shared/components/ui/InfiniteMarquee';
 import SleepTestTeaser from '../components/SleepTestTeaser';
 import EngineeringTeaser from '../components/EngineeringTeaser';
-import RiskReversal from '../components/RiskReversal';
 import { ENHANCED_CATALOG, FEATURED_PRODUCTS } from '@core/utils/constants';
 
 const HomeView = () => {
@@ -26,18 +25,25 @@ const HomeView = () => {
         <title>Vive - Fábrica de Colchones en Perú | Venta Directa</title>
         <meta name="description" content="Fabricamos colchones en Perú. Venta directa de fábrica de espuma y resortes. Mayor y menor. Lima y provincias." />
         <link rel="canonical" href="https://vive.pe/" />
+        <meta property="og:title" content="Vive - Fábrica de Colchones Premium en Perú | Venta Directa" />
+        <meta property="og:description" content="Fabricamos colchones en Perú. Venta directa de fábrica de espuma y resortes. Calidad premium con 10 años de garantía." />
+        <meta property="og:image" content="https://vive.pe/logo-main.jpg" />
+        <meta property="og:url" content="https://vive.pe/" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Vive - Fábrica de Colchones Premium en Perú" />
+        <meta name="twitter:description" content="Fabricamos colchones en Perú. Venta directa de fábrica de espuma y resortes." />
+        <meta name="twitter:image" content="https://vive.pe/logo-main.jpg" />
       </Helmet>
       <MainLayout>
-        {/* H1 Semántico para SEO y Accesibilidad (Visualmente oculto) */}
+        {/* H1 semántico sutil */}
         <h1 className="sr-only">Vive - Fábrica Premium de Colchones de Espuma y Resortes en Perú</h1>
 
         {/* 1. HERO CAROUSEL - Visual impactante */}
         <HeroCarousel />
 
-        {/* MARQUEE PROMOCIONAL - Minimalista e Infinito */}
-        <RevealSection delay={100}>
-          <InfiniteMarquee />
-        </RevealSection>
+        {/* MARQUEE PROMOCIONAL - Visible desde el inicio */}
+        <InfiniteMarquee />
 
         {/* 2. CATEGORÍAS - Grid limpio estilo Paraíso */}
         <RevealSection delay={200}>
@@ -65,11 +71,9 @@ const HomeView = () => {
           <ProvincesSection />
         </RevealSection>
 
-        {/* 5. TESTIMONIALS - Prueba social real */}
-        <TestimonialsSection />
+        {/* ANÁLISIS FISIOLÓGICO - Ingeniería del descanso */}
+        <PhysiologicalSection />
 
-        {/* ESCUDO ANTI-RIESGO - Eliminación de objeciones */}
-        <RiskReversal />
       </MainLayout>
     </>
   );

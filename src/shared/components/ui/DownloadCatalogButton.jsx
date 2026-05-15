@@ -28,45 +28,52 @@ const DownloadCatalogButton = () => {
             onClick={handleExport}
             disabled={isExporting}
             className={`
-                relative group flex items-center gap-3 px-6 py-3 
-                bg-white dark:bg-zinc-900 
-                border border-gray-200 dark:border-white/10
-                rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1
-                transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]
+                relative group flex items-center gap-3 px-8 py-4 overflow-hidden
+                bg-vive-600 dark:bg-vive-500 
+                border border-white/10
+                rounded-2xl shadow-lg shadow-vive-600/20 hover:shadow-2xl hover:shadow-vive-600/40 
+                transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
                 disabled:opacity-70 disabled:cursor-wait
             `}
         >
-            {/* Background Glow Effect */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-vive-500/0 via-vive-500/5 to-vive-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            {/* Satin Shine Sweep — diagonal light that crosses on hover */}
+            <div className="absolute inset-0 -skew-x-[20deg] translate-x-[-120%] group-hover:translate-x-[200%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-all duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)]" />
+
+            {/* Subtle Inner Glow */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
             {/* Icon & Loading Spinner */}
             <div className="relative">
                 {isExporting ? (
-                    <div className="w-5 h-5 border-2 border-vive-600/30 border-t-vive-600 rounded-full animate-spin" />
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                 ) : (
-                    <HiOutlineDocumentDownload className="w-6 h-6 text-vive-600 group-hover:scale-110 transition-transform duration-500" />
+                    <HiOutlineDocumentDownload className="w-6 h-6 text-white group-hover:scale-110 group-hover:-translate-y-0.5 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" />
                 )}
             </div>
 
             {/* Text Content */}
             <div className="flex flex-col items-start text-left">
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 group-hover:text-vive-500 transition-colors">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 group-hover:tracking-[0.35em] group-hover:text-white/80 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
                     Colección 2026
                 </span>
-                <span className="text-sm font-bold text-gray-800 dark:text-white">
+                <span className="text-sm font-bold text-white">
                     {isExporting ? 'Generando PDF...' : 'Descargar Catálogo'}
                 </span>
             </div>
 
             {/* Premium Indicator Badge */}
             {!isExporting && (
-                <div className="ml-2 px-2 py-0.5 bg-vive-600/5 dark:bg-vive-600/10 border border-vive-600/10 rounded-md">
-                    <span className="text-[8px] font-black text-vive-600 uppercase tracking-tighter">HD PDF</span>
+                <div className="ml-2 px-2 py-0.5 bg-white/5 border border-white/10 rounded-md group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-700">
+                    <span className="text-[8px] font-black text-white/60 group-hover:text-white uppercase tracking-tighter transition-colors duration-700">HD PDF</span>
                 </div>
             )}
 
-            {/* Bottom Accent Line */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-vive-600 group-hover:w-1/3 transition-all duration-700 rounded-full" />
+            {/* Bottom Border Reveal */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-white group-hover:w-2/3 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-full" />
+
+            {/* Corner Accents — top-right and bottom-left */}
+            <div className="absolute top-3 right-3 w-1 h-1 rounded-full bg-white/0 group-hover:bg-white/30 transition-all duration-700" />
+            <div className="absolute bottom-3 left-3 w-1 h-1 rounded-full bg-white/0 group-hover:bg-white/30 transition-all duration-700" />
         </button>
     );
 };

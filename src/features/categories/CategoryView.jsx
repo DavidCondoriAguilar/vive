@@ -105,6 +105,14 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
             <Helmet>
                 <title>{categoryTitle} | Vive Fábrica de Colchones</title>
                 <meta name="description" content={`Explora nuestra línea de ${categoryTitle}. Venta directa de fábrica con tecnología de descanso avanzada en Perú.`} />
+                <meta property="og:title" content={`${categoryTitle} | Vive - Fábrica de Colchones en Perú`} />
+                <meta property="og:description" content={`Explora nuestra línea de ${categoryTitle}. Calidad premium directo de fábrica con envíos a todo Perú.`} />
+                <meta property="og:image" content="https://vive.pe/logo-main.jpg" />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`${categoryTitle} | Vive`} />
+                <meta name="twitter:description" content={`Explora nuestra línea de ${categoryTitle}. Venta directa de fábrica.`} />
+                <meta name="twitter:image" content="https://vive.pe/logo-main.jpg" />
             </Helmet>
             <div className="pb-24 bg-white dark:bg-black min-h-screen transition-colors duration-700">
                 <div className="container mx-auto px-6 lg:px-20">
@@ -177,102 +185,40 @@ const CategoryView = ({ categoryId: propCategoryId }) => {
 
                     {/* Products Grid */}
                     {products.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 animate-fade-in-up">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in-up">
                             {products.map((product) => (
-                                <div key={product.id} className="group bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-vive-500/10 hover:-translate-y-2 h-full flex flex-col">
-                                    {/* Product Image - MISMAS MEDIDAS EXACTAS QUE EL CARRUSEL */}
-                                    <div className="relative overflow-hidden bg-white dark:bg-dream-dark-surface p-6" style={{ aspectRatio: '16/9' }}>
+                                <div key={product.id} className="group bg-white dark:bg-dream-dark-surface rounded-2xl overflow-hidden border border-gray-100 dark:border-dream-dark-border transition-all duration-700 hover:shadow-2xl hover:shadow-vive-500/10 hover:-translate-y-2 flex flex-col">
+                                    {/* Product Image - Protagonista */}
+                                    <div className="relative overflow-hidden bg-white dark:bg-dream-dark-surface" style={{ aspectRatio: '4/5' }}>
                                         <Link to={`/producto/${product.id}`} className="block h-full w-full">
-                                            <div
-                                                className="w-full h-full flex items-center justify-center transition-transform duration-1000"
-                                                style={{
-                                                    transform:
-                                                        product.name === 'Ventto Marco Poliuretano' ? 'scale(1.15)' :
-                                                        product.name === 'Sense Premium' ? 'scale(1.35)' :
-                                                        product.name === 'Vanora Doble Pillow' ? 'scale(1.70)' :
-                                                        product.name === 'Kai' ? 'scale(1.85)' :
-                                                        product.name === 'Infinito Mp' ? 'translateY(-12px)' :
-                                                            product.name === 'Goldencito Anatomico Mp' ? 'translateY(-12px)' :
-                                                                product.name === 'Gea Two Ortopédico de Lujo' ? 'scale(0.83)' :
-                                                                    product.name === 'Itta Ortopédico' ? 'scale(0.85)' :
-                                                                        product.name === 'Enna Mp' ? 'scale(0.81)' :
-                                                                            product.name === 'Colchón Riveteado' ? 'scale(0.79)' :
-                                                                                'none'
-                                                }}
-                                            >
+                                            <div className="w-full h-full flex items-center justify-center p-2">
                                                 <img
-                                                    src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=400&q=75&auto=format`}
-                                                    alt={product.name}
-                                                    className="w-full h-full object-contain transition-transform duration-[10s]"
-                                                    width="400"
-                                                    height="225"
+                                                    src={`${product.image}${product.image.includes('?') ? '&' : '?'}w=600&q=75&auto=format`}
+                                                    alt={`${product.name} - Colchón Vive Perú`}
+                                                    className="w-full h-full object-contain"
+                                                    width="500"
+                                                    height="625"
                                                     loading="lazy"
                                                 />
                                             </div>
                                         </Link>
 
-                                        {/* Badge - Igual que el carrusel */}
                                         {product.badge && (
-                                            <div className="absolute top-4 left-4">
-                                                <span className="px-3 py-1 bg-black dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[10px] font-black uppercase tracking-widest rounded-full">
+                                            <div className="absolute top-3 left-3">
+                                                <span className="px-2.5 py-1 bg-black/80 text-white text-[8px] font-black uppercase tracking-widest rounded-full">
                                                     {product.badge}
                                                 </span>
                                             </div>
                                         )}
                                     </div>
-                                    <div className="p-6 flex flex-col flex-1 bg-gray-50/50 dark:bg-zinc-900/50">
-                                        <div className="mb-4">
-                                            <p className="text-[10px] font-black text-vive-500 uppercase tracking-widest mb-2">{getPrettySubcategoryName(product.subcategory) || product.category}</p>
-                                            <Link to={`/producto/${product.id}`}>
-                                                <h3 className="text-lg font-black text-gray-900 dark:text-white mt-2 mb-3 leading-tight hover:text-vive-500 transition-colors">{product.name}</h3>
-                                            </Link>
-                                        </div>
-
-                                        {/* Enhanced Product Information */}
-                                        <div className="space-y-3 mb-6">
-                                            <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3 leading-relaxed">
-                                                {product.description}
-                                            </p>
-
-                                            {/* Key Features */}
-                                            <div className="space-y-2">
-                                                {product.features && product.features.slice(0, 3).map((feature, idx) => (
-                                                    <div key={idx} className="flex items-center gap-2">
-                                                        <span className="w-1.5 h-1.5 bg-vive-500 rounded-full flex-shrink-0"></span>
-                                                        <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">{feature}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            {/* Key Specifications */}
-                                            {product.especificaciones && (
-                                                <div className="pt-3 border-t border-gray-100 dark:border-white/5">
-                                                    <div className="grid grid-cols-2 gap-2 text-xs">
-                                                        {Object.entries(product.especificaciones).slice(0, 4).map(([key, value], idx) => (
-                                                            <div key={idx} className="flex justify-between">
-                                                                <span className="text-gray-600 dark:text-gray-400 capitalize">{key}:</span>
-                                                                <span className="text-gray-900 dark:text-white font-medium">{value}</span>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )}
-
-                                            <div className="flex items-center gap-2">
-                                                {product.sizes && (
-                                                    <span className="inline-flex items-center px-2 py-1 bg-gray-100 dark:bg-gray-800 text-xs font-black text-gray-700 dark:text-gray-300 rounded-full">
-                                                        <span className="mr-1">📏</span>
-                                                        {product.sizes.length} tamaños
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </div>
-                                        <div className="pt-6 border-t border-gray-100 dark:border-white/5 flex flex-col gap-3 mt-auto">
+                                    <div className="p-3 flex flex-col flex-1 bg-gray-50/50 dark:bg-zinc-900/50">
+                                        <p className="text-[8px] font-black text-vive-500 uppercase tracking-[0.2em] truncate">{getPrettySubcategoryName(product.subcategory) || product.category}</p>
+                                        <Link to={`/producto/${product.id}`}>
+                                            <h3 className="text-xs font-black text-gray-900 dark:text-white mt-0.5 mb-2 truncate hover:text-vive-500 transition-colors">{product.name}</h3>
+                                        </Link>
+                                        <div className="flex flex-col gap-1.5 mt-auto">
                                             <PriceInquiryButton product={product} size={selectedSize === 'todos' ? null : selectedSize} />
-                                            <div className="flex gap-2">
-                                                <DetailsButton to={`/producto/${product.id}`} className="flex-1" />
-                                                <QuoteIconButton onClick={() => addToCart(product, 1, selectedSize === 'todos' ? null : selectedSize)} />
-                                            </div>
+                                            <DetailsButton to={`/producto/${product.id}`} />
                                         </div>
                                     </div>
                                 </div>

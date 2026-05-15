@@ -92,8 +92,7 @@ export const FOOTER_CONTENT = {
         icon: <LuMapPin className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-6 text-gray-600 dark:text-gray-400">
-                <p>Nuestra logística es directa y personalizada. Para saber el estado de tu entrega, por favor ten a la mano tu **número de pedido** o DNI.</p>
-                <p>Los despachos en Lima Metropolitana se realizan en un rango de 24 a 72 horas hábiles.</p>
+                <p>Nuestra logística es directa y personalizada. Para saber el estado de tu pedido, por favor ten a la mano tu **número de pedido** o DNI.</p>
                 <div className="bg-black text-white p-6 rounded-2xl flex items-center justify-between">
                     <div className="text-xs font-bold uppercase tracking-widest">Estado por WhatsApp</div>
                     <LuTruck className="text-vive-500 animate-pulse text-2xl" />
@@ -106,9 +105,7 @@ export const FOOTER_CONTENT = {
         icon: <LuTruck className="text-vive-500 w-8 h-8" />,
         content: (
             <div className="space-y-6 text-gray-600 dark:text-gray-400">
-                <p className="font-bold">Zonas y Tiempos:</p>
                 <ul className="list-disc pl-5 space-y-2 text-sm">
-                    <li>**Lima Metropolitana**: Tarifa variable según distrito. Entrega en primer piso.</li>
                     <li>**Provincias**: Envío hasta la agencia de su preferencia en Lima con embalaje reforzado.</li>
                 </ul>
                 <p className="text-xs">**Importante**: El cliente debe asegurar que el producto pueda ingresar por las dimensiones de puertas y escaleras. El personal de transporte no realiza maniobras de riesgo por fachada.</p>

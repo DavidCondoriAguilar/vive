@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useScrollReveal } from '@shared/hooks/useScrollReveal';
-import { FaCheck, FaTruck, FaBox, FaPhone, FaEnvelope, FaHome } from 'react-icons/fa';
+import { FaCheck, FaBox, FaPhone, FaEnvelope } from 'react-icons/fa';
 
 const OrderConfirmationPage = () => {
   useScrollReveal();
@@ -35,17 +35,6 @@ const OrderConfirmationPage = () => {
 
   const formatOrderNumber = () => {
     return `SD-${Date.now().toString().slice(-8)}`;
-  };
-
-  const getEstimatedDelivery = () => {
-    const deliveryDate = new Date();
-    deliveryDate.setDate(deliveryDate.getDate() + 2); // 2 days delivery
-    return deliveryDate.toLocaleDateString('es-PE', { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
   };
 
   return (
@@ -106,17 +95,6 @@ const OrderConfirmationPage = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">
-                    3
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900 dark:text-white">Despacho y Entrega</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Tu pedido será despachado y entregado en la dirección proporcionada.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -175,56 +153,6 @@ const OrderConfirmationPage = () => {
               </div>
             </div>
 
-            {/* Shipping Information */}
-            <div className="bg-white dark:bg-black border border-gray-100 dark:border-white/10 rounded-2xl p-6">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
-                <FaHome className="text-blue-500" />
-                Información de Envío
-              </h2>
-              
-              <div className="space-y-3 text-sm">
-                <div className="flex items-center gap-3">
-                  <span className="text-gray-600 dark:text-gray-400">Nombre:</span>
-                  <span className="font-medium text-gray-900 dark:text-white">
-                    {orderData.firstName} {orderData.lastName}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-gray-600 dark:text-gray-400">Email:</span>
-                  <span className="font-medium text-gray-900 dark:text-white">
-                    {orderData.email}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-gray-600 dark:text-gray-400">Teléfono:</span>
-                  <span className="font-medium text-gray-900 dark:text-white">
-                    {orderData.phone}
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-gray-600 dark:text-gray-400">Dirección:</span>
-                  <span className="font-medium text-gray-900 dark:text-white flex-1">
-                    {orderData.address}
-                  </span>
-                </div>
-                {orderData.reference && (
-                  <div className="flex items-start gap-3">
-                    <span className="text-gray-600 dark:text-gray-400">Referencia:</span>
-                    <span className="font-medium text-gray-900 dark:text-white flex-1">
-                      {orderData.reference}
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              {/* Delivery Estimate */}
-              <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/30 rounded-lg">
-                <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-medium">
-                  <FaTruck className="w-4 h-4" />
-                  <span>Entrega estimada: {getEstimatedDelivery()}</span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Sidebar Actions */}

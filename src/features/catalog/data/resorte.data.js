@@ -5,12 +5,6 @@ import geaMain from '@assets/product-detail/ventto/ventto-main.webp';
 import geaTwo from '@assets/product-detail/ventto/ventto-zoom.webp';
 import geaDiag from '@assets/product-detail/ventto/ventto-diag.webp';
 
-// SENSE PREMIUM
-import sensePremiumMain from '@assets/product-detail/sense-premium/sense-premium-main.webp';
-import sensePremiumTwo from '@assets/product-detail/sense-premium/sense-premium-zoom.webp';
-import sensePremiumDiag from '@assets/product-detail/sense-premium/sense-premium-diagonal.webp';
-
-
 // KAI
 import kaiMain from '@assets/product-detail/kai/kai-main.webp';
 import kaiTwo from '@assets/product-detail/kai/kai-zoom.webp';
@@ -61,11 +55,11 @@ export const RESORTE_PRODUCTS = [
         subcategory: 'Económica',
         warranty: '2 años de garantía',
         price: 1599,
-        image: ennaMpMain,
+        image: ennaMpDiag,
         images: [
+            ennaMpDiag,
             ennaMpMain,
-            ennaMpTwo,
-            ennaMpDiag
+            ennaMpTwo
         ],
         technicalSpecs: {
             colchon: [
@@ -110,11 +104,11 @@ export const RESORTE_PRODUCTS = [
         subcategory: 'Económica',
         warranty: '4 años de garantía',
         price: 1849,
-        image: ittaMain,
+        image: ittaDiag,
         images: [
+            ittaDiag,
             ittaMain,
-            ittaTwo,
-            ittaDiag
+            ittaTwo
         ],
         description: 'Confort y elegancia en perfecta armonía para noches de descanso inolvidables. Sistema de soporte avanzado diseñado para la alineación perfecta de la columna.',
         sizes: ['1.5 PLZ (1.05m x 1.90m)', '2 PLZ (1.35m x 1.90m)', 'QUEEN (1.53m x 2.03m)', 'KING (1.93m x 2.03m)'],
@@ -155,11 +149,11 @@ export const RESORTE_PRODUCTS = [
         category: 'resorte',
         subcategory: 'Diamont',
         price: 2199,
-        image: geaMain,
+        image: geaDiag,
         images: [
+            geaDiag,
             geaMain,
-            geaTwo,
-            geaDiag
+            geaTwo
         ],
         technicalSpecs: {
             colchon: [
@@ -198,47 +192,6 @@ export const RESORTE_PRODUCTS = [
         firmnessLabel: 'Extra Firme',
         badge: 'Top Estabilidad'
     },
-    // 4. SENSE PREMIUM (DIAMONT - TOP 4)
-    {
-        id: 'sense-premium',
-        name: 'Sense Premium',
-        category: 'resorte',
-        subcategory: 'Diamont',
-        price: 1899,
-        image: sensePremiumMain,
-        images: [
-            sensePremiumMain,
-            sensePremiumTwo,
-            sensePremiumDiag
-        ],
-        technicalSpecs: {
-            colchon: [
-                'Tela Acolchada de Alta Resistencia Premium',
-                'Pillow densidad 25',
-                'Refuerzo Lateral Extra Firme (D28)',
-                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
-                'Diseño reversible (doble cara)',
-                '1.5 PLZ: 1.05m x 1.90m',
-                '2 PLZ: 1.35m x 1.90m',
-                'QUEEN: 1.53m x 2.03m',
-                'KING: 1.93m x 2.03m',
-                'Soporte ultra firme'
-            ],
-            componentes: [
-                'Tela Acolchada de Alta Resistencia Premium 18 mm',
-                'Pillow densidad 25',
-                'Refuerzo Lateral Extra Firme (D28)',
-                'Capa Protectora de Fibra (Notex)',
-                'Panel de resortes de acerado con alto contenido carbono y templado eléctricamente',
-                'Capa Protectora de Fibra (Notex)',
-                'Refuerzo Lateral Extra Firme (D28)'
-            ]
-        },
-        description: 'Sensación premium con tecnología de punta para un descanso excepcional.',
-        sizes: ['1.5 PLZ', '2 PLZ', 'QUEEN', 'KING'],
-        features: ['Marco Poliuretano', 'Pocket Elite'],
-        badge: 'Premium Series'
-    },
     // 5. KAI (DIAMONT - TOP 5)
     {
         id: 'kai',
@@ -246,11 +199,11 @@ export const RESORTE_PRODUCTS = [
         category: 'resorte',
         subcategory: 'Diamont',
         price: 2899,
-        image: kaiMain,
+        image: kaiDiag,
         images: [
+            kaiDiag,
             kaiMain,
-            kaiTwo,
-            kaiDiag
+            kaiTwo
         ],
         technicalSpecs: {
             colchon: [
@@ -296,11 +249,11 @@ export const RESORTE_PRODUCTS = [
         subcategory: 'Intermedia',
         warranty: '7 años de garantía',
         price: 1399,
-        image: vanoraDpMain,
+        image: vanoraDpDiag,
         images: [
+            vanoraDpDiag,
             vanoraDpMain,
-            vanoraDpTwo,
-            vanoraDpDiag
+            vanoraDpTwo
         ],
         sizes: ['1.5 PLZ (1.05m x 1.90m)', '2 PLZ (1.35m x 1.90m)', 'QUEEN (1.53m x 2.03m)', 'KING (1.93m x 2.03m)'],
         dimensionsInfo: [
@@ -347,10 +300,10 @@ export const RESORTE_PRODUCTS = [
         subcategory: 'Intermedia',
         warranty: '5 años de garantía',
         price: 2699,
-        image: geaTwoOrtopedicoMain,
+        image: geaTwoOrtopedicoDiag,
         images: [
-            geaTwoOrtopedicoMain,
             geaTwoOrtopedicoDiag,
+            geaTwoOrtopedicoMain,
             geaTwoOrtopedicoZoom
         ],
         description: 'La máxima expresión del confort ergonómico. Sistema de Pillow Top reforzado para un soporte lumbar de élite y materiales de lujo.',
@@ -395,11 +348,11 @@ export const RESORTE_PRODUCTS = [
         subcategory: 'Económica',
         warranty: '4 años de garantía',
         price: 1749,
-        image: kasseMain,
+        image: kasseDiag,
         images: [
+            kasseDiag,
             kasseMain,
-            kasseTwo,
-            kasseDiag
+            kasseTwo
         ],
         description: 'Sofisticación y soporte en un solo diseño. El modelo Kasse ofrece una experiencia de descanso equilibrada con materiales de alta resiliencia, con tecnologia invierno verano.',
         sizes: ['1 PLZ (0.90m x 1.90m)', '1.5 PLZ (1.05m x 1.90m)', '2 PLZ (1.35m x 1.90m)'],
@@ -440,11 +393,11 @@ export const RESORTE_PRODUCTS = [
         subcategory: 'Intermedia',
         warranty: '6 años de garantía',
         price: 1999,
-        image: vanoraSsMain,
+        image: vanoraSsDiag,
         images: [
+            vanoraSsDiag,
             vanoraSsMain,
-            vanoraSsTwo,
-            vanoraSsDiag
+            vanoraSsTwo
         ],
         description: 'Ingeniería de Soporte Perimetral: El modelo Vanora MP Super Side integra una arquitectura reforzada que elimina los puntos de presión y garantiza una estabilidad absoluta hasta en el último centímetro del colchón.',
         sizes: ['1.5 PLZ (1.05m x 1.90m)', '2 PLZ (1.35m x 1.90m)', 'QUEEN (1.53m x 2.03m)', 'KING (1.93m x 2.03m)'],

@@ -125,17 +125,12 @@ export const useCart = () => {
     });
 
     message += `*Total del Pedido: S/. ${getTotal().toFixed(2)}*\n\n`;
-    message += '*Datos de Envío:*\n';
-    message += '   (Por favor, proporciona tus datos de envío)\n\n';
     message += '*Información de Contacto:*\n';
     message += '   • Nombre completo\n';
-    message += '   • Teléfono\n';
-    message += '   • Dirección de entrega\n';
-    message += '   • Departamento/Provincia\n';
-    message += '   • Referencia\n\n';
+    message += '   • Teléfono\n\n';
     message += '*Método de Pago:*\n';
     message += '   (Efectivo, Yape, Transferencia, etc.)\n\n';
-    message += '*Nota: Nos comunicaremos contigo a la brevedad para confirmar tu pedido y coordinar el envío.*\n\n';
+    message += '*Nota: Nos comunicaremos contigo a la brevedad para confirmar tu pedido.*\n\n';
     message += '---\n';
     message += '*Sueño Dorado - Fábrica de Colchones Premium*';
 
